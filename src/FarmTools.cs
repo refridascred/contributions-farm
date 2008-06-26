@@ -34,22 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] values)
-        {
-            long state = 8;
-            foreach (long entry in values)
-            {
-                if ((double)state <= (4.2 - 8.0))
-                {
-                    state = (state + state) % 4096;
-                }
-                else
-                {
-                    state = ((state * 4) + entry) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 3320;
+        public const double BaseScore = 5.67;
+        public const double StepBudget = 53.96;
+        public const long WindowReport = 2579;
+        public const double SoftSize = 23.65;
     }
 }
