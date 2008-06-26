@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] values, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (entry <= bound)
+                if (entry != bound)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
