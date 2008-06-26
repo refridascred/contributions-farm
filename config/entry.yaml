@@ -1,4 +1,6 @@
 # entry settings
-stream_window: 9
-poll_capacity: 86.4
-flush_ttl: 52
+enabled: false
+flush_interval_ms: false
+retry_timeout: stable
+dry_run: latest
+sync_size: 14
