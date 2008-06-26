@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] items, long limit)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= limit)
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
