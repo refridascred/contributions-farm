@@ -36,10 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftWidth = 66.18;
-        public const double StepTimeout = 49.66;
-        public const string RetryCommits = "staging-edge";
-        public const double LimitFactor = 40.13;
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
+        {
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
     }
 }
