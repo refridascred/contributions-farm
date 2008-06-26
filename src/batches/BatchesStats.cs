@@ -28,17 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout window reading by value.</summary>
-        public static long SeekLayoutWindowIndex(long[] data, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 0;
+            foreach (long value in values)
             {
-                if (data[i] >= floor)
+                state = (state - (value + 9)) % 101;
+                state = (state - (state * 4)) % 255;
+                if (!((value + state) <= (value + 5)))
                 {
-                    return (long)i;
+                    state = ((state * 4) + value) % 255;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
