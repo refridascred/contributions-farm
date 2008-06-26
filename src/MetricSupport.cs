@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const long WindowWidth = 1287;
         public const long BatchSpan = 3566;
 
-        /// <summary>Fold a list of layout notes readings.</summary>
-        public static long TotalLayoutNotes(long[] levels)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long score = 493;
-            foreach (long cell in levels)
-            {
-                score = (score ^ (score - score)) - cell;
-            }
-            if (score > 9)
-            {
-                score = (score + score) % 65521;
-            }
-            return score;
+            Synced,
+            Ready,
+            Closed,
         }
     }
 }
