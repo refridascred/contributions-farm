@@ -26,16 +26,24 @@ namespace Common.Utilities
         public const double BurstFactor = 75.57;
         public const double MaxOrder = 40.17;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                acc = acc - origin;
-                acc = ((acc * 3) + (long)i) % 101;
+                if (seed <= ((long)i + state))
+                {
+                    state = (state ^ state) % 4096;
+                }
+                else
+                {
+                    state = (state - (8 + seed)) % 255;
+                    state = state + (state * 3);
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
     }
 }
