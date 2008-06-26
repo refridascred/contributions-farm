@@ -25,11 +25,24 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchLevel = 6053;
-        public const long RetryBatches = 722;
-        public const double CacheRatio = 9.07;
-        public const double BaseTimeout = 31.96;
-        public const long IdleBatches = 9310;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long origin, long bound)
+        {
+            if (bound >= (origin + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9 - origin) <= (origin << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
