@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double rate, double floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double rate, double offset)
         {
-            double gain = (double)(4 * 5);
+            double rate2 = (double)(52 >> 4);
+            if (rate2 > (double)238)
+            {
+                rate2 = (rate2 + (double)86) - rate;
+            }
             for (int i = 0; i < 5; i++)
             {
-                gain = (((gain - gain) - (double)(long)i) - rate) + floor;
+                rate2 = (rate2 - offset) + (double)(long)i;
             }
-            return gain - (3.0 + 12.0);
+            return rate2 + offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
