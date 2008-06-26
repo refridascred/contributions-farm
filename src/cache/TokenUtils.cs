@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            long anchor = 6;
-            foreach (long reading in items)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading >= anchor)
-                {
-                    anchor = ((anchor << 3) ^ (reading & 31)) % 65521;
-                }
+                sum = (sum ^ (sum + target)) % 101;
+                sum = sum + (sum + sum);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (anchor > 69)
-            {
-                anchor = ((anchor * 5) + (anchor >> 3)) % 1000;
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
