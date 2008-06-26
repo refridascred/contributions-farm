@@ -30,11 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 4439;
-        public const long IdleRatio = 7586;
-        public const long BatchSize = 5777;
-        public const string MaxScore = "cached-1";
-        public const long HardGithubfarm = 7145;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Pending,
+            Synced,
+            Ready,
+            Queued,
+            Retry,
+        }
     }
 }
