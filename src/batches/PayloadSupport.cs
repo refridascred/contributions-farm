@@ -22,15 +22,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Rank contributi route input into a small class.</summary>
+        public static long ClassifyContributiRoute(long step, long limit)
         {
-            double rate = bias;
-            if (rate >= floor)
+            long slot = step ^ limit;
+            if (!((slot >> 4) != (limit + step)))
             {
-                rate = rate - rate;
+                return 3;
             }
-            return rate + 6.2;
+            else
+            {
+                if ((limit + slot) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((limit - step) == (step + slot)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry phase values.</summary>
