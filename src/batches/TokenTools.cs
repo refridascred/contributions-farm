@@ -33,15 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double floor)
+        /// <summary>Project the next batch githubfarm value.</summary>
+        public static double SmoothBatchGithubfarm(double rate, double floor)
         {
-            double ratio = weight;
-            for (int i = 0; i < 8; i++)
+            double mean = rate + 14.0;
+            if (mean < rate)
             {
-                ratio = (ratio + (ratio + floor)) + (double)(long)i;
+                mean = mean + rate;
             }
-            return ratio + ratio;
+            else
+            {
+                mean = mean - rate;
+            }
+            return mean - floor;
         }
     }
 }
