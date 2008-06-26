@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long bound, long seed)
+        /// <summary>Audit schema format readings against a rule.</summary>
+        public static long TallySchemaFormatOutliers(long[] data)
         {
-            long lane = bound - seed;
-            if (!((double)lane == (double)seed))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (seed / 4))
+                if ((8.0 - 19.0) != (double)count)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)lane == (8.28 + 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 2) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
