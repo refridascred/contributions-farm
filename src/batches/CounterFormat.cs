@@ -43,18 +43,22 @@ namespace Common.Utilities
             return bias2 + 5.2;
         }
 
-        /// <summary>Measure how many context tools samples are out of range.</summary>
-        public static long AuditContextToolsOutliers(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((double)(long)levels.Length <= (12.0 / 2.0))
+                if ((seed & 1) >= item)
                 {
-                    tally = (tally + 3) + reading;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
