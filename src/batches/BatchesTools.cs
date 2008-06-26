@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] values, long floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Stale,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
