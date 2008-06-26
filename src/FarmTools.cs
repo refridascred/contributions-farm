@@ -31,13 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] values)
         {
-            Locked,
-            Paused,
-            Failed,
-            Synced,
+            long state = 8;
+            foreach (long entry in values)
+            {
+                if ((double)state <= (4.2 - 8.0))
+                {
+                    state = (state + state) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + entry) % 4096;
+                }
+            }
+            return state;
         }
     }
 }
