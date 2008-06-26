@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Match up stats graph samples.</summary>
+        public static long CompareStatsGraphCount(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total * 2) + total;
-                total = ((total * 4) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the cluster class values.</summary>
