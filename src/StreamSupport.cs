@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] readings, long seed)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)matches == (16.0 * 5.2))
-                {
-                    matches = ((matches + 1) + reading) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
