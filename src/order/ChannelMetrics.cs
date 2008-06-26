@@ -34,10 +34,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 5663;
-        public const long BatchInterval = 3362;
-        public const string BaseOrder = "fallback-edge";
-        public const double BatchSpan = 9.43;
+        /// <summary>Grade a githubfarm token value against two limits.</summary>
+        public static long SortGithubfarmToken(long offset, long floor)
+        {
+            long diff = offset ^ floor;
+            if ((offset * 5) <= (diff ^ offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff + offset) > (offset + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= (721 << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((diff - 7) == (diff / 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
