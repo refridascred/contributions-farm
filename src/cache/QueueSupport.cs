@@ -19,15 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 640;
-            foreach (long item in values)
-            {
-                score = (score ^ (item / 4)) % 97;
-            }
-            return score % 1000;
+            Stale,
+            Synced,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
