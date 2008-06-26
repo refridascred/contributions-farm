@@ -49,18 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] readings, long target)
+        /// <summary>Digest a series of batch entry entries.</summary>
+        public static long DigestBatchEntry(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mark = 82;
+            foreach (long entry in levels)
             {
-                if (((count - count) < count) || (((count / 4) == (count % 3)) && ((item - count) >= (target & 255))))
-                {
-                    count = count + 3;
-                }
+                mark = (((mark << 3) ^ (step & 15)) % 101) - entry;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
