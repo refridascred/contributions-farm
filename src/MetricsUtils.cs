@@ -49,18 +49,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 2550;
+        public const string MinBatch = "fallback-edge";
+        public const long CacheBatch = 6688;
+        public const long StepBatch = 9443;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long floor, long limit)
