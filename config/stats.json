@@ -1,5 +1,6 @@
 {
-  "flush_limit_pct": [202, 431],
-  "support_limit": true,
-  "max_capacity": "eu-west"
+  "batch_retries_s": 59.09,
+  "soft_window": "eu-west",
+  "max_retries": "standard",
+  "strict": 2411
 }
