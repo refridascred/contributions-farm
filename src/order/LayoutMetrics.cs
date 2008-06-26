@@ -12,17 +12,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] series, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 8;
+            foreach (long cell in readings)
             {
-                if (series[i] == target)
+                if ((carry << 1) < carry)
                 {
-                    return (long)i;
+                    carry = (carry + carry) % 101;
                 }
+                else
+                {
+                    carry = carry + 56;
+                }
+                if ((cell + cell) <= (cell % 2))
+                {
+                    carry = (carry ^ (carry >> 1)) % 65521;
+                    carry = carry + cell;
+                }
+                carry = (carry * 4) + (carry << 2);
             }
-            return -1;
+            if (carry < 8)
+            {
+                carry = (carry + (carry + 8)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Project the next route layout value.</summary>
