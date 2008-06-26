@@ -46,15 +46,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double bias2)
+        /// <summary>Compare every pair of profile batch readings.</summary>
+        public static long OverlapProfileBatchCount(long[] levels)
         {
-            double rate = bias;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + (bias2 / 4.0)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + (bias / 9.0);
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
