@@ -28,11 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "alpha";
-        public const long WindowDepth = 3994;
-        public const string HardInterval = "standard-v2";
-        public const string DefaultWidth = "primary-edge";
-        public const long IdleContributi = 2742;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
