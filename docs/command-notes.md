@@ -1,11 +1,15 @@
 # Command notes
 
-Each account is validated before it reaches the batches queue.
-Keep account and checks names short and lowercase.
-When a tools fails, the order handler retries a few times before giving up.
+A tools that stays idle for too long is moved to the payload list.
+A buffer that stays idle for too long is moved to the stats list.
+The notes helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for window live in the config folder and can be overridden per environment.
+Each stream is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Document new window fields
-- Review command limits each release
-- Prefer command defaults
+- Keep metrics values small
+- Validate stats input early
+- Prefer stats defaults
+- Log every queue change
