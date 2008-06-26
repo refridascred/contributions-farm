@@ -75,38 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long bound)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long target)
         {
-            if (floor >= bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.84 - 9.0) > 3.0)
+                if (series[i] > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor % 97) == (floor + floor)) && ((4.79 - 9.39) <= (6.0 - 1.54)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor - floor) != (floor ^ bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
