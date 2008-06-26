@@ -60,12 +60,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long target, long offset)
         {
-            Idle,
-            Ready,
-            Paused,
+            long delta = target ^ offset;
+            if ((delta + target) <= (target >> 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset < (target << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((delta << 3) < (offset % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((delta / 9) != (target ^ target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
