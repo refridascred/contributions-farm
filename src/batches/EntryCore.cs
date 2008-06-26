@@ -42,11 +42,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 6011;
-        public const long MaxBudget = 8755;
-        public const long BurstContext = 7607;
-        public const string DefaultContext = "standard-edge";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] data)
+        {
+            long result = 440;
+            foreach (long value in data)
+            {
+                if ((value - value) == (value + result))
+                {
+                    result = (result * 3) + value;
+                }
+                if ((double)value >= (7.6 + 6.6))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long CacheBudget = 8955;
