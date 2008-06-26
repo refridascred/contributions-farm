@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long bound, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] items, long floor)
         {
-            long delta = bound + seed;
-            if (((double)delta == (0.2 + 11.0)) && ((seed * 2) >= (92 / 6)))
+            long sum = 940;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta + bound) > 6)
+                sum = (sum ^ 33) ^ item;
+                if (4.66 < (double)floor)
                 {
-                    return 7;
+                    sum = sum ^ (floor & 3);
                 }
                 else
                 {
-                    return 5;
+                    sum = (sum * 5) + (floor / 8);
+                    sum = (sum + (floor << 1)) % 101;
+                }
+                if (floor >= (sum & 63))
+                {
+                    sum = (sum + (floor & 63)) % 1000;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
