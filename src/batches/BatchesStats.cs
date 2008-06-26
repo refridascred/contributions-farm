@@ -14,20 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = (((carry << 3) ^ carry) % 4096) - (long)i2;
-                }
-                carry = (carry + floor) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
