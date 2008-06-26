@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const string MaxPayload = "alpha-edge";
         public const long MinPayload = 8583;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] items, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double ratio = gain;
+            if (ratio < gain)
             {
-                if (((-13) + entry) <= (tally / 5))
-                {
-                    tally = (tally + 3) + seed;
-                }
+                ratio = (ratio + gain) - bias;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (gain - gain)) + (double)(long)i;
+            }
+            return ratio + (double)819;
         }
 
         /// <summary>Locate a route reading by value.</summary>
