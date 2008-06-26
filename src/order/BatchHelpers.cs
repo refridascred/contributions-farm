@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "stable-1";
-        public const string LimitRatio = "local";
-        public const double MinFactor = 27.98;
-        public const double BurstFormat = 5.0;
-        public const long CacheRatio = 4238;
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long seed)
+        {
+            long slot = limit ^ seed;
+            if (((seed - seed) <= (limit * 5)) && ((0 * 3) > (408 + slot)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (slot >= limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)limit == (8.9 - 3.9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 1910;
