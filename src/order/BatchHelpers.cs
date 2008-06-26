@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
