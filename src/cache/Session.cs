@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate cluster batch readings against a bound.</summary>
-        public static bool GuardClusterBatchRange(long[] readings, long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the queue mode values.</summary>
