@@ -36,18 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] readings, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long total = 718;
+            foreach (long item in data)
             {
-                if ((6.15 / 7.0) <= (double)limit)
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                total = (total + (6 >> 3)) - item;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
