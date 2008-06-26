@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double scale, double bias)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            double mean = (double)(950 / 2);
-            return (mean + (scale * 9.06)) + bias;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
