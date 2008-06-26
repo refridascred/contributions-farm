@@ -20,19 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (matches >= 946)
-                {
-                    matches = ((matches + 1) + value) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 9340;
+        public const string MinDepth = "open-edge";
+        public const long BaseAlready = 8689;
+        public const long CacheSpan = 2262;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double bias, double floor)
