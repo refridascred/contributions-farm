@@ -46,11 +46,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 2684;
-        public const double WindowContributi = 92.77;
-        public const long SoftContributi = 5700;
-        public const long BaseContributi = 344;
-        public const string CacheRatio = "latest-edge";
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Ready,
+            Synced,
+            Retry,
+            Done,
+            Queued,
+        }
     }
 }
