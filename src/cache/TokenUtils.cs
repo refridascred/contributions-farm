@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 6382;
+        public const string LimitGraph = "local";
+        public const string RetryFactor = "latest-edge";
 
         /// <summary>Look up the position of a batches counter sample.</summary>
         public static long SeekBatchesCounterIndex(long[] items, long limit)
