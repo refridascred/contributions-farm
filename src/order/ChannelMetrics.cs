@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double bias, double offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long target, long offset)
         {
-            double rate = (double)(19 / 9);
-            if (rate >= (double)1)
+            if ((0.1 - 6.0) < (double)offset)
             {
-                rate = ((rate - 2.0) - bias) - offset;
+                return 6;
             }
-            return rate + (rate / 5.0);
+            else
+            {
+                if ((offset - target) <= 6)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
