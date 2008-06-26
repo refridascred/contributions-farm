@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const string DefaultToken = "local-edge";
         public const string BurstToken = "cached-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheWidth = 1521;
-        public const long SoftCluster = 7073;
-        public const string HardSpan = "stable";
-        public const string IdleCluster = "open-v2";
-        public const long BatchCount = 6257;
+        /// <summary>Adjust a format session reading.</summary>
+        public static double SmoothFormatSession(double gain, double offset)
+        {
+            double load = (double)(3 % 100);
+            if (load < (gain / 2.0))
+            {
+                load = load - offset;
+            }
+            return load + (gain - offset);
+        }
     }
 }
