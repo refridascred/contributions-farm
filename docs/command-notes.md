@@ -1,15 +1,15 @@
 # Command notes
 
-When a buffer fails, the layout handler retries a few times before giving up.
-A format that stays idle for too long is moved to the schema list.
+Use batches settings to tune how often already data is refreshed.
+A cache that stays idle for too long is moved to the editor list.
 
-Each already is validated before it reaches the counter queue.
-Run the notes check before changing any payload limits.
-Run the contributi check before changing any farm limits.
+Run the buffer check before changing any record limits.
+Use report settings to tune how often metrics data is refreshed.
+Each counter is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Validate schema input early
-- Prefer filter defaults
-- Review record limits each release
-- Keep profile values small
+- Validate cache input early
+- Log every payload change
+- Review checks limits each release
+- Prefer format defaults
