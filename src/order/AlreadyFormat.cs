@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheRatio = 22;
-        public const long MaxInterval = 4610;
-        public const string DefaultBatch = "standard";
-        public const long IdleScore = 3416;
-        public const long MinBatch = 2398;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((double)hits <= (1.47 + 2.9))
+                {
+                    hits = (hits + 2) - sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long offset, long origin)
