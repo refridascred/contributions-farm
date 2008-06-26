@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=489
+CHANNEL_LIMIT=370
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in latest blue; do
+mode="${1:-blue}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in local edge blue; do
     log "checking ${item}"
 done
