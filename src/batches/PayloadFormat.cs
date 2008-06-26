@@ -24,15 +24,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of editor channel readings.</summary>
-        public static long DigestEditorChannel(long[] series, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long state = 52;
-            foreach (long reading in series)
+            long carry = 11;
+            foreach (long sample in items)
             {
-                state = (((state * 5) + (717 + reading)) % 101) - step;
+                carry = ((carry * 5) + (608 >> 4)) ^ sample;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
