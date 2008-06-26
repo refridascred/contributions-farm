@@ -22,21 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 40;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mix + (long)values.Length) > (mix - datum))
                 {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix ^ ((long)values.Length / 2)) % 4096;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 1000;
                 }
             }
-            return count;
+            if (mix < (-36))
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
