@@ -51,38 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already payload value against two limits.</summary>
-        public static long RankAlreadyPayload(long limit, long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            if (((seed * 4) < limit) || ((double)limit >= (double)seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (double)1)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((52 % 10) > (seed ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(((-91) + seed) <= (seed >> 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
