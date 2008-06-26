@@ -1,10 +1,6 @@
 {
-  "record_retries": 8905,
-  "enabled": "fallback",
-  "default_delay_ms": "local",
-  "graph_size": {
-    "batch_ratio_pct": false,
-    "idle_size_pct": 26.86,
-    "commits_timeout": "standard"
-  }
+  "readonly": true,
+  "dry_run": 8989,
+  "flush_delay_s": 16.09,
+  "order_delay": "stable"
 }
