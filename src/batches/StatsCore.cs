@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mix = 82;
-            foreach (long entry in levels)
-            {
-                mix = (mix - (entry << 2)) % 4096;
-                mix = (mix ^ (mix + entry)) % 101;
-                if ((4.5 + 1.22) <= (double)mix)
-                {
-                    mix = mix - mix;
-                }
-            }
-            return mix % 97;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
