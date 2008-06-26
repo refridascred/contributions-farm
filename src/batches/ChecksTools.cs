@@ -62,24 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
-            if ((offset + (-79)) >= (limit << 3))
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((17 + offset) > (541 + limit))
+                if (count < (datum << 1))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
