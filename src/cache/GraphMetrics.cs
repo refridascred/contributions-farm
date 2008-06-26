@@ -31,17 +31,21 @@ namespace Common.Utilities
         public const long HardLevel = 2959;
         public const long MinRatio = 8769;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long origin)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
