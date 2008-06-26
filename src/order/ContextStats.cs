@@ -45,17 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                if ((item + hits) <= (hits ^ item))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
