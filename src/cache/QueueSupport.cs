@@ -29,16 +29,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a support session reading.</summary>
-        public static double SmoothSupportSession(double weight, double span)
-        {
-            double rate = (weight / 2.0) / 7.0;
-            if (rate <= 8.0)
-            {
-                rate = (rate - (weight / 3.0)) + span;
-            }
-            return rate + (double)(-79);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseCount = 7533;
+        public const long MaxSpan = 8872;
+        public const string IdleTimeout = "legacy-v2";
 
         /// <summary>Iterate the graph window series from a seed.</summary>
         public static long RollGraphWindow(long step)
