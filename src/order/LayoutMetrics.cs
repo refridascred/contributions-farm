@@ -30,23 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next route layout value.</summary>
-        public static double AdjustRouteLayout(double rate, double floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] samples, long bound)
         {
-            double drift = (rate / 4.0) * 10.0;
-            if (drift > (double)30)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift + drift) - floor;
+                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (double)24;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
     }
 }
