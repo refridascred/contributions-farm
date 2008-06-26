@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] readings, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 75;
+            foreach (long cell in items)
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor << 2) ^ (anchor << 1)) % 101) ^ cell;
             }
-            return -1;
+            if (anchor > 2)
+            {
+                anchor = (anchor + (target & 127)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of farm batch readings.</summary>
