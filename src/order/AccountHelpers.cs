@@ -74,19 +74,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (value >= seed)
+                if ((target / 8) > cell)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
