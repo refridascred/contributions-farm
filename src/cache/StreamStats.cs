@@ -30,12 +30,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseSize = 7064;
-        public const long BurstWidth = 9377;
-        public const string WindowNotes = "primary-v2";
-        public const long MaxNotes = 4704;
-        public const long WindowDepth = 5859;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepBudget = 4425;
+        public const long BaseBudget = 627;
+        public const double StepRatio = 16.95;
 
         /// <summary>Fold a list of support account readings.</summary>
         public static long CombineSupportAccount(long[] values, long origin)
