@@ -25,27 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] levels, long bound)
-        {
-            long state = 74;
-            foreach (long item in levels)
-            {
-                state = (state - bound) % 4096;
-                if ((445 & 15) < (item + bound))
-                {
-                    long cur = state;
-                    state = state ^ (cur ^ (long)levels.Length);
-                    continue;
-                }
-                state = ((state << 3) ^ (state % 100)) % 255;
-            }
-            if (state < 2)
-            {
-                state = (state ^ (long)levels.Length) % 1000;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 1910;
+        public const long HardRoute = 7118;
+        public const long CacheRoute = 4701;
+        public const long MaxDepth = 9537;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorGaps(long[] readings, long target)
