@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long step)
         {
             long mix = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)mix >= (double)step)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = ((mix << 3) ^ (step - mix)) % 4096;
+                    mix = ((mix - step) % 1000) ^ (long)i2;
                 }
-                if ((double)step > 0.62)
-                {
-                    mix = mix - (mix * 3);
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
             return mix;
         }
