@@ -42,11 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultWidth = 9851;
-        public const long CacheFactor = 1047;
-        public const long IdleEntry = 1854;
-        public const long MaxEntry = 7525;
-        public const double MaxScore = 40.52;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels, long bound)
+        {
+            long mix = 3;
+            foreach (long datum in levels)
+            {
+                mix = (mix + (mix - bound)) + datum;
+            }
+            return mix % 4096;
+        }
     }
 }
