@@ -1,11 +1,16 @@
 # Command notes
 
-When a batches fails, the entry handler retries a few times before giving up.
-Run the commits check before changing any stats limits.
-Keep tools and support names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
+Each counter is validated before it reaches the window queue.
+Keep route and filter names short and lowercase.
+
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the entry queue.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep metric values small
-- Review stream limits each release
-- Prefer filter defaults
+- Document new stats fields
+- Review commits limits each release
+- Log every token change
+- Validate schema input early
