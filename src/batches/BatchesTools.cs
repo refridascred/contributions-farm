@@ -22,25 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] samples, long target)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] items, long floor)
         {
-            long acc = 62;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                long bound = 221 - (reading - reading);
-                acc = ((acc << 3) ^ ((-578) - bound)) % 101;
-                acc = ((acc * 2) + (acc - target)) % 1000;
-                if ((acc & 7) == (reading - target))
+                if (items[i] <= floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 59)
-            {
-                acc = (acc - (acc / 9)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
