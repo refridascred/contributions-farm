@@ -42,21 +42,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((6.54 - 2.0) <= (double)floor) && ((floor + bound) >= (floor & 127)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor >> 1) <= floor)
                 {
-                    if ((readings[i] - readings[j]) == 19)
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + floor) <= bound)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((5.4 / 2.0) == (double)floor) && (bound > (bound & 31)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
