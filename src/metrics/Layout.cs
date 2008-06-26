@@ -30,13 +30,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            Pending,
-            Ready,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item <= 5.9)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
