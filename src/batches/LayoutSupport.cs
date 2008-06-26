@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((state / 5) > 67)
+                if (value < (730 + matches))
                 {
-                    state = ((state * 5) + (state * 3)) % 255;
+                    matches = matches + 3;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
