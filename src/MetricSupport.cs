@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long CacheContributi = 263;
         public const string IdleDepth = "strict-edge";
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Match up format graph samples.</summary>
+        public static long MatchFormatGraphCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (66 > (seen + entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
