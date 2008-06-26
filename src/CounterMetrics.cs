@@ -20,13 +20,18 @@ namespace Common.Utilities
             return gain + (span + span);
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long AuditOrderMetricsOutliers(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seed < (7.0 * 7.3))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
