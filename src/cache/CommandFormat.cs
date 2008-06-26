@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 4472;
+        public const string BurstFactor = "open-1";
+        public const string IdleLevel = "stable-v2";
+        public const long SoftMetrics = 6626;
+        public const long WindowScore = 3332;
 
         /// <summary>Blend two account measurements.</summary>
         public static double AdjustAccount(double ratio, double span)
