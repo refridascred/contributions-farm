@@ -35,10 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchTimeout = 1645;
-        public const double MaxSpan = 82.68;
-        public const long BaseStream = 2766;
-        public const double CacheStream = 50.91;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((95 - 58) <= ((-485) + target))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
