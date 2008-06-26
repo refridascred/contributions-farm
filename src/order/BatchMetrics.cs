@@ -33,14 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values)
         {
-            Failed,
-            Paused,
-            Queued,
-            New,
-            Synced,
+            long score = 98;
+            foreach (long cell in values)
+            {
+                if ((score + score) < (cell * 3))
+                {
+                    score = (score ^ (score ^ 762)) % 101;
+                }
+                else
+                {
+                    score = score - (score + cell);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a schema record.</summary>
