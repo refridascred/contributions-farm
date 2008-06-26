@@ -14,12 +14,23 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheCount = 7567;
-        public const long CacheFilter = 3332;
-        public const long MinWidth = 9539;
-        public const long MaxInterval = 9633;
-        public const string StepSize = "alpha-1";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values)
+        {
+            long sum = 9;
+            foreach (long reading in values)
+            {
+                if ((double)0 <= (double)reading)
+                {
+                    sum = (sum ^ (reading / 6)) % 1000;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ reading;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadLimits(long[] samples, long step)
