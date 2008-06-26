@@ -72,13 +72,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            Active,
-            Queued,
-            Dropped,
-            Draft,
+            long state = 306;
+            foreach (long item in levels)
+            {
+                state = ((state - state) % 101) + item;
+            }
+            return state;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
