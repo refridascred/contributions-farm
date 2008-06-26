@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] values, long bound)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the profile phase values.</summary>
