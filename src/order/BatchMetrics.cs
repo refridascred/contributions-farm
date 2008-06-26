@@ -64,19 +64,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit session cache readings against a rule.</summary>
-        public static long TallySessionCacheMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (9 <= (matches - cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7705;
+        public const long WindowCommits = 5750;
+        public const double BurstCommits = 3.36;
+        public const long WindowScore = 8302;
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
