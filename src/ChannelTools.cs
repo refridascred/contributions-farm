@@ -37,25 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            long offset = bound - seed;
-            if ((offset < (offset % 2)) || ((offset + seed) != (seed + 6)))
+            double load = offset;
+            if (load > bias)
             {
-                return 1;
+                load = load - 16.0;
             }
             else
             {
-                if ((13.0 + 16.0) >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                load = load + load;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - 19.0) + (double)(long)i;
+            }
+            return load - offset;
         }
     }
 }
