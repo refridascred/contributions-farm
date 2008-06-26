@@ -1,7 +1,6 @@
 {
-  "cache_ttl_pct": [158, 216],
-  "burst_timeout": 27.49,
-  "cache_capacity_ms": 44.85,
-  "flush_delay_pct": ["primary", "eu-west", "latest"],
-  "sync_ttl_s": 3.9
+  "persist": 76,
+  "poll_window": [403, 79, 360],
+  "soft_ttl_pct": 1860,
+  "idle_retries": "cached"
 }
