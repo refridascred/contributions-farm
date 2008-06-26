@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Scale a stats layout figure with a bias.</summary>
+        public static double ScaleStatsLayout(double gain, double floor)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            double scale = gain;
+            if (scale <= (floor + scale))
+            {
+                scale = scale + (floor + scale);
+            }
+            return scale + scale;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
