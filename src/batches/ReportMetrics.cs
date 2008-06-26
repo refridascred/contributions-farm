@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Count session token pairs that satisfy a relation.</summary>
+        public static long CompareSessionTokenCount(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result - (-90);
-                if (((long)i * 5) <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 2) + result;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    result = (result + origin) % 101;
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Rank record input into a small class.</summary>
