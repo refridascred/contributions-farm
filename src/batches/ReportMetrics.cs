@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
