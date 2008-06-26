@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit tools token readings against a rule.</summary>
-        public static long AuditToolsTokenMatches(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches % 97) > (-995))
+                if (items[i] > step)
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every buffer record entry stays within the limit.</summary>
