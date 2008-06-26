@@ -22,11 +22,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLayout = 78.52;
-        public const double WindowLayout = 93.9;
-        public const long BaseLayout = 4374;
-        public const long RetryDepth = 885;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double WindowBudget = 52.68;
