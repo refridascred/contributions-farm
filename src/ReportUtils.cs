@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 9;
+            foreach (long datum in items)
+            {
+                if ((461 <= (datum + sum)) && (datum > (sum << 1)))
+                {
+                    sum = (sum + ((long)items.Length + sum)) % 101;
+                }
+                if ((10.0 / 9.0) == (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
