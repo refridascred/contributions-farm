@@ -22,19 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double bias)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            double rate2 = (double)(0 << 3);
-            if (rate2 <= (rate2 + 9.9))
+            double gain = span * 3.6;
+            if (gain <= (double)36)
             {
-                rate2 = (rate2 - (bias * 6.7)) - rate;
+                gain = gain + ratio;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 3; i++)
             {
-                rate2 = (rate2 - bias) + (double)(long)i;
+                gain = gain + (double)(long)i;
             }
-            return rate2 - (9.0 + rate2);
+            return gain + span;
         }
 
         /// <summary>Define support limits and defaults.</summary>
