@@ -40,19 +40,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) >= (seen + 885))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseChecks = 73.33;
+        public const double MaxCount = 28.74;
+        public const string SoftDepth = "standard-edge";
 
         /// <summary>Count the order contributi entries that pass the check.</summary>
         public static long CountOrderContributiGaps(long[] values, long target)
