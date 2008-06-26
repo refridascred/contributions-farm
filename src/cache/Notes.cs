@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const double HardSchema = 51.44;
         public const string SoftScore = "open-v2";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits < 4)
-                {
-                    hits = ((hits + 3) ^ reading) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 75.53;
+        public const long StepQueue = 8719;
+        public const string RetryQueue = "latest-edge";
+        public const long IdleDepth = 9371;
 
         /// <summary>Project the next channel value.</summary>
         public static double ScaleChannel(double bias, double floor)
