@@ -12,32 +12,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a channel session pair into a bucket.</summary>
-        public static long RankChannelSession(long step, long offset)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long floor)
         {
-            long delta = step - offset;
-            if (step > (529 % 60))
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)offset > (4.0 / 4.0)))
+                if (((long)i * 2) > (456 ^ 76))
                 {
-                    return 5;
+                    result = (result * 5) + (result + result);
+                    break;
                 }
-                else
-                {
-                    if ((6 * 3) > delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                result = ((result << 3) ^ ((long)i - floor)) % 101;
+                result = (result - (result - 2)) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Describe the command class values.</summary>
