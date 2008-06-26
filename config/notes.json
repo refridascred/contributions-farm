@@ -1,13 +1,6 @@
 {
-  "verbose": 250,
-  "cache_ratio_s": ["strict", "eu-west", "standard", "staging"],
-  "sync_interval_s": {
-    "commits_size": 3182,
-    "format_retries": 8096,
-    "commits_delay": 36.93,
-    "stream_ratio": "edge",
-    "stats_limit": ["latest", "legacy", "blue", "local"]
-  },
-  "enabled": false,
-  "burst_timeout": "cached"
+  "editor_retries": 6365,
+  "readonly": false,
+  "sync_threshold": 5905,
+  "max_size": "strict"
 }
