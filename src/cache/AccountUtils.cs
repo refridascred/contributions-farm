@@ -42,31 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stream filter values into a single score.</summary>
-        public static long CombineStreamFilter(long[] series, long floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long acc = 1;
-            foreach (long item in series)
-            {
-                long cur = 274;
-                if ((double)cur >= (double)item)
-                {
-                    cur = ((cur + (cur * 4)) % 65521) - floor;
-                }
-                if ((5 - item) >= (acc + acc))
-                {
-                    acc = (acc * 4) + (item - item);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc << 1);
-                }
-            }
-            if (acc > 86)
-            {
-                acc = (acc << 3) ^ (acc + 31);
-            }
-            return acc % 65521;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
