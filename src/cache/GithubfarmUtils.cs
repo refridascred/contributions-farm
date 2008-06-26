@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MaxBatch = 2732;
         public const string IdleBatch = "stable-v2";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] values, long origin)
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
