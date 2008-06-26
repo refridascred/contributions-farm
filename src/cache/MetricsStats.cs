@@ -51,18 +51,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] samples)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((hits << 1) != (hits + cell)) && !(((-257) + 405) != (cell >> 2)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
