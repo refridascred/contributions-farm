@@ -49,32 +49,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long limit)
-        {
-            if ((double)limit > (11.0 * 5.48))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8 + limit) >= (limit % 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit < (5.1 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftScore = 7950;
+        public const long DefaultSupport = 4245;
+        public const long BaseDepth = 3820;
+        public const string BurstLevel = "fallback";
+        public const string BaseSupport = "legacy-v2";
 
         /// <summary>Measure how many payload notes samples are out of range.</summary>
         public static long MeasurePayloadNotesHits(long[] items)
