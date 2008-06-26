@@ -38,21 +38,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 6;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor ^ (limit + limit)) % 255;
+                anchor = anchor ^ (datum + anchor);
             }
-            return hits;
+            if (anchor > 400)
+            {
+                anchor = (anchor ^ (366 - (long)samples.Length)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
