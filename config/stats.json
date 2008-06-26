@@ -1,16 +1,13 @@
 {
-  "retry_limit_pct": "primary",
-  "commits_size": "strict",
-  "metric_limit": {
-    "commits_window": "edge",
-    "format_size": 9582,
-    "min_delay": {
-      "persist": "latest",
-      "default_depth_pct": 59.9,
-      "strict": true
-    },
-    "enabled": ["primary", "strict", "latest", "staging"]
+  "poll_limit": "fallback",
+  "batches_timeout": {
+    "burst_delay_ms": "primary",
+    "default_interval_count": "stable",
+    "persist": false,
+    "stats_limit": true,
+    "soft_timeout": [389, 270],
+    "default_timeout": "legacy"
   },
-  "default_threshold_ms": 250,
-  "idle_threshold_s": 52.33
+  "retry_retries_ms": 1024,
+  "idle_timeout_s": 22.63
 }
