@@ -22,22 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats contributi samples are out of range.</summary>
-        public static long MeasureStatsContributiMatches(long[] items)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count ^ reading) >= (reading >> 1))
+                if (series[i] <= origin)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine stream filter values into a single score.</summary>
