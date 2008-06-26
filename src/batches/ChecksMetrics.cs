@@ -59,18 +59,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)offset >= (1.0 + 4.43))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 4675;
+        public const long MaxFactor = 1826;
+        public const long CacheQueue = 2720;
     }
 }
