@@ -27,13 +27,38 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Classify a window payload pair into a bucket.</summary>
+        public static long RankWindowPayload(long floor, long floor2)
         {
-            Active,
-            Closed,
-            Retry,
-            Failed,
+            if (!((floor % 100) == (floor2 >> 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor2) >= (5 - floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor >> 3) != (floor * 3)) && ((floor + floor) > (floor << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor << 1) > (4 + floor2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
