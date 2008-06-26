@@ -1,14 +1,28 @@
 # githubfarm settings
-poll_retries_pct:
-  strict: staging
-  idle_timeout_pct: 1024
-  sync_window: 7964
-  retry_delay_pct: 30
-compress: 250
-poll_threshold:
-  - 302
-  - 74
-  - 12
-  - 340
-enabled: false
-default_delay_s: 40.6
+metrics_threshold:
+  persist:
+    metrics_size: edge
+    record_capacity: latest
+    idle_retries_pct: 67.81
+    readonly: local
+  cache_limit:
+    - 263
+    - 75
+    - 49
+  order_limit: 91
+  retry_ratio_s: false
+  default_ttl_ms: green
+  retry_size:
+    dry_run: 3930
+    idle_interval_pct: blue
+    sync_size_count: staging
+    max_size: 7110
+githubfarm_capacity: legacy
+counter_ratio: standard
+audit:
+  - 130
+  - 83
+  - 53
+  - 241
+strict: 51.93
+sync_threshold_count: standard
