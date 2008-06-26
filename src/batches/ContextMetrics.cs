@@ -31,22 +31,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] items, long target)
+        /// <summary>Check that every queue stream entry stays within the limit.</summary>
+        public static bool VerifyQueueStreamRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((target << 2) != (sample << 2))
+                if (cell > bound)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of account entries.</summary>
