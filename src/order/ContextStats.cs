@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double drift = span / 9.0;
-            if (drift < (span * 7.45))
-            {
-                drift = drift - (span + 2.0);
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift + span)) + (double)(long)i;
-            }
-            return drift + bias;
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a metric entry.</summary>
