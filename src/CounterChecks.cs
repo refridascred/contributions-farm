@@ -22,21 +22,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (double)(0 << 3);
+            if (rate2 <= (rate2 + 9.9))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = (rate2 - (bias * 6.7)) - rate;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - bias) + (double)(long)i;
+            }
+            return rate2 - (9.0 + rate2);
         }
 
         /// <summary>Define support limits and defaults.</summary>
