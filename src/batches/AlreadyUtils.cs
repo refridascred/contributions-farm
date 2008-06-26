@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long score = 59;
+            foreach (long sample in readings)
             {
-                if ((hits ^ hits) > (76 % 7))
-                {
-                    hits = (hits + 2) + item;
-                }
+                score = ((score * 5) + (sample << 3)) % 1000;
             }
-            return hits;
+            if (score < 79)
+            {
+                score = (score << 3) ^ (score - 49);
+            }
+            return score % 97;
         }
 
         /// <summary>Scale a profile window figure with a bias.</summary>
