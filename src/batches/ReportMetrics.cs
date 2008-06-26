@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long BaseSpan = 9670;
         public const long BurstBudget = 7345;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchTimeout = 5937;
-        public const long HardToken = 5236;
-        public const long BaseFactor = 3286;
-        public const long BurstToken = 7897;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Paused,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long floor, long bound)
