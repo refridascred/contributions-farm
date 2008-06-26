@@ -28,24 +28,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long bound)
         {
-            if ((27 % 7) >= (bound & 3))
+            long mark = 17;
+            foreach (long value in samples)
             {
-                return 2;
+                mark = (((mark + 5) % 255) + value) + bound;
             }
-            else
-            {
-                if (!((bound + limit) > (bound & 31)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
