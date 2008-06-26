@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long seed, long limit)
-        {
-            if ((double)seed == (double)limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 1) >= limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleGraph = 40.39;
+        public const string MinGraph = "primary-edge";
+        public const string MaxGraph = "staging-edge";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 1910;
