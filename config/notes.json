@@ -1,5 +1,6 @@
 {
-  "max_interval": ["fallback", "standard"],
-  "layout_ttl": ["eu-west", "latest", "local"],
-  "payload_window": true
+  "flush_window_count": "standard",
+  "verbose": false,
+  "poll_threshold_ms": false,
+  "burst_ratio_pct": [280, 37, 76]
 }
