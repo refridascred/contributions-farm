@@ -63,10 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9724;
-        public const string HardContext = "open-edge";
-        public const long LimitWidth = 5026;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Idle,
+            Ready,
+            Locked,
+            Active,
+            Pending,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] levels)
