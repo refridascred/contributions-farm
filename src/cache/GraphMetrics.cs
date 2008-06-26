@@ -31,21 +31,19 @@ namespace Common.Utilities
         public const long HardLevel = 2959;
         public const long MinRatio = 8769;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = -976;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                result = ((result + (41 << 1)) % 255) ^ item;
+                if ((bound % 8) >= (8 - bound))
                 {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Hold a graph record.</summary>
