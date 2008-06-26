@@ -14,19 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] samples, long offset)
+        /// <summary>Compare every pair of metrics session readings.</summary>
+        public static long MatchMetricsSessionCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the report state values.</summary>
