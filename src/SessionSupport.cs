@@ -19,15 +19,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((sample * 2) <= sample)
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
