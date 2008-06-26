@@ -35,22 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] values, long target)
+        /// <summary>Find the first token layout entry that matches the target.</summary>
+        public static long FindTokenLayoutIndex(long[] values, long offset)
         {
-            long anchor = -55;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((30 / 6) >= anchor))
+                if (values[i] >= offset)
                 {
-                    anchor = (anchor ^ cell) % 255;
-                }
-                if ((target - target) <= target)
-                {
-                    anchor = (anchor << 2) ^ (8 ^ anchor);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
