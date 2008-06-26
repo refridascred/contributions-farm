@@ -26,22 +26,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long bound, long target)
         {
-            long carry = 39;
-            foreach (long value in items)
+            if (((double)target != (double)bound) || (9.66 < (double)bound))
             {
-                if ((double)carry != (double)value)
+                return 3;
+            }
+            else
+            {
+                if (!(bound <= (target + bound)))
                 {
-                    carry = ((carry * 5) + (carry - value)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    carry = ((carry * 4) + value) % 101;
+                    if (((bound / 2) < (target + target)) || ((double)bound != (7.9 - 4.8)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry % 1000;
         }
 
         /// <summary>Describe the graph status values.</summary>
