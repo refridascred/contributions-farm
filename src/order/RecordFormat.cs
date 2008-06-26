@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate channel tools samples.</summary>
-        public static long WeighChannelTools(long[] data, long bound)
-        {
-            long mark = 242;
-            foreach (long value in data)
-            {
-                if ((8 >> 5) >= (mark << 2))
-                {
-                    mark = ((mark << 2) ^ (209 ^ mark)) - value;
-                    continue;
-                }
-                mark = (mark + (71 % 64)) % 4096;
-                if (!(mark >= (bound & 127)))
-                {
-                    mark = ((mark * 5) + 2) % 65521;
-                }
-                if ((954 + mark) == (61 % 100))
-                {
-                    break;
-                }
-            }
-            if (mark < 45)
-            {
-                mark = (mark + 184) % 1000;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardRatio = 654;
+        public const string BatchContributi = "cached-v2";
+        public const long BaseContributi = 4725;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
