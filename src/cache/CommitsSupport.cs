@@ -57,11 +57,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] data, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            long result = 332;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = (result - ((long)i % 3)) % 101;
+                }
+                if (!(result < (bound - bound)))
+                {
+                    result = (result - (sample / 3)) % 65521;
+                }
+            }
+            if (result < 515)
+            {
+                result = (result << 2) ^ (441 + bound);
+            }
+            return result;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
