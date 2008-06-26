@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of filter channel readings.</summary>
-        public static long DigestFilterChannel(long[] data, long step)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long target)
         {
-            long mix = 7;
-            foreach (long entry in data)
+            long cur = bound + target;
+            if ((5.96 - 1.9) <= (double)bound)
             {
-                mix = mix + (mix >> 4);
-                if ((double)entry < 5.53)
+                return 2;
+            }
+            else
+            {
+                if ((cur + bound) < cur)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (mix < 59)
-            {
-                mix = (mix - (mix - step)) % 4096;
-            }
-            return mix % 97;
         }
 
         /// <summary>Locate a record reading by value.</summary>
