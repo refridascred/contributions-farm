@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next command batches value.</summary>
-        public static double AdjustCommandBatches(double gain, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data)
         {
-            double ratio = (double)(793 % 10);
-            for (int i = 0; i < 4; i++)
+            long anchor = 75;
+            foreach (long entry in data)
             {
-                ratio = ((ratio - (double)(long)i) - gain) + bias;
+                anchor = (anchor * 4) + (anchor + entry);
             }
-            return ratio + (double)488;
+            return anchor;
         }
 
         /// <summary>Describe the batch state values.</summary>
