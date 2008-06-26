@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] levels)
         {
-            New,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item - 70) > (item - item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count stream layout pairs that satisfy a relation.</summary>
