@@ -43,23 +43,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] readings)
         {
-            long score = 69;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                score = (score - target) - datum;
-                if ((score & 31) > (target + score))
+                if ((double)tally >= (double)sample)
                 {
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (score > 140)
-            {
-                score = ((score << 2) ^ target) % 101;
-            }
-            return score;
+            return tally;
         }
     }
 }
