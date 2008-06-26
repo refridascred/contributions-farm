@@ -77,15 +77,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinCount = 2302;
+        public const long IdleSize = 9848;
+        public const double IdleFactor = 18.57;
+        public const long StepDepth = 3671;
+        public const long WindowSize = 2500;
     }
 }
