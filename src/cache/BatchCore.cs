@@ -14,10 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 4161;
-        public const string MinSize = "staging-1";
-        public const double LimitBudget = 40.96;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a commits checks sample.</summary>
         public static long LocateCommitsChecksIndex(long[] readings, long origin)
