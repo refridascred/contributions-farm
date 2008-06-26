@@ -20,10 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "legacy";
-        public const string BatchTimeout = "open-1";
-        public const long StepDepth = 9522;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Draft,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowContributi = "alpha";
