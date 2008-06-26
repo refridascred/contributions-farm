@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double bias)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] data)
         {
-            double drift = 5.2;
-            return ((drift + 1.9) + gain) + bias;
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (5.8 > (double)tally)
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
