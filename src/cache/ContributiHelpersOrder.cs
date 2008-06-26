@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 5237;
-        public const string LimitInterval = "latest";
-        public const string MinBatch = "latest-1";
-        public const long BaseSpan = 2250;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 64.64;
+        public const double MinWindow = 93.98;
+        public const long BurstWindow = 408;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long origin, long limit)
