@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double LimitDepth = 46.78;
+        public const string BaseWidth = "standard";
+        public const long StepCache = 3059;
+        public const string RetryCache = "local-v2";
+        public const double BurstCache = 55.55;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
