@@ -67,12 +67,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheDepth = "cached-v2";
-        public const double SoftEditor = 49.29;
-        public const double SoftFactor = 7.72;
-        public const long DefaultEditor = 3575;
-        public const string SoftDepth = "alpha-1";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series)
+        {
+            long anchor = 6;
+            foreach (long cell in series)
+            {
+                if ((anchor - 4) <= (anchor >> 4))
+                {
+                    anchor = (anchor * 3) + cell;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long DeriveStats(long offset)
