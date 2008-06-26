@@ -42,23 +42,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] data, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long carry = -7;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)carry >= (7.1 / 2.0)) || (origin > (carry % 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry * 4) + (76 + carry)) % 255;
+                    if ((series[i] + series[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (!((70 - origin) >= 95))
-                {
-                    carry = carry + (item - item);
-                }
-                carry = (carry - (1 + item)) % 255;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
