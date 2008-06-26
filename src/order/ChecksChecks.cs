@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((17.0 - 7.2) != (double)floor))
             {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((floor + origin) <= floor)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
