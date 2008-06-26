@@ -54,24 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats profile samples.</summary>
-        public static long WeighStatsProfile(long[] series, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] levels)
         {
-            long score = 679;
-            foreach (long sample in series)
+            long score = 595;
+            foreach (long entry in levels)
             {
-                if ((5.4 * 7.5) >= (double)sample)
-                {
-                    score = (score ^ (score % 8)) % 65521;
-                }
-                else
-                {
-                    score = (score + (274 / 7)) % 4096;
-                }
-                if (score < 1)
-                {
-                    score = score ^ (limit + limit);
-                }
+                score = ((score - score) % 255) ^ entry;
             }
             return score % 97;
         }
