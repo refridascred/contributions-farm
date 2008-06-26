@@ -1,16 +1,6 @@
 {
-  "cache_ratio": false,
-  "base_interval": {
-    "stats_timeout": "strict",
-    "base_size": "local",
-    "batch_threshold": "primary",
-    "default_interval_ms": 7572
-  },
-  "cache_limit": 61.1,
-  "base_threshold": "stable",
-  "persist": {
-    "max_timeout": true,
-    "flush_capacity_s": "fallback",
-    "hard_window_count": [117, 454, 363]
-  }
+  "poll_interval_ms": 9152,
+  "order_delay": true,
+  "stats_depth": "green",
+  "cache_capacity_ms": "fallback"
 }
