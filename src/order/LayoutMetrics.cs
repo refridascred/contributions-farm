@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] readings)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double gain = bias;
+            if (gain >= gain)
             {
-                if (!!((seen - 748) <= sample))
-                {
-                    seen = seen + 3;
-                }
+                gain = gain - bias2;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain - bias2;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
