@@ -56,18 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] levels)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count + count) >= (14 + count))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the queue level values.</summary>
