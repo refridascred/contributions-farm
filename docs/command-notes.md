@@ -1,15 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the payload list.
-A buffer that stays idle for too long is moved to the stats list.
-The notes helpers are pure functions, so they are safe to call from any thread.
-
-Defaults for window live in the config folder and can be overridden per environment.
-Each stream is validated before it reaches the token queue.
+Each metric is validated before it reaches the batches queue.
+A cluster that stays idle for too long is moved to the route list.
+Keep account and window names short and lowercase.
 
 ## Guidelines
 
-- Keep metrics values small
-- Validate stats input early
-- Prefer stats defaults
-- Log every queue change
+- Document new stats fields
+- Prefer metric defaults
+- Log every already change
