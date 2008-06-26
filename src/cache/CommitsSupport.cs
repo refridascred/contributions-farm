@@ -55,11 +55,18 @@ namespace Common.Utilities
         public const long SoftDepth = 8637;
         public const double BurstLevel = 31.13;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 3863;
-        public const long SoftToken = 1296;
-        public const long IdleToken = 1634;
-        public const double RetryCount = 62.33;
-        public const string RetryToken = "local-v2";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits - 48) >= (hits + reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
