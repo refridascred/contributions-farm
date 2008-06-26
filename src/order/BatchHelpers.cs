@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            double gain = floor;
+            return gain - (floor + weight);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
