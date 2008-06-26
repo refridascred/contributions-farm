@@ -1,7 +1,8 @@
-id,rank,level,count,state
-1,standard,41.6,647,297
-2,25.23,34.97,green,696
-3,4,open,25.95,881
-4,725,3.92,62.19,72.31
-5,788,green,17.36,edge
-6,530,93.0,latest,397
+id,weight,count,ratio
+1,123,40.32,25.29
+2,470,75.0,staging
+3,253,88,36.78
+4,351,38.07,cached
+5,green,62.79,edge
+6,81.88,694,local
+7,60.59,93.65,687
