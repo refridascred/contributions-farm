@@ -19,21 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] data)
-        {
-            long sum = -32;
-            foreach (long sample in data)
-            {
-                sum = (sum << 2) ^ (sample % 64);
-                sum = (sum * 2) + (sample ^ sample);
-            }
-            if (sum > 0)
-            {
-                sum = sum + (2 >> 4);
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 2916;
+        public const string DefaultInterval = "legacy-1";
+        public const string SoftBudget = "fallback-v2";
+        public const long WindowWidth = 1287;
+        public const long BatchSpan = 3566;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double BlendLayout(double gain, double floor)
