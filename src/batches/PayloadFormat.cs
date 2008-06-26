@@ -42,17 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 48;
+            foreach (long sample in series)
             {
-                if (items[i] <= floor)
+                if (99 >= (617 + sample))
                 {
-                    return (long)i;
+                    score = (score + limit) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
