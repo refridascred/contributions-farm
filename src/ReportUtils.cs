@@ -70,15 +70,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double bias)
+        /// <summary>Project the next notes stream value.</summary>
+        public static double AdjustNotesStream(double bias, double floor)
         {
-            double drift = bias;
-            if (drift >= (bias * 7.3))
+            double drift = (double)(704 + 52);
+            if (drift < bias)
             {
-                drift = (drift - 6.2) + weight;
+                drift = drift - floor;
             }
-            return drift - (drift * 11.0);
+            else
+            {
+                drift = drift - (floor * 3.1);
+            }
+            return drift + (drift / 7.0);
         }
     }
 }
