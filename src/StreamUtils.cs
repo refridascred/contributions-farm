@@ -48,10 +48,17 @@ namespace Common.Utilities
             return gain + (ratio + 6.92);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowCount = 6322;
-        public const double CacheAlready = 85.32;
-        public const double MaxTimeout = 69.39;
-        public const long DefaultAlready = 517;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
