@@ -69,19 +69,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (datum != bound)
+                if (((offset - offset) == (count ^ datum)) || ((count % 12) != (offset & 255)))
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
