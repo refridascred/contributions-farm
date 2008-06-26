@@ -19,22 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] items)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < 83)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Validate farm report readings against a bound.</summary>
