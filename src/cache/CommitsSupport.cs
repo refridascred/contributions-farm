@@ -78,22 +78,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route report samples.</summary>
-        public static long DigestRouteReport(long[] values, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long sum = 686;
-            foreach (long sample in values)
-            {
-                if ((sample + step) >= 88)
-                {
-                    sum = sum + (612 >> 3);
-                }
-            }
-            if (sum > 0)
-            {
-                sum = (sum + ((long)values.Length & 255)) % 4096;
-            }
-            return sum % 97;
+            Dropped,
+            Done,
+            Idle,
+            New,
+            Active,
         }
     }
 }
