@@ -75,17 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] readings, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenBounds(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (readings[i] == bound)
+                if (value < step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
