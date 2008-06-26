@@ -26,18 +26,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long CountGraphSchemaGaps(long[] series, long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double scale = rate;
+            if (scale < scale)
             {
-                if ((double)seen <= (7.79 + 0.2))
-                {
-                    seen = ((seen + 3) + cell) + bound;
-                }
+                scale = (scale + 1.3) - floor;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale * 2.2)) + (double)(long)i;
+            }
+            return scale - (rate + scale);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
