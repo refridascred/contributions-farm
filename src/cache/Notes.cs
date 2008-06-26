@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardSize = 26.6;
-        public const string StepCommits = "standard-1";
-        public const long BurstCommits = 6761;
-        public const double MinDepth = 91.34;
-        public const string WindowCommits = "latest";
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
