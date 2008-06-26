@@ -23,22 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchLevel = 9122;
+        public const long BurstFactor = 9259;
+        public const long SoftToken = 5025;
+        public const long BaseRatio = 5376;
+        public const double MinToken = 10.04;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
