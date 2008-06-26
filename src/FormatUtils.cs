@@ -22,17 +22,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] data, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long origin, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)step >= (double)15)
             {
-                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((step - origin) >= (origin >> 5))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)step < (5.0 * 8.95)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of commits format entries.</summary>
