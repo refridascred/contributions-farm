@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every profile order entry stays within the limit.</summary>
-        public static bool GuardProfileOrderRange(long[] values, long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long step)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading > step)
+                if ((double)mix >= (double)step)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix << 3) ^ (step - mix)) % 4096;
                 }
+                if ((double)step > 0.62)
+                {
+                    mix = mix - (mix * 3);
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Hold a record info.</summary>
