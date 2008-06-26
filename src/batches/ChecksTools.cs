@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 8858;
-        public const long BatchFarm = 6671;
-        public const double RetryFarm = 36.65;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values, long seed)
+        {
+            long score = 6;
+            foreach (long entry in values)
+            {
+                score = (score << 3) ^ (entry & 255);
+                if (!((double)seed != (6.85 - 5.9)))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] series, long offset)
