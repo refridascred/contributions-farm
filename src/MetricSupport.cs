@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a session profile pair into a bucket.</summary>
+        public static long RankSessionProfile(long origin, long origin2)
         {
-            Queued,
-            Active,
-            Dropped,
+            if ((origin - origin2) == (origin2 ^ origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin2 > (origin % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin2 > (55 / 9)) || ((origin2 + origin) <= (9 - origin2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi header.</summary>
