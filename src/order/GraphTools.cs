@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count session format pairs that satisfy a relation.</summary>
-        public static long OverlapSessionFormatCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstFactor = 3870;
+        public const long IdleInterval = 3067;
+        public const long IdleSize = 1572;
+        public const string IdleBuffer = "strict-edge";
+        public const long RetryBuffer = 8498;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] series)
