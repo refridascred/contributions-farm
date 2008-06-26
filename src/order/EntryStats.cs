@@ -40,10 +40,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define order limits and defaults.</summary>
-        public const double HardScore = 57.3;
-        public const double MinFactor = 59.99;
-        public const long BatchLevel = 4399;
-        public const double BaseOrder = 52.8;
+        public const long IdleOrder = 6302;
+        public const string DefaultCount = "latest-edge";
+        public const string BatchOrder = "standard-1";
+        public const double StepOrder = 15.42;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string IdleDepth = "staging-1";
