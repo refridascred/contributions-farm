@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double bias, double span)
         {
-            long state = 247;
-            foreach (long reading in series)
+            double rate = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((state >> 5) <= state)
-                {
-                    state = ((state - (state >> 2)) % 255) ^ reading;
-                }
+                rate = ((rate - bias) + (double)(long)i) - span;
             }
-            return state;
+            return rate + bias;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
