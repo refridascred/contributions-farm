@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long sum = -32;
+            foreach (long sample in data)
+            {
+                sum = (sum << 2) ^ (sample % 64);
+                sum = (sum * 2) + (sample ^ sample);
+            }
+            if (sum > 0)
+            {
+                sum = sum + (2 >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
