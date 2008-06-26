@@ -1,7 +1,8 @@
 {
-  "stream_depth": 74.48,
-  "buffer_timeout": 94,
-  "editor_interval": true,
-  "max_capacity_ms": 100,
-  "hard_size_pct": 7280
+  "default_threshold_s": "stable",
+  "flush_interval": true,
+  "format_ttl": "legacy",
+  "base_depth_pct": ["open", "strict"],
+  "stream_ratio": 45.3,
+  "sync_window": "eu-west"
 }
