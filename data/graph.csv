@@ -1,6 +1,9 @@
-id,region,state,rank
-1,6,edge,575
-2,110,fallback,fallback
-3,primary,722,35.43
-4,40.04,273,497
-5,87.94,82.6,33.7
+id,state,rank
+1,58.52,strict
+2,232,633
+3,495,legacy
+4,37.73,94.37
+5,755,63.55
+6,958,433
+7,open,185
+8,75.33,972
