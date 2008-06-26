@@ -19,10 +19,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultInterval = "cached";
-        public const double IdleChannel = 68.06;
-        public const long HardChannel = 9451;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Queued,
+            Stale,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
