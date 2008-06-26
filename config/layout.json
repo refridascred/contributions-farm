@@ -1,6 +1,20 @@
 {
-  "warm_retries_count": 250,
-  "channel_timeout": 98.76,
-  "burst_timeout": "cached",
-  "hard_ratio": 52.74
+  "idle_limit_pct": {
+    "retry_limit_pct": false,
+    "poll_window_s": 13.34,
+    "compress": 8883,
+    "idle_delay_count": {
+      "metric_threshold": "strict",
+      "verbose": "legacy",
+      "order_timeout": ["open", "stable"],
+      "persist": 10.12,
+      "dry_run": 91.7,
+      "readonly": false
+    }
+  },
+  "default_limit_ms": 57.68,
+  "record_delay": [465, 90, 100, 135],
+  "retry_depth_pct": true,
+  "min_threshold_pct": 1536,
+  "readonly": ["stable", "eu-west"]
 }
