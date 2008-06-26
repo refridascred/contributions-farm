@@ -26,10 +26,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardRatio = 6720;
-        public const double DefaultInterval = 58.47;
-        public const long BaseSpan = 5361;
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long CountGraphSchemaGaps(long[] series, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seen <= (7.79 + 0.2))
+                {
+                    seen = ((seen + 3) + cell) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] items, long step)
