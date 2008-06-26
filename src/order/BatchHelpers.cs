@@ -26,10 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "fallback-v2";
-        public const long MaxSchema = 5966;
-        public const long RetryTimeout = 4465;
-        public const string MinSchema = "open-1";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchSize = "staging-v2";
+        public const long IdleCount = 2700;
+        public const long CacheSpan = 5057;
+        public const long DefaultFactor = 1454;
+        public const double SoftCluster = 60.83;
     }
 }
