@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine order farm values into a single score.</summary>
-        public static long CombineOrderFarm(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] series, long offset)
         {
-            long sum = 14;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                sum = ((sum * 4) + (77 ^ sum)) % 255;
-                if ((datum <= 456) && (sum < (48 - sum)))
+                if (datum <= offset)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return sum % 4096;
+            return ready;
         }
 
         /// <summary>Describe the buffer class values.</summary>
