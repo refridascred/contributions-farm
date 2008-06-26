@@ -1,22 +1,5 @@
 {
-  "burst_capacity_ms": {
-    "burst_size": 54.01,
-    "min_window_count": 12,
-    "verbose": "green",
-    "editor_limit": 30
-  },
-  "audit": 29,
-  "order_retries": {
-    "readonly": "local",
-    "already_size": false,
-    "flush_retries": {
-      "max_ttl": 49.66,
-      "min_depth_s": "fallback",
-      "retry_retries_s": "fallback",
-      "batch_capacity_ms": 60,
-      "stream_size": 19.22,
-      "poll_retries_s": 500
-    }
-  },
-  "channel_ttl": true
+  "idle_retries": 83.0,
+  "dry_run": 30.0,
+  "format_timeout": "cached"
 }
