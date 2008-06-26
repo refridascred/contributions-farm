@@ -1,18 +1,19 @@
 # githubfarm settings
-enabled: 73.14
-idle_size_pct: legacy
-batch_retries_count: 0.88
-poll_ratio:
-  sync_size_count: 250
-  cache_window_ms: 89.14
-  burst_interval:
-    hard_limit: staging
-    default_ratio: 4892
-    warm_timeout_ms: false
-    cache_size_s: strict
-  contributi_window:
-    - latest
-    - eu-west
-    - eu-west
-    - blue
-  window_ratio: true
+channel_limit: true
+idle_delay_pct: 5193
+buffer_depth:
+  flush_threshold: edge
+  metrics_retries:
+    readonly: 70.03
+    hard_interval: 16.2
+    verbose: true
+    queue_interval: green
+    poll_timeout: 19
+  cache_ttl_s: false
+  flush_retries_count:
+    - local
+    - green
+    - staging
+    - strict
+soft_ratio: true
+soft_interval: green
