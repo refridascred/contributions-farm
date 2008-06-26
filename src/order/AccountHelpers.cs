@@ -74,21 +74,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (count < (count >> 1))
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
