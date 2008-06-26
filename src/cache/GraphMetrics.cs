@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate batch window readings against a bound.</summary>
-        public static bool GuardBatchWindowBounds(long[] series, long offset)
+        /// <summary>Blend two editor format measurements.</summary>
+        public static double ProjectEditorFormat(double rate, double span)
         {
-            bool found = true;
-            foreach (long item in series)
+            double drift = (double)6 - rate;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != offset)
-                {
-                    found = false;
-                    break;
-                }
+                drift = ((drift - 19.0) - (double)(long)i) - span;
             }
-            return found;
+            return drift - (drift * 9.22);
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
