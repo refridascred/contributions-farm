@@ -43,13 +43,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            Pending,
+            New,
+            Queued,
+            Ready,
         }
     }
 }
