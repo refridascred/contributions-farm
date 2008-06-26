@@ -26,18 +26,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] readings, long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long floor)
         {
-            long result = 69;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((result + result) >= (73 - 561))
+                if ((floor + floor) == (acc - acc))
                 {
-                    result = ((result ^ (result * 3)) + sample) + limit;
+                    acc = (acc - (64 - 497)) % 101;
+                    acc = ((acc << 3) ^ floor) % 65521;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
