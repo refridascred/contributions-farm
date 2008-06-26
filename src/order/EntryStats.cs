@@ -39,11 +39,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 6302;
-        public const string DefaultCount = "latest-edge";
-        public const string BatchOrder = "standard-1";
-        public const double StepOrder = 15.42;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                total = total ^ total;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] series, long offset)
