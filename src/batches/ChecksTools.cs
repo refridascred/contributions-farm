@@ -47,12 +47,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepBudget = 52.63;
-        public const long BurstCount = 8338;
-        public const long SoftSize = 4052;
-        public const double DefaultLayout = 73.64;
-        public const long DefaultInterval = 5029;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum <= (9.4 / 3.0))
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long DeriveFarm(long origin)
