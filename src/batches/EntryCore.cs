@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen > 5) && (seen >= seed))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a route header.</summary>
