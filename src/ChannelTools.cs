@@ -21,17 +21,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] data, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = offset - bound;
+            if (7.38 <= (double)bound)
             {
-                if ((data[i] <= offset) && ((data[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((bound & 63) > (span + 0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset << 2) <= (577 & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
