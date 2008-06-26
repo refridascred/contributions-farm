@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 8234;
         public const double MinSession = 55.36;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double floor)
+        /// <summary>Fold a list of account commits readings.</summary>
+        public static long WeighAccountCommits(long[] items, long origin)
         {
-            double weight = floor + floor;
-            for (int i = 0; i < 5; i++)
+            long result = 57;
+            foreach (long sample in items)
             {
-                weight = ((weight + 3.9) + (double)(long)i) + gain;
+                if ((double)origin <= (1.7 / 5.0))
+                {
+                    result = (result + (result >> 2)) + sample;
+                }
             }
-            return weight - 4.35;
+            return result % 97;
         }
 
         /// <summary>Hold a metric summary.</summary>
