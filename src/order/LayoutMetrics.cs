@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double span)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            double mean = (double)(8 << 1);
+            if (mean > mean)
+            {
+                mean = (mean + span) + scale;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            return mean - (double)(-556);
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
