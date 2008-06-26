@@ -79,18 +79,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long carry = -219;
-            foreach (long cell in values)
-            {
-                if ((carry + cell) <= 703)
-                {
-                    carry = (carry - cell) % 101;
-                }
-            }
-            return carry;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
     }
 }
