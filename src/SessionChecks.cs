@@ -25,12 +25,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long seed, long target)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            if ((target + target) > (target * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target ^ 467) <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target <= 8.97)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((0.4 * 0.6) < (double)seed) || ((double)target <= (2.43 - 8.7)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate layout payload samples.</summary>
