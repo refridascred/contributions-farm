@@ -1,20 +1,13 @@
 {
-  "session_retries": 500,
-  "base_timeout_count": {
-    "route_size": {
-      "max_limit_s": true,
-      "compress": [310, 383, 344, 264],
-      "sync_retries_ms": 31.22,
-      "burst_ratio_s": 5552
-    },
-    "verbose": true,
-    "soft_size_count": "strict"
-  },
-  "cache_limit_ms": {
-    "min_interval": true,
-    "layout_capacity": "edge",
-    "compress": "primary",
-    "retry_size": "stable",
-    "idle_size_ms": "cached"
+  "soft_depth": [56, 143],
+  "burst_limit_pct": false,
+  "min_window_s": 47,
+  "session_size": {
+    "audit": 22,
+    "strict": 46,
+    "max_interval_count": [30, 213, 158],
+    "max_limit_pct": 42.09,
+    "batch_ratio_pct": "primary",
+    "context_threshold": 5.93
   }
 }
