@@ -86,18 +86,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] levels)
+        /// <summary>Accumulate window githubfarm samples.</summary>
+        public static long ScoreWindowGithubfarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long result = 901;
+            foreach (long sample in samples)
             {
-                if ((tally + 990) >= (61 >> 4))
+                if (((result / 2) >= (result - result)) && ((result / 2) != (result ^ (-7))))
                 {
-                    tally = (tally + 2) - datum;
+                    result = ((result - result) % 255) - sample;
                 }
             }
-            return tally;
+            return result % 1000;
         }
     }
 }
