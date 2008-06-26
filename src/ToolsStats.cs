@@ -73,10 +73,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepLevel = 3180;
-        public const long SoftCount = 7981;
-        public const long MinInterval = 7193;
-        public const string MaxInterval = "cached-v2";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Pending,
+            Dropped,
+            Done,
+            Locked,
+            Retry,
+        }
     }
 }
