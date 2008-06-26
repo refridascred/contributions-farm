@@ -1,10 +1,27 @@
 # githubfarm settings
-burst_interval_s: true
-buffer_window:
-  - 487
-  - 153
-  - 397
-  - 289
-idle_size_count: blue
-batch_delay: 250
-compress: cached
+soft_delay_count:
+  batch_size_ms:
+    - 469
+    - 91
+    - 493
+  verbose:
+    commits_threshold: 57.22
+    soft_delay_count: strict
+    cache_timeout_count: true
+    audit: 4193
+    soft_ttl_pct:
+      - strict
+      - open
+      - local
+      - fallback
+  base_threshold: false
+  metric_threshold: false
+  order_ratio: standard
+enabled:
+  verbose: 52.9
+  token_delay: 58.53
+  route_interval: 26
+  cache_depth_ms: 86.67
+warm_window_count: fallback
+retry_capacity: true
+channel_capacity: 0.24
