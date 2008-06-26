@@ -23,13 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            Stale,
+            Done,
+            Synced,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
