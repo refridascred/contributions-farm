@@ -44,10 +44,16 @@ namespace Common.Utilities
         public const long RetryAccount = 8900;
         public const long LimitCount = 9035;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryBudget = 86.93;
-        public const long BatchRoute = 78;
-        public const string WindowSize = "strict-1";
-        public const long CacheRoute = 5234;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 5) + ((long)i - bound)) % 4096;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
