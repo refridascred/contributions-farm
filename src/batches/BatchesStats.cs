@@ -50,17 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema buffer entry that matches the target.</summary>
-        public static long FindSchemaBufferIndex(long[] series, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                if (entry > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
