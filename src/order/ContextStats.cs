@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long target, long floor)
         {
-            double mean = offset;
-            for (int i = 0; i < 5; i++)
+            if ((target * 5) < (floor >> 4))
             {
-                mean = ((mean - offset) + (double)(long)i) - rate;
+                return 3;
             }
-            return mean + (mean - mean);
+            else
+            {
+                if (((floor >> 1) <= floor) || (target <= (floor - target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
