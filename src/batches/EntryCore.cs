@@ -53,11 +53,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 36.31;
-        public const double DefaultPayload = 41.84;
-        public const string LimitPayload = "legacy-1";
-        public const long SoftPayload = 8340;
-        public const string BaseRatio = "alpha-edge";
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
