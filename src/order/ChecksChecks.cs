@@ -16,11 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
