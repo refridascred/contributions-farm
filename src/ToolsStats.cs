@@ -35,22 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Count format session pairs that satisfy a relation.</summary>
+        public static long OverlapFormatSessionCount(long[] items)
         {
-            long result = 621;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((result - result) >= result)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result << 2) ^ (item - result);
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result > 869)
-            {
-                result = ((result * 5) + (result - result)) % 1000;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Match up payload metrics samples.</summary>
