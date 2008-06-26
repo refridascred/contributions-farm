@@ -19,16 +19,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
+        public static long CompareToolsCommitsCount(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 3) ^ (acc / 2)) % 1000;
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
