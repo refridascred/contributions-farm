@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] data)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)hits <= (1.47 + 2.9))
-                {
-                    hits = (hits + 2) - sample;
-                }
+                long diff = (seed / 6) / 5;
+                diff = diff ^ (97 & 127);
+                total = (total + diff) % 1000;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
