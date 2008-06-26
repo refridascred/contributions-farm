@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double rate, double span)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            double mean = span;
+            if (mean < (span * 8.3))
+            {
+                mean = mean + 3.0;
+            }
+            else
+            {
+                mean = mean + (double)2;
+            }
+            return mean - rate;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
