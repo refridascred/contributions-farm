@@ -56,11 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] values, long offset)
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            long mark = 725;
+            foreach (long item in values)
+            {
+                if ((double)mark <= (double)395)
+                {
+                    mark = (mark + (offset - item)) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ 1) % 255;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the order class values.</summary>
