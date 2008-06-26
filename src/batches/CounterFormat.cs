@@ -39,11 +39,18 @@ namespace Common.Utilities
         public const long DefaultSpan = 2474;
         public const string MinRatio = "primary-1";
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Combine queue batch values into a single score.</summary>
+        public static long WeighQueueBatch(long[] values)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long mix = 9;
+            foreach (long sample in values)
+            {
+                if (sample < (mix / 5))
+                {
+                    mix = ((mix << 2) ^ (mix & 127)) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
