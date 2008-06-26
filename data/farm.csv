@@ -1,6 +1,10 @@
-id,ratio,region
-1,775,84.47
-2,553,385
-3,blue,eu-west
-4,715,58.47
-5,716,4.32
+id,ratio,rank,owner,level
+1,20.94,stable,177,557
+2,39,primary,77.97,local
+3,open,129,standard,55.51
+4,532,431,91.17,86.24
+5,standard,13.89,79.97,stable
+6,10.87,658,staging,276
+7,local,local,14.1,29.71
+8,665,73,22.35,blue
+9,37.23,357,12.36,470
