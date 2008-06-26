@@ -1,5 +1,12 @@
 {
-  "verbose": "open",
-  "buffer_capacity": "staging",
-  "enabled": 15.01
+  "poll_delay": {
+    "audit": false,
+    "layout_timeout": 29.49,
+    "burst_depth_count": false,
+    "checks_threshold": 29.83,
+    "warm_size_pct": true
+  },
+  "cache_limit_ms": "staging",
+  "session_ratio": 22.11,
+  "audit": 720
 }
