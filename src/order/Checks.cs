@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
