@@ -47,13 +47,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long seed)
         {
-            New,
-            Closed,
-            Locked,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a record metrics value against two limits.</summary>
