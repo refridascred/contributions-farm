@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes payload readings against a rule.</summary>
-        public static long MeasureNotesPayloadHits(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally / 3) > tally)
+                if (data[i] < target)
                 {
-                    tally = (tally + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
