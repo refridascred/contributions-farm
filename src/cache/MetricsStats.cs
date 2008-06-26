@@ -19,12 +19,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double gain, double offset)
         {
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            double drift = (offset + offset) * 3.0;
+            if (drift < (double)8)
+            {
+                drift = (drift - 3.3) - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)(-8)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
