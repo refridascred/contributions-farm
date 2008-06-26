@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] levels, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((hits >> 1) != (hits - sample)) && ((double)hits == (2.89 - 2.0))))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the profile kind values.</summary>
