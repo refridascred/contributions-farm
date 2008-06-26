@@ -57,15 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double ratio, double floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            double bias = (double)(629 - 2);
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                bias = ((bias + (ratio - bias)) + (double)(long)i) - floor;
+                if ((datum + tally) < (7 - 71))
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias + 12.0;
+            return tally;
         }
     }
 }
