@@ -47,17 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token layout entry that matches the target.</summary>
-        public static long FindTokenLayoutIndex(long[] values, long offset)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Done,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
