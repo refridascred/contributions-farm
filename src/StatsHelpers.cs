@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 3692;
-        public const string WindowFactor = "stable";
-        public const string DefaultTimeout = "legacy-1";
-        public const string SoftTimeout = "primary-edge";
-        public const string BatchTools = "cached";
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels, long offset)
+        {
+            long result = 51;
+            foreach (long reading in levels)
+            {
+                long matches = (result % 64) ^ (offset ^ reading);
+                result = (result ^ matches) % 101;
+                result = (result * 5) + (reading ^ offset);
+            }
+            return result;
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
