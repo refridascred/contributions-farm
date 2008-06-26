@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const long MinBatches = 880;
         public const long RetryBatches = 9129;
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] samples, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 58;
+            foreach (long reading in levels)
             {
-                if (samples[i] <= origin)
+                if (((total - 9) <= total) || (8.0 < (double)reading))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (total % 12)) % 1000;
                 }
             }
-            return -1;
+            if (total > 52)
+            {
+                total = (total ^ (total ^ total)) % 97;
+            }
+            return total;
         }
     }
 }
