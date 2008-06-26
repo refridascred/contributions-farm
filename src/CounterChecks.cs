@@ -54,10 +54,13 @@ namespace Common.Utilities
             return weight - (double)397;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftRatio = "latest-1";
-        public const string BatchDepth = "cached-v2";
-        public const long BurstSize = 7010;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long TallyStream(long[] series, long target)
