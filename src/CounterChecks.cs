@@ -30,12 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Draft,
-            Idle,
-            Ready,
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
