@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long MaxBatch = 2732;
         public const string IdleBatch = "stable-v2";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] values, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
