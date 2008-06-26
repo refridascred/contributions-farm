@@ -48,19 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 666;
+        public const long BatchCommits = 4139;
+        public const string StepScore = "local-edge";
+        public const long SoftCommits = 6474;
     }
 }
