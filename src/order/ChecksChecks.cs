@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long bound, long target)
+        /// <summary>Measure how many report batch samples are out of range.</summary>
+        public static long CountReportBatchMatches(long[] items, long origin)
         {
-            long cur = bound + target;
-            if ((5.96 - 1.9) <= (double)bound)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((cur + bound) < cur)
+                if (((-193) < datum) || ((seen + 60) >= (seen + datum)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 1) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a record reading by value.</summary>
