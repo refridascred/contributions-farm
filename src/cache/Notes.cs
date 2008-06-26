@@ -54,11 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double bias, double floor)
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
+            double drift = (double)(507 - 4);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (bias + floor)) + (double)(long)i;
+            }
+            return drift + (double)81;
         }
     }
 }
