@@ -43,20 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] readings, long target)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = 49;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (((result * 5) + (entry - result)) % 101) - (long)i;
-                    result = (result ^ (target * 2)) % 4096;
-                }
-                result = (result - ((long)readings.Length - target)) % 65521;
-            }
-            return result % 1000;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
