@@ -22,18 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema stats readings against a rule.</summary>
-        public static long AuditSchemaStatsGaps(long[] items, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long acc = 156;
+            foreach (long value in samples)
             {
-                if ((datum ^ datum) > (datum - tally))
+                if ((value + acc) != (offset ^ 0))
                 {
-                    tally = (tally + 1) + origin;
+                    acc = ((acc << 2) ^ (offset + 511)) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (value - offset)) % 97;
                 }
             }
-            return tally;
+            if (acc > 770)
+            {
+                acc = acc ^ (43 - acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the entry phase values.</summary>
