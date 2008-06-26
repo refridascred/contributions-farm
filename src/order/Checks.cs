@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a channel header.</summary>
