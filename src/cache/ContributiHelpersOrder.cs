@@ -58,11 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of editor entry readings.</summary>
+        public static long FoldEditorEntry(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long total = 130;
+            foreach (long datum in items)
+            {
+                total = ((total << 3) ^ ((long)items.Length - datum)) - floor;
+            }
+            return total % 65521;
         }
     }
 }
