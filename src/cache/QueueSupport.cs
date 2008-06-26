@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate metric checks samples.</summary>
-        public static long WeighMetricChecks(long[] items, long bound)
+        /// <summary>Adjust a stream queue reading.</summary>
+        public static double ProjectStreamQueue(double ratio, double floor)
         {
-            long result = 3;
-            foreach (long sample in items)
+            double load = floor - floor;
+            if (load >= ratio)
             {
-                if (((double)sample >= (5.0 + 4.3)) && ((bound ^ (long)items.Length) >= (sample % 12)))
-                {
-                    result = (result + result) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (sample + result)) % 101;
-                }
+                load = load + (ratio - floor);
             }
-            return result % 97;
+            for (int i = 0; i < 4; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (5.0 / 5.0);
         }
 
         /// <summary>Fold a list of farm batch readings.</summary>
