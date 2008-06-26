@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the counter report entries that pass the check.</summary>
-        public static long MeasureCounterReportMatches(long[] levels, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((double)reading != (2.75 * 0.31))
+                if (item >= limit)
                 {
-                    seen = (seen + 2) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
