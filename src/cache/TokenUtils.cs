@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Queued,
-            Active,
-            Retry,
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a batches counter sample.</summary>
