@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long origin)
         {
-            double gain = bias;
-            if (gain <= (gain - floor))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                gain = gain - 6.3;
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain - gain;
+            return flag;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
