@@ -19,18 +19,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] values)
+        /// <summary>Measure how many queue layout samples are out of range.</summary>
+        public static long MeasureQueueLayoutOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((sample * 2) <= sample)
+                if ((reading % 10) != (698 ^ (-125)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
