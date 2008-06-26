@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] data)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches <= 9.1)
+                if ((data[i] > step) && ((data[i] % 2) == 0))
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the token class values.</summary>
