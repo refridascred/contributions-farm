@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long CacheContributi = 263;
         public const string IdleDepth = "strict-edge";
 
-        /// <summary>Match up format graph samples.</summary>
-        public static long MatchFormatGraphCount(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] readings, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= target)
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
