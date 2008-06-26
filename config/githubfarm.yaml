@@ -1,9 +1,8 @@
 # githubfarm settings
-max_depth: 26.29
-burst_threshold_s: cached
-max_limit: fallback
-dry_run: 1800
-warm_timeout_count:
-  report_retries: 92.37
-  metric_retries: 15.25
-  default_ttl_ms: 29
+flush_ratio: 100
+sync_depth:
+  - staging
+  - stable
+  - standard
+  - cached
+max_threshold_s: 66
