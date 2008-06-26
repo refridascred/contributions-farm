@@ -1,20 +1,12 @@
 # support settings
-compress: strict
-hard_limit:
-  readonly:
-    - standard
-    - primary
-    - edge
-    - local
-  batch_timeout: strict
-  token_threshold: fallback
-  idle_threshold_s:
-    - 428
-    - 320
-    - 55
-    - 250
-  persist: false
-context_depth: 7.91
-hard_ttl_pct: local
-persist: 4234
-hard_capacity_s: 29
+hard_size_ms: 100
+poll_ratio_count: staging
+burst_capacity:
+  enabled: true
+  default_depth: 23.2
+  audit:
+    min_timeout_count: false
+    hard_retries_count: 928
+    format_ttl: 80
+  persist: 500
+  stats_threshold: false
