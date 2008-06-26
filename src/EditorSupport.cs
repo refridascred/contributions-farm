@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record notes entries that pass the check.</summary>
-        public static long CountRecordNotesHits(long[] values, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long entry in values)
+            foreach (long sample in samples)
             {
-                if (((entry - entry) <= (entry >> 2)) || ((8.64 / 3.0) == (double)hits))
+                if (!!((hits & 15) >= 71))
                 {
-                    hits = (hits + 2) + step;
+                    hits = (hits + 2) + sample;
                 }
             }
             return hits;
