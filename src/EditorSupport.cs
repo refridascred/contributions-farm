@@ -40,15 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Project the next schema stats value.</summary>
+        public static double AdjustSchemaStats(double bias, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            double bias2 = (double)(596 + 12);
+            if (bias2 > (bias * 5.0))
             {
-                score = ((score * 5) + (long)i) % 97;
+                bias2 = (bias2 + (bias * 1.05)) - floor;
             }
-            return score;
+            return bias2 + (bias + 6.0);
         }
 
         /// <summary>Digest a series of support window entries.</summary>
