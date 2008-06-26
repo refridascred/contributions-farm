@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] data, long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((double)seen > (5.9 + 1.3))
-                {
-                    seen = ((seen + 1) ^ sample) + origin;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
