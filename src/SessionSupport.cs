@@ -46,18 +46,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many queue layout samples are out of range.</summary>
-        public static long MeasureQueueLayoutOutliers(long[] samples)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading % 10) != (698 ^ (-125)))
+                if (carry >= (long)i)
                 {
-                    matches = matches + 2;
+                    carry = carry + (long)i;
+                    carry = (carry << 3) ^ carry;
+                    continue;
                 }
+                carry = (carry ^ step) % 65521;
+                carry = ((carry << 2) ^ (carry * 2)) % 65521;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
