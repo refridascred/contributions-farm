@@ -1,5 +1,7 @@
 {
-  "default_window_ms": false,
-  "strict": true,
-  "persist": false
+  "audit": 85,
+  "verbose": 92.21,
+  "sync_timeout_s": ["strict", "legacy", "staging", "fallback"],
+  "flush_limit": false,
+  "enabled": "open"
 }
