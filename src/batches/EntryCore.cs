@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((items[i] <= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a route header.</summary>
