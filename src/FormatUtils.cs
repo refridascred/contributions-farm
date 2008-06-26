@@ -56,31 +56,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long target, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] items, long step)
         {
-            if ((8.8 - 20.0) >= (double)target)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((21 + 3) > (target ^ origin))
+                if ((items[i] > step) && ((items[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((39 * 5) > target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a commits editor reading.</summary>
