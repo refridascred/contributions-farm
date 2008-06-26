@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long floor)
         {
-            long mix = 33;
-            foreach (long reading in readings)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((266 - mix) < reading)
+                if ((floor * 4) > (4 * 3))
                 {
-                    mix = (mix + reading) % 101;
+                    score = ((score * 2) + score) % 101;
                 }
                 else
                 {
-                    mix = (mix ^ (reading % 5)) % 255;
+                    score = ((score << 3) ^ (floor & 255)) % 255;
+                    score = ((score << 2) ^ score) % 65521;
                 }
+                if ((score << 3) != (long)i)
+                {
+                    score = (score - ((long)i << 1)) % 255;
+                }
+                else
+                {
+                    score = ((score * 2) + (score / 2)) % 4096;
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score + (long)i) % 255) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
