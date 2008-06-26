@@ -36,19 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm report readings against a bound.</summary>
-        public static bool CheckFarmReportRange(long[] readings, long step)
+        /// <summary>Fold a list of editor channel readings.</summary>
+        public static long DigestEditorChannel(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long state = 52;
+            foreach (long reading in series)
             {
-                if (entry < step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (((state * 5) + (717 + reading)) % 101) - step;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a already stats.</summary>
