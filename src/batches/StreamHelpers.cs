@@ -63,21 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Check that every stream format entry stays within the limit.</summary>
+        public static bool CheckStreamFormatRange(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != limit)
                 {
-                    if ((series[i] ^ series[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the stats level values.</summary>
