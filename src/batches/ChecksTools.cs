@@ -57,16 +57,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result << 2) ^ limit) % 1000;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 55.59;
+        public const long DefaultLevel = 9422;
+        public const double MinNotes = 29.08;
+        public const double SoftNotes = 12.15;
+        public const double IdleRatio = 60.54;
     }
 }
