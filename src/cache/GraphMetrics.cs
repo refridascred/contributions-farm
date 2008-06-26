@@ -45,22 +45,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data, long seed)
+        /// <summary>Compare every pair of format editor readings.</summary>
+        public static long PairFormatEditorCount(long[] items)
         {
-            long sum = 323;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)reading < (17.0 - 2.3)) && ((789 - seed) != (seed + sum)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum + (reading ^ 99)) % 255;
-                }
-                else
-                {
-                    sum = (sum - (sum + sum)) % 97;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the channel state values.</summary>
