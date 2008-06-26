@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] data, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7 >= (seed * 2)) || ((seed / 2) <= datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] ^ samples[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a batch checks pair into a bucket.</summary>
