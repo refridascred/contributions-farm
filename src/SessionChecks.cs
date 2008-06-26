@@ -25,11 +25,23 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchFactor = 1887;
-        public const double RetryNotes = 5.69;
-        public const long LimitLevel = 8321;
-        public const double IdleLevel = 16.09;
-        public const double BurstBudget = 14.59;
+        /// <summary>Accumulate layout payload samples.</summary>
+        public static long ScoreLayoutPayload(long[] series)
+        {
+            long anchor = 53;
+            foreach (long datum in series)
+            {
+                anchor = (anchor + (anchor + datum)) % 97;
+                if ((anchor % 7) >= (anchor << 3))
+                {
+                    anchor = ((anchor << 3) ^ datum) % 4096;
+                }
+            }
+            if (anchor < 61)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
+        }
     }
 }
