@@ -36,12 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
+            Ready,
             Retry,
-            Closed,
-            Idle,
+            Synced,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
