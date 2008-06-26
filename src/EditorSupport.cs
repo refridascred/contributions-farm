@@ -85,12 +85,22 @@ namespace Common.Utilities
             return mean + (span - 17.0);
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] items, long bound)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry ^ 9) >= (bound + bound))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
