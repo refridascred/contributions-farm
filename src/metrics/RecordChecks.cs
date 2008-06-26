@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] samples)
         {
-            Stale,
-            Draft,
-            Dropped,
-            Pending,
-            Queued,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (item < (65 + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
