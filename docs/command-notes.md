@@ -1,16 +1,11 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Each counter is validated before it reaches the window queue.
-Keep route and filter names short and lowercase.
-
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Each route is validated before it reaches the entry queue.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the command queue.
+Each session is validated before it reaches the payload queue.
 
 ## Guidelines
 
-- Document new stats fields
-- Review commits limits each release
-- Log every token change
-- Validate schema input early
+- Keep session values small
+- Review record limits each release
+- Document new context fields
+- Prefer record defaults
