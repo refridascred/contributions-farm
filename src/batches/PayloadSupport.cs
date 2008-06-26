@@ -27,11 +27,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            Stale,
+            Draft,
+            Active,
         }
     }
 }
