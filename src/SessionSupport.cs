@@ -37,13 +37,12 @@ namespace Common.Utilities
             return load + (1.0 + rate);
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Region { get; set; }
         }
     }
 }
