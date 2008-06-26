@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double scale, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum ^ sum) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            double gain = 5.0;
+            return ((gain - 0.59) + scale) + bias;
         }
 
         /// <summary>Hold a token info.</summary>
