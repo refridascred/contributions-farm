@@ -27,13 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 0.19;
+        public const string BatchFilter = "staging-edge";
+        public const long BaseScore = 5864;
+        public const long IdleFilter = 2975;
+        public const long IdleDepth = 796;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandMatches(long[] readings)
