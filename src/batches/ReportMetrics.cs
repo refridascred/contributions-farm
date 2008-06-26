@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Match up buffer farm samples.</summary>
+        public static long CompareBufferFarmCount(long[] samples)
         {
-            long anchor = 75;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 4) + (anchor + entry);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the batch state values.</summary>
