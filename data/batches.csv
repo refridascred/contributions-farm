@@ -1,7 +1,8 @@
-id,active,score,token
-1,36.89,open,53.82
-2,34.84,12,17.81
-3,491,621,63.76
-4,847,open,local
-5,331,334,66.94
-6,75,blue,291
+id,score,label,token,state
+1,66.35,primary,standard,stable
+2,41.72,40,blue,84.68
+3,308,cached,621,8
+4,125,52.37,43.01,22.39
+5,417,531,open,72.86
+6,fallback,545,50.12,330
+7,22,806,92,72.03
