@@ -16,12 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleInterval = 3222;
+        public const long MaxTools = 3043;
+        public const long LimitWidth = 7214;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowContributi = "alpha";
