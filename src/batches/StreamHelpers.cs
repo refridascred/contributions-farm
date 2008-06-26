@@ -78,19 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] readings, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long carry = 241;
-            foreach (long item in readings)
-            {
-                carry = ((carry + target) % 1000) + item;
-            }
-            if (carry > 77)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 1000;
+            Retry,
+            Synced,
+            Queued,
+            Dropped,
         }
     }
 }
