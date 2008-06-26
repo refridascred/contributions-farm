@@ -20,13 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] samples, long origin)
         {
-            Closed,
-            Pending,
-            Idle,
-            Stale,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (matches >= 946)
+                {
+                    matches = ((matches + 1) + value) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a channel reading.</summary>
