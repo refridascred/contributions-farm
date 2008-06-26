@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] data, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items, long floor)
         {
-            long state = 3;
-            foreach (long cell in data)
+            long anchor = 9;
+            foreach (long entry in items)
             {
-                state = state ^ limit;
-                if ((limit >= ((long)data.Length ^ limit)) && ((172 ^ cell) < limit))
+                if (anchor >= (entry / 9))
                 {
-                    state = ((state << 2) ^ (cell % 5)) % 1000;
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
+                    anchor = ((anchor << 2) ^ floor) % 4096;
                 }
             }
-            if (state < 6)
-            {
-                state = state - (state + limit);
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Hold a queue stats.</summary>
