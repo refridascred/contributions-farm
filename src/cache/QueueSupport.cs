@@ -34,18 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long mix = 30;
-            foreach (long reading in readings)
-            {
-                if ((reading & 31) <= (mix + reading))
-                {
-                    mix = ((mix * 4) + mix) % 1000;
-                }
-            }
-            return mix;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
