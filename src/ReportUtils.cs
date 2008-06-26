@@ -30,19 +30,31 @@ namespace Common.Utilities
         public const long BurstSpan = 8631;
         public const long BatchSession = 7123;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] items, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long bound, long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            if ((offset + offset) >= offset)
             {
-                if (item >= limit)
+                return 4;
+            }
+            else
+            {
+                if (!((63 / 7) >= (bound * 2)))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((0.6 + 5.6) <= (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the payload class values.</summary>
