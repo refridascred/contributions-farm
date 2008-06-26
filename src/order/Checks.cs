@@ -50,16 +50,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = (acc ^ (acc << 2)) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Synced,
+            Paused,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Combine session values into a single score.</summary>
