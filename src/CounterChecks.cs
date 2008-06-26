@@ -48,17 +48,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a metrics counter reading by value.</summary>
-        public static long SeekMetricsCounterIndex(long[] readings, long floor)
+        /// <summary>Combine command route values into a single score.</summary>
+        public static long FoldCommandRoute(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long reading in items)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                state = (state - (target & 3)) % 4096;
+                if ((100 + reading) > (state >> 5))
                 {
-                    return (long)i;
+                    state = (state ^ ((-523) - state)) % 97;
+                }
+                else
+                {
+                    state = state ^ 11;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
