@@ -36,17 +36,39 @@ namespace Common.Utilities
         public const long DefaultFactor = 2994;
         public const long IdleGithubfarm = 6374;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] samples, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long bound, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = bound + floor;
+            if (((double)bound <= (1.5 - 7.9)) || ((5.0 - 4.4) < (double)bound))
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if (((slot - slot) > (bound - bound)) && (slot > bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (6.6 * 9.46))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor & 15) >= (slot * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
