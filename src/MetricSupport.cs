@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (8.02 >= (double)seed)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstLevel = 2150;
+        public const double LimitSpan = 93.25;
+        public const long BurstBudget = 1015;
+        public const string DefaultNotes = "cached-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxNotes = 2916;
