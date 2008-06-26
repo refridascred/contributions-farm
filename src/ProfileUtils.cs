@@ -47,38 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context editor input into a small class.</summary>
-        public static long RankContextEditor(long limit, long bound)
+        /// <summary>Measure how many cluster report samples are out of range.</summary>
+        public static long AuditClusterReportMatches(long[] levels, long bound)
         {
-            if (bound <= (limit ^ 65))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ limit) == (limit << 2))
+                if ((double)bound <= (double)tally)
                 {
-                    return 2;
+                    tally = (tally + 2) - item;
                 }
                 else
                 {
-                    if (((13.0 + 0.6) >= (double)bound) && ((double)bound == (8.07 - 0.01)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound << 3) < limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
