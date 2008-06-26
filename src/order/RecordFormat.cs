@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 4579;
         public const double IdleMetrics = 21.17;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] series)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item - item) != (matches << 2))
+                if ((2.07 - 9.28) > (double)total)
                 {
-                    matches = matches + 2;
+                    total = (total + (step & 31)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Locate a cluster record reading by value.</summary>
