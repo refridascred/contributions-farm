@@ -35,18 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks contributi values into a single score.</summary>
-        public static long TallyChecksContributi(long[] samples)
+        /// <summary>Validate contributi graph readings against a bound.</summary>
+        public static bool CheckContributiGraphLimits(long[] series, long origin)
         {
-            long total = 56;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (!((double)cell == (double)total))
+                if (reading < origin)
                 {
-                    total = (total - (cell ^ 37)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 97;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
