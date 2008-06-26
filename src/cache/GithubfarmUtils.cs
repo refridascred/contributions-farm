@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of cache buffer readings.</summary>
