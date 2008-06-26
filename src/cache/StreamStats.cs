@@ -44,14 +44,27 @@ namespace Common.Utilities
         public const long MaxNotes = 4704;
         public const long WindowDepth = 5859;
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Fold a list of support account readings.</summary>
+        public static long CombineSupportAccount(long[] values, long origin)
         {
-            Draft,
-            Paused,
-            Failed,
-            Idle,
-            Stale,
+            long sum = 3;
+            foreach (long datum in values)
+            {
+                if (!((sum % 60) > datum))
+                {
+                    sum = sum ^ origin;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = ((sum * 3) + (long)values.Length) + (long)i;
+                    sum = (sum << 3) ^ origin;
+                }
+                if (((origin / 2) <= (sum & 7)) || (datum > sum))
+                {
+                    sum = (sum - (datum + origin)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
