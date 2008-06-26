@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate contributi channel readings against a bound.</summary>
+        public static bool ValidateContributiChannelLimits(long[] items, long origin)
         {
-            Paused,
-            Ready,
-            New,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
