@@ -1,24 +1,5 @@
 # githubfarm settings
-sync_capacity:
-  - cached
-  - cached
-  - local
-  - eu-west
-route_limit: 37.29
-burst_ttl_ms:
-  githubfarm_size: true
-  batch_limit: true
-  sync_ratio_count: 393
-  batch_retries_count: 100
-already_size: true
-batch_capacity_pct:
-  command_interval:
-    - 149
-    - 156
-  sync_threshold_s: primary
-  hard_timeout_s: 31
-  sync_ratio_ms: 30
-  cache_threshold:
-    - 454
-    - 356
-strict: 7591
+commits_interval: 54.8
+tools_threshold: latest
+sync_retries: 100
+flush_size_pct: 250
