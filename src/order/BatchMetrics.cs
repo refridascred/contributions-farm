@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long seed)
-        {
-            long gap = floor + seed;
-            if ((7.9 + 6.2) <= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor < (gap - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((358 ^ seed) != (floor >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftLevel = 1089;
+        public const double WindowBudget = 83.86;
+        public const long BaseDepth = 1240;
+        public const double MinEditor = 19.93;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] values)
