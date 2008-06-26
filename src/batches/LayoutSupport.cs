@@ -48,15 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long total = 66;
-            foreach (long datum in readings)
+            long state = limit;
+            for (int i = 0; i < 9; i++)
             {
-                total = total - (datum % 3);
+                if ((state / 5) > 67)
+                {
+                    state = ((state * 5) + (state * 3)) % 255;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
