@@ -44,11 +44,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 985;
-        public const double MinTimeout = 20.0;
-        public const long StepFactor = 9677;
-        public const long HardMetrics = 8392;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 3) + (sum >> 1)) % 1000;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of checks payload entries.</summary>
         public static long TallyChecksPayload(long[] levels)
