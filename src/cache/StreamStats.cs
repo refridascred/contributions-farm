@@ -31,15 +31,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double bias, double bias2)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double load = bias2;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - bias;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
