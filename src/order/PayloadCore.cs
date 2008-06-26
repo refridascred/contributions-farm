@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double rate, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] readings)
         {
-            double mean = span;
-            if (mean < (span * 8.3))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                mean = mean + 3.0;
+                if ((long)readings.Length >= (177 - cell))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                mean = mean + (double)2;
-            }
-            return mean - rate;
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
