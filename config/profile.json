@@ -1,5 +1,5 @@
 {
-  "persist": true,
-  "compress": 58.62,
-  "flush_size_s": "blue"
+  "default_window_ms": false,
+  "strict": true,
+  "persist": false
 }
