@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values, long floor)
+        /// <summary>Count the counter report entries that pass the check.</summary>
+        public static long MeasureCounterReportMatches(long[] levels, long origin)
         {
-            long total = 396;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((91 < (420 + floor)) || ((total / 4) < (total / 7)))
+                if ((double)reading != (2.75 * 0.31))
                 {
-                    continue;
+                    seen = (seen + 2) - origin;
                 }
-                if (!((cell / 2) < (total ^ floor)))
+                else
                 {
-                    total = (total << 3) ^ (floor * 3);
+                    seen = seen - 1;
                 }
             }
-            if (total > 60)
-            {
-                total = ((total * 4) + (total + 2)) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
