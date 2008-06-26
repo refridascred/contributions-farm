@@ -33,11 +33,18 @@ namespace Common.Utilities
             return ratio2 - (floor * 5.07);
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                if (!((double)mix < 3.81))
+                {
+                    mix = (mix + (entry + mix)) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
