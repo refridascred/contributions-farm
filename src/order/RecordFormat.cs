@@ -88,12 +88,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] data, long offset)
+        /// <summary>Locate a cluster record reading by value.</summary>
+        public static long FindClusterRecordIndex(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] < offset)
+                if ((series[i] >= seed) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
