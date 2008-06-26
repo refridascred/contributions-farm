@@ -1,8 +1,5 @@
 # support settings
-checks_retries: true
-entry_retries: false
-channel_size: false
-persist:
-  - latest
-  - standard
-  - legacy
+batches_delay: latest
+session_ttl: 63.8
+hard_depth_ms: 1938
+warm_window_count: 55
