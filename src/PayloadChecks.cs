@@ -32,14 +32,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Dropped,
-            New,
-            Draft,
-            Queued,
-            Done,
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a command stream counter forward.</summary>
