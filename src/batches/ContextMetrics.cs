@@ -19,13 +19,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] series)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Score { get; set; }
+            long anchor = 8;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor << 2) ^ anchor) % 101) ^ datum;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a already entry.</summary>
