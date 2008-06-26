@@ -58,18 +58,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardRatio = 1932;
+        public const long IdleStats = 2522;
+        public const string MaxStats = "cached-v2";
+        public const long StepStats = 8580;
+        public const long MinStats = 5335;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
