@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double span)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double bias, double span)
         {
-            double weight = (scale * 4.11) * 5.6;
-            if (weight <= 4.8)
+            double drift = span / 9.0;
+            if (drift < (span * 7.45))
             {
-                weight = weight + scale;
+                drift = drift - (span + 2.0);
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = (weight - span) + (double)(long)i;
+                drift = drift - bias;
             }
-            return weight - (double)7;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift + span)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Hold a metric entry.</summary>
