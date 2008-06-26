@@ -34,19 +34,13 @@ namespace Common.Utilities
         public const long LimitBuffer = 4317;
         public const long BurstCount = 7839;
 
-        /// <summary>Iterate the editor githubfarm series from a seed.</summary>
-        public static long IterateEditorGithubfarm(long seed)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!(((double)(long)i < 0.66) && (seed <= 0)))
-                {
-                    result = (result * 2) + (seed * 2);
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
