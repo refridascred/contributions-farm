@@ -75,18 +75,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile support samples are out of range.</summary>
-        public static long TallyProfileSupportHits(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((item - tally) >= (tally - (long)samples.Length))
+                if ((matches - seed) != (seed >> 3))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
