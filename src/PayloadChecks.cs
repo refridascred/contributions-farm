@@ -59,16 +59,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a cluster counter counter forward.</summary>
-        public static long IterateClusterCounter(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score << 2) ^ (score % 100)) % 97;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinLevel = 2742;
+        public const long WindowOrder = 7622;
+        public const double BurstRatio = 9.94;
+        public const long CacheOrder = 2734;
+        public const long SoftOrder = 2990;
     }
 }
