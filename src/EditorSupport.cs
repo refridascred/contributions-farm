@@ -61,13 +61,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Fold a list of window contributi readings.</summary>
+        public static long TotalWindowContributi(long[] values, long floor)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            long total = 0;
+            foreach (long reading in values)
+            {
+                total = (total ^ (total >> 3)) + reading;
+                total = ((total * 4) + (floor ^ floor)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
