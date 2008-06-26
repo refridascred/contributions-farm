@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long bound, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = bound - seed;
+            if (!((double)lane == (double)seed))
             {
-                if (items[i] < origin)
+                return 7;
+            }
+            else
+            {
+                if (seed <= (seed / 4))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane == (8.28 + 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank contributi route input into a small class.</summary>
