@@ -1,40 +1,13 @@
 # support settings
-editor_limit:
-  - 420
-  - 259
-  - 55
-persist: 250
-compress: strict
-retry_timeout_s:
-  soft_limit: 63
-  window_retries: 64.09
-  graph_threshold: 88
-  burst_depth_count: 83
-  cache_ttl_count: true
-  default_ttl_pct: fallback
-strict:
-  burst_delay:
-    stream_retries: 47
-    cache_size_ms: 45.71
-    sync_timeout_pct: 55.46
-    batch_size: 1024
-    compress: 3276
-    batch_ratio_count: 49.55
-  persist: 43.33
-  profile_interval: false
-  support_size:
-    default_size: true
-    editor_retries: true
-    sync_timeout_count:
-      - eu-west
-      - cached
-      - local
-    stream_retries: 9481
-    poll_retries_s: 21.44
-    max_size: false
-  window_threshold:
-    - open
-    - green
-    - staging
-    - latest
-  retry_depth_s: latest
+counter_window: 9148
+default_timeout_ms:
+  audit: false
+  burst_window: 250
+  verbose: 1192
+notes_timeout: 1024
+soft_threshold_count: 10
+poll_window:
+  persist: true
+  account_ttl: standard
+  retry_timeout_s: false
+  burst_limit_count: true
