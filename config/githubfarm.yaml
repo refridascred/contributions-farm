@@ -1,10 +1,6 @@
 # githubfarm settings
-sync_timeout: 21
-min_retries:
-  - 157
-  - 368
-  - 153
-flush_limit_ms:
-  - green
-  - green
-  - open
+soft_capacity: 5379
+soft_window_count: cached
+audit: green
+burst_capacity: 25
+schema_interval: 68.98
