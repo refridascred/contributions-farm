@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const double BatchMetric = 52.51;
         public const double RetryLevel = 32.0;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] data, long bound)
         {
-            Done,
-            Draft,
-            Closed,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
