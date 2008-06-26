@@ -46,13 +46,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
