@@ -73,12 +73,22 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback";
         public const string BaseSupport = "legacy-v2";
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many session schema samples are out of range.</summary>
+        public static long TallySessionSchemaHits(long[] data)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)matches == (6.0 / 4.0))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
