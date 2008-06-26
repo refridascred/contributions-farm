@@ -45,12 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate schema githubfarm readings against a bound.</summary>
+        public static bool GuardSchemaGithubfarmLimits(long[] levels, long limit)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
