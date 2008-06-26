@@ -1,6 +1,7 @@
-id,ratio,score
-1,19.32,290
-2,latest,local
-3,913,primary
-4,staging,standard
-5,56,271
+id,token,owner,rank
+1,448,edge,blue
+2,standard,93.26,53.37
+3,100,staging,185
+4,491,eu-west,blue
+5,699,67.07,594
+6,93.62,stable,229
