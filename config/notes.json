@@ -1,6 +1,14 @@
 {
-  "editor_retries": 6365,
-  "readonly": false,
-  "sync_threshold": 5905,
-  "max_size": "strict"
+  "checks_capacity": [383, 404, 304, 115],
+  "default_retries": 32.17,
+  "warm_ratio_count": "staging",
+  "cache_retries_s": 31,
+  "retry_depth": {
+    "poll_interval": 9663,
+    "notes_timeout": 8203,
+    "stream_interval": "strict",
+    "idle_ratio": "eu-west",
+    "hard_threshold_s": 98
+  },
+  "min_depth_pct": "blue"
 }
