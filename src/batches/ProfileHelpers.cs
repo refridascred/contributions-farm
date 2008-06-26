@@ -26,15 +26,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Project the next cache buffer value.</summary>
-        public static double AdjustCacheBuffer(double ratio, double offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] series)
         {
-            double weight = (double)44;
-            if (weight <= (weight * 4.28))
+            long matches = 0;
+            foreach (long item in series)
             {
-                weight = (weight + offset) - ratio;
+                if ((matches << 1) <= (966 % 97))
+                {
+                    matches = (matches + 3) ^ item;
+                }
             }
-            return weight + (offset * 8.2);
+            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
