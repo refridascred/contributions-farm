@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    score = ((score ^ (limit + score)) % 101) ^ (long)i2;
+                    score = score - (score - limit);
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
