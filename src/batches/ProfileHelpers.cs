@@ -62,11 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (((hits >> 1) <= entry) || (((2.19 / 7.0) == (double)hits) && (hits < (entry * 4))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
