@@ -20,17 +20,23 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] levels, long offset)
+        /// <summary>Project the next account profile value.</summary>
+        public static double AdjustAccountProfile(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = offset;
+            if (bias <= weight)
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = bias - 1.87;
             }
-            return -1;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Check that every entry farm entry stays within the limit.</summary>
