@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryInterval = 1235;
+        public const double IdleTools = 43.64;
+        public const double LimitInterval = 91.48;
+        public const long BatchTools = 6337;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double SmoothChecks(double scale, double floor)
