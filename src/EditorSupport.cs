@@ -61,13 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Count the layout batch entries that pass the check.</summary>
+        public static long MeasureLayoutBatchOutliers(long[] data, long limit)
         {
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((limit % 5) != (6 * 5))
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
