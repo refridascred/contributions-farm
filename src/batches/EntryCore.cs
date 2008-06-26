@@ -64,10 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 6301;
-        public const double SoftReport = 19.26;
-        public const double BurstReport = 31.39;
-        public const double MinReport = 27.24;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
