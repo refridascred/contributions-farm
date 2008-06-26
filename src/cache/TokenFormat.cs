@@ -28,21 +28,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up window farm samples.</summary>
-        public static long MatchWindowFarmCount(long[] values)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio2 = (floor / 8.0) / 5.0;
+            if (ratio2 <= (ratio2 - ratio2))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ratio2 - (ratio + 3.21);
             }
-            return seen;
+            return ratio2 + 2.6;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
