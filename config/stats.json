@@ -1,6 +1,7 @@
 {
-  "batch_retries_s": 59.09,
-  "soft_window": "eu-west",
-  "max_retries": "standard",
-  "strict": 2411
+  "batch_window": "stable",
+  "githubfarm_limit": 42,
+  "burst_ratio": "standard",
+  "strict": 5938,
+  "report_size": 28.39
 }
