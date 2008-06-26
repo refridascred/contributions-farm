@@ -30,14 +30,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Done,
-            Ready,
-            Failed,
-            New,
-            Active,
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a notes summary.</summary>
