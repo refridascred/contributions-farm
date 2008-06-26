@@ -34,9 +34,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "open-1";
-        public const long BaseAlready = 2033;
-        public const long WindowAlready = 6489;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (tally > (825 / 8))
+                {
+                    tally = ((tally + 3) ^ reading) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
