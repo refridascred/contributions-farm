@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            long mix = -77;
-            foreach (long reading in series)
+            long mix = 33;
+            foreach (long reading in readings)
             {
-                mix = mix ^ (mix + reading);
-                if ((reading / 9) >= (mix - target))
+                if ((266 - mix) < reading)
                 {
-                    mix = (mix - (target ^ reading)) % 65521;
+                    mix = (mix + reading) % 101;
                 }
-                if ((338 >= reading) || (mix <= (reading - 16)))
+                else
                 {
-                    break;
+                    mix = (mix ^ (reading % 5)) % 255;
                 }
             }
-            if (mix > 88)
-            {
-                mix = (mix - (mix - (-781))) % 101;
-            }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
