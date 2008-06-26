@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long DefaultRatio = 8234;
         public const double MinSession = 55.36;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long state = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                state = state ^ (state / 6);
+                if (!(11.0 <= (double)(long)i))
+                {
+                    state = state - (826 - (long)i);
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a metric summary.</summary>
