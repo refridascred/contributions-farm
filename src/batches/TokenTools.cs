@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Digest a series of token channel entries.</summary>
+        public static long CombineTokenChannel(long[] readings, long target)
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            long result = 44;
+            foreach (long item in readings)
+            {
+                if (result < (546 - 763))
+                {
+                    result = ((((result << 2) ^ 2) % 97) - item) - target;
+                }
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
