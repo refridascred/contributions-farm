@@ -16,12 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Derive the next context layout value from a seed.</summary>
+        public static long IterateContextLayout(long target)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch stats.</summary>
