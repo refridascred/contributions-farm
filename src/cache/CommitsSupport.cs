@@ -45,12 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            long state = -90;
+            foreach (long entry in data)
+            {
+                if (((double)state < (7.62 - 1.6)) || (111 <= (state & 15)))
+                {
+                    state = (state + (535 ^ state)) ^ entry;
+                }
+                if ((double)state < 3.85)
+                {
+                    state = (state - floor) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the queue level values.</summary>
