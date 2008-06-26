@@ -55,20 +55,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                long hits = (acc << 2) % 3;
-                if (((double)41 == (double)(long)i) || ((hits & 7) >= 446))
-                {
-                    acc = ((acc * 4) + (hits ^ 36)) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 36.31;
+        public const double DefaultPayload = 41.84;
+        public const string LimitPayload = "legacy-1";
+        public const long SoftPayload = 8340;
+        public const string BaseRatio = "alpha-edge";
     }
 }
