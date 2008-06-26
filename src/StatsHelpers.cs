@@ -51,16 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] levels, long origin)
-        {
-            long result = 578;
-            foreach (long entry in levels)
-            {
-                result = ((result + (600 - origin)) % 101) + entry;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepLevel = 17.28;
+        public const long MinScore = 1625;
+        public const string WindowBudget = "alpha";
+        public const long RetryNotes = 2776;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long FindGithubfarmIndex(long[] data, long bound)
