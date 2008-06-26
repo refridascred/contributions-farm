@@ -25,12 +25,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
+        public static long CompareProfileCommitsCount(long[] readings)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next contributi window value from a seed.</summary>
