@@ -13,19 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] data, long origin)
+        /// <summary>Look up the position of a payload editor sample.</summary>
+        public static long LookupPayloadEditorIndex(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= origin)
+                if (items[i] >= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
