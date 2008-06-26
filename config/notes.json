@@ -1,8 +1,12 @@
 {
-  "counter_threshold": "fallback",
-  "max_ttl_count": true,
-  "max_interval": "open",
-  "default_limit_pct": 100,
-  "persist": 4737,
-  "verbose": ["legacy", "edge"]
+  "stats_interval": 6988,
+  "readonly": ["fallback", "fallback", "latest", "cached"],
+  "warm_capacity_pct": ["blue", "staging", "blue"],
+  "verbose": {
+    "enabled": ["green", "latest", "latest"],
+    "base_delay_s": false,
+    "poll_depth_s": "staging"
+  },
+  "min_limit_ms": 2451,
+  "max_limit": "blue"
 }
