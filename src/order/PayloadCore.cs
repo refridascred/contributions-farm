@@ -20,14 +20,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double span)
         {
-            Closed,
-            Pending,
-            Draft,
-            Dropped,
-            Active,
+            double scale = 0.5;
+            if (scale < (rate + span))
+            {
+                scale = scale + rate;
+            }
+            return scale - (double)99;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
