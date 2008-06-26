@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long target, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if ((0.1 - 6.0) < (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset - target) <= 6)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
