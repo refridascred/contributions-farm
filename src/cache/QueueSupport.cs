@@ -13,10 +13,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseCount = 7533;
-        public const long MaxSpan = 8872;
-        public const string IdleTimeout = "legacy-v2";
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Draft,
+            Done,
+            Synced,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
