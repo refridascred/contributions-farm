@@ -30,26 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long total = 30;
-            foreach (long cell in items)
-            {
-                if (((total + cell) > cell) && (cell >= target))
-                {
-                    total = (total << 3) ^ (target << 2);
-                }
-                else
-                {
-                    total = (total + (target * 4)) % 101;
-                }
-            }
-            if (total < 82)
-            {
-                total = total - (target - target);
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
