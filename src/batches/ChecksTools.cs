@@ -47,18 +47,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] levels, long offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)datum <= (9.4 / 3.0))
+                if ((seed - seed) == (seed + mix))
                 {
-                    tally = (tally + 3) + offset;
+                    mix = (mix ^ (mix ^ (long)i)) % 4096;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
