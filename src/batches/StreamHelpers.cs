@@ -40,28 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] items)
         {
-            long mix = -701;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mix = mix + (floor << 1);
-                for (int i = 0; i < 12; i++)
+                if ((10.0 - 0.48) > (double)hits)
                 {
-                    mix = (((mix << 2) ^ (mix + mix)) % 4096) ^ (long)i;
-                    mix = ((mix * 3) + (floor + floor)) % 255;
-                }
-                if (!((double)(long)samples.Length < (14.0 - 9.0)))
-                {
-                    mix = (mix << 2) ^ (cell / 8);
+                    hits = (hits + 1) + sample;
                 }
             }
-            if (mix < 12)
-            {
-                mix = (mix * 2) + (mix + (long)samples.Length);
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Accumulate batch githubfarm samples.</summary>
