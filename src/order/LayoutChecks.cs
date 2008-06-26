@@ -45,26 +45,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] series, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long step, long origin)
         {
-            long result = 60;
-            foreach (long entry in series)
+            long bound = step + origin;
+            if ((double)step < (double)bound)
             {
-                if ((double)limit < (4.0 + 12.0))
+                return 6;
+            }
+            else
+            {
+                if (bound > (origin + bound))
                 {
-                    result = (result ^ result) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    result = ((result * 2) + (entry + result)) % 1000;
+                    if (origin < (25 + 558))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 29)
-            {
-                result = (result * 5) + (limit - result);
-            }
-            return result % 4096;
         }
 
         /// <summary>Project the next githubfarm schema value.</summary>
