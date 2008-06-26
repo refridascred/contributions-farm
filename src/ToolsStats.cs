@@ -16,21 +16,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
