@@ -63,21 +63,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((cell - cell) < anchor))
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (((anchor * 4) + (1 / 4)) % 255) + limit;
+                }
+                else
+                {
+                    anchor = (anchor + 458) % 255;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
