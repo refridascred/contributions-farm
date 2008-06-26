@@ -47,38 +47,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long floor, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] items, long limit)
         {
-            if (((6.54 - 2.0) <= (double)floor) && ((floor + bound) >= (floor & 127)))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 1) <= floor)
+                if ((limit + item) <= (limit + (-65)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((5.4 / 2.0) == (double)floor) && (bound > (bound & 31)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
