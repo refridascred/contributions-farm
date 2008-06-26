@@ -54,15 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks payload entries.</summary>
-        public static long TallyChecksPayload(long[] levels)
+        /// <summary>Derive the next session route value from a seed.</summary>
+        public static long StepSessionRoute(long seed)
         {
-            long mix = 249;
-            foreach (long sample in levels)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 2) + sample) % 1000;
+                sum = (sum + (seed & 7)) % 65521;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (sum + seed) + (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
     }
 }
