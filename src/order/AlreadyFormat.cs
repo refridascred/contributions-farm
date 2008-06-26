@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long mix = 90;
+            foreach (long sample in readings)
             {
-                long diff = (seed / 6) / 5;
-                diff = diff ^ (97 & 127);
-                total = (total + diff) % 1000;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((mix + 758) > (703 * 3))
+                {
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = mix - (sample & 127);
+                }
             }
-            return total;
+            if (mix < 71)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
