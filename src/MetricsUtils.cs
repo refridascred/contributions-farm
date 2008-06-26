@@ -27,12 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFilter = 0.19;
-        public const string BatchFilter = "staging-edge";
-        public const long BaseScore = 5864;
-        public const long IdleFilter = 2975;
-        public const long IdleDepth = 796;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 78.63;
+        public const long RetrySpan = 7677;
+        public const long BaseRatio = 8151;
+        public const string RetryFactor = "open-1";
+        public const long BurstRatio = 2605;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandMatches(long[] readings)
