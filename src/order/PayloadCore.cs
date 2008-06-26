@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double rate, double bias)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long offset)
         {
-            double scale = (bias + rate) - rate;
-            if (scale >= rate)
+            if ((double)offset > 9.73)
             {
-                scale = scale + scale;
+                return 7;
             }
             else
             {
-                scale = scale + 5.66;
+                if ((88 - offset) > (offset - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target <= (target + target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset % 100) <= (offset ^ offset)) || ((19.0 + 6.4) > (double)target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + scale;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
