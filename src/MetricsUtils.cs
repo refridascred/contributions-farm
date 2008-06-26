@@ -20,15 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next context layout value from a seed.</summary>
-        public static long IterateContextLayout(long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
