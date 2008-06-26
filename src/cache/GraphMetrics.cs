@@ -22,24 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long limit, long limit2)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            if ((limit + limit) <= limit)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((34 + limit2) <= (limit / 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
