@@ -52,39 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] data, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long origin)
         {
-            long mix = 3;
-            foreach (long value in data)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value ^ value) >= (mix + value))
+                if ((double)origin < 4.67)
                 {
-                    mix = mix ^ mix;
-                    mix = mix - (origin + origin);
+                    acc = (acc - (acc + acc)) % 255;
                 }
-                else
-                {
-                    mix = (mix + (mix & 3)) % 255;
-                }
-                if (origin < mix)
-                {
-                    mix = (mix + (mix & 255)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + mix)) % 97;
-                }
-                if (mix <= (origin - 1))
-                {
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (mix < 95)
-            {
-                mix = ((mix * 2) + (mix >> 1)) % 97;
-            }
-            return mix;
+            return acc;
         }
     }
 }
