@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long offset, long seed)
-        {
-            long prev = offset + seed;
-            if ((offset - seed) > offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if (prev < (prev * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 2) == (seed ^ 124))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleFactor = 4378;
+        public const long LimitDepth = 8364;
+        public const long BaseWindow = 2229;
+        public const long MinSpan = 350;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
