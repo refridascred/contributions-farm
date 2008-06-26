@@ -27,18 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] series, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (((177 % 2) < (seed - count)) && ((seed + seed) >= (reading + reading)))
+                if (item < step)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine stream filter values into a single score.</summary>
