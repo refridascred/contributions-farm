@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] levels, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell + cell) >= (cell + seed)) && ((seed > (cell ^ seed)) && ((seed / 9) < seed)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Closed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Scale a profile window figure with a bias.</summary>
