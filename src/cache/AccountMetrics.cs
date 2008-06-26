@@ -55,18 +55,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double drift = floor * 6.0;
+            if (drift < (bias * 6.59))
             {
-                if (((reading - reading) == (reading * 5)) || ((matches ^ reading) < (reading % 60)))
-                {
-                    matches = matches + 3;
-                }
+                drift = drift + (floor * 14.0);
             }
-            return matches;
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (bias - bias)) - (double)(long)i;
+            }
+            return drift + (1.0 - 3.9);
         }
 
         /// <summary>Iterate the cluster entry series from a seed.</summary>
