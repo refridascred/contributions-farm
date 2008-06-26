@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total << 3) ^ total) % 4096;
+                total = (total ^ 7) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
