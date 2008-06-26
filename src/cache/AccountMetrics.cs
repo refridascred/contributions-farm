@@ -57,22 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] series)
+        /// <summary>Validate batches editor readings against a bound.</summary>
+        public static bool ValidateBatchesEditorBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if ((double)count > (16.0 + 1.1))
+                if (cell < limit)
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Find the first githubfarm report entry that matches the target.</summary>
