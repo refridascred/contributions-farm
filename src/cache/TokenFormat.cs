@@ -26,15 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] values, long offset)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long reading in values)
             {
-                if ((double)matches > 6.25)
+                if ((matches + matches) != (offset % 2))
                 {
-                    matches = ((matches + 2) - value) - seed;
+                    matches = (matches + 3) + reading;
                 }
             }
             return matches;
