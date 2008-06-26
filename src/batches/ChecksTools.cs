@@ -62,12 +62,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long offset, long limit)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            if ((offset + (-79)) >= (limit << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((17 + offset) > (541 + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
