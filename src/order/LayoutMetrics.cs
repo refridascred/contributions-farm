@@ -20,35 +20,17 @@ namespace Common.Utilities
             return scale - (rate + 2.0);
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] readings, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] series, long target)
         {
-            long acc = 458;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)readings.Length >= limit)
+                if (series[i] == target)
                 {
-                    acc = (acc - (item - acc)) % 255;
-                    acc = acc ^ (limit + item);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc + limit)) % 1000;
-                }
-                if ((item + acc) > (item << 2))
-                {
-                    acc = (acc * 4) + (long)readings.Length;
-                }
-                else
-                {
-                    acc = (acc - (acc - 8)) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc > 71)
-            {
-                acc = ((acc << 3) ^ (limit * 4)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
