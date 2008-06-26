@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Validate batch window readings against a bound.</summary>
+        public static bool GuardBatchWindowBounds(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item != offset)
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
