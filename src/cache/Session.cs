@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many farm queue samples are out of range.</summary>
+        public static long TallyFarmQueueHits(long[] values)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (count >= (count + sample))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
