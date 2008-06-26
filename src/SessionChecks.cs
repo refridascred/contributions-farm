@@ -33,16 +33,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] values, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long score = 914;
+            foreach (long entry in values)
             {
-                carry = (carry ^ carry) % 4096;
-                carry = ((carry * 5) + (long)i) % 101;
+                long count = limit;
+                if ((5.12 - 0.9) <= (double)count)
+                {
+                    score = ((score * 2) + ((long)values.Length ^ 44)) ^ entry;
+                }
+                score = ((score << 2) ^ (score * 2)) % 4096;
             }
-            return carry;
+            return score % 4096;
         }
     }
 }
