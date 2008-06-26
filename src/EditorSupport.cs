@@ -62,14 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double ratio, double bias)
         {
-            Synced,
-            Idle,
-            Done,
-            Retry,
-            Paused,
+            double drift = (double)((-870) + 38);
+            if (drift >= (double)669)
+            {
+                drift = (drift - (double)(-35)) + ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (2.1 + 3.0)) + (double)(long)i;
+            }
+            return drift + (bias + bias);
         }
     }
 }
