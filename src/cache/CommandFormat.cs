@@ -29,18 +29,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the metrics schema entries that pass the check.</summary>
-        public static long MeasureMetricsSchemaHits(long[] items, long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((-84) <= (tally & 7))
-                {
-                    tally = ((tally + 2) - datum) + offset;
-                }
+                total = total + (total % 24);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
