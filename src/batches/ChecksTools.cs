@@ -12,14 +12,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 8858;
+        public const long BatchFarm = 6671;
+        public const double RetryFarm = 36.65;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] samples, long bound)
