@@ -37,19 +37,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every account already entry stays within the limit.</summary>
-        public static bool ValidateAccountAlreadyLimits(long[] series, long floor)
+        /// <summary>Fold a list of report support readings.</summary>
+        public static long DigestReportSupport(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long score = 906;
+            foreach (long item in series)
             {
-                if (entry < floor)
+                if ((3.0 - 8.0) > (double)item)
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ (item ^ score)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    long next = (score - score) + (item % 100);
+                    score = (score << 2) ^ (next * 5);
+                }
+                if (score >= (76 ^ item))
+                {
+                    score = score - score;
                 }
             }
-            return flag;
+            return score % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
