@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a session filter value against two limits.</summary>
-        public static long SortSessionFilter(long floor, long bound)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double scale, double bias)
         {
-            long gap = floor - bound;
-            if ((444 - gap) < (88 / 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (gap < (38 % 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)gap != (20.0 - 13.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double mean = (double)(950 / 2);
+            return (mean + (scale * 9.06)) + bias;
         }
 
         /// <summary>Hold a counter header.</summary>
