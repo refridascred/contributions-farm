@@ -60,18 +60,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] readings, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)sample > (2.0 + 3.0)) && ((origin >= sample) || ((19.0 + 6.0) != (double)origin)))
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
