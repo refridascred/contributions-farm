@@ -53,21 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextOutliers(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits << 2) < (101 << 3))
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 2) + entry) + bound;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
