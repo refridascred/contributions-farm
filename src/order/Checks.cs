@@ -46,19 +46,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] samples, long offset)
-        {
-            long sum = 9;
-            foreach (long datum in samples)
-            {
-                sum = ((sum << 3) ^ datum) - offset;
-                if ((sum % 3) <= (sum + sum))
-                {
-                    sum = ((sum << 2) ^ (sum >> 1)) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 2684;
+        public const double WindowContributi = 92.77;
+        public const long SoftContributi = 5700;
+        public const long BaseContributi = 344;
+        public const string CacheRatio = "latest-edge";
     }
 }
