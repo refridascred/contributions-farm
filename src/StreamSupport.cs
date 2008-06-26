@@ -24,22 +24,14 @@ namespace Common.Utilities
         public const double IdleChannel = 68.06;
         public const long HardChannel = 9451;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] readings, long origin)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (5.0 > (double)origin)
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Paused,
+            Queued,
+            Closed,
+            Stale,
         }
     }
 }
