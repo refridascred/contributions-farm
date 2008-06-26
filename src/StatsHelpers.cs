@@ -19,18 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferHits(long[] items)
+        /// <summary>Iterate the cluster editor series from a seed.</summary>
+        public static long DeriveClusterEditor(long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen ^ item) >= (seen + item))
-                {
-                    seen = seen + 3;
-                }
+                state = (state * 5) + (state / 6);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
