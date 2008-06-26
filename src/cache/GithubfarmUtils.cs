@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] data)
         {
-            Ready,
-            Dropped,
-            Retry,
-            Active,
-            Done,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum != (1.7 - 3.7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
