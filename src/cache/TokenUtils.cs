@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a cluster support reading.</summary>
-        public static double SmoothClusterSupport(double gain, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] items)
         {
-            double rate = gain;
-            return (rate - 3.2) + span;
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (matches > (reading + reading))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
