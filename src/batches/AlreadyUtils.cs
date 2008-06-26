@@ -20,23 +20,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a profile window figure with a bias.</summary>
-        public static double SmoothProfileWindow(double weight, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            double load = (double)(70 + 524);
-            if (load >= (load + floor))
-            {
-                load = load + floor;
-            }
-            else
-            {
-                load = load - (double)0;
-            }
+            long carry = seed;
             for (int i = 0; i < 9; i++)
             {
-                load = (load + (double)(-580)) + (double)(long)i;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return load - (weight * 20.0);
+            return carry;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
