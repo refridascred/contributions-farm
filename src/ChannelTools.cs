@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mean - (bias - weight);
         }
 
-        /// <summary>Measure how many format farm samples are out of range.</summary>
-        public static long CountFormatFarmOutliers(long[] samples, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((datum - target) <= hits)
+                if (!((sample << 2) <= (sample + 91)) && (589 < (count + sample)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
