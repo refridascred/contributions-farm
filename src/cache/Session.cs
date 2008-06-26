@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] values)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double drift = scale;
+            if (drift > (double)(-259))
             {
-                if ((matches * 5) < (matches >> 3))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                drift = drift - (drift / 8.0);
             }
-            return matches;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - offset) + (double)(long)i;
+            }
+            return drift - (scale * 2.79);
         }
 
         /// <summary>Look up the position of a payload editor sample.</summary>
