@@ -51,18 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((696 - datum) >= (long)series.Length)
+                if (entry >= floor)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
