@@ -63,25 +63,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank payload queue input into a small class.</summary>
-        public static long SortPayloadQueue(long step, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long gap = step ^ target;
-            if (!((69 >> 4) < gap))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ 764) >= gap)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Failed,
+            Closed,
+            Retry,
         }
     }
 }
