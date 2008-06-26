@@ -1,5 +1,19 @@
 {
-  "strict": 60,
-  "soft_ratio_s": 16.2,
-  "audit": "strict"
+  "persist": [456, 498],
+  "strict": 94,
+  "poll_timeout_count": {
+    "soft_ratio_s": "latest",
+    "readonly": {
+      "sync_interval": 262,
+      "idle_depth_ms": ["eu-west", "eu-west"],
+      "min_retries_s": true,
+      "sync_capacity": 12.58,
+      "default_ttl_ms": [218, 367],
+      "session_ratio": "stable"
+    },
+    "burst_interval_ms": "open",
+    "metric_limit": "stable",
+    "batch_threshold_ms": false,
+    "payload_capacity": 80
+  }
 }
