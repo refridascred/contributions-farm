@@ -51,16 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 2) + ((-58) & 15)) % 101;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
