@@ -1,10 +1,13 @@
 {
-  "format_window": "legacy",
-  "sync_threshold_ms": {
-    "base_timeout_pct": ["standard", "edge"],
-    "soft_ttl_pct": [270, 244, 448],
-    "cache_limit_ms": true
+  "retry_retries_count": 93,
+  "poll_retries_s": {
+    "cache_retries": "edge",
+    "readonly": 2653,
+    "farm_depth": "primary",
+    "soft_timeout_count": "edge"
   },
-  "soft_retries": true,
-  "flush_ratio": 6064
+  "warm_delay_s": false,
+  "flush_timeout": 15,
+  "base_ratio_pct": 36,
+  "session_window": 88.15
 }
