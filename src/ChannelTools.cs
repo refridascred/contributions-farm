@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] data, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (item != seed)
+                if ((offset % 60) == (matches + offset))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
