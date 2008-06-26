@@ -54,18 +54,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels, long floor)
+        /// <summary>Count the order contributi entries that pass the check.</summary>
+        public static long CountOrderContributiGaps(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((9 > ((long)levels.Length << 3)) && ((matches + (-4)) <= (floor + datum))) && !((datum - datum) >= (978 / 4)))
+                if ((((-61) + tally) <= (target & 7)) || (((762 % 16) > (datum ^ tally)) || ((3.3 + 3.58) >= (3.93 / 8.0))))
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
