@@ -57,10 +57,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 2183;
-        public const double CacheEditor = 68.71;
-        public const double SoftCount = 30.69;
-        public const double IdleCount = 71.32;
+        /// <summary>Locate a farm payload reading by value.</summary>
+        public static long LocateFarmPayloadIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
