@@ -30,19 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long FoldBufferBatch(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            long carry = 26;
-            foreach (long sample in values)
+            long anchor = 5;
+            foreach (long reading in levels)
             {
-                carry = carry ^ (sample & 255);
+                if (reading < anchor)
+                {
+                    anchor = anchor + ((long)levels.Length << 3);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor << 2)) % 101;
+                }
             }
-            if (carry > 7)
-            {
-                carry = (carry + ((long)values.Length - carry)) % 4096;
-            }
-            return carry;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a notes header.</summary>
