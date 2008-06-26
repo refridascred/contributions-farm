@@ -27,24 +27,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long origin, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if (bound >= (origin + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9 - origin) <= (origin << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Active,
+            Closed,
+            Retry,
+            Failed,
         }
     }
 }
