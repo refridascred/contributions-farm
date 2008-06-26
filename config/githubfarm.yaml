@@ -1,11 +1,7 @@
 # githubfarm settings
-sync_interval: staging
-warm_interval:
-  - strict
-  - local
-  - edge
-  - blue
-window_ratio:
-  - primary
-  - open
-queue_size: true
+flush_ttl: 43
+flush_delay_count: true
+audit: 47.22
+order_ttl: 4230
+session_depth: 8779
+idle_depth_count: 8727
