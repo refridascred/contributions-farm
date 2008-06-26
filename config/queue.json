@@ -1,10 +1,6 @@
 {
-  "idle_capacity": "latest",
-  "hard_depth": 100,
-  "sync_limit": {
-    "burst_delay_ms": "blue",
-    "commits_interval": 500,
-    "max_capacity_pct": "stable",
-    "warm_retries_s": 81.76
-  }
+  "verbose": true,
+  "retry_capacity_s": 3,
+  "sync_capacity": 8189,
+  "enabled": 30
 }
