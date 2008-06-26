@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] == step)
+                if (samples[i] == origin)
                 {
                     return (long)i;
                 }
