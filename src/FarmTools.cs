@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (5.02 >= (double)(long)items.Length)
-                {
-                    count = ((count + 3) ^ cell) + seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepInterval = 3424;
+        public const long MaxLayout = 826;
+        public const long BurstSpan = 8851;
+        public const double DefaultSpan = 23.26;
     }
 }
