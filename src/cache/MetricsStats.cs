@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 29.42;
+        public const string CacheRatio = "open";
+        public const long SoftBatches = 5580;
+        public const string MinBatches = "stable-v2";
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
