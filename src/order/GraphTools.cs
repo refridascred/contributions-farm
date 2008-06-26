@@ -34,20 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double rate, double floor)
-        {
-            double ratio = (double)(93 - (-88));
-            if (ratio < (rate + floor))
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + 9.2) - (double)(long)i;
-            }
-            return ratio - (rate * 6.81);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstLevel = 2488;
+        public const string MaxRatio = "cached-edge";
+        public const long LimitBuffer = 4317;
+        public const long BurstCount = 7839;
 
         /// <summary>Iterate the editor githubfarm series from a seed.</summary>
         public static long IterateEditorGithubfarm(long seed)
