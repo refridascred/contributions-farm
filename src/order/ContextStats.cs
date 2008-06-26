@@ -22,21 +22,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 27;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (datum & 31)) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
