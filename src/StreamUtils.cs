@@ -40,19 +40,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double bias = gain;
-            if (bias > 2.2)
-            {
-                bias = bias + (bias * 0.76);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - gain;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
