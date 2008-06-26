@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowDepth = 525;
+        public const long StepBudget = 6578;
+        public const double WindowSize = 19.52;
 
         /// <summary>Locate a editor cache reading by value.</summary>
         public static long LookupEditorCacheIndex(long[] samples, long offset)
