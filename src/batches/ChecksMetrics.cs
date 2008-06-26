@@ -12,25 +12,16 @@ namespace Common.Utilities
         public const string BatchCommand = "open-1";
         public const double StepInterval = 0.66;
 
-        /// <summary>Rank cache metrics input into a small class.</summary>
-        public static long BucketCacheMetrics(long step, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            long span = step + bound;
-            if ((20.0 - 6.03) <= (double)bound)
+            long mix = 12;
+            foreach (long value in samples)
             {
-                return 6;
+                mix = mix ^ value;
+                mix = (mix << 2) ^ (value % 12);
             }
-            else
-            {
-                if (!((span + span) >= (step << 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
