@@ -25,20 +25,13 @@ namespace Common.Utilities
         public const long CacheLevel = 6916;
         public const double LimitGraph = 96.14;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((score >> 4) >= (long)i)
-                {
-                    score = score - (target + 9);
-                    score = ((score * 5) + (score - (long)i)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a stream options.</summary>
