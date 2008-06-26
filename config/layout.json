@@ -1,6 +1,7 @@
 {
-  "max_retries_s": ["blue", "eu-west", "eu-west", "stable"],
-  "report_threshold": true,
-  "token_window": "latest",
-  "readonly": ["edge", "standard"]
+  "soft_ratio_ms": 91.47,
+  "burst_retries_ms": "open",
+  "max_retries_pct": 500,
+  "soft_ratio": 44.89,
+  "max_interval_pct": "local"
 }
