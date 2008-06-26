@@ -62,18 +62,15 @@ namespace Common.Utilities
             return load + (double)422;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Count the report queue entries that pass the check.</summary>
+        public static long AuditReportQueueHits(long[] samples, long limit)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((limit + datum) <= datum) && ((4 - limit) <= limit))
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
