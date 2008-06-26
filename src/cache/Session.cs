@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate cluster batch readings against a bound.</summary>
+        public static bool GuardClusterBatchRange(long[] readings, long bound)
         {
-            Draft,
-            Done,
-            Idle,
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the queue mode values.</summary>
