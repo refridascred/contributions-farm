@@ -16,18 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] items)
         {
-            long mix = -828;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((floor > (mix / 8)) || ((floor % 24) <= (mix - mix)))
+                if ((seen ^ item) >= (seen + item))
                 {
-                    mix = (mix - (floor & 3)) ^ entry;
+                    seen = seen + 3;
                 }
             }
-            return mix % 4096;
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
