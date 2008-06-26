@@ -72,11 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 55.59;
-        public const long DefaultLevel = 9422;
-        public const double MinNotes = 29.08;
-        public const double SoftNotes = 12.15;
-        public const double IdleRatio = 60.54;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepCount = 56.85;
+        public const long SoftOrder = 9881;
+        public const double CacheWidth = 22.69;
+        public const long HardScore = 984;
+        public const string StepWidth = "alpha-v2";
     }
 }
