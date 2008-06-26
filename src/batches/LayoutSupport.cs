@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const string WindowLevel = "local-1";
         public const string DefaultQueue = "open-1";
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
