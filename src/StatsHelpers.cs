@@ -50,10 +50,10 @@ namespace Common.Utilities
         public const string WindowBudget = "alpha";
         public const long RetryNotes = 2776;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowScore = 4484;
-        public const long RetryEditor = 3364;
-        public const string MinEditor = "fallback-v2";
-        public const double IdleEditor = 24.48;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "stable-1";
+        public const long DefaultDepth = 340;
+        public const double HardSpan = 26.02;
+        public const double MaxFactor = 95.3;
     }
 }
