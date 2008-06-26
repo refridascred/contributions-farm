@@ -22,22 +22,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] data, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long state = -90;
-            foreach (long entry in data)
-            {
-                if (((double)state < (7.62 - 1.6)) || (111 <= (state & 15)))
-                {
-                    state = (state + (535 ^ state)) ^ entry;
-                }
-                if ((double)state < 3.85)
-                {
-                    state = (state - floor) % 1000;
-                }
-            }
-            return state % 1000;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
