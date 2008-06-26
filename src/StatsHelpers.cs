@@ -57,18 +57,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long GradeGraphPayload(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long cur = origin - seed;
+            if ((seed / 8) < (origin + origin))
             {
-                if ((datum + tally) < (7 - 71))
+                return 1;
+            }
+            else
+            {
+                if ((cur - origin) < (cur % 24))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
