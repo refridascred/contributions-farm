@@ -64,10 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "open-v2";
-        public const long WindowWidth = 4560;
-        public const long MaxPayload = 7584;
-        public const string DefaultPayload = "strict-edge";
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftSpan = 0.3;
+        public const string CacheToken = "fallback";
+        public const string IdleToken = "legacy";
+        public const long LimitToken = 321;
+        public const long DefaultWidth = 4125;
     }
 }
