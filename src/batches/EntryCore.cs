@@ -70,19 +70,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] samples, long bound)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Locked,
+            Paused,
+            Queued,
+            Done,
         }
     }
 }
