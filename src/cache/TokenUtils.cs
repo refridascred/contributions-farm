@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const string DefaultToken = "local-edge";
         public const string BurstToken = "cached-edge";
 
-        /// <summary>Blend two cache tools measurements.</summary>
-        public static double ScaleCacheTools(double rate, double bias)
-        {
-            double weight = bias / 9.0;
-            if (weight >= (bias + rate))
-            {
-                weight = weight - (double)3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (double)5) - (double)(long)i;
-            }
-            return weight - 5.0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheWidth = 1521;
+        public const long SoftCluster = 7073;
+        public const string HardSpan = "stable";
+        public const string IdleCluster = "open-v2";
+        public const long BatchCount = 6257;
     }
 }
