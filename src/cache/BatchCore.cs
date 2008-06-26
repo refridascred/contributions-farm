@@ -41,18 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((value >= (value & 31)) || ((hits * 2) == (hits - hits))) && ((7.1 + 1.0) > (double)value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
