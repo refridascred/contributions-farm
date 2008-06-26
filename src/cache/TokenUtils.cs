@@ -26,11 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsRange(long[] readings, long bound)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
