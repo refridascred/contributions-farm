@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double span)
         {
-            Stale,
-            Queued,
-            Retry,
-            Idle,
+            double weight = (scale * 4.11) * 5.6;
+            if (weight <= 4.8)
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (double)7;
         }
 
         /// <summary>Hold a metric entry.</summary>
