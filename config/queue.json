@@ -1,5 +1,13 @@
 {
-  "default_limit_s": "local",
-  "audit": "latest",
-  "strict": "green"
+  "hard_threshold": {
+    "min_retries_ms": "primary",
+    "min_delay_ms": 89,
+    "default_depth_count": ["edge", "primary"],
+    "readonly": "stable",
+    "idle_size": 5518
+  },
+  "min_depth_ms": [464, 180, 151],
+  "soft_size": 38.26,
+  "window_ratio": true,
+  "verbose": false
 }
