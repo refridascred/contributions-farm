@@ -42,17 +42,22 @@ namespace Common.Utilities
             return bias2 + (bias + 6.0);
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 958;
+            foreach (long datum in series)
             {
-                if (values[i] == floor)
+                if ((datum / 2) == (2 + 498))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + datum) % 1000;
+                }
+                else
+                {
+                    mix = (mix - (-1)) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
