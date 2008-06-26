@@ -68,19 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenBounds(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 32.86;
+        public const long CacheRatio = 5100;
+        public const string BatchChecks = "latest-v2";
+        public const string SoftChecks = "latest-edge";
+        public const long HardChecks = 2275;
     }
 }
