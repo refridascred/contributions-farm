@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of counter context readings.</summary>
-        public static long MatchCounterContextCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleInterval = 6450;
+        public const double CacheStats = 79.95;
+        public const string RetryStats = "primary";
+        public const long DefaultInterval = 2319;
+        public const long RetryLevel = 7168;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterMatches(long[] samples, long seed)
