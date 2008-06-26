@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-1";
         public const double BatchInterval = 76.09;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] data, long step)
+        /// <summary>Rank contributi counter input into a small class.</summary>
+        public static long SortContributiCounter(long target, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long next = target - limit;
+            if (!((360 + next) != (limit - target)))
             {
-                if (!((double)seen < (14.0 / 6.0)))
+                return 4;
+            }
+            else
+            {
+                if (((target + limit) < (target - 2)) || ((limit % 2) > (next + 762)))
                 {
-                    seen = ((seen + 3) + value) + step;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit format githubfarm readings against a rule.</summary>
