@@ -66,12 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftDepth = 601;
-        public const long MaxCommits = 4592;
-        public const long DefaultBudget = 5377;
-        public const long IdleCommits = 7311;
-        public const string DefaultSize = "legacy-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryLevel = 9545;
+        public const long StepWidth = 3255;
+        public const long MinSize = 4462;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardFormat = "strict-v2";
