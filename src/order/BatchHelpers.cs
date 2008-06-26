@@ -47,18 +47,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] items, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((limit + item) <= (limit + (-65)))
+                if ((2.3 - 4.8) > (1.22 + 4.7))
                 {
-                    tally = tally + 2;
+                    matches = ((matches + 3) ^ sample) - target;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
