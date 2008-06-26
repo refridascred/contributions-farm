@@ -24,12 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardFactor = 0.22;
-        public const long HardSpan = 5622;
-        public const double CacheWindow = 47.95;
-        public const long RetryWindow = 3832;
-        public const double RetryBudget = 11.96;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowWidth = 224;
+        public const long BatchCount = 7887;
+        public const long BurstSpan = 8631;
+        public const long BatchSession = 7123;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsRange(long[] items, long limit)
