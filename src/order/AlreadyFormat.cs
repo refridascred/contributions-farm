@@ -44,10 +44,12 @@ namespace Common.Utilities
         public const long CacheSize = 4155;
         public const long SoftInterval = 1904;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BurstTimeout = 34.97;
-        public const string BatchPayload = "primary-edge";
-        public const string DefaultPayload = "staging-v2";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheDepth = "cached-v2";
+        public const double SoftEditor = 49.29;
+        public const double SoftFactor = 7.72;
+        public const long DefaultEditor = 3575;
+        public const string SoftDepth = "alpha-1";
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
