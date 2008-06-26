@@ -53,12 +53,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Match up payload metrics samples.</summary>
+        public static long PairPayloadMetricsCount(long[] samples)
         {
-            Locked,
-            Retry,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
