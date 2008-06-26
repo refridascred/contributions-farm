@@ -51,12 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (entry <= (entry - 803))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
