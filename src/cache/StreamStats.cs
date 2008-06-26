@@ -51,18 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] items)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((hits & 3) < (5 + (long)items.Length))
+                if (matches <= (matches - value))
                 {
-                    hits = (hits + 2) + reading;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
