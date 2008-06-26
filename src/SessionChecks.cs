@@ -33,17 +33,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ carry) % 4096;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
