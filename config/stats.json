@@ -1,8 +1,15 @@
 {
-  "default_threshold_s": "stable",
-  "flush_interval": true,
-  "format_ttl": "legacy",
-  "base_depth_pct": ["open", "strict"],
-  "stream_ratio": 45.3,
-  "sync_window": "eu-west"
+  "counter_retries": 20.44,
+  "filter_limit": [334, 185],
+  "notes_timeout": 1.85,
+  "account_threshold": {
+    "cache_ttl_count": 24,
+    "default_capacity_count": 76.08,
+    "cache_size_ms": true,
+    "channel_ttl": false,
+    "min_threshold_pct": "strict",
+    "cache_delay": 250
+  },
+  "support_timeout": "local",
+  "contributi_limit": true
 }
