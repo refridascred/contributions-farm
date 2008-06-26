@@ -32,16 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a schema window counter forward.</summary>
-        public static long StepSchemaWindow(long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score << 3) ^ score) % 65521;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
