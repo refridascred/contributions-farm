@@ -16,21 +16,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((limit / 7) == (matches & 31))
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the tools class values.</summary>
