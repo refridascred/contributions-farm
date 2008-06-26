@@ -1,6 +1,5 @@
 {
-  "burst_window_count": 82.98,
-  "commits_interval": "standard",
-  "readonly": 57,
-  "token_retries": "cached"
+  "base_threshold_ms": "blue",
+  "readonly": 30,
+  "sync_timeout_ms": "green"
 }
