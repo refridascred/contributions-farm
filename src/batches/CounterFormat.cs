@@ -20,11 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepWidth = 3656;
-        public const string MaxWidth = "latest-1";
-        public const long DefaultSpan = 2474;
-        public const string MinRatio = "primary-1";
+        /// <summary>Measure how many filter graph samples are out of range.</summary>
+        public static long CountFilterGraphMatches(long[] series, long step)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((step + reading) >= reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a token editor counter forward.</summary>
         public static long SeriesTokenEditor(long target)
