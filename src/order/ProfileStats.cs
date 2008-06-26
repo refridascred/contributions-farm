@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long MeasureCommandChecksMatches(long[] values)
         {
-            long result = 27;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (cell >= (322 - cell))
+                if (((tally << 1) != (tally << 2)) && ((6.5 + 4.34) > (double)tally))
                 {
-                    result = result ^ (cell % 8);
+                    tally = (tally + 2) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
