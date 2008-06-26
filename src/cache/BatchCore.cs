@@ -36,38 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch filter pair into a bucket.</summary>
-        public static long ClassifyBatchFilter(long bound, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            if ((0.73 / 5.0) > 3.7)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((7 / 7) <= step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((101 < (step & 31)) || ((step ^ step) <= (step << 3)))
+                    if ((samples[i] ^ samples[j]) < 18)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.74 + 5.0) > (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the format kind values.</summary>
