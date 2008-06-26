@@ -61,24 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry << 2) ^ (long)i) % 101;
-                if (!((origin + origin) != (origin + (long)i)))
-                {
-                    carry = ((carry * 4) + (long)i) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ ((long)i % 2);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
