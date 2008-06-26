@@ -51,13 +51,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 2) + ((-58) & 15)) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
