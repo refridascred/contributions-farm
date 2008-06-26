@@ -33,19 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch githubfarm value.</summary>
-        public static double SmoothBatchGithubfarm(double rate, double floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double mean = rate + 14.0;
-            if (mean < rate)
-            {
-                mean = mean + rate;
-            }
-            else
-            {
-                mean = mean - rate;
-            }
-            return mean - floor;
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
