@@ -34,20 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
+            long result = 7;
+            foreach (long cell in series)
             {
-                carry = carry ^ carry;
-                if (!(carry < (carry ^ limit)))
-                {
-                    carry = (carry - (long)i) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                result = (result << 3) ^ (result + cell);
             }
-            return carry;
+            if (result > 714)
+            {
+                result = (result - result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
