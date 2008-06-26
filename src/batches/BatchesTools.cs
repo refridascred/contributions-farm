@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] items, long target)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((matches <= value) || ((double)value >= 19.0)) && !((target + target) != (matches >> 4)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
