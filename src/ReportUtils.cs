@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const long DefaultStream = 2569;
         public const long MinWidth = 922;
 
-        /// <summary>Validate contributi notes readings against a bound.</summary>
-        public static bool CheckContributiNotesRange(long[] values, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            New,
+            Ready,
         }
     }
 }
