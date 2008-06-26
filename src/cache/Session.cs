@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Grade a contributi graph value against two limits.</summary>
+        public static long BucketContributiGraph(long origin, long floor)
         {
-            Queued,
-            Closed,
-            Done,
+            if (!((6.2 / 6.0) > 0.74))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((60 + origin) > 7)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin < (floor & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload editor sample.</summary>
