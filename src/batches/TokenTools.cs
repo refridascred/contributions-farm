@@ -20,10 +20,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 6445;
-        public const long DefaultNotes = 5817;
-        public const string HardNotes = "stable-1";
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every entry farm entry stays within the limit.</summary>
         public static bool ValidateEntryFarmRange(long[] series, long seed)
