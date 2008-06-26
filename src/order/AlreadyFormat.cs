@@ -58,18 +58,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] levels)
+        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
+        public static bool ValidateClusterStatsRange(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((double)seen < (4.39 + 15.0))
+                if (entry > target)
                 {
-                    seen = (seen + 2) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
