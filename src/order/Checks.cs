@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSize = 8072;
+        public const double BurstSize = 61.99;
+        public const double StepAccount = 91.99;
+        public const double MinAccount = 25.67;
+        public const long CacheWidth = 653;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long seed, long floor)
