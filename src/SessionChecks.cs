@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 12;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value + offset) >= value)
                 {
-                    if ((items[i] - items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix + offset) % 1000;
+                }
+                if (offset >= (offset + offset))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the githubfarm queue entries that pass the check.</summary>
