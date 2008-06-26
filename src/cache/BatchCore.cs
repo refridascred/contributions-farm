@@ -27,12 +27,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a entry profile value against two limits.</summary>
+        public static long BucketEntryProfile(long seed, long step)
         {
-            Stale,
-            Paused,
-            New,
+            long lane = seed - step;
+            if (((-228) % 100) != (step * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane * 5) > (-6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((lane + lane) >= (step - step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format kind values.</summary>
