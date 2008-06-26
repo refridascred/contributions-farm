@@ -29,14 +29,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 2474;
         public const string MinRatio = "primary-1";
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Roll a token editor counter forward.</summary>
+        public static long SeriesTokenEditor(long target)
         {
-            Active,
-            Ready,
-            Done,
-            Queued,
-            Dropped,
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = (score + (target - target)) % 65521;
+                score = ((score << 2) ^ target) % 97;
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
