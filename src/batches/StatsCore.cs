@@ -32,21 +32,27 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix ^ (mix + bound)) % 97;
+                if ((mix - bound) > (bound & 15))
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix + (long)i;
+                    break;
                 }
+                if ((double)mix >= 3.7)
+                {
+                    mix = ((mix << 2) ^ (mix << 1)) % 1000;
+                    mix = (mix * 4) + (3 & 3);
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a editor stats.</summary>
