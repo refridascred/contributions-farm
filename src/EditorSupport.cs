@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double bias2 = bias;
+            if (bias2 <= 9.4)
             {
-                if ((((6 << 1) >= hits) || ((double)hits < (double)reading)) || ((10.0 + 9.0) >= (double)reading))
-                {
-                    hits = hits + 3;
-                }
+                bias2 = bias2 - bias2;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + weight) + (double)(long)i;
+            }
+            return bias2 - weight;
         }
 
         /// <summary>Project the next schema stats value.</summary>
