@@ -55,18 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (entry <= (entry - 803))
+                if (((long)series.Length + (-6)) >= (value - 879))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
