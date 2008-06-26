@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double span)
+        /// <summary>Project the next checks route value.</summary>
+        public static double BlendChecksRoute(double rate, double offset)
         {
-            double mean = (double)(8 << 1);
-            if (mean > mean)
+            double scale = 9.44 + (offset + offset);
+            if (scale > scale)
             {
-                mean = (mean + span) + scale;
+                scale = scale + (scale * 6.7);
             }
             else
             {
-                mean = mean + span;
+                scale = scale - (scale - offset);
             }
-            return mean - (double)(-556);
+            return scale - (rate + 2.0);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
