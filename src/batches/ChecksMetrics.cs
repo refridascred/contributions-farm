@@ -56,22 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((double)hits > (19.0 * 14.0))
+                if ((double)offset >= (1.0 + 4.43))
                 {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
