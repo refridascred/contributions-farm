@@ -43,22 +43,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] readings)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)tally >= (double)sample)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
