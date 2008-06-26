@@ -1,5 +1,10 @@
 {
-  "max_ratio": ["fallback", "edge", "legacy"],
-  "cache_threshold": 500,
-  "retry_retries": 1459
+  "sync_threshold_ms": true,
+  "payload_retries": {
+    "enabled": 93,
+    "base_limit_s": 30.3,
+    "persist": "legacy",
+    "record_ttl": [155, 91]
+  },
+  "entry_window": 30.93
 }
