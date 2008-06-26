@@ -50,9 +50,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseCount = 46.89;
-        public const long SoftSupport = 4931;
-        public const long MinSupport = 8088;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseTimeout = 1064;
+        public const long StepBatches = 2904;
+        public const long BurstBatches = 3489;
+        public const double HardBatches = 86.03;
     }
 }
