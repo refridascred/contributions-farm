@@ -37,18 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 3842;
+        public const long RetryFarm = 7157;
+        public const long BaseFarm = 7412;
+        public const long CacheSize = 4155;
+        public const long SoftInterval = 1904;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double BurstTimeout = 34.97;
