@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleGraph = 40.39;
-        public const string MinGraph = "primary-edge";
-        public const string MaxGraph = "staging-edge";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long RetryRoute = 1910;
