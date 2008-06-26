@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const long WindowWidth = 1287;
         public const long BatchSpan = 3566;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double gain, double floor)
+        /// <summary>Fold a list of layout notes readings.</summary>
+        public static long TotalLayoutNotes(long[] levels)
         {
-            double rate = (6.55 - gain) + (double)739;
-            if (rate <= (double)99)
+            long score = 493;
+            foreach (long cell in levels)
             {
-                rate = (rate + (double)853) + floor;
+                score = (score ^ (score - score)) - cell;
             }
-            return rate - (double)297;
+            if (score > 9)
+            {
+                score = (score + score) % 65521;
+            }
+            return score;
         }
     }
 }
