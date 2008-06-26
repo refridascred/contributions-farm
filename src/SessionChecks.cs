@@ -10,20 +10,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 8234;
         public const double MinSession = 55.36;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] samples, long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                state = state ^ (state / 6);
-                if (!(11.0 <= (double)(long)i))
+                if (value > limit)
                 {
-                    state = state - (826 - (long)i);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Hold a metric summary.</summary>
