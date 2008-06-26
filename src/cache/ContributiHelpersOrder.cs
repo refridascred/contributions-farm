@@ -16,19 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a stream farm reading.</summary>
-        public static double ProjectStreamFarm(double ratio, double offset)
+        /// <summary>Compare every pair of metric token readings.</summary>
+        public static long CompareMetricTokenCount(long[] items)
         {
-            double scale = (double)(0 - 69);
-            if (scale < (offset + ratio))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (double)88;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (offset / 8.0)) + (double)(long)i;
-            }
-            return scale + (8.0 * 6.08);
+            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
