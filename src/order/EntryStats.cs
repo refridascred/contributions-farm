@@ -45,12 +45,18 @@ namespace Common.Utilities
         public const string BatchOrder = "standard-1";
         public const double StepOrder = 15.42;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleDepth = "staging-1";
-        public const string RetryBudget = "stable-edge";
-        public const double SoftDepth = 62.02;
-        public const string WindowBatches = "stable";
-        public const double StepSize = 36.29;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
