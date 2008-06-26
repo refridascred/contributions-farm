@@ -29,14 +29,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            Synced,
-            Paused,
-            Done,
-            Dropped,
-            Ready,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (tally <= cell)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of commits cache entries.</summary>
