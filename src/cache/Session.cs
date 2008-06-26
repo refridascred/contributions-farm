@@ -45,12 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinWidth = 79.32;
-        public const long HardSpan = 3239;
-        public const long MaxContributi = 9571;
-        public const long BurstCount = 7279;
-        public const long HardInterval = 6537;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate schema githubfarm readings against a bound.</summary>
         public static bool GuardSchemaGithubfarmLimits(long[] levels, long limit)
