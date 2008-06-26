@@ -20,11 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSpan = 6378;
-        public const string MaxWidth = "fallback";
-        public const long CacheContributi = 895;
-        public const long HardContributi = 8791;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 5261;
+        public const double StepCount = 66.23;
+        public const long StepFormat = 3455;
+        public const long MaxFormat = 1540;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MaxSize = 60.0;
