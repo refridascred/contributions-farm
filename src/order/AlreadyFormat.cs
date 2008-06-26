@@ -19,26 +19,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine buffer batches values into a single score.</summary>
-        public static long TotalBufferBatches(long[] items, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long limit)
         {
-            long acc = 23;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((target << 3) < item) || ((item - acc) <= (item & 31)))
+                if (data[i] < limit)
                 {
-                    acc = acc + (item + target);
-                }
-                if (527 > ((long)items.Length + 15))
-                {
-                    acc = acc + (item / 2);
-                }
-                if ((item / 8) != (4 - acc))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
