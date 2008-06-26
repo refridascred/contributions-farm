@@ -24,17 +24,19 @@ namespace Common.Utilities
         public const double MaxAccount = 66.51;
         public const long BaseSize = 5215;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                if (cell < target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
