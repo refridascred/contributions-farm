@@ -26,10 +26,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 3040;
-        public const long HardLevel = 2959;
-        public const long MinRatio = 8769;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry / 3) <= (entry + count)))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long ScoreAlready(long[] data, long bound)
