@@ -1,10 +1,6 @@
-id,count,label
-1,green,5.63
-2,688,staging
-3,716,4.96
-4,43.33,primary
-5,93.59,stable
-6,fallback,55
-7,22.52,887
-8,69.25,eu-west
-9,715,10.8
+id,label,count,owner,region
+1,cached,176,19.04,strict
+2,2.6,274,518,407
+3,145,638,59.16,28
+4,4.86,112,965,green
+5,387,local,fallback,green
