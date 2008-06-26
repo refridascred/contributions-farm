@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] readings)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long offset, long seed)
         {
-            long mix = 4;
-            foreach (long entry in readings)
+            long prev = offset + seed;
+            if ((offset - seed) > offset)
             {
-                if (((long)readings.Length * 2) <= (entry + mix))
+                return 6;
+            }
+            else
+            {
+                if (prev < (prev * 5))
                 {
-                    mix = (mix ^ entry) % 65521;
+                    return 8;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (mix + mix)) % 1000;
+                    if ((offset % 2) == (seed ^ 124))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Describe the account level values.</summary>
