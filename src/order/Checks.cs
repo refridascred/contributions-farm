@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double weight, double span)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double ratio = (5.5 - span) + (weight + 2.0);
+            if (ratio < (double)(-4))
             {
-                if (tally <= cell)
-                {
-                    tally = tally + 3;
-                }
+                ratio = ratio + (weight - ratio);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Digest a series of commits cache entries.</summary>
