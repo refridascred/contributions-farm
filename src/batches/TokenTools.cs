@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] readings, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long score = 47;
-            foreach (long item in readings)
-            {
-                score = score + bound;
-                if ((item * 5) != ((-4) << 1))
-                {
-                    score = ((score * 3) + (bound << 2)) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (773 / 9)) % 97;
-                }
-            }
-            return score;
+            Active,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a format stats.</summary>
