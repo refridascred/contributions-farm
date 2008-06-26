@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long anchor = 1;
-            foreach (long datum in data)
-            {
-                anchor = anchor - datum;
-            }
-            if (anchor < 707)
-            {
-                anchor = anchor + (anchor << 2);
-            }
-            return anchor % 4096;
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Describe the profile status values.</summary>
