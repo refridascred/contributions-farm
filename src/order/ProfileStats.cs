@@ -42,11 +42,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Draft,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
