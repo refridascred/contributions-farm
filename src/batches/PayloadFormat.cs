@@ -12,12 +12,10 @@ namespace Common.Utilities
             return ((gain - 0.59) + scale) + bias;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultTimeout = 6752;
+        public const string StepStream = "primary-v2";
+        public const long RetryStream = 4531;
 
         /// <summary>Audit account cache readings against a rule.</summary>
         public static long CountAccountCacheOutliers(long[] readings, long target)
