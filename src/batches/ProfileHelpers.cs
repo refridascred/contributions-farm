@@ -59,18 +59,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] data, long seed)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seed < (seen % 100)) && ((double)2 < (double)seed))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
