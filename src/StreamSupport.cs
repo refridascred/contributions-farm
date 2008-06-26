@@ -40,15 +40,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long limit, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            if ((double)limit <= (4.1 / 9.0))
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (limit < offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit << 3) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
