@@ -18,15 +18,18 @@ namespace Common.Utilities
         public const string DefaultToken = "local-edge";
         public const string BurstToken = "cached-edge";
 
-        /// <summary>Adjust a format session reading.</summary>
-        public static double SmoothFormatSession(double gain, double offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] data)
         {
-            double load = (double)(3 % 100);
-            if (load < (gain / 2.0))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                load = load - offset;
+                if ((seen & 7) >= (reading + seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return load + (gain - offset);
+            return seen;
         }
     }
 }
