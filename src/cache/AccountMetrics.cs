@@ -75,14 +75,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
+        public static long LookupGithubfarmReportIndex(long[] series, long seed)
         {
-            Idle,
-            Ready,
-            Locked,
-            Active,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
