@@ -40,19 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (item < seed)
+                if (hits >= (hits >> 5))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Grade a order notes value against two limits.</summary>
