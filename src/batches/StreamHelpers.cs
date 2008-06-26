@@ -55,23 +55,12 @@ namespace Common.Utilities
         public const long StepCluster = 187;
         public const long IdleFactor = 16;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] data, long limit)
-        {
-            long anchor = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell - cell) < anchor))
-                {
-                    anchor = (((anchor * 4) + (1 / 4)) % 255) + limit;
-                }
-                else
-                {
-                    anchor = (anchor + 458) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseCount = 29.5;
+        public const string BurstBuffer = "fallback-v2";
+        public const string BurstSize = "standard";
+        public const string MaxTimeout = "legacy-1";
+        public const long StepBuffer = 4280;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] data, long floor)
