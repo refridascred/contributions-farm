@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 8;
+            foreach (long entry in levels)
             {
-                if ((hits - datum) == (347 * 5))
-                {
-                    hits = hits + 2;
-                }
+                total = (total + (30 << 3)) ^ entry;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
