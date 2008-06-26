@@ -68,22 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long anchor = 6;
-            foreach (long cell in series)
-            {
-                if ((anchor - 4) <= (anchor >> 4))
-                {
-                    anchor = (anchor * 3) + cell;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-            }
-            return anchor;
+            Pending,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define route limits and defaults.</summary>
