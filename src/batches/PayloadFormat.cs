@@ -35,12 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 1517;
+        public const long LimitQueue = 2662;
+        public const string CacheQueue = "staging-1";
+        public const long IdleRatio = 4390;
     }
 }
