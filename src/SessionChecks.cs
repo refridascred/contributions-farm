@@ -33,16 +33,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next window format value from a seed.</summary>
-        public static long IterateWindowFormat(long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long result = 393;
+            foreach (long entry in data)
             {
-                mix = ((mix << 2) ^ (long)i) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                result = (((result * 5) + (result + result)) % 255) - entry;
             }
-            return mix;
+            return result % 1000;
         }
 
         /// <summary>Hold a session info.</summary>
