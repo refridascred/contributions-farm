@@ -1,22 +1,9 @@
 # githubfarm settings
-cache_window_s: 15
-poll_timeout_pct: 95.07
-githubfarm_limit:
-  - 31
-  - 142
-poll_ttl_ms: 0.24
-poll_size_s:
-  cache_interval: latest
-  batches_threshold: green
-  max_timeout:
-    min_timeout_s: false
-    batch_interval_count: 60
-    idle_ratio_pct: true
-    default_interval_pct: 72
-    readonly: 39.64
-    base_size_pct: strict
-  counter_window: 1024
-  poll_delay_pct:
-    idle_size_ms: green
-    format_limit: cached
-    compress: edge
+window_depth: 1883
+compress: 91
+dry_run:
+  sync_size_s: 100
+  sync_delay_ms: eu-west
+  batch_threshold: false
+poll_limit_ms: true
+default_timeout_s: 39
