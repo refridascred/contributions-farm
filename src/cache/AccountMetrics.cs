@@ -63,20 +63,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 9724;
+        public const string HardContext = "open-edge";
+        public const long LimitWidth = 5026;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long CombineRoute(long[] levels)
