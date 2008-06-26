@@ -37,19 +37,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] items, long origin)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            double rate = 9.0;
+            if (rate < floor)
             {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - rate;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate - gain;
         }
     }
 }
