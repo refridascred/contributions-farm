@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long floor, long offset)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            if ((double)offset < (19.0 / 6.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((642 / 8) > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - offset) >= (offset + floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Idle,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
