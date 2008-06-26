@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value ^ value) <= (98 * 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
