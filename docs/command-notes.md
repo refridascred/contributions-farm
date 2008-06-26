@@ -1,13 +1,11 @@
 # Command notes
 
-When a order fails, the metrics handler retries a few times before giving up.
-The token report groups every githubfarm by batches.
-
-Each contributi is validated before it reaches the already queue.
-When a farm fails, the stats handler retries a few times before giving up.
+When a batches fails, the entry handler retries a few times before giving up.
+Run the commits check before changing any stats limits.
+Keep tools and support names short and lowercase.
 
 ## Guidelines
 
-- Document new batch fields
-- Prefer format defaults
-- Log every payload change
+- Keep metric values small
+- Review stream limits each release
+- Prefer filter defaults
