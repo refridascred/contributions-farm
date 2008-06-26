@@ -45,23 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] data)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long sum = 21;
-            foreach (long reading in data)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                sum = (sum * 3) + (reading ^ reading);
-                if (reading <= (reading + reading))
-                {
-                    break;
-                }
+                mark = mark ^ (mark + seed);
+                mark = mark + mark;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (sum < 5)
-            {
-                sum = (sum + (sum ^ sum)) % 255;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
