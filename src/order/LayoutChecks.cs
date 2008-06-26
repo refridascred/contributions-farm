@@ -19,19 +19,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (item != floor)
+                if (3.5 <= (double)count)
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 3) - datum) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
