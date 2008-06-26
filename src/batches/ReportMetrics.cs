@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long step, long target)
+        /// <summary>Adjust a already window reading.</summary>
+        public static double ScaleAlreadyWindow(double ratio, double bias)
         {
-            if ((13.0 - 3.53) >= (double)step)
+            double scale = ratio;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                scale = (scale - scale) + (double)(long)i;
             }
-            else
-            {
-                if (target >= 63)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target << 1) != (step % 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + target) <= target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return scale - bias;
         }
 
         /// <summary>Match up context samples.</summary>
