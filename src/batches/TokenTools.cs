@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] data)
         {
-            double mean = rate + (19.0 - floor);
-            if (mean > rate)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mean = mean + (mean * 9.6);
+                if (((sample ^ count) < count) && ((count / 2) == (count - count)))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (double)1;
+            return count;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
