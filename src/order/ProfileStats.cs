@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long MeasureCommandChecksMatches(long[] values)
+        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
+        public static bool VerifyClusterQueueBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (((tally << 1) != (tally << 2)) && ((6.5 + 4.34) > (double)tally))
+                if (sample < offset)
                 {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
