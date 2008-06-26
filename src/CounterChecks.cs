@@ -62,19 +62,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series, long target)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long acc = 403;
-            foreach (long entry in series)
-            {
-                acc = (acc - (target << 3)) - entry;
-            }
-            if (acc > 57)
-            {
-                acc = acc - (5 + target);
-            }
-            return acc % 1000;
+            Locked,
+            Retry,
+            Synced,
+            Dropped,
+            New,
         }
     }
 }
