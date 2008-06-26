@@ -48,18 +48,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items, long offset)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((long)items.Length < (tally >> 5)))
-                {
-                    tally = ((tally + 3) + entry) - offset;
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
