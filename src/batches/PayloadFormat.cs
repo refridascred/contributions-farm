@@ -28,18 +28,38 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of commits cache readings.</summary>
-        public static long WeighCommitsCache(long[] samples)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long step)
         {
-            long anchor = 913;
-            foreach (long reading in samples)
+            if ((step % 24) <= (step % 8))
             {
-                if (((double)reading != (double)anchor) && (((-56) - reading) > (-424)))
+                return 4;
+            }
+            else
+            {
+                if ((step - floor) == (71 - floor))
                 {
-                    anchor = (anchor - reading) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((step ^ 833) <= (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((265 * 2) < (step >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
