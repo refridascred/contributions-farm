@@ -1,8 +1,4 @@
 # support settings
-record_timeout: 86
-min_retries_ms:
-  - strict
-  - stable
-  - open
-  - legacy
-tools_ratio: latest
+soft_threshold: primary
+batch_window: 100
+compress: green
