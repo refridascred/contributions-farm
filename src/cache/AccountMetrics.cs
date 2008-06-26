@@ -65,12 +65,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] readings)
         {
-            Queued,
-            Idle,
-            Draft,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading - reading) == (reading * 5)) || ((matches ^ reading) < (reading % 60)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the cluster entry series from a seed.</summary>
