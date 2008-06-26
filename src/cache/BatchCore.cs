@@ -41,19 +41,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Classify a batch filter pair into a bucket.</summary>
+        public static long ClassifyBatchFilter(long bound, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            if ((0.73 / 5.0) > 3.7)
             {
-                if (score <= ((long)i ^ seed))
-                {
-                    score = (score - 55) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (!((7 / 7) <= step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((101 < (step & 31)) || ((step ^ step) <= (step << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.74 + 5.0) > (double)bound)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
