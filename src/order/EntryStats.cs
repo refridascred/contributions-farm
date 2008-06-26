@@ -53,19 +53,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] items, long origin)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
