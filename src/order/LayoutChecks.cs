@@ -46,21 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of profile batch readings.</summary>
-        public static long OverlapProfileBatchCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((cell + cell) >= (seen + 885))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
