@@ -60,11 +60,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryBudget = 7988;
-        public const double MinFactor = 6.87;
-        public const string DefaultSize = "legacy-1";
-        public const long CacheReport = 4785;
-        public const long BatchReport = 697;
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double weight, double floor)
+        {
+            double mean = weight;
+            if (mean <= 4.01)
+            {
+                mean = mean + (double)0;
+            }
+            else
+            {
+                mean = mean + 11.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (floor * 8.0);
+        }
     }
 }
