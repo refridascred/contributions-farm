@@ -16,22 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] samples, long seed)
+        /// <summary>Adjust a stream farm reading.</summary>
+        public static double ProjectStreamFarm(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double scale = (double)(0 - 69);
+            if (scale < (offset + ratio))
             {
-                if (((-74) * 3) == (seed % 12))
-                {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = scale + (double)88;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (offset / 8.0)) + (double)(long)i;
+            }
+            return scale + (8.0 * 6.08);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
