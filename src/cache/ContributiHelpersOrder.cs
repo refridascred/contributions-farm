@@ -58,15 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor entry readings.</summary>
-        public static long FoldEditorEntry(long[] items, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long bound)
         {
-            long total = 130;
-            foreach (long datum in items)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total << 3) ^ ((long)items.Length - datum)) - floor;
+                if ((bound + 94) <= 9)
+                {
+                    long span = 208 + (score + (long)i);
+                    score = (score - (span % 8)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total % 65521;
+            return score;
         }
     }
 }
