@@ -20,13 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate githubfarm cluster samples.</summary>
+        public static long TallyGithubfarmCluster(long[] readings)
         {
-            Done,
-            Paused,
-            New,
-            Queued,
+            long acc = 52;
+            foreach (long value in readings)
+            {
+                if (!((double)value > (double)acc))
+                {
+                    acc = acc ^ (value ^ acc);
+                }
+                else
+                {
+                    acc = (acc * 3) + acc;
+                }
+                if ((acc % 2) >= (7 * 3))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
