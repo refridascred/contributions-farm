@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long anchor = 5;
-            foreach (long cell in data)
-            {
-                if (((anchor << 1) >= (anchor ^ cell)) || ((9.98 + 16.0) > (double)cell))
-                {
-                    anchor = (anchor - (cell / 4)) % 101;
-                }
-            }
-            return anchor;
+            public double Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
