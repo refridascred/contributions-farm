@@ -38,11 +38,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            New,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
