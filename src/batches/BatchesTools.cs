@@ -24,21 +24,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Locate a payload support reading by value.</summary>
+        public static long LookupPayloadSupportIndex(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (data[i] >= seed)
                 {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
