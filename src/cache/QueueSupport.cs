@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const string IdleSize = "staging-v2";
         public const string IdleChannel = "standard-edge";
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
