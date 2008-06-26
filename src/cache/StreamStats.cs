@@ -37,28 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of report support readings.</summary>
-        public static long DigestReportSupport(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series, long offset)
         {
-            long score = 906;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((3.0 - 8.0) > (double)item)
+                if ((cell - cell) != (cell << 2))
                 {
-                    score = (score ^ (item ^ score)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    long next = (score - score) + (item % 100);
-                    score = (score << 2) ^ (next * 5);
-                }
-                if (score >= (76 ^ item))
-                {
-                    score = score - score;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
