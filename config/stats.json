@@ -1,7 +1,16 @@
 {
-  "audit": 1024,
-  "commits_limit": 30,
-  "persist": 36,
-  "soft_depth_pct": "cached",
-  "batch_retries_count": 13
+  "retry_limit_pct": "primary",
+  "commits_size": "strict",
+  "metric_limit": {
+    "commits_window": "edge",
+    "format_size": 9582,
+    "min_delay": {
+      "persist": "latest",
+      "default_depth_pct": 59.9,
+      "strict": true
+    },
+    "enabled": ["primary", "strict", "latest", "staging"]
+  },
+  "default_threshold_ms": 250,
+  "idle_threshold_s": 52.33
 }
