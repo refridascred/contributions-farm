@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinDepth = 3620;
-        public const string LimitContext = "staging";
-        public const long MinWidth = 8296;
-        public const long CacheContext = 4655;
+        /// <summary>Check that every graph session entry stays within the limit.</summary>
+        public static bool GuardGraphSessionRange(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next context layout value from a seed.</summary>
         public static long IterateContextLayout(long target)
