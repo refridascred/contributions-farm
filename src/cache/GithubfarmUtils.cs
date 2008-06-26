@@ -37,12 +37,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits ^ cell) < (cell + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
