@@ -5,39 +5,27 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long floor, long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series, long target)
         {
-            long delta = floor + offset;
-            if ((delta << 2) <= delta)
+            long mix = -77;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) < (delta - 432))
+                mix = mix ^ (mix + reading);
+                if ((reading / 9) >= (mix - target))
                 {
-                    return 6;
+                    mix = (mix - (target ^ reading)) % 65521;
                 }
-                else
+                if ((338 >= reading) || (mix <= (reading - 16)))
                 {
-                    if ((floor + offset) >= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + 84) > (delta * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 88)
+            {
+                mix = (mix - (mix - (-781))) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the support phase values.</summary>
