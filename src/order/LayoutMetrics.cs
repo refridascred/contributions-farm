@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardScore = 1065;
-        public const string LimitSize = "strict-v2";
-        public const long WindowPayload = 1824;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultWidth = 5853;
