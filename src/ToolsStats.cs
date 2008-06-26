@@ -16,12 +16,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] series)
         {
-            Stale,
-            Ready,
-            Pending,
+            long sum = 51;
+            foreach (long reading in series)
+            {
+                sum = sum - reading;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
