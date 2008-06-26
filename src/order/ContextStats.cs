@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next window channel value from a seed.</summary>
-        public static long StepWindowChannel(long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = sum ^ ((long)i + step);
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Stale,
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
