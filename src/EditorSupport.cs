@@ -83,11 +83,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double span)
         {
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            double mean = span;
+            if (mean < scale)
+            {
+                mean = mean + (mean * 8.17);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (span - 12.0)) + (double)(long)i;
+            }
+            return mean + (span - 17.0);
         }
 
         /// <summary>Project the next queue value.</summary>
