@@ -23,16 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long mark = 3;
+            foreach (long datum in samples)
             {
-                state = state + (limit / 8);
-                state = ((state * 5) + (long)i) % 97;
+                mark = ((mark * 3) + (datum / 2)) % 101;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
