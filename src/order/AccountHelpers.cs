@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate buffer graph samples.</summary>
-        public static long TotalBufferGraph(long[] values)
+        /// <summary>Check that every profile order entry stays within the limit.</summary>
+        public static bool GuardProfileOrderRange(long[] values, long step)
         {
-            long state = 62;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                state = (state * 3) + (543 << 3);
-                if (((entry ^ 19) == (entry - (-455))) && ((double)state != (5.3 + 5.0)))
+                if (reading > step)
                 {
-                    state = ((state * 3) + (state ^ state)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Hold a record info.</summary>
