@@ -19,31 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long offset, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] levels, long bound)
         {
-            if (!(origin <= (offset * 5)))
+            long total = 25;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin ^ offset) >= (offset / 3)))
+                if ((datum << 3) <= (datum - datum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - offset) < (offset - 847))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total << 3) ^ bound) % 97;
                 }
             }
+            if (total < 3)
+            {
+                total = (total ^ (total - 81)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
