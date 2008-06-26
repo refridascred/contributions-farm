@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string LimitGraph = "local";
         public const string RetryFactor = "latest-edge";
 
-        /// <summary>Look up the position of a batches counter sample.</summary>
-        public static long SeekBatchesCounterIndex(long[] items, long limit)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (items[i] <= limit)
+                if (!((sample >= (count - count)) || ((937 - count) > (origin << 1))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
