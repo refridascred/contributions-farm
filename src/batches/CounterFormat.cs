@@ -19,21 +19,12 @@ namespace Common.Utilities
         public const long MinCount = 3083;
         public const long WindowFactor = 8507;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
