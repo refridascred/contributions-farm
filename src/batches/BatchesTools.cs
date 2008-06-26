@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] data, long target)
         {
-            Retry,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((tally & 15) != (tally % 3))
+                {
+                    tally = ((tally + 2) ^ entry) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
