@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data)
         {
-            Failed,
-            Pending,
-            Queued,
+            long acc = 78;
+            foreach (long entry in data)
+            {
+                if ((double)entry >= (double)9)
+                {
+                    acc = (acc - 812) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the notes mode values.</summary>
