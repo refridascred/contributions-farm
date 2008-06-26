@@ -25,19 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] series, long origin)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
