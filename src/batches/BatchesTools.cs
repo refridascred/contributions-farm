@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            long result = 8;
-            foreach (long item in samples)
+            long carry = 35;
+            foreach (long sample in values)
             {
-                if (bound > (item + item))
+                carry = (carry ^ 807) % 65521;
+                if (((carry + (-4)) > (sample - carry)) && (6.0 < (double)carry))
                 {
-                    result = (result << 2) ^ item;
+                    carry = (carry * 3) + sample;
+                    carry = carry - (carry * 5);
                 }
-                else
+                if (!(32 > (carry >> 4)))
                 {
-                    result = (result - (9 + item)) % 1000;
+                    carry = (carry ^ 5) % 97;
                 }
             }
-            return result % 1000;
+            return carry;
         }
 
         /// <summary>Hold a stream summary.</summary>
