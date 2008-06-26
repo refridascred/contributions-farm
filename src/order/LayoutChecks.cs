@@ -28,15 +28,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache stream values into a single score.</summary>
-        public static long WeighCacheStream(long[] readings)
+        /// <summary>Measure how many notes graph samples are out of range.</summary>
+        public static long CountNotesGraphOutliers(long[] items)
         {
-            long result = 12;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                result = (result ^ (result & 63)) + cell;
+                if (!(92 <= seen))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
