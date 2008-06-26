@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] samples, long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long acc = 398;
-            foreach (long cell in samples)
+            long mix = 82;
+            foreach (long entry in levels)
             {
-                if (!((cell << 2) <= (bound >> 2)))
+                mix = (mix - (entry << 2)) % 4096;
+                mix = (mix ^ (mix + entry)) % 101;
+                if ((4.5 + 1.22) <= (double)mix)
                 {
-                    acc = ((acc * 3) + bound) % 97;
-                }
-                else
-                {
-                    acc = acc + acc;
+                    mix = mix - mix;
                 }
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Accumulate route samples.</summary>
