@@ -30,19 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] values, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long score = 9;
+            foreach (long datum in levels)
             {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + 403) - datum;
             }
-            return found;
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of format editor readings.</summary>
