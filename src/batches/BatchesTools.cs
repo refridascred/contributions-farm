@@ -44,13 +44,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Idle,
+            Retry,
+            Paused,
+            Stale,
+            Active,
         }
     }
 }
