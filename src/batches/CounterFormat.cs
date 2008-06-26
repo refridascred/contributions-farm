@@ -20,18 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many filter graph samples are out of range.</summary>
-        public static long CountFilterGraphMatches(long[] series, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double weight = gain;
+            if (weight <= (double)3)
             {
-                if ((step + reading) >= reading)
-                {
-                    matches = matches + 1;
-                }
+                weight = (weight - weight) - offset;
             }
-            return matches;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + 6.0;
         }
 
         /// <summary>Roll a token editor counter forward.</summary>
