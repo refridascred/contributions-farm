@@ -14,19 +14,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate batch schema readings against a bound.</summary>
-        public static bool CheckBatchSchemaLimits(long[] values, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long seed, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            if ((52 - origin) <= (28 + origin))
             {
-                if (value <= step)
+                return 0;
+            }
+            else
+            {
+                if (origin >= (origin + origin))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((651 ^ seed) < (seed << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many entry stream samples are out of range.</summary>
