@@ -20,15 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Idle,
+            Stale,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the metrics schema entries that pass the check.</summary>
