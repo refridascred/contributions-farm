@@ -21,13 +21,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] values, long step)
         {
-            Synced,
-            New,
-            Done,
-            Paused,
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the record class values.</summary>
