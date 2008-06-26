@@ -26,25 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long seed, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data, long origin)
         {
-            long step = seed - floor;
-            if ((26 - seed) >= seed)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step << 3) > (step * 4))
+                if ((double)seen > (5.9 + 1.3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    seen = ((seen + 1) ^ sample) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the queue level values.</summary>
