@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long origin)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] < origin)
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank contributi route input into a small class.</summary>
