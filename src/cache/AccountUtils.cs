@@ -35,21 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 79;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (mark > (reading + reading))
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark + (mark / 3);
+                    break;
                 }
+                mark = (mark - (mark + reading)) % 101;
             }
-            return seen;
+            return mark % 1000;
         }
     }
 }
