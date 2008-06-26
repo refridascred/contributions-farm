@@ -62,9 +62,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 62.23;
-        public const long MinSpan = 7436;
-        public const long StepBatches = 1312;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitSpan = 438;
+        public const double DefaultFactor = 43.85;
+        public const long SoftNotes = 539;
+        public const long IdleNotes = 3479;
     }
 }
