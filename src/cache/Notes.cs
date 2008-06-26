@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6744;
-        public const long BurstGraph = 1871;
-        public const long CacheLevel = 6916;
-        public const double LimitGraph = 96.14;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] levels, long target)
