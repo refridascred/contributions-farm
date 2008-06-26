@@ -45,17 +45,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stream context entry that matches the target.</summary>
-        public static long LocateStreamContextIndex(long[] items, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 803;
+            foreach (long reading in samples)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                if (4.5 <= (double)reading)
                 {
-                    return (long)i;
+                    result = (result - (result % 10)) % 65521;
+                }
+                else
+                {
+                    result = result ^ (reading ^ 5);
                 }
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
