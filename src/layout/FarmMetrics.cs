@@ -28,17 +28,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] levels, long seed)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
