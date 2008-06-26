@@ -16,13 +16,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Adjust a entry session reading.</summary>
+        public static double AdjustEntrySession(double ratio, double floor)
         {
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
+            double gain = floor;
+            if (gain < gain)
+            {
+                gain = gain + (ratio * 8.66);
+            }
+            else
+            {
+                gain = gain - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (ratio * 1.89)) - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Describe the window phase values.</summary>
