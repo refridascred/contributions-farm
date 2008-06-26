@@ -42,19 +42,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double load = (double)(7 << 2);
-            if (load <= floor)
-            {
-                load = (load + floor) + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 1.0) + (double)(long)i;
-            }
-            return load + (double)748;
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next queue value.</summary>
