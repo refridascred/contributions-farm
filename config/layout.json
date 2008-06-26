@@ -1,16 +1,5 @@
 {
-  "hard_delay_count": 81.47,
-  "poll_timeout": [350, 207, 48, 150],
-  "report_size": ["primary", "blue"],
-  "support_retries": 13,
-  "verbose": {
-    "hard_capacity": "blue",
-    "soft_retries_pct": "local",
-    "contributi_window": {
-      "verbose": [373, 17, 191],
-      "strict": true,
-      "retry_retries_pct": true
-    }
-  },
-  "idle_delay_count": false
+  "flush_window_ms": 14,
+  "entry_timeout": 65.31,
+  "stats_timeout": [281, 279, 449, 481]
 }
