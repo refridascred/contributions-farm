@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const long CacheLevel = 6916;
         public const double LimitGraph = 96.14;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] levels, long target)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream options.</summary>
