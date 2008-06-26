@@ -27,24 +27,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long floor, long floor2)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            if (!((double)floor2 <= (double)9))
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 64) < (floor2 - floor2))
+                carry = carry ^ carry;
+                if (!(carry < (carry ^ limit)))
                 {
-                    return 4;
+                    carry = (carry - (long)i) % 101;
                 }
-                else
-                {
-                    return 1;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
