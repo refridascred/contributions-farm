@@ -60,9 +60,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheBudget = 8955;
-        public const long WindowFactor = 3719;
-        public const long BaseWidth = 1494;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 6301;
+        public const double SoftReport = 19.26;
+        public const double BurstReport = 31.39;
+        public const double MinReport = 27.24;
     }
 }
