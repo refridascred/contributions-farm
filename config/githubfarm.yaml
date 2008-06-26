@@ -1,10 +1,8 @@
 # githubfarm settings
-batch_threshold_count: 43.35
-dry_run:
-  cache_delay: edge
-  already_threshold: 60
-  audit: standard
-buffer_delay: edge
-queue_retries: latest
-payload_ttl: 93.87
-hard_ttl: standard
+persist: standard
+already_retries:
+  - standard
+  - edge
+compress: 60
+enabled: 16
+counter_window: blue
