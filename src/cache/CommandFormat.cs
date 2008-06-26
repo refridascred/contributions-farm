@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long seed)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum > seed)
+                bool ok = (double)mix <= 4.17;
+                if (ok)
                 {
-                    found = false;
-                    break;
+                    mix = mix + (mix ^ mix);
+                    ok = (double)offset != (2.0 - 0.9);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Describe the account state values.</summary>
