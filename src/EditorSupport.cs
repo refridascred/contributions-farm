@@ -99,19 +99,10 @@ namespace Common.Utilities
             return mean + (span - 17.0);
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double ratio, double bias)
-        {
-            double drift = (double)((-870) + 38);
-            if (drift >= (double)669)
-            {
-                drift = (drift - (double)(-35)) + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (2.1 + 3.0)) + (double)(long)i;
-            }
-            return drift + (bias + bias);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultRatio = 2044;
+        public const double LimitAlready = 65.86;
+        public const long IdleWidth = 5037;
+        public const string HardAlready = "cached-v2";
     }
 }
