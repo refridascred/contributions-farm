@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] series)
         {
-            Stale,
-            New,
-            Closed,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits ^ hits) > (76 % 7))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a profile window figure with a bias.</summary>
