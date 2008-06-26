@@ -16,15 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the counter batch series from a seed.</summary>
-        public static long IterateCounterBatch(long floor)
+        /// <summary>Rank commits githubfarm input into a small class.</summary>
+        public static long RankCommitsGithubfarm(long floor, long floor2)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            if (((floor ^ floor) == (2 + floor2)) && ((floor - floor2) == (floor + 248)))
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (!((floor % 97) <= (floor2 ^ 39)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many schema order samples are out of range.</summary>
