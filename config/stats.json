@@ -1,17 +1,11 @@
 {
-  "sync_timeout_ms": [481, 17, 15, 301],
-  "already_size": 8995,
-  "strict": {
-    "flush_interval_pct": 5689,
-    "flush_ratio_count": "standard",
-    "flush_ttl": {
-      "idle_ttl": "legacy",
-      "compress": 35.37,
-      "strict": 1245,
-      "graph_delay": false,
-      "format_limit": "legacy",
-      "hard_limit_pct": "stable"
-    }
-  },
-  "compress": [223, 283, 201, 46]
+  "default_depth_pct": false,
+  "graph_interval": "fallback",
+  "poll_size_pct": 11.53,
+  "max_depth_s": {
+    "flush_window": [486, 481],
+    "schema_ttl": 58.65,
+    "flush_depth": 70.04,
+    "audit": "fallback"
+  }
 }
