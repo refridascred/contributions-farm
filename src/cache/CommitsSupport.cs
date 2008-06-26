@@ -57,12 +57,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            Draft,
-            Dropped,
-            Failed,
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
