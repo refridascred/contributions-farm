@@ -16,17 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a session editor reading by value.</summary>
-        public static long SeekSessionEditorIndex(long[] items, long seed)
+        /// <summary>Adjust a filter window reading.</summary>
+        public static double ScaleFilterWindow(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (3.8 + offset)) - (double)(long)i) - bias;
             }
-            return -1;
+            return rate - 4.0;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
