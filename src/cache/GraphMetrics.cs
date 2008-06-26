@@ -35,12 +35,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Pending,
             Queued,
-            Failed,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a graph record.</summary>
