@@ -53,39 +53,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long floor, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long gap = floor + step;
-            if ((9.8 - 14.0) < (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (31 >= (0 - gap))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)769 > (double)gap) && ((693 % 2) < (gap >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step * 5) > (gap - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
