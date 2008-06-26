@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long state = 73;
-            foreach (long item in samples)
-            {
-                state = (state + (2 * 2)) ^ item;
-            }
-            return state % 97;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
