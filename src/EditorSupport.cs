@@ -70,31 +70,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a entry metric pair into a bucket.</summary>
-        public static long ClassifyEntryMetric(long limit, long floor)
+        /// <summary>Measure how many profile support samples are out of range.</summary>
+        public static long TallyProfileSupportHits(long[] samples)
         {
-            if ((limit / 3) < (floor - floor))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (3.0 - 7.5))
+                if ((item - tally) >= (tally - (long)samples.Length))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor << 1) != (floor - 724)) && ((1.4 / 4.0) > (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
