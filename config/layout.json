@@ -1,6 +1,13 @@
 {
-  "soft_interval_ms": "open",
-  "batches_window": ["local", "staging"],
-  "warm_depth": 250,
-  "context_limit": 6994
+  "verbose": 8858,
+  "batch_interval_ms": 1171,
+  "retry_retries": 42.8,
+  "idle_window": 269,
+  "enabled": {
+    "hard_timeout_s": [329, 239, 202],
+    "verbose": [478, 359, 78, 412],
+    "batch_limit": "edge",
+    "warm_ttl_count": false
+  },
+  "cache_limit_count": true
 }
