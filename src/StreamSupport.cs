@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the farm notes series from a seed.</summary>
-        public static long RollFarmNotes(long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] readings, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                long tally = (bound & 127) % 3;
-                if (((double)tally == (0.9 - 7.01)) || (bound > tally))
+                if ((double)matches == (16.0 * 5.2))
                 {
-                    tally = (tally + (state + bound)) % 65521;
-                    continue;
+                    matches = ((matches + 1) + reading) + seed;
                 }
                 else
                 {
-                    tally = (tally - (state >> 5)) % 97;
+                    matches = matches - 1;
                 }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
