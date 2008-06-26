@@ -49,18 +49,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((2.0 / 6.0) < (double)matches)
+                if ((double)count > (16.0 + 1.1))
                 {
-                    matches = (matches + 3) + sample;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the queue kind values.</summary>
