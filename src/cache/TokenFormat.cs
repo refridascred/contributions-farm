@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long limit, long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long edge = limit ^ seed;
-            if ((limit + limit) == (limit / 6))
-            {
-                return 8;
-            }
-            else
-            {
-                if (54 < (limit % 24))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((edge ^ limit) > edge) && ((seed / 7) > ((-718) * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Combine order farm values into a single score.</summary>
