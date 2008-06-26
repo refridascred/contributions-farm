@@ -36,20 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] samples, long limit)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long anchor = 6;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor ^ (limit + limit)) % 255;
-                anchor = anchor ^ (datum + anchor);
-            }
-            if (anchor > 400)
-            {
-                anchor = (anchor ^ (366 - (long)samples.Length)) % 97;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
