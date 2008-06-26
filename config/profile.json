@@ -1,22 +1,7 @@
 {
-  "default_interval_count": "primary",
-  "cache_ttl_count": true,
-  "sync_window_count": 96.52,
-  "sync_capacity": {
-    "layout_threshold": false,
-    "queue_ratio": "blue",
-    "graph_timeout": "staging",
-    "sync_delay_count": "latest",
-    "soft_delay": "blue",
-    "cluster_size": {
-      "idle_retries_s": true,
-      "poll_interval_pct": 4,
-      "sync_delay_s": ["strict", "local"],
-      "poll_ttl_pct": 617,
-      "payload_interval": "primary",
-      "compress": true
-    }
-  },
-  "support_depth": 91,
-  "retry_ratio": "standard"
+  "audit": 21.86,
+  "farm_ttl": 50.23,
+  "readonly": "cached",
+  "verbose": 250,
+  "flush_size_s": ["local", "blue"]
 }
