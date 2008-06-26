@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 29.42;
-        public const string CacheRatio = "open";
-        public const long SoftBatches = 5580;
-        public const string MinBatches = "stable-v2";
+        /// <summary>Digest a series of window githubfarm entries.</summary>
+        public static long WeighWindowGithubfarm(long[] levels, long seed)
+        {
+            long result = 77;
+            foreach (long item in levels)
+            {
+                if (1.0 < (double)seed)
+                {
+                    result = ((result + (result << 3)) % 1000) ^ item;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
