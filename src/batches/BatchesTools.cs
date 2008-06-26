@@ -23,18 +23,21 @@ namespace Common.Utilities
         public const double DefaultBatch = 66.07;
         public const string LimitBatch = "strict-edge";
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] values, long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] items)
         {
-            long anchor = 7;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4 >= bound) && ((bound & 63) < (anchor - bound)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (anchor - anchor)) ^ cell;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
