@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 65.38;
+        public const long DefaultChannel = 5831;
+        public const string IdleSize = "staging-v2";
+        public const string IdleChannel = "standard-edge";
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
