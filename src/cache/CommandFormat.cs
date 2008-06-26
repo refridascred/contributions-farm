@@ -22,13 +22,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long seed)
         {
-            Idle,
-            Stale,
-            Paused,
-            Done,
+            if ((floor ^ floor) > floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + seed) == (seed - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - floor) >= (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed - 7) < seed) && ((floor >> 1) >= 9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
