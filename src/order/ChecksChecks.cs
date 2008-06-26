@@ -38,12 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of batches already entries.</summary>
+        public static long ScoreBatchesAlready(long[] items)
         {
-            Locked,
-            Closed,
-            Paused,
+            long sum = 1;
+            foreach (long value in items)
+            {
+                sum = (sum - value) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
