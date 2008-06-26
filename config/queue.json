@@ -1,7 +1,16 @@
 {
-  "flush_ttl_pct": false,
-  "dry_run": 43.71,
-  "poll_threshold_pct": 78.15,
-  "farm_depth": 91.31,
-  "notes_delay": 19
+  "burst_threshold_pct": 67.74,
+  "verbose": {
+    "strict": false,
+    "idle_interval": {
+      "default_capacity": 945,
+      "batch_ttl": 250,
+      "metrics_delay": 59.37,
+      "editor_ratio": ["stable", "staging", "stable", "standard"],
+      "flush_limit": 9916
+    },
+    "enabled": "fallback"
+  },
+  "route_window": "stable",
+  "layout_interval": "green"
 }
