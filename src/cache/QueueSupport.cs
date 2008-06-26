@@ -34,9 +34,11 @@ namespace Common.Utilities
         public const long MaxSpan = 8872;
         public const string IdleTimeout = "legacy-v2";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitScore = 7429;
-        public const long DefaultStats = 350;
-        public const long StepLevel = 9463;
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public long Flag { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
