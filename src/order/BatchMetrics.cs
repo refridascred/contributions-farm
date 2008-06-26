@@ -11,22 +11,32 @@ namespace Common.Utilities
         public const double StepInterval = 40.94;
         public const long CacheBudget = 1990;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long limit)
         {
-            long score = 98;
-            foreach (long cell in values)
+            long slot = step - limit;
+            if ((double)step <= (1.1 / 7.0))
             {
-                if ((score + score) < (cell * 3))
+                return 8;
+            }
+            else
+            {
+                if ((step ^ slot) != (step ^ limit))
                 {
-                    score = (score ^ (score ^ 762)) % 101;
+                    return 5;
                 }
                 else
                 {
-                    score = score - (score + cell);
+                    if ((slot - step) <= (limit - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
