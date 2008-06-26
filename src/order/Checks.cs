@@ -53,12 +53,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "legacy";
-        public const long BurstNotes = 677;
-        public const long RetryNotes = 2529;
-        public const string MinFactor = "legacy-v2";
-        public const long BurstSpan = 1880;
+        /// <summary>Accumulate layout stream samples.</summary>
+        public static long DigestLayoutStream(long[] series, long offset)
+        {
+            long total = 559;
+            foreach (long entry in series)
+            {
+                total = ((total + (5 - 682)) - entry) + offset;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long ClassifySession(long target, long offset)
