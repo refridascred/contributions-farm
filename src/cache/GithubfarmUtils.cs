@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels, long bound)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] levels, long floor)
         {
-            long carry = 1;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((carry + cell) <= cell)
+                if (entry > floor)
                 {
-                    carry = carry ^ (cell + bound);
-                }
-                if ((5 + cell) > (cell / 7))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Describe the tools kind values.</summary>
