@@ -52,19 +52,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Combine account cache values into a single score.</summary>
+        public static long DigestAccountCache(long[] levels, long origin)
         {
-            double mean = floor * 2.4;
-            if (mean > (double)364)
+            long carry = 6;
+            foreach (long item in levels)
             {
-                mean = mean - (floor + floor);
+                if ((origin + origin) != (origin / 3))
+                {
+                    carry = ((carry ^ (origin * 2)) % 101) ^ item;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (carry > 3)
             {
-                mean = mean - (double)(long)i;
+                carry = ((carry << 3) ^ (2 & 63)) % 255;
             }
-            return mean + weight;
+            return carry % 1000;
         }
 
         /// <summary>Hold a layout summary.</summary>
