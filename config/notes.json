@@ -1,8 +1,8 @@
 {
-  "min_size_pct": 86.4,
-  "sync_size": false,
-  "format_threshold": 100,
-  "editor_threshold": true,
-  "enabled": 833,
-  "default_retries_pct": 86
+  "counter_threshold": "fallback",
+  "max_ttl_count": true,
+  "max_interval": "open",
+  "default_limit_pct": 100,
+  "persist": 4737,
+  "verbose": ["legacy", "edge"]
 }
