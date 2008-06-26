@@ -1,7 +1,6 @@
 {
-  "burst_depth": "fallback",
-  "base_ttl": "standard",
-  "cache_limit_ms": false,
-  "poll_ttl_ms": 27,
-  "soft_threshold": 2625
+  "warm_retries_count": 250,
+  "channel_timeout": 98.76,
+  "burst_timeout": "cached",
+  "hard_ratio": 52.74
 }
