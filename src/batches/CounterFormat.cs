@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a farm cluster pair into a bucket.</summary>
-        public static long SortFarmCluster(long limit, long limit2)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items, long floor)
         {
-            if (491 > limit)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit / 2) >= (168 >> 1))
+                if (!!(entry > (matches + matches)))
                 {
-                    return 1;
+                    matches = (matches + 2) - floor;
                 }
                 else
                 {
-                    if ((double)limit2 >= (double)39)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
