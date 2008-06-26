@@ -36,19 +36,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cluster commits reading.</summary>
-        public static double AdjustClusterCommits(double bias, double floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double ratio = floor;
-            if (ratio >= 1.2)
-            {
-                ratio = (ratio + (ratio / 8.0)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (3.41 - ratio)) - (double)(long)i;
-            }
-            return ratio - (9.8 * 2.2);
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of batch entry entries.</summary>
