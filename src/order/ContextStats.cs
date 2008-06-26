@@ -27,13 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 2571;
+        public const string BurstMetrics = "staging";
+        public const string RetryTimeout = "strict";
+        public const double RetryScore = 56.6;
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
         public static long CountClusterNotesMatches(long[] samples)
