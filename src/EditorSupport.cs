@@ -84,18 +84,12 @@ namespace Common.Utilities
             return mean + (span - 17.0);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value / 6) < tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public double Size { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
