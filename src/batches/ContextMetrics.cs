@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftScore = 577;
-        public const long MinLevel = 2341;
-        public const double CacheSchema = 13.03;
-        public const long MinRatio = 249;
-        public const long WindowDepth = 5138;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Idle,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
