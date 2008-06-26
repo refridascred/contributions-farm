@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count context cache pairs that satisfy a relation.</summary>
-        public static long MatchContextCacheCount(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((step / 8) != (hits + hits))
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
