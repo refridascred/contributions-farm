@@ -1,20 +1,5 @@
 {
-  "default_ttl_count": ["local", "standard", "fallback"],
-  "checks_interval": 5005,
-  "payload_timeout": 88.82,
-  "warm_ratio": {
-    "cache_ratio_ms": {
-      "burst_delay_s": [49, 13, 256],
-      "counter_capacity": "stable",
-      "githubfarm_retries": 99,
-      "hard_size_count": "green",
-      "burst_timeout_ms": "green",
-      "flush_ttl_count": ["local", "legacy", "green", "edge"]
-    },
-    "contributi_interval": 10.62,
-    "sync_threshold": "primary",
-    "sync_threshold_s": 6223,
-    "persist": 1,
-    "readonly": 100
-  }
+  "soft_ratio_ms": ["standard", "blue", "latest"],
+  "audit": "edge",
+  "soft_window_pct": 5.85
 }
