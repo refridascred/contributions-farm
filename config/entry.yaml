@@ -1,10 +1,13 @@
 # entry settings
-audit: eu-west
-support_window: cached
-enabled: 4627
-soft_delay_count:
-  - 72
-  - 64
-  - 65
-warm_threshold_pct: edge
-verbose: 41.75
+context_capacity:
+  - standard
+  - primary
+  - open
+audit: 1509
+support_ratio:
+  - 263
+  - 199
+min_retries_s:
+  - eu-west
+  - fallback
+dry_run: 9
