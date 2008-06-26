@@ -19,17 +19,23 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] data, long limit)
+        /// <summary>Blend two cache stream measurements.</summary>
+        public static double ScaleCacheStream(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = bias;
+            if (mean >= bias)
             {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mean = (mean + (2.4 / 7.0)) + weight;
             }
-            return -1;
+            else
+            {
+                mean = mean - (bias + 6.3);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (double)116;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
