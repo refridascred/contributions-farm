@@ -17,18 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the report channel entries that pass the check.</summary>
-        public static long TallyReportChannelMatches(long[] items)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)value == (2.24 / 4.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
