@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph metrics entries.</summary>
-        public static long TallyGraphMetrics(long[] values, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long state = 34;
-            foreach (long entry in values)
-            {
-                if ((entry ^ 449) > (state * 4))
-                {
-                    state = ((state << 3) ^ origin) % 4096;
-                }
-            }
-            if (state > 300)
-            {
-                state = (state << 3) ^ (origin + state);
-            }
-            return state;
+            Closed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
