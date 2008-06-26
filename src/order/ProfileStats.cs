@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen != (1.0 / 9.0))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
