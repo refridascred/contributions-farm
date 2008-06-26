@@ -28,12 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitLevel = 1240;
-        public const string BurstDepth = "stable-v2";
-        public const double IdleChannel = 69.07;
-        public const long BaseFactor = 6720;
-        public const long RetryChannel = 2433;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public bool Level { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long StepWidth = 9642;
