@@ -1,8 +1,7 @@
-id,score,ratio,level
-1,401,403,legacy
-2,25.35,205,202
-3,1.28,80.41,521
-4,0.12,54.04,47.95
-5,open,777,91.02
-6,79.51,58.96,standard
-7,green,422,open
+id,state,region,weight
+1,green,506,edge
+2,95.49,open,green
+3,staging,515,stable
+4,3.96,19.17,stable
+5,latest,629,56.05
+6,46.44,legacy,207
