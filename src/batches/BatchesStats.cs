@@ -50,18 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] readings)
+        /// <summary>Find the first schema buffer entry that matches the target.</summary>
+        public static long FindSchemaBufferIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.89 + 15.0) > (double)reading)
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
