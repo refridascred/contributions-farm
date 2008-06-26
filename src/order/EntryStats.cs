@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            long score = 74;
+            foreach (long entry in levels)
+            {
+                score = (((score << 2) ^ (offset * 5)) % 65521) + entry;
+                if ((offset * 4) >= 3)
+                {
+                    score = ((score * 4) + offset) % 1000;
+                }
+            }
+            if (score < 41)
+            {
+                score = ((score << 3) ^ (offset + offset)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
