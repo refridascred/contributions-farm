@@ -15,18 +15,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] readings)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long floor, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((offset / 3) > (floor + floor))
             {
-                if ((8.0 - 3.38) > (double)value)
+                return 4;
+            }
+            else
+            {
+                if ((floor >= offset) || ((147 << 3) > (floor + 48)))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)9 < (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + floor) > offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
