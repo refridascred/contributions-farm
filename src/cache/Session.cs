@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many farm queue samples are out of range.</summary>
-        public static long TallyFarmQueueHits(long[] values)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (count >= (count + sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the payload status values.</summary>
