@@ -58,11 +58,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 2108;
-        public const long StepWidth = 1143;
-        public const long LimitContributi = 1473;
-        public const double DefaultContributi = 83.45;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9629;
+        public const long DefaultRatio = 6529;
+        public const string StepLayout = "primary-v2";
+        public const long IdleSize = 4252;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftScore = 7950;
