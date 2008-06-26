@@ -68,13 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] values, long offset)
         {
-            Pending,
-            Queued,
-            Stale,
-            Idle,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define route limits and defaults.</summary>
