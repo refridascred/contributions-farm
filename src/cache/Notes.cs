@@ -27,39 +27,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank metrics batch input into a small class.</summary>
-        public static long SortMetricsBatch(long origin, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long origin)
         {
-            long slot = origin + limit;
-            if (((slot * 5) > (slot + limit)) && ((double)slot >= (0.22 / 4.0)))
+            long score = 8;
+            foreach (long cell in samples)
             {
-                return 0;
+                score = (((score * 2) + (origin + origin)) % 65521) ^ cell;
             }
-            else
-            {
-                if ((70 - slot) >= (slot & 127))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - limit) < (origin - 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit / 8) <= (slot + slot))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
