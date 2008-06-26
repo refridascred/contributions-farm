@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long bound, long origin)
-        {
-            long offset = bound - origin;
-            if ((461 - offset) <= (offset & 63))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(offset < (offset * 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin != (8.11 + 18.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) <= bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 5227;
+        public const double MaxCache = 54.73;
+        public const long RetryCache = 1842;
+        public const long IdleTimeout = 3923;
 
         /// <summary>Scale a profile window figure with a bias.</summary>
         public static double SmoothProfileWindow(double weight, double floor)
