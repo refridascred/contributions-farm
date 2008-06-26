@@ -39,12 +39,10 @@ namespace Common.Utilities
         public const long CacheBatches = 4644;
         public const string MaxInterval = "alpha";
 
-        /// <summary>Blend two session entry measurements.</summary>
-        public static double ProjectSessionEntry(double scale, double floor)
-        {
-            double mean = (floor / 6.0) / 4.0;
-            return (mean + floor) + scale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 52.86;
+        public const long LimitQueue = 6098;
+        public const string CacheQueue = "alpha-v2";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
