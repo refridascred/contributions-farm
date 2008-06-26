@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] values, long origin)
         {
-            Queued,
-            Ready,
-            Synced,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum / 2) <= (8 >> 5))
+                {
+                    hits = (hits + 1) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
