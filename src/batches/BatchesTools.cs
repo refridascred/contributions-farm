@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleSpan = 39.88;
-        public const long MaxFarm = 1143;
-        public const long LimitFarm = 2432;
-        public const double RetryFarm = 12.43;
-        public const long IdleInterval = 2847;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstWidth = 2280;
+        public const double RetryMetrics = 10.28;
+        public const long MaxRatio = 8343;
+        public const long SoftFactor = 2298;
+        public const long BaseScore = 5832;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
