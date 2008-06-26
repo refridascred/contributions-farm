@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next checks route value.</summary>
-        public static double BlendChecksRoute(double rate, double offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            double scale = 9.44 + (offset + offset);
-            if (scale > scale)
-            {
-                scale = scale + (scale * 6.7);
-            }
-            else
-            {
-                scale = scale - (scale - offset);
-            }
-            return scale - (rate + 2.0);
+            public long Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
