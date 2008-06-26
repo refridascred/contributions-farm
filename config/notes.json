@@ -1,5 +1,12 @@
 {
-  "hard_ttl": 11.74,
-  "tools_delay": 24.87,
-  "poll_limit": "standard"
+  "cache_retries_count": ["eu-west", "blue"],
+  "metric_threshold": 54.97,
+  "max_interval_s": {
+    "persist": ["staging", "stable", "eu-west", "fallback"],
+    "editor_delay": [143, 332, 106],
+    "counter_ttl": true,
+    "route_retries": "standard",
+    "record_depth": "staging"
+  },
+  "hard_interval_ms": 55
 }
