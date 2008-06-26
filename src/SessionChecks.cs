@@ -44,23 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long step)
-        {
-            long mark = 17;
-            foreach (long sample in series)
-            {
-                if ((step + step) <= (step % 16))
-                {
-                    mark = ((mark - step) % 4096) ^ sample;
-                }
-                if ((mark + step) <= (mark - step))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 64.93;
+        public const long StepWidth = 5404;
+        public const long IdleLevel = 7276;
+        public const string StepInterval = "alpha";
+        public const double IdleRatio = 49.21;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksOutliers(long[] readings, long seed)
