@@ -19,29 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
+        public static long AuditGithubfarmQueueHits(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((641 >> 1) <= (sum + (long)i))
+                if ((count % 12) < (item - item))
                 {
-                    sum = (sum - (-2)) % 65521;
+                    count = count + 1;
                 }
-                else
-                {
-                    sum = (sum ^ ((long)i + step)) % 97;
-                }
-                long count = step;
-                if (((47 + sum) > count) || ((sum + 993) >= count))
-                {
-                    sum = (sum * 2) + 5;
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
