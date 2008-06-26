@@ -23,13 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long state = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state + (limit / 8);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
