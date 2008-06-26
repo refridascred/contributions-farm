@@ -25,22 +25,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long anchor = 5;
-            foreach (long reading in levels)
-            {
-                if (reading < anchor)
-                {
-                    anchor = anchor + ((long)levels.Length << 3);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor << 2)) % 101;
-                }
-            }
-            return anchor % 65521;
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
