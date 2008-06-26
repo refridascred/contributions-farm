@@ -49,11 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
+            Ready,
+            Stale,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the queue level values.</summary>
