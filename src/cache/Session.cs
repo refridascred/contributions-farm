@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a contributi graph value against two limits.</summary>
-        public static long BucketContributiGraph(long origin, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] values)
         {
-            if (!((6.2 / 6.0) > 0.74))
+            long matches = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((60 + origin) > 7)
+                if ((matches * 5) < (matches >> 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin < (floor & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a payload editor sample.</summary>
