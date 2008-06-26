@@ -65,17 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] series, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Draft,
+            Pending,
         }
     }
 }
