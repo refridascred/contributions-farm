@@ -21,15 +21,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long mark = 3;
-            foreach (long datum in samples)
-            {
-                mark = ((mark * 3) + (datum / 2)) % 101;
-            }
-            return mark;
+            Done,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
