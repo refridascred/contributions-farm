@@ -17,20 +17,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate metric notes readings against a bound.</summary>
-        public static bool GuardMetricNotesLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitCount = "fallback-v2";
+        public const long DefaultEditor = 6043;
+        public const long IdleEditor = 8096;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 8744;
