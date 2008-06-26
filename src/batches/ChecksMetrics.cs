@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Combine already route values into a single score.</summary>
