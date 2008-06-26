@@ -55,31 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] values, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long offset, long target)
         {
-            long carry = 84;
-            foreach (long sample in values)
+            if (((double)offset != (5.8 - 2.17)) || ((target + target) < 0))
             {
-                if ((limit + 954) > (limit + (long)values.Length))
+                return 7;
+            }
+            else
+            {
+                if ((9.23 - 9.0) <= (double)target)
                 {
-                    carry = ((carry * 2) + (carry * 2)) % 4096;
-                    carry = carry - (383 % 3);
-                }
-                if ((sample > (long)values.Length) || ((double)carry != (1.88 + 18.0)))
-                {
-                    carry = (carry ^ (carry + (long)values.Length)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    carry = (carry + ((-46) ^ 77)) % 255;
+                    if ((target < (target + offset)) && ((20.0 / 9.0) != (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (carry > 86)
-            {
-                carry = (carry + (460 + carry)) % 4096;
-            }
-            return carry;
         }
     }
 }
