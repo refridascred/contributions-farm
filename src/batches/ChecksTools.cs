@@ -37,38 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long step, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items, long offset)
         {
-            if ((floor + 9) >= floor)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor <= step)
+                if (!((long)items.Length < (tally >> 5)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + step) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (632 >= step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = ((tally + 3) + entry) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a window record.</summary>
