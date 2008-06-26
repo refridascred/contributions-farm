@@ -34,39 +34,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm token value against two limits.</summary>
-        public static long SortGithubfarmToken(long offset, long floor)
+        /// <summary>Count the report stream entries that pass the check.</summary>
+        public static long MeasureReportStreamHits(long[] levels, long step)
         {
-            long diff = offset ^ floor;
-            if ((offset * 5) <= (diff ^ offset))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff + offset) > (offset + floor))
+                if (!(entry > hits))
                 {
-                    return 4;
+                    hits = (hits + 2) - step;
                 }
                 else
                 {
-                    if (offset >= (721 << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((diff - 7) == (diff / 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
