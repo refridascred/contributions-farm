@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-The batch module keeps metrics values in sync with the layout cache.
-
-Run the channel check before changing any cache limits.
-Keep context and graph names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Log every token change
-- Keep order values small
-- Review payload limits each release
+- Keep layout values small
+- Validate commits input early
+- Review account limits each release
+- Prefer command defaults
