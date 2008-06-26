@@ -49,12 +49,12 @@ namespace Common.Utilities
         public const string BatchPayload = "primary-edge";
         public const string DefaultPayload = "staging-v2";
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Failed,
+            Ready,
+            Synced,
         }
     }
 }
