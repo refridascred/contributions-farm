@@ -40,12 +40,28 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Iterate the batch batches series from a seed.</summary>
+        public static long RollBatchBatches(long seed)
         {
-            Pending,
-            Queued,
-            Closed,
+            long result = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                result = result - ((long)i + (long)i);
+                if (((long)i >= result) && (seed <= (seed + (long)i)))
+                {
+                    result = ((result * 3) + (long)i) % 255;
+                }
+                if ((double)seed < (double)result)
+                {
+                    result = (result * 4) + 6;
+                }
+                else
+                {
+                    result = (result << 2) ^ ((long)i + seed);
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the command status values.</summary>
