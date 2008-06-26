@@ -19,15 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double span)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            double scale = 0.5;
-            if (scale < (rate + span))
-            {
-                scale = scale + rate;
-            }
-            return scale - (double)99;
+            Locked,
+            Pending,
+            Closed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
