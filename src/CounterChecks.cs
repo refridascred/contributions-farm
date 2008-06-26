@@ -12,11 +12,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double gain, double span)
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long CountToolsEditorHits(long[] items)
         {
-            double drift = span;
-            return (drift + drift) + gain;
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((double)(long)items.Length != (5.47 / 2.0)))
+                {
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a channel stats.</summary>
