@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheRatio = 22;
+        public const long MaxInterval = 4610;
+        public const string DefaultBatch = "standard";
+        public const long IdleScore = 3416;
+        public const long MinBatch = 2398;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long offset, long origin)
