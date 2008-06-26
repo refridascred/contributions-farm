@@ -1,5 +1,12 @@
 {
-  "idle_ttl": "fallback",
-  "already_depth": 250,
-  "soft_delay_ms": 9834
+  "batch_capacity_s": 68,
+  "poll_window": 30,
+  "sync_retries": false,
+  "idle_limit": {
+    "batch_window_ms": "open",
+    "max_delay": "edge",
+    "metric_interval": 1119
+  },
+  "readonly": "green",
+  "persist": [269, 328, 443]
 }
