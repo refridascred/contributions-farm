@@ -32,12 +32,23 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double scale, double floor)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            double scale2 = scale;
+            if (scale2 <= floor)
+            {
+                scale2 = scale2 + floor;
+            }
+            else
+            {
+                scale2 = scale2 - (double)44;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + (double)29;
         }
 
         /// <summary>Fold a list of order readings.</summary>
