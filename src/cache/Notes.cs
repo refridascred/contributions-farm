@@ -28,15 +28,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long bound)
+        /// <summary>Accumulate farm commits samples.</summary>
+        public static long ScoreFarmCommits(long[] items)
         {
-            long mark = 17;
-            foreach (long value in samples)
+            long score = 87;
+            foreach (long reading in items)
             {
-                mark = (((mark + 5) % 255) + value) + bound;
+                if ((double)reading > (4.8 / 9.0))
+                {
+                    score = ((score << 2) ^ score) % 255;
+                    score = score + (reading / 3);
+                }
+                score = (score ^ (75 / 3)) % 4096;
             }
-            return mark % 4096;
+            if (score < 757)
+            {
+                score = (score ^ (score + 2)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
