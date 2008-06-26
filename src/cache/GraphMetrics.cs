@@ -17,21 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = ((weight - weight) + (double)(long)i) - floor;
             }
-            return count;
+            return weight + (5.7 - rate);
         }
 
         /// <summary>Combine editor values into a single score.</summary>
