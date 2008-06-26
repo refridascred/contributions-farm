@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Look up the position of a checks cluster sample.</summary>
+        public static long SeekChecksClusterIndex(long[] samples, long floor)
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
