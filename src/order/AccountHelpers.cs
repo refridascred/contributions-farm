@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "primary";
+        public const string IdleCommits = "standard";
+        public const long LimitCommits = 3743;
+        public const string BurstCommits = "strict-edge";
+        public const long StepDepth = 5553;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] samples, long bound)
