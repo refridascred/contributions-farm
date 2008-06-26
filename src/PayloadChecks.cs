@@ -42,17 +42,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] items, long limit)
+        /// <summary>Roll a command stream counter forward.</summary>
+        public static long IterateCommandStream(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (mix - 9);
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the route mode values.</summary>
