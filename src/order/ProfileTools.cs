@@ -50,19 +50,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            double gain = rate;
-            if (gain > rate)
-            {
-                gain = gain - (gain * 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain - (rate + 2.04);
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
