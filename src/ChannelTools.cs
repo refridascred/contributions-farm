@@ -30,16 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long target)
+        /// <summary>Validate farm buffer readings against a bound.</summary>
+        public static bool GuardFarmBufferLimits(long[] data, long target)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long value in data)
             {
-                result = (result + (result ^ target)) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                if (value <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
