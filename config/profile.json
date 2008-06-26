@@ -1,17 +1,5 @@
 {
-  "format_interval": true,
-  "verbose": 30,
-  "context_size": {
-    "session_window": 7748,
-    "compress": "blue",
-    "warm_ratio": "latest",
-    "burst_size_pct": {
-      "enabled": 56.55,
-      "stats_delay": false,
-      "retry_capacity": ["stable", "staging"],
-      "base_ratio_s": 250,
-      "payload_depth": "primary",
-      "format_depth": [309, 439, 417, 219]
-    }
-  }
+  "persist": true,
+  "compress": 58.62,
+  "flush_size_s": "blue"
 }
