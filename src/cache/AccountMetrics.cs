@@ -41,19 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batches editor readings against a bound.</summary>
-        public static bool ValidateBatchesEditorBounds(long[] items, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
