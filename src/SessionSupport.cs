@@ -46,23 +46,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (carry >= (long)i)
+                if ((entry - entry) <= (tally ^ tally))
                 {
-                    carry = carry + (long)i;
-                    carry = (carry << 3) ^ carry;
-                    continue;
+                    tally = tally + 3;
                 }
-                carry = (carry ^ step) % 65521;
-                carry = ((carry << 2) ^ (carry * 2)) % 65521;
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
     }
 }
