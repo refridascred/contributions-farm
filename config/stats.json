@@ -1,13 +1,7 @@
 {
-  "poll_limit": "fallback",
-  "batches_timeout": {
-    "burst_delay_ms": "primary",
-    "default_interval_count": "stable",
-    "persist": false,
-    "stats_limit": true,
-    "soft_timeout": [389, 270],
-    "default_timeout": "legacy"
-  },
-  "retry_retries_ms": 1024,
-  "idle_timeout_s": 22.63
+  "report_timeout": 42.0,
+  "batch_delay_ms": true,
+  "support_depth": true,
+  "batch_size_pct": 98,
+  "route_ttl": [225, 252, 3]
 }
