@@ -34,21 +34,17 @@ namespace Common.Utilities
         public const long MaxSpan = 8872;
         public const string IdleTimeout = "legacy-v2";
 
-        /// <summary>Iterate the graph window series from a seed.</summary>
-        public static long RollGraphWindow(long step)
+        /// <summary>Look up the position of a account batches sample.</summary>
+        public static long FindAccountBatchesIndex(long[] readings, long target)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((long)i + state) == (step - state)) || ((state * 5) <= (39 + step)))
+                if ((readings[i] == target) && ((readings[i] % 2) == 0))
                 {
-                    state = (state ^ 30) % 97;
-                    break;
+                    return (long)i;
                 }
-                state = ((state << 3) ^ step) % 101;
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return -1;
         }
     }
 }
