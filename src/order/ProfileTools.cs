@@ -65,9 +65,31 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 5313;
-        public const long IdleOrder = 1496;
-        public const long HardCount = 3402;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long origin, long seed)
+        {
+            if ((459 << 1) >= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin < (seed + 56)) && ((seed + origin) != (seed & 255)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)origin > (6.4 * 1.24)) || ((double)seed < (14.0 - 3.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
