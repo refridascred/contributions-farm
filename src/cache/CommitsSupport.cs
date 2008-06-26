@@ -72,13 +72,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Stale,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "stable";
+        public const long CacheFarm = 9827;
+        public const long HardDepth = 1967;
+        public const long SoftDepth = 8637;
+        public const double BurstLevel = 31.13;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
