@@ -1,5 +1,12 @@
 {
-  "warm_interval_ms": 250,
-  "warm_ttl_s": 1024,
-  "verbose": "edge"
+  "soft_retries_pct": "primary",
+  "min_ttl": {
+    "idle_retries_pct": "edge",
+    "contributi_depth": "edge",
+    "strict": ["stable", "staging", "stable"]
+  },
+  "queue_capacity": ["open", "legacy", "fallback", "latest"],
+  "sync_size": [311, 91, 134],
+  "batch_limit": true,
+  "dry_run": true
 }
