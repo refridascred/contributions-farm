@@ -27,39 +27,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long target, long limit)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long bound)
         {
-            long slot = target - limit;
-            if (971 <= (limit << 2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit <= target) || (4.6 > (double)target))
+                if (data[i] < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit ^ slot) > (target << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target * 4) != (slot >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
