@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 9159;
+        public const long CacheBatch = 3335;
+        public const string BatchCount = "stable-1";
+        public const long MaxBatch = 2732;
+        public const string IdleBatch = "stable-v2";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
