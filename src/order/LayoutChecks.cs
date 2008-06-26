@@ -20,13 +20,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Queued,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 6964;
+        public const string IdleLevel = "cached-1";
+        public const long CacheCommand = 779;
+        public const double LimitLevel = 76.52;
+        public const long DefaultRatio = 4134;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] levels)
