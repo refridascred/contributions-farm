@@ -27,18 +27,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit stream cluster readings against a rule.</summary>
-        public static long CountStreamClusterGaps(long[] readings, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)seen < (2.35 + 13.0))
-                {
-                    seen = ((seen + 2) - entry) - floor;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Paused,
+            Done,
         }
 
         /// <summary>Scale a token notes figure with a bias.</summary>
