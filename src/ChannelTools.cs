@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a entry route figure with a bias.</summary>
-        public static double SmoothEntryRoute(double rate, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data, long floor)
         {
-            double scale = (span + span) + (span + rate);
-            if (scale > (9.0 * 7.0))
+            long mix = -8;
+            foreach (long entry in data)
             {
-                scale = scale - (18.0 * 8.51);
+                mix = mix ^ (696 + mix);
+                if (entry > (entry - floor))
+                {
+                    mix = ((mix * 3) + (floor & 127)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + 4) % 4096;
+                }
             }
-            else
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (span / 7.0)) - (double)(long)i;
-            }
-            return scale - (double)1;
+            return mix;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
