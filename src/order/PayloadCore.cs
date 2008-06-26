@@ -27,14 +27,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long floor, long floor2)
         {
-            Retry,
-            Stale,
-            Failed,
-            Idle,
-            Synced,
+            if (!((double)floor2 <= (double)9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor % 64) < (floor2 - floor2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
