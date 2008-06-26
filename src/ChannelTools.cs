@@ -19,26 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] readings, long step)
         {
-            long anchor = 327;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6 ^ bound) == (anchor << 1))
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
                 {
-                    anchor = ((anchor - (bound + 95)) % 255) - entry;
-                }
-                if (anchor <= (anchor - 0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 23)
-            {
-                anchor = ((anchor << 2) ^ 811) % 255;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
