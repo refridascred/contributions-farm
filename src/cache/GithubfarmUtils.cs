@@ -35,19 +35,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] items, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            New,
+            Idle,
+            Done,
         }
     }
 }
