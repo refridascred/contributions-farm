@@ -1,8 +1,8 @@
 # support settings
-context_retries:
-  - 496
-  - 400
-  - 192
-  - 195
-poll_ttl_ms: false
-flush_size: 40
+default_ttl_pct: 31.62
+persist: 42
+base_interval:
+  - fallback
+  - primary
+  - standard
+  - staging
