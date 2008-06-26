@@ -13,18 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
-        public static long TallySchemaGithubfarmMatches(long[] values)
+        /// <summary>Look up the position of a batches counter sample.</summary>
+        public static long SeekBatchesCounterIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((146 >= (seen + sample)) && (((sample + seen) != (sample / 2)) && ((seen + 254) < sample)))
+                if (items[i] <= limit)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
