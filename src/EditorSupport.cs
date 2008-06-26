@@ -26,11 +26,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long target2)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long edge = target - target2;
+            if ((target2 ^ edge) != (target + 967))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target2 << 3) > (target2 ^ edge)) || ((9.54 + 6.1) >= (double)edge))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target2 <= target) && ((edge + target2) > target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0.1 * 17.0) > 16.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record summary.</summary>
