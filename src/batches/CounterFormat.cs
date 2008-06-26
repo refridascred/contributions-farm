@@ -33,11 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 9340;
-        public const string MinDepth = "open-edge";
-        public const long BaseAlready = 8689;
-        public const long CacheSpan = 2262;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepWidth = 3656;
+        public const string MaxWidth = "latest-1";
+        public const long DefaultSpan = 2474;
+        public const string MinRatio = "primary-1";
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
