@@ -50,10 +50,14 @@ namespace Common.Utilities
         public const string WindowBudget = "alpha";
         public const long RetryNotes = 2776;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "stable-1";
-        public const long DefaultDepth = 340;
-        public const double HardSpan = 26.02;
-        public const double MaxFactor = 95.3;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Pending,
+            Stale,
+            Closed,
+            Idle,
+            Active,
+        }
     }
 }
