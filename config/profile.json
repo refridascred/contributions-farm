@@ -1,13 +1,20 @@
 {
-  "verbose": {
-    "notes_ratio": 60,
-    "retry_capacity": ["latest", "staging", "strict"],
-    "burst_threshold": "cached",
-    "report_ratio": 20,
-    "readonly": ["eu-west", "strict", "standard", "stable"],
-    "persist": "green"
+  "session_retries": 500,
+  "base_timeout_count": {
+    "route_size": {
+      "max_limit_s": true,
+      "compress": [310, 383, 344, 264],
+      "sync_retries_ms": 31.22,
+      "burst_ratio_s": 5552
+    },
+    "verbose": true,
+    "soft_size_count": "strict"
   },
-  "cluster_ratio": true,
-  "burst_delay_pct": 68,
-  "layout_limit": "staging"
+  "cache_limit_ms": {
+    "min_interval": true,
+    "layout_capacity": "edge",
+    "compress": "primary",
+    "retry_size": "stable",
+    "idle_size_ms": "cached"
+  }
 }
