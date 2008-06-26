@@ -86,12 +86,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((tally + 990) >= (61 >> 4))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
     }
 }
