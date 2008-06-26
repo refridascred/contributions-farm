@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 61.5;
-        public const long StepWidth = 402;
-        public const double StepSpan = 52.49;
-        public const string WindowCommand = "primary-v2";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((item >> 5) == (item & 15)) && (57 >= item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
