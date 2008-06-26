@@ -20,13 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
             Stale,
-            Dropped,
-            Synced,
-            Locked,
+            Idle,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Roll a report counter forward.</summary>
