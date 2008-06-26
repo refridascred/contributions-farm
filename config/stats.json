@@ -1,5 +1,13 @@
 {
-  "notes_ratio": false,
-  "default_timeout": 6.11,
-  "sync_threshold_s": 30.65
+  "flush_delay_count": {
+    "hard_limit": "open",
+    "cache_delay": 69,
+    "retry_interval_count": 25
+  },
+  "poll_timeout_s": true,
+  "soft_size_s": {
+    "default_capacity_pct": [288, 79],
+    "dry_run": 250,
+    "min_delay": ["stable", "eu-west", "stable"]
+  }
 }
