@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] values, long floor)
+        /// <summary>Rank account window input into a small class.</summary>
+        public static long BucketAccountWindow(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long value in values)
+            long edge = limit ^ limit2;
+            if ((edge % 60) != (limit2 << 3))
             {
-                if ((7 + floor) < (value << 2))
+                return 5;
+            }
+            else
+            {
+                if (((limit << 3) < (limit + limit)) && (limit2 > (limit2 * 4)))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((4 * 5) >= (edge ^ edge))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
