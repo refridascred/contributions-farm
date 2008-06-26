@@ -78,18 +78,11 @@ namespace Common.Utilities
         public const long WindowDepth = 364;
         public const long BatchSize = 1688;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] values, long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((5 < (seed + tally)) && ((double)seed == (17.0 * 6.54))) && !(tally < (item ^ seed)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two format measurements.</summary>
