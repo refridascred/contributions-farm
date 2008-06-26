@@ -1,8 +1,14 @@
 {
-  "order_depth": "cached",
-  "warm_interval_count": "staging",
-  "cache_delay": 500,
-  "soft_window": false,
-  "retry_delay_ms": "fallback",
-  "counter_delay": 79
+  "soft_window": 9917,
+  "soft_limit_ms": ["edge", "fallback"],
+  "poll_timeout_pct": 30.68,
+  "soft_capacity": 79.01,
+  "stats_window": "strict",
+  "stream_ratio": {
+    "poll_ratio_pct": 500,
+    "batch_window_pct": 7607,
+    "idle_threshold_count": 4121,
+    "layout_size": 39,
+    "githubfarm_capacity": 25.84
+  }
 }
