@@ -66,14 +66,13 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Dropped,
-            Synced,
-            Active,
-            Locked,
-            Draft,
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
