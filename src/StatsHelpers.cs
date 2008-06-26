@@ -57,25 +57,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long GradeGraphPayload(long origin, long seed)
-        {
-            long cur = origin - seed;
-            if ((seed / 8) < (origin + origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur - origin) < (cur % 24))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseCount = 46.89;
+        public const long SoftSupport = 4931;
+        public const long MinSupport = 8088;
     }
 }
