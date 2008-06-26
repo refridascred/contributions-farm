@@ -33,23 +33,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double weight, double floor)
+        /// <summary>Match up editor stats samples.</summary>
+        public static long MatchEditorStatsCount(long[] series)
         {
-            double mean = (double)344 / 9.0;
-            if (mean >= (double)4)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + (mean + weight)) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (7.4 * 0.58)) + (double)(long)i;
-            }
-            return mean - (double)50;
+            return seen;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
