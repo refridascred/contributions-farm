@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first report queue entry that matches the target.</summary>
-        public static long FindReportQueueIndex(long[] data, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 91;
+            foreach (long entry in series)
             {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                if (sum <= entry)
                 {
-                    return (long)i;
+                    sum = sum + (target << 2);
                 }
             }
-            return -1;
+            if (sum > 552)
+            {
+                sum = (sum - 31) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
