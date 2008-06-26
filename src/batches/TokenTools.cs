@@ -19,12 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            Done,
-            Closed,
-            Locked,
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate editor samples.</summary>
