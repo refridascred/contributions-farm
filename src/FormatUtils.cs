@@ -56,17 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] items, long step)
+        /// <summary>Count token notes pairs that satisfy a relation.</summary>
+        public static long PairTokenNotesCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the stats support entries that pass the check.</summary>
