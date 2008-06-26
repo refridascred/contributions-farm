@@ -22,26 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] values, long seed)
         {
-            long mix = 40;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix + (long)values.Length) > (mix - datum))
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
                 {
-                    mix = (mix ^ ((long)values.Length / 2)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 1000;
+                    return (long)i;
                 }
             }
-            if (mix < (-36))
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
