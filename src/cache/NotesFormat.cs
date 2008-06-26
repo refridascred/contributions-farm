@@ -22,13 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long limit, long floor)
         {
-            Draft,
-            Locked,
-            Retry,
-            Closed,
+            if (((10.0 / 3.0) <= (double)floor) || ((floor - floor) < (floor / 6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor >= (limit + 445))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
