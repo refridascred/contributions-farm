@@ -1,7 +1,13 @@
 {
-  "persist": ["cached", "open", "stable"],
-  "batch_retries_count": "edge",
-  "flush_retries_s": 87.91,
-  "soft_ratio_ms": 56,
-  "route_timeout": 7
+  "default_timeout": [194, 303, 78, 58],
+  "hard_window_ms": ["eu-west", "green"],
+  "hard_ratio_s": [413, 185],
+  "max_ttl_s": {
+    "filter_retries": 1024,
+    "idle_limit": true,
+    "base_window_s": "cached",
+    "profile_depth": false,
+    "batch_capacity_count": 15,
+    "warm_ratio": "open"
+  }
 }
