@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Queued,
+            Done,
         }
 
         /// <summary>Define command limits and defaults.</summary>
