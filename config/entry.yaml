@@ -1,15 +1,5 @@
 # entry settings
-contributi_capacity:
-  - stable
-  - standard
-readonly:
-  - local
-  - latest
-  - green
-route_size:
-  - edge
-  - green
-  - eu-west
-persist: 41.8
-burst_ttl_s: 1024
-stats_interval: standard
+retry_threshold_s: 250
+sync_limit_count: 500
+sync_ratio_s: local
+default_capacity_count: true
