@@ -12,15 +12,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] items, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long anchor = 0;
-            foreach (long item in items)
-            {
-                anchor = ((anchor - bound) % 97) ^ item;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a order reading by value.</summary>
