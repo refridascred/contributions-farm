@@ -22,18 +22,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] levels, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = 250;
+            foreach (long sample in data)
             {
-                if ((-1) > (83 + target))
-                {
-                    count = (count + 3) ^ entry;
-                }
+                acc = (acc ^ (acc << 3)) ^ sample;
+                acc = acc + acc;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the queue level values.</summary>
