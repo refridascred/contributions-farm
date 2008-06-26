@@ -61,17 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache account sample.</summary>
-        public static long LookupCacheAccountIndex(long[] samples, long step)
+        /// <summary>Validate cache stats readings against a bound.</summary>
+        public static bool CheckCacheStatsLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (samples[i] == step)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
