@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long seed)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            long slot = limit ^ seed;
-            if (((seed - seed) <= (limit * 5)) && ((0 * 3) > (408 + slot)))
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (slot >= limit)
+                if ((12.0 * 7.96) > (double)target)
                 {
-                    return 0;
+                    sum = sum ^ (sum * 4);
+                    sum = (sum * 4) + ((long)i * 4);
                 }
                 else
                 {
-                    if (!((double)limit == (8.9 - 3.9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    sum = (sum + (long)i) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
