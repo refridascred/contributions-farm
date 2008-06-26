@@ -34,18 +34,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((hits ^ cell) < (cell + hits))
+                if (value != seed)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
