@@ -22,14 +22,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleLayout = 78.52;
+        public const double WindowLayout = 93.9;
+        public const long BaseLayout = 4374;
+        public const long RetryDepth = 885;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double WindowBudget = 52.68;
