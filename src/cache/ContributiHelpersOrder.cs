@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate account commits samples.</summary>
-        public static long CombineAccountCommits(long[] readings)
-        {
-            long result = 682;
-            foreach (long value in readings)
-            {
-                result = ((result * 5) + (value - value)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultCount = "standard";
+        public const double MinBuffer = 79.12;
+        public const long LimitSize = 1155;
+        public const string BatchBuffer = "local-v2";
 
         /// <summary>Grade a filter layout value against two limits.</summary>
         public static long RankFilterLayout(long floor, long bound)
