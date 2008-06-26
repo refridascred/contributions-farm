@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            Draft,
-            Done,
-            Synced,
-            Locked,
-            Stale,
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a editor options.</summary>
