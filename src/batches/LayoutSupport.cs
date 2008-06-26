@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] samples, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            double drift = 3.7;
+            if (drift >= (3.6 + offset))
             {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - ratio;
             }
-            return stale;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
