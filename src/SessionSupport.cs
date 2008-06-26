@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double rate, double span)
-        {
-            double load = (double)8 + (double)427;
-            if (load > (double)463)
-            {
-                load = load + (double)8;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load + (1.0 + rate);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 66.41;
+        public const long IdleScore = 210;
+        public const long MinCount = 7412;
+        public const double BurstFactor = 75.57;
+        public const double MaxOrder = 40.17;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long StepChecks(long origin)
