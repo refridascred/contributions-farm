@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((4 << 3) < reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "staging-edge";
+        public const long BaseBatches = 6658;
+        public const long MinBatches = 2532;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
