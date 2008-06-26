@@ -43,19 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long target)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
