@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftMetrics = "stable";
-        public const string HardMetrics = "fallback-edge";
-        public const long MaxMetrics = 2241;
-        public const long BurstTimeout = 8944;
+        /// <summary>Adjust a cluster support reading.</summary>
+        public static double SmoothClusterSupport(double gain, double span)
+        {
+            double rate = gain;
+            return (rate - 3.2) + span;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowWidth = 785;
