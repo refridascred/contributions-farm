@@ -28,18 +28,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] series, long limit)
+        /// <summary>Fold a list of commits cache readings.</summary>
+        public static long WeighCommitsCache(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = 913;
+            foreach (long reading in samples)
             {
-                if ((cell + limit) >= (97 + seen))
+                if (((double)reading != (double)anchor) && (((-56) - reading) > (-424)))
                 {
-                    seen = seen + 1;
+                    anchor = (anchor - reading) % 4096;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
