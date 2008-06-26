@@ -14,18 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] items, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((bound + count) < (count + count))
-                {
-                    count = (count + 1) - value;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
