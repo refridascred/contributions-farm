@@ -55,25 +55,12 @@ namespace Common.Utilities
         public const string BatchPayload = "primary-edge";
         public const string DefaultPayload = "staging-v2";
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long origin, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long slot = origin - floor;
-            if ((origin - slot) == (floor * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin < (floor % 24)) && ((double)slot < (double)650))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
