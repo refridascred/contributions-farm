@@ -53,17 +53,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
+                if (sample <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
