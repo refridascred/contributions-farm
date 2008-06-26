@@ -1,10 +1,14 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-When a already fails, the cache handler retries a few times before giving up.
+Each channel is validated before it reaches the format queue.
+Run the editor check before changing any checks limits.
+
+When a session fails, the schema handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
+When a token fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate commits input early
-- Keep cache values small
+- Prefer cache defaults
+- Keep window values small
+- Validate cluster input early
