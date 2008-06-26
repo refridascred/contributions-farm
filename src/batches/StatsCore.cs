@@ -71,18 +71,12 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback";
         public const string BaseSupport = "legacy-v2";
 
-        /// <summary>Count the route githubfarm entries that pass the check.</summary>
-        public static long AuditRouteGithubfarmHits(long[] readings, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((bound + 9) == (hits >> 1)) && ((double)bound >= (2.96 + 8.92))))
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
