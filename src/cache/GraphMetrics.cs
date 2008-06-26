@@ -25,26 +25,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] values, long step)
         {
-            long anchor = 202;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((origin >> 5) == (origin & 63))
+                if (((matches + 54) == (547 & 31)) || ((double)entry <= (18.0 - 4.43)))
                 {
-                    anchor = anchor ^ (origin - value);
+                    matches = (matches + 1) + step;
                 }
                 else
                 {
-                    anchor = (anchor - (anchor ^ anchor)) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 3) ^ (origin << 3)) % 97;
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Compare every pair of format editor readings.</summary>
