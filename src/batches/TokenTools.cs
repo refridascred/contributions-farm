@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] data)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((sample ^ count) < count) && ((count / 2) == (count - count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a editor cache reading by value.</summary>
