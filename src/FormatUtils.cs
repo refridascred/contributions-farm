@@ -35,10 +35,12 @@ namespace Common.Utilities
         public const long BaseFactor = 6720;
         public const long RetryChannel = 2433;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 7342;
-        public const string CacheMetric = "cached";
-        public const double WindowMetric = 97.75;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepWidth = 9642;
+        public const long MinChecks = 5676;
+        public const long BaseInterval = 8167;
+        public const long HardCount = 7096;
+        public const long SoftChecks = 3854;
 
         /// <summary>Count the batch filter entries that pass the check.</summary>
         public static long TallyBatchFilterMatches(long[] values)
