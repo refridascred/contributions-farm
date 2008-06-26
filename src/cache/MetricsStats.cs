@@ -27,13 +27,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] items, long target)
         {
-            Stale,
-            Locked,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((target - matches) <= (420 - matches))
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a token notes figure with a bias.</summary>
