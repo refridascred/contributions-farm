@@ -14,12 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Active,
-            Closed,
-            New,
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a stream entry.</summary>
