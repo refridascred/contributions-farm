@@ -14,19 +14,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] data)
         {
-            long mix = -5;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mix = ((mix - (mix >> 3)) % 97) - sample;
-                if ((double)mix <= (1.6 - 14.0))
+                if ((double)matches <= 9.1)
                 {
-                    break;
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the token class values.</summary>
