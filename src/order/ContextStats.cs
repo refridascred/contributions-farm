@@ -43,12 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] == offset)
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
