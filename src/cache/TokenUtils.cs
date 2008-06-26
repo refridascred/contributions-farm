@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const string LimitGraph = "local";
         public const string RetryFactor = "latest-edge";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] levels, long step)
         {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two cache tools measurements.</summary>
