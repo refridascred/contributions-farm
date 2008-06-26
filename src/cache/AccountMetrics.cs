@@ -59,19 +59,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (datum >= floor)
+                if (((origin & 63) < (4 & 63)) || !((long)data.Length > (4 >> 1)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the cluster level values.</summary>
