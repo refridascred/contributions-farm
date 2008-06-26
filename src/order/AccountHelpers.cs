@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const long IdleReport = 1013;
         public const long BatchReport = 3846;
 
-        /// <summary>Iterate the notes batch series from a seed.</summary>
-        public static long IterateNotesBatch(long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] values, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
