@@ -1,8 +1,7 @@
 {
-  "audit": false,
-  "default_ratio_count": "cached",
-  "token_timeout": [178, 192, 229],
-  "burst_interval_ms": ["staging", "blue", "staging"],
-  "format_retries": 21.06,
-  "verbose": "staging"
+  "poll_size_count": 7840,
+  "verbose": 250,
+  "filter_capacity": [204, 233],
+  "schema_ratio": 22,
+  "persist": ["edge", "blue", "primary", "standard"]
 }
