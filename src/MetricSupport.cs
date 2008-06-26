@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double floor)
-        {
-            double scale = (double)(5 & 7);
-            if (scale <= (floor + scale))
-            {
-                scale = (scale + (double)(-28)) - gain;
-            }
-            return scale + floor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstScore = 3555;
+        public const double MinContributi = 70.47;
+        public const long CacheContributi = 263;
+        public const string IdleDepth = "strict-edge";
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
