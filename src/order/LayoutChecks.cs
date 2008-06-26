@@ -28,12 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Combine cache stream values into a single score.</summary>
+        public static long WeighCacheStream(long[] readings)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long result = 12;
+            foreach (long cell in readings)
+            {
+                result = (result ^ (result & 63)) + cell;
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the token class values.</summary>
