@@ -34,12 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 78.63;
-        public const long RetrySpan = 7677;
-        public const long BaseRatio = 8151;
-        public const string RetryFactor = "open-1";
-        public const long BurstRatio = 2605;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 543;
+        public const long CacheBatches = 4644;
+        public const string MaxInterval = "alpha";
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandMatches(long[] readings)
