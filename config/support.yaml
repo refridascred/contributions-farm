@@ -1,5 +1,5 @@
 # support settings
-batches_delay: latest
-session_ttl: 63.8
-hard_depth_ms: 1938
-warm_window_count: 55
+readonly: 75.09
+stream_window: local
+buffer_ratio: blue
+account_limit: primary
