@@ -35,11 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((1.2 - 7.47) == (double)count)
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
