@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of support stream readings.</summary>
-        public static long DigestSupportStream(long[] levels, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            long score = 61;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score + reading) < score)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score + (score + seed);
-                    continue;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    score = ((score * 3) + seed) % 101;
-                    score = ((score * 3) + ((long)i + (long)i)) % 101;
-                }
-                if (((seed + score) > (seed + seed)) && (score <= (score >> 5)))
-                {
-                    score = (score - (seed >> 3)) % 1000;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 79)
-            {
-                score = (score * 5) + 281;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
