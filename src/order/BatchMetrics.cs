@@ -74,13 +74,19 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const string LimitQueue = "alpha-1";
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] levels, long step)
         {
-            Ready,
-            Retry,
-            Draft,
-            Pending,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
