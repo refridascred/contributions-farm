@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of graph tools readings.</summary>
+        public static long DigestGraphTools(long[] samples)
         {
-            Idle,
-            Pending,
-            Ready,
-            Stale,
+            long state = 2;
+            foreach (long cell in samples)
+            {
+                state = state + (state + (long)samples.Length);
+                if ((double)state != (5.9 * 6.1))
+                {
+                    state = state ^ (cell - cell);
+                }
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a token metric sample.</summary>
