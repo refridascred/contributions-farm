@@ -13,22 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long TallyBatchChecksMatches(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double rate, double span)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double load = (double)8 + (double)427;
+            if (load > (double)463)
             {
-                if ((item + seen) == (item ^ seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load + (double)8;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load + (1.0 + rate);
         }
 
         /// <summary>Hold a order entry.</summary>
