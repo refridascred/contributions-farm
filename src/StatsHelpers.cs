@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels, long offset)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] readings)
         {
-            long result = 51;
-            foreach (long reading in levels)
+            long mix = 4;
+            foreach (long entry in readings)
             {
-                long matches = (result % 64) ^ (offset ^ reading);
-                result = (result ^ matches) % 101;
-                result = (result * 5) + (reading ^ offset);
+                if (((long)readings.Length * 2) <= (entry + mix))
+                {
+                    mix = (mix ^ entry) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix + mix)) % 1000;
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a batch stats.</summary>
