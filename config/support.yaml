@@ -1,12 +1,5 @@
 # support settings
-hard_size_ms: 100
-poll_ratio_count: staging
-burst_capacity:
-  enabled: true
-  default_depth: 23.2
-  audit:
-    min_timeout_count: false
-    hard_retries_count: 928
-    format_ttl: 80
-  persist: 500
-  stats_threshold: false
+base_ratio: false
+soft_depth: stable
+idle_limit_count: 43.22
+counter_interval: 4274
