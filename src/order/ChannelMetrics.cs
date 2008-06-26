@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long bound, long seed)
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
+            long delta = bound + seed;
+            if (((double)delta == (0.2 + 11.0)) && ((seed * 2) >= (92 / 6)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((delta + bound) > 6)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
