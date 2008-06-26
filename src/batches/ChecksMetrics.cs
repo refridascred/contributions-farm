@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine batches values into a single score.</summary>
