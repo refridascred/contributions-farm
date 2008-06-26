@@ -43,14 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            Failed,
-            New,
-            Queued,
-            Retry,
-            Done,
+            public string Score { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
