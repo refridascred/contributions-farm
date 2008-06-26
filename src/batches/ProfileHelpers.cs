@@ -19,39 +19,12 @@ namespace Common.Utilities
             return mean + (10.0 - scale);
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long offset2 = seed - offset;
-            if ((offset2 ^ offset2) != (seed ^ offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.9 >= (double)offset) && ((offset2 & 7) < (offset2 + seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset2 <= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset2 * 5) >= offset2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
