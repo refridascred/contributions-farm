@@ -17,11 +17,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long step)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 15; i++)
+            {
+                double scale = (double)((-28) / 9);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = (((state * 5) + step) % 4096) + (long)i2;
+                }
+                if ((state < (state * 5)) && ((scale + scale) < scale))
+                {
+                    state = (state + step) % 97;
+                    break;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
