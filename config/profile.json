@@ -1,27 +1,6 @@
 {
-  "audit": {
-    "graph_capacity": false,
-    "poll_window_pct": "primary",
-    "order_retries": "green",
-    "readonly": [205, 217, 233, 162],
-    "verbose": 51,
-    "metrics_size": {
-      "report_ratio": "cached",
-      "idle_threshold_pct": 21,
-      "notes_interval": 1024
-    }
-  },
-  "support_threshold": 42.85,
-  "cache_timeout_pct": "fallback",
-  "metrics_ttl": true,
-  "dry_run": {
-    "flush_size_count": "fallback",
-    "soft_retries_s": {
-      "payload_interval": "latest",
-      "enabled": false,
-      "soft_ratio": [360, 10, 438, 415],
-      "base_threshold": ["legacy", "standard", "stable"]
-    },
-    "format_ratio": ["staging", "latest", "local", "standard"]
-  }
+  "min_ratio_count": false,
+  "sync_ttl_ms": "primary",
+  "format_capacity": 9556,
+  "buffer_ratio": 1.34
 }
