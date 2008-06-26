@@ -25,22 +25,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of profile report entries.</summary>
-        public static long TallyProfileReport(long[] items, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long step)
         {
-            long total = 5;
-            foreach (long datum in items)
+            long edge = seed - step;
+            if (((-390) % 3) == (edge << 1))
             {
-                if (bound <= (bound >> 2))
+                return 1;
+            }
+            else
+            {
+                if ((seed << 1) > (step >> 4))
                 {
-                    total = (((total << 2) ^ (bound - bound)) % 97) + datum;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 / 4.0) <= 2.9)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total > 5)
-            {
-                total = total ^ (bound >> 3);
-            }
-            return total;
         }
 
         /// <summary>Count the order checks entries that pass the check.</summary>
