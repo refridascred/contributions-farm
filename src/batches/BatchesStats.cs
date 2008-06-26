@@ -27,14 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many schema order samples are out of range.</summary>
+        public static long AuditSchemaOrderGaps(long[] levels)
         {
-            Draft,
-            Active,
-            Ready,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((count & 1) != (count + count)) || ((entry + count) < (911 / 7)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
