@@ -64,24 +64,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long limit, long origin)
+        /// <summary>Accumulate batch githubfarm samples.</summary>
+        public static long WeighBatchGithubfarm(long[] values)
         {
-            if ((94 % 3) == (origin % 64))
+            long anchor = 92;
+            foreach (long sample in values)
             {
-                return 7;
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 2) + sample) % 97;
             }
-            else
-            {
-                if (limit > 7)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return anchor % 4096;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
