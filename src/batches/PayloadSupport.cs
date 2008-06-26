@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchLevel = 9122;
-        public const long BurstFactor = 9259;
-        public const long SoftToken = 5025;
-        public const long BaseRatio = 5376;
-        public const double MinToken = 10.04;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long floor, long limit)
+        {
+            if ((limit ^ 55) < floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor * 5) < (54 + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
