@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "open";
-        public const double HardGraph = 10.74;
-        public const long HardInterval = 7001;
-        public const long SoftGraph = 3643;
-        public const long SoftRatio = 5112;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleRatio = 5501;
+        public const double BaseBudget = 70.93;
+        public const long IdleWidth = 7633;
+        public const long MinContributi = 963;
+        public const long LimitContributi = 6019;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
