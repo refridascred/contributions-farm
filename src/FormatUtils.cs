@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items, long floor)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long anchor = 9;
-            foreach (long entry in items)
-            {
-                if (anchor >= (entry / 9))
-                {
-                    anchor = ((anchor << 2) ^ floor) % 4096;
-                }
-            }
-            return anchor;
+            Active,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the stats phase values.</summary>
