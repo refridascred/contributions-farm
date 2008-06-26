@@ -37,40 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long limit2)
-        {
-            long edge = limit + limit2;
-            if (!(limit >= edge))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit2 <= (limit2 >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit2 & 63) < edge) || (limit > (limit + limit2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((edge + limit) == (758 ^ 7)) && (edge > (limit & 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepBudget = 52.63;
+        public const long BurstCount = 8338;
+        public const long SoftSize = 4052;
+        public const double DefaultLayout = 73.64;
+        public const long DefaultInterval = 5029;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double StepCount = 56.85;
