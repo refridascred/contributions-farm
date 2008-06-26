@@ -39,12 +39,10 @@ namespace Common.Utilities
         public const long CacheRoute = 4701;
         public const long MaxDepth = 9537;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Failed,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "fallback-v2";
+        public const long MaxSchema = 5966;
+        public const long RetryTimeout = 4465;
+        public const string MinSchema = "open-1";
     }
 }
