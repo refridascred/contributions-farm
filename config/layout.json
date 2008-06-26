@@ -1,5 +1,5 @@
 {
-  "profile_ratio": "blue",
-  "sync_size": 65,
-  "compress": 1024
+  "hard_threshold": "staging",
+  "report_ttl": "strict",
+  "hard_ratio_s": 98.98
 }
