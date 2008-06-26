@@ -37,18 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (((hits >> 1) <= entry) || (((2.19 / 7.0) == (double)hits) && (hits < (entry * 4))))
+                carry = ((carry << 2) ^ (long)i) % 101;
+                if (!((origin + origin) != (origin + (long)i)))
                 {
-                    hits = hits + 1;
+                    carry = ((carry * 4) + (long)i) % 101;
                 }
+                else
+                {
+                    carry = (carry << 2) ^ ((long)i % 2);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
