@@ -77,39 +77,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long bound, long seed)
+        /// <summary>Count the cluster notes entries that pass the check.</summary>
+        public static long CountClusterNotesMatches(long[] samples)
         {
-            long cur = bound + seed;
-            if (cur > (seed - 579))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur <= (9.7 + 9.3))
+                if ((sample - sample) <= (sample / 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((7 ^ seed) == (cur - bound)) || ((bound ^ cur) < (seed / 8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)(-594) <= 4.3)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
