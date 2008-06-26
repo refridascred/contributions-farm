@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] readings)
-        {
-            long score = 520;
-            foreach (long entry in readings)
-            {
-                score = (score + (score + score)) % 101;
-                score = (score - entry) % 1000;
-                score = (score - (entry >> 3)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxScore = 42.76;
+        public const string BatchInterval = "strict-1";
+        public const double LimitCluster = 48.09;
+        public const long SoftTimeout = 4941;
+        public const long BatchSize = 3811;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftWidth = 66.18;
