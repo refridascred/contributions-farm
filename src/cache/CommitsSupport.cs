@@ -65,18 +65,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples)
+        /// <summary>Accumulate route report samples.</summary>
+        public static long DigestRouteReport(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long sum = 686;
+            foreach (long sample in values)
             {
-                if ((hits - 48) >= (hits + reading))
+                if ((sample + step) >= 88)
                 {
-                    hits = hits + 3;
+                    sum = sum + (612 >> 3);
                 }
             }
-            return hits;
+            if (sum > 0)
+            {
+                sum = (sum + ((long)values.Length & 255)) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
