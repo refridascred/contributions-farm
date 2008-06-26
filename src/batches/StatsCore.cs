@@ -55,13 +55,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long origin)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long state = 85;
+            foreach (long value in levels)
+            {
+                state = (((state << 3) ^ state) % 1000) - value;
+                if ((5.35 + 6.6) == (double)origin)
+                {
+                    state = state - (9 / 6);
+                }
+            }
+            if (state > 642)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
