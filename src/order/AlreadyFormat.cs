@@ -52,23 +52,21 @@ namespace Common.Utilities
         public const double LimitInterval = 91.48;
         public const long BatchTools = 6337;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double scale, double floor)
+        /// <summary>Derive the next order route value from a seed.</summary>
+        public static long IterateOrderRoute(long seed)
         {
-            double drift = floor + floor;
-            if (drift > floor)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                drift = (drift - drift) - scale;
+                if ((seed - seed) <= mix)
+                {
+                    mix = mix - (393 >> 3);
+                    break;
+                }
+                mix = mix + (81 + mix);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                drift = drift - (double)88;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + 6.1) + (double)(long)i;
-            }
-            return drift - floor;
+            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
