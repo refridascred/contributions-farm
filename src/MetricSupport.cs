@@ -20,12 +20,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long limit, long target)
         {
-            Synced,
-            Ready,
-            Closed,
+            long offset = limit + target;
+            if (target < (offset + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target % 12) == (offset << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (double)8)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
