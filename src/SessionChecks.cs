@@ -23,18 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long AuditGithubfarmQueueHits(long[] samples)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count % 12) < (item - item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Synced,
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
