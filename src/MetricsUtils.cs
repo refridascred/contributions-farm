@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Check that every report editor entry stays within the limit.</summary>
+        public static bool VerifyReportEditorBounds(long[] samples, long step)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
