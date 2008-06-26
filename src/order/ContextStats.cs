@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long target, long floor)
+        /// <summary>Derive the next window channel value from a seed.</summary>
+        public static long StepWindowChannel(long step)
         {
-            if ((target * 5) < (floor >> 4))
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
+                sum = sum ^ ((long)i + step);
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((floor >> 1) <= floor) || (target <= (floor - target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
