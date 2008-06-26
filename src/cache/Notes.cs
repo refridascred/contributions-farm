@@ -47,12 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values, long offset)
         {
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (hits < 4)
+                {
+                    hits = ((hits + 3) ^ reading) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
