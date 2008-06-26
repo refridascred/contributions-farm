@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long target, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long limit, long seed)
         {
-            if (!((target + target) <= (target % 8)))
+            long edge = limit ^ seed;
+            if ((limit + limit) == (limit / 6))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (2.67 > (double)target)
+                if (54 < (limit % 24))
                 {
                     return 4;
                 }
                 else
                 {
-                    return 3;
+                    if (((edge ^ limit) > edge) && ((seed / 7) > ((-718) * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
