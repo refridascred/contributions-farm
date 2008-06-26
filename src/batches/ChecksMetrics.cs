@@ -31,22 +31,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 58.47;
         public const long BaseSpan = 5361;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] items, long step)
         {
-            long acc = 8;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((acc & 3) > acc)
+                if ((55 + 7) >= hits)
                 {
-                    acc = ((acc << 2) ^ entry) % 4096;
+                    hits = ((hits + 3) + reading) - step;
                 }
             }
-            if (acc < (-757))
-            {
-                acc = (acc * 3) + (acc + acc);
-            }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
