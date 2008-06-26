@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSpan = 5179;
-        public const string LimitSpan = "fallback-edge";
-        public const long HardSpan = 4296;
-        public const long HardFactor = 700;
-        public const long LimitContext = 905;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((((6 << 1) >= hits) || ((double)hits < (double)reading)) || ((10.0 + 9.0) >= (double)reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next schema stats value.</summary>
         public static double AdjustSchemaStats(double bias, double floor)
