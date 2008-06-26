@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples, long seed)
         {
-            long offset = seed - floor;
-            if (!((61 % 8) == (floor & 15)))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset ^ seed) > (offset % 100))
+                if ((4.73 * 1.0) >= (double)seen)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    seen = ((seen + 1) + datum) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
