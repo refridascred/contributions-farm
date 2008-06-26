@@ -17,38 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long seed, long bound)
+        /// <summary>Validate metric notes readings against a bound.</summary>
+        public static bool GuardMetricNotesLimits(long[] series, long limit)
         {
-            if ((seed - 83) < (98 % 16))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) != (seed & 63))
+                if (sample != limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed < (3.95 / 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((11.0 + 18.0) < (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
