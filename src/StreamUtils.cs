@@ -58,19 +58,10 @@ namespace Common.Utilities
             return gain + (ratio + 6.92);
         }
 
-        /// <summary>Validate notes batches readings against a bound.</summary>
-        public static bool ValidateNotesBatchesBounds(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowCount = 6322;
+        public const double CacheAlready = 85.32;
+        public const double MaxTimeout = 69.39;
+        public const long DefaultAlready = 517;
     }
 }
