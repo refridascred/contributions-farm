@@ -49,12 +49,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((2.0 / 6.0) < (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
