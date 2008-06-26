@@ -1,5 +1,10 @@
 # githubfarm settings
-persist: staging
-strict: stable
-sync_ttl_pct: 95
-default_size_count: 30
+burst_interval_s: true
+buffer_window:
+  - 487
+  - 153
+  - 397
+  - 289
+idle_size_count: blue
+batch_delay: 250
+compress: cached
