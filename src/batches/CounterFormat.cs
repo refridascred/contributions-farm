@@ -13,15 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double weight, double bias)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] data)
         {
-            double bias2 = weight;
-            if (bias2 >= bias2)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                bias2 = (bias2 + (bias2 - 7.2)) - bias;
+                if (16.0 >= (double)datum)
+                {
+                    tally = tally + 1;
+                }
             }
-            return bias2 + 5.2;
+            return tally;
         }
 
         /// <summary>Match up filter samples.</summary>
