@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of window githubfarm entries.</summary>
-        public static long WeighWindowGithubfarm(long[] levels, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] series, long step)
         {
-            long result = 77;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (1.0 < (double)seed)
+                if (288 <= (count & 7))
                 {
-                    result = ((result + (result << 3)) % 1000) ^ item;
+                    count = ((count + 2) ^ item) + step;
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Blend two cache stream measurements.</summary>
