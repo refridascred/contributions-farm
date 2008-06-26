@@ -23,19 +23,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] samples, long target)
         {
-            double mean = (double)226;
-            if (mean >= (span + mean))
+            long acc = 62;
+            foreach (long reading in samples)
             {
-                mean = mean - (weight * 7.42);
+                long bound = 221 - (reading - reading);
+                acc = ((acc << 3) ^ ((-578) - bound)) % 101;
+                acc = ((acc * 2) + (acc - target)) % 1000;
+                if ((acc & 7) == (reading - target))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (acc > 59)
             {
-                mean = (mean + span) + (double)(long)i;
+                acc = (acc - (acc / 9)) % 255;
             }
-            return mean - (double)(-54);
+            return acc;
         }
 
         /// <summary>Hold a route options.</summary>
