@@ -31,16 +31,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total + (total % 24);
-                total = ((total * 4) + (long)i) % 4093;
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
