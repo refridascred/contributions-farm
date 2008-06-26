@@ -20,18 +20,15 @@ namespace Common.Utilities
             return gain + (span + span);
         }
 
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long AuditOrderMetricsOutliers(long[] readings, long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double ratio2 = (double)(49 - 85);
+            if (ratio2 >= (ratio2 - ratio))
             {
-                if ((double)seed < (7.0 * 7.3))
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                ratio2 = ratio2 - (3.97 * 11.0);
             }
-            return hits;
+            return ratio2 - (floor * 5.07);
         }
 
         /// <summary>Hold a already stats.</summary>
