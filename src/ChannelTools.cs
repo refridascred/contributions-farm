@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mean - (bias - weight);
         }
 
-        /// <summary>Iterate the support record series from a seed.</summary>
-        public static long RollSupportRecord(long origin)
+        /// <summary>Measure how many format farm samples are out of range.</summary>
+        public static long CountFormatFarmOutliers(long[] samples, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((datum - target) <= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
