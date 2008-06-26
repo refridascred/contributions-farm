@@ -20,15 +20,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double gain, double offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] readings, long target)
         {
-            double scale = (10.0 + 14.0) / 6.0;
-            if (scale >= gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - gain) + offset;
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (gain - scale);
+            return -1;
         }
 
         /// <summary>Project the next layout value.</summary>
