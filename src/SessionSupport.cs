@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long MinContributi = 963;
         public const long LimitContributi = 6019;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = 22;
+            foreach (long value in items)
+            {
+                if (carry < (value - carry))
+                {
+                    carry = carry + (carry % 8);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count tools commits pairs that satisfy a relation.</summary>
