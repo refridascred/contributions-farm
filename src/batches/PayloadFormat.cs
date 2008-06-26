@@ -28,38 +28,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long floor, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] values)
         {
-            if ((step % 24) <= (step % 8))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - floor) == (71 - floor))
+                if ((double)matches > (16.0 * 5.9))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step ^ 833) <= (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((265 * 2) < (step >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 1) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
