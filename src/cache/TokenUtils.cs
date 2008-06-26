@@ -37,24 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Check that every filter channel entry stays within the limit.</summary>
+        public static bool ValidateFilterChannelBounds(long[] series, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (anchor > (long)i)
+                if (value < limit)
                 {
-                    anchor = anchor - anchor;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor ^ (anchor - anchor)) % 97;
-                }
-                anchor = ((anchor * 2) + ((long)i / 9)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return flag;
         }
     }
 }
