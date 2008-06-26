@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
-            public bool Stamp { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)48 > (double)count)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
