@@ -42,18 +42,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] values)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value >> 5) != (tally - tally))
+                if ((9.9 * 13.0) < (double)floor)
                 {
-                    tally = tally + 3;
+                    result = (result - (result - floor)) % 255;
                 }
+                else
+                {
+                    result = ((result << 3) ^ result) % 101;
+                    result = result ^ (944 & 1);
+                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
     }
 }
