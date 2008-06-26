@@ -19,22 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] levels, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long offset2)
         {
-            long total = 25;
-            foreach (long datum in levels)
+            if ((offset2 >> 5) > offset)
             {
-                if ((datum << 3) <= (datum - datum))
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) != (offset + offset))
                 {
-                    total = ((total << 3) ^ bound) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (196 < (offset % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (total < 3)
-            {
-                total = (total ^ (total - 81)) % 97;
-            }
-            return total;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
