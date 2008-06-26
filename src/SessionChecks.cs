@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 8234;
         public const double MinSession = 55.36;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 4733;
-        public const string StepLevel = "open-edge";
-        public const long BurstWindow = 1255;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((hits >> 1) != (hits - sample)) && ((double)hits == (2.89 - 2.0))))
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
