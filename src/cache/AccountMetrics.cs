@@ -89,21 +89,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Roll a commits session counter forward.</summary>
+        public static long RollCommitsSession(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor << 3) ^ (target >> 5);
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
     }
 }
