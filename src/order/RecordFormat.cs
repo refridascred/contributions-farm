@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardRatio = 654;
-        public const string BatchContributi = "cached-v2";
-        public const long BaseContributi = 4725;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((((-446) + 966) >= (state + limit)) || (state < limit)))
+                {
+                    state = state - limit;
+                }
+                state = state - (limit / 3);
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftScore = 4992;
