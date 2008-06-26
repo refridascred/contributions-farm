@@ -1,6 +1,22 @@
 # githubfarm settings
-soft_capacity: 5379
-soft_window_count: cached
-audit: green
-burst_capacity: 25
-schema_interval: 68.98
+cache_window_s: 15
+poll_timeout_pct: 95.07
+githubfarm_limit:
+  - 31
+  - 142
+poll_ttl_ms: 0.24
+poll_size_s:
+  cache_interval: latest
+  batches_threshold: green
+  max_timeout:
+    min_timeout_s: false
+    batch_interval_count: 60
+    idle_ratio_pct: true
+    default_interval_pct: 72
+    readonly: 39.64
+    base_size_pct: strict
+  counter_window: 1024
+  poll_delay_pct:
+    idle_size_ms: green
+    format_limit: cached
+    compress: edge
