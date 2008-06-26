@@ -31,15 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Count the metrics schema entries that pass the check.</summary>
+        public static long MeasureMetricsSchemaHits(long[] items, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((-84) <= (tally & 7))
+                {
+                    tally = ((tally + 2) - datum) + offset;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
