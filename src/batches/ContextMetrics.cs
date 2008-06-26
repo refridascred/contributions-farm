@@ -36,17 +36,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long offset)
+        /// <summary>Adjust a cluster commits reading.</summary>
+        public static double AdjustClusterCommits(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = floor;
+            if (ratio >= 1.2)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (ratio / 8.0)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (3.41 - ratio)) - (double)(long)i;
+            }
+            return ratio - (9.8 * 2.2);
         }
 
         /// <summary>Digest a series of batch entry entries.</summary>
