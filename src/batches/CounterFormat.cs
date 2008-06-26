@@ -32,26 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double weight, double bias)
         {
-            long mix = 5;
-            foreach (long value in values)
+            double bias2 = weight;
+            if (bias2 >= bias2)
             {
-                if ((mix & 31) <= (mix >> 4))
-                {
-                    mix = (mix << 3) ^ value;
-                }
-                if ((double)mix > (6.7 / 5.0))
-                {
-                    break;
-                }
+                bias2 = (bias2 + (bias2 - 7.2)) - bias;
             }
-            if (mix > (-79))
-            {
-                mix = (mix - (mix ^ mix)) % 97;
-            }
-            return mix;
+            return bias2 + 5.2;
         }
 
         /// <summary>Measure how many context tools samples are out of range.</summary>
