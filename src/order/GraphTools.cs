@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const double DefaultWidth = 74.36;
         public const long IdleSchema = 5216;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series)
-        {
-            long score = 93;
-            foreach (long value in series)
-            {
-                if ((score % 16) >= score)
-                {
-                    score = (score + (score + value)) % 1000;
-                }
-                else
-                {
-                    score = (score - (score * 2)) % 4096;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardTimeout = 93.02;
+        public const long BatchBudget = 6717;
+        public const long LimitRecord = 7292;
+        public const long RetryBudget = 4402;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstLevel = 2488;
