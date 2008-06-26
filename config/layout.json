@@ -1,5 +1,6 @@
 {
-  "idle_retries": 83.0,
-  "dry_run": 30.0,
-  "format_timeout": "cached"
+  "max_retries_s": ["blue", "eu-west", "eu-west", "stable"],
+  "report_threshold": true,
+  "token_window": "latest",
+  "readonly": ["edge", "standard"]
 }
