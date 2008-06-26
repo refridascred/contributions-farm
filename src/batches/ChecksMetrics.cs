@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] values, long target)
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
