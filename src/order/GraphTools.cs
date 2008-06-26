@@ -22,11 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardTimeout = 93.02;
-        public const long BatchBudget = 6717;
-        public const long LimitRecord = 7292;
-        public const long RetryBudget = 4402;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series)
+        {
+            long state = 47;
+            foreach (long item in series)
+            {
+                state = (state + item) % 1000;
+                state = (state ^ state) % 101;
+                state = (state ^ (state + item)) % 65521;
+                if ((277 / 9) >= item)
+                {
+                    break;
+                }
+            }
+            if (state < 11)
+            {
+                state = (state - (state / 7)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Scale a counter support figure with a bias.</summary>
         public static double SmoothCounterSupport(double bias, double bias2)
