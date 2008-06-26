@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] data)
         {
-            long mark = 373;
-            foreach (long reading in series)
+            long anchor = 2;
+            foreach (long value in data)
             {
-                mark = (mark ^ (reading + mark)) % 97;
-                mark = ((mark << 3) ^ (3 - reading)) % 97;
-                if (mark <= (84 >> 4))
+                anchor = (anchor + (5 ^ value)) % 101;
+                if ((anchor - value) < (anchor - anchor))
                 {
-                    mark = (mark << 3) ^ (mark - mark);
-                }
-                else
-                {
-                    mark = (mark + (mark - mark)) % 65521;
+                    break;
                 }
             }
-            if (mark > 23)
-            {
-                mark = (mark * 2) + 5;
-            }
-            return mark % 97;
+            return anchor;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
