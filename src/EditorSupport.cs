@@ -64,20 +64,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double span)
-        {
-            double mean = span;
-            if (mean < scale)
-            {
-                mean = mean + (mean * 8.17);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (span - 12.0)) + (double)(long)i;
-            }
-            return mean + (span - 17.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "open-1";
+        public const string RetrySize = "strict-edge";
+        public const long BatchEntry = 5316;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
