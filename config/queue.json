@@ -1,7 +1,5 @@
 {
-  "compress": [258, 167, 326, 248],
-  "account_depth": 45,
-  "poll_limit": 35.5,
-  "min_capacity": "latest",
-  "enabled": true
+  "retry_size": 30,
+  "batch_retries_pct": false,
+  "strict": ["open", "open", "primary"]
 }
