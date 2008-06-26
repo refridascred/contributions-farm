@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
