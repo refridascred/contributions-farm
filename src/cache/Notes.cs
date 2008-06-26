@@ -26,21 +26,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((27 % 7) >= (bound & 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((bound + limit) > (bound & 31)))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
