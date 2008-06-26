@@ -21,11 +21,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
+        public static long AuditGithubfarmCounterHits(long[] levels)
         {
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value + value) < (count >> 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
