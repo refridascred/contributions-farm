@@ -47,18 +47,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of report context readings.</summary>
-        public static long ScoreReportContext(long[] readings)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long result = 90;
-            foreach (long cell in readings)
-            {
-                if ((922 << 3) != (result & 7))
-                {
-                    result = (result + (cell - result)) % 97;
-                }
-            }
-            return result;
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
