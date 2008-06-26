@@ -1,5 +1,7 @@
 {
-  "min_capacity_ms": "cached",
-  "hard_depth_s": 0.47,
-  "warm_depth_s": "standard"
+  "persist": ["cached", "open", "stable"],
+  "batch_retries_count": "edge",
+  "flush_retries_s": 87.91,
+  "soft_ratio_ms": 56,
+  "route_timeout": 7
 }
