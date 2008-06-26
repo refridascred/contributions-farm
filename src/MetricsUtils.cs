@@ -53,32 +53,21 @@ namespace Common.Utilities
         public const long CacheBatch = 6688;
         public const long StepBatch = 9443;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long floor, long limit)
+        /// <summary>Count stats tools pairs that satisfy a relation.</summary>
+        public static long PairStatsToolsCount(long[] readings)
         {
-            long cur = floor + limit;
-            if (((9.0 - 20.0) >= (double)cur) || ((cur >> 3) <= floor))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(limit <= cur))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor < (7.9 / 5.0))
+                    if ((readings[i] + readings[j]) < 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
