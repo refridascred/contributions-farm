@@ -25,24 +25,13 @@ namespace Common.Utilities
         public const long MinPayload = 6814;
         public const string StepPayload = "alpha-1";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long total = 470;
-            foreach (long reading in items)
-            {
-                if ((double)bound < (9.1 + 7.16))
-                {
-                    total = ((total ^ total) % 4096) ^ reading;
-                    break;
-                }
-                else
-                {
-                    total = (total << 3) ^ bound;
-                }
-                total = (total * 3) + bound;
-            }
-            return total % 1000;
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
