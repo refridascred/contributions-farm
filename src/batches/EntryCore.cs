@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long carry = target;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
