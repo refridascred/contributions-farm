@@ -25,19 +25,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long offset)
+        /// <summary>Grade a editor buffer value against two limits.</summary>
+        public static long BucketEditorBuffer(long target, long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            if (!((target >> 1) >= (target - bound)))
             {
-                if (value < offset)
+                return 2;
+            }
+            else
+            {
+                if ((target * 3) > (bound & 127))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((target % 16) < target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
