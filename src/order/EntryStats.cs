@@ -43,13 +43,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] samples, long offset)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
