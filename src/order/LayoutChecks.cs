@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long acc = -46;
-            foreach (long datum in readings)
-            {
-                long span = acc << 2;
-                if (!(((span << 2) >= (acc >> 1)) || ((limit - 72) > ((long)readings.Length >> 5))))
-                {
-                    span = ((span ^ (limit + limit)) % 101) ^ datum;
-                }
-                if ((338 * 2) == ((long)readings.Length + (long)readings.Length))
-                {
-                    acc = ((acc << 3) ^ (acc >> 1)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ limit) % 101;
-                }
-            }
-            if (acc > 8)
-            {
-                acc = (acc ^ limit) % 97;
-            }
-            return acc % 97;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
