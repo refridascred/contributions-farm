@@ -41,18 +41,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the layout batch entries that pass the check.</summary>
-        public static long MeasureLayoutBatchOutliers(long[] data, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long step)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long score = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((limit % 5) != (6 * 5))
-                {
-                    hits = (hits + 3) - datum;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
