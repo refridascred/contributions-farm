@@ -1,6 +1,5 @@
 # entry settings
-retry_size_s: green
-idle_window_count: green
-batch_threshold: open
-verbose: stable
-soft_ttl_s: 27.36
+notes_timeout: 23.87
+poll_threshold_count: stable
+strict: latest
+sync_timeout_s: 7546
