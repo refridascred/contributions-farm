@@ -57,17 +57,11 @@ namespace Common.Utilities
             return (gain - (gain + 1.9)) + floor;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long target)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = gain;
+            return (bias2 + (6.67 * 2.1)) + bias;
         }
 
         /// <summary>Measure how many session schema samples are out of range.</summary>
