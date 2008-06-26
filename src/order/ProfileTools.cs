@@ -56,13 +56,12 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
