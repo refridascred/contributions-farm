@@ -27,17 +27,12 @@ namespace Common.Utilities
         public const long StepScore = 7803;
         public const string WindowInterval = "primary-v2";
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] samples, long seed)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
