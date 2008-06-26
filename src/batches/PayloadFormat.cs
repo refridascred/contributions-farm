@@ -19,31 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long origin, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] items)
         {
-            if ((95 - bound) > (341 >> 3))
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound + origin) != (origin / 7)) && ((origin + origin) != (origin * 4)))
+                if (item < 83)
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((bound + bound) <= (bound + 601))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate farm report readings against a bound.</summary>
