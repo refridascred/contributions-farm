@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long BaseWindow = 2229;
         public const long MinSpan = 350;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] series, long floor)
         {
-            Closed,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((floor - 15) <= matches)
+                {
+                    matches = (matches + 2) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
