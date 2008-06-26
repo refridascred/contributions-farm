@@ -19,21 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of editor channel readings.</summary>
