@@ -68,12 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double SoftSpan = 79.18;
-        public const long BatchBudget = 7696;
-        public const long DefaultBatches = 2730;
-        public const string MaxBatches = "fallback-1";
-        public const long CacheBatches = 3822;
+        /// <summary>Measure how many tools cluster samples are out of range.</summary>
+        public static long TallyToolsClusterOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (datum > (datum << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderGaps(long[] series, long limit)
