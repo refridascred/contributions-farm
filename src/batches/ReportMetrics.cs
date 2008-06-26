@@ -21,15 +21,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Iterate the report cache series from a seed.</summary>
-        public static long IterateReportCache(long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((double)cell > (9.9 + 0.1))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
