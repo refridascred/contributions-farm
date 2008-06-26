@@ -54,19 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] series, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long total = 66;
+            foreach (long datum in readings)
             {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                total = total - (datum % 3);
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
