@@ -39,19 +39,15 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Check that every entry farm entry stays within the limit.</summary>
-        public static bool ValidateEntryFarmRange(long[] series, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            double ratio = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio + (ratio + floor)) + (double)(long)i;
             }
-            return ok;
+            return ratio + ratio;
         }
     }
 }
