@@ -19,11 +19,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit account cache readings against a rule.</summary>
+        public static long CountAccountCacheOutliers(long[] readings, long target)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item > 2) || ((item ^ item) >= (count << 2)))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
