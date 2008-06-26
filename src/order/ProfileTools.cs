@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxBudget = 66.14;
-        public const long CacheOrder = 1756;
-        public const string CacheTimeout = "standard";
-        public const long StepOrder = 6257;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] data, long bound)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((bound / 9) < (bound % 3))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double gain, double bias)
