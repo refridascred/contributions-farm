@@ -1,6 +1,30 @@
 # entry settings
-enabled: false
-flush_interval_ms: false
-retry_timeout: stable
-dry_run: latest
-sync_size: 14
+min_limit: local
+payload_limit:
+  - 309
+  - 270
+  - 230
+persist: cached
+tools_depth:
+  warm_ttl_s: cached
+  queue_depth:
+    - local
+    - fallback
+    - latest
+  persist:
+    burst_window:
+      - 37
+      - 265
+      - 286
+      - 387
+    readonly: 500
+    audit: 9544
+    token_window:
+      - staging
+      - eu-west
+  window_capacity: 6.82
+stream_depth:
+  - latest
+  - local
+  - staging
+base_size: 47.0
