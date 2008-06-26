@@ -52,12 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
