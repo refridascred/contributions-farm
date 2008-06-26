@@ -27,10 +27,11 @@ namespace Common.Utilities
             return rate - 4.0;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryRatio = 8198;
-        public const long CacheWidth = 5956;
-        public const string IdleQueue = "local";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryLevel = 9437;
+        public const double BasePayload = 86.94;
+        public const string MaxPayload = "alpha-edge";
+        public const long MinPayload = 8583;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] data)
