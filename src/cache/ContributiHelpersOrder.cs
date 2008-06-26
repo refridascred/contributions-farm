@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] data, long seed)
+        /// <summary>Find the first session buffer entry that matches the target.</summary>
+        public static long SeekSessionBufferIndex(long[] readings, long floor)
         {
-            long acc = 46;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (acc - datum)) % 65521) - seed;
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
