@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long limit, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long prev = limit - bound;
-            if (prev >= 9)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                total = (total ^ total) % 65521;
+                total = (total ^ ((long)i >> 2)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((40 & 255) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev * 3) <= ((-63) / 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound == (0.04 - 3.31))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Locate a record reading by value.</summary>
