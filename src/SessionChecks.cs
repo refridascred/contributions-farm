@@ -25,38 +25,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long seed, long target)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            if ((target + target) > (target * 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target ^ 467) <= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target <= 8.97)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((0.4 * 0.6) < (double)seed) || ((double)target <= (2.43 - 8.7)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Audit context buffer readings against a rule.</summary>
