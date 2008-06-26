@@ -25,21 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 74;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = (state - bound) % 4096;
+                if ((445 & 15) < (item + bound))
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    long cur = state;
+                    state = state ^ (cur ^ (long)levels.Length);
+                    continue;
                 }
+                state = ((state << 3) ^ (state % 100)) % 255;
             }
-            return matches;
+            if (state < 2)
+            {
+                state = (state ^ (long)levels.Length) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
