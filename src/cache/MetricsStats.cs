@@ -27,18 +27,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 5242;
+        public const long DefaultAlready = 54;
+        public const string CacheAlready = "stable-1";
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long StepContributi(long offset)
