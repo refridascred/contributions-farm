@@ -19,36 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long seed)
+        /// <summary>Classify a layout batches pair into a bucket.</summary>
+        public static long ClassifyLayoutBatches(long limit, long floor)
         {
-            if ((7.2 - 8.2) != (double)bound)
+            if (1.9 > (double)floor)
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((7.0 + 11.0) < (double)seed)
+                if ((double)limit < (4.32 + 5.53))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed >= (seed - seed)) && ((double)(-76) != (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed * 3) != (bound % 100)) && ((bound + 16) >= (seed << 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
