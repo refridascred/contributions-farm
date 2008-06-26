@@ -36,10 +36,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseChecks = 73.33;
-        public const double MaxCount = 28.74;
-        public const string SoftDepth = "standard-edge";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Synced,
+            Retry,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Count the order contributi entries that pass the check.</summary>
         public static long CountOrderContributiGaps(long[] values, long target)
