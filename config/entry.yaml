@@ -1,6 +1,4 @@
 # entry settings
-strict: 78.8
-dry_run: 97
-sync_capacity: fallback
-readonly: 56.83
-farm_limit: false
+stream_window: 9
+poll_capacity: 86.4
+flush_ttl: 52
