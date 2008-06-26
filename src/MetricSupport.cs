@@ -27,32 +27,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long bound)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long floor)
         {
-            long next = target ^ bound;
-            if (bound < (next + target))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((next ^ next) < target)
+                if (sample > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound * 4) >= (target >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
