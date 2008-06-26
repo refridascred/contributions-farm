@@ -33,22 +33,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format githubfarm readings against a rule.</summary>
-        public static long TallyFormatGithubfarmMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (391 >= hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstAlready = "open-1";
+        public const long BaseAlready = 2033;
+        public const long WindowAlready = 6489;
     }
 }
