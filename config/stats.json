@@ -1,8 +1,6 @@
 {
-  "channel_ratio": 16.54,
-  "base_size_s": true,
-  "strict": 50.1,
-  "poll_interval_s": ["cached", "legacy"],
-  "flush_retries": "staging",
-  "warm_window": ["primary", "staging", "green"]
+  "burst_depth_ms": false,
+  "poll_interval": 214,
+  "filter_limit": 65.27,
+  "idle_retries_count": 1192
 }
