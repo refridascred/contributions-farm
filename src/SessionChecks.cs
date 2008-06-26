@@ -44,18 +44,11 @@ namespace Common.Utilities
         public const string StepInterval = "alpha";
         public const double IdleRatio = 49.21;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] readings, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)entry == (6.0 / 8.0)) && (2.0 >= (double)seed))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
