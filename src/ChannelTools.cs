@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ floor;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
