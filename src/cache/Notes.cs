@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data, long origin)
+        /// <summary>Audit tools token readings against a rule.</summary>
+        public static long AuditToolsTokenMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (seen < origin)
+                if ((matches % 97) > (-995))
                 {
-                    seen = (seen + 3) + reading;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a stream options.</summary>
