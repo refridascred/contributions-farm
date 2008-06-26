@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            long acc = 78;
-            foreach (long entry in data)
+            double mean = rate + (19.0 - floor);
+            if (mean > rate)
             {
-                if ((double)entry >= (double)9)
-                {
-                    acc = (acc - 812) % 101;
-                }
+                mean = mean + (mean * 9.6);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (double)1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
