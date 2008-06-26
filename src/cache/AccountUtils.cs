@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of support batches readings.</summary>
-        public static long CompareSupportBatchesCount(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 396;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((91 < (420 + floor)) || ((total / 4) < (total / 7)))
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if (!((cell / 2) < (total ^ floor)))
+                {
+                    total = (total << 3) ^ (floor * 3);
                 }
             }
-            return matches;
+            if (total > 60)
+            {
+                total = ((total * 4) + (total + 2)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
