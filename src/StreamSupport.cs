@@ -19,22 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultInterval = "cached";
+        public const double IdleChannel = 68.06;
+        public const long HardChannel = 9451;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksGaps(long[] readings, long origin)
