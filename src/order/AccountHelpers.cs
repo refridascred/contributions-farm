@@ -24,12 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "primary";
-        public const string IdleCommits = "standard";
-        public const long LimitCommits = 3743;
-        public const string BurstCommits = "strict-edge";
-        public const long StepDepth = 5553;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc - (acc + step)) % 255;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferRange(long[] samples, long bound)
