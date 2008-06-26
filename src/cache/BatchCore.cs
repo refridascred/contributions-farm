@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Active,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 4161;
+        public const string MinSize = "staging-1";
+        public const double LimitBudget = 40.96;
 
         /// <summary>Grade a entry profile value against two limits.</summary>
         public static long BucketEntryProfile(long seed, long step)
