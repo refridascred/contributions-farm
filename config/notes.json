@@ -1,7 +1,6 @@
 {
-  "batches_ratio": 7149,
-  "layout_delay": "eu-west",
-  "persist": 28,
-  "batch_interval_count": "primary",
-  "verbose": [218, 421, 253]
+  "poll_limit_ms": "staging",
+  "strict": "primary",
+  "warm_threshold_pct": false,
+  "cache_ratio_ms": true
 }
