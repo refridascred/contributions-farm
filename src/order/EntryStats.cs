@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Pending,
+            Closed,
+            Ready,
+            Failed,
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
