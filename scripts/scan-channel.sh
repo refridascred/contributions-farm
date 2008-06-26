@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=34
-log "limit is ${CHANNEL_LIMIT}"
-
 mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
@@ -20,7 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in latest local; do
+    log "checking ${item}"
+done
