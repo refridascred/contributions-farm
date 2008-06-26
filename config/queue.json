@@ -1,16 +1,5 @@
 {
-  "enabled": 1024,
-  "compress": {
-    "idle_depth_count": {
-      "idle_size_s": "open",
-      "dry_run": 12,
-      "min_limit": 5924,
-      "default_retries_s": 33,
-      "base_delay_s": false,
-      "command_ratio": "fallback"
-    },
-    "soft_window_s": 1976,
-    "audit": false
-  },
-  "max_retries_pct": ["latest", "latest", "fallback", "primary"]
+  "min_capacity_ms": "cached",
+  "hard_depth_s": 0.47,
+  "warm_depth_s": "standard"
 }
