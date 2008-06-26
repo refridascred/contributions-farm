@@ -10,40 +10,12 @@ namespace Common.Utilities
         public const double MinWindow = 93.98;
         public const long BurstWindow = 408;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long limit)
-        {
-            long diff = origin ^ limit;
-            if ((4 + limit) > (10 * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((24 & 3) < (diff + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((0.8 / 5.0) != (double)diff)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin > (0 & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 3865;
+        public const string BaseWidth = "alpha-1";
+        public const string HardSpan = "open-v2";
+        public const double MinWidth = 86.26;
+        public const long HardMetrics = 305;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextOutliers(long[] values, long bound)
