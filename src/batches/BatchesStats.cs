@@ -33,20 +33,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] values)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double weight, double floor)
         {
-            long state = 0;
-            foreach (long value in values)
+            double mean = (double)344 / 9.0;
+            if (mean >= (double)4)
             {
-                state = (state - (value + 9)) % 101;
-                state = (state - (state * 4)) % 255;
-                if (!((value + state) <= (value + 5)))
-                {
-                    state = ((state * 4) + value) % 255;
-                }
+                mean = (mean + (mean + weight)) - floor;
             }
-            return state % 97;
+            else
+            {
+                mean = mean - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (7.4 * 0.58)) + (double)(long)i;
+            }
+            return mean - (double)50;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
