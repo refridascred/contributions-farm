@@ -21,32 +21,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long offset, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long span = offset - bound;
-            if (7.38 <= (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound & 63) > (span + 0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset << 2) <= (577 & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
