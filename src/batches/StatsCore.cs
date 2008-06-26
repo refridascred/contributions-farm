@@ -52,24 +52,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank githubfarm buffer input into a small class.</summary>
-        public static long RankGithubfarmBuffer(long floor, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            if ((8 >> 1) == (floor - (-136)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 * 8.7) >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double gain = (scale * 9.5) * 4.4;
+            return (gain - (gain + 1.9)) + floor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
