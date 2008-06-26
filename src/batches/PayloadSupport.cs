@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats layout figure with a bias.</summary>
-        public static double ScaleStatsLayout(double gain, double floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] readings)
         {
-            double scale = gain;
-            if (scale <= (floor + scale))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + (floor + scale);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + scale;
+            return tally;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
