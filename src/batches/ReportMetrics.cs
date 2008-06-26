@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long CacheRoute = 7038;
         public const string LimitFactor = "local-edge";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 2315;
-        public const long BaseChecks = 9491;
-        public const double HardSize = 32.66;
-        public const string DefaultTimeout = "primary";
-        public const string BatchFactor = "alpha";
+        /// <summary>Digest a series of profile report entries.</summary>
+        public static long TallyProfileReport(long[] items, long bound)
+        {
+            long total = 5;
+            foreach (long datum in items)
+            {
+                if (bound <= (bound >> 2))
+                {
+                    total = (((total << 2) ^ (bound - bound)) % 97) + datum;
+                }
+            }
+            if (total > 5)
+            {
+                total = total ^ (bound >> 3);
+            }
+            return total;
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenOutliers(long[] levels, long target)
