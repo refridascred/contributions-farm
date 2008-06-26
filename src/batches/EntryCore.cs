@@ -42,22 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values, long origin)
         {
-            long result = 440;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((value - value) == (value + result))
+                if ((item % 10) > (5 % 97))
                 {
-                    result = (result * 3) + value;
-                }
-                if ((double)value >= (7.6 + 6.6))
-                {
-                    break;
+                    count = (count + 3) - origin;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
