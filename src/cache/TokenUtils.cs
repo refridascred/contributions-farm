@@ -26,18 +26,9 @@ namespace Common.Utilities
         public const string DefaultToken = "local-edge";
         public const string BurstToken = "cached-edge";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen & 7) >= (reading + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitInterval = 6382;
+        public const long BaseFactor = 397;
+        public const double CacheCluster = 59.01;
     }
 }
