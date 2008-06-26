@@ -48,17 +48,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long offset)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long step, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((floor + 9) >= floor)
             {
-                if (series[i] <= offset)
+                return 0;
+            }
+            else
+            {
+                if (floor <= step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (632 >= step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
