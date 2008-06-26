@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepSpan = 7677;
-        public const string BurstCount = "cached-1";
-        public const long WindowContext = 7197;
-        public const double DefaultContext = 65.14;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 21.65;
+        public const long DefaultAccount = 8159;
+        public const long MaxLevel = 150;
+        public const string SoftDepth = "local-1";
+        public const long CacheAccount = 4638;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
