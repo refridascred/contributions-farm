@@ -18,16 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster editor series from a seed.</summary>
-        public static long DeriveClusterEditor(long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state * 5) + (state / 6);
-                state = ((state * 4) + (long)i) % 101;
+                bool ready = (0 + acc) < limit;
+                if (!((2.3 + 2.0) <= (double)acc))
+                {
+                    continue;
+                }
+                if (((limit + 730) <= (-8)) || ready)
+                {
+                    ready = ready;
+                    acc = (acc * 5) + (acc / 8);
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
