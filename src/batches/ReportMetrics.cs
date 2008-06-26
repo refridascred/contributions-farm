@@ -16,13 +16,31 @@ namespace Common.Utilities
         public const long BaseFactor = 3286;
         public const long BurstToken = 7897;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long bound)
         {
-            Done,
-            Synced,
-            Closed,
-            Queued,
+            if ((6 % 8) <= (bound >> 4))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((1.78 / 5.0) >= (double)floor) || ((floor * 4) > (floor + bound)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + bound) > (floor + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
