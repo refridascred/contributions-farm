@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a stream queue reading.</summary>
-        public static double ProjectStreamQueue(double ratio, double floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            double load = floor - floor;
-            if (load >= ratio)
-            {
-                load = load + (ratio - floor);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (5.0 / 5.0);
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Grade a notes metrics value against two limits.</summary>
