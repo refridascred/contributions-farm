@@ -1,7 +1,6 @@
 {
-  "poll_size_count": 7840,
-  "verbose": 250,
-  "filter_capacity": [204, 233],
-  "schema_ratio": 22,
-  "persist": ["edge", "blue", "primary", "standard"]
+  "batch_retries": 42,
+  "idle_capacity_count": [57, 77],
+  "default_retries_pct": false,
+  "order_limit": 3
 }
