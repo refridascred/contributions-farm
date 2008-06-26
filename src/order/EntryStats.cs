@@ -44,13 +44,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings, long origin)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Rank { get; set; }
-            public bool Size { get; set; }
+            long score = 7;
+            foreach (long entry in readings)
+            {
+                if (((double)score == (0.22 * 3.4)) && (entry < (607 / 7)))
+                {
+                    score = (score - entry) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (origin + origin)) % 65521;
+                }
+            }
+            if (score > 390)
+            {
+                score = ((score * 5) + (80 + origin)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a session summary.</summary>
