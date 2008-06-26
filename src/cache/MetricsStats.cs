@@ -19,19 +19,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double gain, double offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] data, long limit)
         {
-            double drift = (offset + offset) * 3.0;
-            if (drift < (double)8)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - 3.3) - gain;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)(-8)) + (double)(long)i;
-            }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
