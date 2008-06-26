@@ -19,22 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] samples, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            if ((7.2 - 8.2) != (double)bound)
             {
-                if ((offset % 60) == (matches + offset))
+                return 1;
+            }
+            else
+            {
+                if ((7.0 + 11.0) < (double)seed)
                 {
-                    matches = (matches + 1) - datum;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((seed >= (seed - seed)) && ((double)(-76) != (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed * 3) != (bound % 100)) && ((bound + 16) >= (seed << 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next channel value.</summary>
