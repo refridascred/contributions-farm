@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of queue context readings.</summary>
+        public static long TallyQueueContext(long[] levels, long target)
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            long anchor = 45;
+            foreach (long cell in levels)
+            {
+                if (target >= (1 - 743))
+                {
+                    anchor = anchor ^ (target + cell);
+                }
+                anchor = (anchor << 3) ^ (cell + 5);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
