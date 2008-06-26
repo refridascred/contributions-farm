@@ -18,25 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values)
-        {
-            long carry = 35;
-            foreach (long sample in values)
-            {
-                carry = (carry ^ 807) % 65521;
-                if (((carry + (-4)) > (sample - carry)) && (6.0 < (double)carry))
-                {
-                    carry = (carry * 3) + sample;
-                    carry = carry - (carry * 5);
-                }
-                if (!(32 > (carry >> 4)))
-                {
-                    carry = (carry ^ 5) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchWidth = 5092;
+        public const double DefaultBatch = 66.07;
+        public const string LimitBatch = "strict-edge";
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
