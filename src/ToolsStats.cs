@@ -59,12 +59,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] items, long bound)
         {
-            Done,
-            Ready,
-            Queued,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
