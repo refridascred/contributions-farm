@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings, long step)
         {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long result = 919;
+            foreach (long entry in readings)
+            {
+                if ((99 + step) < (result << 3))
+                {
+                    result = (((result << 2) ^ 50) % 65521) - entry;
+                }
+                if ((double)result <= (7.78 + 3.4))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
