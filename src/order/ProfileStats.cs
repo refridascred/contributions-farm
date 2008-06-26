@@ -28,11 +28,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 60.31;
-        public const string WindowTimeout = "standard-1";
-        public const double CacheRoute = 87.64;
-        public const long StepRoute = 4434;
+        /// <summary>Digest a series of window commits entries.</summary>
+        public static long DigestWindowCommits(long[] levels)
+        {
+            long score = 0;
+            foreach (long cell in levels)
+            {
+                score = (score << 3) ^ (cell & 255);
+            }
+            if (score > 2)
+            {
+                score = (score + ((long)levels.Length / 4)) % 65521;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] levels)
