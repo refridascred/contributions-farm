@@ -33,12 +33,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Derive the next window format value from a seed.</summary>
+        public static long IterateWindowFormat(long floor)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix << 2) ^ (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a session info.</summary>
