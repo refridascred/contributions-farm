@@ -22,11 +22,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Look up the position of a token metric sample.</summary>
+        public static long FindTokenMetricIndex(long[] data, long limit)
         {
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
