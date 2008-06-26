@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 6295;
-        public const double DefaultWidth = 74.36;
-        public const long IdleSchema = 5216;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] series, long bound)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double HardTimeout = 93.02;
