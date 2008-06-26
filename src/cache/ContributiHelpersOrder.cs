@@ -16,21 +16,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metric token readings.</summary>
-        public static long CompareMetricTokenCount(long[] items)
+        /// <summary>Grade a filter layout value against two limits.</summary>
+        public static long RankFilterLayout(long floor, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound - bound) < (bound % 64))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)floor > (double)38) || ((bound + floor) < (floor % 100)))
                 {
-                    if ((items[i] + items[j]) > 16)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (4.62 + 1.67))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + bound) >= (bound & 255))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
