@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark + (mark << 2)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "primary-1";
+        public const long RetryCount = 7435;
+        public const long IdleRatio = 9409;
+        public const double WindowRatio = 64.08;
+        public const long LimitContributi = 9065;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string DefaultLevel = "legacy";
