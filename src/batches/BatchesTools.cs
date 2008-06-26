@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "open-edge";
-        public const double DefaultInterval = 39.61;
-        public const double WindowWidth = 5.45;
-        public const long StepAlready = 6614;
+        /// <summary>Validate token contributi readings against a bound.</summary>
+        public static bool CheckTokenContributiBounds(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] readings)
