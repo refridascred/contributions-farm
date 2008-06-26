@@ -21,18 +21,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
-        public static long AuditGithubfarmCounterHits(long[] levels)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + value) < (count >> 3))
+                if (series[i] > origin)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
