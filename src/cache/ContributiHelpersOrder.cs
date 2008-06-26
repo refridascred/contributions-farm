@@ -24,21 +24,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Compare every pair of editor notes readings.</summary>
+        public static long MatchEditorNotesCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 8)
+                    if ((items[i] ^ items[j]) != 12)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
