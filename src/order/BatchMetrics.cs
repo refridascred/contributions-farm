@@ -29,15 +29,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Dropped,
-            Closed,
-            Queued,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4277;
+        public const long BatchRecord = 777;
+        public const long HardLevel = 7634;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long SortProfile(long seed, long floor)
