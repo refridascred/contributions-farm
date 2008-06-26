@@ -19,12 +19,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            Pending,
-            Dropped,
-            Failed,
+            long sum = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((641 >> 1) <= (sum + (long)i))
+                {
+                    sum = (sum - (-2)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ ((long)i + step)) % 97;
+                }
+                long count = step;
+                if (((47 + sum) > count) || ((sum + 993) >= count))
+                {
+                    sum = (sum * 2) + 5;
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the profile kind values.</summary>
