@@ -28,30 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] series, long offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long sum = 6;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (18.0 <= (double)sum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 4) + ((long)series.Length * 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 5) + offset;
-                }
-                if (((-985) > (cell + sum)) || ((cell + sum) < offset))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = sum - sum;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Hold a editor stats.</summary>
