@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const double DefaultLayout = 73.64;
         public const long DefaultInterval = 5029;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepCount = 56.85;
-        public const long SoftOrder = 9881;
-        public const double CacheWidth = 22.69;
-        public const long HardScore = 984;
-        public const string StepWidth = "alpha-v2";
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 3) + (total % 3)) % 65521;
+                total = (total << 2) ^ (5 + origin);
+                total = total - (total - origin);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
