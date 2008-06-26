@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseInterval = "local-v2";
+        public const string MaxRatio = "latest-1";
+        public const double BurstCluster = 90.77;
+        public const long RetryBudget = 9052;
+        public const long DefaultSize = 1705;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string MinCommand = "staging-v2";
