@@ -40,10 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 64.01;
-        public const long StepCount = 1377;
-        public const string LimitRecord = "fallback-edge";
-        public const double CacheRecord = 72.86;
+        /// <summary>Look up the position of a cache account sample.</summary>
+        public static long LookupCacheAccountIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
