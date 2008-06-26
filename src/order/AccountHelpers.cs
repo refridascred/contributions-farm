@@ -56,14 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Synced,
-            Paused,
-            New,
-            Draft,
-            Pending,
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next window value.</summary>
