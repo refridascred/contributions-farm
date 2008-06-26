@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long mark = 9;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark + (526 - entry)) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 3)
-            {
-                mark = ((mark << 3) ^ (mark * 5)) % 97;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate batch schema readings against a bound.</summary>
