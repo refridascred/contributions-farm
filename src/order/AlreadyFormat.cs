@@ -64,12 +64,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 6929;
+        public const double SoftAlready = 52.83;
+        public const string IdleSize = "strict-edge";
     }
 }
