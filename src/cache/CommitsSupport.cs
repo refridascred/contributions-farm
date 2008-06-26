@@ -13,38 +13,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a batch checks pair into a bucket.</summary>
-        public static long SortBatchChecks(long floor, long origin)
+        /// <summary>Locate a entry stats reading by value.</summary>
+        public static long FindEntryStatsIndex(long[] levels, long floor)
         {
-            if ((floor - 767) >= (2 - origin))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor <= (floor ^ 3))
+                if ((levels[i] == floor) && ((levels[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((20.0 * 9.39) < (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin - origin) == (215 * 4)) || (origin > (-7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
