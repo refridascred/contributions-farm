@@ -48,12 +48,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinLevel = 8495;
-        public const long DefaultCluster = 8997;
-        public const long BaseCluster = 1065;
-        public const long StepCluster = 187;
-        public const long IdleFactor = 16;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] data)
