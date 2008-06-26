@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 7720;
+        public const double CacheWidth = 30.34;
+        public const long HardGithubfarm = 9253;
+        public const long RetryRatio = 9482;
+        public const long MaxGithubfarm = 3278;
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
         public static bool CheckFilterNotesLimits(long[] series, long seed)
