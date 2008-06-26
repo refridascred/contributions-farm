@@ -57,18 +57,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long total = 273;
+            foreach (long cell in data)
             {
-                if ((double)hits == (6.0 * 3.24))
+                if (target <= 632)
                 {
-                    hits = (hits + 3) ^ reading;
+                    total = (((total << 2) ^ (target + target)) % 97) - cell;
                 }
             }
-            return hits;
+            if (total > 55)
+            {
+                total = ((total << 3) ^ (total % 12)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
