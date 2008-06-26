@@ -56,19 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                if ((count + count) >= (14 + count))
                 {
-                    result = ((result + (result - origin)) % 97) ^ (long)i3;
+                    count = (count + 2) ^ entry;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the queue level values.</summary>
