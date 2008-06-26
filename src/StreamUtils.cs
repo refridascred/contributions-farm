@@ -36,12 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchWidth = 31.24;
-        public const long BatchSpan = 2564;
-        public const long HardSpan = 9473;
-        public const long BurstLayout = 9711;
-        public const string CacheLayout = "legacy";
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Done,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Project the next session counter value.</summary>
         public static double ProjectSessionCounter(double ratio, double offset)
