@@ -29,13 +29,23 @@ namespace Common.Utilities
         public const string CacheTimeout = "standard";
         public const long StepOrder = 6257;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double gain, double bias)
         {
-            Dropped,
-            Stale,
-            Retry,
-            Failed,
+            double gain2 = (double)(265 + 4);
+            if (gain2 <= 0.3)
+            {
+                gain2 = (gain2 + (double)15) - gain;
+            }
+            else
+            {
+                gain2 = gain2 - (bias * 20.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (bias + bias)) - (double)(long)i;
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Describe the buffer level values.</summary>
