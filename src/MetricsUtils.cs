@@ -50,15 +50,15 @@ namespace Common.Utilities
         public const long CacheBatch = 6688;
         public const long StepBatch = 9443;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long reading in readings)
             {
-                if ((double)cell <= (6.37 * 6.9))
+                if ((double)hits == (6.0 * 3.24))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 3) ^ reading;
                 }
             }
             return hits;
