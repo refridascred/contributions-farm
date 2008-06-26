@@ -1,7 +1,6 @@
 {
-  "stats_timeout": "fallback",
-  "batch_size_pct": "primary",
-  "retry_size": 2.9,
-  "readonly": "primary",
-  "soft_capacity_count": "open"
+  "strict": "staging",
+  "profile_window": 2501,
+  "retry_size": ["primary", "legacy", "stable"],
+  "dry_run": true
 }
