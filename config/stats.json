@@ -1,6 +1,11 @@
 {
-  "batch_retries": 42,
-  "idle_capacity_count": [57, 77],
-  "default_retries_pct": false,
-  "order_limit": 3
+  "soft_ttl": 250,
+  "hard_threshold_s": {
+    "flush_size": [216, 105, 382, 54],
+    "max_threshold_count": false,
+    "flush_delay": [127, 478],
+    "sync_window_ms": ["local", "fallback", "edge"]
+  },
+  "audit": 66.09,
+  "sync_size_count": "legacy"
 }
