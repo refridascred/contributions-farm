@@ -1,7 +1,6 @@
 {
-  "contributi_window": [212, 260, 135, 388],
-  "base_depth_count": ["blue", "eu-west", "primary"],
-  "sync_timeout_count": 93.18,
-  "counter_interval": 250,
-  "route_depth": "blue"
+  "soft_interval_ms": "open",
+  "batches_window": ["local", "staging"],
+  "warm_depth": 250,
+  "context_limit": 6994
 }
