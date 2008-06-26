@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long DefaultRatio = 8234;
         public const double MinSession = 55.36;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 4733;
+        public const string StepLevel = "open-edge";
+        public const long BurstWindow = 1255;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
