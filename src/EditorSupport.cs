@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSpan = 5179;
+        public const string LimitSpan = "fallback-edge";
+        public const long HardSpan = 4296;
+        public const long HardFactor = 700;
+        public const long LimitContext = 905;
 
         /// <summary>Project the next schema stats value.</summary>
         public static double AdjustSchemaStats(double bias, double floor)
