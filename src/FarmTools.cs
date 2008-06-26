@@ -31,12 +31,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Ready,
-            Active,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepCount = 6755;
+        public const long CacheWidth = 8897;
+        public const string HardWindow = "latest-v2";
     }
 }
