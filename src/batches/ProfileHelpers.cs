@@ -26,18 +26,39 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long offset2 = seed - offset;
+            if ((offset2 ^ offset2) != (seed ^ offset))
             {
-                if ((matches << 1) <= (966 % 97))
+                return 0;
+            }
+            else
+            {
+                if ((8.9 >= (double)offset) && ((offset2 & 7) < (offset2 + seed)))
                 {
-                    matches = (matches + 3) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset2 <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 * 5) >= offset2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
