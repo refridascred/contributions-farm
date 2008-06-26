@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            New,
-            Paused,
-            Failed,
-            Closed,
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
