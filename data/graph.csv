@@ -1,8 +1,7 @@
-id,level,weight
-1,standard,10.8
-2,105,564
-3,943,open
-4,legacy,31.17
-5,69.18,97.66
-6,56.86,732
-7,cached,cached
+id,rank,score
+1,staging,blue
+2,287,strict
+3,74.71,standard
+4,526,536
+5,566,8.31
+6,215,open
