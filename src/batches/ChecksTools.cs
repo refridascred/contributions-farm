@@ -57,18 +57,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (count < (datum << 1))
-                {
-                    count = count + 3;
-                }
+                result = ((result << 2) ^ limit) % 1000;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
     }
 }
