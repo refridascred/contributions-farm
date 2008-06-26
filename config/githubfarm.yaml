@@ -1,9 +1,6 @@
 # githubfarm settings
-window_depth: 1883
-compress: 91
-dry_run:
-  sync_size_s: 100
-  sync_delay_ms: eu-west
-  batch_threshold: false
-poll_limit_ms: true
-default_timeout_s: 39
+default_interval: staging
+audit: 97
+max_threshold: 1934
+idle_timeout: edge
+poll_ratio_s: 60
