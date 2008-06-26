@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchBudget = 2383;
-        public const long HardAlready = 8279;
-        public const double LimitWidth = 60.77;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinSpan = 6378;
