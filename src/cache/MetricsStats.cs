@@ -27,10 +27,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 5242;
-        public const long DefaultAlready = 54;
-        public const string CacheAlready = "stable-1";
+        /// <summary>Audit stream cluster readings against a rule.</summary>
+        public static long CountStreamClusterGaps(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)seen < (2.35 + 13.0))
+                {
+                    seen = ((seen + 2) - entry) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a token notes figure with a bias.</summary>
         public static double AdjustTokenNotes(double scale, double floor)
