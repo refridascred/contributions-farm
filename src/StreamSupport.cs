@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate queue token readings against a bound.</summary>
-        public static bool ValidateQueueTokenLimits(long[] samples, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
