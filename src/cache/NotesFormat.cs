@@ -42,9 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 8630;
-        public const double LimitSpan = 12.41;
-        public const double RetryBudget = 9.79;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultLevel = "legacy";
+        public const long RetrySession = 96;
+        public const long StepTimeout = 5907;
     }
 }
