@@ -37,10 +37,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepBudget = 4425;
-        public const long BaseBudget = 627;
-        public const double StepRatio = 16.95;
+        /// <summary>Check that every account already entry stays within the limit.</summary>
+        public static bool ValidateAccountAlreadyLimits(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long DefaultDepth = 7812;
