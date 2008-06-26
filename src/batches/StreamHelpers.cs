@@ -13,24 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a context schema pair into a bucket.</summary>
-        public static long RankContextSchema(long bound, long bound2)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] levels, long offset)
         {
-            if ((double)bound2 >= (3.0 - 9.97))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)bound <= (9.5 + 8.74)) && ((double)bound2 != (1.3 + 9.0)))
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
