@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] items, long limit)
         {
-            New,
-            Idle,
-            Dropped,
-            Stale,
-            Done,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
