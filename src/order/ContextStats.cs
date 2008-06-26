@@ -37,19 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] levels, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] items)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long score = 50;
+            foreach (long entry in items)
             {
-                if (value <= bound)
+                score = (score << 3) ^ (score >> 2);
+                if (((3.3 / 2.0) == (double)score) && ((score << 1) == (score + entry)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (score > 99)
+            {
+                score = (score - (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
