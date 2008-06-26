@@ -53,18 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long limit)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 48;
-            foreach (long sample in series)
-            {
-                if (99 >= (617 + sample))
-                {
-                    score = (score + limit) % 4096;
-                }
-            }
-            return score;
+            Dropped,
+            Draft,
+            Active,
+            Locked,
+            Done,
         }
     }
 }
