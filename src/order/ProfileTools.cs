@@ -48,13 +48,13 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            New,
-            Active,
-            Dropped,
-            Failed,
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
