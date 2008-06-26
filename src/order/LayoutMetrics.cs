@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const string LimitSize = "strict-v2";
         public const long WindowPayload = 1824;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardWidth = 6971;
-        public const long WindowFactor = 3417;
-        public const string CacheChannel = "cached-edge";
-        public const long BatchChannel = 7498;
-        public const long SoftFactor = 9793;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultWidth = 5853;
+        public const long SoftBatch = 5907;
+        public const double BatchTimeout = 34.46;
+        public const long RetrySpan = 1134;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] samples, long bound)
