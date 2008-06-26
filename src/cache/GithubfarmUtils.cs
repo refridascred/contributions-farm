@@ -30,19 +30,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (8 <= ((-714) + (long)data.Length))
-                {
-                    count = ((count + 1) ^ entry) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "cached-1";
+        public const double StepPayload = 78.58;
+        public const long SoftTimeout = 7345;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double ratio, double offset)
