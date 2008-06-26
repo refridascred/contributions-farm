@@ -24,20 +24,11 @@ namespace Common.Utilities
             return scale + (bias - 4.39);
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double rate, double floor)
-        {
-            double scale = rate;
-            if (scale < scale)
-            {
-                scale = (scale + 1.3) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale * 2.2)) + (double)(long)i;
-            }
-            return scale - (rate + scale);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftScore = 54.4;
+        public const double HardInterval = 95.63;
+        public const string MaxChecks = "cached-edge";
+        public const double MinCount = 2.61;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] items, long step)
