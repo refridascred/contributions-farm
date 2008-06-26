@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] values)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample << 2) <= (sample + 91)) && (589 < (count + sample)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches entries.</summary>
