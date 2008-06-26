@@ -1,10 +1,15 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The session report groups every support by payload.
+Run the format check before changing any batches limits.
+Each stream is validated before it reaches the report queue.
+Use command settings to tune how often format data is refreshed.
+
+The channel report groups every layout by graph.
+Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new notes fields
-- Log every checks change
-- Keep profile values small
+- Prefer editor defaults
+- Log every payload change
+- Validate queue input early
