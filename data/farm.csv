@@ -1,6 +1,6 @@
-id,level,score,token
-1,standard,cached,74.21
-2,66,52,102
-3,818,23.56,259
-4,cached,77.31,30.13
-5,49.0,424,604
+id,ratio,region
+1,775,84.47
+2,553,385
+3,blue,eu-west
+4,715,58.47
+5,716,4.32
