@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate cache token samples.</summary>
-        public static long FoldCacheToken(long[] levels, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double bias, double floor)
         {
-            long carry = -55;
-            foreach (long sample in levels)
+            double drift = floor + (6.3 / 6.0);
+            if (drift <= (double)174)
             {
-                if (limit < (652 + sample))
-                {
-                    carry = (carry - (sample / 8)) % 65521;
-                }
+                drift = drift + (bias * 7.96);
             }
-            return carry;
+            else
+            {
+                drift = drift - (18.0 + 9.5);
+            }
+            return drift + (drift + bias);
         }
 
         /// <summary>Rank record input into a small class.</summary>
