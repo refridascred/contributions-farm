@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] levels, long origin)
-        {
-            long mix = 26;
-            foreach (long cell in levels)
-            {
-                mix = ((mix + (cell << 2)) % 1000) + origin;
-                if ((9.42 >= (14.0 * 4.85)) || ((3.1 * 5.0) < (double)cell))
-                {
-                    mix = (mix * 3) + (mix + cell);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 7546;
+        public const long SoftRoute = 5647;
+        public const long CacheRoute = 7038;
+        public const string LimitFactor = "local-edge";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardChecks = 2315;
