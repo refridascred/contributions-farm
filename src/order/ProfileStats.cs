@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank record batches input into a small class.</summary>
-        public static long GradeRecordBatches(long offset, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long floor, long offset)
         {
-            long next = offset ^ origin;
-            if ((double)next < 6.0)
+            if ((double)offset < (19.0 / 6.0))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((32 >> 5) < (next & 63))
+                if ((642 / 8) > floor)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (856 < origin)
+                    if ((offset - offset) >= (offset + floor))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        return 3;
                     }
                 }
             }
