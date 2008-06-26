@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Measure how many schema profile samples are out of range.</summary>
+        public static long MeasureSchemaProfileGaps(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (331 > item)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a cache entry.</summary>
