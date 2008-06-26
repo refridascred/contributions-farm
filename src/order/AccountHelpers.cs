@@ -20,18 +20,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long TallyNotesToken(long[] data)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            long acc = 6;
-            foreach (long sample in data)
+            double weight = (double)7;
+            if (weight > weight)
             {
-                if ((double)sample < 5.0)
-                {
-                    acc = (acc ^ (sample << 1)) % 1000;
-                }
+                weight = weight + rate;
             }
-            return acc;
+            else
+            {
+                weight = weight - (2.0 * 2.94);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - (bias - rate);
         }
 
         /// <summary>Hold a account info.</summary>
