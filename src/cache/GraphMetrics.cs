@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] items)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if ((limit + limit) <= limit)
             {
-                if ((value & 63) >= (matches >> 5))
+                return 3;
+            }
+            else
+            {
+                if ((34 + limit2) <= (limit / 7))
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
