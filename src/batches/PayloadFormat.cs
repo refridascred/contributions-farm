@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Dropped,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a token info.</summary>
