@@ -39,17 +39,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] items, long seed)
+        /// <summary>Derive the next contributi window value from a seed.</summary>
+        public static long IterateContributiWindow(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] == seed)
+                anchor = anchor ^ (floor - floor);
+                anchor = ((anchor * 4) + ((long)i / 4)) % 255;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor + (467 >> 2)) % 97) - (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
