@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=420
+BUFFER_LIMIT=154
 log "limit is ${BUFFER_LIMIT}"
 
-for item in legacy latest open primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
