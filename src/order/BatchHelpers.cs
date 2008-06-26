@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a notes contributi reading by value.</summary>
