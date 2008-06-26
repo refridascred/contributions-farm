@@ -43,18 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long CountNotesGraphOutliers(long[] items)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!(92 <= seen))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the token class values.</summary>
