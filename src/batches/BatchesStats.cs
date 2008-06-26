@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] levels, long step)
         {
-            long total = 9;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!((double)item == (3.6 / 2.0)))
+                if (((reading < (2 - step)) && ((reading + reading) < step)) && ((step % 24) > (step % 8)))
                 {
-                    total = ((total << 3) ^ (item - (long)readings.Length)) % 101;
-                }
-                if (14 >= (item * 2))
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            if (total < 85)
-            {
-                total = (total + total) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
