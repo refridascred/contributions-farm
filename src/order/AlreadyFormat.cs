@@ -46,12 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 3842;
-        public const long RetryFarm = 7157;
-        public const long BaseFarm = 7412;
-        public const long CacheSize = 4155;
-        public const long SoftInterval = 1904;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)seed < (19.0 * 3.0))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string CacheDepth = "cached-v2";
