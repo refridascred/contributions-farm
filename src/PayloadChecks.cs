@@ -40,16 +40,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a command stream counter forward.</summary>
-        public static long IterateCommandStream(long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long anchor = 23;
+            foreach (long datum in series)
             {
-                mix = mix ^ (mix - 9);
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((8.98 >= (double)anchor) || ((datum % 5) < (datum % 24)))
+                {
+                    anchor = ((anchor * 2) + (anchor ^ datum)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor & 3)) % 4096;
+                }
             }
-            return mix;
+            if (anchor > 8)
+            {
+                anchor = (anchor - (anchor - anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route mode values.</summary>
