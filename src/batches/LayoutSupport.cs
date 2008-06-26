@@ -51,19 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (value < (730 + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 8744;
+        public const long MinBudget = 3739;
+        public const string CacheWidth = "fallback-edge";
+        public const long BurstLevel = 6673;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchQueue = 1711;
