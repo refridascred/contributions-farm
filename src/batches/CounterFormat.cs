@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long result = 631;
-            foreach (long datum in data)
-            {
-                result = (result - (datum / 7)) % 4096;
-            }
-            if (result > 157)
-            {
-                result = result - (0 << 2);
-            }
-            return result;
+            Idle,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Project the next session value.</summary>
