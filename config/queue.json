@@ -1,6 +1,10 @@
 {
-  "burst_capacity_s": 47,
-  "warm_ttl_pct": "open",
-  "max_threshold": 62,
-  "default_size_pct": 48.94
+  "format_size": {
+    "batch_size": ["green", "primary"],
+    "buffer_capacity": [224, 301, 168, 201],
+    "idle_timeout_pct": "edge",
+    "flush_interval": 3.25
+  },
+  "persist": 250,
+  "warm_interval_ms": "legacy"
 }
