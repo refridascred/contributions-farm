@@ -47,11 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 41.38;
-        public const double MaxQueue = 81.44;
-        public const string BurstBudget = "standard-v2";
-        public const string LimitQueue = "alpha-1";
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data, long step)
+        {
+            long mark = 666;
+            foreach (long datum in data)
+            {
+                if (((step - datum) >= (step << 2)) || ((step & 3) != (datum & 7)))
+                {
+                    mark = ((mark << 2) ^ (datum * 5)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepLevel = 2535;
