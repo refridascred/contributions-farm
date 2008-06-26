@@ -28,17 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] data, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
