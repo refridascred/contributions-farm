@@ -37,22 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor format entries that pass the check.</summary>
-        public static long CountEditorFormatHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((76 ^ count) > count)
-                {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "stable";
+        public const long WindowRatio = 7229;
+        public const double BurstPayload = 36.01;
+        public const long BatchPayload = 2883;
     }
 }
