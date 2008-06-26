@@ -35,18 +35,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long carry = 513;
+            foreach (long reading in values)
             {
-                if (seen <= (seen - datum))
+                carry = ((carry * 2) + carry) % 101;
+                if ((reading - reading) > step)
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (carry > 575)
+            {
+                carry = (carry * 5) + (carry & 127);
+            }
+            return carry;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
