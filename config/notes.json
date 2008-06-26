@@ -1,14 +1,7 @@
 {
-  "sync_window_count": {
-    "channel_size": 3.7,
-    "enabled": [188, 246, 436, 355],
-    "cache_ttl_pct": 153,
-    "contributi_ratio": true,
-    "counter_threshold": 7
-  },
-  "persist": [132, 495, 386, 124],
-  "already_timeout": true,
-  "cache_threshold": 28.98,
-  "githubfarm_ttl": 250,
-  "checks_ttl": 22
+  "max_retries_count": true,
+  "buffer_interval": 16,
+  "sync_window_pct": 71.82,
+  "batch_ratio": 13.66,
+  "burst_capacity_pct": 30
 }
