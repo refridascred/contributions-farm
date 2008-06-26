@@ -1,19 +1,14 @@
 # githubfarm settings
-channel_limit: true
-idle_delay_pct: 5193
-buffer_depth:
-  flush_threshold: edge
-  metrics_retries:
-    readonly: 70.03
-    hard_interval: 16.2
-    verbose: true
-    queue_interval: green
-    poll_timeout: 19
-  cache_ttl_s: false
-  flush_retries_count:
-    - local
-    - green
-    - staging
-    - strict
-soft_ratio: true
-soft_interval: green
+poll_retries_pct:
+  strict: staging
+  idle_timeout_pct: 1024
+  sync_window: 7964
+  retry_delay_pct: 30
+compress: 250
+poll_threshold:
+  - 302
+  - 74
+  - 12
+  - 340
+enabled: false
+default_delay_s: 40.6
