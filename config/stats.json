@@ -1,29 +1,6 @@
 {
-  "githubfarm_ttl": "fallback",
-  "cache_timeout_s": {
-    "audit": {
-      "already_interval": "local",
-      "batches_threshold": 13.23,
-      "base_ttl_count": ["open", "primary", "legacy"],
-      "cache_delay": "fallback",
-      "compress": [414, 65],
-      "record_ttl": 1024
-    },
-    "cache_size": false,
-    "graph_size": "legacy"
-  },
-  "max_ttl_pct": 85,
-  "compress": "cached",
-  "stats_size": 93.78,
-  "stream_timeout": {
-    "base_timeout": {
-      "burst_depth_count": 37.46,
-      "base_delay_s": 7458,
-      "warm_threshold": false,
-      "enabled": 81,
-      "verbose": "primary"
-    },
-    "batch_threshold_ms": 5057,
-    "min_ratio": "fallback"
-  }
+  "retry_size": "latest",
+  "context_timeout": 1024,
+  "checks_capacity": ["open", "standard"],
+  "checks_delay": 250
 }
