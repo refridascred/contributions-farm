@@ -1,8 +1,4 @@
 # entry settings
-farm_ttl: 73
-enabled:
-  - primary
-  - stable
-  - green
-hard_retries_s: 22.19
-strict: 59.62
+min_capacity_ms: 100
+flush_size: cached
+audit: 68
