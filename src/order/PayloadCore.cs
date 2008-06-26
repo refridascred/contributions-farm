@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] series, long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long seed)
         {
             bool ready = true;
-            foreach (long item in series)
+            foreach (long sample in levels)
             {
-                if (item <= floor)
+                if (sample > seed)
                 {
                     ready = false;
                     break;
