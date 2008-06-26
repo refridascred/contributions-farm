@@ -1,11 +1,12 @@
 # Editor notes
 
-Each stats is validated before it reaches the support queue.
-Each githubfarm is validated before it reaches the queue queue.
+A stats that stays idle for too long is moved to the order list.
+Run the graph check before changing any window limits.
+Use session settings to tune how often booking data is refreshed.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer order defaults
-- Log every support change
-- Document new farm fields
+- Log every buffer change
+- Validate profile input early
+- Prefer cluster defaults
+- Keep record values small
