@@ -50,19 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item % 10) > (5 % 97))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardScore = 7703;
+        public const double SoftSpan = 98.64;
+        public const string IdleGithubfarm = "strict-v2";
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] values)
