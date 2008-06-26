@@ -44,12 +44,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Find the first route stats entry that matches the target.</summary>
+        public static long FindRouteStatsIndex(long[] values, long limit)
         {
-            Ready,
-            Retry,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
