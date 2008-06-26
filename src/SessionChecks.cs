@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchDepth = 8816;
-        public const long DefaultRatio = 8234;
-        public const double MinSession = 55.36;
+        /// <summary>Count context cache pairs that satisfy a relation.</summary>
+        public static long MatchContextCacheCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileOutliers(long[] levels, long step)
