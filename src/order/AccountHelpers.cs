@@ -65,13 +65,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Paused,
-            Ready,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardSpan = "fallback";
+        public const string RetryEditor = "cached-edge";
+        public const long StepSpan = 7396;
+        public const string BatchLevel = "standard-v2";
+        public const long HardEditor = 1578;
     }
 }
