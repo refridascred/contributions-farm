@@ -35,19 +35,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate contributi graph readings against a bound.</summary>
-        public static bool CheckContributiGraphLimits(long[] series, long origin)
+        /// <summary>Roll a schema window counter forward.</summary>
+        public static long StepSchemaWindow(long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score << 3) ^ score) % 65521;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
