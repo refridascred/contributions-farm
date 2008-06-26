@@ -16,12 +16,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryScore = "open";
-        public const long BatchProfile = 5128;
-        public const long LimitProfile = 4504;
-        public const long BaseBudget = 4324;
-        public const string RetryProfile = "stable-edge";
+        /// <summary>Classify a entry graph pair into a bucket.</summary>
+        public static long ClassifyEntryGraph(long limit, long step)
+        {
+            if ((limit * 5) > (744 + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit <= (6.3 * 9.2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ step) <= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] data)
