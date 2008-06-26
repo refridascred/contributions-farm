@@ -16,21 +16,21 @@ namespace Common.Utilities
         public const long CacheContributi = 895;
         public const long HardContributi = 8791;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 0)
+                    if ((items[i] ^ items[j]) == 4)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
