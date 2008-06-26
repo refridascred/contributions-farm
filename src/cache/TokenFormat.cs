@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            New,
-            Stale,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits & 1) > (sample * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer class values.</summary>
