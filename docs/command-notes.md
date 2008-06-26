@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The entry module keeps counter values in sync with the queue cache.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every farm by metrics.
+A filter that stays idle for too long is moved to the context list.
+A batch that stays idle for too long is moved to the batches list.
 
-The cache module keeps channel values in sync with the already cache.
-Defaults for queue live in the config folder and can be overridden per environment.
+When a batches fails, the metrics handler retries a few times before giving up.
+Use farm settings to tune how often githubfarm data is refreshed.
 
 ## Guidelines
 
-- Log every record change
-- Keep entry values small
-- Review cache limits each release
+- Review queue limits each release
+- Prefer commits defaults
+- Log every context change
