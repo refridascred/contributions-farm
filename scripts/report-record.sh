@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-local}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in edge latest green; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=136
-log "limit is ${RECORD_LIMIT}"
