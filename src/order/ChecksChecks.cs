@@ -15,10 +15,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleInterval = 3222;
-        public const long MaxTools = 3043;
-        public const long LimitWidth = 7214;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "legacy";
+        public const string BatchTimeout = "open-1";
+        public const long StepDepth = 9522;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowContributi = "alpha";
