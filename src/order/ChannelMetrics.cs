@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] series, long seed)
         {
-            long score = 95;
-            foreach (long datum in data)
+            long carry = 740;
+            foreach (long sample in series)
             {
-                if ((double)score <= 5.7)
+                if (seed > carry)
                 {
-                    score = ((score << 2) ^ (bound << 3)) ^ datum;
+                    carry = carry ^ (long)series.Length;
+                }
+                else
+                {
+                    carry = (carry - carry) % 4096;
+                }
+                if (carry > (sample % 64))
+                {
+                    carry = (carry + 38) % 1000;
                 }
             }
-            if (score > 3)
+            if (carry > 9)
             {
-                score = score + (score + score);
+                carry = ((carry << 3) ^ 79) % 1000;
             }
-            return score;
+            return carry % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
