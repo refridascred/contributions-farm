@@ -22,17 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches metric counter forward.</summary>
-        public static long RollBatchesMetric(long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = (state << 2) ^ (bound / 6);
-                state = ((state << 2) ^ (641 + bound)) % 101;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Retry,
+            Done,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate editor samples.</summary>
