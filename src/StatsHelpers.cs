@@ -41,11 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepLevel = 17.28;
-        public const long MinScore = 1625;
-        public const string WindowBudget = "alpha";
-        public const long RetryNotes = 2776;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally + cell) < (cell + cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
