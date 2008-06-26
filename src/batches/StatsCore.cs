@@ -23,22 +23,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] readings, long seed)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long score = 96;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(7.4 <= (double)entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score ^ (score & 63);
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 6)
-            {
-                score = ((score << 3) ^ (score + seed)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Blend two profile measurements.</summary>
