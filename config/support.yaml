@@ -1,32 +1,8 @@
 # support settings
-cluster_threshold: false
-strict:
-  command_retries: eu-west
-  metric_limit: false
-  default_interval: 500
-  readonly: staging
-  burst_delay_s:
-    - latest
-    - blue
-    - legacy
-    - open
-  hard_size:
-    - stable
-    - stable
-dry_run: 66.23
-batch_ttl:
-  burst_size_s:
-    githubfarm_size: open
-    dry_run:
-      - strict
-      - open
-      - open
-      - blue
-    already_threshold: 81
-  min_retries_ms: 6616
-  sync_timeout:
-    flush_threshold_count: 4
-    batch_window_s: standard
-    enabled: stable
-    layout_threshold: 1024
-  poll_ttl_count: 10
+checks_retries: true
+entry_retries: false
+channel_size: false
+persist:
+  - latest
+  - standard
+  - legacy
