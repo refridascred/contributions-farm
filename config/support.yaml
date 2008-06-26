@@ -1,4 +1,5 @@
 # support settings
-compress: local
-verbose: open
-payload_capacity: stable
+retry_ratio_count: 57.63
+readonly: 60
+sync_interval_s: 39
+sync_ratio: local
