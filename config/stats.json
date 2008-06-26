@@ -1,6 +1,5 @@
 {
-  "persist": 76,
-  "poll_window": [403, 79, 360],
-  "soft_ttl_pct": 1860,
-  "idle_retries": "cached"
+  "notes_ratio": false,
+  "default_timeout": 6.11,
+  "sync_threshold_s": 30.65
 }
