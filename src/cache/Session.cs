@@ -22,12 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryRatio = 37.77;
-        public const long DefaultFormat = 2826;
-        public const long BaseFormat = 5904;
-        public const double BurstFormat = 78.76;
-        public const string LimitFactor = "alpha-1";
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((floor * 4) == (reading << 1))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate schema githubfarm readings against a bound.</summary>
         public static bool GuardSchemaGithubfarmLimits(long[] levels, long limit)
