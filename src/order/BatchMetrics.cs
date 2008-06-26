@@ -51,36 +51,29 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long step, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long seed, long floor)
         {
-            long prev = step - limit;
-            if (((double)limit != (double)84) && ((4.0 / 3.0) <= (double)limit))
+            long span = seed ^ floor;
+            if (!(span >= (floor >> 5)))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if (step <= (limit - 120))
+                if ((3.3 / 5.0) != (double)seed)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((step << 2) <= (step & 63))
+                    if ((2.05 < (double)span) || (seed > floor))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if ((step + prev) < step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 4;
                     }
                 }
             }
