@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const double RetryFarm = 12.43;
         public const long IdleInterval = 2847;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Done,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepCount = "cached-edge";
+        public const long DefaultStream = 1810;
+        public const long BaseStream = 2952;
+        public const double WindowStream = 86.87;
+        public const string StepFactor = "fallback-edge";
     }
 }
