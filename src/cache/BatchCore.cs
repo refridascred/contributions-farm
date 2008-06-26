@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Queued,
-            Failed,
-            Done,
-            Closed,
-            Retry,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the schema class values.</summary>
