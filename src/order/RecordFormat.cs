@@ -38,17 +38,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a cluster record reading by value.</summary>
-        public static long FindClusterRecordIndex(long[] series, long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = (double)(324 >> 2);
+            if (rate2 <= (double)937)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = ((rate2 - (double)0) - rate) - bias;
             }
-            return -1;
+            return rate2 + rate2;
         }
     }
 }
