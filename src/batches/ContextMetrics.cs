@@ -44,21 +44,15 @@ namespace Common.Utilities
         public const long RetryAccount = 8900;
         public const long LimitCount = 9035;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(-9) - (9.49 * 20.0);
+            if (scale >= (scale / 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = ((scale - (double)4) + gain) - offset;
             }
-            return hits;
+            return scale - (scale * 1.0);
         }
     }
 }
