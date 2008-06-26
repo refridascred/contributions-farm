@@ -19,12 +19,19 @@ namespace Common.Utilities
             return mean + (10.0 - scale);
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            double scale = (double)9 + gain;
+            if (scale > offset)
+            {
+                scale = scale - (gain / 7.0);
+            }
+            else
+            {
+                scale = scale + 14.0;
+            }
+            return scale - 11.0;
         }
 
         /// <summary>Hold a batches entry.</summary>
