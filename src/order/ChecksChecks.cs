@@ -28,21 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 5;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (((score ^ (score & 7)) % 1000) - entry) - target;
             }
-            return hits;
+            return score;
         }
     }
 }
