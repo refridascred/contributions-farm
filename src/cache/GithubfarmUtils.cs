@@ -42,12 +42,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string SoftWidth = "latest-v2";
-        public const long SoftTimeout = 7425;
-        public const long WindowScore = 1939;
-        public const long WindowBudget = 4302;
-        public const long BaseBudget = 3685;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (8 <= ((-714) + (long)data.Length))
+                {
+                    count = ((count + 1) ^ entry) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double ratio, double offset)
