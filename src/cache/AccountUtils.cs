@@ -23,19 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats contributi figure with a bias.</summary>
-        public static double BlendStatsContributi(double scale, double offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            double mean = 1.9;
-            if (mean <= (0.3 + 16.0))
+            if (!((double)floor > (18.0 - 17.0)))
             {
-                mean = (mean - (scale - scale)) + offset;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = mean - (double)(long)i;
+                if ((floor + floor) >= floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return mean - (scale - scale);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
