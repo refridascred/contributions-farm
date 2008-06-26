@@ -1,6 +1,6 @@
 # githubfarm settings
-poll_interval: 3
-idle_capacity: edge
-default_ratio: latest
-hard_capacity_s: cached
-flush_capacity: 73
+compress: 1709
+soft_size_s: local
+layout_ratio: 57
+enabled: staging
+soft_threshold_count: false
