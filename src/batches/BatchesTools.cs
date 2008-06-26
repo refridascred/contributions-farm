@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const double RetryFarm = 12.43;
         public const long IdleInterval = 2847;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepCount = "cached-edge";
-        public const long DefaultStream = 1810;
-        public const long BaseStream = 2952;
-        public const double WindowStream = 86.87;
-        public const string StepFactor = "fallback-edge";
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
