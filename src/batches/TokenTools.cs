@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Locate a editor cache reading by value.</summary>
+        public static long LookupEditorCacheIndex(long[] samples, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
