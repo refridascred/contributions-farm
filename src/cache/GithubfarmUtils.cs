@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long floor)
         {
-            Ready,
-            New,
-            Closed,
-            Idle,
-            Queued,
+            long state = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a graph info.</summary>
