@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 304;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = mix - (limit ^ limit);
+                mix = (mix << 2) ^ limit;
+                if ((mix >> 4) > (967 ^ limit))
                 {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix - (reading + mix);
+                }
+                if ((0.09 / 8.0) >= (double)reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Iterate the stats counter series from a seed.</summary>
