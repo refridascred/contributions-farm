@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long offset, long bound)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long CountOrderCacheGaps(long[] values, long limit)
         {
-            long bound2 = offset - bound;
-            if (!((offset * 5) >= offset))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((90 / 4) > (bound2 + 1))
+                if ((limit >> 5) != (limit * 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset - 709) >= (bound - bound)) && ((bound2 - bound2) != (bound2 / 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.4 - 4.3) <= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 3) ^ cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
