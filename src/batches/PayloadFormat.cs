@@ -49,10 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 666;
-        public const long BatchCommits = 4139;
-        public const string StepScore = "local-edge";
-        public const long SoftCommits = 6474;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
