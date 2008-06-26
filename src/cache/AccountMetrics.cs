@@ -49,18 +49,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long carry = 14;
+            foreach (long value in values)
             {
-                if ((double)item != (8.99 / 4.0))
-                {
-                    tally = tally + 3;
-                }
+                carry = (carry ^ (bound >> 2)) + value;
             }
-            return tally;
+            if (carry < 506)
+            {
+                carry = ((carry << 2) ^ carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
