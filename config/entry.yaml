@@ -1,5 +1,4 @@
 # entry settings
-retry_threshold_s: 250
-sync_limit_count: 500
-sync_ratio_s: local
-default_capacity_count: true
+schema_window: 6
+burst_retries_count: 66.66
+hard_limit_count: 45.46
