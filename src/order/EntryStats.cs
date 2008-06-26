@@ -44,27 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings, long origin)
-        {
-            long score = 7;
-            foreach (long entry in readings)
-            {
-                if (((double)score == (0.22 * 3.4)) && (entry < (607 / 7)))
-                {
-                    score = (score - entry) % 65521;
-                }
-                else
-                {
-                    score = (score ^ (origin + origin)) % 65521;
-                }
-            }
-            if (score > 390)
-            {
-                score = ((score * 5) + (80 + origin)) % 97;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleDepth = "staging-1";
+        public const string RetryBudget = "stable-edge";
+        public const double SoftDepth = 62.02;
+        public const string WindowBatches = "stable";
+        public const double StepSize = 36.29;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
