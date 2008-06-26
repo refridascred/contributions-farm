@@ -1,5 +1,20 @@
 {
-  "warm_retries_pct": 70.45,
-  "flush_window": "fallback",
-  "hard_threshold_pct": 57.51
+  "burst_size_ms": {
+    "strict": ["legacy", "primary", "eu-west"],
+    "readonly": 3830,
+    "flush_timeout_s": true,
+    "audit": 85,
+    "compress": {
+      "session_timeout": true,
+      "filter_threshold": "open",
+      "default_delay_ms": "fallback",
+      "warm_capacity_count": "staging",
+      "profile_ttl": 84.47,
+      "max_window": [389, 403]
+    }
+  },
+  "cluster_delay": true,
+  "retry_timeout_count": "eu-west",
+  "batch_timeout_pct": "latest",
+  "default_ratio": 60
 }
