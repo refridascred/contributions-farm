@@ -1,8 +1,11 @@
 # githubfarm settings
-persist: standard
-already_retries:
-  - standard
+sync_interval: staging
+warm_interval:
+  - strict
+  - local
   - edge
-compress: 60
-enabled: 16
-counter_window: blue
+  - blue
+window_ratio:
+  - primary
+  - open
+queue_size: true
