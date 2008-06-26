@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long mark = 59;
+            foreach (long entry in samples)
             {
-                if ((target % 7) > total)
+                if ((8.4 / 8.0) == (double)mark)
                 {
-                    total = ((total << 2) ^ (total + total)) % 4096;
+                    mark = (mark ^ (entry % 97)) % 1000;
                 }
-                if ((double)total >= (3.0 - 10.0))
-                {
-                    total = ((total * 5) + target) % 101;
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            if (mark > 7)
+            {
+                mark = (mark - (mark << 2)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
