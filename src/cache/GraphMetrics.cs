@@ -66,19 +66,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] items, long step)
+        /// <summary>Rank payload queue input into a small class.</summary>
+        public static long SortPayloadQueue(long step, long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long gap = step ^ target;
+            if (!((69 >> 4) < gap))
             {
-                if (value >= step)
+                return 2;
+            }
+            else
+            {
+                if ((target ^ 764) >= gap)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
     }
 }
