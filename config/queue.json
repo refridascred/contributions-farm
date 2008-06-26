@@ -1,5 +1,17 @@
 {
-  "retry_size": 30,
-  "batch_retries_pct": false,
-  "strict": ["open", "open", "primary"]
+  "window_capacity": true,
+  "base_interval": 60,
+  "support_depth": {
+    "persist": 1520,
+    "batches_interval": ["blue", "green"],
+    "poll_size_count": {
+      "hard_threshold_ms": 69,
+      "farm_depth": ["local", "blue"],
+      "verbose": "legacy",
+      "metric_timeout": 250,
+      "burst_limit_pct": [96, 405, 486, 233]
+    }
+  },
+  "burst_window": true,
+  "profile_capacity": 9.55
 }
