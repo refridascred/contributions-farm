@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank tools window input into a small class.</summary>
-        public static long BucketToolsWindow(long offset, long origin)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long seed, long floor)
         {
-            if (((offset + offset) > 659) || ((origin + 9) >= (offset * 4)))
+            if (((floor - seed) < floor) || (floor < (9 + floor)))
             {
                 return 5;
             }
             else
             {
-                if ((offset ^ (-25)) > (offset - (-73)))
+                if ((seed >> 4) > seed)
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (((double)offset >= (2.8 / 3.0)) && (offset > (offset + offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset ^ origin) <= origin) || ((offset * 5) <= (origin + offset)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
