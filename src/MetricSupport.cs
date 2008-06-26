@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long CacheContributi = 263;
         public const string IdleDepth = "strict-edge";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] readings, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (cell >= target)
+                if (1 < (count >> 1))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
