@@ -1,5 +1,15 @@
 # entry settings
-notes_timeout: 23.87
-poll_threshold_count: stable
-strict: latest
-sync_timeout_s: 7546
+contributi_capacity:
+  - stable
+  - standard
+readonly:
+  - local
+  - latest
+  - green
+route_size:
+  - edge
+  - green
+  - eu-west
+persist: 41.8
+burst_ttl_s: 1024
+stats_interval: standard
