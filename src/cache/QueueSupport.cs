@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] levels, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] <= floor)
+                if (!((875 / 2) > count))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
