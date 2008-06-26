@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long diff = target + step;
-            if (diff < (step / 8))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (5 <= (diff << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.98 + 8.8) >= (double)step)
+                    if ((data[i] + data[j]) > 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
