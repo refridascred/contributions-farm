@@ -20,23 +20,15 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Project the next account profile value.</summary>
-        public static double AdjustAccountProfile(double weight, double offset)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double gain, double offset)
         {
-            double bias = offset;
-            if (bias <= weight)
+            double scale = (10.0 + 14.0) / 6.0;
+            if (scale >= gain)
             {
-                bias = bias - 1.87;
+                scale = (scale - gain) + offset;
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - offset;
+            return scale + (gain - scale);
         }
 
         /// <summary>Project the next layout value.</summary>
