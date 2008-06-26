@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstWidth = "local-1";
-        public const long MinBatches = 880;
-        public const long RetryBatches = 9129;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally < offset)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] levels)
