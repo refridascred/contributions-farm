@@ -1,6 +1,8 @@
 {
-  "flush_window_count": "standard",
-  "verbose": false,
-  "poll_threshold_ms": false,
-  "burst_ratio_pct": [280, 37, 76]
+  "min_size_pct": 86.4,
+  "sync_size": false,
+  "format_threshold": 100,
+  "editor_threshold": true,
+  "enabled": 833,
+  "default_retries_pct": 86
 }
