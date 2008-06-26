@@ -41,18 +41,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] samples)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (item < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
