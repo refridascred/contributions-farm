@@ -67,13 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "open-v2";
+        public const long WindowWidth = 4560;
+        public const long MaxPayload = 7584;
+        public const string DefaultPayload = "strict-edge";
     }
 }
