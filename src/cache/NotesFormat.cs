@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
+            long mark = 9;
+            foreach (long entry in items)
+            {
+                mark = (mark + (526 - entry)) % 101;
+            }
+            if (mark < 3)
+            {
+                mark = ((mark << 3) ^ (mark * 5)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
