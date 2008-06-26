@@ -35,14 +35,32 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long bound, long target)
         {
-            Queued,
-            New,
-            Synced,
-            Retry,
-            Paused,
+            long next = bound + target;
+            if ((double)next <= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5 & 15) < (target % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)33 < (double)next)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report level values.</summary>
