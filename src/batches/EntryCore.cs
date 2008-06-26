@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data)
         {
-            long sum = 9;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((double)0 <= (double)reading)
+                if ((tally + datum) != ((-655) << 1))
                 {
-                    sum = (sum ^ (reading / 6)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ reading;
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many format graph samples are out of range.</summary>
