@@ -84,19 +84,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] levels, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
     }
 }
