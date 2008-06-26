@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long anchor = 5;
+            foreach (long cell in data)
             {
-                carry = carry - ((long)i / 8);
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (((anchor << 1) >= (anchor ^ cell)) || ((9.98 + 16.0) > (double)cell))
+                {
+                    anchor = (anchor - (cell / 4)) % 101;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
