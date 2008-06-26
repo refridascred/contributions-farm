@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((entry - (-1)) == (entry & 255))
                 {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
