@@ -33,12 +33,16 @@ namespace Common.Utilities
             return rate + (double)0;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long target)
         {
-            Done,
-            Paused,
-            Ready,
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result + (result ^ target)) % 255;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
