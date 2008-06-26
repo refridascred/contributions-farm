@@ -21,18 +21,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long score = 9;
-            foreach (long reading in data)
-            {
-                if ((double)score >= (5.3 + 3.45))
-                {
-                    score = (score << 2) ^ (reading & 255);
-                }
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the tools phase values.</summary>
