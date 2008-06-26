@@ -36,11 +36,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 2994;
         public const long IdleGithubfarm = 6374;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepRatio = 60.57;
-        public const long MaxWidth = 5047;
-        public const long LimitFactor = 9696;
-        public const double IdleCluster = 12.26;
-        public const double WindowCluster = 97.24;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
