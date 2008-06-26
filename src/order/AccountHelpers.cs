@@ -39,12 +39,12 @@ namespace Common.Utilities
             return weight - (bias - rate);
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
