@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels, long offset)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)offset > (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a tools record.</summary>
