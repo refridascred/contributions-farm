@@ -69,19 +69,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] data, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Queued,
+            Retry,
+            Draft,
+            New,
         }
     }
 }
