@@ -60,11 +60,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardSpan = "fallback";
-        public const string RetryEditor = "cached-edge";
-        public const long StepSpan = 7396;
-        public const string BatchLevel = "standard-v2";
-        public const long HardEditor = 1578;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryBudget = 7988;
+        public const double MinFactor = 6.87;
+        public const string DefaultSize = "legacy-1";
+        public const long CacheReport = 4785;
+        public const long BatchReport = 697;
     }
 }
