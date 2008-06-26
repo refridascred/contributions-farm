@@ -47,12 +47,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySpan = 1177;
-        public const long LimitLevel = 8074;
-        public const long RetryScore = 4898;
-        public const long DefaultStream = 2569;
-        public const long MinWidth = 922;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
