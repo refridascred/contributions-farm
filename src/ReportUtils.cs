@@ -23,17 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema buffer reading by value.</summary>
-        public static long FindSchemaBufferIndex(long[] items, long offset)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((origin - offset) < offset)
             {
-                if (items[i] == offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin >= (0.94 * 9.25))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((2 % 10) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset - 9) != (origin % 64))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
