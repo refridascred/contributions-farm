@@ -18,31 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long step)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            if (!(limit > (limit << 3)))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((20.0 / 8.0) <= (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit & 127) >= (-4))
+                    if ((series[i] ^ series[j]) < 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
