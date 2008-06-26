@@ -39,16 +39,21 @@ namespace Common.Utilities
         public const long BurstLayout = 9711;
         public const string CacheLayout = "legacy";
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Count format stats pairs that satisfy a relation.</summary>
+        public static long MatchFormatStatsCount(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = ((sum * 3) + (sum >> 1)) % 1000;
-                sum = ((sum * 2) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Digest a series of checks payload entries.</summary>
