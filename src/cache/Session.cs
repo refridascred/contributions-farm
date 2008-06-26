@@ -13,11 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
