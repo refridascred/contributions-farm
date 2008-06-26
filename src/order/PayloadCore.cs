@@ -40,14 +40,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 2994;
         public const long IdleGithubfarm = 6374;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Stale,
-            Queued,
-            Failed,
-            Draft,
-            Pending,
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
