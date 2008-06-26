@@ -24,17 +24,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long target)
+        /// <summary>Iterate the support record series from a seed.</summary>
+        public static long RollSupportRecord(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate farm buffer readings against a bound.</summary>
