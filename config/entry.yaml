@@ -1,4 +1,9 @@
 # entry settings
-schema_window: 6
-burst_retries_count: 66.66
-hard_limit_count: 45.46
+notes_limit: 33.37
+audit: eu-west
+max_ratio_s:
+  - eu-west
+  - strict
+  - blue
+  - primary
+retry_size: primary
