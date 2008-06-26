@@ -53,15 +53,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] values, long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
