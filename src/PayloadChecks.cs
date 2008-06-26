@@ -32,13 +32,14 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            Dropped,
+            New,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a metric stats.</summary>
