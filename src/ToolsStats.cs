@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long total = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total * 2) + total;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the filter phase values.</summary>
