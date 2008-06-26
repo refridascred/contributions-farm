@@ -1,7 +1,28 @@
 {
-  "sync_depth": false,
-  "enabled": 79.43,
-  "metric_threshold": "staging",
-  "profile_window": 100,
-  "payload_interval": [269, 217, 78, 21]
+  "base_delay_ms": {
+    "order_ttl": {
+      "sync_threshold_count": 58.39,
+      "compress": 6422,
+      "hard_window": 5667,
+      "readonly": "strict",
+      "poll_threshold_count": "standard",
+      "profile_delay": 6755
+    },
+    "cache_depth_ms": [281, 388, 483, 236],
+    "default_depth_s": false,
+    "metric_size": 100
+  },
+  "filter_depth": {
+    "verbose": "open",
+    "persist": "edge",
+    "retry_delay_ms": [236, 140, 32, 382],
+    "idle_depth_ms": {
+      "soft_threshold_pct": "primary",
+      "cache_interval_count": "fallback",
+      "cache_interval": "latest"
+    },
+    "payload_retries": "staging"
+  },
+  "warm_timeout_ms": 67.63,
+  "verbose": 500
 }
