@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Scale a entry route figure with a bias.</summary>
+        public static double SmoothEntryRoute(double rate, double span)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            double scale = (span + span) + (span + rate);
+            if (scale > (9.0 * 7.0))
             {
-                sum = (sum << 2) ^ floor;
-                sum = ((sum * 5) + (long)i) % 101;
+                scale = scale - (18.0 * 8.51);
             }
-            return sum;
+            else
+            {
+                scale = scale - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (span / 7.0)) - (double)(long)i;
+            }
+            return scale - (double)1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
