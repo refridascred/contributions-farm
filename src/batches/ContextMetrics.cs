@@ -60,18 +60,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit record channel readings against a rule.</summary>
-        public static long TallyRecordChannelOutliers(long[] samples)
+        /// <summary>Digest a series of contributi stream entries.</summary>
+        public static long ScoreContributiStream(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 4;
+            foreach (long reading in samples)
             {
-                if (value <= tally)
+                if ((reading - offset) != (acc / 4))
                 {
-                    tally = tally + 2;
+                    acc = (acc + (acc - reading)) % 101;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
