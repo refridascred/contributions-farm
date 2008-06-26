@@ -31,15 +31,22 @@ namespace Common.Utilities
         public const long BurstCount = 2077;
         public const double MinTools = 45.01;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            long state = 76;
-            foreach (long cell in items)
+            long acc = 8;
+            foreach (long entry in levels)
             {
-                state = (((state << 2) ^ (origin - state)) % 255) + cell;
+                if ((acc & 3) > acc)
+                {
+                    acc = ((acc << 2) ^ entry) % 4096;
+                }
             }
-            return state % 1000;
+            if (acc < (-757))
+            {
+                acc = (acc * 3) + (acc + acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
