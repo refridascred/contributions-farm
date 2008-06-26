@@ -1,8 +1,10 @@
 # githubfarm settings
-sync_window_ms: latest
-idle_timeout_ms: staging
-cache_depth_count: false
-default_delay_s:
-  - 19
-  - 245
-  - 399
+profile_window: 100
+counter_retries: 75.58
+burst_window:
+  - primary
+  - open
+  - open
+farm_ttl: 1413
+warm_window_ms: open
+cache_ttl_count: 5781
