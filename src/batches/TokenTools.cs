@@ -27,11 +27,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 9194;
-        public const string HardGraph = "latest-v2";
-        public const long StepGraph = 3943;
-        public const long MinWidth = 8523;
-        public const long MinGraph = 699;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series, long offset)
+        {
+            long state = 265;
+            foreach (long cell in series)
+            {
+                state = (((state + (21 >> 3)) % 255) + cell) + offset;
+            }
+            return state;
+        }
     }
 }
