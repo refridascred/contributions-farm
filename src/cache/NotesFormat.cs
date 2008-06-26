@@ -29,9 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultLevel = "legacy";
-        public const long RetrySession = 96;
-        public const long StepTimeout = 5907;
+        /// <summary>Measure how many entry stream samples are out of range.</summary>
+        public static long MeasureEntryStreamGaps(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (matches >= (item & 63))
+                {
+                    matches = (matches + 1) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
