@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
