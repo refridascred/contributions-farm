@@ -1,28 +1,16 @@
 # githubfarm settings
-metrics_threshold:
-  persist:
-    metrics_size: edge
-    record_capacity: latest
-    idle_retries_pct: 67.81
-    readonly: local
-  cache_limit:
-    - 263
-    - 75
-    - 49
-  order_limit: 91
-  retry_ratio_s: false
-  default_ttl_ms: green
-  retry_size:
-    dry_run: 3930
-    idle_interval_pct: blue
-    sync_size_count: staging
-    max_size: 7110
-githubfarm_capacity: legacy
-counter_ratio: standard
-audit:
-  - 130
-  - 83
-  - 53
-  - 241
-strict: 51.93
-sync_threshold_count: standard
+persist: true
+readonly:
+  cache_ratio: 36.86
+  dry_run: 64
+  githubfarm_timeout: 9500
+  base_threshold_ms:
+    flush_ttl: true
+    enabled: green
+    contributi_depth: 9877
+    report_threshold: 24.98
+sync_capacity_s:
+  - 287
+  - 56
+  - 207
+burst_capacity_ms: true
