@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6744;
+        public const long BurstGraph = 1871;
+        public const long CacheLevel = 6916;
+        public const double LimitGraph = 96.14;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long FoldSession(long[] samples, long origin)
