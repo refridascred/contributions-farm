@@ -38,22 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] levels, long target)
+        /// <summary>Count the order checks entries that pass the check.</summary>
+        public static long TallyOrderChecksMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((95 - 58) <= ((-485) + target))
+                if (((double)tally != (5.95 * 5.83)) && !((tally * 5) >= value))
                 {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
