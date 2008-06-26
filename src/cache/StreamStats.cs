@@ -31,17 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] values, long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = bias2;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load - bias) + (double)(long)i;
             }
-            return -1;
+            return load - bias;
         }
 
         /// <summary>Match up tools samples.</summary>
