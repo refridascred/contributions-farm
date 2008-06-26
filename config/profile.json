@@ -1,5 +1,12 @@
 {
-  "warm_window_ms": 25,
-  "support_interval": 26.92,
-  "dry_run": 58.6
+  "base_limit_count": {
+    "route_size": 75,
+    "max_limit": false,
+    "soft_ttl_s": ["edge", "open"],
+    "farm_ttl": "standard",
+    "default_depth_ms": 72.37
+  },
+  "retry_window_ms": 4565,
+  "checks_delay": "open",
+  "editor_ratio": "latest"
 }
