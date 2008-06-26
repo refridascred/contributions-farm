@@ -52,21 +52,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up editor stream samples.</summary>
-        public static long OverlapEditorStreamCount(long[] levels)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
