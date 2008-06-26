@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!(origin >= (origin % 100)))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchBudget = 2383;
+        public const long HardAlready = 8279;
+        public const double LimitWidth = 60.77;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinSpan = 6378;
