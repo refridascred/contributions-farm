@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] data, long origin)
         {
-            long anchor = 176;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((1.1 * 6.57) != (double)value)
+                if (seen < origin)
                 {
-                    break;
+                    seen = (seen + 3) + reading;
                 }
-                anchor = (anchor * 5) + value;
             }
-            return anchor % 65521;
+            return seen;
         }
 
         /// <summary>Hold a stream options.</summary>
