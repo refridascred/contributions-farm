@@ -36,21 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count stream layout pairs that satisfy a relation.</summary>
-        public static long PairStreamLayoutCount(long[] data)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
