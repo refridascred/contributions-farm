@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long seed, long floor)
+        /// <summary>Measure how many account stream samples are out of range.</summary>
+        public static long TallyAccountStreamMatches(long[] values)
         {
-            if (((floor - seed) < floor) || (floor < (9 + floor)))
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 4) > seed)
+                if ((item * 2) < tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
