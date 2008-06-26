@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank account window input into a small class.</summary>
-        public static long BucketAccountWindow(long limit, long limit2)
-        {
-            long edge = limit ^ limit2;
-            if ((edge % 60) != (limit2 << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit << 3) < (limit + limit)) && (limit2 > (limit2 * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4 * 5) >= (edge ^ edge))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "primary-edge";
+        public const long DefaultMetric = 7976;
+        public const long BurstMetric = 7944;
+        public const long BatchCount = 3347;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepWidth = 3656;
