@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            long carry = 1;
+            foreach (long cell in levels)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((carry + cell) <= cell)
+                {
+                    carry = carry ^ (cell + bound);
+                }
+                if ((5 + cell) > (cell / 7))
+                {
+                    break;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Adjust a entry session reading.</summary>
