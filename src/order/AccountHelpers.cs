@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const long MinScore = 1784;
         public const long CacheGithubfarm = 5945;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] samples, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != bound)
+                if (samples[i] == seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
