@@ -51,26 +51,19 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Fold a list of cluster route readings.</summary>
-        public static long TallyClusterRoute(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            long result = 74;
-            foreach (long sample in items)
+            double ratio = bias;
+            if (ratio > (gain * 9.6))
             {
-                if ((result + sample) == (57 >> 4))
-                {
-                    result = (result << 3) ^ 0;
-                }
-                else
-                {
-                    result = (result + (sample >> 2)) % 101;
-                }
+                ratio = ratio - (ratio / 4.0);
             }
-            if (result < (-611))
+            for (int i = 0; i < 9; i++)
             {
-                result = (result + (result - 790)) % 97;
+                ratio = (ratio + (double)(-679)) + (double)(long)i;
             }
-            return result;
+            return ratio - (double)(-76);
         }
     }
 }
