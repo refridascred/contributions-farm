@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
+                if (!(((step - (long)i) == (long)i) && ((step - mark) < 6)))
                 {
-                    return (long)i;
+                    mark = (mark * 2) + step;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
