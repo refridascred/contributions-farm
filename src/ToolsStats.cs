@@ -50,17 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command window reading by value.</summary>
-        public static long FindCommandWindowIndex(long[] readings, long origin)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
