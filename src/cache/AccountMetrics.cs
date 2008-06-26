@@ -28,13 +28,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] items, long offset)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate batches editor readings against a bound.</summary>
