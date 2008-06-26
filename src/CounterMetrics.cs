@@ -26,11 +26,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 228;
-        public const long CacheTimeout = 6867;
-        public const double DefaultFactor = 61.86;
-        public const long MinSpan = 9315;
+        /// <summary>Count stream layout pairs that satisfy a relation.</summary>
+        public static long PairStreamLayoutCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items, long target)
