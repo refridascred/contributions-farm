@@ -51,22 +51,15 @@ namespace Common.Utilities
         public const long StepFactor = 9677;
         public const long HardMetrics = 8392;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] data, long bound)
+        /// <summary>Digest a series of checks payload entries.</summary>
+        public static long TallyChecksPayload(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 249;
+            foreach (long sample in levels)
             {
-                if ((tally ^ reading) == (tally % 97))
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix * 2) + sample) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
