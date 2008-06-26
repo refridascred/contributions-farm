@@ -20,14 +20,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long limit, long bound)
         {
-            Locked,
-            Pending,
-            Closed,
-            Retry,
-            Ready,
+            long next = limit ^ bound;
+            if (((next % 8) >= limit) || ((7 - next) == (bound ^ bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((0 - bound) > (bound ^ limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound % 2) <= next)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit > (4.0 / 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
