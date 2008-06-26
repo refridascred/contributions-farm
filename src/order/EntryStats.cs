@@ -20,23 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data, long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long floor)
         {
-            long score = 3;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score - score) ^ cell) + seed;
-                if ((score << 2) != (score - 27))
+                if ((items[i] == floor) && ((items[i] % 3) == 0))
                 {
-                    score = (score ^ (6 ^ score)) % 255;
-                }
-                else
-                {
-                    score = (score ^ (score << 3)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
