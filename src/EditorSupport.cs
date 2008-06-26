@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of queue graph readings.</summary>
-        public static long FoldQueueGraph(long[] data)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            long score = -3;
-            foreach (long cell in data)
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 4) + (cell * 2)) % 1000;
+                anchor = ((anchor << 2) ^ (anchor * 4)) % 101;
+                if ((55 >= (long)i) || (((long)i - (long)i) > ((long)i + 28)))
+                {
+                    anchor = ((anchor << 2) ^ (step % 16)) % 97;
+                    anchor = (anchor + (step << 1)) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
