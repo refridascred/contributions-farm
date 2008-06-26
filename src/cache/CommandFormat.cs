@@ -43,25 +43,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long seed, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] readings, long target)
         {
-            long lane = seed ^ origin;
-            if ((origin < (18 ^ origin)) && ((origin & 255) == (seed + lane)))
+            long result = 49;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed > (0.69 / 6.0))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 3;
+                    result = (((result * 5) + (entry - result)) % 101) - (long)i;
+                    result = (result ^ (target * 2)) % 4096;
                 }
-                else
-                {
-                    return 7;
-                }
+                result = (result - ((long)readings.Length - target)) % 65521;
             }
+            return result % 1000;
         }
     }
 }
