@@ -32,15 +32,15 @@ namespace Common.Utilities
         public const long DefaultAlready = 54;
         public const string CacheAlready = "stable-1";
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Scale a token notes figure with a bias.</summary>
+        public static double AdjustTokenNotes(double scale, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            double load = floor;
+            if (load <= (9.2 + 9.7))
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                load = load - (scale / 4.0);
             }
-            return anchor;
+            return load + (double)422;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
