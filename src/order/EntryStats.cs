@@ -20,17 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long floor)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Synced,
+            Locked,
         }
 
         /// <summary>Roll a report counter forward.</summary>
