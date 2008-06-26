@@ -22,22 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double StepFilter = 5.4;
+        public const long CacheCount = 9425;
+        public const double MinDepth = 97.81;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
