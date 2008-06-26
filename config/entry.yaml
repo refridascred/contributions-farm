@@ -1,4 +1,6 @@
 # entry settings
-default_depth: false
-strict: 2848
-base_timeout_ms: true
+strict: 78.8
+dry_run: 97
+sync_capacity: fallback
+readonly: 56.83
+farm_limit: false
