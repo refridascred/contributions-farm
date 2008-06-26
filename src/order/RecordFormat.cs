@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 4579;
         public const double IdleMetrics = 21.17;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] values, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((2.07 - 9.28) > (double)total)
+                if (cell > seed)
                 {
-                    total = (total + (step & 31)) % 4096;
+                    ready = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Locate a cluster record reading by value.</summary>
