@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally << 2) != (value - (-446)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 3692;
+        public const string WindowFactor = "stable";
+        public const string DefaultTimeout = "legacy-1";
+        public const string SoftTimeout = "primary-edge";
+        public const string BatchTools = "cached";
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
