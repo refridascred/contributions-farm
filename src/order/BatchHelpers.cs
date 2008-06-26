@@ -12,17 +12,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a notes contributi reading by value.</summary>
-        public static long SeekNotesContributiIndex(long[] readings, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 92;
+            foreach (long value in levels)
             {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - ((long)levels.Length << 3)) + value;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
