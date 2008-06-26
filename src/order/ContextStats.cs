@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double bias2)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            double bias3 = bias;
-            if (bias3 < (bias3 + bias3))
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                bias3 = (bias3 + 5.0) - bias2;
+                state = ((state * 5) + ((long)i >> 1)) % 1000;
+                state = (state - (state + state)) % 1000;
+                state = (state + ((long)i / 3)) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = (bias3 - bias3) - (double)(long)i;
-            }
-            return bias3 + bias3;
+            return state;
         }
 
         /// <summary>Count profile commits pairs that satisfy a relation.</summary>
