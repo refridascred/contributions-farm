@@ -52,21 +52,16 @@ namespace Common.Utilities
         public const double LimitInterval = 91.48;
         public const long BatchTools = 6337;
 
-        /// <summary>Derive the next order route value from a seed.</summary>
-        public static long IterateOrderRoute(long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((seed - seed) <= mix)
-                {
-                    mix = mix - (393 >> 3);
-                    break;
-                }
-                mix = mix + (81 + mix);
-                mix = ((mix * 2) + (long)i) % 97;
+                acc = acc ^ (acc / 7);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
