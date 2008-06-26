@@ -28,13 +28,12 @@ namespace Common.Utilities
             return gain - (3.0 + 12.0);
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSize = 7064;
+        public const long BurstWidth = 9377;
+        public const string WindowNotes = "primary-v2";
+        public const long MaxNotes = 4704;
+        public const long WindowDepth = 5859;
 
         /// <summary>Describe the metrics kind values.</summary>
         public enum MetricsKind
