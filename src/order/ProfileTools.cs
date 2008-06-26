@@ -36,14 +36,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double offset)
         {
-            Failed,
-            Done,
-            Draft,
-            Dropped,
-            Pending,
+            double gain = rate;
+            if (gain > rate)
+            {
+                gain = gain - (gain * 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain - (rate + 2.04);
         }
 
         /// <summary>Match up checks samples.</summary>
