@@ -1,9 +1,25 @@
 # githubfarm settings
-base_capacity: false
-readonly: local
-already_delay:
-  - open
-  - eu-west
-metrics_delay: false
-batch_limit: staging
-audit: 30
+warm_retries_s:
+  default_retries: legacy
+  record_depth: 561
+  commits_ttl: true
+  hard_limit:
+    cluster_retries: 93
+    verbose: 6552
+    metric_timeout: 80
+    hard_size_count:
+      - 488
+      - 246
+      - 419
+    min_window_s: 1772
+    idle_threshold:
+      - 4
+      - 124
+      - 271
+      - 125
+cluster_limit:
+  - green
+  - strict
+  - stable
+  - legacy
+soft_delay: standard
