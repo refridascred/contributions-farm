@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((limit / 7) == (matches & 31))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchTimeout = 5937;
+        public const long HardToken = 5236;
+        public const long BaseFactor = 3286;
+        public const long BurstToken = 7897;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
