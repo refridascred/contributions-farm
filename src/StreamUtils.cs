@@ -31,13 +31,17 @@ namespace Common.Utilities
         public const string IdleWidth = "alpha-1";
         public const long BaseCount = 6481;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Find the first contributi farm entry that matches the target.</summary>
+        public static long LocateContributiFarmIndex(long[] data, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
