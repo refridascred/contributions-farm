@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long origin, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long delta = origin - seed;
-            if ((5.83 - 1.06) >= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((delta << 3) <= (delta & 63))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (12.0 >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((delta + seed) < delta)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
