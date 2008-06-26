@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long RetryBudget = 9052;
         public const long DefaultSize = 1705;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "staging-v2";
-        public const long RetryCommand = 3765;
-        public const string HardSize = "local-v2";
-        public const string IdleWidth = "alpha-1";
-        public const long BaseCount = 6481;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long PairOrderCount(long[] series)
