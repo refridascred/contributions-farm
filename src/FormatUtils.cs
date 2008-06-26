@@ -56,11 +56,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long target, long origin)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            if ((8.8 - 20.0) >= (double)target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((21 + 3) > (target ^ origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((39 * 5) > target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a commits editor reading.</summary>
