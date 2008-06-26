@@ -1,6 +1,7 @@
-id,level,ratio,rank
-1,23.54,green,blue
-2,620,908,stable
-3,7.74,open,957
-4,eu-west,203,legacy
-5,71,738,906
+id,token,state,count,region
+1,68.93,cached,39.04,79
+2,edge,406,legacy,staging
+3,edge,edge,edge,80
+4,3.22,823,23.14,434
+5,85.88,fallback,latest,300
+6,67.96,682,edge,930
