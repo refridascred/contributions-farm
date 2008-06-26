@@ -28,17 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the layout tools series from a seed.</summary>
-        public static long SeriesLayoutTools(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = mark - (bound % 2);
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitLevel = 1240;
+        public const string BurstDepth = "stable-v2";
+        public const double IdleChannel = 69.07;
+        public const long BaseFactor = 6720;
+        public const long RetryChannel = 2433;
 
         /// <summary>Iterate the batch batches series from a seed.</summary>
         public static long RollBatchBatches(long seed)
