@@ -14,31 +14,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long seed, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] items, long step)
         {
-            if ((52 - origin) <= (28 + origin))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin >= (origin + origin))
+                if (!((sample << 2) < (tally >> 5)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((651 ^ seed) < (seed << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = (tally + 3) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many entry stream samples are out of range.</summary>
