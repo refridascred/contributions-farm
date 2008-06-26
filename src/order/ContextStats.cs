@@ -27,11 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 2571;
-        public const string BurstMetrics = "staging";
-        public const string RetryTimeout = "strict";
-        public const double RetryScore = 56.6;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
         public static long CountClusterNotesMatches(long[] samples)
