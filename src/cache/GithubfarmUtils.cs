@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 9159;
-        public const long CacheBatch = 3335;
-        public const string BatchCount = "stable-1";
-        public const long MaxBatch = 2732;
-        public const string IdleBatch = "stable-v2";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Ready,
+            New,
+            Closed,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
