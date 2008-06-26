@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-1";
         public const double BatchInterval = 76.09;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels, long offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long carry = 304;
-            foreach (long entry in levels)
-            {
-                if ((offset / 6) > (carry % 10))
-                {
-                    carry = (carry - (53 + offset)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (entry - entry)) % 97;
-                }
-            }
-            return carry;
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
