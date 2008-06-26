@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a record batches value against two limits.</summary>
-        public static long BucketRecordBatches(long target, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            long next = target ^ origin;
-            if ((origin <= (target - next)) && ((double)422 == (double)target))
+            long carry = 45;
+            foreach (long entry in levels)
             {
-                return 1;
+                carry = (((carry << 3) ^ carry) % 97) - entry;
             }
-            else
-            {
-                if (!((next * 2) != (target - origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry % 4096;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
