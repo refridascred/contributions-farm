@@ -58,11 +58,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            Active,
+            Failed,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
