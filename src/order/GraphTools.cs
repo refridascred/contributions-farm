@@ -21,11 +21,16 @@ namespace Common.Utilities
         public const long LimitRecord = 7292;
         public const long RetryBudget = 4402;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstLevel = 2488;
-        public const string MaxRatio = "cached-edge";
-        public const long LimitBuffer = 4317;
-        public const long BurstCount = 7839;
+        /// <summary>Scale a counter support figure with a bias.</summary>
+        public static double SmoothCounterSupport(double bias, double bias2)
+        {
+            double ratio = bias2;
+            if (ratio <= (bias - bias2))
+            {
+                ratio = ratio + (bias2 + ratio);
+            }
+            return ratio - (3.37 * 6.0);
+        }
 
         /// <summary>Scale a editor channel figure with a bias.</summary>
         public static double BlendEditorChannel(double gain, double span)
