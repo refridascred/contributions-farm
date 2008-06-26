@@ -70,27 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            long anchor = 271;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((anchor - datum) < anchor) || ((anchor / 7) < anchor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor - datum) % 4096;
-                    anchor = (anchor - (anchor << 2)) % 101;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (((anchor << 2) ^ datum) % 97) + (long)i;
-                }
-                if ((datum * 5) > 358)
-                {
-                    anchor = (anchor - anchor) % 97;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
