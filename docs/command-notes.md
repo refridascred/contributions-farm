@@ -1,10 +1,15 @@
 # Command notes
 
-A route that stays idle for too long is moved to the command list.
-Each order is validated before it reaches the cache queue.
+The profile module keeps route values in sync with the payload cache.
+Run the cache check before changing any support limits.
+
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep checks and queue names short and lowercase.
+The buffer module keeps layout values in sync with the batch cache.
 
 ## Guidelines
 
-- Document new entry fields
-- Review batches limits each release
-- Log every metrics change
+- Validate notes input early
+- Log every farm change
+- Keep account values small
+- Document new order fields
