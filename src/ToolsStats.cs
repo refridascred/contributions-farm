@@ -35,11 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long result = 621;
+            foreach (long item in samples)
+            {
+                if ((result - result) >= result)
+                {
+                    result = (result << 2) ^ (item - result);
+                }
+            }
+            if (result > 869)
+            {
+                result = ((result * 5) + (result - result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the command kind values.</summary>
