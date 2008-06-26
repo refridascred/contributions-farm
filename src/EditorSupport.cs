@@ -104,10 +104,19 @@ namespace Common.Utilities
             return mean + (span - 17.0);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultRatio = 2044;
-        public const double LimitAlready = 65.86;
-        public const long IdleWidth = 5037;
-        public const string HardAlready = "cached-v2";
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueBounds(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
