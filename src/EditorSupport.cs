@@ -61,16 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window contributi readings.</summary>
-        public static long TotalWindowContributi(long[] values, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long total = 0;
-            foreach (long reading in values)
-            {
-                total = (total ^ (total >> 3)) + reading;
-                total = ((total * 4) + (floor ^ floor)) % 1000;
-            }
-            return total % 97;
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
