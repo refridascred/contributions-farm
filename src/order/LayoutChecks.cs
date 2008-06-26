@@ -69,13 +69,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            Idle,
+            Ready,
+            Paused,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
