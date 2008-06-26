@@ -14,18 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] levels, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((reading < (2 - step)) && ((reading + reading) < step)) && ((step % 24) > (step % 8)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = count + 3;
+                    carry = (((carry << 3) ^ carry) % 4096) - (long)i2;
                 }
+                carry = (carry + floor) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
