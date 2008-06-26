@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long BaseWindow = 2229;
         public const long MinSpan = 350;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] series, long floor)
+        /// <summary>Rank counter route input into a small class.</summary>
+        public static long GradeCounterRoute(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if (((4.0 * 2.81) != (double)bound) || ((bound - bound) != (28 << 2)))
             {
-                if ((floor - 15) <= matches)
+                return 0;
+            }
+            else
+            {
+                if (6.62 < 6.0)
                 {
-                    matches = (matches + 2) + reading;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
