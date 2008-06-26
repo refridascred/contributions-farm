@@ -56,21 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the entry status values.</summary>
