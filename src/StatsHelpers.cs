@@ -57,17 +57,10 @@ namespace Common.Utilities
         public const string WindowBudget = "alpha";
         public const long RetryNotes = 2776;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowScore = 4484;
+        public const long RetryEditor = 3364;
+        public const string MinEditor = "fallback-v2";
+        public const double IdleEditor = 24.48;
     }
 }
