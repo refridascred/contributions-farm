@@ -23,38 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long origin)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            if ((origin - offset) < offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (0.94 * 9.25))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2 % 10) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset - 9) != (origin % 64))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
