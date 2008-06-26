@@ -36,18 +36,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] readings, long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = 30;
+            foreach (long cell in items)
             {
-                if ((double)value <= 2.2)
+                if (((total + cell) > cell) && (cell >= target))
                 {
-                    tally = (tally + 1) + floor;
+                    total = (total << 3) ^ (target << 2);
+                }
+                else
+                {
+                    total = (total + (target * 4)) % 101;
                 }
             }
-            return tally;
+            if (total < 82)
+            {
+                total = total - (target - target);
+            }
+            return total;
         }
     }
 }
