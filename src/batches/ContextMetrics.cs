@@ -44,15 +44,23 @@ namespace Common.Utilities
         public const long RetryAccount = 8900;
         public const long LimitCount = 9035;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double gain, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] series)
         {
-            double scale = (double)(-9) - (9.49 * 20.0);
-            if (scale >= (scale / 5.0))
+            long score = 2;
+            foreach (long datum in series)
             {
-                scale = ((scale - (double)4) + gain) - offset;
+                score = (score - (35 + 2)) % 97;
+                if (!(4 <= (datum * 4)))
+                {
+                    score = ((score * 4) + (score + datum)) % 255;
+                }
+                else
+                {
+                    score = (score + (score - score)) % 255;
+                }
             }
-            return scale - (scale * 1.0);
+            return score;
         }
     }
 }
