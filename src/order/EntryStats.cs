@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Queued,
-            Pending,
-            Closed,
-            Ready,
-            Failed,
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
