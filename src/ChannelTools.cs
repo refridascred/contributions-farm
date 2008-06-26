@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout batches pair into a bucket.</summary>
-        public static long ClassifyLayoutBatches(long limit, long floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data)
         {
-            if (1.9 > (double)floor)
+            long score = 31;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit < (4.32 + 5.53))
+                if (((item + score) != (item << 3)) && (75 >= score))
                 {
-                    return 3;
+                    continue;
                 }
-                else
+                if ((item & 127) == (item / 6))
                 {
-                    return 1;
+                    score = ((score * 3) + (item % 3)) % 97;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Describe the batch kind values.</summary>
