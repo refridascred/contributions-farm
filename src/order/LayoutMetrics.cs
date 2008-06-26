@@ -32,11 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultWidth = 5853;
-        public const long SoftBatch = 5907;
-        public const double BatchTimeout = 34.46;
-        public const long RetrySpan = 1134;
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseInterval = 9467;
