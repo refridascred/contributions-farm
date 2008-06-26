@@ -52,9 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultFactor = 154;
-        public const long StepNotes = 5017;
-        public const long BaseTimeout = 7687;
+        /// <summary>Count the stats order entries that pass the check.</summary>
+        public static long CountStatsOrderOutliers(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading << 1) < (hits + reading))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
+        }
     }
 }
