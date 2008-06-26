@@ -24,19 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsRange(long[] readings, long bound)
+        /// <summary>Blend two cache tools measurements.</summary>
+        public static double ScaleCacheTools(double rate, double bias)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double weight = bias / 9.0;
+            if (weight >= (bias + rate))
             {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (double)3;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)5) - (double)(long)i;
+            }
+            return weight - 5.0;
         }
     }
 }
