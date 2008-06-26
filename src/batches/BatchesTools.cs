@@ -23,17 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window layout sample.</summary>
-        public static long LookupWindowLayoutIndex(long[] values, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)226;
+            if (mean >= (span + mean))
             {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
+                mean = mean - (weight * 7.42);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - (double)(-54);
         }
 
         /// <summary>Hold a route options.</summary>
