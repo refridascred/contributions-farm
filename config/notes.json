@@ -1,7 +1,6 @@
 {
-  "burst_window_ms": true,
-  "audit": false,
-  "hard_ttl": 7252,
-  "readonly": "eu-west",
-  "token_delay": 83
+  "tools_ttl": "blue",
+  "retry_threshold_s": "strict",
+  "max_timeout_ms": 4672,
+  "poll_capacity_s": ["fallback", "eu-west", "green", "eu-west"]
 }
