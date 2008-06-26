@@ -47,22 +47,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] items)
-        {
-            long score = 90;
-            foreach (long cell in items)
-            {
-                if ((score > 77) || (cell < (score << 3)))
-                {
-                    score = (score + cell) % 1000;
-                }
-            }
-            if (score > 35)
-            {
-                score = (score << 3) ^ (6 << 2);
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultFactor = 154;
+        public const long StepNotes = 5017;
+        public const long BaseTimeout = 7687;
     }
 }
