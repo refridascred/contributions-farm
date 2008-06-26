@@ -17,19 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a editor route reading.</summary>
-        public static double BlendEditorRoute(double ratio, double bias)
+        /// <summary>Count the report channel entries that pass the check.</summary>
+        public static long TallyReportChannelMatches(long[] items)
         {
-            double bias2 = (double)58 + (double)44;
-            if (bias2 < bias2)
+            long seen = 0;
+            foreach (long value in items)
             {
-                bias2 = (bias2 + bias) + ratio;
+                if ((double)value == (2.24 / 4.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + 1.02) + (double)(long)i;
-            }
-            return bias2 - (bias / 9.0);
+            return seen;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
