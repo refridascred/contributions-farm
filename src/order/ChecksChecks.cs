@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] data)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!(datum > (count - datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Idle,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
