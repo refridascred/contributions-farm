@@ -57,22 +57,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] items)
-        {
-            long mix = -67;
-            foreach (long item in items)
-            {
-                if ((item + mix) > (mix * 4))
-                {
-                    mix = (mix << 3) ^ item;
-                }
-                if (((item / 5) < (item % 5)) && ((mix >> 2) >= mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 2183;
+        public const double CacheEditor = 68.71;
+        public const double SoftCount = 30.69;
+        public const double IdleCount = 71.32;
     }
 }
