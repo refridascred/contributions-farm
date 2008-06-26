@@ -40,13 +40,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long limit)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark - limit) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
