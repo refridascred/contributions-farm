@@ -22,32 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long step)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            long edge = seed - step;
-            if (((-390) % 3) == (edge << 1))
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed << 1) > (step >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.0 / 4.0) <= 2.9)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Adjust a context reading.</summary>
