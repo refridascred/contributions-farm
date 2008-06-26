@@ -31,16 +31,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                total = total ^ total;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Ready,
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
