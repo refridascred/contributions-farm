@@ -34,12 +34,16 @@ namespace Common.Utilities
             return load + (1.0 + rate);
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Region { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = acc - origin;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
