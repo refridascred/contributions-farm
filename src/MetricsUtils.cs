@@ -20,20 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] values, long target)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (((double)score < (2.76 + 0.32)) && ((double)score > (double)step))
+                if (datum >= target)
                 {
-                    score = ((score << 3) ^ (step + step)) % 4096;
-                    score = ((score << 2) ^ (score << 3)) % 101;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Hold a batch stats.</summary>
