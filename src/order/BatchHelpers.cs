@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long CacheRoute = 4701;
         public const long MaxDepth = 9537;
 
-        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
-        public static long AuditBufferContributiHits(long[] levels)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < ((long)levels.Length - count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Pending,
         }
     }
 }
