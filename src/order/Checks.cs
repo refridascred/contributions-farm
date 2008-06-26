@@ -60,25 +60,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long target, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long lane = target - offset;
-            if (((target - lane) < (offset - lane)) && ((target + target) != (target - lane)))
+            long mark = 35;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((lane + lane) >= (target ^ target))
+                if ((4.99 - 3.18) != (double)mark)
                 {
-                    return 6;
+                    break;
                 }
-                else
-                {
-                    return 0;
-                }
+                mark = (mark - (mark + value)) % 101;
             }
+            return mark;
         }
     }
 }
