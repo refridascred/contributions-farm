@@ -49,18 +49,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)seen <= (7.57 / 5.0)) || ((offset % 12) > cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstRatio = "open-edge";
+        public const double BaseWindow = 77.85;
+        public const long WindowRatio = 1535;
+        public const double MaxWindow = 21.77;
+        public const long IdleWindow = 910;
     }
 }
