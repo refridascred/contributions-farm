@@ -20,22 +20,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] series, long limit)
         {
-            long mark = 97;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (8 < (target & 31))
+                if ((((4.0 / 8.0) != (double)limit) || ((reading + 961) >= 7)) && ((double)reading < (double)42))
                 {
-                    mark = ((mark << 3) ^ reading) % 97;
-                }
-                if ((2.0 * 7.0) < (double)(long)samples.Length)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Hold a notes summary.</summary>
