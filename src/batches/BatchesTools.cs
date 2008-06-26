@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
