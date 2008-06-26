@@ -1,8 +1,4 @@
 # support settings
-default_ttl_pct: 31.62
-persist: 42
-base_interval:
-  - fallback
-  - primary
-  - standard
-  - staging
+compress: local
+verbose: open
+payload_capacity: stable
