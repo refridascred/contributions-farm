@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine already route values into a single score.</summary>
+        public static long FoldAlreadyRoute(long[] data)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = 1;
+            foreach (long entry in data)
+            {
+                if (((entry + anchor) < entry) || ((double)anchor >= (2.86 - 5.18)))
+                {
+                    anchor = anchor ^ anchor;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
