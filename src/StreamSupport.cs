@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            double weight = (double)(53 ^ 759);
+            if (weight <= 0.94)
+            {
+                weight = (weight + floor) + scale;
+            }
+            return weight - (double)311;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
