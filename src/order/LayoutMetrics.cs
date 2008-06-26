@@ -12,23 +12,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many support entry samples are out of range.</summary>
-        public static long MeasureSupportEntryHits(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((bound * 3) >= (matches + matches))
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardWidth = 6971;
+        public const long WindowFactor = 3417;
+        public const string CacheChannel = "cached-edge";
+        public const long BatchChannel = 7498;
+        public const long SoftFactor = 9793;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] samples, long bound)
