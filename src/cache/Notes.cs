@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] items, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 176;
+            foreach (long value in data)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                if ((1.1 * 6.57) != (double)value)
                 {
-                    return (long)i;
+                    break;
                 }
+                anchor = (anchor * 5) + value;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a stream options.</summary>
