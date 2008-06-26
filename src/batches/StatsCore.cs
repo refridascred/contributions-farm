@@ -34,27 +34,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] readings, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long score = 96;
+            foreach (long entry in readings)
             {
-                mix = (mix ^ (mix + bound)) % 97;
-                if ((mix - bound) > (bound & 15))
+                if (!(7.4 <= (double)entry))
                 {
-                    mix = mix + (long)i;
-                    break;
+                    score = score ^ (score & 63);
                 }
-                if ((double)mix >= 3.7)
-                {
-                    mix = ((mix << 2) ^ (mix << 1)) % 1000;
-                    mix = (mix * 4) + (3 & 3);
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            if (score > 6)
+            {
+                score = ((score << 3) ^ (score + seed)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Rank githubfarm buffer input into a small class.</summary>
