@@ -1,6 +1,5 @@
 {
-  "readonly": true,
-  "dry_run": 8989,
-  "flush_delay_s": 16.09,
-  "order_delay": "stable"
+  "idle_ttl": "fallback",
+  "already_depth": 250,
+  "soft_delay_ms": 9834
 }
