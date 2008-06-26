@@ -37,11 +37,11 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowBudget = 52.68;
-        public const double IdleSupport = 54.32;
-        public const double StepScore = 67.25;
-        public const long HardLevel = 7077;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 5820;
+        public const double SoftDepth = 65.55;
+        public const long WindowDepth = 364;
+        public const long BatchSize = 1688;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] values, long seed)
