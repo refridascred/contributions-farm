@@ -40,21 +40,21 @@ namespace Common.Utilities
             return rate + (double)(-79);
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Iterate the graph window series from a seed.</summary>
+        public static long RollGraphWindow(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((long)i + state) == (step - state)) || ((state * 5) <= (39 + step)))
                 {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ 30) % 97;
+                    break;
                 }
+                state = ((state << 3) ^ step) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
     }
 }
