@@ -27,32 +27,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 4579;
         public const double IdleMetrics = 21.17;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long target, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] series)
         {
-            long step = target + origin;
-            if ((origin & 1) >= (origin * 2))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 127) <= origin)
+                if ((item - item) != (matches << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (894 <= (step + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a cluster record reading by value.</summary>
