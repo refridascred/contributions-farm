@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first notes entry entry that matches the target.</summary>
-        public static long LookupNotesEntryIndex(long[] data, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 73;
+            foreach (long item in samples)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                state = (state + (2 * 2)) ^ item;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
