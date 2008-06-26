@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count session token pairs that satisfy a relation.</summary>
-        public static long CompareSessionTokenCount(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > floor)
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
