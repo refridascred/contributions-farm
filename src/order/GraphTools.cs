@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Combine counter channel values into a single score.</summary>
+        public static long DigestCounterChannel(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 3;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 3) + mix) ^ sample;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of session readings.</summary>
