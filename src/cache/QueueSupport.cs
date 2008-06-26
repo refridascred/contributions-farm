@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 65.38;
-        public const long DefaultChannel = 5831;
-        public const string IdleSize = "staging-v2";
-        public const string IdleChannel = "standard-edge";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((6.0 - 7.9) != (double)hits)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long target)
