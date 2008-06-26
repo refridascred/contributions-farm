@@ -25,15 +25,26 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels, long origin)
         {
-            long score = 9;
-            foreach (long datum in levels)
+            long anchor = 202;
+            foreach (long value in levels)
             {
-                score = (score + 403) - datum;
+                if ((origin >> 5) == (origin & 63))
+                {
+                    anchor = anchor ^ (origin - value);
+                }
+                else
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 255;
+                }
             }
-            return score % 65521;
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 3) ^ (origin << 3)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of format editor readings.</summary>
