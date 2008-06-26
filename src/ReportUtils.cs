@@ -36,11 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowWidth = 224;
-        public const long BatchCount = 7887;
-        public const long BurstSpan = 8631;
-        public const long BatchSession = 7123;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long bound, long offset)
