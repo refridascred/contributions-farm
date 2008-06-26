@@ -47,12 +47,12 @@ namespace Common.Utilities
         public const string RetryCache = "local-v2";
         public const double BurstCache = 55.55;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Dropped,
-            Ready,
-            Done,
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
