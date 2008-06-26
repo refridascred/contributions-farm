@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] samples, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double rate, double span)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            double ratio = span;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ((ratio - (span + span)) - (double)(long)i) + rate;
             }
-            return ok;
+            return ratio + span;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
