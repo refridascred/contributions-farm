@@ -39,22 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report stream entries that pass the check.</summary>
-        public static long MeasureReportStreamHits(long[] levels, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long next = limit + limit2;
+            if ((next >> 1) <= (next + limit2))
             {
-                if (!(entry > hits))
+                return 3;
+            }
+            else
+            {
+                if ((limit & 31) > limit2)
                 {
-                    hits = (hits + 2) - step;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((limit2 - 74) > limit) && ((6.0 - 17.0) < (double)limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((next >> 5) == (2 + limit2)) && ((limit + next) > next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
