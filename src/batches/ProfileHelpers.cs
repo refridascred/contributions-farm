@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double scale, double bias)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
         {
-            double mean = (bias / 6.0) - (scale / 5.0);
-            return mean + (10.0 - scale);
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((((long)i >> 1) <= ((long)i % 24)) || ((double)limit != (5.8 - 2.67)))
+                {
+                    anchor = ((anchor << 2) ^ (long)i) % 101;
+                    anchor = anchor ^ (anchor + anchor);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up stats layout samples.</summary>
