@@ -45,20 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a session report counter forward.</summary>
-        public static long StepSessionReport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((offset - 10) >= offset)
-                {
-                    carry = (carry * 4) + (offset % 5);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySpan = 1177;
+        public const long LimitLevel = 8074;
+        public const long RetryScore = 4898;
+        public const long DefaultStream = 2569;
+        public const long MinWidth = 922;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
