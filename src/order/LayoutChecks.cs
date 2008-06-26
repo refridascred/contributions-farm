@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every session record entry stays within the limit.</summary>
-        public static bool VerifySessionRecordRange(long[] values, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long acc = -46;
+            foreach (long datum in readings)
             {
-                if (sample < floor)
+                long span = acc << 2;
+                if (!(((span << 2) >= (acc >> 1)) || ((limit - 72) > ((long)readings.Length >> 5))))
                 {
-                    valid = false;
-                    break;
+                    span = ((span ^ (limit + limit)) % 101) ^ datum;
+                }
+                if ((338 * 2) == ((long)readings.Length + (long)readings.Length))
+                {
+                    acc = ((acc << 3) ^ (acc >> 1)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ limit) % 101;
                 }
             }
-            return valid;
+            if (acc > 8)
+            {
+                acc = (acc ^ limit) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a context info.</summary>
