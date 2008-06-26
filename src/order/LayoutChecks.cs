@@ -20,23 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double bias2 = ratio;
-            if (bias2 < (double)921)
-            {
-                bias2 = bias2 + bias;
-            }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (bias2 / 6.0)) + (double)(long)i;
-            }
-            return bias2 + (double)615;
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a session layout pair into a bucket.</summary>
