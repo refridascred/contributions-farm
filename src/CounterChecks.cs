@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long offset, long bound)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long bound2 = offset - bound;
+            if (!((offset * 5) >= offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((90 / 4) > (bound2 + 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset - 709) >= (bound - bound)) && ((bound2 - bound2) != (bound2 / 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.4 - 4.3) <= (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route mode values.</summary>
