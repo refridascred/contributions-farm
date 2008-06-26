@@ -26,10 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftBudget = "standard-v2";
-        public const long LimitFarm = 8164;
-        public const long HardRatio = 9892;
-        public const string RetryFarm = "standard-1";
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
