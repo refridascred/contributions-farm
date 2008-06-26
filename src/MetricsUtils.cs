@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] samples, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((double)(long)samples.Length != (8.64 * 6.56)) || ((825 ^ reading) < limit)) && !(16.0 <= (double)limit))
-                {
-                    hits = hits + 1;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
