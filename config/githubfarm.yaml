@@ -1,16 +1,8 @@
 # githubfarm settings
-persist: true
-readonly:
-  cache_ratio: 36.86
-  dry_run: 64
-  githubfarm_timeout: 9500
-  base_threshold_ms:
-    flush_ttl: true
-    enabled: green
-    contributi_depth: 9877
-    report_threshold: 24.98
-sync_capacity_s:
-  - 287
-  - 56
-  - 207
-burst_capacity_ms: true
+sync_window_ms: latest
+idle_timeout_ms: staging
+cache_depth_count: false
+default_delay_s:
+  - 19
+  - 245
+  - 399
