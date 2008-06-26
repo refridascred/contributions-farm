@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (entry > floor)
+                if ((3.0 - 8.78) != (double)cell)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) + origin;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the tools kind values.</summary>
