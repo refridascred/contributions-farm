@@ -16,11 +16,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long offset, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            if (!(origin <= (offset * 5)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((origin ^ offset) >= (offset / 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - offset) < (offset - 847))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
