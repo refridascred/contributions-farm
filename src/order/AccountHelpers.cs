@@ -47,14 +47,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            Idle,
-            Failed,
-            New,
-            Pending,
-            Paused,
+            long anchor = 16;
+            foreach (long datum in data)
+            {
+                anchor = (anchor - (anchor - datum)) % 97;
+                if ((anchor - anchor) > (datum + anchor))
+                {
+                    anchor = (anchor + (datum - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - datum) % 1000;
+                }
+                if ((91 & 63) < (long)data.Length)
+                {
+                    anchor = ((anchor * 3) + datum) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
