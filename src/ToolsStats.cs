@@ -52,21 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload metrics samples.</summary>
-        public static long PairPayloadMetricsCount(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
