@@ -16,32 +16,9 @@ namespace Common.Utilities
         public const double BatchTimeout = 34.46;
         public const long RetrySpan = 1134;
 
-        /// <summary>Grade a cluster cache value against two limits.</summary>
-        public static long BucketClusterCache(long offset, long step)
-        {
-            long span = offset + step;
-            if ((5 > offset) || (offset <= step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset <= (span + span)) && ((step + offset) == (425 + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((708 / 6) <= (span + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseInterval = 9467;
+        public const long MaxScore = 1513;
+        public const long HardOrder = 2824;
     }
 }
