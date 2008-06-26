@@ -20,16 +20,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels, long seed)
-        {
-            long mix = 11;
-            foreach (long sample in levels)
-            {
-                mix = (((mix ^ ((long)levels.Length & 31)) % 255) ^ sample) - seed;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 6445;
+        public const long DefaultNotes = 5817;
+        public const string HardNotes = "stable-1";
 
         /// <summary>Check that every entry farm entry stays within the limit.</summary>
         public static bool ValidateEntryFarmRange(long[] series, long seed)
