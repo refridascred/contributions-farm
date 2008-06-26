@@ -26,19 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] values, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] readings, long step)
         {
-            long total = 17;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((seed + cell) <= (total - total))
+                if (cell != step)
                 {
-                    total = (total << 2) ^ 6;
+                    found = false;
+                    break;
                 }
-                total = total ^ (total - total);
             }
-            return total;
+            return found;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
