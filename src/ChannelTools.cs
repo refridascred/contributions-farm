@@ -19,22 +19,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] samples, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long anchor = 327;
+            foreach (long entry in levels)
             {
-                if (!((double)seed == (1.78 * 0.6)))
+                if ((6 ^ bound) == (anchor << 1))
                 {
-                    tally = (tally + 1) ^ value;
+                    anchor = ((anchor - (bound + 95)) % 255) - entry;
                 }
-                else
+                if (anchor <= (anchor - 0))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 23)
+            {
+                anchor = ((anchor << 2) ^ 811) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
