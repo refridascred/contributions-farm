@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account schema samples are out of range.</summary>
-        public static long MeasureAccountSchemaOutliers(long[] series)
+        /// <summary>Combine order farm values into a single score.</summary>
+        public static long CombineOrderFarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long sum = 14;
+            foreach (long datum in levels)
             {
-                if ((double)value > (7.73 + 14.0))
+                sum = ((sum * 4) + (77 ^ sum)) % 255;
+                if ((datum <= 456) && (sum < (48 - sum)))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Describe the buffer class values.</summary>
