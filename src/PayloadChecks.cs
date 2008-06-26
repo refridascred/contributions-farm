@@ -13,13 +13,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            Queued,
-            New,
-            Closed,
-            Locked,
+            double gain = (bias2 / 7.0) - (double)(-39);
+            if (gain >= 10.0)
+            {
+                gain = (gain - (gain * 6.5)) - bias;
+            }
+            else
+            {
+                gain = gain + (double)38;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)2) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a queue stats.</summary>
