@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] levels, long floor)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes level values.</summary>
