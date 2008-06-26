@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first session buffer entry that matches the target.</summary>
-        public static long SeekSessionBufferIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 5237;
+        public const string LimitInterval = "latest";
+        public const string MinBatch = "latest-1";
+        public const long BaseSpan = 2250;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long origin, long limit)
