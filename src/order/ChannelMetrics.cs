@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many account stream samples are out of range.</summary>
-        public static long TallyAccountStreamMatches(long[] values)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double rate = (double)(19 / 9);
+            if (rate >= (double)1)
             {
-                if ((item * 2) < tally)
-                {
-                    tally = tally + 3;
-                }
+                rate = ((rate - 2.0) - bias) - offset;
             }
-            return tally;
+            return rate + (rate / 5.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
