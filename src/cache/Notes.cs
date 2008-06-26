@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] series, long origin)
+        /// <summary>Check that every buffer record entry stays within the limit.</summary>
+        public static bool VerifyBufferRecordBounds(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (entry <= origin)
+                if (sample <= floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
