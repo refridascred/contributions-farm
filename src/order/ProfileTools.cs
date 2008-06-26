@@ -46,13 +46,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] data)
         {
-            Stale,
-            Locked,
-            Closed,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
