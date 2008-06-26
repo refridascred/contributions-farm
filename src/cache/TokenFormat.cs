@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] series, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the buffer class values.</summary>
