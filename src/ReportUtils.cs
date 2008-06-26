@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 4507;
-        public const string MaxLevel = "staging-edge";
-        public const string LimitSupport = "open";
-        public const long WindowCount = 8686;
-        public const double DefaultWidth = 10.92;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9436;
+        public const long BaseRatio = 290;
+        public const double RetryBatches = 6.94;
+        public const long BurstRatio = 6406;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
