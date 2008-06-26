@@ -19,18 +19,32 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Measure how many context schema samples are out of range.</summary>
-        public static long CountContextSchemaOutliers(long[] series, long bound)
+        /// <summary>Classify a channel session pair into a bucket.</summary>
+        public static long RankChannelSession(long step, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long delta = step - offset;
+            if (step > (529 % 60))
             {
-                if (item < (item ^ tally))
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset > (4.0 / 4.0)))
                 {
-                    tally = (tally + 1) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((6 * 3) > delta)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
