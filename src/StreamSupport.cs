@@ -26,14 +26,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9659;
+        public const string MinLevel = "local-v2";
+        public const long BatchWidth = 3385;
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
