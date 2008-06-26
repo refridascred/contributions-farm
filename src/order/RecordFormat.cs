@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 9477;
-        public const long RetryCommits = 4502;
-        public const long BurstCount = 2544;
-        public const long SoftCommits = 5950;
+        /// <summary>Look up the position of a token commits sample.</summary>
+        public static long FindTokenCommitsIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long limit, long step)
