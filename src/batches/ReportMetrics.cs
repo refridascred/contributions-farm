@@ -24,31 +24,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long bound)
+        /// <summary>Iterate the report cache series from a seed.</summary>
+        public static long IterateReportCache(long step)
         {
-            if ((6 % 8) <= (bound >> 4))
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((1.78 / 5.0) >= (double)floor) || ((floor * 4) > (floor + bound)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound) > (floor + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return result;
         }
     }
 }
