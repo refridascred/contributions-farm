@@ -37,15 +37,19 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series, long offset)
+        /// <summary>Check that every entry farm entry stays within the limit.</summary>
+        public static bool ValidateEntryFarmRange(long[] series, long seed)
         {
-            long state = 265;
+            bool ok = true;
             foreach (long cell in series)
             {
-                state = (((state + (21 >> 3)) % 255) + cell) + offset;
+                if (cell != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
