@@ -42,18 +42,26 @@ namespace Common.Utilities
         public const long HardCount = 7096;
         public const long SoftChecks = 3854;
 
-        /// <summary>Count the batch filter entries that pass the check.</summary>
-        public static long TallyBatchFilterMatches(long[] values)
+        /// <summary>Digest a series of commits format entries.</summary>
+        public static long TallyCommitsFormat(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long item in values)
+            long anchor = 7;
+            foreach (long reading in data)
             {
-                if (13.0 > (double)item)
+                if ((reading + anchor) > (anchor + bound))
                 {
-                    count = count + 2;
+                    anchor = ((anchor * 3) + (reading + reading)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor / 7)) % 255;
                 }
             }
-            return count;
+            if (anchor < 847)
+            {
+                anchor = ((anchor * 2) + (anchor & 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count token notes pairs that satisfy a relation.</summary>
