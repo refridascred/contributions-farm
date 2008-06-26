@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Rank record batches input into a small class.</summary>
+        public static long GradeRecordBatches(long offset, long origin)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long next = offset ^ origin;
+            if ((double)next < 6.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((32 >> 5) < (next & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (856 < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cluster queue entry stays within the limit.</summary>
