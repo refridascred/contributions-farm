@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 2994;
         public const long IdleGithubfarm = 6374;
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] series, long step)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
