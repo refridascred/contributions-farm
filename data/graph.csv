@@ -1,6 +1,6 @@
-id,ratio,owner,weight
-1,latest,primary,29.48
-2,792,68.12,46.4
-3,92.66,990,59.27
-4,479,57,cached
-5,240,53,green
+id,label,owner
+1,66.72,14.66
+2,62.81,strict
+3,89.93,91
+4,primary,590
+5,standard,eu-west
