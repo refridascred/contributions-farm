@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-1";
         public const double BatchInterval = 76.09;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many account schema samples are out of range.</summary>
+        public static long MeasureAccountSchemaOutliers(long[] series)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)value > (7.73 + 14.0))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
