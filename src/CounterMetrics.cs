@@ -33,18 +33,23 @@ namespace Common.Utilities
             return ratio2 - (floor * 5.07);
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] values, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long carry = -7;
+            foreach (long item in data)
             {
-                if ((bound - bound) < (bound >> 3))
+                if (((double)carry >= (7.1 / 2.0)) || (origin > (carry % 2)))
                 {
-                    seen = (seen + 2) + entry;
+                    carry = ((carry * 4) + (76 + carry)) % 255;
                 }
+                if (!((70 - origin) >= 95))
+                {
+                    carry = carry + (item - item);
+                }
+                carry = (carry - (1 + item)) % 255;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
