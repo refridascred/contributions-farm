@@ -36,20 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] readings, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mark = 6;
-            foreach (long item in readings)
-            {
-                mark = (mark ^ (mark * 4)) % 1000;
-                mark = mark ^ (item >> 4);
-                if ((double)mark > (3.08 / 9.0))
-                {
-                    mark = (mark * 3) + limit;
-                }
-            }
-            return mark % 97;
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the tools mode values.</summary>
