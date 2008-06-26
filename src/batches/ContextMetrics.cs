@@ -44,19 +44,27 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every queue stream entry stays within the limit.</summary>
-        public static bool VerifyQueueStreamRange(long[] values, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long mark = 0;
+            foreach (long item in series)
             {
-                if (cell > bound)
+                mark = mark + mark;
+                if ((mark > (item << 2)) && ((double)item <= 5.5))
                 {
-                    found = false;
-                    break;
+                    mark = mark - (2 / 5);
+                }
+                else
+                {
+                    mark = (mark ^ (27 & 1)) % 1000;
                 }
             }
-            return found;
+            if (mark < 4)
+            {
+                mark = (mark * 5) + (712 + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
