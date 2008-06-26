@@ -34,13 +34,11 @@ namespace Common.Utilities
         public const long LimitBuffer = 4317;
         public const long BurstCount = 7839;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Scale a editor channel figure with a bias.</summary>
+        public static double BlendEditorChannel(double gain, double span)
         {
-            Closed,
-            Ready,
-            Idle,
-            Pending,
+            double load = gain;
+            return (load - load) + span;
         }
 
         /// <summary>Describe the stats phase values.</summary>
