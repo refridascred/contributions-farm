@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long floor)
         {
-            Failed,
-            Done,
-            Closed,
-            New,
+            long offset = seed - floor;
+            if (!((61 % 8) == (floor & 15)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ seed) > (offset % 100))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
