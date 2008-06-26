@@ -26,21 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count tools commits pairs that satisfy a relation.</summary>
-        public static long CompareToolsCommitsCount(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
