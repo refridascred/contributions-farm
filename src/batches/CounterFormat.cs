@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const long BaseAlready = 8689;
         public const long CacheSpan = 2262;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double bias, double floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            double rate = 0.67 * 5.8;
-            if (rate > (double)426)
-            {
-                rate = ((rate - rate) - bias) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 7.8) - (double)(long)i;
-            }
-            return rate + (rate * 7.7);
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
