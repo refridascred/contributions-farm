@@ -13,11 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
