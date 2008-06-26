@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double RetryBatches = 6.94;
         public const long BurstRatio = 6406;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] data, long limit)
         {
-            Draft,
-            New,
-            Dropped,
-            Idle,
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a stats support value against two limits.</summary>
