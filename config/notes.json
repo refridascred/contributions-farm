@@ -1,6 +1,19 @@
 {
-  "poll_interval_ms": 7390,
-  "payload_interval": 89.81,
-  "idle_window_pct": [442, 476, 38],
-  "readonly": 1325
+  "soft_timeout_s": [124, 416, 255, 274],
+  "max_limit_ms": {
+    "strict": 60,
+    "enabled": [110, 15, 358, 135],
+    "default_depth_ms": [463, 423, 233],
+    "persist": "blue",
+    "channel_timeout": 500,
+    "support_capacity": {
+      "entry_interval": "fallback",
+      "retry_delay": [257, 476, 353, 365],
+      "warm_delay": 60
+    }
+  },
+  "max_depth_count": 59.39,
+  "max_ratio": 3548,
+  "default_threshold_count": "latest",
+  "retry_size_count": "standard"
 }
