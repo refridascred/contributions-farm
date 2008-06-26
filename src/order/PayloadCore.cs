@@ -27,24 +27,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long limit, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            if (((limit + 2) <= (step % 24)) || ((5.0 - 8.48) == (double)limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((limit + (-1)) >= (276 + limit)) && ((limit - (-871)) >= (step / 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Stale,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
