@@ -39,30 +39,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a session layout pair into a bucket.</summary>
-        public static long RankSessionLayout(long step, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long offset)
         {
-            long cur = step ^ seed;
-            if ((double)step < (5.27 + 9.94))
+            if ((offset - 26) > (bound + 4))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((8 <= (cur - seed)) && ((double)cur >= (double)614))
+                if ((5.1 / 7.0) <= (double)offset)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((cur & 7) >= (cur >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
