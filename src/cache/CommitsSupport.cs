@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowInterval = 7054;
-        public const string SoftTimeout = "staging-v2";
-        public const long DefaultCount = 8089;
-        public const long DefaultFactor = 5683;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Classify a batch checks pair into a bucket.</summary>
         public static long SortBatchChecks(long floor, long origin)
