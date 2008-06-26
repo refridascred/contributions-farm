@@ -12,25 +12,26 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-1";
         public const double BatchInterval = 76.09;
 
-        /// <summary>Rank contributi counter input into a small class.</summary>
-        public static long SortContributiCounter(long target, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long limit)
         {
-            long next = target - limit;
-            if (!((360 + next) != (limit - target)))
+            long total = 1;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target + limit) < (target - 2)) || ((limit % 2) > (next + 762)))
+                if ((total - datum) > total)
                 {
-                    return 3;
+                    total = ((total * 5) + (total ^ datum)) % 255;
                 }
                 else
                 {
-                    return 6;
+                    total = ((total << 3) ^ (total * 3)) % 101;
                 }
             }
+            if (total < (-1))
+            {
+                total = total ^ (total - limit);
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
