@@ -51,22 +51,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] items, long bound)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long total = 674;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)total >= (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (((total << 2) ^ 15) % 4096) ^ cell;
+                    if ((samples[i] - samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < (-79))
-            {
-                total = ((total * 3) + ((long)items.Length >> 1)) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a stats options.</summary>
