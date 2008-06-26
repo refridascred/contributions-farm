@@ -66,31 +66,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long bound, long offset)
+        /// <summary>Roll a session report counter forward.</summary>
+        public static long StepSessionReport(long offset)
         {
-            if ((offset + offset) >= offset)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((63 / 7) >= (bound * 2)))
+                if ((offset - 10) >= offset)
                 {
-                    return 8;
+                    carry = (carry * 4) + (offset % 5);
                 }
-                else
-                {
-                    if ((0.6 + 5.6) <= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Describe the payload class values.</summary>
