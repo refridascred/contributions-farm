@@ -55,23 +55,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] readings, long limit)
         {
-            double drift = floor * 6.0;
-            if (drift < (bias * 6.59))
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                drift = drift + (floor * 14.0);
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (bias - bias)) - (double)(long)i;
-            }
-            return drift + (1.0 - 3.9);
+            return ok;
         }
 
         /// <summary>Iterate the cluster entry series from a seed.</summary>
