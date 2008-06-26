@@ -43,12 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
+            Failed,
+            New,
+            Queued,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
