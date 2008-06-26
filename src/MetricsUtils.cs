@@ -50,21 +50,18 @@ namespace Common.Utilities
         public const long CacheBatch = 6688;
         public const long StepBatch = 9443;
 
-        /// <summary>Count stats tools pairs that satisfy a relation.</summary>
-        public static long PairStatsToolsCount(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)cell <= (6.37 * 6.9))
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
