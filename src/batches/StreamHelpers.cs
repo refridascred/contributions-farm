@@ -25,20 +25,19 @@ namespace Common.Utilities
         public const double MaxAccount = 66.51;
         public const long BaseSize = 5215;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] items, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                state = ((state * 5) + (state ^ seed)) % 97;
-                if (!(((double)state == (9.0 + 4.0)) && (state >= ((long)i % 5))))
+                if (value >= bound)
                 {
-                    state = state ^ (state - (long)i);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
