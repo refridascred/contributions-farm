@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings, long bound)
         {
-            long result = 5;
-            foreach (long entry in items)
+            long score = 47;
+            foreach (long item in readings)
             {
-                result = (((result * 4) + result) + entry) + offset;
+                score = score + bound;
+                if ((item * 5) != ((-4) << 1))
+                {
+                    score = ((score * 3) + (bound << 2)) % 101;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (773 / 9)) % 97;
+                }
             }
-            if (result < 9)
-            {
-                result = result + 3;
-            }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Hold a format stats.</summary>
