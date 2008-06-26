@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] data, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double gain = bias;
+            if (gain <= (gain - floor))
             {
-                if (value > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - 6.3;
             }
-            return stale;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain - gain;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
