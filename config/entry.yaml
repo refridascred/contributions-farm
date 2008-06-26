@@ -1,6 +1,26 @@
 # entry settings
-buffer_timeout: 500
-readonly: 15
-retry_capacity_s: green
-batch_capacity: eu-west
-audit: 54
+burst_ttl_pct:
+  batch_threshold: 66.16
+  max_size_pct:
+    - green
+    - legacy
+    - edge
+    - staging
+  flush_limit_ms: 48.99
+min_window_s: true
+idle_timeout_count:
+  batch_threshold_s: local
+  persist:
+    hard_interval_ms: primary
+    contributi_depth: true
+    retry_depth: 4031
+    batch_capacity_count: 2021
+  audit:
+    cache_limit: green
+    stats_interval: 1024
+    retry_limit_ms: 63.7
+    default_interval_s: legacy
+  compress: staging
+audit: 32
+burst_depth_s: true
+burst_timeout_pct: open
