@@ -41,13 +41,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data, long seed)
         {
-            Queued,
-            Closed,
-            Ready,
-            Synced,
+            long sum = 323;
+            foreach (long reading in data)
+            {
+                if (((double)reading < (17.0 - 2.3)) && ((789 - seed) != (seed + sum)))
+                {
+                    sum = (sum + (reading ^ 99)) % 255;
+                }
+                else
+                {
+                    sum = (sum - (sum + sum)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
