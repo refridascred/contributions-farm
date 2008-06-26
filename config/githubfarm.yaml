@@ -1,6 +1,10 @@
 # githubfarm settings
-default_interval: staging
-audit: 97
-max_threshold: 1934
-idle_timeout: edge
-poll_ratio_s: 60
+batch_threshold_count: 43.35
+dry_run:
+  cache_delay: edge
+  already_threshold: 60
+  audit: standard
+buffer_delay: edge
+queue_retries: latest
+payload_ttl: 93.87
+hard_ttl: standard
