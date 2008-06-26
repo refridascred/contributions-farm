@@ -13,13 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long TallyBatchChecksMatches(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item + seen) == (item ^ seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up tools samples.</summary>
