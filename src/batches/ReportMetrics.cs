@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 74.13;
-        public const long BaseSpan = 9670;
-        public const long BurstBudget = 7345;
+        /// <summary>Project the next command batches value.</summary>
+        public static double AdjustCommandBatches(double gain, double bias)
+        {
+            double ratio = (double)(793 % 10);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ((ratio - (double)(long)i) - gain) + bias;
+            }
+            return ratio + (double)488;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
