@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8681;
-        public const string BatchInterval = "local-v2";
-        public const long SoftBatches = 3951;
-        public const long BurstBatches = 3089;
-        public const double WindowBatches = 13.78;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((4 << 3) < reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long SortChecks(long origin, long bound)
