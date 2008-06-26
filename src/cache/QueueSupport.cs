@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] readings, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset - sum) != (offset & 15))
+                if (readings[i] < bound)
                 {
-                    sum = ((sum * 2) + sum) % 97;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Fold a list of farm batch readings.</summary>
