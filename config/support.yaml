@@ -1,4 +1,26 @@
 # support settings
-soft_threshold: primary
-batch_window: 100
-compress: green
+githubfarm_timeout:
+  strict: 250
+  flush_size: stable
+  session_limit:
+    cluster_limit: 1024
+    persist: local
+    queue_limit:
+      - 153
+      - 328
+    burst_ratio: 763
+  base_delay_s: 30
+  payload_timeout: true
+  soft_timeout_ms: green
+notes_size:
+  - 209
+  - 337
+min_limit_s:
+  layout_interval: 100
+  audit: blue
+  flush_retries_pct:
+    min_size: 0.44
+    queue_interval: fallback
+    burst_window_ms: standard
+  commits_retries: 82.34
+verbose: 24.34
