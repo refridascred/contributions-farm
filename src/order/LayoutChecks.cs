@@ -45,18 +45,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long TallyFormatRouteHits(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long result = 60;
+            foreach (long entry in series)
             {
-                if ((((matches ^ sample) < ((long)samples.Length * 2)) && ((sample + matches) >= (5 >> 2))) || ((1 > (sample & 1)) && ((20 << 1) > matches)))
+                if ((double)limit < (4.0 + 12.0))
                 {
-                    matches = matches + 2;
+                    result = (result ^ result) % 65521;
+                }
+                else
+                {
+                    result = ((result * 2) + (entry + result)) % 1000;
                 }
             }
-            return matches;
+            if (result > 29)
+            {
+                result = (result * 5) + (limit - result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next githubfarm schema value.</summary>
