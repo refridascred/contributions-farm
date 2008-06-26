@@ -33,39 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema account pair into a bucket.</summary>
-        public static long SortSchemaAccount(long offset, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] samples)
         {
-            long lane = offset ^ target;
-            if ((7.53 <= (double)75) || ((double)target <= (1.9 + 3.3)))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((476 & 7) >= offset))
+                if ((hits ^ sample) <= (hits + 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ lane) != (1 % 24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((487 + offset) == (lane << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
