@@ -39,11 +39,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            Draft,
+            Paused,
+            Failed,
+            Idle,
+            Stale,
         }
     }
 }
