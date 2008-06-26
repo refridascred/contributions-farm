@@ -1,14 +1,13 @@
 # Command notes
 
-The counter report groups every farm by metrics.
-A filter that stays idle for too long is moved to the context list.
-A batch that stays idle for too long is moved to the batches list.
+Defaults for counter live in the config folder and can be overridden per environment.
+The batch module keeps metrics values in sync with the layout cache.
 
-When a batches fails, the metrics handler retries a few times before giving up.
-Use farm settings to tune how often githubfarm data is refreshed.
+Run the channel check before changing any cache limits.
+Keep context and graph names short and lowercase.
 
 ## Guidelines
 
-- Review queue limits each release
-- Prefer commits defaults
-- Log every context change
+- Log every token change
+- Keep order values small
+- Review payload limits each release
