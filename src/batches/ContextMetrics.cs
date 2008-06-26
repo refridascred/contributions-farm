@@ -40,27 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] readings, long target)
         {
-            long mark = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in readings)
             {
-                mark = mark + mark;
-                if ((mark > (item << 2)) && ((double)item <= 5.5))
+                if (((count - count) < count) || (((count / 4) == (count % 3)) && ((item - count) >= (target & 255))))
                 {
-                    mark = mark - (2 / 5);
-                }
-                else
-                {
-                    mark = (mark ^ (27 & 1)) % 1000;
+                    count = count + 3;
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark * 5) + (712 + mark);
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Audit record channel readings against a rule.</summary>
