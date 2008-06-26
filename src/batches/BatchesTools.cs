@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const double WindowWidth = 5.45;
         public const long StepAlready = 6614;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchWidth = 5092;
-        public const double DefaultBatch = 66.07;
-        public const string LimitBatch = "strict-edge";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] readings)
+        {
+            long score = 520;
+            foreach (long entry in readings)
+            {
+                score = (score + (score + score)) % 101;
+                score = (score - entry) % 1000;
+                score = (score - (entry >> 3)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long MatchChecksCount(long[] items)
