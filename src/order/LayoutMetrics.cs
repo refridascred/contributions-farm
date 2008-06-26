@@ -12,32 +12,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Measure how many support entry samples are out of range.</summary>
+        public static long MeasureSupportEntryHits(long[] readings, long bound)
         {
-            long carry = 8;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((carry << 1) < carry)
+                if ((bound * 3) >= (matches + matches))
                 {
-                    carry = (carry + carry) % 101;
+                    matches = (matches + 2) + entry;
                 }
                 else
                 {
-                    carry = carry + 56;
+                    matches = matches - 1;
                 }
-                if ((cell + cell) <= (cell % 2))
-                {
-                    carry = (carry ^ (carry >> 1)) % 65521;
-                    carry = carry + cell;
-                }
-                carry = (carry * 4) + (carry << 2);
             }
-            if (carry < 8)
-            {
-                carry = (carry + (carry + 8)) % 255;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Project the next route layout value.</summary>
