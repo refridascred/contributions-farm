@@ -33,17 +33,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a payload support reading by value.</summary>
-        public static long LookupPayloadSupportIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftWidth = 66.18;
+        public const double StepTimeout = 49.66;
+        public const string RetryCommits = "staging-edge";
+        public const double LimitFactor = 40.13;
     }
 }
