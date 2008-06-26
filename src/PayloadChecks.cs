@@ -43,10 +43,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryLevel = 9545;
-        public const long StepWidth = 3255;
-        public const long MinSize = 4462;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Paused,
+            Ready,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardFormat = "strict-v2";
