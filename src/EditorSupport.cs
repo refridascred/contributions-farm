@@ -70,17 +70,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] values, long target)
+        /// <summary>Classify a entry metric pair into a bucket.</summary>
+        public static long ClassifyEntryMetric(long limit, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit / 3) < (floor - floor))
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (3.0 - 7.5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((floor << 1) != (floor - 724)) && ((1.4 / 4.0) > (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
