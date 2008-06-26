@@ -23,18 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a route session reading by value.</summary>
-        public static long SeekRouteSessionIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchLevel = 865;
+        public const double WindowSession = 37.86;
+        public const string DefaultSession = "stable-1";
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
