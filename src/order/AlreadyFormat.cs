@@ -64,22 +64,12 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally - tally) > (cell + cell))
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
