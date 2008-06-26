@@ -45,17 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
