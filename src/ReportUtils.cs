@@ -23,22 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] levels, long seed)
         {
-            long sum = 9;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((461 <= (datum + sum)) && (datum > (sum << 1)))
+                if (levels[i] < seed)
                 {
-                    sum = (sum + ((long)items.Length + sum)) % 101;
-                }
-                if ((10.0 / 9.0) == (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
