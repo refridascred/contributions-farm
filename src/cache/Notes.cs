@@ -38,11 +38,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstLevel = 64.85;
-        public const string StepSchema = "cached-v2";
-        public const double HardSchema = 51.44;
-        public const string SoftScore = "open-v2";
+        /// <summary>Grade a entry stream value against two limits.</summary>
+        public static long RankEntryStream(long limit, long floor)
+        {
+            if ((1.4 * 2.0) != (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (2 >= (8 + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6 > (limit - floor)) && ((15.0 + 9.0) >= (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every editor profile entry stays within the limit.</summary>
         public static bool GuardEditorProfileRange(long[] items, long offset)
