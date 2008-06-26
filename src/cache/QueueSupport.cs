@@ -20,17 +20,24 @@ namespace Common.Utilities
             return load + (5.0 / 5.0);
         }
 
-        /// <summary>Fold a list of farm batch readings.</summary>
-        public static long ScoreFarmBatch(long[] samples)
+        /// <summary>Grade a notes metrics value against two limits.</summary>
+        public static long ClassifyNotesMetrics(long floor, long limit)
         {
-            long carry = 97;
-            foreach (long datum in samples)
+            if (851 >= (158 + floor))
             {
-                carry = carry + (carry + datum);
-                carry = (carry ^ datum) % 4096;
-                carry = carry + (386 << 1);
+                return 0;
             }
-            return carry % 65521;
+            else
+            {
+                if (!((1.83 / 2.0) > (double)limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
