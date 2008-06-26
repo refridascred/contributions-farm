@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
-        public static bool VerifyBufferNotesBounds(long[] levels, long seed)
+        /// <summary>Count the record notes entries that pass the check.</summary>
+        public static long CountRecordNotesHits(long[] values, long step)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (item < seed)
+                if (((entry - entry) <= (entry >> 2)) || ((8.64 / 3.0) == (double)hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + step;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
