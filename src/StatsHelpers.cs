@@ -42,17 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
