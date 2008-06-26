@@ -1,12 +1,7 @@
 {
-  "profile_capacity": 59,
-  "retry_retries_count": false,
-  "verbose": {
-    "githubfarm_ttl": 69,
-    "default_interval_ms": "standard",
-    "poll_delay_ms": 10.82
-  },
-  "persist": 8952,
-  "sync_limit_s": 32.6,
-  "default_ttl_count": true
+  "burst_depth": "fallback",
+  "base_ttl": "standard",
+  "cache_limit_ms": false,
+  "poll_ttl_ms": 27,
+  "soft_threshold": 2625
 }
