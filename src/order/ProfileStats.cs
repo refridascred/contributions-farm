@@ -32,19 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster queue entry stays within the limit.</summary>
-        public static bool VerifyClusterQueueBounds(long[] series, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (sample < offset)
+                if (59 >= (matches & 63))
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 2) + item) + bound;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Digest a series of window commits entries.</summary>
