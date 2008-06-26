@@ -26,10 +26,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheBudget = 92.74;
-        public const long BurstCount = 2077;
-        public const double MinTools = 45.01;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardRatio = 6720;
+        public const double DefaultInterval = 58.47;
+        public const long BaseSpan = 5361;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TallyCommand(long[] levels)
