@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            Paused,
-            Dropped,
-            Retry,
-            New,
-            Locked,
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum ^ sum) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token info.</summary>
