@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long CacheCount = 9425;
         public const double MinDepth = 97.81;
 
-        /// <summary>Measure how many batch tools samples are out of range.</summary>
-        public static long TallyBatchToolsHits(long[] series, long bound)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (1 <= (bound ^ (long)series.Length))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the tools mode values.</summary>
