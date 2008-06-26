@@ -12,16 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mix = 12;
-            foreach (long value in samples)
-            {
-                mix = mix ^ value;
-                mix = (mix << 2) ^ (value % 12);
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
