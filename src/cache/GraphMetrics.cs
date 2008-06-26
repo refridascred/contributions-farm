@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 21.65;
-        public const long DefaultAccount = 8159;
-        public const long MaxLevel = 150;
-        public const string SoftDepth = "local-1";
-        public const long CacheAccount = 4638;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileGaps(long[] items)
