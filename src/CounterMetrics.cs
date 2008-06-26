@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 3951;
-        public const double WindowMetric = 45.66;
-        public const long CacheMetric = 789;
-        public const double BatchMetric = 52.51;
-        public const double RetryLevel = 32.0;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark ^ (518 + seed)) % 97;
+                if ((mark / 5) > ((long)i + (long)i))
+                {
+                    mark = (mark + mark) % 101;
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] data, long bound)
