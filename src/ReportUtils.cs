@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const double RetryBatches = 6.94;
         public const long BurstRatio = 6406;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Locate a schema buffer reading by value.</summary>
+        public static long FindSchemaBufferIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen < (18.0 - 11.0))
+                if (items[i] == offset)
                 {
-                    seen = (seen + 1) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
