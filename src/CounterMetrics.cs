@@ -25,24 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stats counter series from a seed.</summary>
-        public static long RollStatsCounter(long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] data, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (((long)i == (anchor / 5)) && ((anchor & 255) >= anchor))
+                if (value <= seed)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 4096;
-                    anchor = (anchor ^ (anchor / 7)) % 65521;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = anchor - (floor + anchor);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
