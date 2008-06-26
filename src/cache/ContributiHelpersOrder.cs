@@ -16,28 +16,36 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a entry graph pair into a bucket.</summary>
-        public static long ClassifyEntryGraph(long limit, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long limit)
         {
-            if ((limit * 5) > (744 + limit))
+            long diff = origin ^ limit;
+            if ((4 + limit) > (10 * 4))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((double)limit <= (6.3 * 9.2))
+                if ((24 & 3) < (diff + origin))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit ^ step) <= step)
+                    if ((0.8 / 5.0) != (double)diff)
                     {
-                        return 3;
+                        return 6;
                     }
                     else
                     {
-                        return 8;
+                        if (origin > (0 & 15))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
