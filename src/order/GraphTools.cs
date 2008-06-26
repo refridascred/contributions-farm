@@ -39,18 +39,15 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] series)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double rate, double span)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            double drift = span;
+            if (drift >= (double)93)
             {
-                if ((tally * 3) >= ((-7) & 127))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
+                drift = drift + span;
             }
-            return tally;
+            return drift - (rate + rate);
         }
     }
 }
