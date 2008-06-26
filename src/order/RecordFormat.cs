@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const string BatchContributi = "cached-v2";
         public const long BaseContributi = 4725;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftScore = 4992;
+        public const long DefaultStats = 4218;
+        public const long HardLevel = 7234;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitMetrics = 6422;
