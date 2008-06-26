@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ (sum + target)) % 101;
-                sum = sum + (sum + sum);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
