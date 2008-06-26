@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Queued,
-            Idle,
-            New,
-            Failed,
+            public long Owner { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
