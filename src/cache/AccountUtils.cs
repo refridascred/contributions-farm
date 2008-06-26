@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] series, long origin)
+        /// <summary>Adjust a metric token reading.</summary>
+        public static double ProjectMetricToken(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (gain + gain) + span;
+            if (ratio < ratio)
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - 7.5;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Combine stream filter values into a single score.</summary>
