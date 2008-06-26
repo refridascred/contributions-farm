@@ -25,14 +25,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheBudget = 9616;
+        public const double MaxStream = 51.93;
+        public const long DefaultStream = 2374;
+        public const long BurstFactor = 8046;
+        public const string MinCount = "alpha-v2";
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowRange(long[] items, long seed)
