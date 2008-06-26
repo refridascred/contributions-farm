@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long BatchFarm = 6671;
         public const double RetryFarm = 36.65;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] samples, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > bound)
+                if (series[i] <= offset)
                 {
                     return (long)i;
                 }
