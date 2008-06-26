@@ -38,18 +38,17 @@ namespace Common.Utilities
             return mean + (double)116;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] items, long target)
+        /// <summary>Accumulate farm already samples.</summary>
+        public static long DigestFarmAlready(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long acc = 1;
+            foreach (long item in samples)
             {
-                if ((target - matches) <= (420 - matches))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                acc = acc ^ ((-794) << 3);
+                acc = (acc << 3) ^ (item + item);
+                acc = acc ^ (acc >> 2);
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Scale a token notes figure with a bias.</summary>
