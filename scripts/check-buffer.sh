@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict edge staging; do
+for item in fallback legacy strict edge; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=295
+mode="${1:-legacy}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+BUFFER_LIMIT=115
 log "limit is ${BUFFER_LIMIT}"
