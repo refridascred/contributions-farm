@@ -33,18 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] samples)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits ^ sample) <= (hits + 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Paused,
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
