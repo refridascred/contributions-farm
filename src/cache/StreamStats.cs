@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] data, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((7.5 - 19.0) >= (double)offset)
+                if (entry > limit)
                 {
-                    seen = (seen + 3) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
