@@ -55,24 +55,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long origin)
-        {
-            long state = 85;
-            foreach (long value in levels)
-            {
-                state = (((state << 3) ^ state) % 1000) - value;
-                if ((5.35 + 6.6) == (double)origin)
-                {
-                    state = state - (9 / 6);
-                }
-            }
-            if (state > 642)
-            {
-                state = state ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 2108;
+        public const long StepWidth = 1143;
+        public const long LimitContributi = 1473;
+        public const double DefaultContributi = 83.45;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftScore = 7950;
