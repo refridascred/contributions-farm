@@ -44,22 +44,22 @@ namespace Common.Utilities
             return bias2 + (bias + 6.0);
         }
 
-        /// <summary>Digest a series of support window entries.</summary>
-        public static long ScoreSupportWindow(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] levels)
         {
-            long state = 579;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((state / 4) > (state & 63))
+                if ((count % 64) >= (count * 5))
                 {
-                    state = (((state * 5) + (state - (-68))) % 1000) + item;
+                    count = (count + 2) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state < 148)
-            {
-                state = state - (54 % 100);
-            }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
