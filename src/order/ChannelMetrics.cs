@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load - 4.4;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitRatio = 3203;
-        public const long WindowNotes = 7613;
-        public const double CacheSpan = 43.34;
-        public const long WindowFactor = 5225;
-        public const long IdleNotes = 2149;
+        /// <summary>Count the already farm entries that pass the check.</summary>
+        public static long CountAlreadyFarmGaps(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)limit <= (double)entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
