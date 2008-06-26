@@ -1,8 +1,10 @@
 {
-  "cluster_delay": ["cached", "local"],
-  "base_ttl_ms": ["strict", "eu-west"],
-  "warm_retries_count": "primary",
-  "max_threshold_s": 17,
-  "min_depth_s": 8.21,
-  "enabled": [425, 399, 385, 396]
+  "record_retries": 8905,
+  "enabled": "fallback",
+  "default_delay_ms": "local",
+  "graph_size": {
+    "batch_ratio_pct": false,
+    "idle_size_pct": 26.86,
+    "commits_timeout": "standard"
+  }
 }
