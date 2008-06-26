@@ -50,25 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long limit)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long next = offset + limit;
-            if ((limit + offset) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit) > (limit + next))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
