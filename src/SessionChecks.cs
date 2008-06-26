@@ -33,18 +33,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit context buffer readings against a rule.</summary>
-        public static long AuditContextBufferMatches(long[] items, long step)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((cell << 3) <= (step - step)) || !(step <= (step & 63)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Failed,
+            Active,
+            Queued,
+            Synced,
         }
     }
 }
