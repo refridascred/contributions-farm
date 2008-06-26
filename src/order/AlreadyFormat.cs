@@ -58,24 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a metric record value against two limits.</summary>
-        public static long BucketMetricRecord(long floor, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] levels)
         {
-            if ((double)282 <= (double)seed)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((10.0 + 9.1) >= (double)floor)
+                if ((double)seen < (4.39 + 15.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    seen = (seen + 2) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
