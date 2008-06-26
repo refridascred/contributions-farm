@@ -19,12 +19,17 @@ namespace Common.Utilities
         public const long MinCount = 3083;
         public const long WindowFactor = 8507;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] samples, long origin)
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
