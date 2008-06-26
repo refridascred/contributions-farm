@@ -10,17 +10,17 @@ namespace Common.Utilities
         public const long StepBudget = 6578;
         public const double WindowSize = 19.52;
 
-        /// <summary>Locate a editor cache reading by value.</summary>
-        public static long LookupEditorCacheIndex(long[] samples, long offset)
+        /// <summary>Roll a batches metric counter forward.</summary>
+        public static long RollBatchesMetric(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state << 2) ^ (bound / 6);
+                state = ((state << 2) ^ (641 + bound)) % 101;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate editor samples.</summary>
