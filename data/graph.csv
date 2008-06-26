@@ -1,6 +1,9 @@
-id,rank,owner
-1,74.29,legacy
-2,21.96,strict
-3,76.24,fallback
-4,primary,legacy
-5,955,50.98
+id,state,owner,rank,active
+1,425,71.69,367,10.79
+2,563,23,951,546
+3,556,812,cached,green
+4,876,38.34,276,412
+5,277,654,722,eu-west
+6,820,64.97,79.36,287
+7,local,452,edge,fallback
+8,59.4,42,935,cached
