@@ -19,31 +19,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long offset2)
+        /// <summary>Combine buffer batches values into a single score.</summary>
+        public static long TotalBufferBatches(long[] items, long target)
         {
-            if ((offset2 >> 5) > offset)
+            long acc = 23;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) != (offset + offset))
+                if (((target << 3) < item) || ((item - acc) <= (item & 31)))
                 {
-                    return 2;
+                    acc = acc + (item + target);
                 }
-                else
+                if (527 > ((long)items.Length + 15))
                 {
-                    if (196 < (offset % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = acc + (item / 2);
+                }
+                if ((item / 8) != (4 - acc))
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
