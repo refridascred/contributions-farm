@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const double WindowSession = 37.86;
         public const string DefaultSession = "stable-1";
 
-        /// <summary>Combine token batch values into a single score.</summary>
-        public static long CombineTokenBatch(long[] samples, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] levels, long offset)
         {
-            long total = 10;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading ^ total) < total)
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    total = (((total << 3) ^ reading) % 65521) - offset;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Digest a series of route entries.</summary>
