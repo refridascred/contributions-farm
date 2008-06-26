@@ -32,18 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] values, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (59 >= (matches & 63))
-                {
-                    matches = ((matches + 2) + item) + bound;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
