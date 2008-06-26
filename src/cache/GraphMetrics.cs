@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix - (mix + 3);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepSpan = 7677;
+        public const string BurstCount = "cached-1";
+        public const long WindowContext = 7197;
+        public const double DefaultContext = 65.14;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
