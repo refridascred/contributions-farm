@@ -40,20 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data, long bound)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long carry = 72;
-            foreach (long datum in data)
-            {
-                if (((7.63 - 6.0) < (double)datum) && ((bound + 3) >= carry))
-                {
-                    carry = carry - (carry >> 2);
-                    carry = ((carry * 3) + (carry >> 1)) % 1000;
-                }
-                carry = carry - (datum >> 4);
-            }
-            return carry % 65521;
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a graph record.</summary>
