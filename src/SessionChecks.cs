@@ -33,13 +33,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long origin)
         {
-            Done,
-            Locked,
-            Active,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
