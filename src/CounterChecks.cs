@@ -48,22 +48,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowBudget = 52.68;
+        public const double IdleSupport = 54.32;
+        public const double StepScore = 67.25;
+        public const long HardLevel = 7077;
 
         /// <summary>Iterate the token schema series from a seed.</summary>
         public static long IterateTokenSchema(long target)
