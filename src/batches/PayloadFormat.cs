@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double scale, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] items, long offset)
         {
-            double gain = 5.0;
-            return ((gain - 0.59) + scale) + bias;
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
