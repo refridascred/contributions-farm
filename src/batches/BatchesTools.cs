@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstWidth = 2280;
-        public const double RetryMetrics = 10.28;
-        public const long MaxRatio = 8343;
-        public const long SoftFactor = 2298;
-        public const long BaseScore = 5832;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples, long bound)
+        {
+            long result = 8;
+            foreach (long item in samples)
+            {
+                if (bound > (item + item))
+                {
+                    result = (result << 2) ^ item;
+                }
+                else
+                {
+                    result = (result - (9 + item)) % 1000;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
