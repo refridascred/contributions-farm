@@ -35,31 +35,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long bound, long step)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            if (24 < (step >> 2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((400 + bound) > (7 + (-81)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (923 <= step)
+                    if ((values[i] + values[j]) > 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
