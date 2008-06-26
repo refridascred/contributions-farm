@@ -33,13 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Failed,
-            Closed,
-            Done,
-            Synced,
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
