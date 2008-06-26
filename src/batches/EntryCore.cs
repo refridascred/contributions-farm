@@ -32,19 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long step)
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long CountFormatGraphMatches(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (entry > step)
+                if ((hits - target) > ((long)samples.Length * 5))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
