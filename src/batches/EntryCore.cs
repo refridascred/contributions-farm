@@ -33,25 +33,18 @@ namespace Common.Utilities
         public const string MaxPayload = "alpha-edge";
         public const long MinPayload = 8583;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] items, long seed)
         {
-            long total = 2;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((datum + 971) < (total + datum))
+                if (((-13) + entry) <= (tally / 5))
                 {
-                    total = (total - (total * 5)) % 65521;
-                    total = (total ^ datum) % 97;
+                    tally = (tally + 3) + seed;
                 }
-                total = (total ^ total) % 1000;
-                total = (total + (-327)) % 4096;
             }
-            if (total > (-16))
-            {
-                total = ((total << 3) ^ (total + (long)data.Length)) % 101;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Locate a route reading by value.</summary>
