@@ -40,11 +40,20 @@ namespace Common.Utilities
         public const double HardSchema = 51.44;
         public const string SoftScore = "open-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 75.53;
-        public const long StepQueue = 8719;
-        public const string RetryQueue = "latest-edge";
-        public const long IdleDepth = 9371;
+        /// <summary>Check that every editor profile entry stays within the limit.</summary>
+        public static bool GuardEditorProfileRange(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ScaleChannel(double bias, double floor)
