@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double mean = weight - 4.68;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean - mean)) + (double)(long)i;
-            }
-            return mean - (bias - weight);
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
