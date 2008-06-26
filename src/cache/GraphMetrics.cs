@@ -17,17 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] values, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
