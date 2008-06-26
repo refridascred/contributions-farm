@@ -45,19 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((floor * 4) == (reading << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinWidth = 79.32;
+        public const long HardSpan = 3239;
+        public const long MaxContributi = 9571;
+        public const long BurstCount = 7279;
+        public const long HardInterval = 6537;
 
         /// <summary>Validate schema githubfarm readings against a bound.</summary>
         public static bool GuardSchemaGithubfarmLimits(long[] levels, long limit)
