@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long BaseWindow = 2229;
         public const long MinSpan = 350;
 
-        /// <summary>Rank counter route input into a small class.</summary>
-        public static long GradeCounterRoute(long bound, long bound2)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            if (((4.0 * 2.81) != (double)bound) || ((bound - bound) != (28 << 2)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (6.62 < 6.0)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
