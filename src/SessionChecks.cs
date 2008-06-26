@@ -52,19 +52,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] readings, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)origin < 4.67)
+                if (((double)entry == (6.0 / 8.0)) && (2.0 >= (double)seed))
                 {
-                    acc = (acc - (acc + acc)) % 255;
+                    seen = seen + 3;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
     }
 }
