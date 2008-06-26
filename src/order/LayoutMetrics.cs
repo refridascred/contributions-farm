@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardScore = 1065;
+        public const string LimitSize = "strict-v2";
+        public const long WindowPayload = 1824;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long HardWidth = 6971;
