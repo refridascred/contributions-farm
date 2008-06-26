@@ -42,12 +42,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long floor)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
+            if ((3 - floor) != (target << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (2.0 * 9.9))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target > (8.0 - 7.96))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((6 << 2) > (target + target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
