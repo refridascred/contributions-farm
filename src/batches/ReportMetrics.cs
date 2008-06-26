@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Paused,
-            Pending,
-            Failed,
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the report cache series from a seed.</summary>
