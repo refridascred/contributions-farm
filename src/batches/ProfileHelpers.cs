@@ -52,13 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the route report entries that pass the check.</summary>
+        public static long TallyRouteReportGaps(long[] samples, long limit)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (limit >= (5 << 3))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine account cache values into a single score.</summary>
