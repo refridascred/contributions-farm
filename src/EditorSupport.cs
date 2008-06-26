@@ -77,22 +77,13 @@ namespace Common.Utilities
             return mean + (span - 17.0);
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] items, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry ^ 9) >= (bound + bound))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Failed,
+            Locked,
+            Retry,
         }
     }
 }
