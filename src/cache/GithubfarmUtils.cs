@@ -42,13 +42,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Synced,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string SoftWidth = "latest-v2";
+        public const long SoftTimeout = 7425;
+        public const long WindowScore = 1939;
+        public const long WindowBudget = 4302;
+        public const long BaseBudget = 3685;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double ratio, double offset)
