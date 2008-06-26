@@ -48,18 +48,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] readings)
+        /// <summary>Locate a payload order reading by value.</summary>
+        public static long LookupPayloadOrderIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally + cell) < (cell + cell))
+                if (readings[i] < target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
