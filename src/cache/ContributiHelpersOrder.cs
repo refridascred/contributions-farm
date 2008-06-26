@@ -42,17 +42,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] series, long seed)
+        public static long AuditGraphGaps(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (7.0 >= (double)count)
+                if ((double)value <= 2.2)
                 {
-                    count = ((count + 2) + item) - seed;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
