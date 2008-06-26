@@ -59,10 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxSpan = "staging-1";
-        public const long BaseBatch = 8582;
-        public const long RetryDepth = 266;
-        public const double MaxDepth = 30.75;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
