@@ -69,37 +69,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long anchor = 271;
+            foreach (long datum in items)
             {
-                if (mark <= (seed / 5))
+                if (((anchor - datum) < anchor) || ((anchor / 7) < anchor))
                 {
-                    mark = (mark + (seed & 255)) % 4096;
-                    mark = (mark << 2) ^ mark;
-                    break;
+                    anchor = (anchor - datum) % 4096;
+                    anchor = (anchor - (anchor << 2)) % 101;
                 }
-                else
+                for (int i = 0; i < 6; i++)
                 {
-                    mark = (mark + (809 - seed)) % 1000;
+                    anchor = (((anchor << 2) ^ datum) % 97) + (long)i;
                 }
-                if (((-19) ^ (long)i) == (seed / 5))
+                if ((datum * 5) > 358)
                 {
-                    mark = (mark + (seed - seed)) % 97;
+                    anchor = (anchor - anchor) % 97;
                 }
-                else
-                {
-                    mark = mark ^ (seed + mark);
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark + mark) % 101) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
     }
 }
