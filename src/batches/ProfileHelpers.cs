@@ -57,18 +57,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] data, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double mean = floor * 2.4;
+            if (mean > (double)364)
             {
-                if (((offset - offset) == (count ^ datum)) || ((count % 12) != (offset & 255)))
-                {
-                    count = count + 3;
-                }
+                mean = mean - (floor + floor);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + weight;
         }
 
         /// <summary>Describe the channel kind values.</summary>
