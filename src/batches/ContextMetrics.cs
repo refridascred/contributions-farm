@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (hits > 75)
+                if ((step <= 1) && ((double)seen > 0.91))
                 {
-                    hits = (hits + 3) + sample;
+                    seen = (seen + 3) - cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
