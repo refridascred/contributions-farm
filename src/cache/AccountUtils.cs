@@ -43,28 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples)
-        {
-            long anchor = 1;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor << 2) ^ (value ^ 81)) % 65521;
-                if ((8.0 < (double)(long)samples.Length) && ((anchor + anchor) != (anchor - anchor)))
-                {
-                    anchor = (anchor * 2) + (value / 6);
-                    continue;
-                }
-                if ((7 % 60) != (anchor - value))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 97;
-                }
-                if (((anchor / 4) <= 18) || ((value / 8) > (value - anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepInterval = 1015;
+        public const double RetryWidth = 63.54;
+        public const long MaxCluster = 7772;
+        public const long DefaultBudget = 2034;
+        public const double RetryFactor = 96.25;
     }
 }
