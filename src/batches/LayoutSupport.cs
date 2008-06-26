@@ -59,20 +59,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 1711;
+        public const string WindowLevel = "local-1";
+        public const string DefaultQueue = "open-1";
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
