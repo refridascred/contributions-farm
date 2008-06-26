@@ -81,19 +81,9 @@ namespace Common.Utilities
         public const long IdleCommits = 7311;
         public const string DefaultSize = "legacy-1";
 
-        /// <summary>Derive the next entry counter value from a seed.</summary>
-        public static long DeriveEntryCounter(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i >> 4) <= anchor)
-                {
-                    anchor = (anchor - (anchor ^ (long)i)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "strict-v2";
+        public const string BatchScore = "primary";
+        public const string MaxLevel = "latest";
     }
 }
