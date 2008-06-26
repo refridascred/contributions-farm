@@ -60,38 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a record metrics value against two limits.</summary>
-        public static long RankRecordMetrics(long seed, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] data, long seed)
         {
-            if (((949 - target) > (seed + seed)) && ((target % 8) >= (target << 3)))
+            long seen = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + target) >= (seed * 4))
+                if ((seed < (seen % 100)) && ((double)2 < (double)seed))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed % 16) >= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target & 7) >= (target >> 3)) && ((seed + seed) <= seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
