@@ -60,14 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] data, long floor)
         {
-            Active,
-            Idle,
-            Synced,
-            New,
-            Queued,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
