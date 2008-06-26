@@ -13,13 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Iterate the counter batch series from a seed.</summary>
+        public static long IterateCounterBatch(long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Match up editor stats samples.</summary>
