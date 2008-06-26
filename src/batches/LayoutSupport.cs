@@ -20,11 +20,20 @@ namespace Common.Utilities
         public const long WindowNotes = 216;
         public const string WindowTimeout = "legacy";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 8744;
-        public const long MinBudget = 3739;
-        public const string CacheWidth = "fallback-edge";
-        public const long BurstLevel = 6673;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchQueue = 1711;
