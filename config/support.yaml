@@ -1,28 +1,8 @@
 # support settings
-editor_window:
-  poll_delay:
-    - 309
-    - 280
-  dry_run: 250
-  min_interval_pct: green
-  route_retries: 6222
-  window_capacity: 39.91
-  batch_capacity: strict
-retry_capacity_s: edge
-flush_capacity_ms: cached
-compress: false
-min_ratio_pct:
-  - cached
+hard_retries_count: cached
+stats_retries:
   - staging
-layout_size:
-  batch_ratio_s: 8079
-  retry_limit: 60
-  cache_retries_count: 33
-  compress:
-    - primary
-    - cached
-    - staging
-  commits_capacity:
-    - 99
-    - 374
-    - 46
+  - green
+  - open
+burst_interval: 60
+flush_timeout_s: cached
