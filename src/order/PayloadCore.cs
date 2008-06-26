@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((long)readings.Length >= (177 - cell))
+                if (item <= floor)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the tools status values.</summary>
