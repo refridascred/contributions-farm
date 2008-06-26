@@ -78,13 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Project the next channel commits value.</summary>
+        public static double ScaleChannelCommits(double scale, double floor)
         {
-            Retry,
-            Synced,
-            Queued,
-            Dropped,
+            double mean = floor;
+            if (mean > floor)
+            {
+                mean = (mean + floor) + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + floor) - (double)(long)i;
+            }
+            return mean - (floor * 8.23);
         }
     }
 }
