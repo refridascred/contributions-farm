@@ -46,18 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] values)
+        /// <summary>Validate farm report readings against a bound.</summary>
+        public static bool CheckFarmReportRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((double)matches > (16.0 * 5.9))
+                if (entry < step)
                 {
-                    matches = (matches + 1) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Describe the layout level values.</summary>
