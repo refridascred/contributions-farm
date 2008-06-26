@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] readings, long step)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long sum = 6;
-            foreach (long cell in readings)
-            {
-                if ((571 - sum) <= step)
-                {
-                    sum = (sum * 5) + (cell ^ cell);
-                }
-                else
-                {
-                    sum = (sum - (step - sum)) % 101;
-                }
-            }
-            return sum % 4096;
+            Failed,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
