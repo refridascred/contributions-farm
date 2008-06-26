@@ -51,18 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] items, long seed)
+        /// <summary>Digest a series of support window entries.</summary>
+        public static long ScoreSupportWindow(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = 579;
+            foreach (long item in series)
             {
-                if ((matches - seed) != (seed >> 3))
+                if ((state / 4) > (state & 63))
                 {
-                    matches = (matches + 2) ^ datum;
+                    state = (((state * 5) + (state - (-68))) % 1000) + item;
                 }
             }
-            return matches;
+            if (state < 148)
+            {
+                state = state - (54 % 100);
+            }
+            return state % 1000;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
