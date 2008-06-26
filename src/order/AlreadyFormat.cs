@@ -64,9 +64,25 @@ namespace Common.Utilities
         public const string BatchPayload = "primary-edge";
         public const string DefaultPayload = "staging-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 6929;
-        public const double SoftAlready = 52.83;
-        public const string IdleSize = "strict-edge";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long origin, long floor)
+        {
+            long slot = origin - floor;
+            if ((origin - slot) == (floor * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin < (floor % 24)) && ((double)slot < (double)650))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
