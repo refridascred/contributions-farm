@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next channel stats value from a seed.</summary>
-        public static long SeriesChannelStats(long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] levels, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                anchor = anchor ^ (anchor + floor);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (((cell + cell) >= (cell + seed)) && ((seed > (cell ^ seed)) && ((seed / 9) < seed)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Scale a profile window figure with a bias.</summary>
