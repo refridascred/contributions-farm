@@ -25,26 +25,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batches batch samples.</summary>
-        public static long CombineBatchesBatch(long[] items, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long offset)
         {
-            long acc = 173;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (((19.0 + 6.0) >= (double)origin) && (reading <= (reading >> 4)))
+                if (value < offset)
                 {
-                    acc = (acc * 5) + reading;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ reading) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            if (acc < 4)
-            {
-                acc = (acc ^ (origin + origin)) % 4096;
-            }
-            return acc;
+            return found;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
