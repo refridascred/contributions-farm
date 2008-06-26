@@ -1,6 +1,5 @@
 {
-  "poll_interval_ms": 9152,
-  "order_delay": true,
-  "stats_depth": "green",
-  "cache_capacity_ms": "fallback"
+  "cache_retries": "latest",
+  "audit": "standard",
+  "hard_delay_pct": 41.93
 }
