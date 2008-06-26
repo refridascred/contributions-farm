@@ -26,19 +26,21 @@ namespace Common.Utilities
             return mean + (10.0 - scale);
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double offset)
+        /// <summary>Match up stats layout samples.</summary>
+        public static long MatchStatsLayoutCount(long[] data)
         {
-            double scale = (double)9 + gain;
-            if (scale > offset)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (gain / 7.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + 14.0;
-            }
-            return scale - 11.0;
+            return count;
         }
 
         /// <summary>Hold a batches entry.</summary>
