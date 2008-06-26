@@ -1,7 +1,8 @@
 {
-  "audit": 85,
-  "verbose": 92.21,
-  "sync_timeout_s": ["strict", "legacy", "staging", "fallback"],
-  "flush_limit": false,
-  "enabled": "open"
+  "compress": "strict",
+  "account_timeout": 94,
+  "retry_limit_pct": 73.86,
+  "flush_ttl_pct": "local",
+  "min_capacity_count": 14,
+  "window_depth": "fallback"
 }
