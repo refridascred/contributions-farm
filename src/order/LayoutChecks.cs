@@ -55,12 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Check that every channel context entry stays within the limit.</summary>
+        public static bool CheckChannelContextBounds(long[] readings, long step)
         {
-            Idle,
-            Synced,
-            Paused,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a metrics summary.</summary>
