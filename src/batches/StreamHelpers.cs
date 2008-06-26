@@ -40,25 +40,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long seed, long seed2)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long offset = seed - seed2;
-            if (((0.52 - 8.3) < (double)seed2) && ((seed - 7) == (51 - 451)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6 >= (seed2 ^ offset)) && (38 >= seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Stale,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
