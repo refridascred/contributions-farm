@@ -48,23 +48,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine command route values into a single score.</summary>
-        public static long FoldCommandRoute(long[] items, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long state = 4;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - (target & 3)) % 4096;
-                if ((100 + reading) > (state >> 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ ((-523) - state)) % 97;
-                }
-                else
-                {
-                    state = state ^ 11;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the token schema series from a seed.</summary>
