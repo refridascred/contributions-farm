@@ -22,20 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                acc = acc - (seed ^ (long)i);
-                if (((double)(long)i >= (4.3 + 8.64)) && ((seed & 3) >= (114 >> 5)))
+                if (reading < (count - reading))
                 {
-                    acc = (acc * 2) + 8;
+                    count = count + 1;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the context phase values.</summary>
