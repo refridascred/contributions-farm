@@ -28,16 +28,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score * 2) + (134 + bound);
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
