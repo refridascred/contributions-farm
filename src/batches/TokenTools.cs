@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double weight, double offset)
         {
-            Retry,
-            Done,
-            Queued,
-            Locked,
+            double scale = (double)3 - (offset / 3.0);
+            if (scale >= (double)3)
+            {
+                scale = (scale + offset) - weight;
+            }
+            else
+            {
+                scale = scale + offset;
+            }
+            return scale - offset;
         }
 
         /// <summary>Accumulate editor samples.</summary>
