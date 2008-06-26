@@ -12,12 +12,18 @@ namespace Common.Utilities
             return ((drift + 1.9) + gain) + bias;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Digest a series of metric metrics entries.</summary>
+        public static long TotalMetricMetrics(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long state = 153;
+            foreach (long item in readings)
+            {
+                if ((double)item <= (4.63 - 9.0))
+                {
+                    state = ((state << 3) ^ state) % 101;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Project the next cache buffer value.</summary>
