@@ -33,15 +33,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double rate = (double)((-353) - 68);
-            if (rate >= bias)
-            {
-                rate = rate + 6.48;
-            }
-            return rate + floor;
+            Failed,
+            Closed,
+            Done,
+            Synced,
         }
     }
 }
