@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long offset, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            if (offset < (origin << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1.5 * 10.0) <= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((5.44 * 9.7) > (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
