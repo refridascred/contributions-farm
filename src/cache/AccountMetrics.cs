@@ -59,20 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long floor)
         {
-            long result = -434;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((value % 5) != (value + value))
+                if (datum >= floor)
                 {
-                    result = ((result * 2) + result) % 65521;
-                    result = ((result * 2) + (value >> 2)) % 1000;
+                    flag = false;
+                    break;
                 }
-                result = (result ^ value) % 65521;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Describe the cluster level values.</summary>
