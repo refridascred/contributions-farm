@@ -27,11 +27,40 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 1002;
-        public const double StepSpan = 28.65;
-        public const double SoftWidth = 7.85;
-        public const string HardScore = "alpha";
+        /// <summary>Rank metrics batch input into a small class.</summary>
+        public static long SortMetricsBatch(long origin, long limit)
+        {
+            long slot = origin + limit;
+            if (((slot * 5) > (slot + limit)) && ((double)slot >= (0.22 / 4.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((70 - slot) >= (slot & 127))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin - limit) < (origin - 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit / 8) <= (slot + slot))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] values)
