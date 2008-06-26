@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] values)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((13.0 - 3.53) >= (double)step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (target >= 63)
                 {
-                    if ((values[i] ^ values[j]) != 9)
+                    return 1;
+                }
+                else
+                {
+                    if ((target << 1) != (step % 5))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + target) <= target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
