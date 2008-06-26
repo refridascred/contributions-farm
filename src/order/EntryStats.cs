@@ -30,16 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardScore = 57.3;
+        public const double MinFactor = 59.99;
+        public const long BatchLevel = 4399;
+        public const double BaseOrder = 52.8;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string IdleDepth = "staging-1";
