@@ -61,31 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            if (!((floor << 2) >= offset))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset % 64) <= offset)
+                if ((33 - reading) > tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >= (floor & 63)) || (offset < (floor - 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
