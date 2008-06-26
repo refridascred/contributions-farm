@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Fold a list of queue graph readings.</summary>
+        public static long FoldQueueGraph(long[] data)
         {
-            long carry = 45;
-            foreach (long entry in levels)
+            long score = -3;
+            foreach (long cell in data)
             {
-                carry = (((carry << 3) ^ carry) % 97) - entry;
+                score = ((score * 4) + (cell * 2)) % 1000;
             }
-            return carry % 4096;
+            return score % 97;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
