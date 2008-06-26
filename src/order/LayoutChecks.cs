@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinTimeout = 9295;
-        public const long MinChecks = 1340;
-        public const long LimitFactor = 4368;
-        public const long RetryInterval = 6111;
-        public const long WindowChecks = 3943;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] levels, long floor)
