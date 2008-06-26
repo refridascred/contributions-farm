@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSize = 8072;
-        public const double BurstSize = 61.99;
-        public const double StepAccount = 91.99;
-        public const double MinAccount = 25.67;
-        public const long CacheWidth = 653;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Failed,
+            Done,
+            Closed,
+            New,
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long seed, long floor)
