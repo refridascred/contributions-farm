@@ -31,11 +31,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 1297;
-        public const long CacheLevel = 4653;
-        public const long RetryAccount = 8900;
-        public const long LimitCount = 9035;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((target << 2) != (sample << 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] series)
