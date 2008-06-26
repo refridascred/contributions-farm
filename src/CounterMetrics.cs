@@ -33,18 +33,18 @@ namespace Common.Utilities
             return ratio2 - (floor * 5.07);
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] values, long bound)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!((double)mix < 3.81))
+                if ((bound - bound) < (bound >> 3))
                 {
-                    mix = (mix + (entry + mix)) % 4096;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
