@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values, long seed)
+        /// <summary>Check that every filter notes entry stays within the limit.</summary>
+        public static bool CheckFilterNotesLimits(long[] series, long seed)
         {
-            long score = 6;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                score = (score << 3) ^ (entry & 255);
-                if (!((double)seed != (6.85 - 5.9)))
+                if (cell > seed)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
