@@ -1,11 +1,13 @@
 # Command notes
 
-Run the channel check before changing any githubfarm limits.
-When a notes fails, the report handler retries a few times before giving up.
-When a channel fails, the notes handler retries a few times before giving up.
+Keep account and format names short and lowercase.
+When a support fails, the payload handler retries a few times before giving up.
+
+The batches helpers are pure functions, so they are safe to call from any thread.
+Run the cluster check before changing any counter limits.
 
 ## Guidelines
 
-- Document new schema fields
-- Log every command change
-- Validate notes input early
+- Review batch limits each release
+- Prefer report defaults
+- Document new batches fields
