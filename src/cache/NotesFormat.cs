@@ -20,12 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheContributi = "primary-1";
-        public const long RetryCount = 7435;
-        public const long IdleRatio = 9409;
-        public const double WindowRatio = 64.08;
-        public const long LimitContributi = 9065;
+        /// <summary>Validate batch schema readings against a bound.</summary>
+        public static bool CheckBatchSchemaLimits(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string DefaultLevel = "legacy";
