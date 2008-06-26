@@ -14,13 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((97 + datum) <= (datum + datum))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
