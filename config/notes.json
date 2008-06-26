@@ -1,12 +1,7 @@
 {
-  "min_window_pct": 17.79,
-  "cache_ratio": "open",
-  "cache_ratio_pct": 18,
-  "burst_timeout": "open",
-  "notes_ratio": {
-    "audit": 7136,
-    "stats_interval": 250,
-    "soft_capacity": ["staging", "fallback", "latest", "stable"],
-    "poll_timeout": 2170
-  }
+  "burst_window_ms": true,
+  "audit": false,
+  "hard_ttl": 7252,
+  "readonly": "eu-west",
+  "token_delay": 83
 }
