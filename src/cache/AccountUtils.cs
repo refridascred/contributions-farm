@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metric token reading.</summary>
-        public static double ProjectMetricToken(double gain, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] series, long seed)
         {
-            double ratio = (gain + gain) + span;
-            if (ratio < ratio)
+            long count = 0;
+            foreach (long reading in series)
             {
-                ratio = ratio - 7.5;
+                if (((177 % 2) < (seed - count)) && ((seed + seed) >= (reading + reading)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                ratio = ratio - gain;
-            }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Combine stream filter values into a single score.</summary>
