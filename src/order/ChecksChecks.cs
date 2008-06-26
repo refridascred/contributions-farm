@@ -20,17 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long target)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
