@@ -29,39 +29,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long limit2)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            long next = limit + limit2;
-            if ((next >> 1) <= (next + limit2))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit & 31) > limit2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit2 - 74) > limit) && ((6.0 - 17.0) < (double)limit2))
+                    if ((series[i] ^ series[j]) > 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((next >> 5) == (2 + limit2)) && ((limit + next) > next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
