@@ -16,22 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values)
+        /// <summary>Locate a notes contributi reading by value.</summary>
+        public static long SeekNotesContributiIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((7.6 * 9.4) != (double)cell)
+                if (readings[i] == origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
