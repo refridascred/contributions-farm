@@ -37,19 +37,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter channel entry stays within the limit.</summary>
-        public static bool ValidateFilterChannelBounds(long[] series, long limit)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
