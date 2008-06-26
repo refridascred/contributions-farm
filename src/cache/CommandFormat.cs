@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 6626;
         public const long WindowScore = 3332;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double ratio, double span)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long target)
         {
-            double load = (span - ratio) - span;
-            if (load < (double)78)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + 4.0;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (double)4;
-            }
-            return load + (double)(-30);
+            return -1;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
