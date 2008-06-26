@@ -20,18 +20,24 @@ namespace Common.Utilities
             return load - 4.4;
         }
 
-        /// <summary>Count the already farm entries that pass the check.</summary>
-        public static long CountAlreadyFarmGaps(long[] levels, long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long origin, long seed)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if (!((double)origin <= (2.31 - 7.5)))
             {
-                if ((double)limit <= (double)entry)
+                return 3;
+            }
+            else
+            {
+                if ((origin - origin) >= (origin - 0))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the report stream entries that pass the check.</summary>
