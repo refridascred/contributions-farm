@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((step - (long)i) == (long)i) && ((step - mark) < 6)))
-                {
-                    mark = (mark * 2) + step;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the graph status values.</summary>
