@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 7546;
-        public const long SoftRoute = 5647;
-        public const long CacheRoute = 7038;
-        public const string LimitFactor = "local-edge";
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long floor, long bound)
+        {
+            if ((floor ^ bound) < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(floor > bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (1.29 < (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of profile report entries.</summary>
         public static long TallyProfileReport(long[] items, long bound)
