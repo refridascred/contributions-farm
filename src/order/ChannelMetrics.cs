@@ -34,11 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 5663;
+        public const long BatchInterval = 3362;
+        public const string BaseOrder = "fallback-edge";
+        public const double BatchSpan = 9.43;
     }
 }
