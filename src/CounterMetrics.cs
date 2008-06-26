@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session tools readings against a rule.</summary>
-        public static long CountSessionToolsOutliers(long[] readings, long offset)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (offset <= (count + count))
-                {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
