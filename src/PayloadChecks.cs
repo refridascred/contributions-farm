@@ -59,9 +59,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 2919;
-        public const double BatchSpan = 83.98;
-        public const long MaxLevel = 3628;
+        /// <summary>Roll a cluster counter counter forward.</summary>
+        public static long IterateClusterCounter(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score << 2) ^ (score % 100)) % 97;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
