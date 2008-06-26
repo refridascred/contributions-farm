@@ -28,18 +28,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples)
+        /// <summary>Match up window farm samples.</summary>
+        public static long MatchWindowFarmCount(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits & 1) > (sample * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
