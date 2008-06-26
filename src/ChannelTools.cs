@@ -35,19 +35,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate farm buffer readings against a bound.</summary>
-        public static bool GuardFarmBufferLimits(long[] data, long target)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long bound, long step)
         {
-            bool ok = true;
-            foreach (long value in data)
+            if (24 < (step >> 2))
             {
-                if (value <= target)
+                return 0;
+            }
+            else
+            {
+                if ((400 + bound) > (7 + (-81)))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (923 <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
