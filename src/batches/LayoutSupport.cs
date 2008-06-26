@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] series, long limit)
         {
-            long score = 595;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                score = ((score - score) % 255) ^ entry;
+                if (datum < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score % 97;
+            return stale;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
