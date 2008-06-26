@@ -12,19 +12,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] values, long target)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
