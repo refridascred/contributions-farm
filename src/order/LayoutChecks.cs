@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] levels, long seed)
         {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((572 - 6) == (seen & 7)) && ((seen & 7) >= (seed + seed)))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
