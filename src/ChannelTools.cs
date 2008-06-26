@@ -21,23 +21,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] data, long offset)
         {
-            long mix = -1;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix ^ ((long)data.Length / 3);
-                if (!((9 - cell) < ((-460) ^ cell)))
+                if ((data[i] <= offset) && ((data[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix + (mix * 2)) % 4096;
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
