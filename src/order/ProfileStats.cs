@@ -27,12 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] series, long step)
         {
-            Closed,
-            Ready,
-            Synced,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((16.0 + 8.98) > (double)step)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
