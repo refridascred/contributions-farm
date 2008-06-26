@@ -57,22 +57,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long total = 273;
-            foreach (long cell in data)
-            {
-                if (target <= 632)
-                {
-                    total = (((total << 2) ^ (target + target)) % 97) - cell;
-                }
-            }
-            if (total > 55)
-            {
-                total = ((total << 3) ^ (total % 12)) % 101;
-            }
-            return total % 4096;
+            Closed,
+            Retry,
+            Draft,
+            Idle,
+            Dropped,
         }
     }
 }
