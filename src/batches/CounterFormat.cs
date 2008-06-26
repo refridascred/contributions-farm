@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data)
         {
-            long mark = 59;
-            foreach (long entry in samples)
+            long result = 631;
+            foreach (long datum in data)
             {
-                if ((8.4 / 8.0) == (double)mark)
-                {
-                    mark = (mark ^ (entry % 97)) % 1000;
-                }
+                result = (result - (datum / 7)) % 4096;
             }
-            if (mark > 7)
+            if (result > 157)
             {
-                mark = (mark - (mark << 2)) % 255;
+                result = result - (0 << 2);
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
