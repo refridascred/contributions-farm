@@ -72,14 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Closed,
-            Ready,
-            Paused,
-            Pending,
-            Queued,
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
