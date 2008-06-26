@@ -1,13 +1,14 @@
 {
-  "retry_retries_count": 93,
-  "poll_retries_s": {
-    "cache_retries": "edge",
-    "readonly": 2653,
-    "farm_depth": "primary",
-    "soft_timeout_count": "edge"
+  "base_capacity": {
+    "flush_depth_count": "open",
+    "counter_delay": 250,
+    "readonly": 6540,
+    "base_interval": true,
+    "sync_window": 7380,
+    "editor_delay": true
   },
-  "warm_delay_s": false,
-  "flush_timeout": 15,
-  "base_ratio_pct": 36,
-  "session_window": 88.15
+  "batch_size_pct": false,
+  "min_size": 3962,
+  "soft_timeout_ms": true,
+  "enabled": 2
 }
