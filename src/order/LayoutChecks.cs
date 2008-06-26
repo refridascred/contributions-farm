@@ -72,22 +72,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the order contributi entries that pass the check.</summary>
-        public static long CountOrderContributiGaps(long[] values, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((((-61) + tally) <= (target & 7)) || (((762 % 16) > (datum ^ tally)) || ((3.3 + 3.58) >= (3.93 / 8.0))))
+                if (value != seed)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
