@@ -35,23 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((1.2 - 7.47) == (double)count)
-                {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 21.6;
+        public const string WindowDepth = "latest-v2";
+        public const string IdleRoute = "stable-1";
+        public const string LimitWidth = "cached";
+        public const string BaseInterval = "open-edge";
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ProjectTools(double gain, double span)
