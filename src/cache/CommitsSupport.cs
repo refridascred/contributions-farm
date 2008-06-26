@@ -79,13 +79,18 @@ namespace Common.Utilities
         public const long SoftDepth = 8637;
         public const double BurstLevel = 31.13;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many context graph samples are out of range.</summary>
+        public static long MeasureContextGraphMatches(long[] data, long target)
         {
-            Closed,
-            Pending,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (4 <= cell)
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
         }
     }
 }
