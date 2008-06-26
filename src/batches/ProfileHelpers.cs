@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((item >> 5) == (item & 15)) && (57 >= item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double drift = 5.2;
+            return ((drift + 1.9) + gain) + bias;
         }
 
         /// <summary>Hold a editor entry.</summary>
