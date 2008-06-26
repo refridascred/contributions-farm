@@ -70,11 +70,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] samples, long bound)
         {
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
