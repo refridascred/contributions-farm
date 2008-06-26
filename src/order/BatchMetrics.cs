@@ -60,12 +60,23 @@ namespace Common.Utilities
         public const string HardFarm = "staging-edge";
         public const long BurstScore = 2418;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 2514;
-        public const double BatchScore = 13.76;
-        public const double BurstAccount = 35.29;
-        public const double HardScore = 26.14;
-        public const double WindowAccount = 89.23;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series, long seed)
+        {
+            long state = 557;
+            foreach (long sample in series)
+            {
+                if (!(seed <= 296))
+                {
+                    state = (state + (899 - 2)) ^ sample;
+                }
+                if (seed > (state / 3))
+                {
+                    state = (state * 3) + state;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
