@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftLevel = 1089;
-        public const double WindowBudget = 83.86;
-        public const long BaseDepth = 1240;
-        public const double MinEditor = 19.93;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 3.78;
+        public const long BurstSpan = 9410;
+        public const double StepInterval = 40.94;
+        public const long CacheBudget = 1990;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] values)
