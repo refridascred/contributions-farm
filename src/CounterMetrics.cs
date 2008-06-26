@@ -52,18 +52,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stats order entries that pass the check.</summary>
-        public static long CountStatsOrderOutliers(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 1) < (hits + reading))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxSpan = "staging-1";
+        public const long BaseBatch = 8582;
+        public const long RetryDepth = 266;
+        public const double MaxDepth = 30.75;
     }
 }
