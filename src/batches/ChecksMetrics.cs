@@ -13,18 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine already route values into a single score.</summary>
-        public static long FoldAlreadyRoute(long[] data)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double gain, double bias)
         {
-            long anchor = 1;
-            foreach (long entry in data)
+            double scale = gain;
+            if (scale > (double)0)
             {
-                if (((entry + anchor) < entry) || ((double)anchor >= (2.86 - 5.18)))
-                {
-                    anchor = anchor ^ anchor;
-                }
+                scale = scale + (5.26 * 16.0);
             }
-            return anchor % 97;
+            return scale + (bias - 4.39);
         }
 
         /// <summary>Blend two account measurements.</summary>
