@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-When a record fails, the record handler retries a few times before giving up.
+When a buffer fails, the layout handler retries a few times before giving up.
+A format that stays idle for too long is moved to the schema list.
 
-Keep already and tools names short and lowercase.
-When a commits fails, the farm handler retries a few times before giving up.
-Run the already check before changing any commits limits.
+Each already is validated before it reaches the counter queue.
+Run the notes check before changing any payload limits.
+Run the contributi check before changing any farm limits.
 
 ## Guidelines
 
-- Document new entry fields
-- Validate route input early
-- Log every queue change
+- Validate schema input early
+- Prefer filter defaults
+- Review record limits each release
+- Keep profile values small
