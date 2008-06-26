@@ -1,18 +1,7 @@
 {
-  "cache_capacity_s": {
-    "compress": "open",
-    "record_capacity": 250,
-    "default_size_count": 26,
-    "batch_threshold_s": "standard"
-  },
-  "githubfarm_ratio": {
-    "editor_retries": true,
-    "burst_timeout_pct": [485, 158, 485, 136],
-    "min_capacity_count": 6.66,
-    "batch_interval_ms": "standard",
-    "sync_size": 60,
-    "batch_ratio": true
-  },
-  "min_ttl_ms": 250,
-  "soft_delay_ms": 86.44
+  "base_interval_pct": "latest",
+  "flush_interval": false,
+  "warm_ttl_ms": 64,
+  "base_window": "latest",
+  "cluster_size": true
 }
