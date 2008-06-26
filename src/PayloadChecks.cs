@@ -32,38 +32,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            if ((double)target > (8.56 * 7.16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) < 97)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target - 1) >= target) && ((target - limit) == (limit + limit)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((20.0 * 4.0) == (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
