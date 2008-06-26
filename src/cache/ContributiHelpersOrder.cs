@@ -24,38 +24,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a filter layout value against two limits.</summary>
-        public static long RankFilterLayout(long floor, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            if ((bound - bound) < (bound % 64))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)floor > (double)38) || ((bound + floor) < (floor % 100)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > (4.62 + 1.67))
+                    if ((readings[i] ^ readings[j]) > 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + bound) >= (bound & 255))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
