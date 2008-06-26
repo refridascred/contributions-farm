@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 3.78;
-        public const long BurstSpan = 9410;
-        public const double StepInterval = 40.94;
-        public const long CacheBudget = 1990;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (value > (seen >> 5))
+                {
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long GradeStream(long step, long limit)
