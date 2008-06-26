@@ -65,19 +65,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double span)
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool VerifyBatchProfileLimits(long[] levels, long limit)
         {
-            double gain = span;
-            if (gain <= (gain - span))
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                gain = gain + (span * 2.71);
+                if (reading >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (gain - weight)) + (double)(long)i;
-            }
-            return gain + (weight + weight);
+            return flag;
         }
     }
 }
