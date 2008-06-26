@@ -45,13 +45,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Queued,
-            New,
-            Idle,
-            Done,
+            Ready,
+            Paused,
+            Draft,
         }
     }
 }
