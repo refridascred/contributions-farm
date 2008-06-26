@@ -13,19 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (16.0 >= (double)datum)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 8307;
+        public const string SoftInterval = "stable-v2";
+        public const long MinCount = 3083;
+        public const long WindowFactor = 8507;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] samples)
