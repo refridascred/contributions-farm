@@ -1,8 +1,6 @@
-id,weight,level
-1,58.41,82.3
-2,stable,30.8
-3,821,836
-4,896,latest
-5,681,38.77
-6,latest,stable
-7,576,green
+id,ratio,owner,weight
+1,latest,primary,29.48
+2,792,68.12,46.4
+3,92.66,990,59.27
+4,479,57,cached
+5,240,53,green
