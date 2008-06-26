@@ -58,12 +58,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryEntry = 27.92;
-        public const long IdleScore = 3256;
-        public const string CacheEntry = "stable-edge";
-        public const long BurstSpan = 6996;
-        public const string HardDepth = "latest";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long limit, long origin)
+        {
+            if ((94 % 3) == (origin % 64))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit > 7)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] readings, long target)
