@@ -88,14 +88,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] items, long target)
         {
-            Pending,
-            Stale,
-            Closed,
-            Idle,
-            Active,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
