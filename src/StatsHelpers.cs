@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] data, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((51 << 3) == (datum - (long)data.Length))
+                if (item < seed)
                 {
-                    tally = (tally + 1) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
