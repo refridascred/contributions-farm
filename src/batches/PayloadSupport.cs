@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Synced,
-            Queued,
-            Retry,
-            Active,
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
