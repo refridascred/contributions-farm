@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double floor)
+        /// <summary>Audit notes payload readings against a rule.</summary>
+        public static long MeasureNotesPayloadHits(long[] levels)
         {
-            double rate = 3.47;
-            if (rate < (double)5)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                rate = ((rate - rate) - weight) - floor;
+                if ((tally / 3) > tally)
+                {
+                    tally = (tally + 2) ^ item;
+                }
             }
-            else
-            {
-                rate = rate - (double)554;
-            }
-            return rate + (double)0;
+            return tally;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
