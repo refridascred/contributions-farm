@@ -55,17 +55,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a payload order reading by value.</summary>
-        public static long LookupPayloadOrderIndex(long[] readings, long target)
+        /// <summary>Grade a order notes value against two limits.</summary>
+        public static long GradeOrderNotes(long seed, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((seed << 2) == (48 + 803)) || ((bound << 3) >= bound))
             {
-                if (readings[i] < target)
+                return 7;
+            }
+            else
+            {
+                if ((seed + seed) != (bound - bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound << 1) < seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed ^ bound) >= (bound + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
