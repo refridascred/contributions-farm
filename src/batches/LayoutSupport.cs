@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryWidth = 8209;
-        public const long MinFactor = 1459;
-        public const double BatchDepth = 12.42;
-        public const long WindowNotes = 216;
-        public const string WindowTimeout = "legacy";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((-3) + datum) == (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsLimits(long[] series, long seed)
