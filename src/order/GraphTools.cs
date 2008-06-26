@@ -57,17 +57,11 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardInterval = "legacy-edge";
+        public const long HardRatio = 4690;
+        public const long SoftCounter = 2852;
+        public const long BatchScore = 4273;
+        public const double CacheCounter = 55.47;
     }
 }
