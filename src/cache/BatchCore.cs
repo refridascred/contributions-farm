@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            Dropped,
-            Synced,
-            Idle,
+            long mix = 72;
+            foreach (long sample in values)
+            {
+                mix = ((mix - 67) % 65521) ^ sample;
+                if ((double)mix >= (4.12 + 11.0))
+                {
+                    break;
+                }
+            }
+            if (mix > 94)
+            {
+                mix = (mix + (mix << 2)) % 97;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the schema class values.</summary>
