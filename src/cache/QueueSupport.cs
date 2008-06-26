@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data, long offset)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            long mix = 64;
+            foreach (long reading in data)
+            {
+                if ((reading >= (offset + mix)) && (reading <= 337))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix + reading) % 101;
+                    mix = (mix << 2) ^ (offset + (long)data.Length);
+                }
+                mix = mix ^ (381 + offset);
+            }
+            if (mix < 216)
+            {
+                mix = ((mix * 5) + (mix / 4)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a support session reading.</summary>
