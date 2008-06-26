@@ -51,14 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] series, long origin)
         {
-            Done,
-            Stale,
-            Closed,
-            Failed,
-            Locked,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
