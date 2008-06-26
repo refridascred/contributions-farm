@@ -39,21 +39,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias = weight;
+            return (bias - (double)836) + span;
         }
     }
 }
