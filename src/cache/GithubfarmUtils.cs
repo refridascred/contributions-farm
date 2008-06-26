@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] levels, long origin)
+        /// <summary>Combine session cache values into a single score.</summary>
+        public static long FoldSessionCache(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long anchor = 40;
+            foreach (long reading in series)
             {
-                if ((3.0 - 8.78) != (double)cell)
+                if (!((anchor >> 5) <= reading))
                 {
-                    matches = (matches + 3) + origin;
+                    anchor = ((anchor * 4) + (779 ^ reading)) % 101;
+                }
+                if (!((anchor % 60) == (928 ^ anchor)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (anchor > (-59))
+            {
+                anchor = ((anchor * 5) + anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
