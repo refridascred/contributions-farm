@@ -1,13 +1,8 @@
 # entry settings
-idle_capacity_ms: 500
-graph_depth:
-  - staging
+farm_ttl: 73
+enabled:
   - primary
-soft_capacity: stable
-readonly:
-  - 168
-  - 476
-  - 180
-  - 208
-hard_delay_count: standard
-session_timeout: 7808
+  - stable
+  - green
+hard_retries_s: 22.19
+strict: 59.62
