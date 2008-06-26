@@ -43,20 +43,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstCluster = 39.54;
+        public const string BatchCluster = "cached-edge";
+        public const long DefaultCluster = 7769;
+        public const long CacheDepth = 1931;
+        public const double StepCluster = 6.46;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long floor, long offset)
