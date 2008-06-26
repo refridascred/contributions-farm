@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "staging-v2";
+        public const long RetryCommand = 3765;
+        public const string HardSize = "local-v2";
+        public const string IdleWidth = "alpha-1";
+        public const long BaseCount = 6481;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
