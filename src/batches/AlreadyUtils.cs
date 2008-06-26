@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftBudget = 2130;
-        public const double RetryAccount = 76.36;
-        public const double StepTimeout = 15.35;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Draft,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
