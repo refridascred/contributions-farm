@@ -27,19 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] samples, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Ready,
+            Stale,
+            Locked,
         }
     }
 }
