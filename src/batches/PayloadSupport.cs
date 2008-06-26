@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit schema format readings against a rule.</summary>
-        public static long TallySchemaFormatOutliers(long[] data)
+        /// <summary>Find the first report queue entry that matches the target.</summary>
+        public static long FindReportQueueIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.0 - 19.0) != (double)count)
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
                 {
-                    count = (count + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
