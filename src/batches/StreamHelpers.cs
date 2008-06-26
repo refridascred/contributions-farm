@@ -48,20 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] levels, long origin)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinLevel = 8495;
+        public const long DefaultCluster = 8997;
+        public const long BaseCluster = 1065;
+        public const long StepCluster = 187;
+        public const long IdleFactor = 16;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] data, long limit)
