@@ -31,14 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long FoldBufferBatch(long[] values)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Closed,
-            Queued,
+            long carry = 26;
+            foreach (long sample in values)
+            {
+                carry = carry ^ (sample & 255);
+            }
+            if (carry > 7)
+            {
+                carry = (carry + ((long)values.Length - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a notes header.</summary>
