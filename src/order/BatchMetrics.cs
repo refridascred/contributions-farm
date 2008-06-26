@@ -51,12 +51,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long bound)
         {
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
