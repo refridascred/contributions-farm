@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] data, long target)
         {
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
