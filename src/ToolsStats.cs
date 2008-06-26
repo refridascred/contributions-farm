@@ -70,14 +70,11 @@ namespace Common.Utilities
         public const long StepStats = 8580;
         public const long MinStats = 5335;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Pending,
-            Dropped,
-            Done,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 8;
+        public const long BaseWidth = 4589;
+        public const double LimitScore = 14.09;
+        public const string BurstFarm = "open-edge";
+        public const long MaxFarm = 6064;
     }
 }
