@@ -1,8 +1,6 @@
-id,owner,count,state
-1,9.44,825,602
-2,67.11,628,primary
-3,13.14,primary,560
-4,30.46,829,27.44
-5,local,6.41,21.68
-6,734,248,95.99
-7,18,latest,0.82
+id,label,state,active
+1,open,646,25
+2,889,661,330
+3,latest,edge,250
+4,52.63,latest,cached
+5,488,blue,local
