@@ -25,12 +25,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheBudget = 9616;
-        public const double MaxStream = 51.93;
-        public const long DefaultStream = 2374;
-        public const long BurstFactor = 8046;
-        public const string MinCount = "alpha-v2";
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Queued,
+            New,
+            Synced,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowRange(long[] items, long seed)
