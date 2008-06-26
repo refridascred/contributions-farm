@@ -31,17 +31,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (items[i] == target)
+                if ((entry ^ entry) <= seen)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
