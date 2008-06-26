@@ -1,15 +1,10 @@
 # entry settings
-max_size_s: eu-west
-dry_run: 70
-burst_threshold_count: legacy
-persist: staging
-warm_ttl_ms: 351
-max_limit_pct:
-  idle_depth_ms: open
-  poll_threshold_s:
-    default_delay: 91.08
-    min_timeout_s: 4344
-    base_timeout_s: stable
-  compress: 7.3
-  verbose: true
-  metrics_size: 30
+audit: eu-west
+support_window: cached
+enabled: 4627
+soft_delay_count:
+  - 72
+  - 64
+  - 65
+warm_threshold_pct: edge
+verbose: 41.75
