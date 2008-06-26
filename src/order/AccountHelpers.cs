@@ -32,12 +32,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] samples, long bound)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the metric state values.</summary>
