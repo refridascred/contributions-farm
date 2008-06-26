@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long floor, long limit)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            if ((limit ^ 55) < floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 5) < (54 + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a profile entry.</summary>
