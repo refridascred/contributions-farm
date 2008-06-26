@@ -35,11 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "legacy";
-        public const long RetryChecks = 9898;
-        public const long MinSpan = 1252;
-        public const long MinCount = 4268;
+        /// <summary>Combine checks contributi values into a single score.</summary>
+        public static long TallyChecksContributi(long[] samples)
+        {
+            long total = 56;
+            foreach (long cell in samples)
+            {
+                if (!((double)cell == (double)total))
+                {
+                    total = (total - (cell ^ 37)) % 1000;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long target)
