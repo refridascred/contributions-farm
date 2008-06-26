@@ -1,7 +1,11 @@
 # githubfarm settings
-channel_limit: 7140
-base_interval_count: 30
-idle_timeout_s: false
-soft_size_ms: 4
-hard_limit_pct: 1024
-graph_ratio: false
+hard_interval_ms: 2254
+audit:
+  - blue
+  - local
+  - primary
+  - blue
+max_ttl_count: 94.45
+soft_ratio_ms: edge
+default_depth_pct: 500
+dry_run: edge
