@@ -36,19 +36,30 @@ namespace Common.Utilities
         public const long DefaultFactor = 2994;
         public const long IdleGithubfarm = 6374;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] series, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long total = 30;
+            foreach (long sample in samples)
             {
-                if (reading <= step)
+                if ((total / 7) >= sample)
                 {
-                    valid = false;
+                    total = (total * 3) + total;
+                }
+                else
+                {
+                    total = (total ^ (step * 4)) % 97;
+                }
+                if (((double)step <= (double)sample) && ((total % 10) < sample))
+                {
                     break;
                 }
             }
-            return valid;
+            if (total > 95)
+            {
+                total = (total + step) % 65521;
+            }
+            return total;
         }
     }
 }
