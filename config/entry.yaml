@@ -1,30 +1,15 @@
 # entry settings
-min_limit: local
-payload_limit:
-  - 309
-  - 270
-  - 230
-persist: cached
-tools_depth:
-  warm_ttl_s: cached
-  queue_depth:
-    - local
-    - fallback
-    - latest
-  persist:
-    burst_window:
-      - 37
-      - 265
-      - 286
-      - 387
-    readonly: 500
-    audit: 9544
-    token_window:
-      - staging
-      - eu-west
-  window_capacity: 6.82
-stream_depth:
-  - latest
-  - local
-  - staging
-base_size: 47.0
+max_size_s: eu-west
+dry_run: 70
+burst_threshold_count: legacy
+persist: staging
+warm_ttl_ms: 351
+max_limit_pct:
+  idle_depth_ms: open
+  poll_threshold_s:
+    default_delay: 91.08
+    min_timeout_s: 4344
+    base_timeout_s: stable
+  compress: 7.3
+  verbose: true
+  metrics_size: 30
