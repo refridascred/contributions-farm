@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstFactor = 3870;
-        public const long IdleInterval = 3067;
-        public const long IdleSize = 1572;
-        public const string IdleBuffer = "strict-edge";
-        public const long RetryBuffer = 8498;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] series)
