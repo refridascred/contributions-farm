@@ -1,7 +1,24 @@
 # githubfarm settings
-flush_ttl: 43
-flush_delay_count: true
-audit: 47.22
-order_ttl: 4230
-session_depth: 8779
-idle_depth_count: 8727
+max_size: staging
+hard_size_pct:
+  enabled: cached
+  batch_depth_count: 55
+  context_ttl:
+    verbose:
+      - open
+      - primary
+      - open
+    base_interval_s: blue
+    commits_interval: 30
+    strict: 63
+    payload_delay: false
+  verbose: true
+  record_capacity: 346
+  max_interval_ms: 30
+cache_delay_pct: 90.86
+session_limit:
+  burst_depth: 30
+  retry_timeout_pct: 30
+  queue_timeout: edge
+  support_ratio: eu-west
+  base_threshold_ms: 8624
