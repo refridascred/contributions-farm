@@ -14,13 +14,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
+            double mean = offset + (double)285;
+            return mean + bias;
         }
 
         /// <summary>Iterate the report cache series from a seed.</summary>
