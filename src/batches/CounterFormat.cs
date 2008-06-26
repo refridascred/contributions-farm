@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a batches token value against two limits.</summary>
-        public static long ClassifyBatchesToken(long limit, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] series, long limit)
         {
-            long bound = limit + floor;
-            if ((double)limit != (2.0 - 7.7))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound >> 2) != (floor - 54)) || ((1.26 / 6.0) > (double)bound))
+                if ((19.0 - 7.0) < (double)(long)series.Length)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor > 5.1)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-18) < limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = ((hits + 1) ^ datum) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
