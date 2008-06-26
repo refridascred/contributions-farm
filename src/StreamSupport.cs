@@ -35,16 +35,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                carry = (carry + (step & 255)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
     }
 }
