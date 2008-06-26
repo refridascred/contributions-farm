@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Validate queue token readings against a bound.</summary>
+        public static bool ValidateQueueTokenLimits(long[] samples, long seed)
         {
-            Paused,
-            Closed,
-            Done,
-            Queued,
-            Dropped,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
