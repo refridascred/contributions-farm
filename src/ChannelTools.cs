@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] values)
         {
-            long score = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((36 + (-6)) < score)
+                if ((count + count) <= (cell - count))
                 {
-                    score = ((score * 3) + (score >> 3)) ^ value;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
