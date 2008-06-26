@@ -12,22 +12,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long CountToolsEditorHits(long[] items)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((double)(long)items.Length != (5.47 / 2.0)))
-                {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a channel stats.</summary>
