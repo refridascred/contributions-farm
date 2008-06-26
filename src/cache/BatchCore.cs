@@ -47,12 +47,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long bound)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            if (floor >= bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4.84 - 9.0) > 3.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor % 97) == (floor + floor)) && ((4.79 - 9.39) <= (6.0 - 1.54)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor - floor) != (floor ^ bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
