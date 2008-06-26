@@ -40,11 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 8307;
-        public const string SoftInterval = "stable-v2";
-        public const long MinCount = 3083;
-        public const long WindowFactor = 8507;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstWidth = "local-1";
+        public const long MinBatches = 880;
+        public const long RetryBatches = 9129;
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long SeekCommitsIndex(long[] samples, long origin)
