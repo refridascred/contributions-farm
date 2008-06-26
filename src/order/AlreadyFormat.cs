@@ -58,19 +58,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
-        public static bool ValidateClusterStatsRange(long[] readings, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double drift = floor + floor;
+            if (drift > floor)
             {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = (drift - drift) - scale;
             }
-            return flag;
+            else
+            {
+                drift = drift - (double)88;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 6.1) + (double)(long)i;
+            }
+            return drift - floor;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
