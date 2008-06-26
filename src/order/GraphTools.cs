@@ -46,15 +46,22 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double rate, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
-            double drift = span;
-            if (drift >= (double)93)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                drift = drift + span;
+                if (!(hits > (hits >> 4)))
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift - (rate + rate);
+            return hits;
         }
     }
 }
