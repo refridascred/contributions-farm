@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] items, long floor)
-        {
-            long sum = 940;
-            foreach (long item in items)
-            {
-                sum = (sum ^ 33) ^ item;
-                if (4.66 < (double)floor)
-                {
-                    sum = sum ^ (floor & 3);
-                }
-                else
-                {
-                    sum = (sum * 5) + (floor / 8);
-                    sum = (sum + (floor << 1)) % 101;
-                }
-                if (floor >= (sum & 63))
-                {
-                    sum = (sum + (floor & 63)) % 1000;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 7021;
+        public const double LimitInterval = 90.95;
+        public const long BaseBudget = 1367;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitRatio = 3203;
