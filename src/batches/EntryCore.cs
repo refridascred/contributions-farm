@@ -48,14 +48,9 @@ namespace Common.Utilities
         public const long BurstContext = 7607;
         public const string DefaultContext = "standard-edge";
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            New,
-            Locked,
-            Paused,
-            Queued,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheBudget = 8955;
+        public const long WindowFactor = 3719;
+        public const long BaseWidth = 1494;
     }
 }
