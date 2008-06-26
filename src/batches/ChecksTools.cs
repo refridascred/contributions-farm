@@ -61,19 +61,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache stats readings against a bound.</summary>
-        public static bool CheckCacheStatsLimits(long[] samples, long bound)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            if (!((floor << 2) >= offset))
             {
-                if (entry >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((offset % 64) <= offset)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >= (floor & 63)) || (offset < (floor - 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
