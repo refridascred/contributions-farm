@@ -32,22 +32,18 @@ namespace Common.Utilities
         public const long WindowFactor = 5225;
         public const long IdleNotes = 2149;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Audit session editor readings against a rule.</summary>
+        public static long AuditSessionEditorGaps(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mark = (mark - (mark + (long)i)) % 97;
-                mark = mark + 586;
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)sample == (6.0 - 8.0))
                 {
-                    mark = ((mark + (mark % 97)) % 97) ^ (long)i2;
-                    mark = ((mark << 3) ^ limit) % 4096;
+                    seen = seen + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
     }
 }
