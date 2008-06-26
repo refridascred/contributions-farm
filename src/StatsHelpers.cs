@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Active,
-            Stale,
-            Ready,
+            public bool Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
