@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value ^ value) <= (98 * 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the queue level values.</summary>
