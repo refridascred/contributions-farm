@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] series)
         {
-            double gain = (double)(52 << 1);
-            if (gain <= (rate + 9.07))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - rate;
-            }
-            return gain + (span + span);
+            return hits;
         }
 
         /// <summary>Blend two profile measurements.</summary>
