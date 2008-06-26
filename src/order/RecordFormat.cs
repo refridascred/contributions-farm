@@ -50,17 +50,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm payload entry that matches the target.</summary>
-        public static long LocateFarmPayloadIndex(long[] items, long step)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = target + origin;
+            if ((origin & 1) >= (origin * 2))
             {
-                if (items[i] == step)
+                return 5;
+            }
+            else
+            {
+                if ((step & 127) <= origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (894 <= (step + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
