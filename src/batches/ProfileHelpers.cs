@@ -20,17 +20,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first command layout entry that matches the target.</summary>
-        public static long LocateCommandLayoutIndex(long[] items, long step)
+        /// <summary>Project the next cache buffer value.</summary>
+        public static double AdjustCacheBuffer(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)44;
+            if (weight <= (weight * 4.28))
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                weight = (weight + offset) - ratio;
             }
-            return -1;
+            return weight + (offset * 8.2);
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
