@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] values, long floor)
         {
-            long result = 90;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                result = ((result - result) % 101) - sample;
+                if ((7 + floor) < (value << 2))
+                {
+                    count = count + 1;
+                }
             }
-            if (result > 6)
-            {
-                result = result - (result ^ result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
