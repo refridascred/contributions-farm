@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long state = 2;
-            foreach (long item in items)
-            {
-                if (((state - 285) == (15 - item)) && ((item ^ 61) >= ((long)items.Length + state)))
-                {
-                    state = (state - (item << 1)) % 255;
-                }
-            }
-            return state % 97;
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a channel session pair into a bucket.</summary>
