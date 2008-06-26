@@ -1,13 +1,10 @@
 {
-  "hard_threshold": {
-    "min_retries_ms": "primary",
-    "min_delay_ms": 89,
-    "default_depth_count": ["edge", "primary"],
-    "readonly": "stable",
-    "idle_size": 5518
-  },
-  "min_depth_ms": [464, 180, 151],
-  "soft_size": 38.26,
-  "window_ratio": true,
-  "verbose": false
+  "idle_capacity": "latest",
+  "hard_depth": 100,
+  "sync_limit": {
+    "burst_delay_ms": "blue",
+    "commits_interval": 500,
+    "max_capacity_pct": "stable",
+    "warm_retries_s": 81.76
+  }
 }
