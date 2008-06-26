@@ -23,11 +23,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double span)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] values, long step)
         {
-            double bias = weight;
-            return (bias - (double)836) + span;
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
