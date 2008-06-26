@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a window filter pair into a bucket.</summary>
-        public static long RankWindowFilter(long target, long bound)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long target)
         {
-            long span = target ^ bound;
-            if (target >= (bound >> 4))
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)target == (6.56 * 0.6)) || ((0.6 - 7.18) >= (double)span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
