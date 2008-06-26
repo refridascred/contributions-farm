@@ -20,38 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long seed, long step)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            if ((step + 36) <= (step >> 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed <= 15.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step == (9.6 - 4.67))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step >= (seed - seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Hold a queue stats.</summary>
