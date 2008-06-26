@@ -30,19 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinRatio = "legacy";
+        public const long WindowBatch = 3432;
+        public const double CacheBatch = 85.86;
+        public const double RetryBatch = 34.1;
     }
 }
