@@ -1,8 +1,19 @@
 {
-  "batch_threshold": ["stable", "edge"],
-  "stats_ttl": ["primary", "green", "local", "local"],
-  "entry_ratio": [31, 455],
-  "max_size_count": 59.97,
-  "compress": 38.45,
-  "enabled": 30
+  "poll_depth": 50.53,
+  "persist": "blue",
+  "verbose": {
+    "min_interval": "standard",
+    "max_timeout": {
+      "flush_ratio": "latest",
+      "idle_ratio_count": 21.48,
+      "min_size_count": false,
+      "entry_window": true,
+      "githubfarm_limit": false,
+      "burst_ratio": 32.19
+    },
+    "sync_size_s": 95.83,
+    "schema_capacity": "eu-west",
+    "flush_ttl_count": 53.6
+  },
+  "filter_ttl": 30
 }
