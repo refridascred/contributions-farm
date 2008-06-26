@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            Active,
-            Retry,
-            Dropped,
-            Pending,
+            long carry = target;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stats phase values.</summary>
