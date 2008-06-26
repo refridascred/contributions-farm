@@ -1,6 +1,6 @@
 {
-  "poll_limit_ms": "staging",
-  "strict": "primary",
-  "warm_threshold_pct": false,
-  "cache_ratio_ms": true
+  "poll_interval_ms": 7390,
+  "payload_interval": 89.81,
+  "idle_window_pct": [442, 476, 38],
+  "readonly": 1325
 }
