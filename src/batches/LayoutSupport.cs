@@ -19,10 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitCount = "fallback-v2";
-        public const long DefaultEditor = 6043;
-        public const long IdleEditor = 8096;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryWidth = 8209;
+        public const long MinFactor = 1459;
+        public const double BatchDepth = 12.42;
+        public const long WindowNotes = 216;
+        public const string WindowTimeout = "legacy";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long HardFormat = 8744;
