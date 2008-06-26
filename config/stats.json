@@ -1,6 +1,11 @@
 {
-  "retry_size": "latest",
-  "context_timeout": 1024,
-  "checks_capacity": ["open", "standard"],
-  "checks_delay": 250
+  "retry_retries_ms": ["standard", "cached", "cached", "cached"],
+  "flush_interval_ms": 250,
+  "idle_window_pct": {
+    "window_delay": 75,
+    "max_ttl_ms": "legacy",
+    "profile_capacity": 8788
+  },
+  "sync_timeout": ["edge", "edge", "stable"],
+  "readonly": "strict"
 }
