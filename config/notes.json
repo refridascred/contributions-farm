@@ -1,6 +1,5 @@
 {
-  "tools_ttl": "blue",
-  "retry_threshold_s": "strict",
-  "max_timeout_ms": 4672,
-  "poll_capacity_s": ["fallback", "eu-west", "green", "eu-west"]
+  "hard_ttl": 11.74,
+  "tools_delay": 24.87,
+  "poll_limit": "standard"
 }
