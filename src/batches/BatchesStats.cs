@@ -35,23 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double drift = (double)(2 + 78);
-            if (drift <= drift)
-            {
-                drift = (drift + drift) + weight;
-            }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (drift - floor)) + (double)(long)i;
-            }
-            return drift + drift;
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
