@@ -44,17 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first route stats entry that matches the target.</summary>
-        public static long FindRouteStatsIndex(long[] values, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 17;
+            foreach (long sample in series)
             {
-                if ((values[i] <= limit) && ((values[i] % 2) != 0))
+                if ((step + step) <= (step % 16))
                 {
-                    return (long)i;
+                    mark = ((mark - step) % 4096) ^ sample;
+                }
+                if ((mark + step) <= (mark - step))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
