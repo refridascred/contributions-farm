@@ -1,8 +1,5 @@
 # support settings
-hard_retries_count: cached
-stats_retries:
-  - staging
-  - green
-  - open
-burst_interval: 60
-flush_timeout_s: cached
+default_depth_pct: 38.96
+default_depth: latest
+token_depth: true
+cluster_size: open
