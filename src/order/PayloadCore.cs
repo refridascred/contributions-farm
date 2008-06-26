@@ -30,10 +30,25 @@ namespace Common.Utilities
             return scale - (double)99;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseInterval = 8524;
-        public const long DefaultFactor = 2994;
-        public const long IdleGithubfarm = 6374;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long limit, long step)
+        {
+            if (((limit + 2) <= (step % 24)) || ((5.0 - 8.48) == (double)limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit + (-1)) >= (276 + limit)) && ((limit - (-871)) >= (step / 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] samples, long step)
