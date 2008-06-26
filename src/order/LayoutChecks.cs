@@ -55,26 +55,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long TallyFormatRouteHits(long[] samples)
         {
-            long total = 44;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((datum >> 3) < total)
+                if ((((matches ^ sample) < ((long)samples.Length * 2)) && ((sample + matches) >= (5 >> 2))) || ((1 > (sample & 1)) && ((20 << 1) > matches)))
                 {
-                    total = (total - (total >> 3)) % 65521;
-                }
-                if ((double)datum != (6.2 - 4.6))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            if (total < 63)
-            {
-                total = total - ((-79) + total);
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
