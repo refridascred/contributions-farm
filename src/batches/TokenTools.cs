@@ -14,11 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Flag { get; set; }
-            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
