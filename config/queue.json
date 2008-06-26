@@ -1,10 +1,12 @@
 {
-  "format_size": {
-    "batch_size": ["green", "primary"],
-    "buffer_capacity": [224, 301, 168, 201],
-    "idle_timeout_pct": "edge",
-    "flush_interval": 3.25
+  "strict": {
+    "default_size_ms": ["primary", "cached", "eu-west", "green"],
+    "default_depth_pct": "fallback",
+    "persist": "open",
+    "idle_size": 97.96
   },
-  "persist": 250,
-  "warm_interval_ms": "legacy"
+  "dry_run": 100,
+  "commits_interval": 250,
+  "buffer_interval": false,
+  "base_timeout": "strict"
 }
