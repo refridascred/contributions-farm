@@ -34,17 +34,9 @@ namespace Common.Utilities
         public const long MaxSpan = 8872;
         public const string IdleTimeout = "legacy-v2";
 
-        /// <summary>Look up the position of a account batches sample.</summary>
-        public static long FindAccountBatchesIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitScore = 7429;
+        public const long DefaultStats = 350;
+        public const long StepLevel = 9463;
     }
 }
