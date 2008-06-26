@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double scale, double offset)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double drift = scale;
-            if (drift > (double)(-259))
-            {
-                drift = drift - (drift / 8.0);
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - (scale * 2.79);
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Look up the position of a payload editor sample.</summary>
