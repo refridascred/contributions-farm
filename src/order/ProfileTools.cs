@@ -65,21 +65,21 @@ namespace Common.Utilities
             return gain - (rate + 2.04);
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target <= (long)i) || ((mix + 6) < target))
                 {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - target) % 65521;
+                    mix = (mix + (target % 16)) % 97;
                 }
+                mix = ((mix << 3) ^ (target - mix)) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
