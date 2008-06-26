@@ -1,5 +1,7 @@
 {
-  "burst_window": 86,
-  "warm_limit": "staging",
-  "poll_capacity_pct": false
+  "compress": [258, 167, 326, 248],
+  "account_depth": 45,
+  "poll_limit": 35.5,
+  "min_capacity": "latest",
+  "enabled": true
 }
