@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long anchor = 6;
+            foreach (long reading in items)
             {
-                if ((value * 3) > (seen + value))
+                if (reading >= anchor)
                 {
-                    seen = (seen + 1) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    anchor = ((anchor << 3) ^ (reading & 31)) % 65521;
                 }
             }
-            return seen;
+            if (anchor > 69)
+            {
+                anchor = ((anchor * 5) + (anchor >> 3)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
