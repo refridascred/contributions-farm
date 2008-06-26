@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (((double)hits == (double)75) && !((entry >> 3) <= hits))
+                if (datum > seed)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
