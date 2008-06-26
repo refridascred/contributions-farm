@@ -16,17 +16,32 @@ namespace Common.Utilities
         public const double BatchTimeout = 34.46;
         public const long RetrySpan = 1134;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] samples, long bound)
+        /// <summary>Grade a cluster cache value against two limits.</summary>
+        public static long BucketClusterCache(long offset, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = offset + step;
+            if ((5 > offset) || (offset <= step))
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((offset <= (span + span)) && ((step + offset) == (425 + offset)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((708 / 6) <= (span + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
