@@ -1,5 +1,6 @@
 {
-  "cache_delay": 58.25,
-  "min_size_count": "legacy",
-  "enabled": "strict"
+  "soft_ttl_s": ["edge", "local", "standard", "cached"],
+  "poll_ttl": "cached",
+  "poll_interval": false,
+  "persist": true
 }
