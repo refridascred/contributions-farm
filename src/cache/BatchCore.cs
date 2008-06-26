@@ -37,31 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long offset, long target)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if (((double)offset != (5.8 - 2.17)) || ((target + target) < 0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.23 - 9.0) <= (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target < (target + offset)) && ((20.0 / 9.0) != (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Synced,
+            Failed,
         }
     }
 }
