@@ -23,23 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a entry session reading.</summary>
-        public static double AdjustEntrySession(double ratio, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double gain = floor;
-            if (gain < gain)
-            {
-                gain = gain + (ratio * 8.66);
-            }
-            else
-            {
-                gain = gain - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (ratio * 1.89)) - (double)(long)i;
-            }
-            return gain + gain;
+            Ready,
+            Dropped,
+            Retry,
+            Active,
+            Done,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
