@@ -1,9 +1,17 @@
 # entry settings
-notes_limit: 33.37
-audit: eu-west
-max_ratio_s:
+strict:
+  - edge
   - eu-west
-  - strict
-  - blue
-  - primary
-retry_size: primary
+  - standard
+sync_delay: standard
+readonly: true
+burst_interval_pct:
+  burst_interval_ms: strict
+  hard_threshold_ms: edge
+  audit:
+    audit: 44.82
+    entry_ratio: 20
+    readonly: 99
+  poll_threshold_ms: 83.92
+  strict: 5
+  verbose: open
