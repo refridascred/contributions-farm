@@ -50,11 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            double rate = (double)((-353) - 68);
+            if (rate >= bias)
+            {
+                rate = rate + 6.48;
+            }
+            return rate + floor;
         }
     }
 }
