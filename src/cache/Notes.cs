@@ -50,13 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] levels, long offset)
         {
-            Done,
-            Stale,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)seen <= (7.57 / 5.0)) || ((offset % 12) > cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
