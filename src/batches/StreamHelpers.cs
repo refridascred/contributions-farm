@@ -54,16 +54,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch githubfarm samples.</summary>
-        public static long WeighBatchGithubfarm(long[] values)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long anchor = 92;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 2) + sample) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
