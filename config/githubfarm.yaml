@@ -1,9 +1,18 @@
 # githubfarm settings
-soft_interval_ms: 1024
-account_ratio:
-  - fallback
-  - blue
-  - cached
-burst_size: 4042
-default_depth: 30.92
-schema_ratio: false
+enabled: 73.14
+idle_size_pct: legacy
+batch_retries_count: 0.88
+poll_ratio:
+  sync_size_count: 250
+  cache_window_ms: 89.14
+  burst_interval:
+    hard_limit: staging
+    default_ratio: 4892
+    warm_timeout_ms: false
+    cache_size_s: strict
+  contributi_window:
+    - latest
+    - eu-west
+    - eu-west
+    - blue
+  window_ratio: true
