@@ -46,19 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double weight, double floor)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            double weight2 = weight / 3.0;
-            if (weight2 >= (floor - floor))
-            {
-                weight2 = weight2 - weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (weight - 0.2);
+            public bool Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
