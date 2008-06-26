@@ -43,13 +43,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Pending,
-            New,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 97.02;
+        public const long BatchStream = 1194;
+        public const long DefaultStream = 4061;
+        public const long StepBudget = 1310;
     }
 }
