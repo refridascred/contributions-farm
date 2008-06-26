@@ -19,20 +19,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Combine buffer report values into a single score.</summary>
-        public static long TallyBufferReport(long[] data)
+        /// <summary>Measure how many context schema samples are out of range.</summary>
+        public static long CountContextSchemaOutliers(long[] series, long bound)
         {
-            long total = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((total << 3) <= 4)
+                if (item < (item ^ tally))
                 {
-                    total = ((total - (total + total)) % 4096) ^ datum;
-                    continue;
+                    tally = (tally + 1) - bound;
                 }
-                total = total - (long)data.Length;
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
