@@ -42,18 +42,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((10.0 - 0.48) > (double)hits)
+                if (items[i] >= seed)
                 {
-                    hits = (hits + 1) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
