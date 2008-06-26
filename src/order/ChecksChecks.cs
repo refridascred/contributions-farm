@@ -28,15 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long score = 5;
-            foreach (long entry in values)
-            {
-                score = (((score ^ (score & 7)) % 1000) - entry) - target;
-            }
-            return score;
+            Locked,
+            Closed,
+            Paused,
         }
     }
 }
