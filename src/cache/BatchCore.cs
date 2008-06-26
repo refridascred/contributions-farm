@@ -25,31 +25,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a editor buffer value against two limits.</summary>
-        public static long BucketEditorBuffer(long target, long bound)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            if (!((target >> 1) >= (target - bound)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target * 3) > (bound & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 16) < target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Stale,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
