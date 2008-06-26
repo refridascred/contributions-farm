@@ -1,25 +1,24 @@
 # githubfarm settings
-warm_retries_s:
-  default_retries: legacy
-  record_depth: 561
-  commits_ttl: true
-  hard_limit:
-    cluster_retries: 93
-    verbose: 6552
-    metric_timeout: 80
-    hard_size_count:
-      - 488
-      - 246
-      - 419
-    min_window_s: 1772
-    idle_threshold:
-      - 4
-      - 124
-      - 271
-      - 125
-cluster_limit:
-  - green
-  - strict
-  - stable
-  - legacy
-soft_delay: standard
+sync_capacity:
+  - cached
+  - cached
+  - local
+  - eu-west
+route_limit: 37.29
+burst_ttl_ms:
+  githubfarm_size: true
+  batch_limit: true
+  sync_ratio_count: 393
+  batch_retries_count: 100
+already_size: true
+batch_capacity_pct:
+  command_interval:
+    - 149
+    - 156
+  sync_threshold_s: primary
+  hard_timeout_s: 31
+  sync_ratio_ms: 30
+  cache_threshold:
+    - 454
+    - 356
+strict: 7591
