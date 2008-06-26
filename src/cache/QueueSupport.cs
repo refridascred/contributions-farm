@@ -40,22 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] levels, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mix = 30;
+            foreach (long reading in readings)
             {
-                if ((double)tally != (8.0 * 2.2))
+                if ((reading & 31) <= (mix + reading))
                 {
-                    tally = ((tally + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = ((mix * 4) + mix) % 1000;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
