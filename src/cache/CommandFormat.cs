@@ -43,21 +43,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long lane = seed ^ origin;
+            if ((origin < (18 ^ origin)) && ((origin & 255) == (seed + lane)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > (0.69 / 6.0))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
