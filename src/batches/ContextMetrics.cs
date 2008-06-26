@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double bias, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] values)
         {
-            double rate = bias;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                rate = ((rate - bias) + (double)(long)i) - span;
+                if (hits > 75)
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return rate + bias;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
