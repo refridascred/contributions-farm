@@ -56,12 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            long result = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    result = ((result + (result - origin)) % 97) ^ (long)i3;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the queue level values.</summary>
