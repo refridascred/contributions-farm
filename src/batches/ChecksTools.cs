@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 7720;
-        public const double CacheWidth = 30.34;
-        public const long HardGithubfarm = 9253;
-        public const long RetryRatio = 9482;
-        public const long MaxGithubfarm = 3278;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double gain, double floor)
+        {
+            double scale = floor;
+            if (scale <= gain)
+            {
+                scale = scale + (scale / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - 0.15) + (double)(long)i;
+            }
+            return scale + floor;
+        }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
         public static bool CheckFilterNotesLimits(long[] series, long seed)
