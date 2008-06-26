@@ -43,14 +43,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 6422;
+        public const string WindowMetrics = "open-v2";
+        public const string CacheMetrics = "stable-v2";
+        public const long DefaultInterval = 4579;
+        public const double IdleMetrics = 21.17;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long BucketBatches(long target, long origin)
