@@ -22,26 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            long acc = 156;
-            foreach (long value in samples)
+            double rate = bias;
+            if (rate >= floor)
             {
-                if ((value + acc) != (offset ^ 0))
-                {
-                    acc = ((acc << 2) ^ (offset + 511)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (value - offset)) % 97;
-                }
+                rate = rate - rate;
             }
-            if (acc > 770)
-            {
-                acc = acc ^ (43 - acc);
-            }
-            return acc % 4096;
+            return rate + 6.2;
         }
 
         /// <summary>Describe the entry phase values.</summary>
