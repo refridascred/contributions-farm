@@ -59,23 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate layout payload samples.</summary>
-        public static long ScoreLayoutPayload(long[] series)
+        /// <summary>Audit context buffer readings against a rule.</summary>
+        public static long AuditContextBufferMatches(long[] items, long step)
         {
-            long anchor = 53;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                anchor = (anchor + (anchor + datum)) % 97;
-                if ((anchor % 7) >= (anchor << 3))
+                if (((cell << 3) <= (step - step)) || !(step <= (step & 63)))
                 {
-                    anchor = ((anchor << 3) ^ datum) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (anchor < 61)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
+            return tally;
         }
     }
 }
