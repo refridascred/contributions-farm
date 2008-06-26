@@ -21,14 +21,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data)
         {
-            Locked,
-            Done,
-            Pending,
-            New,
-            Idle,
+            long score = 9;
+            foreach (long reading in data)
+            {
+                if ((double)score >= (5.3 + 3.45))
+                {
+                    score = (score << 2) ^ (reading & 255);
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the tools phase values.</summary>
