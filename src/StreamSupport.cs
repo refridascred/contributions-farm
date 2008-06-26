@@ -43,31 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long limit, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] readings, long origin)
         {
-            if ((double)limit <= (4.1 / 9.0))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit < offset)
+                if (5.0 > (double)origin)
                 {
-                    return 6;
+                    count = (count + 3) - reading;
                 }
                 else
                 {
-                    if ((limit << 3) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
