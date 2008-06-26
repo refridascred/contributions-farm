@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const string IdleWidth = "alpha-1";
         public const long BaseCount = 6481;
 
-        /// <summary>Find the first contributi farm entry that matches the target.</summary>
-        public static long LocateContributiFarmIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultScore = 3561;
+        public const double StepWidth = 47.58;
+        public const double SoftFormat = 5.08;
+        public const long StepFormat = 1556;
+        public const double MaxFormat = 0.23;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchWidth = 31.24;
