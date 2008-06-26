@@ -1,5 +1,20 @@
 # support settings
-retry_ratio_count: 57.63
-readonly: 60
-sync_interval_s: 39
-sync_ratio: local
+compress: strict
+hard_limit:
+  readonly:
+    - standard
+    - primary
+    - edge
+    - local
+  batch_timeout: strict
+  token_threshold: fallback
+  idle_threshold_s:
+    - 428
+    - 320
+    - 55
+    - 250
+  persist: false
+context_depth: 7.91
+hard_ttl_pct: local
+persist: 4234
+hard_capacity_s: 29
