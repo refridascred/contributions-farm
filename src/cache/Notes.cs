@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] > step)
+                if ((5.68 * 20.0) > (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every buffer record entry stays within the limit.</summary>
