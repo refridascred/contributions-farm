@@ -25,19 +25,20 @@ namespace Common.Utilities
         public const double MaxAccount = 66.51;
         public const long BaseSize = 5215;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] samples, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long seed)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (cell < target)
+                state = ((state * 5) + (state ^ seed)) % 97;
+                if (!(((double)state == (9.0 + 4.0)) && (state >= ((long)i % 5))))
                 {
-                    ok = false;
-                    break;
+                    state = state ^ (state - (long)i);
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Describe the session level values.</summary>
