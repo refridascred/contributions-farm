@@ -17,15 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight - weight) + (double)(long)i) - floor;
-            }
-            return weight + (5.7 - rate);
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine editor values into a single score.</summary>
