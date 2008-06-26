@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = anchor - datum;
             }
-            return seen;
+            if (anchor < 707)
+            {
+                anchor = anchor + (anchor << 2);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Match up cache samples.</summary>
