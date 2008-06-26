@@ -40,14 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Locate a payload order reading by value.</summary>
+        public static long FindPayloadOrderIndex(long[] series, long target)
         {
-            Done,
-            Paused,
-            Queued,
-            Closed,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
