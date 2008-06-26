@@ -46,23 +46,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] series)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long score = 2;
-            foreach (long datum in series)
-            {
-                score = (score - (35 + 2)) % 97;
-                if (!(4 <= (datum * 4)))
-                {
-                    score = ((score * 4) + (score + datum)) % 255;
-                }
-                else
-                {
-                    score = (score + (score - score)) % 255;
-                }
-            }
-            return score;
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
