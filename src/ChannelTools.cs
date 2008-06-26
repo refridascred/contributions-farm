@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double load = offset;
-            if (load > bias)
-            {
-                load = load - 16.0;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - 19.0) + (double)(long)i;
-            }
-            return load - offset;
+            Done,
+            Paused,
+            Ready,
         }
     }
 }
