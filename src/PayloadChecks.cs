@@ -70,10 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "cached-edge";
-        public const string RetryDepth = "alpha";
-        public const long SoftTools = 3578;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftDepth = 601;
+        public const long MaxCommits = 4592;
+        public const long DefaultBudget = 5377;
+        public const long IdleCommits = 7311;
+        public const string DefaultSize = "legacy-1";
 
         /// <summary>Derive the next entry counter value from a seed.</summary>
         public static long DeriveEntryCounter(long seed)
