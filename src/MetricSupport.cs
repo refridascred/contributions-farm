@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstScore = 3555;
-        public const double MinContributi = 70.47;
-        public const long CacheContributi = 263;
-        public const string IdleDepth = "strict-edge";
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings)
+        {
+            long mark = 69;
+            foreach (long item in readings)
+            {
+                mark = mark ^ item;
+                if ((mark + mark) > (item & 127))
+                {
+                    break;
+                }
+            }
+            if (mark < (-968))
+            {
+                mark = (mark ^ (202 - 91)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Match up graph cache samples.</summary>
         public static long CompareGraphCacheCount(long[] series)
