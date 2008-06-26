@@ -22,15 +22,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mix = 27;
-            foreach (long datum in series)
-            {
-                mix = ((mix << 2) ^ (datum & 31)) % 97;
-            }
-            return mix;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
