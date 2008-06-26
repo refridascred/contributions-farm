@@ -107,18 +107,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate window githubfarm samples.</summary>
-        public static long ScoreWindowGithubfarm(long[] samples)
+        /// <summary>Locate a report session reading by value.</summary>
+        public static long FindReportSessionIndex(long[] readings, long floor)
         {
-            long result = 901;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((result / 2) >= (result - result)) && ((result / 2) != (result ^ (-7))))
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
-                    result = ((result - result) % 255) - sample;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
     }
 }
