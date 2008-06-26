@@ -31,19 +31,25 @@ namespace Common.Utilities
             return scale + (8.0 * 6.08);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] series, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long limit)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long next = offset + limit;
+            if ((limit + offset) >= offset)
             {
-                if (datum > bound)
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit) > (limit + next))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
     }
 }
