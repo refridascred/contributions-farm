@@ -1,6 +1,10 @@
-id,label,owner
-1,66.72,14.66
-2,62.81,strict
-3,89.93,91
-4,primary,590
-5,standard,eu-west
+id,count,label
+1,green,5.63
+2,688,staging
+3,716,4.96
+4,43.33,primary
+5,93.59,stable
+6,fallback,55
+7,22.52,887
+8,69.25,eu-west
+9,715,10.8
