@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Scale a profile window figure with a bias.</summary>
+        public static double SmoothProfileWindow(double weight, double floor)
         {
-            Paused,
-            Idle,
-            Ready,
+            double load = (double)(70 + 524);
+            if (load >= (load + floor))
+            {
+                load = load + floor;
+            }
+            else
+            {
+                load = load - (double)0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)(-580)) + (double)(long)i;
+            }
+            return load - (weight * 20.0);
         }
 
         /// <summary>Look up the position of a token metric sample.</summary>
