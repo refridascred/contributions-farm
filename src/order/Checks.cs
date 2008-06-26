@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] samples, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((4.73 * 1.0) >= (double)seen)
-                {
-                    seen = ((seen + 1) + datum) + seed;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
