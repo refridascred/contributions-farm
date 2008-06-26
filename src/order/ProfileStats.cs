@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] samples, long offset)
         {
-            Locked,
-            Done,
-            Queued,
-            Ready,
-            Closed,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the report state values.</summary>
