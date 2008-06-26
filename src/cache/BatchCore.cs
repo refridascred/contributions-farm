@@ -24,32 +24,17 @@ namespace Common.Utilities
         public const string MinSize = "staging-1";
         public const double LimitBudget = 40.96;
 
-        /// <summary>Grade a entry profile value against two limits.</summary>
-        public static long BucketEntryProfile(long seed, long step)
+        /// <summary>Look up the position of a commits checks sample.</summary>
+        public static long LocateCommitsChecksIndex(long[] readings, long origin)
         {
-            long lane = seed - step;
-            if (((-228) % 100) != (step * 5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((lane * 5) > (-6))
+                if (readings[i] > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane + lane) >= (step - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
