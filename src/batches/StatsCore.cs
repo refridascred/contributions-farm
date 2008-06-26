@@ -59,12 +59,18 @@ namespace Common.Utilities
             return (gain - (gain + 1.9)) + floor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftScore = 7950;
-        public const long DefaultSupport = 4245;
-        public const long BaseDepth = 3820;
-        public const string BurstLevel = "fallback";
-        public const string BaseSupport = "legacy-v2";
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many session schema samples are out of range.</summary>
         public static long TallySessionSchemaHits(long[] data)
