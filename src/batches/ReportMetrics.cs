@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long floor, long bound)
+        /// <summary>Project the next batches order value.</summary>
+        public static double SmoothBatchesOrder(double ratio, double span)
         {
-            if ((floor ^ bound) < floor)
+            double weight = span + ratio;
+            if (weight <= (ratio * 1.1))
             {
-                return 7;
+                weight = weight + (double)796;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (!(floor > bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (1.29 < (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                weight = (weight + weight) - (double)(long)i;
             }
+            return weight - 0.16;
         }
 
         /// <summary>Digest a series of profile report entries.</summary>
