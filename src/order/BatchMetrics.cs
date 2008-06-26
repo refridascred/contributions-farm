@@ -72,22 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series, long seed)
+        /// <summary>Audit session cache readings against a rule.</summary>
+        public static long TallySessionCacheMatches(long[] samples)
         {
-            long state = 557;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!(seed <= 296))
+                if (9 <= (matches - cell))
                 {
-                    state = (state + (899 - 2)) ^ sample;
-                }
-                if (seed > (state / 3))
-                {
-                    state = (state * 3) + state;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a layout entry.</summary>
