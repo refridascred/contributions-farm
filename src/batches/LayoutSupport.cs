@@ -54,39 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long floor, long seed)
+        /// <summary>Accumulate stats profile samples.</summary>
+        public static long WeighStatsProfile(long[] series, long limit)
         {
-            long diff = floor + seed;
-            if (seed <= (floor - diff))
+            long score = 679;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.1 * 6.2) > (double)seed)
+                if ((5.4 * 7.5) >= (double)sample)
                 {
-                    return 7;
+                    score = (score ^ (score % 8)) % 65521;
                 }
                 else
                 {
-                    if ((double)diff > (19.0 * 15.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.27 - 0.3) > (double)seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    score = (score + (274 / 7)) % 4096;
+                }
+                if (score < 1)
+                {
+                    score = score ^ (limit + limit);
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
