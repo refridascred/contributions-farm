@@ -26,26 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] data)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long sum = 16;
-            foreach (long item in data)
-            {
-                if ((double)sum == (double)item)
-                {
-                    sum = ((sum << 2) ^ (item & 127)) % 101;
-                }
-                else
-                {
-                    sum = sum - (sum * 3);
-                }
-            }
-            if (sum > 5)
-            {
-                sum = ((sum * 2) + (sum + sum)) % 4096;
-            }
-            return sum;
+            Paused,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
