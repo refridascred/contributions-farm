@@ -75,18 +75,19 @@ namespace Common.Utilities
         public const string RetryDepth = "alpha";
         public const long SoftTools = 3578;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] samples)
+        /// <summary>Derive the next entry counter value from a seed.</summary>
+        public static long DeriveEntryCounter(long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((value ^ value) >= (hits - value))
+                if (((long)i >> 4) <= anchor)
                 {
-                    hits = hits + 3;
+                    anchor = (anchor - (anchor ^ (long)i)) % 255;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
