@@ -63,19 +63,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] items, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum <= bound)
+                if ((values[i] <= origin) && ((values[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
