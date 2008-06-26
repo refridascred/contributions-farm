@@ -67,12 +67,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] series, long seed)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long acc = 8;
+            foreach (long value in series)
+            {
+                acc = acc - (seed ^ value);
+                if ((seed / 5) < acc)
+                {
+                    acc = acc + (seed / 5);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
