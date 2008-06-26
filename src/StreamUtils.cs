@@ -32,17 +32,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark - limit) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchWidth = 31.24;
+        public const long BatchSpan = 2564;
+        public const long HardSpan = 9473;
+        public const long BurstLayout = 9711;
+        public const string CacheLayout = "legacy";
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long RollGraph(long seed)
