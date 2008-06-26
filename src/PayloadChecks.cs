@@ -23,21 +23,13 @@ namespace Common.Utilities
         public const double IdleLayout = 56.52;
         public const long LimitFactor = 6163;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
