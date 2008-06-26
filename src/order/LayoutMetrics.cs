@@ -32,21 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Match up window token samples.</summary>
+        public static long MatchWindowTokenCount(long[] readings)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 7)
+                    if ((readings[i] ^ readings[j]) < 3)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
