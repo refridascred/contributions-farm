@@ -1,10 +1,6 @@
-id,score,token,label
-1,74.38,37.0,cached
-2,154,97.12,30.89
-3,672,eu-west,45
-4,18.08,primary,9.99
-5,blue,33.67,98
-6,482,116,179
-7,latest,85.36,local
-8,green,74.09,731
-9,legacy,460,98.0
+id,ratio,score
+1,19.32,290
+2,latest,local
+3,913,primary
+4,staging,standard
+5,56,271
