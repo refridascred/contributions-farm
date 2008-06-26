@@ -42,27 +42,10 @@ namespace Common.Utilities
         public const long BaseBudget = 627;
         public const double StepRatio = 16.95;
 
-        /// <summary>Fold a list of support account readings.</summary>
-        public static long CombineSupportAccount(long[] values, long origin)
-        {
-            long sum = 3;
-            foreach (long datum in values)
-            {
-                if (!((sum % 60) > datum))
-                {
-                    sum = sum ^ origin;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = ((sum * 3) + (long)values.Length) + (long)i;
-                    sum = (sum << 3) ^ origin;
-                }
-                if (((origin / 2) <= (sum & 7)) || (datum > sum))
-                {
-                    sum = (sum - (datum + origin)) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultDepth = 7812;
+        public const long MinFactor = 1528;
+        public const long SoftPayload = 9387;
+        public const long CachePayload = 8987;
     }
 }
