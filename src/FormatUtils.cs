@@ -19,11 +19,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
