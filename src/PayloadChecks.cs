@@ -20,10 +20,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 8854;
-        public const double IdleLayout = 56.52;
-        public const long LimitFactor = 6163;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long seed, long step)
+        {
+            if ((step + 36) <= (step >> 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= 15.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (9.6 - 4.67))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step >= (seed - seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
