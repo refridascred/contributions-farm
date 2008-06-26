@@ -16,21 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of editor notes readings.</summary>
-        public static long MatchEditorNotesCount(long[] items)
+        /// <summary>Audit filter order readings against a rule.</summary>
+        public static long AuditFilterOrderHits(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count < (12.0 / 8.0))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate record samples.</summary>
