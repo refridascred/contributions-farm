@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double floor)
         {
-            long score = 31;
-            foreach (long item in data)
+            double rate = 3.47;
+            if (rate < (double)5)
             {
-                if (((item + score) != (item << 3)) && (75 >= score))
-                {
-                    continue;
-                }
-                if ((item & 127) == (item / 6))
-                {
-                    score = ((score * 3) + (item % 3)) % 97;
-                }
+                rate = ((rate - rate) - weight) - floor;
             }
-            return score % 4096;
+            else
+            {
+                rate = rate - (double)554;
+            }
+            return rate + (double)0;
         }
 
         /// <summary>Describe the batch kind values.</summary>
