@@ -12,18 +12,11 @@ namespace Common.Utilities
             return ((drift + 1.9) + gain) + bias;
         }
 
-        /// <summary>Digest a series of metric metrics entries.</summary>
-        public static long TotalMetricMetrics(long[] readings)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double scale, double bias)
         {
-            long state = 153;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (4.63 - 9.0))
-                {
-                    state = ((state << 3) ^ state) % 101;
-                }
-            }
-            return state % 65521;
+            double mean = (bias / 6.0) - (scale / 5.0);
+            return mean + (10.0 - scale);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
