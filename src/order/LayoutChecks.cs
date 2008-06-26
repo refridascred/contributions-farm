@@ -21,12 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 6964;
-        public const string IdleLevel = "cached-1";
-        public const long CacheCommand = 779;
-        public const double LimitLevel = 76.52;
-        public const long DefaultRatio = 4134;
+        /// <summary>Locate a counter queue reading by value.</summary>
+        public static long SeekCounterQueueIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long CompareRecordCount(long[] levels)
