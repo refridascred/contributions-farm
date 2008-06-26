@@ -23,16 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double ratio, double span)
-        {
-            double scale = ratio;
-            if (scale <= (double)104)
-            {
-                scale = scale + span;
-            }
-            return scale + (ratio * 7.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitRatio = 3203;
+        public const long WindowNotes = 7613;
+        public const double CacheSpan = 43.34;
+        public const long WindowFactor = 5225;
+        public const long IdleNotes = 2149;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long DeriveGraph(long limit)
