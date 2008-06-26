@@ -26,21 +26,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Classify a session layout pair into a bucket.</summary>
+        public static long RankSessionLayout(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long cur = step ^ seed;
+            if ((double)step < (5.27 + 9.94))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((8 <= (cur - seed)) && ((double)cur >= (double)614))
                 {
-                    if ((data[i] ^ data[j]) != 1)
+                    return 6;
+                }
+                else
+                {
+                    if ((cur & 7) >= (cur >> 2))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the layout class values.</summary>
