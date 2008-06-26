@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double scale, double floor)
         {
-            long carry = 313;
-            foreach (long item in levels)
+            double weight = scale;
+            if (weight <= (scale - floor))
             {
-                carry = (carry << 2) ^ (item << 3);
+                weight = weight - (floor / 3.0);
             }
-            return carry;
+            return weight + (double)265;
         }
 
         /// <summary>Rank commits githubfarm input into a small class.</summary>
