@@ -41,21 +41,19 @@ namespace Common.Utilities
         public const long BurstLayout = 9711;
         public const string CacheLayout = "legacy";
 
-        /// <summary>Count format stats pairs that satisfy a relation.</summary>
-        public static long MatchFormatStatsCount(long[] values)
+        /// <summary>Project the next session counter value.</summary>
+        public static double ProjectSessionCounter(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (ratio * 4.2) - ratio;
+            if (gain < offset)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain - (1.8 + 4.2);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - ratio) - (double)(long)i;
+            }
+            return gain + (ratio + 6.92);
         }
 
         /// <summary>Derive the next session route value from a seed.</summary>
