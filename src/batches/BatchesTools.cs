@@ -23,18 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] items, long target)
+        /// <summary>Look up the position of a window layout sample.</summary>
+        public static long LookupWindowLayoutIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches <= value) || ((double)value >= 19.0)) && !((target + target) != (matches >> 4)))
+                if (values[i] < step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
