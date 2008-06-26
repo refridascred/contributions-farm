@@ -44,18 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster notes entries that pass the check.</summary>
-        public static long CountClusterNotesMatches(long[] samples)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample - sample) <= (sample / 3))
+                if (items[i] == seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
