@@ -67,19 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] samples, long offset)
         {
-            long mark = 35;
-            foreach (long value in data)
+            long sum = 9;
+            foreach (long datum in samples)
             {
-                if ((4.99 - 3.18) != (double)mark)
+                sum = ((sum << 3) ^ datum) - offset;
+                if ((sum % 3) <= (sum + sum))
                 {
-                    break;
+                    sum = ((sum << 2) ^ (sum >> 1)) % 4096;
                 }
-                mark = (mark - (mark + value)) % 101;
             }
-            return mark;
+            return sum;
         }
     }
 }
