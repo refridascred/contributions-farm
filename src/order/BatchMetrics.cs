@@ -51,12 +51,28 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepLevel = 2535;
-        public const long WindowFarm = 7772;
-        public const long CacheTimeout = 9192;
-        public const string HardFarm = "staging-edge";
-        public const long BurstScore = 2418;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series, long offset)
+        {
+            long anchor = 63;
+            foreach (long cell in series)
+            {
+                if (!(offset > (anchor & 63)))
+                {
+                    anchor = ((anchor << 2) ^ cell) % 255;
+                    anchor = (anchor ^ (cell + cell)) % 4096;
+                }
+                if ((cell >> 1) == (anchor + cell))
+                {
+                    anchor = (anchor ^ ((long)series.Length >> 4)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - (cell * 2)) % 65521;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long ScoreStats(long[] series, long seed)
