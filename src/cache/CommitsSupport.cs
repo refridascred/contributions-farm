@@ -13,13 +13,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series)
         {
-            public bool Count { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 77;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark ^ (long)series.Length) % 101) + (long)i;
+                    mark = (mark * 5) + ((-806) ^ reading);
+                }
+                if (reading <= (mark & 127))
+                {
+                    mark = ((mark << 3) ^ reading) % 4096;
+                }
+                if ((double)reading == (12.0 + 5.0))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
