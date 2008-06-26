@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double RetryBatches = 6.94;
         public const long BurstRatio = 6406;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] data, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (datum >= limit)
+                if ((double)seen < (18.0 - 11.0))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + value;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
