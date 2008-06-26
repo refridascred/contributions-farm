@@ -39,18 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] values, long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally > (825 / 8))
-                {
-                    tally = ((tally + 3) ^ reading) + floor;
-                }
-            }
-            return tally;
+            Draft,
+            Synced,
+            Retry,
+            Stale,
         }
     }
 }
