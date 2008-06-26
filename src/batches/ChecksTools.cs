@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Classify a already payload pair into a bucket.</summary>
+        public static long BucketAlreadyPayload(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)origin != (double)step) && ((2.0 - 9.2) <= (double)origin))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin << 2) != (29 * 3))
                 {
-                    if ((data[i] + data[j]) > 13)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= 5.9)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
