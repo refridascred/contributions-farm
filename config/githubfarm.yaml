@@ -1,6 +1,9 @@
 # githubfarm settings
-compress: 1709
-soft_size_s: local
-layout_ratio: 57
-enabled: staging
-soft_threshold_count: false
+base_capacity: false
+readonly: local
+already_delay:
+  - open
+  - eu-west
+metrics_delay: false
+batch_limit: staging
+audit: 30
