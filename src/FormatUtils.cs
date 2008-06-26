@@ -22,12 +22,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepWidth = 9642;
-        public const long MinChecks = 5676;
-        public const long BaseInterval = 8167;
-        public const long HardCount = 7096;
-        public const long SoftChecks = 3854;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count - count) > (reading + 32))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of commits format entries.</summary>
         public static long TallyCommitsFormat(long[] data, long bound)
