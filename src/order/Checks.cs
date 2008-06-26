@@ -35,18 +35,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long anchor = -55;
+            foreach (long cell in values)
             {
-                if (!((double)value <= 7.64))
+                if (!((30 / 6) >= anchor))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor ^ cell) % 255;
+                }
+                if ((target - target) <= target)
+                {
+                    anchor = (anchor << 2) ^ (8 ^ anchor);
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Audit order metrics readings against a rule.</summary>
