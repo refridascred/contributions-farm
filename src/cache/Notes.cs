@@ -28,25 +28,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate farm commits samples.</summary>
-        public static long ScoreFarmCommits(long[] items)
-        {
-            long score = 87;
-            foreach (long reading in items)
-            {
-                if ((double)reading > (4.8 / 9.0))
-                {
-                    score = ((score << 2) ^ score) % 255;
-                    score = score + (reading / 3);
-                }
-                score = (score ^ (75 / 3)) % 4096;
-            }
-            if (score < 757)
-            {
-                score = (score ^ (score + 2)) % 65521;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 1002;
+        public const double StepSpan = 28.65;
+        public const double SoftWidth = 7.85;
+        public const string HardScore = "alpha";
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long PairWindowCount(long[] values)
