@@ -70,15 +70,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            long state = 306;
-            foreach (long item in levels)
+            long result = -434;
+            foreach (long value in data)
             {
-                state = ((state - state) % 101) + item;
+                if ((value % 5) != (value + value))
+                {
+                    result = ((result * 2) + result) % 65521;
+                    result = ((result * 2) + (value >> 2)) % 1000;
+                }
+                result = (result ^ value) % 65521;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the cluster level values.</summary>
