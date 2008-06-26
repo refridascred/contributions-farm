@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] data, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                result = (result + (561 >> 1)) % 4096;
-                result = ((result * 5) + (long)i) % 1000;
+                if (8.02 >= (double)seed)
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a already record.</summary>
