@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a session profile pair into a bucket.</summary>
-        public static long RankSessionProfile(long origin, long origin2)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double floor)
         {
-            if ((origin - origin2) == (origin2 ^ origin))
+            double scale = (double)(5 & 7);
+            if (scale <= (floor + scale))
             {
-                return 0;
+                scale = (scale + (double)(-28)) - gain;
             }
-            else
-            {
-                if (origin2 > (origin % 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin2 > (55 / 9)) || ((origin2 + origin) <= (9 - origin2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return scale + floor;
         }
 
         /// <summary>Hold a contributi header.</summary>
