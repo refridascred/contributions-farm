@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double gain, double floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long target, long step)
         {
-            double scale = floor;
-            if (scale <= gain)
+            long diff = target + step;
+            if (diff < (step / 8))
             {
-                scale = scale + (scale / 6.0);
+                return 1;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale - 0.15) + (double)(long)i;
+                if (5 <= (diff << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6.98 + 8.8) >= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return scale + floor;
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
