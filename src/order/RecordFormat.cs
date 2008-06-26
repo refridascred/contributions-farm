@@ -51,18 +51,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] data, long origin)
+        /// <summary>Grade a already payload value against two limits.</summary>
+        public static long RankAlreadyPayload(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            if (((seed * 4) < limit) || ((double)limit >= (double)seed))
             {
-                if (!((double)origin <= (double)reading))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (double)1)
                 {
-                    matches = matches + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((52 % 10) > (seed ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(((-91) + seed) <= (seed >> 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
