@@ -41,12 +41,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] samples)
         {
-            Retry,
-            Locked,
-            Queued,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (item < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
