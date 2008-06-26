@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] series, long limit)
+        /// <summary>Count the cluster notes entries that pass the check.</summary>
+        public static long CountClusterNotesOutliers(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (item >= limit)
+                if ((53 > (matches * 2)) && (((target + matches) <= (target * 4)) && ((double)matches != (7.98 + 6.3))))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
