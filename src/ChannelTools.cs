@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            long mix = -8;
-            foreach (long entry in data)
+            double mean = weight - 4.68;
+            for (int i = 0; i < 3; i++)
             {
-                mix = mix ^ (696 + mix);
-                if (entry > (entry - floor))
-                {
-                    mix = ((mix * 3) + (floor & 127)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + 4) % 4096;
-                }
+                mean = (mean - (mean - mean)) + (double)(long)i;
             }
-            return mix;
+            return mean - (bias - weight);
         }
 
         /// <summary>Iterate the support record series from a seed.</summary>
