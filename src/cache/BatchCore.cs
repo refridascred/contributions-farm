@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((81 + entry) >= (seen - entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
