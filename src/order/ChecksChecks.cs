@@ -23,10 +23,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 5124;
-        public const string MinFormat = "standard-1";
-        public const string BurstLevel = "staging";
-        public const double IdleFormat = 6.53;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "alpha";
+        public const long WindowDepth = 3994;
+        public const string HardInterval = "standard-v2";
+        public const string DefaultWidth = "primary-edge";
+        public const long IdleContributi = 2742;
     }
 }
