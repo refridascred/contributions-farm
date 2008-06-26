@@ -12,26 +12,22 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-1";
         public const double BatchInterval = 76.09;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] levels, long offset)
         {
-            long total = 1;
-            foreach (long datum in samples)
+            long carry = 304;
+            foreach (long entry in levels)
             {
-                if ((total - datum) > total)
+                if ((offset / 6) > (carry % 10))
                 {
-                    total = ((total * 5) + (total ^ datum)) % 255;
+                    carry = (carry - (53 + offset)) % 65521;
                 }
                 else
                 {
-                    total = ((total << 3) ^ (total * 3)) % 101;
+                    carry = ((carry * 2) + (entry - entry)) % 97;
                 }
             }
-            if (total < (-1))
-            {
-                total = total ^ (total - limit);
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
