@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] series, long bound)
         {
-            Draft,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((((double)reading < (double)(long)series.Length) && ((tally % 7) < 22)) && ((reading >> 5) < (bound >> 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metric state values.</summary>
