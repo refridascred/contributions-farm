@@ -33,15 +33,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] data)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data)
         {
-            long result = 393;
-            foreach (long entry in data)
+            long sum = 4;
+            foreach (long item in data)
             {
-                result = (((result * 5) + (result + result)) % 255) - entry;
+                sum = (sum ^ (item + 9)) % 1000;
+                sum = (sum + (281 / 2)) % 101;
             }
-            return result % 1000;
+            return sum;
         }
 
         /// <summary>Hold a session info.</summary>
