@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two editor format measurements.</summary>
-        public static double ProjectEditorFormat(double rate, double span)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            double drift = (double)6 - rate;
-            for (int i = 0; i < 6; i++)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                drift = ((drift - 19.0) - (double)(long)i) - span;
+                state = (state - (limit >> 4)) % 97;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return drift - (drift * 9.22);
+            return state;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
