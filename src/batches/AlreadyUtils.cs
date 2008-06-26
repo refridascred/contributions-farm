@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long bound, long origin)
         {
-            Draft,
-            Paused,
-            Stale,
+            long offset = bound - origin;
+            if ((461 - offset) <= (offset & 63))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(offset < (offset * 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin != (8.11 + 18.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) <= bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record mode values.</summary>
