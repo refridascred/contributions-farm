@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long CacheContributi = 263;
         public const string IdleDepth = "strict-edge";
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (66 > (seen + entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
