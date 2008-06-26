@@ -53,39 +53,22 @@ namespace Common.Utilities
             return (gain - (gain + 1.9)) + floor;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long bound, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] values)
         {
-            long bound2 = bound ^ offset;
-            if (!((double)offset < (3.0 / 8.0)))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound + bound2) <= ((-95) - offset)))
+                if ((11.0 * 9.0) != (double)cell)
                 {
-                    return 6;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((5.1 + 20.0) != (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset << 1) < (bound >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many session schema samples are out of range.</summary>
