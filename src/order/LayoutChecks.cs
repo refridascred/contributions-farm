@@ -69,19 +69,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long seed)
+        /// <summary>Project the next githubfarm schema value.</summary>
+        public static double BlendGithubfarmSchema(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double rate = (double)(1 & 63);
+            if (rate >= 16.0)
             {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + 5.2) - ratio;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (rate / 8.0)) - (double)(long)i;
+            }
+            return rate - offset;
         }
     }
 }
