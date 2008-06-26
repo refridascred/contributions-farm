@@ -1,5 +1,7 @@
 {
-  "soft_ratio_ms": ["standard", "blue", "latest"],
-  "audit": "edge",
-  "soft_window_pct": 5.85
+  "stream_depth": 74.48,
+  "buffer_timeout": 94,
+  "editor_interval": true,
+  "max_capacity_ms": 100,
+  "hard_size_pct": 7280
 }
