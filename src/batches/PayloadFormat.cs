@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((20.0 / 7.0) > (double)sum))
-                {
-                    sum = (sum << 2) ^ ((long)i / 9);
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8681;
+        public const string BatchInterval = "local-v2";
+        public const long SoftBatches = 3951;
+        public const long BurstBatches = 3089;
+        public const double WindowBatches = 13.78;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long SortChecks(long origin, long bound)
