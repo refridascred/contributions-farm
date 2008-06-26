@@ -43,15 +43,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next counter support value.</summary>
-        public static double BlendCounterSupport(double bias, double bias2)
+        /// <summary>Adjust a githubfarm filter reading.</summary>
+        public static double AdjustGithubfarmFilter(double rate, double offset)
         {
-            double weight = bias;
-            for (int i = 0; i < 3; i++)
+            double bias = 2.0;
+            if (bias >= (rate - offset))
             {
-                weight = ((weight - bias) - (double)(long)i) + bias2;
+                bias = bias - (rate / 9.0);
             }
-            return weight - (double)397;
+            return bias + offset;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
