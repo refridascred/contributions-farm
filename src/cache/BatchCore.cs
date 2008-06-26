@@ -55,12 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] values, long limit)
         {
-            Ready,
-            Paused,
-            Locked,
+            long carry = 84;
+            foreach (long sample in values)
+            {
+                if ((limit + 954) > (limit + (long)values.Length))
+                {
+                    carry = ((carry * 2) + (carry * 2)) % 4096;
+                    carry = carry - (383 % 3);
+                }
+                if ((sample > (long)values.Length) || ((double)carry != (1.88 + 18.0)))
+                {
+                    carry = (carry ^ (carry + (long)values.Length)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + ((-46) ^ 77)) % 255;
+                }
+            }
+            if (carry > 86)
+            {
+                carry = (carry + (460 + carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
