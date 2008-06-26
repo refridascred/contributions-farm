@@ -53,18 +53,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((long)series.Length + (-6)) >= (value - 879))
-                {
-                    count = count + 2;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
