@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long limit)
         {
-            double weight = (double)(53 ^ 759);
-            if (weight <= 0.94)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                weight = (weight + floor) + scale;
+                result = (result ^ 288) % 97;
+                result = (result * 4) + limit;
+                result = (result ^ limit) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return weight - (double)311;
+            return result;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
