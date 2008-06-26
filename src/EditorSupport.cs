@@ -84,19 +84,18 @@ namespace Common.Utilities
             return mean + (span - 17.0);
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueBounds(long[] data, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (reading < offset)
+                if ((value / 6) < tally)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
