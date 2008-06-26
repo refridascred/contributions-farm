@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long limit, long offset)
-        {
-            if ((offset - limit) <= (offset % 60))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + offset) > (limit + 55)) && (offset <= (limit + 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit >> 5) <= (limit + limit)) && ((1.1 - 5.88) >= (double)limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 61.5;
+        public const long StepWidth = 402;
+        public const double StepSpan = 52.49;
+        public const string WindowCommand = "primary-v2";
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
