@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] samples, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long carry = 39;
+            foreach (long value in items)
             {
-                if (cell != target)
+                if ((double)carry != (double)value)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry * 5) + (carry - value)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 4) + value) % 101;
                 }
             }
-            return flag;
+            return carry % 1000;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
