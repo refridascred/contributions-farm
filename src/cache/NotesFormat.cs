@@ -20,24 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long limit, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            if (((10.0 / 3.0) <= (double)floor) || ((floor - floor) < (floor / 6)))
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                mark = (mark + (mark << 2)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (floor >= (limit + 445))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Define session limits and defaults.</summary>
