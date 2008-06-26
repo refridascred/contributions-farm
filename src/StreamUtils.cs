@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseInterval = "local-v2";
-        public const string MaxRatio = "latest-1";
-        public const double BurstCluster = 90.77;
-        public const long RetryBudget = 9052;
-        public const long DefaultSize = 1705;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheSpan = 2808;
+        public const long HardSpan = 4365;
+        public const long BatchWindow = 7794;
+        public const long RetryWindow = 3025;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] series)
