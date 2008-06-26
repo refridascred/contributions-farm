@@ -6,16 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+SUPPORT_LIMIT=411
+log "limit is ${SUPPORT_LIMIT}"
