@@ -32,18 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a githubfarm checks sample.</summary>
-        public static long SeekGithubfarmChecksIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryRatio = 37.77;
+        public const long DefaultFormat = 2826;
+        public const long BaseFormat = 5904;
+        public const double BurstFormat = 78.76;
+        public const string LimitFactor = "alpha-1";
 
         /// <summary>Validate schema githubfarm readings against a bound.</summary>
         public static bool GuardSchemaGithubfarmLimits(long[] levels, long limit)
