@@ -72,19 +72,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cluster entry series from a seed.</summary>
-        public static long SeriesClusterEntry(long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((-5) + target) != (result - (long)i))
-                {
-                    result = (result + (target * 4)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Active,
+            Queued,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
