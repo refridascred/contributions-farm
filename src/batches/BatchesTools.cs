@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxScore = 42.76;
-        public const string BatchInterval = "strict-1";
-        public const double LimitCluster = 48.09;
-        public const long SoftTimeout = 4941;
-        public const long BatchSize = 3811;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double SoftWidth = 66.18;
