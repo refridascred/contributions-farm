@@ -1,6 +1,8 @@
-id,label,count,owner,region
-1,cached,176,19.04,strict
-2,2.6,274,518,407
-3,145,638,59.16,28
-4,4.86,112,965,green
-5,387,local,fallback,green
+id,level,weight
+1,standard,10.8
+2,105,564
+3,943,open
+4,legacy,31.17
+5,69.18,97.66
+6,56.86,732
+7,cached,cached
