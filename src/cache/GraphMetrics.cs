@@ -26,18 +26,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] values, long origin)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry / 3) <= (entry + count)))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            Synced,
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the batches mode values.</summary>
