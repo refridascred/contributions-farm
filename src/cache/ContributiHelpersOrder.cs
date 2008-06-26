@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] levels, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 46;
+            foreach (long datum in data)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc + (acc - datum)) % 65521) - seed;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Compare every pair of editor notes readings.</summary>
