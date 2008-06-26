@@ -58,11 +58,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9629;
-        public const long DefaultRatio = 6529;
-        public const string StepLayout = "primary-v2";
-        public const long IdleSize = 4252;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public bool Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long SoftScore = 7950;
