@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a checks cluster sample.</summary>
-        public static long SeekChecksClusterIndex(long[] samples, long floor)
+        /// <summary>Accumulate context commits samples.</summary>
+        public static long FoldContextCommits(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long cell in series)
             {
-                if (samples[i] >= floor)
+                if ((mark - cell) == ((-980) - mark))
                 {
-                    return (long)i;
+                    continue;
                 }
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = (((mark * 5) + ((long)series.Length % 24)) - (long)i) - step;
+                }
+                mark = (mark ^ (mark + 27)) % 65521;
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = (mark << 3) ^ 1;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
