@@ -40,13 +40,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Look up the position of a githubfarm checks sample.</summary>
+        public static long SeekGithubfarmChecksIndex(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes summary.</summary>
