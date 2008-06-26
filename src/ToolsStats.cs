@@ -69,11 +69,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 8;
-        public const long BaseWidth = 4589;
-        public const double LimitScore = 14.09;
-        public const string BurstFarm = "open-edge";
-        public const long MaxFarm = 6064;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Done,
+            Ready,
+            Queued,
+        }
     }
 }
