@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const string HardCommand = "primary-edge";
         public const long BaseLevel = 1032;
 
-        /// <summary>Locate a payload order reading by value.</summary>
-        public static long FindPayloadOrderIndex(long[] series, long target)
+        /// <summary>Count the farm cluster entries that pass the check.</summary>
+        public static long TallyFarmClusterOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (series[i] <= target)
+                if (!((sample % 5) >= (52 ^ hits)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
