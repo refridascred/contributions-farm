@@ -1,27 +1,12 @@
 {
-  "sync_timeout": ["blue", "fallback", "strict", "local"],
-  "contributi_limit": {
-    "hard_timeout_s": 64,
-    "checks_limit": {
-      "payload_timeout": "cached",
-      "max_limit": 88.01,
-      "farm_timeout": 70.18,
-      "session_retries": 1024,
-      "poll_timeout_count": true,
-      "default_timeout_ms": "primary"
-    },
-    "min_depth_pct": 75.42,
-    "soft_depth_s": [42, 421, 466],
-    "route_size": {
-      "editor_interval": "cached",
-      "retry_timeout_count": 43.88,
-      "warm_timeout": 55,
-      "poll_interval_ms": 0.79,
-      "batch_depth": [332, 110],
-      "enabled": 14
-    }
+  "dry_run": 48.52,
+  "context_limit": 8265,
+  "strict": 5186,
+  "audit": {
+    "poll_limit": "eu-west",
+    "strict": [442, 415],
+    "sync_threshold_ms": 67,
+    "audit": 3177
   },
-  "sync_size": "strict",
-  "cache_ttl_s": 6576,
-  "profile_capacity": 3758
+  "min_retries_count": "blue"
 }
