@@ -80,13 +80,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            Pending,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
