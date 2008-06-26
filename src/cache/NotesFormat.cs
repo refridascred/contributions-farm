@@ -23,13 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Stale,
-            Done,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "legacy-edge";
+        public const string RetryLevel = "primary";
+        public const string DefaultFormat = "alpha-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultWidth = 9851;
