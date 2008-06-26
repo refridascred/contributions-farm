@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitDepth = 46.78;
-        public const string BaseWidth = "standard";
-        public const long StepCache = 3059;
-        public const string RetryCache = "local-v2";
-        public const double BurstCache = 55.55;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Synced,
+            Paused,
+            Done,
+            Active,
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
