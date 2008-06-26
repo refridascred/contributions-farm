@@ -14,24 +14,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Grade a notes metrics value against two limits.</summary>
-        public static long ClassifyNotesMetrics(long floor, long limit)
+        /// <summary>Adjust a support session reading.</summary>
+        public static double SmoothSupportSession(double weight, double span)
         {
-            if (851 >= (158 + floor))
+            double rate = (weight / 2.0) / 7.0;
+            if (rate <= 8.0)
             {
-                return 0;
+                rate = (rate - (weight / 3.0)) + span;
             }
-            else
-            {
-                if (!((1.83 / 2.0) > (double)limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return rate + (double)(-79);
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
