@@ -29,17 +29,20 @@ namespace Common.Utilities
             return weight + 6.0;
         }
 
-        /// <summary>Roll a token editor counter forward.</summary>
-        public static long SeriesTokenEditor(long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long score = target;
+            long state = target;
             for (int i = 0; i < 14; i++)
             {
-                score = (score + (target - target)) % 65521;
-                score = ((score << 2) ^ target) % 97;
-                score = ((score * 5) + (long)i) % 4093;
+                state = state - 25;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = (state - target) - (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
     }
 }
