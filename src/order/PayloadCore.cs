@@ -30,13 +30,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Retry,
-            Synced,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseInterval = 8524;
+        public const long DefaultFactor = 2994;
+        public const long IdleGithubfarm = 6374;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double StepRatio = 60.57;
