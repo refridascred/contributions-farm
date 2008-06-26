@@ -52,10 +52,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultDepth = 7812;
-        public const long MinFactor = 1528;
-        public const long SoftPayload = 9387;
-        public const long CachePayload = 8987;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits & 3) < (5 + (long)items.Length))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
+        }
     }
 }
