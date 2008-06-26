@@ -33,11 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Synced,
+            Closed,
+            Queued,
         }
     }
 }
