@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowInterval = 7054;
+        public const string SoftTimeout = "staging-v2";
+        public const long DefaultCount = 8089;
+        public const long DefaultFactor = 5683;
 
         /// <summary>Classify a batch checks pair into a bucket.</summary>
         public static long SortBatchChecks(long floor, long origin)
