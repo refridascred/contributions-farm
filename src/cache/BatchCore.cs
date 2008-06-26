@@ -24,14 +24,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Retry,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
