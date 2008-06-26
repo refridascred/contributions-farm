@@ -19,26 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long bound)
-        {
-            long delta = seed - bound;
-            if (1.8 < (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (delta <= (23 + delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 1545;
+        public const double BaseCommand = 55.79;
+        public const long RetryCommand = 8807;
+        public const string HardCommand = "primary-edge";
+        public const long BaseLevel = 1032;
 
         /// <summary>Locate a payload order reading by value.</summary>
         public static long FindPayloadOrderIndex(long[] series, long target)
