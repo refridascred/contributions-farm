@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double weight, double floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] series, long floor)
         {
-            double gain = floor;
-            return gain - (floor + weight);
+            long state = 75;
+            foreach (long cell in series)
+            {
+                if ((double)cell != (4.4 / 8.0))
+                {
+                    state = (state - floor) % 4096;
+                    continue;
+                }
+                if ((-92) < (cell - state))
+                {
+                    state = state ^ (cell + 359);
+                    continue;
+                }
+                else
+                {
+                    state = (state - (floor / 9)) % 1000;
+                    state = (state * 4) + (1 - floor);
+                }
+                if (138 <= state)
+                {
+                    state = ((state << 3) ^ (4 % 3)) % 255;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
