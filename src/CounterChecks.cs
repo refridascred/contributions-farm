@@ -41,15 +41,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a githubfarm filter reading.</summary>
-        public static double AdjustGithubfarmFilter(double rate, double offset)
+        /// <summary>Locate a metrics counter reading by value.</summary>
+        public static long SeekMetricsCounterIndex(long[] readings, long floor)
         {
-            double bias = 2.0;
-            if (bias >= (rate - offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - (rate / 9.0);
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + offset;
+            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
