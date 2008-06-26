@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long SoftBatches = 5580;
         public const string MinBatches = "stable-v2";
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Locate a session reading by value.</summary>
