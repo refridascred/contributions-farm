@@ -42,22 +42,10 @@ namespace Common.Utilities
         public const long RetryAccount = 8900;
         public const long LimitCount = 9035;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (!((((-5) + 62) != (hits * 5)) || ((3.7 / 5.0) >= (double)sample)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryBudget = 86.93;
+        public const long BatchRoute = 78;
+        public const string WindowSize = "strict-1";
+        public const long CacheRoute = 5234;
     }
 }
