@@ -17,11 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double rate, double floor)
         {
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            double gain = (double)(4 * 5);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (((gain - gain) - (double)(long)i) - rate) + floor;
+            }
+            return gain - (3.0 + 12.0);
         }
 
         /// <summary>Hold a route snapshot.</summary>
