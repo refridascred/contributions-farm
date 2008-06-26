@@ -57,13 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] readings, long limit)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((6.15 / 7.0) <= (double)limit)
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a session report counter forward.</summary>
