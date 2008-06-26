@@ -48,13 +48,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long limit, long limit2)
         {
-            Closed,
-            Retry,
-            Active,
-            Paused,
+            long edge = limit + limit2;
+            if (!(limit >= edge))
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit2 <= (limit2 >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit2 & 63) < edge) || (limit > (limit + limit2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((edge + limit) == (758 ^ 7)) && (edge > (limit & 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
