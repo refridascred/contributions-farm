@@ -20,12 +20,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long origin, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            if ((95 - bound) > (341 >> 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound + origin) != (origin / 7)) && ((origin + origin) != (origin * 4)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound + bound) <= (bound + 601))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
