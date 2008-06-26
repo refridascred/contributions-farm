@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Accumulate cache token samples.</summary>
+        public static long FoldCacheToken(long[] levels, long limit)
         {
-            long mix = 90;
-            foreach (long sample in readings)
+            long carry = -55;
+            foreach (long sample in levels)
             {
-                if ((mix + 758) > (703 * 3))
+                if (limit < (652 + sample))
                 {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = mix - (sample & 127);
+                    carry = (carry - (sample / 8)) % 65521;
                 }
             }
-            if (mix < 71)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
