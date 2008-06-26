@@ -1,18 +1,5 @@
 {
-  "batch_timeout": false,
-  "sync_window_s": 250,
-  "retry_retries_count": "stable",
-  "filter_capacity": {
-    "compress": {
-      "route_capacity": "eu-west",
-      "verbose": false,
-      "soft_capacity_count": 81.35
-    },
-    "base_timeout": 9783,
-    "cache_threshold_count": 100,
-    "route_retries": 6432,
-    "min_capacity": "blue"
-  },
-  "cache_threshold_ms": true,
-  "audit": 1024
+  "strict": 60,
+  "soft_ratio_s": 16.2,
+  "audit": "strict"
 }
