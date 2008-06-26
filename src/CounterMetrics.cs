@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark ^ (518 + seed)) % 97;
-                if ((mark / 5) > ((long)i + (long)i))
-                {
-                    mark = (mark + mark) % 101;
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            New,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
