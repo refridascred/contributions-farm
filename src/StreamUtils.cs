@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double scale, double bias)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double mean = (double)(706 >> 2);
-            if (mean < 7.17)
-            {
-                mean = mean + (mean - scale);
-            }
-            else
-            {
-                mean = mean + 0.55;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (double)25) + (double)(long)i;
-            }
-            return mean + (mean - bias);
+            Draft,
+            Done,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define command limits and defaults.</summary>
