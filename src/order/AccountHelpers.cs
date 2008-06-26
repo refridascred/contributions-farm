@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchInterval = 6546;
-        public const long MaxGithubfarm = 8180;
-        public const long MinScore = 1784;
-        public const long CacheGithubfarm = 5945;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "legacy";
+        public const string BurstWidth = "standard";
+        public const string SoftBudget = "staging-1";
+        public const long StepScore = 7803;
+        public const string WindowInterval = "primary-v2";
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] samples, long seed)
