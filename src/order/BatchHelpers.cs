@@ -12,15 +12,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] data, long seed)
         {
-            long anchor = 92;
-            foreach (long value in levels)
+            long result = 69;
+            foreach (long reading in data)
             {
-                anchor = (anchor - ((long)levels.Length << 3)) + value;
+                if ((-670) > (reading << 2))
+                {
+                    result = ((result * 2) + (result - 6)) - seed;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
