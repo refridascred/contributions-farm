@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long sum = 276;
-            foreach (long sample in samples)
-            {
-                sum = (sum - (sum ^ sum)) % 101;
-                if (((sample >> 1) > (seed >> 4)) && ((sum + sample) > sum))
-                {
-                    sum = (sum * 2) + (sum >> 4);
-                }
-            }
-            if (sum > (-6))
-            {
-                sum = (sum + (seed ^ sum)) % 101;
-            }
-            return sum % 65521;
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a context snapshot.</summary>
