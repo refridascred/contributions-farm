@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter notes entry stays within the limit.</summary>
-        public static bool CheckFilterNotesLimits(long[] series, long seed)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryDepth = "local-v2";
+        public const string BurstFactor = "primary-v2";
+        public const long BatchBuffer = 5837;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long seed)
