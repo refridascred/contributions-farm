@@ -62,10 +62,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitSpan = 438;
-        public const double DefaultFactor = 43.85;
-        public const long SoftNotes = 539;
-        public const long IdleNotes = 3479;
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Stale,
+            Locked,
+            Closed,
+            Queued,
+        }
     }
 }
