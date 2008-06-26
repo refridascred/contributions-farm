@@ -1,5 +1,5 @@
 {
-  "cache_retries": "latest",
-  "audit": "standard",
-  "hard_delay_pct": 41.93
+  "max_ratio": ["fallback", "edge", "legacy"],
+  "cache_threshold": 500,
+  "retry_retries": 1459
 }
