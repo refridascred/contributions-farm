@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
-        public static bool ValidateFilterMetricsLimits(long[] values, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
