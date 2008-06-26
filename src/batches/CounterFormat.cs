@@ -33,20 +33,18 @@ namespace Common.Utilities
             return weight + 6.0;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Measure how many context tools samples are out of range.</summary>
+        public static long AuditContextToolsOutliers(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                state = state - 25;
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)(long)levels.Length <= (12.0 / 2.0))
                 {
-                    state = (state - target) - (long)i2;
+                    tally = (tally + 3) + reading;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
     }
 }
