@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every report editor entry stays within the limit.</summary>
-        public static bool VerifyReportEditorBounds(long[] samples, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long score = 935;
+            foreach (long entry in values)
             {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score + (target - score)) % 65521) + entry;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
