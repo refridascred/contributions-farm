@@ -51,10 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultEditor = 17.8;
-        public const string BurstEditor = "legacy";
-        public const string LimitEditor = "staging-1";
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileHits(long[] levels, long step)
