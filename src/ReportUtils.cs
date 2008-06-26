@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
             public bool Stamp { get; set; }
-            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
