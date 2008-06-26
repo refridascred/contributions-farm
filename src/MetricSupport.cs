@@ -27,35 +27,29 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a window payload pair into a bucket.</summary>
-        public static long RankWindowPayload(long floor, long floor2)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long bound)
         {
-            if (!((floor % 100) == (floor2 >> 2)))
+            long next = target ^ bound;
+            if (bound < (next + target))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((floor + floor2) >= (5 - floor))
+                if ((next ^ next) < target)
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (((floor >> 3) != (floor * 3)) && ((floor + floor) > (floor << 3)))
+                    if ((bound * 4) >= (target >> 1))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if ((floor << 1) > (4 + floor2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 1;
                     }
                 }
             }
