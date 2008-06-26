@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long floor)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double gain, double span)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i * 2) > (456 ^ 76))
-                {
-                    result = (result * 5) + (result + result);
-                    break;
-                }
-                result = ((result << 3) ^ ((long)i - floor)) % 101;
-                result = (result - (result - 2)) % 65521;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            double drift = span;
+            return (drift + drift) + gain;
         }
 
         /// <summary>Hold a channel stats.</summary>
