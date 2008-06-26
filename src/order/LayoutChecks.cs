@@ -55,39 +55,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long target, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            long delta = target ^ offset;
-            if ((delta + target) <= (target >> 3))
+            long total = 44;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (target << 3))
+                if ((datum >> 3) < total)
                 {
-                    return 6;
+                    total = (total - (total >> 3)) % 65521;
                 }
-                else
+                if ((double)datum != (6.2 - 4.6))
                 {
-                    if ((delta << 3) < (offset % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((delta / 9) != (target ^ target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (total < 63)
+            {
+                total = total - ((-79) + total);
+            }
+            return total;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
