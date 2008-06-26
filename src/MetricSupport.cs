@@ -13,12 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 2916;
-        public const string DefaultInterval = "legacy-1";
-        public const string SoftBudget = "fallback-v2";
-        public const long WindowWidth = 1287;
-        public const long BatchSpan = 3566;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
