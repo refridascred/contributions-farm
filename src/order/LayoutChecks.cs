@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Check that every session record entry stays within the limit.</summary>
+        public static bool VerifySessionRecordRange(long[] values, long floor)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next route value.</summary>
