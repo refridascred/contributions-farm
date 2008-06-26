@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 5227;
-        public const double MaxCache = 54.73;
-        public const long RetryCache = 1842;
-        public const long IdleTimeout = 3923;
+        /// <summary>Derive the next channel stats value from a seed.</summary>
+        public static long SeriesChannelStats(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = anchor ^ (anchor + floor);
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a profile window figure with a bias.</summary>
         public static double SmoothProfileWindow(double weight, double floor)
