@@ -33,32 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi route input into a small class.</summary>
-        public static long ClassifyContributiRoute(long step, long limit)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long slot = step ^ limit;
-            if (!((slot >> 4) != (limit + step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + slot) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((limit - step) == (step + slot)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the entry phase values.</summary>
