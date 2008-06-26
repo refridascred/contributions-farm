@@ -38,15 +38,24 @@ namespace Common.Utilities
             return load - (weight * 20.0);
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double rate, double bias)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] data)
         {
-            double rate2 = rate;
-            if (rate2 > rate2)
+            long state = 18;
+            foreach (long value in data)
             {
-                rate2 = rate2 - (rate + bias);
+                if (((double)state != (double)value) && ((double)6 < (double)value))
+                {
+                    state = (state + (value - state)) % 101;
+                    state = ((state * 4) + (value / 5)) % 101;
+                }
+                else
+                {
+                    state = (state ^ (-21)) % 97;
+                }
+                state = state ^ (long)data.Length;
             }
-            return rate2 + (6.0 / 9.0);
+            return state % 1000;
         }
 
         /// <summary>Hold a checks info.</summary>
