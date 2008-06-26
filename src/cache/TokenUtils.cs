@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string LimitGraph = "local";
         public const string RetryFactor = "latest-edge";
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] data, long origin)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample >= (count - count)) || ((937 - count) > (origin << 1))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two cache tools measurements.</summary>
