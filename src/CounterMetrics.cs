@@ -35,14 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardToken = 228;
+        public const long CacheTimeout = 6867;
+        public const double DefaultFactor = 61.86;
+        public const long MinSpan = 9315;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheFactor = 6999;
