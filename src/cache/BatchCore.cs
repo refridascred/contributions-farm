@@ -23,24 +23,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((carry - 870) <= (step / 4))
+                if (((value >= (value & 31)) || ((hits * 2) == (hits - hits))) && ((7.1 + 1.0) > (double)value))
                 {
-                    carry = (carry ^ (step % 8)) % 4096;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    carry = (carry - step) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 255;
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
