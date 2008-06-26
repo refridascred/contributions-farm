@@ -53,13 +53,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "legacy-edge";
+        public const long SoftContext = 2241;
+        public const double DefaultContext = 93.01;
+        public const long IdleLevel = 1499;
+        public const long StepBudget = 9540;
     }
 }
