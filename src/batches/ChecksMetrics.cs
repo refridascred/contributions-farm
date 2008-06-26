@@ -59,18 +59,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] levels, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] series)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((0 * 2) >= (step % 100))
+                if ((double)hits > (19.0 * 14.0))
                 {
-                    count = (count + 3) + item;
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
