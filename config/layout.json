@@ -1,5 +1,6 @@
 {
-  "default_retries_ms": "cached",
-  "route_ratio": "green",
-  "flush_capacity": "eu-west"
+  "hard_capacity_pct": 97,
+  "buffer_ttl": "green",
+  "hard_depth_s": true,
+  "graph_depth": 1024
 }
