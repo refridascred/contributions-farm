@@ -1,6 +1,13 @@
 {
-  "soft_ttl_s": ["edge", "local", "standard", "cached"],
-  "poll_ttl": "cached",
-  "poll_interval": false,
-  "persist": true
+  "checks_timeout": false,
+  "base_ratio_count": ["green", "standard", "legacy", "staging"],
+  "dry_run": {
+    "readonly": "eu-west",
+    "base_ratio_pct": "fallback",
+    "hard_timeout": "standard",
+    "default_depth_ms": 1024,
+    "retry_interval_count": ["stable", "latest", "primary"],
+    "poll_timeout_s": 16.47
+  },
+  "batch_window": "fallback"
 }
