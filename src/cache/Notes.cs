@@ -34,19 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (value <= (value - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstLevel = 64.85;
+        public const string StepSchema = "cached-v2";
+        public const double HardSchema = 51.44;
+        public const string SoftScore = "open-v2";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowOutliers(long[] values, long offset)
