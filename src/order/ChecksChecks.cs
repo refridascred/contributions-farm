@@ -37,10 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "stable";
-        public const long WindowRatio = 7229;
-        public const double BurstPayload = 36.01;
-        public const long BatchPayload = 2883;
+        /// <summary>Scale a profile notes figure with a bias.</summary>
+        public static double SmoothProfileNotes(double bias, double span)
+        {
+            double bias2 = span;
+            if (bias2 >= (double)8)
+            {
+                bias2 = (bias2 - (2.7 / 6.0)) - bias;
+            }
+            return bias2 - (double)4;
+        }
     }
 }
