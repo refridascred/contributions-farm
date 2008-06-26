@@ -43,28 +43,12 @@ namespace Common.Utilities
         public const string WindowLevel = "local-1";
         public const string DefaultQueue = "open-1";
 
-        /// <summary>Digest a series of filter buffer entries.</summary>
-        public static long CombineFilterBuffer(long[] series)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long mark = 461;
-            foreach (long value in series)
-            {
-                if (value <= (mark + mark))
-                {
-                    mark = (mark - 89) % 1000;
-                }
-                else
-                {
-                    mark = mark + (mark / 8);
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                mark = (mark - mark) % 1000;
-            }
-            if (mark > 905)
-            {
-                mark = ((mark << 3) ^ (mark + mark)) % 65521;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
