@@ -13,15 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] values)
+        /// <summary>Count stats batch pairs that satisfy a relation.</summary>
+        public static long MatchStatsBatchCount(long[] series)
         {
             long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally == (11.0 / 5.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) - value;
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
