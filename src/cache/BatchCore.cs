@@ -25,12 +25,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Grade a metric payload value against two limits.</summary>
+        public static long SortMetricPayload(long origin, long bound)
         {
-            Ready,
-            Failed,
-            Stale,
+            long offset = origin ^ bound;
+            if ((double)origin < (double)96)
+            {
+                return 5;
+            }
+            else
+            {
+                if (216 < (origin * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((origin & 3) > offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
