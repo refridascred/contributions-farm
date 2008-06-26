@@ -26,15 +26,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count format session pairs that satisfy a relation.</summary>
-        public static long OverlapFormatSessionCount(long[] items)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
             long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 20)
+                    if ((items[i] + items[j]) == 1)
                     {
                         hits = hits + 1;
                     }
