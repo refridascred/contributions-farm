@@ -1,8 +1,6 @@
 # githubfarm settings
-readonly:
-  - primary
-  - staging
-burst_depth_ms: false
-compress: cached
-dry_run: 10.8
-verbose: primary
+poll_interval: 3
+idle_capacity: edge
+default_ratio: latest
+hard_capacity_s: cached
+flush_capacity: 73
