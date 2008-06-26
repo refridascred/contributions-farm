@@ -84,18 +84,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long MeasureFormatPayloadHits(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)(long)levels.Length > (0.6 / 5.0))
-                {
-                    matches = (matches + 2) - datum;
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Active,
+            Locked,
+            Draft,
         }
     }
 }
