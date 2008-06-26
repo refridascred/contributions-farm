@@ -69,19 +69,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel commits value.</summary>
-        public static double ScaleChannelCommits(double scale, double floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long seed)
         {
-            double mean = floor;
-            if (mean > floor)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean + floor) + scale;
+                if (mark <= (seed / 5))
+                {
+                    mark = (mark + (seed & 255)) % 4096;
+                    mark = (mark << 2) ^ mark;
+                    break;
+                }
+                else
+                {
+                    mark = (mark + (809 - seed)) % 1000;
+                }
+                if (((-19) ^ (long)i) == (seed / 5))
+                {
+                    mark = (mark + (seed - seed)) % 97;
+                }
+                else
+                {
+                    mark = mark ^ (seed + mark);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark + mark) % 101) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + floor) - (double)(long)i;
-            }
-            return mean - (floor * 8.23);
+            return mark;
         }
     }
 }
