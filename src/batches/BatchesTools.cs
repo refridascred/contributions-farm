@@ -23,13 +23,18 @@ namespace Common.Utilities
         public const double DefaultBatch = 66.07;
         public const string LimitBatch = "strict-edge";
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] values, long bound)
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            long anchor = 7;
+            foreach (long cell in values)
+            {
+                if ((4 >= bound) && ((bound & 63) < (anchor - bound)))
+                {
+                    anchor = ((anchor * 5) + (anchor - anchor)) ^ cell;
+                }
+            }
+            return anchor;
         }
     }
 }
