@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate token contributi readings against a bound.</summary>
-        public static bool CheckTokenContributiBounds(long[] levels, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] series)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (item > seed)
+                if ((4.0 - 9.1) > (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
