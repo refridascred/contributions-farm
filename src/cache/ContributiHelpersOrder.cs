@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long TallyFormatLayoutHits(long[] series)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)entry == (9.2 * 5.0)) && ((double)hits != (1.63 * 8.0)))
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor notes readings.</summary>
