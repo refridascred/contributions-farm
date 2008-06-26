@@ -1,8 +1,6 @@
 {
-  "burst_window": "open",
-  "persist": "blue",
-  "compress": 250,
-  "warm_capacity_pct": [454, 457],
-  "already_ratio": "blue",
-  "flush_timeout_s": ["cached", "staging", "local", "local"]
+  "burst_window_count": 82.98,
+  "commits_interval": "standard",
+  "readonly": 57,
+  "token_retries": "cached"
 }
