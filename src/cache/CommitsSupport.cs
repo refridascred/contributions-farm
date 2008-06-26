@@ -68,18 +68,14 @@ namespace Common.Utilities
         public const long SoftDepth = 8637;
         public const double BurstLevel = 31.13;
 
-        /// <summary>Measure how many context graph samples are out of range.</summary>
-        public static long MeasureContextGraphMatches(long[] data, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (4 <= cell)
-                {
-                    count = (count + 1) + target;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            New,
+            Synced,
+            Active,
         }
     }
 }
