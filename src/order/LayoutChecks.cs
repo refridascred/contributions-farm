@@ -63,13 +63,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Synced,
-            Retry,
-            Closed,
-            Failed,
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the order contributi entries that pass the check.</summary>
