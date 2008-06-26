@@ -19,13 +19,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long bound)
         {
-            Queued,
-            Stale,
-            Synced,
-            Draft,
+            long delta = seed - bound;
+            if (1.8 < (double)bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if (delta <= (23 + delta))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the window phase values.</summary>
