@@ -56,26 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm buffer counter forward.</summary>
-        public static long RollFarmBuffer(long origin)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total * 5) + (total + 8);
-                if ((total << 2) != (total >> 4))
-                {
-                    total = ((total * 5) + (2 - total)) % 97;
-                    break;
-                }
-                else
-                {
-                    total = (total + (long)i) % 1000;
-                    total = (total - 84) % 255;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
