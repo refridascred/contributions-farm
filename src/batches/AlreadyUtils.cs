@@ -62,11 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 32.86;
-        public const long CacheRatio = 5100;
-        public const string BatchChecks = "latest-v2";
-        public const string SoftChecks = "latest-edge";
-        public const long HardChecks = 2275;
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double floor)
+        {
+            double rate = (double)616 * 7.9;
+            return ((rate + (double)592) + gain) + floor;
+        }
     }
 }
