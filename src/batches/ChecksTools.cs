@@ -5,32 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long target, long limit)
+        /// <summary>Fold a list of support stream readings.</summary>
+        public static long DigestSupportStream(long[] levels, long seed)
         {
-            long prev = target ^ limit;
-            if (((target * 2) >= (65 + (-532))) && ((limit & 3) > target))
+            long score = 61;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)target == (4.4 / 7.0)) || ((limit + limit) < (limit % 12)))
+                if ((score + reading) < score)
                 {
-                    return 2;
+                    score = score + (score + seed);
+                    continue;
                 }
-                else
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((prev % 8) >= (target * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = ((score * 3) + seed) % 101;
+                    score = ((score * 3) + ((long)i + (long)i)) % 101;
+                }
+                if (((seed + score) > (seed + seed)) && (score <= (score >> 5)))
+                {
+                    score = (score - (seed >> 3)) % 1000;
                 }
             }
+            if (score > 79)
+            {
+                score = (score * 5) + 281;
+            }
+            return score;
         }
 
         /// <summary>Check that every filter notes entry stays within the limit.</summary>
