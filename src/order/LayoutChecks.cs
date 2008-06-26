@@ -19,22 +19,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] readings, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (3.5 <= (double)count)
-                {
-                    count = ((count + 3) - datum) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
