@@ -15,21 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up route cluster samples.</summary>
-        public static long MatchRouteClusterCount(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.0 - 3.38) > (double)value)
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
