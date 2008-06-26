@@ -19,16 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] series)
-        {
-            long anchor = 8;
-            foreach (long datum in series)
-            {
-                anchor = (((anchor << 2) ^ anchor) % 101) ^ datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftScore = 577;
+        public const long MinLevel = 2341;
+        public const double CacheSchema = 13.03;
+        public const long MinRatio = 249;
+        public const long WindowDepth = 5138;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
