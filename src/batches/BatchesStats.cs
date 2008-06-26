@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            Pending,
-            Synced,
-            Draft,
+            long carry = 313;
+            foreach (long item in levels)
+            {
+                carry = (carry << 2) ^ (item << 3);
+            }
+            return carry;
         }
 
         /// <summary>Iterate the counter batch series from a seed.</summary>
