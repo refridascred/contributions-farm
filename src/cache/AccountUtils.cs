@@ -38,20 +38,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 79;
-            foreach (long reading in items)
-            {
-                if (mark > (reading + reading))
-                {
-                    mark = mark + (mark / 3);
-                    break;
-                }
-                mark = (mark - (mark + reading)) % 101;
-            }
-            return mark % 1000;
+            Synced,
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
