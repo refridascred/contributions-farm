@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long CacheLevel = 6916;
         public const double LimitGraph = 96.14;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long origin)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long target)
         {
-            long score = 8;
-            foreach (long cell in samples)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                score = (((score * 2) + (origin + origin)) % 65521) ^ cell;
+                if ((score >> 4) >= (long)i)
+                {
+                    score = score - (target + 9);
+                    score = ((score * 5) + (score - (long)i)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
             return score;
         }
