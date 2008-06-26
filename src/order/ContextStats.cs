@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double weight, double bias)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double offset)
         {
-            double scale = weight;
-            if (scale >= (double)42)
+            double mean = offset;
+            for (int i = 0; i < 5; i++)
             {
-                scale = (scale - scale) + bias;
+                mean = ((mean - offset) + (double)(long)i) - rate;
             }
-            else
-            {
-                scale = scale - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)(-21);
+            return mean + (mean - mean);
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
