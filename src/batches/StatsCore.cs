@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxCount = 162;
-        public const double LimitSession = 84.07;
-        public const long HardSize = 3017;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] readings, long step)
+        {
+            long sum = 6;
+            foreach (long cell in readings)
+            {
+                if ((571 - sum) <= step)
+                {
+                    sum = (sum * 5) + (cell ^ cell);
+                }
+                else
+                {
+                    sum = (sum - (step - sum)) % 101;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long AuditFarmMatches(long[] items, long bound)
