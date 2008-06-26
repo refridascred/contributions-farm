@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepTimeout = 9.16;
-        public const double BatchScore = 31.92;
-        public const long BatchBatches = 6517;
-        public const string BatchLevel = "latest-1";
-        public const double BatchInterval = 76.09;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long target, long floor)
+        {
+            if (!((target + target) <= (target % 8)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (2.67 > (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Measure how many account schema samples are out of range.</summary>
         public static long MeasureAccountSchemaOutliers(long[] series)
