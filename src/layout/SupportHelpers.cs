@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 5375;
-        public const long MinCommits = 7241;
-        public const string LimitWidth = "latest-edge";
-        public const long LimitCommits = 4436;
-        public const string RetryCommits = "local-1";
+        /// <summary>Define booking limits and defaults.</summary>
+        public const long MinBudget = 3707;
+        public const long MaxRatio = 5483;
+        public const long MinBooking = 3652;
+        public const string HardBooking = "strict-v2";
+        public const double DefaultInterval = 80.82;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] data, long limit)
