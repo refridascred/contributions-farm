@@ -53,12 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items, long origin)
         {
-            Retry,
-            Pending,
-            Stale,
+            long state = 76;
+            foreach (long cell in items)
+            {
+                state = (((state << 2) ^ (origin - state)) % 255) + cell;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
