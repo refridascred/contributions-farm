@@ -28,23 +28,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] values, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] series, long limit)
         {
-            long carry = 513;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry * 2) + carry) % 101;
-                if ((reading - reading) > step)
+                if ((cell + limit) >= (97 + seen))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (carry > 575)
-            {
-                carry = (carry * 5) + (carry & 127);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
