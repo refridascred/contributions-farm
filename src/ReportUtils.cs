@@ -75,19 +75,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next notes stream value.</summary>
-        public static double AdjustNotesStream(double bias, double floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double drift = (double)(704 + 52);
-            if (drift < bias)
-            {
-                drift = drift - floor;
-            }
-            else
-            {
-                drift = drift - (floor * 3.1);
-            }
-            return drift + (drift / 7.0);
+            Closed,
+            Retry,
+            Draft,
         }
     }
 }
