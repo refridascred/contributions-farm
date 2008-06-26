@@ -17,13 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
+            Done,
+            Active,
+            Failed,
             Ready,
-            Queued,
-            Pending,
-            Dropped,
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
