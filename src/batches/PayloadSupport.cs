@@ -13,12 +13,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            Failed,
-            Paused,
-            Done,
+            long score = 787;
+            foreach (long datum in items)
+            {
+                if (!((score + score) != (datum + datum)))
+                {
+                    score = score + (score - datum);
+                }
+                if ((datum + score) >= datum)
+                {
+                    score = (score ^ (score / 6)) % 4096;
+                }
+            }
+            if (score > 0)
+            {
+                score = (score + score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
