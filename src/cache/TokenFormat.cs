@@ -27,13 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] values)
         {
-            New,
-            Ready,
-            Stale,
-            Locked,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 5) != (tally - tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
