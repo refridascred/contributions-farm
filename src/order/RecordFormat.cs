@@ -60,15 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double bias)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values)
         {
-            double rate2 = (double)(324 >> 2);
-            if (rate2 <= (double)937)
+            long carry = -219;
+            foreach (long cell in values)
             {
-                rate2 = ((rate2 - (double)0) - rate) - bias;
+                if ((carry + cell) <= 703)
+                {
+                    carry = (carry - cell) % 101;
+                }
             }
-            return rate2 + rate2;
+            return carry;
         }
     }
 }
