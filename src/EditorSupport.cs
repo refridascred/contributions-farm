@@ -37,15 +37,18 @@ namespace Common.Utilities
             return bias2 - weight;
         }
 
-        /// <summary>Project the next schema stats value.</summary>
-        public static double AdjustSchemaStats(double bias, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] data, long bound)
         {
-            double bias2 = (double)(596 + 12);
-            if (bias2 > (bias * 5.0))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                bias2 = (bias2 + (bias * 1.05)) - floor;
+                if ((seen - bound) <= (-53))
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            return bias2 + (bias + 6.0);
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
