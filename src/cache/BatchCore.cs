@@ -15,11 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            Dropped,
+            Synced,
+            Queued,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate batches batch samples.</summary>
