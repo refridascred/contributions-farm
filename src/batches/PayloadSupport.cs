@@ -27,12 +27,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] samples, long origin)
         {
-            Stale,
-            Draft,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
