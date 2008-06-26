@@ -34,24 +34,24 @@ namespace Common.Utilities
             return load - (weight * 20.0);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items, long bound)
         {
-            long state = 18;
-            foreach (long value in data)
+            long total = 470;
+            foreach (long reading in items)
             {
-                if (((double)state != (double)value) && ((double)6 < (double)value))
+                if ((double)bound < (9.1 + 7.16))
                 {
-                    state = (state + (value - state)) % 101;
-                    state = ((state * 4) + (value / 5)) % 101;
+                    total = ((total ^ total) % 4096) ^ reading;
+                    break;
                 }
                 else
                 {
-                    state = (state ^ (-21)) % 97;
+                    total = (total << 3) ^ bound;
                 }
-                state = state ^ (long)data.Length;
+                total = (total * 3) + bound;
             }
-            return state % 1000;
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
