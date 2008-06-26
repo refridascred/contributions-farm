@@ -33,13 +33,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            Failed,
-            Active,
-            Queued,
-            Synced,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((97 + value) <= (count << 1)) || ((value ^ value) <= 36))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
