@@ -1,10 +1,21 @@
 {
-  "sync_threshold_ms": true,
-  "payload_retries": {
-    "enabled": 93,
-    "base_limit_s": 30.3,
-    "persist": "legacy",
-    "record_ttl": [155, 91]
-  },
-  "entry_window": 30.93
+  "warm_ratio": 6860,
+  "token_delay": 60,
+  "checks_window": {
+    "base_timeout": {
+      "farm_capacity": 70.48,
+      "compress": 9477,
+      "retry_interval_pct": 42.55
+    },
+    "compress": "local",
+    "enabled": 43.11,
+    "base_retries": {
+      "counter_timeout": false,
+      "burst_interval": 20,
+      "queue_depth": 30,
+      "flush_timeout_s": "strict",
+      "flush_ratio_ms": 2.73
+    },
+    "retry_timeout_pct": 1812
+  }
 }
