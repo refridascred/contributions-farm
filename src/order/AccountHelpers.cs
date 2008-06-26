@@ -20,24 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double rate, double bias)
-        {
-            double weight = (double)7;
-            if (weight > weight)
-            {
-                weight = weight + rate;
-            }
-            else
-            {
-                weight = weight - (2.0 * 2.94);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - (bias - rate);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultDepth = 7506;
+        public const long RetryReport = 1746;
+        public const long IdleReport = 1013;
+        public const long BatchReport = 3846;
 
         /// <summary>Iterate the notes batch series from a seed.</summary>
         public static long IterateNotesBatch(long bound)
