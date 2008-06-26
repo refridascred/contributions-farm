@@ -52,12 +52,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardRatio = 1932;
-        public const long IdleStats = 2522;
-        public const string MaxStats = "cached-v2";
-        public const long StepStats = 8580;
-        public const long MinStats = 5335;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (count >= (offset * 4))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryFarm = 8;
