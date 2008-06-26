@@ -57,13 +57,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Rank githubfarm buffer input into a small class.</summary>
+        public static long RankGithubfarmBuffer(long floor, long target)
         {
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
+            if ((8 >> 1) == (floor - (-136)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((19.0 * 8.7) >= (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
