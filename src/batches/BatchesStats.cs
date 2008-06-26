@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples, long seed)
         {
-            Locked,
-            Retry,
-            New,
-            Dropped,
+            long sum = 276;
+            foreach (long sample in samples)
+            {
+                sum = (sum - (sum ^ sum)) % 101;
+                if (((sample >> 1) > (seed >> 4)) && ((sum + sample) > sum))
+                {
+                    sum = (sum * 2) + (sum >> 4);
+                }
+            }
+            if (sum > (-6))
+            {
+                sum = (sum + (seed ^ sum)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a context snapshot.</summary>
