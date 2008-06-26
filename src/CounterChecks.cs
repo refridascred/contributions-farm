@@ -53,19 +53,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] values, long offset)
+        /// <summary>Count cluster graph pairs that satisfy a relation.</summary>
+        public static long MatchClusterGraphCount(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
