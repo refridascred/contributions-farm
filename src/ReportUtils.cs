@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9436;
-        public const long BaseRatio = 290;
-        public const double RetryBatches = 6.94;
-        public const long BurstRatio = 6406;
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long TallySessionGithubfarmMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((8 - cell) >= (cell & 255)) && (19.0 <= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a schema buffer reading by value.</summary>
         public static long FindSchemaBufferIndex(long[] items, long offset)
