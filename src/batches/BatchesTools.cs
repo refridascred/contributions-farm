@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "open-edge";
+        public const double DefaultInterval = 39.61;
+        public const double WindowWidth = 5.45;
+        public const long StepAlready = 6614;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BatchWidth = 5092;
