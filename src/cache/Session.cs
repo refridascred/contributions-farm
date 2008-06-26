@@ -30,18 +30,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] series, long limit)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((((4.0 / 8.0) != (double)limit) || ((reading + 961) >= 7)) && ((double)reading < (double)42))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Hold a notes summary.</summary>
