@@ -1,6 +1,5 @@
 {
-  "hard_capacity_pct": 97,
-  "buffer_ttl": "green",
-  "hard_depth_s": true,
-  "graph_depth": 1024
+  "persist": 26.45,
+  "readonly": 3084,
+  "base_retries_count": 78.17
 }
