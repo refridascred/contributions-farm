@@ -37,13 +37,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Queued,
-            Locked,
-            Synced,
             Failed,
+            Dropped,
+            Draft,
+            Done,
+            Ready,
         }
     }
 }
