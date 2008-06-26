@@ -35,19 +35,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long floor)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double rate = (6.55 - gain) + (double)739;
+            if (rate <= (double)99)
             {
-                if (sample > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + (double)853) + floor;
             }
-            return valid;
+            return rate - (double)297;
         }
     }
 }
