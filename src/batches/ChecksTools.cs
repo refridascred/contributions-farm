@@ -40,14 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Pending,
-            Synced,
-            Ready,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 64.01;
+        public const long StepCount = 1377;
+        public const string LimitRecord = "fallback-edge";
+        public const double CacheRecord = 72.86;
     }
 }
