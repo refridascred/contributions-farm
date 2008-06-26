@@ -20,19 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long total = 4;
-            foreach (long sample in series)
-            {
-                total = ((total << 2) ^ (3 % 8)) + sample;
-            }
-            if (total < 417)
-            {
-                total = (total << 3) ^ (total ^ total);
-            }
-            return total % 1000;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate stats samples.</summary>
