@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] samples, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample & 7) >= (370 ^ sample))
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
                 {
-                    hits = (hits + 1) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
