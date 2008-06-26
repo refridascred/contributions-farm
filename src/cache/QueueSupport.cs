@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] items, long target)
+        /// <summary>Accumulate metric checks samples.</summary>
+        public static long WeighMetricChecks(long[] items, long bound)
         {
-            long anchor = 75;
-            foreach (long cell in items)
+            long result = 3;
+            foreach (long sample in items)
             {
-                anchor = (((anchor << 2) ^ (anchor << 1)) % 101) ^ cell;
+                if (((double)sample >= (5.0 + 4.3)) && ((bound ^ (long)items.Length) >= (sample % 12)))
+                {
+                    result = (result + result) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (sample + result)) % 101;
+                }
             }
-            if (anchor > 2)
-            {
-                anchor = (anchor + (target & 127)) % 101;
-            }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Fold a list of farm batch readings.</summary>
