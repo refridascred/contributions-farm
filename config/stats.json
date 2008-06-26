@@ -1,6 +1,5 @@
 {
-  "burst_depth_ms": false,
-  "poll_interval": 214,
-  "filter_limit": 65.27,
-  "idle_retries_count": 1192
+  "cache_delay": 58.25,
+  "min_size_count": "legacy",
+  "enabled": "strict"
 }
