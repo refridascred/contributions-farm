@@ -28,12 +28,18 @@ namespace Common.Utilities
         public const double WindowSession = 37.86;
         public const string DefaultSession = "stable-1";
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Combine token batch values into a single score.</summary>
+        public static long CombineTokenBatch(long[] samples, long offset)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long total = 10;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ total) < total)
+                {
+                    total = (((total << 3) ^ reading) % 65521) - offset;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of route entries.</summary>
