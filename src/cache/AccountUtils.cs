@@ -38,38 +38,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            if ((3 - floor) != (target << 2))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (2.0 * 9.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target > (8.0 - 7.96))
+                    if ((series[i] + series[j]) < 0)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((6 << 2) > (target + target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
