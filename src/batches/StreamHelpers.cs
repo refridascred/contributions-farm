@@ -59,19 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream format entry stays within the limit.</summary>
-        public static bool CheckStreamFormatRange(long[] data, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != limit)
+                if ((series[i] >= limit) && ((series[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
