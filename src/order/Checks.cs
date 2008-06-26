@@ -46,18 +46,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order metrics readings against a rule.</summary>
-        public static long MeasureOrderMetricsOutliers(long[] series, long floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((11.0 - 1.63) < (double)count)
-                {
-                    count = ((count + 2) ^ datum) - floor;
-                }
+                acc = (acc ^ (acc << 2)) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Combine session values into a single score.</summary>
