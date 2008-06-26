@@ -23,23 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading < (count - reading))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxBudget = 66.14;
+        public const long CacheOrder = 1756;
+        public const string CacheTimeout = "standard";
+        public const long StepOrder = 6257;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
