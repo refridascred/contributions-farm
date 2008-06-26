@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Idle,
-            Retry,
-            Active,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultFactor = 3529;
+        public const string BaseStream = "cached";
+        public const double MaxStream = 3.05;
+        public const double SoftTimeout = 14.52;
 
         /// <summary>Project the next session value.</summary>
         public static double SmoothSession(double gain, double offset)
