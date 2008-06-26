@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
