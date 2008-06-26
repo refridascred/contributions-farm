@@ -81,18 +81,9 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback";
         public const string BaseSupport = "legacy-v2";
 
-        /// <summary>Measure how many payload notes samples are out of range.</summary>
-        public static long MeasurePayloadNotesHits(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((double)6 > (double)count) || ((double)count <= (4.0 - 8.3)))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 5058;
+        public const long MaxProfile = 8781;
+        public const long MinProfile = 3456;
     }
 }
