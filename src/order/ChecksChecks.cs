@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (!(datum > (count - datum)))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
