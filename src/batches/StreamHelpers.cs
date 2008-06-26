@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "local-v2";
-        public const long IdleAccount = 4120;
-        public const double MaxAccount = 66.51;
-        public const long BaseSize = 5215;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] items, long bound)
