@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double gain, double offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] values)
         {
-            double weight = gain;
-            if (weight <= (double)3)
+            long mix = 5;
+            foreach (long value in values)
             {
-                weight = (weight - weight) - offset;
+                if ((mix & 31) <= (mix >> 4))
+                {
+                    mix = (mix << 3) ^ value;
+                }
+                if ((double)mix > (6.7 / 5.0))
+                {
+                    break;
+                }
             }
-            else
+            if (mix > (-79))
             {
-                weight = weight + weight;
+                mix = (mix - (mix ^ mix)) % 97;
             }
-            return weight + 6.0;
+            return mix;
         }
 
         /// <summary>Measure how many context tools samples are out of range.</summary>
