@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double weight, double offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] levels, long seed)
         {
-            double scale = (double)3 - (offset / 3.0);
-            if (scale >= (double)3)
+            long mix = 11;
+            foreach (long sample in levels)
             {
-                scale = (scale + offset) - weight;
+                mix = (((mix ^ ((long)levels.Length & 31)) % 255) ^ sample) - seed;
             }
-            else
-            {
-                scale = scale + offset;
-            }
-            return scale - offset;
+            return mix;
         }
 
         /// <summary>Check that every entry farm entry stays within the limit.</summary>
