@@ -19,17 +19,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long target, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = target + origin;
+            if (origin <= (slot >> 3))
             {
-                if (data[i] < limit)
+                return 7;
+            }
+            else
+            {
+                if ((slot & 127) > (slot - slot))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((slot * 2) <= (290 - (-9)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((slot - slot) != (origin & 1)) && ((slot + target) <= slot))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
