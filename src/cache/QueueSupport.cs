@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data, long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long mix = 64;
-            foreach (long reading in data)
-            {
-                if ((reading >= (offset + mix)) && (reading <= 337))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = (mix + reading) % 101;
-                    mix = (mix << 2) ^ (offset + (long)data.Length);
-                }
-                mix = mix ^ (381 + offset);
-            }
-            if (mix < 216)
-            {
-                mix = ((mix * 5) + (mix / 4)) % 4096;
-            }
-            return mix;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
