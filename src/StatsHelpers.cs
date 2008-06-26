@@ -20,21 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -828;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((floor > (mix / 8)) || ((floor % 24) <= (mix - mix)))
                 {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - (floor & 3)) ^ entry;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
