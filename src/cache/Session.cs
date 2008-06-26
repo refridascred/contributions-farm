@@ -13,12 +13,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7334;
-        public const double BatchDepth = 22.24;
-        public const string MinWidth = "stable-v2";
-        public const long HardBatch = 5106;
-        public const long LimitCount = 9506;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelHits(long[] items, long floor)
