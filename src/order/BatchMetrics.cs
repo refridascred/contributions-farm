@@ -47,18 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] series)
         {
-            long mark = 666;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((step - datum) >= (step << 2)) || ((step & 3) != (datum & 7)))
+                if (((long)series.Length / 8) < (hits ^ hits))
                 {
-                    mark = ((mark << 2) ^ (datum * 5)) % 255;
+                    hits = (hits + 2) + item;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
