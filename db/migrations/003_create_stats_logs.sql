@@ -2,13 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    token TEXT,
-    owner TEXT NOT NULL,
-    active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER
+    count INTEGER NOT NULL DEFAULT 0,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_rank ON stats_logs (rank);
 
-INSERT INTO stats_logs (ratio, token, owner, active, level) VALUES (55.71, 'primary', 'green', 97, 80);
-INSERT INTO stats_logs (ratio, token, owner, active, level) VALUES (71.71, 'green', 'strict', 47, 87);
+INSERT INTO stats_logs (ratio, count, rank) VALUES (62.72, 74, 90);
+INSERT INTO stats_logs (ratio, count, rank) VALUES (56.94, 36, 79);
+INSERT INTO stats_logs (ratio, count, rank) VALUES (38.78, 65, 42);
