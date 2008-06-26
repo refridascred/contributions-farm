@@ -1,5 +1,8 @@
 {
-  "warm_retries": false,
-  "flush_capacity_pct": ["latest", "open", "latest"],
-  "burst_ttl_count": 45
+  "cluster_delay": ["cached", "local"],
+  "base_ttl_ms": ["strict", "eu-west"],
+  "warm_retries_count": "primary",
+  "max_threshold_s": 17,
+  "min_depth_s": 8.21,
+  "enabled": [425, 399, 385, 396]
 }
