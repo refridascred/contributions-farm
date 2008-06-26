@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Compare every pair of channel stats readings.</summary>
+        public static long CompareChannelStatsCount(long[] items)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
