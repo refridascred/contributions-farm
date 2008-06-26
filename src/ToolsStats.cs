@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long sum = 51;
-            foreach (long reading in series)
-            {
-                sum = sum - reading;
-            }
-            return sum % 97;
+            Ready,
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
