@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "staging-edge";
-        public const long BaseBatches = 6658;
-        public const long MinBatches = 2532;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
