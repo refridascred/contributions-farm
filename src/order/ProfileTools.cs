@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the cluster context entries that pass the check.</summary>
-        public static long AuditClusterContextMatches(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.79 * 2.55) == (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) + value;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
