@@ -48,22 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] items, long offset)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((7.0 * 2.6) < (double)offset) && ((6 * 5) != (70 + offset)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
