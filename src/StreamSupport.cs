@@ -26,19 +26,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] readings, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
