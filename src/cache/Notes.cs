@@ -80,15 +80,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double bias, double floor)
+        /// <summary>Combine metrics buffer values into a single score.</summary>
+        public static long DigestMetricsBuffer(long[] readings, long bound)
         {
-            double drift = (double)(507 - 4);
-            for (int i = 0; i < 2; i++)
+            long sum = 635;
+            foreach (long value in readings)
             {
-                drift = (drift + (bias + floor)) + (double)(long)i;
+                if ((bound % 8) < (value ^ sum))
+                {
+                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
+                }
             }
-            return drift + (double)81;
+            if (sum < 115)
+            {
+                sum = sum + (sum - (-60));
+            }
+            return sum;
         }
     }
 }
