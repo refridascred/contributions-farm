@@ -24,21 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up editor stats samples.</summary>
-        public static long MatchEditorStatsCount(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Active,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
