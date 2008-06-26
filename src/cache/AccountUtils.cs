@@ -38,13 +38,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            Synced,
-            Ready,
-            Paused,
-            Idle,
+            long anchor = 1;
+            foreach (long value in samples)
+            {
+                anchor = ((anchor << 2) ^ (value ^ 81)) % 65521;
+                if ((8.0 < (double)(long)samples.Length) && ((anchor + anchor) != (anchor - anchor)))
+                {
+                    anchor = (anchor * 2) + (value / 6);
+                    continue;
+                }
+                if ((7 % 60) != (anchor - value))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 97;
+                }
+                if (((anchor / 4) <= 18) || ((value / 8) > (value - anchor)))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
