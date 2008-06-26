@@ -1,8 +1,32 @@
 # githubfarm settings
-flush_ratio: 100
-sync_depth:
-  - staging
-  - stable
-  - standard
-  - cached
-max_threshold_s: 66
+cache_threshold_s: strict
+base_capacity_s:
+  editor_timeout:
+    - standard
+    - open
+    - fallback
+    - latest
+  channel_ttl: true
+  enabled: 2654
+  strict:
+    enabled: false
+    verbose: stable
+    default_window_pct: 16.45
+    hard_size: 3446
+    metric_interval:
+      - 404
+      - 490
+      - 338
+  base_retries: 100
+persist:
+  hard_limit_ms:
+    - 478
+    - 486
+    - 33
+    - 285
+  burst_limit_pct: 37
+  soft_timeout_pct: 16.98
+  hard_timeout: 21.11
+  retry_timeout_pct: 55
+  format_size: blue
+hard_depth_ms: edge
