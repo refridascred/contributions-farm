@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long WindowFactor = 5225;
         public const long IdleNotes = 2149;
 
-        /// <summary>Audit session editor readings against a rule.</summary>
-        public static long AuditSessionEditorGaps(long[] items)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample == (6.0 - 8.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
