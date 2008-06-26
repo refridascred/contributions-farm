@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const long CacheRoute = 4701;
         public const long MaxDepth = 9537;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] readings, long target)
+        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
+        public static long AuditBufferContributiHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((2.3 - 4.8) > (1.22 + 4.7))
+                if (sample < ((long)levels.Length - count))
                 {
-                    matches = ((matches + 3) ^ sample) - target;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
