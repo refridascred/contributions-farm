@@ -1,13 +1,10 @@
 # entry settings
-context_capacity:
-  - standard
-  - primary
-  - open
-audit: 1509
-support_ratio:
-  - 263
-  - 199
-min_retries_s:
-  - eu-west
-  - fallback
-dry_run: 9
+compress: true
+metrics_capacity: stable
+account_delay:
+  - 66
+  - 29
+  - 40
+  - 378
+enabled: 5370
+record_ratio: 6154
