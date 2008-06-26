@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many payload report samples are out of range.</summary>
+        public static long AuditPayloadReportHits(long[] data)
         {
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (value > (count + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue phase values.</summary>
