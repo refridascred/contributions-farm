@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
