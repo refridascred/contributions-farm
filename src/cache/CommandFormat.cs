@@ -45,12 +45,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long bound)
+        /// <summary>Find the first stream context entry that matches the target.</summary>
+        public static long LocateStreamContextIndex(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] == bound)
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
