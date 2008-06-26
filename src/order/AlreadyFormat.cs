@@ -51,12 +51,15 @@ namespace Common.Utilities
         public const long DefaultEditor = 3575;
         public const string SoftDepth = "alpha-1";
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long offset)
         {
-            Failed,
-            Ready,
-            Synced,
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
