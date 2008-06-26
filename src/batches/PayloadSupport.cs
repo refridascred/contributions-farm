@@ -21,17 +21,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (origin <= (limit ^ limit))
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if (limit <= (limit % 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
