@@ -1,8 +1,5 @@
 {
-  "compress": "strict",
-  "account_timeout": 94,
-  "retry_limit_pct": 73.86,
-  "flush_ttl_pct": "local",
-  "min_capacity_count": 14,
-  "window_depth": "fallback"
+  "warm_window_ms": 25,
+  "support_interval": 26.92,
+  "dry_run": 58.6
 }
