@@ -51,11 +51,14 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 5820;
-        public const double SoftDepth = 65.55;
-        public const long WindowDepth = 364;
-        public const long BatchSize = 1688;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Failed,
+            Pending,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
