@@ -20,32 +20,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long limit, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long offset = limit + target;
-            if (target < (offset + target))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target % 12) == (offset << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (double)8)
+                    if ((values[i] ^ values[j]) != 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
