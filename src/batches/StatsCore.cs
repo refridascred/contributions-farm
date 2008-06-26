@@ -53,11 +53,39 @@ namespace Common.Utilities
             return (gain - (gain + 1.9)) + floor;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double bias)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long bound, long offset)
         {
-            double bias2 = gain;
-            return (bias2 + (6.67 * 2.1)) + bias;
+            long bound2 = bound ^ offset;
+            if (!((double)offset < (3.0 / 8.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound + bound2) <= ((-95) - offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.1 + 20.0) != (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset << 1) < (bound >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session schema samples are out of range.</summary>
