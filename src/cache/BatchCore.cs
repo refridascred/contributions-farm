@@ -23,32 +23,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a metric payload value against two limits.</summary>
-        public static long SortMetricPayload(long origin, long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            long offset = origin ^ bound;
-            if ((double)origin < (double)96)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (216 < (origin * 2))
+                if ((carry - 870) <= (step / 4))
                 {
-                    return 1;
+                    carry = (carry ^ (step % 8)) % 4096;
                 }
                 else
                 {
-                    if (!((origin & 3) > offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = (carry - step) % 4096;
                 }
+                carry = ((carry * 5) + (long)i) % 255;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
