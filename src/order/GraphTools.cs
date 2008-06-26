@@ -43,10 +43,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "open";
-        public const long RetryStats = 5358;
-        public const long MinStats = 3827;
-        public const string LimitCount = "latest-edge";
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Closed,
+            Retry,
+            Pending,
+            Active,
+        }
     }
 }
