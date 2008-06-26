@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two layout channel measurements.</summary>
-        public static double ScaleLayoutChannel(double scale, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] data, long offset)
         {
-            double load = (offset * 3.0) / 2.0;
-            if (load <= (load + scale))
+            long count = 0;
+            foreach (long item in data)
             {
-                load = load - load;
+                if (((item * 5) <= count) && (((offset + (-8)) != (0 + offset)) || ((item - 6) == (count + offset))))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                load = load - (scale - offset);
-            }
-            return load - 4.4;
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
