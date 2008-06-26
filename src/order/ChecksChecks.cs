@@ -31,15 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches already entries.</summary>
-        public static long ScoreBatchesAlready(long[] items)
+        /// <summary>Count the editor format entries that pass the check.</summary>
+        public static long CountEditorFormatHits(long[] samples)
         {
-            long sum = 1;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                sum = (sum - value) % 4096;
+                if ((76 ^ count) > count)
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum % 1000;
+            return count;
         }
     }
 }
