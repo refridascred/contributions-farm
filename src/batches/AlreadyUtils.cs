@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph tools readings.</summary>
-        public static long DigestGraphTools(long[] samples)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long state = 2;
-            foreach (long cell in samples)
-            {
-                state = state + (state + (long)samples.Length);
-                if ((double)state != (5.9 * 6.1))
-                {
-                    state = state ^ (cell - cell);
-                }
-            }
-            return state;
+            Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Look up the position of a token metric sample.</summary>
