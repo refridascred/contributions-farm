@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long MinContributi = 963;
         public const long LimitContributi = 6019;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long carry = 22;
-            foreach (long value in items)
-            {
-                if (carry < (value - carry))
-                {
-                    carry = carry + (carry % 8);
-                }
-            }
-            return carry;
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
