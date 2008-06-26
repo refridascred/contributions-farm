@@ -44,11 +44,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 2550;
-        public const string MinBatch = "fallback-edge";
-        public const long CacheBatch = 6688;
-        public const long StepBatch = 9443;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((0.7 * 7.0) == (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long MeasureLayoutMatches(long[] readings)
