@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] readings, long target)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a notes info.</summary>
