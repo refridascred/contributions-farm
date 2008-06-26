@@ -43,11 +43,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinInterval = 776;
-        public const long RetryWidth = 6981;
-        public const long CacheFilter = 977;
-        public const long DefaultFilter = 3892;
-        public const string MaxFilter = "alpha-edge";
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
