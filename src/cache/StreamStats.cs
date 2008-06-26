@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] data, long offset)
         {
-            Closed,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((7.5 - 19.0) >= (double)offset)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
