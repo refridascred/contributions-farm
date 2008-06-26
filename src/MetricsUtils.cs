@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long CacheBatches = 4644;
         public const string MaxInterval = "alpha";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] readings)
+        /// <summary>Blend two session entry measurements.</summary>
+        public static double ProjectSessionEntry(double scale, double floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.7 * 7.0) == (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double mean = (floor / 6.0) / 4.0;
+            return (mean + floor) + scale;
         }
 
         /// <summary>Describe the editor mode values.</summary>
