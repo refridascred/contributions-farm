@@ -67,12 +67,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Locked,
             Synced,
-            Done,
+            Paused,
+            New,
+            Draft,
+            Pending,
         }
 
         /// <summary>Project the next window value.</summary>
