@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] items)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double rate = scale;
+            if (rate <= scale)
             {
-                if (matches > (reading + reading))
-                {
-                    matches = matches + 3;
-                }
+                rate = rate - (span / 5.0);
             }
-            return matches;
+            else
+            {
+                rate = rate - (10.0 + span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (scale * 8.73)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Locate a format reading by value.</summary>
