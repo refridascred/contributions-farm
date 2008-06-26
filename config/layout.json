@@ -1,5 +1,5 @@
 {
-  "persist": 26.45,
-  "readonly": 3084,
-  "base_retries_count": 78.17
+  "warm_limit_s": 30,
+  "checks_depth": "standard",
+  "githubfarm_capacity": "open"
 }
