@@ -13,14 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            New,
-            Queued,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7334;
+        public const double BatchDepth = 22.24;
+        public const string MinWidth = "stable-v2";
+        public const long HardBatch = 5106;
+        public const long LimitCount = 9506;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelHits(long[] items, long floor)
