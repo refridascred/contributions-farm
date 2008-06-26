@@ -1,6 +1,5 @@
 {
-  "strict": "staging",
-  "profile_window": 2501,
-  "retry_size": ["primary", "legacy", "stable"],
-  "dry_run": true
+  "flush_limit_pct": [202, 431],
+  "support_limit": true,
+  "max_capacity": "eu-west"
 }
