@@ -38,12 +38,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 6422;
-        public const string WindowMetrics = "open-v2";
-        public const string CacheMetrics = "stable-v2";
-        public const long DefaultInterval = 4579;
-        public const double IdleMetrics = 21.17;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] data)
+        {
+            long sum = 21;
+            foreach (long reading in data)
+            {
+                sum = (sum * 3) + (reading ^ reading);
+                if (reading <= (reading + reading))
+                {
+                    break;
+                }
+            }
+            if (sum < 5)
+            {
+                sum = (sum + (sum ^ sum)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenLimits(long[] values, long seed)
