@@ -41,13 +41,18 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] series)
         {
-            Closed,
-            Retry,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally * 3) >= ((-7) & 127))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
     }
 }
