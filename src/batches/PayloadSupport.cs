@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series, long target)
+        /// <summary>Find the first already order entry that matches the target.</summary>
+        public static long FindAlreadyOrderIndex(long[] data, long seed)
         {
-            long sum = 91;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sum <= entry)
+                if ((data[i] >= seed) && ((data[i] % 5) == 0))
                 {
-                    sum = sum + (target << 2);
+                    return (long)i;
                 }
             }
-            if (sum > 552)
-            {
-                sum = (sum - 31) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
