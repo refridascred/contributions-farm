@@ -1,5 +1,8 @@
 {
-  "queue_limit": "open",
-  "token_limit": 46.59,
-  "audit": 8793
+  "enabled": 81,
+  "soft_timeout_count": "stable",
+  "burst_ttl": "green",
+  "audit": 40.19,
+  "max_threshold": 7898,
+  "session_timeout": 55.46
 }
