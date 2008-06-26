@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] samples)
+        /// <summary>Grade a record batches value against two limits.</summary>
+        public static long BucketRecordBatches(long target, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long next = target ^ origin;
+            if ((origin <= (target - next)) && ((double)422 == (double)target))
             {
-                if ((hits << 2) > (entry + entry))
+                return 1;
+            }
+            else
+            {
+                if (!((next * 2) != (target - origin)))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a token info.</summary>
