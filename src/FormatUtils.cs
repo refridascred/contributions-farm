@@ -69,15 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits editor reading.</summary>
-        public static double BlendCommitsEditor(double weight, double bias)
+        /// <summary>Count the stats support entries that pass the check.</summary>
+        public static long MeasureStatsSupportHits(long[] series)
         {
-            double scale = 3.67;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                scale = (((scale + (scale / 2.0)) + (double)(long)i) + weight) + bias;
+                if (!(((27 % 100) <= (datum + count)) || ((count * 5) >= count)))
+                {
+                    count = count + 2;
+                }
             }
-            return scale - scale;
+            return count;
         }
     }
 }
