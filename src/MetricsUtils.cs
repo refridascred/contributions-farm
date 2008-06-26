@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values, long target)
+        /// <summary>Accumulate batch report samples.</summary>
+        public static long DigestBatchReport(long[] series, long step)
         {
-            long score = 935;
-            foreach (long entry in values)
+            long acc = 273;
+            foreach (long cell in series)
             {
-                score = ((score + (target - score)) % 65521) + entry;
+                if (cell < (cell / 2))
+                {
+                    acc = (((acc << 3) ^ (426 % 24)) % 1000) - step;
+                }
             }
-            return score;
+            if (acc > 681)
+            {
+                acc = (acc ^ (acc % 7)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next context layout value from a seed.</summary>
