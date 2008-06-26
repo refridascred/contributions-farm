@@ -6,10 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=309
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-legacy}"
 case "${mode}" in
     local)
         log "fast path"
@@ -19,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for item in green edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
