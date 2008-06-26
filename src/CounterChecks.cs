@@ -67,19 +67,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] series, long seed)
+        /// <summary>Iterate the token schema series from a seed.</summary>
+        public static long IterateTokenSchema(long target)
         {
-            long acc = 8;
-            foreach (long value in series)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                acc = acc - (seed ^ value);
-                if ((seed / 5) < acc)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    acc = acc + (seed / 5);
+                    score = (((score * 5) + ((-44) + target)) % 255) + (long)i2;
                 }
+                if ((double)(long)i >= (4.0 + 3.78))
+                {
+                    score = score ^ (target - (long)i);
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
