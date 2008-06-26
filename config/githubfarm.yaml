@@ -1,6 +1,10 @@
 # githubfarm settings
-retry_interval: staging
-dry_run: 75
-channel_interval: true
-cache_ttl_s: latest
-cache_threshold_pct: standard
+sync_timeout: 21
+min_retries:
+  - 157
+  - 368
+  - 153
+flush_limit_ms:
+  - green
+  - green
+  - open
