@@ -22,10 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 5.4;
-        public const long CacheCount = 9425;
-        public const double MinDepth = 97.81;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc - (seed ^ (long)i);
+                if (((double)(long)i >= (4.3 + 8.64)) && ((seed & 3) >= (114 >> 5)))
+                {
+                    acc = (acc * 2) + 8;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
