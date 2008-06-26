@@ -12,10 +12,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchLevel = 865;
-        public const double WindowSession = 37.86;
-        public const string DefaultSession = "stable-1";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] readings, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] levels, long offset)
