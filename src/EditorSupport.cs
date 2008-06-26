@@ -26,39 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long target2)
+        /// <summary>Check that every buffer notes entry stays within the limit.</summary>
+        public static bool VerifyBufferNotesBounds(long[] levels, long seed)
         {
-            long edge = target - target2;
-            if ((target2 ^ edge) != (target + 967))
+            bool found = true;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target2 << 3) > (target2 ^ edge)) || ((9.54 + 6.1) >= (double)edge))
+                if (item < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target2 <= target) && ((edge + target2) > target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0.1 * 17.0) > 16.0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the layout batch entries that pass the check.</summary>
