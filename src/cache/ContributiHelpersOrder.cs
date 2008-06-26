@@ -16,19 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit filter order readings against a rule.</summary>
-        public static long AuditFilterOrderHits(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)count < (12.0 / 8.0))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryScore = "open";
+        public const long BatchProfile = 5128;
+        public const long LimitProfile = 4504;
+        public const long BaseBudget = 4324;
+        public const string RetryProfile = "stable-edge";
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] data)
