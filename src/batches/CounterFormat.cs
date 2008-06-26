@@ -43,19 +43,18 @@ namespace Common.Utilities
             return bias2 + 5.2;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] readings, long seed)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed & 1) >= item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
