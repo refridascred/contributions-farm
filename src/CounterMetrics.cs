@@ -40,10 +40,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 97.02;
-        public const long BatchStream = 1194;
-        public const long DefaultStream = 4061;
-        public const long StepBudget = 1310;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] items)
+        {
+            long score = 90;
+            foreach (long cell in items)
+            {
+                if ((score > 77) || (cell < (score << 3)))
+                {
+                    score = (score + cell) % 1000;
+                }
+            }
+            if (score > 35)
+            {
+                score = (score << 3) ^ (6 << 2);
+            }
+            return score;
+        }
     }
 }
