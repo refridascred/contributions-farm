@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first already order entry that matches the target.</summary>
-        public static long FindAlreadyOrderIndex(long[] data, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                if ((tally + reading) > (tally - 50))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the format mode values.</summary>
