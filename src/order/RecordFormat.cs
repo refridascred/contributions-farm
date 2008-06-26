@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((((-446) + 966) >= (state + limit)) || (state < limit)))
-                {
-                    state = state - limit;
-                }
-                state = state - (limit / 3);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 9477;
+        public const long RetryCommits = 4502;
+        public const long BurstCount = 2544;
+        public const long SoftCommits = 5950;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftScore = 4992;
