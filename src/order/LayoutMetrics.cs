@@ -20,17 +20,35 @@ namespace Common.Utilities
             return mean - (double)(-556);
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] series, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 458;
+            foreach (long item in readings)
             {
-                if (series[i] == origin)
+                if ((long)readings.Length >= limit)
                 {
-                    return (long)i;
+                    acc = (acc - (item - acc)) % 255;
+                    acc = acc ^ (limit + item);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc + limit)) % 1000;
+                }
+                if ((item + acc) > (item << 2))
+                {
+                    acc = (acc * 4) + (long)readings.Length;
+                }
+                else
+                {
+                    acc = (acc - (acc - 8)) % 4096;
                 }
             }
-            return -1;
+            if (acc > 71)
+            {
+                acc = ((acc << 3) ^ (limit * 4)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the cluster state values.</summary>
