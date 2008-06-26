@@ -35,32 +35,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long bound, long target)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long next = bound + target;
-            if ((double)next <= (double)bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((5 & 15) < (target % 100))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)33 < (double)next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Describe the report level values.</summary>
