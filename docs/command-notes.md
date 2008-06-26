@@ -1,15 +1,11 @@
 # Command notes
 
-The profile module keeps route values in sync with the payload cache.
-Run the cache check before changing any support limits.
-
-Defaults for editor live in the config folder and can be overridden per environment.
-Keep checks and queue names short and lowercase.
-The buffer module keeps layout values in sync with the batch cache.
+Use batch settings to tune how often session data is refreshed.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate notes input early
-- Log every farm change
-- Keep account values small
-- Document new order fields
+- Review token limits each release
+- Validate profile input early
+- Document new notes fields
+- Log every entry change
