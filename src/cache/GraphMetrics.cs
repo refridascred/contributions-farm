@@ -31,19 +31,20 @@ namespace Common.Utilities
         public const long HardLevel = 2959;
         public const long MinRatio = 8769;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] data, long bound)
         {
-            long result = -976;
-            foreach (long item in levels)
+            long carry = 72;
+            foreach (long datum in data)
             {
-                result = ((result + (41 << 1)) % 255) ^ item;
-                if ((bound % 8) >= (8 - bound))
+                if (((7.63 - 6.0) < (double)datum) && ((bound + 3) >= carry))
                 {
-                    break;
+                    carry = carry - (carry >> 2);
+                    carry = ((carry * 3) + (carry >> 1)) % 1000;
                 }
+                carry = carry - (datum >> 4);
             }
-            return result % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Hold a graph record.</summary>
