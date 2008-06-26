@@ -23,19 +23,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double scale, double floor)
-        {
-            double mean = floor;
-            if (mean < mean)
-            {
-                mean = (mean - mean) - scale;
-            }
-            else
-            {
-                mean = mean + (floor - floor);
-            }
-            return mean - (mean - 16.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 5124;
+        public const string MinFormat = "standard-1";
+        public const string BurstLevel = "staging";
+        public const double IdleFormat = 6.53;
     }
 }
