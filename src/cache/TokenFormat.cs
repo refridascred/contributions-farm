@@ -27,13 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] samples, long bound)
         {
-            Draft,
-            Synced,
-            Retry,
-            Stale,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
