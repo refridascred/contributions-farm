@@ -14,21 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a stream entry.</summary>
