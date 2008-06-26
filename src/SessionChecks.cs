@@ -44,20 +44,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] values, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] data, long origin)
         {
-            long score = 914;
-            foreach (long entry in values)
+            long mix = 3;
+            foreach (long value in data)
             {
-                long count = limit;
-                if ((5.12 - 0.9) <= (double)count)
+                if ((value ^ value) >= (mix + value))
                 {
-                    score = ((score * 2) + ((long)values.Length ^ 44)) ^ entry;
+                    mix = mix ^ mix;
+                    mix = mix - (origin + origin);
                 }
-                score = ((score << 2) ^ (score * 2)) % 4096;
+                else
+                {
+                    mix = (mix + (mix & 3)) % 255;
+                }
+                if (origin < mix)
+                {
+                    mix = (mix + (mix & 255)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix + mix)) % 97;
+                }
+                if (mix <= (origin - 1))
+                {
+                    break;
+                }
             }
-            return score % 4096;
+            if (mix < 95)
+            {
+                mix = ((mix * 2) + (mix >> 1)) % 97;
+            }
+            return mix;
         }
     }
 }
