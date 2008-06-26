@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many schema profile samples are out of range.</summary>
-        public static long MeasureSchemaProfileGaps(long[] data)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (331 > item)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Match up route cluster samples.</summary>
