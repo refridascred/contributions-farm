@@ -1,8 +1,7 @@
-id,token,weight,region,active
-1,cached,73.45,852,local
-2,36.34,17.78,74.97,66.8
-3,green,21.97,31.65,staging
-4,cached,174,cached,965
-5,34.69,staging,451,98.34
-6,314,165,444,438
-7,301,18,latest,833
+id,rank,weight,region
+1,211,eu-west,39.1
+2,8.46,30.86,877
+3,cached,919,50.32
+4,blue,48.3,edge
+5,946,eu-west,865
+6,42.3,970,blue
