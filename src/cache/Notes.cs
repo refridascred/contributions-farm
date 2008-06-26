@@ -61,11 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstRatio = "open-edge";
-        public const double BaseWindow = 77.85;
-        public const long WindowRatio = 1535;
-        public const double MaxWindow = 21.77;
-        public const long IdleWindow = 910;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
