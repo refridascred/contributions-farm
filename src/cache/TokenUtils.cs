@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowWidth = 785;
-        public const long BatchToken = 3318;
-        public const long LimitToken = 3532;
-        public const string DefaultToken = "local-edge";
-        public const string BurstToken = "cached-edge";
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long seed)
