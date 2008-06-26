@@ -74,18 +74,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (count < (count >> 1))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
