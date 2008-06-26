@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] items, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long total = 4;
+            foreach (long sample in series)
             {
-                if (value <= seen)
-                {
-                    seen = (seen + 3) + step;
-                }
+                total = ((total << 2) ^ (3 % 8)) + sample;
             }
-            return seen;
+            if (total < 417)
+            {
+                total = (total << 3) ^ (total ^ total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
