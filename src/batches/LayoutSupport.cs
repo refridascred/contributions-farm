@@ -89,13 +89,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long bound)
         {
-            Closed,
-            Ready,
-            Draft,
-            Retry,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a entry header.</summary>
