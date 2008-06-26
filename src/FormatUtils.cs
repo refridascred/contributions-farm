@@ -35,29 +35,10 @@ namespace Common.Utilities
         public const long BaseFactor = 6720;
         public const long RetryChannel = 2433;
 
-        /// <summary>Iterate the batch batches series from a seed.</summary>
-        public static long RollBatchBatches(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result - ((long)i + (long)i);
-                if (((long)i >= result) && (seed <= (seed + (long)i)))
-                {
-                    result = ((result * 3) + (long)i) % 255;
-                }
-                if ((double)seed < (double)result)
-                {
-                    result = (result * 4) + 6;
-                }
-                else
-                {
-                    result = (result << 2) ^ ((long)i + seed);
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 7342;
+        public const string CacheMetric = "cached";
+        public const double WindowMetric = 97.75;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
