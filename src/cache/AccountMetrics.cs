@@ -64,17 +64,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first githubfarm report entry that matches the target.</summary>
-        public static long LookupGithubfarmReportIndex(long[] series, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (series[i] == seed)
+                if ((double)item != (8.99 / 4.0))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
