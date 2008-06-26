@@ -1,13 +1,7 @@
 {
-  "flush_delay_count": {
-    "hard_limit": "open",
-    "cache_delay": 69,
-    "retry_interval_count": 25
-  },
-  "poll_timeout_s": true,
-  "soft_size_s": {
-    "default_capacity_pct": [288, 79],
-    "dry_run": 250,
-    "min_delay": ["stable", "eu-west", "stable"]
-  }
+  "audit": 1024,
+  "commits_limit": 30,
+  "persist": 36,
+  "soft_depth_pct": "cached",
+  "batch_retries_count": 13
 }
