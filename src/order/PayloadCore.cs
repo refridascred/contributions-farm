@@ -47,9 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleLevel = 9186;
-        public const double BatchTimeout = 98.51;
-        public const long SoftBudget = 5022;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long OverlapFarmCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
