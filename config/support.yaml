@@ -1,5 +1,6 @@
 # support settings
-readonly: 75.09
-stream_window: local
-buffer_ratio: blue
-account_limit: primary
+idle_size: 1024
+entry_delay: false
+batch_threshold: latest
+order_window: true
+persist: 100
