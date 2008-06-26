@@ -59,14 +59,11 @@ namespace Common.Utilities
         public const long SoftDepth = 8637;
         public const double BurstLevel = 31.13;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Closed,
-            Locked,
-            New,
-            Synced,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 3863;
+        public const long SoftToken = 1296;
+        public const long IdleToken = 1634;
+        public const double RetryCount = 62.33;
+        public const string RetryToken = "local-v2";
     }
 }
