@@ -85,21 +85,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cluster graph pairs that satisfy a relation.</summary>
-        public static long MatchClusterGraphCount(long[] readings)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span;
+            if (gain <= (gain - span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + (span * 2.71);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (gain - weight)) + (double)(long)i;
+            }
+            return gain + (weight + weight);
         }
     }
 }
