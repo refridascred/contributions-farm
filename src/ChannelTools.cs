@@ -28,21 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -1;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = mix ^ ((long)data.Length / 3);
+                if (!((9 - cell) < ((-460) ^ cell)))
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (mix < 0)
+            {
+                mix = (mix + (mix * 2)) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
