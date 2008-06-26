@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] items, long seed)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((seen > 5) && (seen >= seed))
+                if (entry >= step)
                 {
-                    seen = (seen + 1) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a route header.</summary>
