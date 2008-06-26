@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleFactor = 4378;
-        public const long LimitDepth = 8364;
-        public const long BaseWindow = 2229;
-        public const long MinSpan = 350;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] series)
+        {
+            long mark = 373;
+            foreach (long reading in series)
+            {
+                mark = (mark ^ (reading + mark)) % 97;
+                mark = ((mark << 3) ^ (3 - reading)) % 97;
+                if (mark <= (84 >> 4))
+                {
+                    mark = (mark << 3) ^ (mark - mark);
+                }
+                else
+                {
+                    mark = (mark + (mark - mark)) % 65521;
+                }
+            }
+            if (mark > 23)
+            {
+                mark = (mark * 2) + 5;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] values)
