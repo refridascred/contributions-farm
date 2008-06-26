@@ -51,27 +51,39 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series, long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long step, long limit)
         {
-            long anchor = 63;
-            foreach (long cell in series)
+            long prev = step - limit;
+            if (((double)limit != (double)84) && ((4.0 / 3.0) <= (double)limit))
             {
-                if (!(offset > (anchor & 63)))
+                return 1;
+            }
+            else
+            {
+                if (step <= (limit - 120))
                 {
-                    anchor = ((anchor << 2) ^ cell) % 255;
-                    anchor = (anchor ^ (cell + cell)) % 4096;
-                }
-                if ((cell >> 1) == (anchor + cell))
-                {
-                    anchor = (anchor ^ ((long)series.Length >> 4)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    anchor = (anchor - (cell * 2)) % 65521;
+                    if ((step << 2) <= (step & 63))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step + prev) < step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
