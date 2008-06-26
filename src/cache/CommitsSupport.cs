@@ -78,14 +78,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] samples, long offset)
         {
-            Dropped,
-            Done,
-            Idle,
-            New,
-            Active,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((3.3 / 9.0) == (double)offset)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+            }
+            return seen;
         }
     }
 }
