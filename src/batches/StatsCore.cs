@@ -49,16 +49,31 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine schema tools values into a single score.</summary>
-        public static long FoldSchemaTools(long[] series, long limit)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long limit)
         {
-            long score = 737;
-            foreach (long cell in series)
+            if ((double)limit > (11.0 * 5.48))
             {
-                score = (((score - (score & 15)) % 4096) + cell) - limit;
-                score = (score ^ (3 >> 1)) % 4096;
+                return 2;
             }
-            return score % 97;
+            else
+            {
+                if ((8 + limit) >= (limit % 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit < (5.1 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload notes samples are out of range.</summary>
