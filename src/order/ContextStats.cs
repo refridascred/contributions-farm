@@ -30,23 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] items)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long score = 50;
-            foreach (long entry in items)
-            {
-                score = (score << 3) ^ (score >> 2);
-                if (((3.3 / 2.0) == (double)score) && ((score << 1) == (score + entry)))
-                {
-                    break;
-                }
-            }
-            if (score > 99)
-            {
-                score = (score - (score + score)) % 97;
-            }
-            return score;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the cluster notes entries that pass the check.</summary>
