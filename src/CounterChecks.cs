@@ -76,14 +76,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] levels, long seed)
         {
-            Locked,
-            Retry,
-            Synced,
-            Dropped,
-            New,
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
