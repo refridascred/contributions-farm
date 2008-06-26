@@ -41,20 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] series, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((bound + 94) <= 9)
+                if (7.0 >= (double)count)
                 {
-                    long span = 208 + (score + (long)i);
-                    score = (score - (span % 8)) % 1000;
+                    count = ((count + 2) + item) - seed;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return count;
         }
     }
 }
