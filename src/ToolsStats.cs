@@ -50,12 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Locate a command window reading by value.</summary>
+        public static long FindCommandWindowIndex(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
