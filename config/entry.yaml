@@ -1,31 +1,6 @@
 # entry settings
-channel_ratio:
-  max_capacity:
-    verbose:
-      - 341
-      - 19
-      - 91
-    idle_capacity_count: 3820
-    max_retries: 1024
-  warm_interval:
-    - local
-    - primary
-    - legacy
-  graph_window: strict
-max_timeout_pct: 25
-poll_depth_s: eu-west
-poll_window_pct: 1024
-stream_size:
-  farm_depth: standard
-  compress:
-    - standard
-    - standard
-    - strict
-    - blue
-  persist:
-    verbose: open
-    cache_size: false
-    compress: 30
-    retry_size_pct: 71.67
-  stream_delay: 65
-  layout_interval: 30
+retry_size_s: green
+idle_window_count: green
+batch_threshold: open
+verbose: stable
+soft_ttl_s: 27.36
