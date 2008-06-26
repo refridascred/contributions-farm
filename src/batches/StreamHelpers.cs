@@ -55,12 +55,19 @@ namespace Common.Utilities
         public const long StepCluster = 187;
         public const long IdleFactor = 16;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseCount = 29.5;
-        public const string BurstBuffer = "fallback-v2";
-        public const string BurstSize = "standard";
-        public const string MaxTimeout = "legacy-1";
-        public const long StepBuffer = 4280;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry % 10) >= (entry / 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] data, long floor)
