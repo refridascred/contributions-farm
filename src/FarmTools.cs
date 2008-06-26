@@ -31,9 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepCount = 6755;
-        public const long CacheWidth = 8897;
-        public const string HardWindow = "latest-v2";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Locked,
+            Paused,
+            Failed,
+            Synced,
+        }
     }
 }
