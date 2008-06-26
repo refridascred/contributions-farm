@@ -26,18 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values, long offset)
+        /// <summary>Audit format githubfarm readings against a rule.</summary>
+        public static long TallyFormatGithubfarmMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((matches + matches) != (offset % 2))
+                if (391 >= hits)
                 {
-                    matches = (matches + 3) + reading;
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
