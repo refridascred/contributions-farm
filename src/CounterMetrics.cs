@@ -32,9 +32,23 @@ namespace Common.Utilities
         public const double DefaultFactor = 61.86;
         public const long MinSpan = 9315;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheFactor = 6999;
-        public const string HardSupport = "latest";
-        public const long SoftSupport = 9584;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long target)
+        {
+            long score = 69;
+            foreach (long datum in items)
+            {
+                score = (score - target) - datum;
+                if ((score & 31) > (target + score))
+                {
+                    break;
+                }
+            }
+            if (score > 140)
+            {
+                score = ((score << 2) ^ target) % 101;
+            }
+            return score;
+        }
     }
 }
