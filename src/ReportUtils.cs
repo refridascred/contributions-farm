@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long WindowCount = 8686;
         public const double DefaultWidth = 10.92;
 
-        /// <summary>Count the profile tools entries that pass the check.</summary>
-        public static long MeasureProfileToolsOutliers(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (matches >= (107 >> 3))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            New,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a stats support value against two limits.</summary>
