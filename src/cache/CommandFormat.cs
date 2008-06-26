@@ -42,12 +42,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinInterval = 776;
+        public const long RetryWidth = 6981;
+        public const long CacheFilter = 977;
+        public const long DefaultFilter = 3892;
+        public const string MaxFilter = "alpha-edge";
     }
 }
