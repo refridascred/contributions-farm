@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long MaxInterval = 9633;
         public const string StepSize = "alpha-1";
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long step)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate record samples.</summary>
