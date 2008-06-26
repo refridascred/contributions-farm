@@ -20,13 +20,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long step)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count channel layout pairs that satisfy a relation.</summary>
