@@ -11,10 +11,32 @@ namespace Common.Utilities
         public const long BurstCount = 2544;
         public const long SoftCommits = 5950;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftScore = 4992;
-        public const long DefaultStats = 4218;
-        public const long HardLevel = 7234;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long step)
+        {
+            if (!(limit > (limit << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((20.0 / 8.0) <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit & 127) >= (-4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitMetrics = 6422;
