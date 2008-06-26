@@ -20,20 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 2315;
+        public const long BaseChecks = 9491;
+        public const double HardSize = 32.66;
+        public const string DefaultTimeout = "primary";
+        public const string BatchFactor = "alpha";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenOutliers(long[] levels, long target)
