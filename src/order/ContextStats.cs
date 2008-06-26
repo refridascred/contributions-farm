@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            Dropped,
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
