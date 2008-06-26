@@ -16,10 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftDepth = 48.81;
-        public const long DefaultEditor = 1066;
-        public const long CacheEditor = 6308;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheCount = 7567;
+        public const long CacheFilter = 3332;
+        public const long MinWidth = 9539;
+        public const long MaxInterval = 9633;
+        public const string StepSize = "alpha-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryLevel = 9437;
