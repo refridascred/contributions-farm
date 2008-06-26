@@ -1,10 +1,6 @@
 # entry settings
-compress: true
-metrics_capacity: stable
-account_delay:
-  - 66
-  - 29
-  - 40
-  - 378
-enabled: 5370
-record_ratio: 6154
+buffer_timeout: 500
+readonly: 15
+retry_capacity_s: green
+batch_capacity: eu-west
+audit: 54
