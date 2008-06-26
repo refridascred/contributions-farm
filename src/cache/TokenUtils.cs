@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 6382;
-        public const string LimitGraph = "local";
-        public const string RetryFactor = "latest-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftMetrics = "stable";
+        public const string HardMetrics = "fallback-edge";
+        public const long MaxMetrics = 2241;
+        public const long BurstTimeout = 8944;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long WindowWidth = 785;
