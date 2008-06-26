@@ -1,5 +1,7 @@
 # githubfarm settings
-commits_interval: 54.8
-tools_threshold: latest
-sync_retries: 100
-flush_size_pct: 250
+channel_limit: 7140
+base_interval_count: 30
+idle_timeout_s: false
+soft_size_ms: 4
+hard_limit_pct: 1024
+graph_ratio: false
