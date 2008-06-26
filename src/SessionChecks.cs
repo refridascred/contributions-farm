@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long DefaultRatio = 8234;
         public const double MinSession = 55.36;
 
-        /// <summary>Fold a list of account commits readings.</summary>
-        public static long WeighAccountCommits(long[] items, long origin)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long result = 57;
-            foreach (long sample in items)
-            {
-                if ((double)origin <= (1.7 / 5.0))
-                {
-                    result = (result + (result >> 2)) + sample;
-                }
-            }
-            return result % 97;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
