@@ -1,26 +1,29 @@
 # support settings
-githubfarm_timeout:
-  strict: 250
-  flush_size: stable
-  session_limit:
-    cluster_limit: 1024
-    persist: local
-    queue_limit:
-      - 153
-      - 328
-    burst_ratio: 763
-  base_delay_s: 30
-  payload_timeout: true
-  soft_timeout_ms: green
-notes_size:
-  - 209
-  - 337
-min_limit_s:
-  layout_interval: 100
-  audit: blue
-  flush_retries_pct:
-    min_size: 0.44
-    queue_interval: fallback
-    burst_window_ms: standard
-  commits_retries: 82.34
-verbose: 24.34
+format_size: 3173
+default_depth_pct:
+  buffer_size: edge
+  entry_retries: 71
+  cache_window_ms: 60
+  githubfarm_limit: 5316
+base_capacity_pct:
+  min_retries_count: latest
+  max_threshold_count:
+    audit: false
+    dry_run:
+      - 118
+      - 414
+      - 291
+    record_ttl: primary
+    warm_threshold: eu-west
+  enabled: false
+  persist: stable
+  idle_capacity:
+    - 465
+    - 221
+    - 441
+format_interval: 53.17
+poll_timeout_s: 89
+cache_retries_count:
+  - legacy
+  - fallback
+  - legacy
