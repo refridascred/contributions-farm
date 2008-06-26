@@ -49,15 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout stream samples.</summary>
-        public static long DigestLayoutStream(long[] series, long offset)
+        /// <summary>Audit order metrics readings against a rule.</summary>
+        public static long MeasureOrderMetricsOutliers(long[] series, long floor)
         {
-            long total = 559;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                total = ((total + (5 - 682)) - entry) + offset;
+                if ((11.0 - 1.63) < (double)count)
+                {
+                    count = ((count + 2) ^ datum) - floor;
+                }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
