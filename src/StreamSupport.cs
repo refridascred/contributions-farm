@@ -26,10 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9659;
-        public const string MinLevel = "local-v2";
-        public const long BatchWidth = 3385;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings, long limit)
+        {
+            long result = 69;
+            foreach (long sample in readings)
+            {
+                if ((result + result) >= (73 - 561))
+                {
+                    result = ((result ^ (result * 3)) + sample) + limit;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
