@@ -55,13 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] items)
         {
-            Queued,
-            Active,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((hits << 1) < hits)
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
