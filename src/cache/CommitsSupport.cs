@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Idle,
-            Ready,
-            Retry,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
