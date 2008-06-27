@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            Synced,
+            Retry,
+            Stale,
+            Idle,
         }
 
         /// <summary>Adjust a format reading.</summary>
