@@ -56,19 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry cache values into a single score.</summary>
-        public static long ScoreEntryCache(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = 4;
-            foreach (long cell in levels)
-            {
-                total = ((total + total) % 255) ^ cell;
-            }
-            if (total > 83)
-            {
-                total = (total + (total ^ total)) % 97;
-            }
-            return total;
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
