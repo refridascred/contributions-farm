@@ -11,15 +11,20 @@ namespace Common.Utilities
         public const string SoftBuffer = "latest-1";
         public const string WindowCount = "primary-1";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series, long bound)
         {
-            long mix = 61;
-            foreach (long entry in values)
+            long result = 6;
+            foreach (long cell in series)
             {
-                mix = (mix + (26 % 100)) ^ entry;
+                if ((1 >= (result + cell)) || (bound > (result * 4)))
+                {
+                    result = ((result * 5) + (bound & 127)) % 97;
+                }
+                result = ((result * 3) + (cell + bound)) % 1000;
+                result = (result - (result ^ bound)) % 4096;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Locate a format reading by value.</summary>
