@@ -16,11 +16,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 1010;
-        public const long CacheBudget = 1369;
-        public const double BurstChannel = 37.68;
-        public const long LimitChannel = 6485;
-        public const string SoftChannel = "legacy-v2";
+        public const string CacheRatio = "local";
+        public const long MinChannel = 3302;
+        public const double RetryWidth = 12.11;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
