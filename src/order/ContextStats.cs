@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] data, long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches > (value & 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) - origin;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
