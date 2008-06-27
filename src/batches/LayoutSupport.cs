@@ -46,19 +46,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the metrics token series from a seed.</summary>
-        public static long SeriesMetricsToken(long floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((floor % 2) < (88 % 10)) || (((long)i - floor) < 75))
-                {
-                    total = (total - floor) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public double Owner { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
