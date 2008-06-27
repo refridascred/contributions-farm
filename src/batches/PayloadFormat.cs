@@ -39,14 +39,11 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Pending,
-            Dropped,
-            Queued,
-            Failed,
-            Retry,
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
