@@ -1,38 +1,12 @@
 # entry settings
-default_timeout_count: false
-warm_ttl:
-  compress: true
-  enabled: 1024
-  retry_ttl_s:
-    default_capacity_ms: 6243
-    sync_ratio_pct: 9
-    layout_retries: 17
-    batch_threshold: fallback
-  contributi_capacity:
-    idle_timeout_count: eu-west
-    sync_delay: 2820
-    metric_delay: primary
-    min_depth_ms: primary
-already_delay:
-  - blue
-  - latest
-  - primary
-  - staging
-hard_interval:
-  verbose: 8.02
-  poll_interval: cached
-  poll_ratio_pct:
-    enabled: 96
-    checks_depth: true
-    cache_depth_s: 100
-  max_ratio_pct: 66
-batch_delay:
-  cache_timeout: 100
-  buffer_limit:
-    - staging
-    - stable
-  warm_depth_pct:
-    persist: staging
-    stream_interval: true
-    default_threshold: legacy
-    retry_depth_ms: 58.43
+max_window_pct: true
+warm_delay: 48.04
+retry_delay: 9500
+flush_window:
+  warm_ratio: false
+  cache_delay: 78.24
+  dry_run: primary
+compress:
+  - 425
+  - 437
+  - 286
