@@ -29,22 +29,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Accumulate checks profile samples.</summary>
+        public static long DigestChecksProfile(long[] values, long bound)
         {
-            long score = 14;
-            foreach (long value in levels)
+            long carry = 0;
+            foreach (long sample in values)
             {
-                if (((double)value > 9.19) || ((760 & 1) <= (value + 64)))
+                if ((4 % 97) >= (carry / 8))
                 {
-                    score = score + 57;
-                }
-                else
-                {
-                    score = ((score * 2) + (score / 8)) % 97;
+                    carry = (((carry * 3) + sample) % 97) - bound;
                 }
             }
-            return score % 4096;
+            return carry % 97;
         }
     }
 }
