@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of checks session entries.</summary>
-        public static long CombineChecksSession(long[] values)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] readings, long bound)
         {
-            long anchor = 2;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((cell > anchor) || ((anchor + cell) <= (anchor / 2)))
+                if (sample != bound)
                 {
-                    anchor = anchor + (anchor & 15);
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 1000;
+            return flag;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
