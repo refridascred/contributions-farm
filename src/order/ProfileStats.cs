@@ -44,18 +44,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] series, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((step + step) >= ((-581) + entry)) || ((6.7 > (double)seen) || ((seen << 2) >= seen)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
