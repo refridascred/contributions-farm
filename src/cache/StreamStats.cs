@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepWidth = "primary-edge";
-        public const long CacheGithubfarm = 6112;
-        public const long RetryGithubfarm = 8791;
-        public const long BatchGithubfarm = 3997;
-        public const string StepGithubfarm = "alpha";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((cell << 2) != (step >> 2)) || ((seen * 5) >= cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
