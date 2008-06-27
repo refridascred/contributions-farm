@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] levels, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mix = 12;
-            foreach (long value in levels)
-            {
-                if ((value + offset) >= value)
-                {
-                    mix = (mix + offset) % 1000;
-                }
-                if (offset >= (offset + offset))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Draft,
+            Stale,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
