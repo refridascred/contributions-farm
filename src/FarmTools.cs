@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count batch metrics pairs that satisfy a relation.</summary>
-        public static long CompareBatchMetricsCount(long[] samples)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (bound < (bound + target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((970 + bound) < 95)
                 {
-                    if ((samples[i] - samples[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
