@@ -31,18 +31,31 @@ namespace Common.Utilities
             return mean + (double)56;
         }
 
-        /// <summary>Measure how many report payload samples are out of range.</summary>
-        public static long TallyReportPayloadMatches(long[] levels, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if (((origin % 60) <= (offset - offset)) || ((double)origin >= (double)offset))
             {
-                if ((datum - count) == (floor + floor))
+                return 3;
+            }
+            else
+            {
+                if ((offset * 3) > (-806))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin * 4) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
