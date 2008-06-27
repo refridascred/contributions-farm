@@ -38,18 +38,12 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const double HardSize = 82.09;
 
-        /// <summary>Count the schema support entries that pass the check.</summary>
-        public static long MeasureSchemaSupportMatches(long[] data)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry * 5) < (entry * 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Stale,
         }
     }
 }
