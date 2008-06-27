@@ -18,16 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph editor series from a seed.</summary>
-        public static long SeriesGraphEditor(long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long carry = 805;
+            foreach (long reading in values)
             {
-                anchor = anchor ^ bound;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                carry = (((carry << 2) ^ (173 - (long)values.Length)) % 101) + reading;
             }
-            return anchor;
+            if (carry < 37)
+            {
+                carry = carry + 46;
+            }
+            return carry;
         }
 
         /// <summary>Hold a format header.</summary>
