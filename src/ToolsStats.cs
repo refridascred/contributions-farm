@@ -76,9 +76,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 34.89;
-        public const long DefaultGraph = 7970;
-        public const long BatchInterval = 5549;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long bound, long target)
+        {
+            if ((target - bound) <= 273)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((5.45 / 8.0) == (double)target) && ((bound + target) < target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-199) + bound) > (bound + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)target < (2.65 / 6.0)) && ((bound / 7) >= (bound + bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
