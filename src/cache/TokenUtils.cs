@@ -27,30 +27,17 @@ namespace Common.Utilities
         public const long CacheRatio = 6629;
         public const double BatchFactor = 89.68;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] readings, long offset)
         {
-            long carry = 23;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample & 3) < sample) || ((carry + sample) <= (carry % 60)))
+                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
                 {
-                    carry = ((carry * 2) + (sample + carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (carry + sample)) % 101;
-                }
-                if ((carry < sample) && (((-722) - carry) < (carry + carry)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 7)
-            {
-                carry = ((carry * 2) + (carry ^ carry)) % 101;
-            }
-            return carry;
+            return -1;
         }
     }
 }
