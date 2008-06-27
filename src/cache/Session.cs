@@ -28,18 +28,10 @@ namespace Common.Utilities
         public const double DefaultTimeout = 82.13;
         public const string RetryRatio = "latest";
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 4458;
+        public const string LimitToken = "latest";
+        public const long BaseToken = 8846;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsGaps(long[] readings)
