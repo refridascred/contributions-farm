@@ -40,18 +40,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report editor samples are out of range.</summary>
-        public static long CountReportEditorGaps(long[] readings, long step)
+        /// <summary>Accumulate profile account samples.</summary>
+        public static long CombineProfileAccount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long anchor = 2;
+            foreach (long entry in items)
             {
-                if (!!(entry > (step + step)))
+                if (!(anchor >= (anchor - entry)))
                 {
-                    count = count + 1;
+                    anchor = anchor - (anchor / 8);
+                }
+                if ((double)anchor <= (3.9 + 6.0))
+                {
+                    anchor = ((anchor << 3) ^ (anchor - entry)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + entry) % 1000;
                 }
             }
-            return count;
+            if (anchor < (-5))
+            {
+                anchor = (anchor << 2) ^ (anchor >> 4);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the route state values.</summary>
