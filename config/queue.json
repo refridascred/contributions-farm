@@ -1,6 +1,8 @@
 {
-  "verbose": true,
-  "retry_capacity_s": 3,
-  "sync_capacity": 8189,
-  "enabled": 30
+  "payload_ratio": 60,
+  "poll_limit": false,
+  "dry_run": "green",
+  "githubfarm_limit": 46.84,
+  "hard_timeout_ms": 32.03,
+  "default_depth_pct": "strict"
 }
