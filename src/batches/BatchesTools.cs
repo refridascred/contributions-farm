@@ -22,22 +22,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] data, long step)
+        /// <summary>Iterate the counter channel series from a seed.</summary>
+        public static long StepCounterChannel(long target)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((step - step) >= (step / 8))
+                if ((20.0 / 2.0) == (double)state)
                 {
-                    tally = (tally + 1) ^ reading;
+                    state = state - (737 - target);
+                    state = state ^ ((long)i ^ (long)i);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
     }
 }
