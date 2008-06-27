@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const long RetrySize = 6798;
         public const string HardFactor = "staging-v2";
 
-        /// <summary>Check that every cluster already entry stays within the limit.</summary>
-        public static bool CheckClusterAlreadyRange(long[] series, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Locate a command contributi reading by value.</summary>
