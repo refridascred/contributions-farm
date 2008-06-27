@@ -38,12 +38,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long target, long target2)
         {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            long delta = target + target2;
+            if (((double)target == (7.44 - 1.9)) && ((1 % 60) < (delta & 255)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((delta >= (target2 + target2)) && ((59 - delta) > target2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target - delta) != (delta << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up stats samples.</summary>
