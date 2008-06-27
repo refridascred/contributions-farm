@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] series)
-        {
-            long total = -1;
-            foreach (long entry in series)
-            {
-                if (!(entry <= (entry - total)))
-                {
-                    total = ((total * 2) + (entry / 4)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (4 ^ total);
-                }
-                if ((double)entry == (2.0 / 5.0))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryFactor = "local";
+        public const long HardScore = 6239;
+        public const long BatchInterval = 4547;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double SoftBudget = 66.92;
