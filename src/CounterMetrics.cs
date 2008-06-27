@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue metric reading by value.</summary>
-        public static long LocateQueueMetricIndex(long[] data, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 0;
+            foreach (long value in data)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mix = (mix - (value + target)) % 4096;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
