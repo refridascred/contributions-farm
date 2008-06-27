@@ -48,19 +48,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of editor stream readings.</summary>
-        public static long DigestEditorStream(long[] items)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            long score = 57;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (11.0 < (double)item)
+                if (!(tally > (tally - datum)) || ((datum << 3) >= (datum - datum)))
                 {
-                    score = score + (item + item);
+                    tally = tally + 2;
                 }
-                score = score - (score / 2);
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
