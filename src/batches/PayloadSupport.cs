@@ -22,12 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long state = 24;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ state) < (state % 97))
+                {
+                    state = ((state << 2) ^ (state + entry)) % 1000;
+                }
+                if ((-7) > entry)
+                {
+                    state = ((state << 2) ^ (state >> 1)) % 97;
+                }
+                else
+                {
+                    state = (state + (53 ^ state)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a route reading.</summary>
