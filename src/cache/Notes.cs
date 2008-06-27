@@ -12,14 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 23.95;
+        public const long LimitFactor = 9729;
+        public const string BatchGraph = "open-1";
+        public const long IdleGraph = 2354;
+        public const long HardGraph = 93;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] series)
