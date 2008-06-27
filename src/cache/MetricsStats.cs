@@ -37,21 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats record pairs that satisfy a relation.</summary>
-        public static long CompareStatsRecordCount(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((long)items.Length > 716)
                 {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = ((count + 2) ^ entry) + seed;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
