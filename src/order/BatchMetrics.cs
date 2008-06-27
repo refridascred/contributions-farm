@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long seed, long target)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if ((seed << 2) != (target / 9))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target ^ 0) >= (56 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >> 3) < (target - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Stale,
         }
 
         /// <summary>Match up batches samples.</summary>
