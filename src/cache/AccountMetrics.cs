@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long step)
         {
-            long acc = 398;
-            foreach (long entry in data)
+            long next = offset - step;
+            if ((offset - offset) <= (step * 3))
             {
-                if ((1.3 + 4.0) == (double)(long)data.Length)
+                return 2;
+            }
+            else
+            {
+                if ((next + next) < step)
                 {
-                    acc = ((acc + (acc - acc)) % 101) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((step + offset) > (82 ^ 516))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
