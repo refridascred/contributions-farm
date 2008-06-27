@@ -26,13 +26,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels, long bound)
         {
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = 648;
+            foreach (long item in levels)
+            {
+                carry = ((carry - 540) % 255) - bound;
+                if ((item & 31) < ((-1) - carry))
+                {
+                    carry = (carry ^ 69) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry & 255)) % 97;
+                }
+            }
+            return carry;
         }
     }
 }
