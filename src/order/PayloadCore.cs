@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the counter checks entries that pass the check.</summary>
-        public static long TallyCounterChecksMatches(long[] items)
+        /// <summary>Scale a queue batches figure with a bias.</summary>
+        public static double ProjectQueueBatches(double gain, double span)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double drift = (gain * 9.56) * 4.7;
+            if (drift > (span * 7.0))
             {
-                if ((6.56 + 20.0) != (double)cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (double)2;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + 4.0) - (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
