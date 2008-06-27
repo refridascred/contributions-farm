@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long step)
         {
-            long total = 86;
-            foreach (long sample in items)
+            long anchor = -830;
+            foreach (long item in levels)
             {
-                if ((double)sample == (10.0 / 3.0))
-                {
-                    total = (total * 3) + bound;
-                }
+                anchor = ((anchor - (step / 7)) % 101) + item;
             }
-            return total;
+            if (anchor > 374)
+            {
+                anchor = (anchor - (anchor / 7)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of record entries.</summary>
