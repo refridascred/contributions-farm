@@ -27,13 +27,12 @@ namespace Common.Utilities
             return (gain2 - (gain / 2.0)) + offset;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
