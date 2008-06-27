@@ -62,9 +62,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "staging-v2";
-        public const string HardTimeout = "alpha-v2";
-        public const long RetryWidth = 7861;
+        public const long SoftBudget = 8308;
+        public const long WindowFilter = 6746;
+        public const long StepCount = 6281;
+        public const long MinTimeout = 829;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
