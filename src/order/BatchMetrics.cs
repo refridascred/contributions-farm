@@ -55,18 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload stream samples are out of range.</summary>
-        public static long AuditPayloadStreamOutliers(long[] levels)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((9 >> 5) < (reading + 36))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
