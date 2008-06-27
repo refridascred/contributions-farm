@@ -1,17 +1,12 @@
 # entry settings
-order_limit: cached
-editor_limit: 12
-cluster_capacity:
-  warm_threshold: 64.32
-  flush_depth: legacy
-  poll_retries: legacy
-  sync_capacity_ms: latest
-  soft_limit_count: false
-token_limit:
-  dry_run: false
-  max_ttl: 87
-  entry_retries:
-    soft_window_pct: 9278
-    audit: 55.02
-    cache_limit: strict
-dry_run: staging
+strict: 60
+warm_ratio: blue
+cache_retries_s: 96.96
+route_ratio: 9
+retry_capacity_ms:
+  cache_timeout_s:
+    - staging
+    - latest
+  profile_delay: 293
+  context_limit: 380
+  hard_delay_count: false
