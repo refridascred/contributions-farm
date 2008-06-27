@@ -55,18 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] values, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((limit + value) > (limit - limit))
+                if ((item + item) >= 67)
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
