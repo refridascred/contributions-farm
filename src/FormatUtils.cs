@@ -16,18 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long MeasureBatchesBatchOutliers(long[] data, long seed)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (datum > (seen % 64))
-                {
-                    seen = (seen + 3) + seed;
-                }
-            }
-            return seen;
+            Locked,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of command entries.</summary>
