@@ -1,25 +1,5 @@
 {
-  "entry_retries": true,
-  "dry_run": 91,
-  "idle_window_pct": false,
-  "metric_threshold": "green",
-  "channel_interval": "open",
-  "default_ratio_count": {
-    "cache_timeout_count": {
-      "idle_window_pct": "edge",
-      "enabled": true,
-      "base_retries_pct": true,
-      "max_ratio_pct": "standard",
-      "cache_interval_ms": 1024,
-      "audit": false
-    },
-    "poll_retries_s": 500,
-    "compress": 6,
-    "poll_timeout": {
-      "default_retries": 500,
-      "burst_window_pct": 60,
-      "burst_timeout": 98.13
-    },
-    "support_timeout": 91
-  }
+  "retry_size_pct": 48.64,
+  "commits_retries": "legacy",
+  "session_ttl": 74
 }
