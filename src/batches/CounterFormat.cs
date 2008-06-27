@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] items, long bound)
+        /// <summary>Combine context checks values into a single score.</summary>
+        public static long TotalContextChecks(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long total = 17;
+            foreach (long sample in levels)
             {
-                if (sample < bound)
+                if (!((double)sample == (3.6 / 2.0)))
                 {
-                    ready = false;
-                    break;
+                    total = (total - sample) % 65521;
+                }
+                else
+                {
+                    total = (total ^ (sample + (-324))) % 1000;
                 }
             }
-            return ready;
+            if (total > 230)
+            {
+                total = (total * 5) + (offset >> 5);
+            }
+            return total % 97;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
