@@ -1,21 +1,5 @@
 {
-  "strict": "cached",
-  "batch_window_count": "staging",
-  "soft_limit_pct": {
-    "batch_delay": 81.26,
-    "editor_limit": "fallback",
-    "default_limit_s": ["primary", "latest", "cached"],
-    "record_retries": 90,
-    "strict": {
-      "cache_interval_ms": 1975,
-      "readonly": true,
-      "base_retries_count": "fallback",
-      "compress": "blue",
-      "route_size": "cached",
-      "enabled": 60
-    }
-  },
-  "dry_run": ["blue", "edge", "latest", "cached"],
-  "persist": 93,
-  "checks_window": 64
+  "batch_depth": 11,
+  "soft_retries": false,
+  "flush_delay_pct": [138, 349, 57, 142]
 }
