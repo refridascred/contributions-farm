@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public double Size { get; set; }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
