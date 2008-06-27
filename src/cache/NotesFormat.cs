@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound << 3) >= (step >> 4))
             {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (double)step)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((9.66 - 6.1) != (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(bound <= (step << 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
