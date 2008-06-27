@@ -29,17 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long floor)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry - (floor >> 2)) % 101;
-                carry = (carry ^ ((long)i + floor)) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
