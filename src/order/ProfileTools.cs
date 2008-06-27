@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < step)
                 {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
