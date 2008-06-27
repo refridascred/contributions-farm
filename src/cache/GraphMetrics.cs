@@ -30,15 +30,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double rate, double offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double mean = (double)(705 & 15);
-            if (mean > mean)
-            {
-                mean = (mean - (offset * 6.2)) + rate;
-            }
-            return mean - 7.84;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
