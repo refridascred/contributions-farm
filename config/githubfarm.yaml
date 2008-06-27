@@ -1,11 +1,5 @@
 # githubfarm settings
-burst_timeout:
-  schema_timeout: false
-  flush_size: legacy
-  hard_interval_count: 597
-  cache_limit: local
-  soft_timeout_s: eu-west
-context_retries: 6970
-persist: 33.49
-default_size_count: true
-dry_run: fallback
+command_depth: 1024
+soft_ttl: true
+cache_depth_pct: fallback
+verbose: 30
