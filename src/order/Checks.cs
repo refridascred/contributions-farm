@@ -50,15 +50,9 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values, long floor)
-        {
-            long result = 9;
-            foreach (long entry in values)
-            {
-                result = (((result - ((long)values.Length ^ result)) % 97) + entry) + floor;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepCount = 4856;
+        public const string LimitSpan = "fallback";
+        public const long RetrySchema = 9101;
     }
 }
