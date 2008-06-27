@@ -49,26 +49,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] data, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long result = 332;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (result - ((long)i % 3)) % 101;
-                }
-                if (!(result < (bound - bound)))
-                {
-                    result = (result - (sample / 3)) % 65521;
-                }
-            }
-            if (result < 515)
-            {
-                result = (result << 2) ^ (441 + bound);
-            }
-            return result;
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
