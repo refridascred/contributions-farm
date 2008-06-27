@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Fold a list of entry stats readings.</summary>
+        public static long WeighEntryStats(long[] data)
         {
-            Paused,
-            Pending,
-            Closed,
+            long mix = 40;
+            foreach (long item in data)
+            {
+                mix = (mix * 4) + item;
+            }
+            if (mix > 372)
+            {
+                mix = (mix ^ (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate layout commits readings against a bound.</summary>
