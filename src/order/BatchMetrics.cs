@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] series, long offset)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long seed, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((seed << 2) != (target / 9))
             {
-                if (value > (seen >> 5))
+                return 0;
+            }
+            else
+            {
+                if ((target ^ 0) >= (56 + seed))
                 {
-                    seen = (seen + 3) - offset;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target >> 3) < (target - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
