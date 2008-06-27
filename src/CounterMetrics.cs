@@ -44,19 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
