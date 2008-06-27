@@ -47,19 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine tools payload values into a single score.</summary>
-        public static long TotalToolsPayload(long[] series, long target)
-        {
-            long acc = 622;
-            foreach (long reading in series)
-            {
-                acc = (acc - (acc * 5)) ^ reading;
-            }
-            if (acc < 92)
-            {
-                acc = ((acc * 5) + (target + target)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardDepth = 8.32;
+        public const long CacheRatio = 1037;
+        public const double BatchReport = 72.15;
+        public const double WindowReport = 78.78;
+        public const long IdleScore = 9860;
     }
 }
