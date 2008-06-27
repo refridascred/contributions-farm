@@ -22,18 +22,21 @@ namespace Common.Utilities
         public const string MaxChecks = "cached-edge";
         public const double MinCount = 2.61;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] items, long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((55 + 7) >= hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 3) + reading) - step;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
