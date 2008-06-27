@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "fallback";
+        public const string MinEntry = "latest-v2";
+        public const double BurstRatio = 13.87;
+        public const long MaxScore = 2885;
+        public const long MaxEntry = 3922;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] samples, long floor)
