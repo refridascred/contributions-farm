@@ -27,21 +27,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up profile already samples.</summary>
-        public static long CompareProfileAlreadyCount(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((total - (-149)) < (datum / 7)))
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 3) + (total - total)) % 1000;
+                }
+                else
+                {
+                    total = (total + 237) % 101;
+                }
+                total = (total + (total ^ datum)) % 97;
+                if (datum >= (bound + total))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total < 0)
+            {
+                total = (total << 3) ^ (5 >> 5);
+            }
+            return total;
         }
 
         /// <summary>Grade a order notes value against two limits.</summary>
