@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long bound2 = bound + step;
-            if (((-197) - bound2) > (step - bound2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (3.37 >= (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Synced,
+            New,
+            Closed,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
