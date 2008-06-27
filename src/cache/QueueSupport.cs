@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const string MinRatio = "standard";
         public const double WindowDepth = 81.39;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values)
-        {
-            long acc = -671;
-            foreach (long sample in values)
-            {
-                acc = (acc ^ (49 - acc)) ^ sample;
-                if (acc < (acc - acc))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 5146;
+        public const double HardWidth = 87.58;
+        public const long HardQueue = 6374;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] series)
