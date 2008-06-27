@@ -30,12 +30,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6146;
-        public const long BaseInterval = 3426;
-        public const long LimitCommits = 553;
-        public const double CacheCommits = 34.42;
-        public const long StepCommits = 2970;
+        /// <summary>Audit contributi command readings against a rule.</summary>
+        public static long AuditContributiCommandGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((value < tally) && (((-8) + value) > (tally + tally))) || ((double)value > 4.12))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] readings, long offset)
