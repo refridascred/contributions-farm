@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const string MinRatio = "standard";
         public const double WindowDepth = 81.39;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 5146;
-        public const double HardWidth = 87.58;
-        public const long HardQueue = 6374;
+        /// <summary>Combine tools farm values into a single score.</summary>
+        public static long TallyToolsFarm(long[] readings, long offset)
+        {
+            long state = 2;
+            foreach (long value in readings)
+            {
+                state = (state ^ value) + offset;
+            }
+            return state;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] series)
