@@ -16,15 +16,11 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Pending,
-            Synced,
-            Paused,
-            Retry,
-            Done,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "staging";
+        public const string MinRatio = "fallback";
+        public const long StepGraph = 6404;
+        public const string BatchSpan = "cached-edge";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountRange(long[] values, long origin)
