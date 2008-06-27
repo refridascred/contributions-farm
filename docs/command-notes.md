@@ -1,15 +1,15 @@
 # Command notes
 
-Run the layout check before changing any already limits.
-The route helpers are pure functions, so they are safe to call from any thread.
-When a contributi fails, the route handler retries a few times before giving up.
+Run the command check before changing any editor limits.
+The token helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any githubfarm limits.
 
-A command that stays idle for too long is moved to the batches list.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Keep order and session names short and lowercase.
+The counter helpers are pure functions, so they are safe to call from any thread.
+When a route fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Document new route fields
-- Review queue limits each release
-- Log every checks change
+- Review channel limits each release
+- Validate order input early
+- Document new payload fields
