@@ -44,20 +44,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 5292;
+        public const string StepScore = "strict-v2";
+        public const string WindowDepth = "standard";
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] levels, long seed)
