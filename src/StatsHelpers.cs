@@ -22,17 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] levels, long bound)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = scale;
+            return load - (floor * 2.8);
         }
 
         /// <summary>Describe the window phase values.</summary>
