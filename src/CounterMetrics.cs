@@ -26,23 +26,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools context entries that pass the check.</summary>
-        public static long AuditToolsContextGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 3) > (cell - count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 5634;
+        public const long RetryRecord = 3608;
+        public const long MaxRecord = 6499;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
