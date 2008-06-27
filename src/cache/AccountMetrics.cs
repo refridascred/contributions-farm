@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every order checks entry stays within the limit.</summary>
-        public static bool ValidateOrderChecksLimits(long[] samples, long origin)
+        /// <summary>Validate batch window readings against a bound.</summary>
+        public static bool GuardBatchWindowLimits(long[] samples, long seed)
         {
             bool flag = true;
             foreach (long reading in samples)
             {
-                if (reading > origin)
+                if (reading > seed)
                 {
                     flag = false;
                     break;
