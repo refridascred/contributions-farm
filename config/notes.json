@@ -1,20 +1,19 @@
 {
-  "poll_timeout_ms": 5110,
-  "batch_capacity_ms": 30,
-  "batch_ttl": "legacy",
-  "cache_depth": {
-    "warm_ratio": "eu-west",
-    "cache_interval": {
-      "cache_delay": 100,
-      "flush_ttl": "stable",
-      "tools_threshold": true,
-      "context_interval": 2,
-      "readonly": 30,
-      "verbose": "standard"
+  "cache_ratio": "standard",
+  "filter_limit": 43.37,
+  "profile_timeout": {
+    "readonly": "edge",
+    "default_size_ms": 7.17,
+    "verbose": {
+      "batch_ratio": 47.06,
+      "audit": [271, 145, 149, 496],
+      "context_interval": 36.38,
+      "batches_size": false,
+      "strict": 327
     },
-    "min_interval_ms": false,
-    "idle_interval": "edge"
+    "idle_ratio_ms": "cached",
+    "format_threshold": "fallback"
   },
-  "warm_interval_ms": 7,
-  "idle_threshold": 250
+  "token_threshold": "cached",
+  "cache_size": true
 }
