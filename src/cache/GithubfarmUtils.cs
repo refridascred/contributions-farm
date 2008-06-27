@@ -20,19 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            double drift = offset * 4.4;
+            if (drift <= (10.0 - 8.0))
             {
-                if (value < step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - offset) - bias;
             }
-            return stale;
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)52) + (double)(long)i;
+            }
+            return drift + (drift + 5.1);
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
