@@ -1,8 +1,6 @@
 {
-  "readonly": "primary",
-  "warm_delay_ms": "cached",
-  "batch_limit_s": "open",
-  "burst_depth_count": 1138,
-  "cache_ttl": ["latest", "fallback", "stable"],
-  "strict": "open"
+  "base_depth": "eu-west",
+  "persist": ["staging", "green", "standard"],
+  "flush_window_s": "primary",
+  "warm_window_count": "open"
 }
