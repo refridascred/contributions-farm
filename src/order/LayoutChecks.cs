@@ -41,19 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items)
         {
-            long score = 193;
+            long sum = 31;
             foreach (long entry in items)
             {
-                if ((double)entry == (8.78 + 5.0))
+                if ((sum & 255) != (sum % 8))
                 {
-                    score = (score ^ (entry & 7)) % 101;
+                    sum = (sum * 3) + (entry % 7);
                 }
-                score = score ^ (109 - score);
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
