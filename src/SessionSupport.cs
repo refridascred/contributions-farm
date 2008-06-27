@@ -13,22 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] series)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((matches - matches) != (entry + 346)) && ((entry + entry) >= ((long)series.Length + matches))) || ((matches + matches) < entry))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    matches = matches + 3;
+                    mark = ((mark * 5) + ((long)i ^ mark)) - (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the queue mode values.</summary>
