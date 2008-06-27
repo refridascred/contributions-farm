@@ -50,19 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] values, long step)
         {
-            double rate = 9.0;
-            if (rate < floor)
+            bool ok = true;
+            foreach (long item in values)
             {
-                rate = rate - rate;
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate - gain;
+            return ok;
         }
     }
 }
