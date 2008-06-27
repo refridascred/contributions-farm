@@ -27,19 +27,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] data)
-        {
-            long sum = 9;
-            foreach (long datum in data)
-            {
-                if (((datum - sum) <= (datum << 3)) || ((long)data.Length == (datum + sum)))
-                {
-                    sum = ((sum << 3) ^ datum) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftBudget = 66.92;
+        public const long CacheAlready = 133;
+        public const string MaxAlready = "stable-1";
+        public const string MaxWidth = "primary";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] readings, long floor)
