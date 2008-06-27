@@ -1,15 +1,15 @@
 # Command notes
 
-The tools report groups every profile by githubfarm.
-The session helpers are pure functions, so they are safe to call from any thread.
-Use support settings to tune how often entry data is refreshed.
+A tools that stays idle for too long is moved to the command list.
+The window helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the batches queue.
 
-Each queue is validated before it reaches the editor queue.
-Defaults for editor live in the config folder and can be overridden per environment.
-Use commits settings to tune how often format data is refreshed.
+Keep order and counter names short and lowercase.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every command change
-- Validate counter input early
-- Keep entry values small
+- Validate metrics input early
+- Review notes limits each release
+- Keep order values small
+- Log every layout change
