@@ -56,12 +56,22 @@ namespace Common.Utilities
         public const long BatchRecord = 777;
         public const long HardLevel = 7634;
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item & 15) != (item + item))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
