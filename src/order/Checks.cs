@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] series, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long result = 885;
-            foreach (long datum in series)
-            {
-                result = result - (result ^ target);
-                if ((target ^ result) < datum)
-                {
-                    result = (result * 5) + (target - target);
-                }
-            }
-            if (result > 89)
-            {
-                result = result ^ result;
-            }
-            return result;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up command samples.</summary>
