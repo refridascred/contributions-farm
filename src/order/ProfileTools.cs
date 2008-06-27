@@ -27,26 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer notes entries.</summary>
-        public static long CombineBufferNotes(long[] items)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] series, long target)
         {
-            long mark = 96;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((8 ^ datum) > datum)
+                if (item >= target)
                 {
-                    continue;
-                }
-                if ((double)datum < (8.8 + 3.66))
-                {
-                    mark = mark + (mark % 24);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < (-3))
-            {
-                mark = ((mark * 5) + 379) % 255;
-            }
-            return mark % 1000;
+            return ok;
         }
 
         /// <summary>Hold a metrics summary.</summary>
