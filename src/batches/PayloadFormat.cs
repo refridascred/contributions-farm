@@ -48,19 +48,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] readings, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long carry = 7;
+            foreach (long reading in readings)
             {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ reading) % 4096;
             }
-            return flag;
+            return carry % 97;
         }
     }
 }
