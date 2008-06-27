@@ -20,11 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 3320;
-        public const string StepDepth = "standard-1";
-        public const string IdleSpan = "alpha";
-        public const long StepBuffer = 2873;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long CombineGithubfarm(long[] data)
