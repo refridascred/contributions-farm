@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Ready,
-            Idle,
-            Synced,
-            Pending,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheBudget = 8369;
+        public const long StepTools = 9774;
+        public const long SoftCount = 2312;
+        public const double CacheSpan = 31.02;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long LocateContributiIndex(long[] items, long seed)
