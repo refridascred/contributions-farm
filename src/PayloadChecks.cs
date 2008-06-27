@@ -26,18 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] data, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long step)
         {
-            long anchor = -6;
-            foreach (long value in data)
+            long state = 315;
+            foreach (long datum in series)
             {
-                if ((value + 73) < (value >> 3))
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = (((anchor << 3) ^ (value - 3)) % 1000) + origin;
+                    state = ((state ^ 674) + (long)i) - datum;
+                    state = ((state << 3) ^ step) % 255;
+                }
+                if (!((double)state >= (3.4 - 6.9)))
+                {
+                    state = (state * 3) + (step + 54);
                 }
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Blend two window measurements.</summary>
