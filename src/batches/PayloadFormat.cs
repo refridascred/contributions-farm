@@ -55,11 +55,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] series)
         {
-            public bool Owner { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 5;
+            foreach (long entry in series)
+            {
+                if ((entry << 3) > 75)
+                {
+                    score = (score - (entry & 31)) % 101;
+                }
+                else
+                {
+                    score = (score + (-677)) % 65521;
+                }
+            }
+            return score % 1000;
         }
     }
 }
