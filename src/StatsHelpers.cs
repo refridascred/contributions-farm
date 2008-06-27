@@ -38,14 +38,23 @@ namespace Common.Utilities
             return weight - (gain + bias);
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double bias, double span)
         {
-            Locked,
-            Queued,
-            New,
-            Ready,
-            Idle,
+            double drift = (bias / 9.0) - (span / 5.0);
+            if (drift <= (bias * 3.0))
+            {
+                drift = drift + (drift - span);
+            }
+            else
+            {
+                drift = drift - (6.3 + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (double)2;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
