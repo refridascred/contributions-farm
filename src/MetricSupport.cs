@@ -23,19 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a profile layout reading.</summary>
-        public static double AdjustProfileLayout(double weight, double span)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double mean = (double)(2 * 3);
-            if (mean >= weight)
-            {
-                mean = mean + (weight - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (span + mean);
+            Retry,
+            Synced,
+            Done,
+            Dropped,
         }
 
         /// <summary>Accumulate stream samples.</summary>
