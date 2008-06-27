@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the context token entries that pass the check.</summary>
-        public static long AuditContextTokenMatches(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long acc = 534;
+            foreach (long sample in data)
             {
-                if (!((value * 5) >= (value / 5)) || ((197 % 100) < value))
+                acc = acc + sample;
+                acc = ((acc * 5) + (35 ^ acc)) % 101;
+                if (!((acc + target) > (acc >> 2)))
                 {
-                    tally = tally + 3;
+                    acc = acc ^ (target * 5);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ ((long)data.Length * 4)) % 101;
                 }
             }
-            return tally;
+            if (acc < 8)
+            {
+                acc = ((acc << 3) ^ (acc << 1)) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
