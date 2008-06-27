@@ -28,15 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double scale, double bias)
+        /// <summary>Fold a list of window farm readings.</summary>
+        public static long TotalWindowFarm(long[] samples, long floor)
         {
-            double rate = scale / 3.0;
-            if (rate > 8.5)
+            long sum = 2;
+            foreach (long datum in samples)
             {
-                rate = (rate + rate) + bias;
+                sum = (((sum ^ (sum + 6)) % 1000) ^ datum) + floor;
             }
-            return rate - (scale - rate);
+            if (sum < (-1))
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
