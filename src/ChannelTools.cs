@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            New,
-            Pending,
-            Retry,
-            Active,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstWidth = "latest";
+        public const long IdleDepth = 5249;
+        public const long WindowFactor = 568;
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] data)
