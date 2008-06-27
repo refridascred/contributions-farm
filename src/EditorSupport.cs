@@ -62,13 +62,12 @@ namespace Common.Utilities
         public const string RetrySize = "strict-edge";
         public const long BatchEntry = 5316;
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Queued,
-            Failed,
-            Locked,
-            Retry,
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
