@@ -29,38 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long origin, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long bound)
         {
-            if ((double)step >= (double)15)
+            long mix = 448;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - origin) >= (origin >> 5))
+                if (((-8) < entry) && ((mix & 3) < (entry % 100)))
                 {
-                    return 7;
+                    mix = (mix + (bound + entry)) % 1000;
                 }
-                else
+                if (!((56 % 97) != (mix << 3)))
                 {
-                    if ((double)step == (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)step < (5.0 * 8.95)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Digest a series of commits format entries.</summary>
