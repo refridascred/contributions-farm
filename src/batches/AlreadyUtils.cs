@@ -20,22 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 1370;
+        public const long LimitSpan = 6960;
+        public const long BatchStats = 9044;
+        public const long StepStats = 1805;
+        public const double BurstStats = 22.49;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] values, long floor)
