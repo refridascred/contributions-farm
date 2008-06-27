@@ -56,26 +56,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] levels)
-        {
-            long carry = 48;
-            foreach (long cell in levels)
-            {
-                if ((carry & 255) < (cell << 2))
-                {
-                    carry = (carry + (carry + carry)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (cell / 7);
-                }
-            }
-            if (carry < 1)
-            {
-                carry = (carry << 2) ^ (8 - carry);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseRatio = 4593;
+        public const long HardDepth = 398;
+        public const long SoftQueue = 983;
+        public const long HardQueue = 5321;
     }
 }
