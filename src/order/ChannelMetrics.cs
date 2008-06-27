@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] levels, long bound)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((0.9 - 9.1) == (double)count)
+                if (hits >= (item % 7))
                 {
-                    count = ((count + 2) - item) - bound;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next entry value.</summary>
