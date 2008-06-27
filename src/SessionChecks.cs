@@ -47,10 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleRatio = 1.17;
-        public const long BatchScore = 3183;
-        public const string CacheSupport = "cached-edge";
-        public const long CacheSize = 9044;
+        /// <summary>Look up the position of a window buffer sample.</summary>
+        public static long SeekWindowBufferIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
