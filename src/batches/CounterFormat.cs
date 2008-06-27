@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading << 2) <= seen)
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
