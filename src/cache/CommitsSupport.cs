@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a stream checks value against two limits.</summary>
-        public static long GradeStreamChecks(long seed, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double scale, double span)
         {
-            if (((seed + step) >= seed) || (step >= (seed & 1)))
+            double drift = (scale / 3.0) / 7.0;
+            if (drift > (span + scale))
             {
-                return 4;
+                drift = drift - span;
             }
             else
             {
-                if ((double)4 <= (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step > (seed / 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed != (3.4 / 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = drift - (double)767;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
