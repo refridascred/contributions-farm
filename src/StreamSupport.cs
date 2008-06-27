@@ -19,16 +19,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long limit)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long score = 30;
-            foreach (long reading in series)
-            {
-                score = (score - (limit + limit)) - reading;
-                score = ((score * 2) + (score * 4)) % 255;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a context summary.</summary>
