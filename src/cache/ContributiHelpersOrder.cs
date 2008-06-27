@@ -20,18 +20,13 @@ namespace Common.Utilities
         public const double MinWidth = 86.26;
         public const long HardMetrics = 305;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextOutliers(long[] values, long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits << 2) < (101 << 3))
-                {
-                    hits = ((hits + 2) + entry) + bound;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
