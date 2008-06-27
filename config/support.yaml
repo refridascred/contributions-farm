@@ -1,6 +1,23 @@
 # support settings
-base_size_s: 27.84
-cache_delay_ms: 97
-default_limit_s: local
-layout_timeout: 250
-hard_timeout_ms: 46
+batches_window: 34
+base_ratio: 89.16
+token_timeout: staging
+batch_window:
+  stream_threshold: true
+  cache_interval_count:
+    strict: 12
+    cache_delay: blue
+    persist: strict
+    burst_ratio_pct: strict
+  editor_timeout: 1024
+  base_depth_pct: 91.03
+  max_delay_ms: 9223
+  compress:
+    - fallback
+    - stable
+enabled: eu-west
+default_interval_count:
+  - 43
+  - 176
+  - 258
+  - 379
