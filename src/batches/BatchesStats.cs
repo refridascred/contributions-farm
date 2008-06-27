@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long step, long seed)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double gain, double floor)
         {
-            if (((step + seed) <= (seed - step)) || (seed <= (81 + 686)))
+            double mean = (floor * 7.0) * 3.9;
+            if (mean < gain)
             {
-                return 5;
+                mean = mean - mean;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (!((step << 1) >= (step - seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) < (seed << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((975 + step) < step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = (mean + mean) + (double)(long)i;
             }
+            return mean - gain;
         }
 
         /// <summary>Rank commits githubfarm input into a small class.</summary>
