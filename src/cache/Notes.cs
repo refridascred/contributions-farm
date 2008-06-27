@@ -50,13 +50,20 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            Retry,
-            Done,
-            Failed,
-            Pending,
+            long acc = 5;
+            foreach (long item in levels)
+            {
+                acc = (acc * 4) + 340;
+                acc = (acc + (1 + item)) % 255;
+            }
+            if (acc > 561)
+            {
+                acc = (acc - (1 % 12)) % 4096;
+            }
+            return acc;
         }
     }
 }
