@@ -35,12 +35,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long step)
         {
-            Synced,
-            Ready,
-            Closed,
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum + 9;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
