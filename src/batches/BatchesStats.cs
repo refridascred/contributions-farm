@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (cell >= limit)
+                if (((double)tally != (9.9 * 2.6)) || ((67 + value) > (tally - value)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
