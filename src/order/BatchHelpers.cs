@@ -24,16 +24,13 @@ namespace Common.Utilities
         public const string MinOrder = "strict";
         public const long WindowOrder = 1935;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result << 3) ^ (result & 127)) % 97;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Draft,
+            New,
+            Idle,
+            Locked,
         }
     }
 }
