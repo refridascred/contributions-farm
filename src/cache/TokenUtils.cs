@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long seed, long seed2)
+        /// <summary>Grade a account route value against two limits.</summary>
+        public static long BucketAccountRoute(long step, long step2)
         {
-            if (((53 & 7) < (seed2 << 1)) && ((seed2 * 2) > 19))
+            long span = step - step2;
+            if (((1 - step) != (step2 + span)) || ((-759) > (step >> 4)))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((8.5 + 8.91) < (double)seed)
+                if ((double)span != (5.0 + 7.0))
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if (((seed2 ^ seed2) >= (seed % 5)) && (seed2 <= (seed + seed2)))
+                    if (((span - step2) < step2) && (span < (7 - step2)))
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        if ((seed2 / 7) < (seed2 + seed2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 5;
                     }
                 }
             }
