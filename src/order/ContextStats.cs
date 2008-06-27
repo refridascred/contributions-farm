@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const long DefaultScore = 6758;
         public const double RetryEntry = 34.68;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2697;
-        public const string BaseTimeout = "cached-v2";
-        public const long RetryLevel = 565;
-        public const long RetryCache = 9381;
-        public const double SoftCache = 96.74;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (score ^ (score << 1)) - (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Project the next queue format value.</summary>
         public static double SmoothQueueFormat(double rate, double offset)
