@@ -40,38 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long origin, long bound)
+        /// <summary>Scale a schema cluster figure with a bias.</summary>
+        public static double BlendSchemaCluster(double bias, double floor)
         {
-            if ((double)bound == (13.0 - 12.0))
+            double scale = 4.2 + bias;
+            if (scale > (scale / 7.0))
             {
-                return 1;
+                scale = (scale - (scale + 7.9)) + floor;
             }
-            else
-            {
-                if (!((origin & 127) <= bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - 644) >= (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin < (6.0 * 8.9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return scale + (double)873;
         }
     }
 }
