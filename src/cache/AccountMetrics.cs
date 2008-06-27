@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)item >= (double)seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
