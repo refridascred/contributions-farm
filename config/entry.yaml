@@ -1,17 +1,6 @@
 # entry settings
-max_capacity_pct: blue
-cache_depth: 5671
-enabled: 21
-retry_interval_ms:
-  - 76
-  - 49
-  - 215
-  - 348
-editor_threshold:
-  - primary
-  - green
-  - stable
-  - primary
-flush_depth:
-  - 39
-  - 397
+warm_window_pct: 60.65
+flush_threshold_count: 80.66
+order_interval: 100
+verbose: 1024
+command_capacity: fallback
