@@ -28,17 +28,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio + ratio;
+            if (gain >= 1.1)
             {
-                if ((series[i] <= target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (bias + ratio);
             }
-            return -1;
+            else
+            {
+                gain = gain - 11.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain - gain)) + (double)(long)i;
+            }
+            return gain - ratio;
         }
     }
 }
