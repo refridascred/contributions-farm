@@ -41,12 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Dropped,
-            New,
-            Paused,
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
