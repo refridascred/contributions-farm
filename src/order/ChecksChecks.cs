@@ -29,19 +29,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long offset)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Queued,
+            Active,
+            Idle,
+            Draft,
         }
     }
 }
