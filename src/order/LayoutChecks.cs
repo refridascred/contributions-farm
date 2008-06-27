@@ -24,17 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a counter queue reading by value.</summary>
-        public static long SeekCounterQueueIndex(long[] values, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 77;
+            foreach (long value in readings)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                mark = (((mark << 2) ^ mark) % 4096) + value;
             }
-            return -1;
+            if (mark > (-3))
+            {
+                mark = ((mark * 5) + (mark + mark)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
