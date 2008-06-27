@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long seed, long seed2)
         {
-            double rate2 = offset / 5.0;
-            if (rate2 < (double)277)
+            if (((53 & 7) < (seed2 << 1)) && ((seed2 * 2) > 19))
             {
-                rate2 = (rate2 - offset) - rate;
+                return 2;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate2 = (rate2 + offset) + (double)(long)i;
+                if ((8.5 + 8.91) < (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed2 ^ seed2) >= (seed % 5)) && (seed2 <= (seed + seed2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed2 / 7) < (seed2 + seed2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return rate2 + 1.6;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
