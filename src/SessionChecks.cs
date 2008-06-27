@@ -48,31 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long floor, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double gain, double span)
         {
-            if ((double)target < (double)59)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((502 <= floor) && (floor >= (66 + floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((13 + floor) != (target % 60))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double weight = 9.0;
+            return (weight - (span - weight)) + gain;
         }
     }
 }
