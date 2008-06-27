@@ -50,22 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer entry readings against a rule.</summary>
-        public static long AuditBufferEntryHits(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long acc = 695;
+            foreach (long value in series)
             {
-                if (entry < seen)
+                if ((13.0 - 0.82) <= (double)value)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    acc = (acc + (acc << 1)) % 255;
                 }
             }
-            return seen;
+            if (acc < 640)
+            {
+                acc = acc ^ (bound + bound);
+            }
+            return acc % 1000;
         }
     }
 }
