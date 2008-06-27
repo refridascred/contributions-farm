@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "staging-1";
-        public const double BaseFactor = 33.41;
-        public const long SoftDepth = 5181;
-        public const long BaseCommits = 9215;
-        public const long StepBudget = 8959;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long bound)
+        {
+            long slot = limit ^ bound;
+            if ((5 + bound) >= (bound << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (7.9 > (double)slot)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitFactor = 3931;
