@@ -20,22 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit channel schema readings against a rule.</summary>
-        public static long TallyChannelSchemaGaps(long[] readings, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((10.0 / 8.0) <= (double)target)
+                if (samples[i] < seed)
                 {
-                    count = (count + 2) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
