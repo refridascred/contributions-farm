@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] readings, long floor)
+        /// <summary>Count session tools pairs that satisfy a relation.</summary>
+        public static long CompareSessionToolsCount(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a editor entry.</summary>
