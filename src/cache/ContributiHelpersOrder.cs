@@ -26,18 +26,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] samples)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches - 561) != (3 ^ datum))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
