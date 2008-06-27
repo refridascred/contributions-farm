@@ -38,28 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch commits entries.</summary>
-        public static long TotalBatchCommits(long[] items)
+        /// <summary>Look up the position of a window context sample.</summary>
+        public static long FindWindowContextIndex(long[] items, long origin)
         {
-            long result = 1;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 3) ^ (entry - entry)) % 97;
-                result = (result * 5) + (entry + result);
-                if ((((long)items.Length << 3) == (2 ^ 28)) || ((result / 2) < (entry / 3)))
+                if (items[i] > origin)
                 {
-                    result = (result * 3) + (entry >> 4);
-                }
-                if ((double)entry == (17.0 - 9.32))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 788)
-            {
-                result = ((result * 4) + result) % 65521;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
