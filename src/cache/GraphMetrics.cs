@@ -55,20 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] levels, long floor)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long anchor = 514;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor * 5) + (floor * 5)) % 255;
-                anchor = anchor ^ floor;
-                if ((reading > (65 * 3)) && (anchor < 242))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
