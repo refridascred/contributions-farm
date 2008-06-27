@@ -64,19 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long origin)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > origin)
+                if (levels[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine metrics buffer values into a single score.</summary>
