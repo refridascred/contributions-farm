@@ -27,17 +27,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] items, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Paused,
+            Failed,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
