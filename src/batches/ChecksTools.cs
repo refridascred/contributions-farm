@@ -43,18 +43,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels, long step)
+        /// <summary>Iterate the editor route series from a seed.</summary>
+        public static long IterateEditorRoute(long offset)
         {
-            long anchor = 368;
-            foreach (long cell in levels)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((step % 5) <= anchor)
+                acc = (acc + (acc + acc)) % 65521;
+                if (((long)i - acc) != (73 >> 4))
                 {
-                    anchor = ((anchor + ((long)levels.Length ^ step)) % 1000) + cell;
+                    acc = (acc * 3) + acc;
+                    break;
                 }
+                else
+                {
+                    acc = acc - (acc % 12);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
     }
 }
