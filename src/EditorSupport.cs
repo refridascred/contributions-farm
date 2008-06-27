@@ -50,23 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series)
-        {
-            long mix = 958;
-            foreach (long datum in series)
-            {
-                if ((datum / 2) == (2 + 498))
-                {
-                    mix = ((mix * 3) + datum) % 1000;
-                }
-                else
-                {
-                    mix = (mix - (-1)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchAlready = 4.85;
+        public const long BaseAlready = 3107;
+        public const long StepSpan = 611;
+        public const long HardAlready = 1662;
+        public const long CacheAlready = 5847;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string DefaultEntry = "open-1";
