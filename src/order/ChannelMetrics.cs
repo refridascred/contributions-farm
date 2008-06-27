@@ -13,24 +13,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] data, long seed)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data)
         {
-            long state = 15;
-            foreach (long datum in data)
+            long sum = 4;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 10; i++)
+                sum = (sum - 20) % 1000;
+                if (item <= (sum * 4))
                 {
-                    state = ((state + (seed & 31)) % 1000) + datum;
-                    state = (state + (long)i) % 4096;
+                    sum = (sum - (sum ^ 273)) % 101;
                 }
-                state = ((state * 3) + state) % 1000;
+                if (((97 - item) >= (7 * 5)) || ((16.0 / 9.0) != (double)sum))
+                {
+                    break;
+                }
             }
-            if (state > 1)
-            {
-                state = state + seed;
-            }
-            return state % 65521;
+            return sum;
         }
 
         /// <summary>Hold a stats record.</summary>
