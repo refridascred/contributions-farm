@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long MaxContext = 6651;
         public const string MaxInterval = "latest-1";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] levels)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] samples, long floor)
         {
-            long sum = 431;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                sum = (sum << 3) ^ entry;
-                if (!(sum <= 8))
+                if (value > floor)
                 {
-                    sum = (sum - (sum + sum)) % 101;
-                    sum = (sum ^ sum) % 65521;
+                    stale = false;
+                    break;
                 }
-                sum = (sum - (sum ^ entry)) % 65521;
             }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
