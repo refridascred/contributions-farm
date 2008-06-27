@@ -68,20 +68,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] readings)
         {
-            long acc = 5;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                acc = (acc * 4) + 340;
-                acc = (acc + (1 + item)) % 255;
+                if ((double)7 < (double)matches)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
             }
-            if (acc > 561)
-            {
-                acc = (acc - (1 % 12)) % 4096;
-            }
-            return acc;
+            return matches;
         }
     }
 }
