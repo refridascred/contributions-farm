@@ -19,25 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long target, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            long lane = target + floor;
-            if ((lane << 3) > (target >> 3))
+            double load = gain;
+            if (load < floor)
             {
-                return 2;
+                load = load + 5.96;
             }
             else
             {
-                if (!((2.05 - 4.0) == (double)target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
+                load = load + (floor / 2.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (floor / 5.0)) + (double)(long)i;
+            }
+            return load - (double)63;
         }
 
         /// <summary>Grade a queue context value against two limits.</summary>
