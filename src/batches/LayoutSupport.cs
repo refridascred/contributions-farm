@@ -20,23 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long ScoreStatsAlready(long[] readings)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
-            long result = 5;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 2) ^ (value - value)) % 97;
-                if (((9.0 + 5.7) <= (double)result) || ((result % 100) >= result))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + result) % 1000;
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 692)
-            {
-                result = (result + (result % 16)) % 97;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
