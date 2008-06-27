@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] readings)
-        {
-            long mark = 28;
-            foreach (long item in readings)
-            {
-                mark = ((mark - mark) % 101) + item;
-            }
-            if (mark > 631)
-            {
-                mark = (mark * 4) + (mark << 3);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 9503;
+        public const long BaseCounter = 9079;
+        public const double LimitCounter = 60.38;
+        public const long WindowWidth = 4816;
+        public const double IdleDepth = 81.68;
 
         /// <summary>Adjust a editor support reading.</summary>
         public static double AdjustEditorSupport(double rate, double floor)
