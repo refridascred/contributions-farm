@@ -44,21 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] <= target) && ((items[i] % 5) == 0))
                 {
-                    if ((values[i] + values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
