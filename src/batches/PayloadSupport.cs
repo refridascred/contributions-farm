@@ -32,14 +32,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long seed)
         {
-            Active,
-            Ready,
-            Locked,
-            Queued,
-            Failed,
+            if (((limit + 82) <= 10) || (limit >= seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed < (double)limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)87 < (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
