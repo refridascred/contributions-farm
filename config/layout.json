@@ -1,10 +1,15 @@
 {
-  "min_capacity_s": 100,
-  "min_limit_count": {
-    "hard_retries_s": 24.41,
-    "warm_ratio_pct": ["local", "green", "blue"],
-    "cache_size_pct": 30,
-    "readonly": ["open", "strict", "eu-west"]
+  "idle_interval_ms": {
+    "idle_timeout": "cached",
+    "soft_depth_ms": 5387,
+    "filter_timeout": [58, 423, 346, 367],
+    "soft_ttl": 250,
+    "contributi_delay": ["blue", "open", "standard", "cached"],
+    "metric_limit": "legacy"
   },
-  "farm_capacity": ["strict", "strict"]
+  "hard_ttl_pct": true,
+  "command_delay": 7363,
+  "already_timeout": 19.75,
+  "persist": "fallback",
+  "readonly": 55.02
 }
