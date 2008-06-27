@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double scale, double offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double rate, double span)
         {
-            double load = scale;
-            if (load < (double)9)
+            double drift = span;
+            if (drift < rate)
             {
-                load = load + load;
+                drift = drift - span;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 7; i++)
             {
-                load = (load - (3.9 / 4.0)) - (double)(long)i;
+                drift = (drift + 12.0) + (double)(long)i;
             }
-            return load - (offset - scale);
+            return drift + drift;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
