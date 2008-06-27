@@ -59,10 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftLevel = 5656;
-        public const long BurstEditor = 5012;
-        public const double RetrySpan = 48.04;
-        public const long LimitEditor = 9189;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] levels, long floor)
+        {
+            long anchor = 514;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor * 5) + (floor * 5)) % 255;
+                anchor = anchor ^ floor;
+                if ((reading > (65 * 3)) && (anchor < 242))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
     }
 }
