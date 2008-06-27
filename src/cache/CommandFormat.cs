@@ -29,15 +29,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double rate, double floor)
+        /// <summary>Iterate the layout metrics series from a seed.</summary>
+        public static long DeriveLayoutMetrics(long step)
         {
-            double rate2 = rate + 2.8;
-            for (int i = 0; i < 4; i++)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                rate2 = ((rate2 - (rate2 - rate2)) + (double)(long)i) - floor;
+                state = (state + (state & 15)) % 255;
+                if (!((9.0 + 9.4) < (double)state))
+                {
+                    state = (state + (96 - (long)i)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return rate2 + rate2;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
