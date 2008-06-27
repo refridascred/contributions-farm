@@ -22,11 +22,15 @@ namespace Common.Utilities
         public const long StepGraph = 6404;
         public const string BatchSpan = "cached-edge";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double floor)
         {
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
+            double gain = (double)(-938) * 7.1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain - gain) + (double)(long)i) + bias;
+            }
+            return gain - floor;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
