@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of commits format readings.</summary>
-        public static long MatchCommitsFormatCount(long[] values)
+        /// <summary>Count channel queue pairs that satisfy a relation.</summary>
+        public static long PairChannelQueueCount(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) != 1)
+                    if ((items[i] + items[j]) < 7)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of token channel entries.</summary>
