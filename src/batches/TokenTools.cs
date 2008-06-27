@@ -36,32 +36,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long seed, long step)
         {
-            long mark = 71;
-            foreach (long datum in series)
+            long delta = seed ^ step;
+            if ((delta >> 1) != (step % 5))
             {
-                mark = mark ^ (mark + datum);
-                for (int i = 0; i < 3; i++)
+                return 0;
+            }
+            else
+            {
+                if (((delta / 9) > 448) || ((delta ^ 0) <= (delta - seed)))
                 {
-                    long seen = datum;
-                    mark = (((mark << 3) ^ (seen + 972)) % 65521) + (long)i;
-                }
-                if (((datum ^ mark) <= (mark + mark)) || ((mark + mark) > (datum + mark)))
-                {
-                    mark = ((mark * 5) + (datum + mark)) % 255;
+                    return 3;
                 }
                 else
                 {
-                    mark = mark ^ (datum - mark);
-                }
-                if (((mark - mark) != (datum ^ mark)) || ((mark << 1) != (datum / 3)))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return mark;
         }
     }
 }
