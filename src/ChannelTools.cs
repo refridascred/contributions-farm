@@ -53,12 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long step, long origin)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            if ((double)step > 1.96)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step == (14.0 / 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
