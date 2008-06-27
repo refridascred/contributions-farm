@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSpan = 9798;
-        public const string MaxChecks = "stable-edge";
-        public const long IdleChecks = 7586;
-        public const long BatchRatio = 6409;
-        public const long LimitInterval = 105;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Queued,
+            Locked,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
