@@ -23,11 +23,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Adjust a editor support reading.</summary>
+        public static double AdjustEditorSupport(double rate, double floor)
         {
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            double load = (double)164;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (((load - (load * 9.0)) + (double)(long)i) + rate) + floor;
+            }
+            return load - (double)3;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
