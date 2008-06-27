@@ -36,21 +36,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((origin * 4) <= ((long)i - origin))
-                {
-                    state = state + ((long)i / 7);
-                    state = ((state * 4) + state) % 255;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "staging-1";
+        public const string BatchScore = "standard-v2";
+        public const long LimitRatio = 1485;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
