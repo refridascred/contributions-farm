@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheLevel = 2470;
-        public const double MaxFarm = 7.7;
-        public const double BatchDepth = 37.7;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((29 >> 4) <= hits)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
         public static bool CheckBatchesGithubfarmLimits(long[] samples, long limit)
