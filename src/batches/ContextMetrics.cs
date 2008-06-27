@@ -35,12 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Match up already profile samples.</summary>
+        public static long MatchAlreadyProfileCount(long[] data)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of batch entry entries.</summary>
