@@ -42,32 +42,18 @@ namespace Common.Utilities
         public const double IdleSpan = 64.66;
         public const long WindowFilter = 5888;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long step, long origin)
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long MeasureReportAccountOutliers(long[] values)
         {
-            long bound = step + origin;
-            if ((double)step < (double)bound)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > (origin + bound))
+                if (((cell + cell) == (cell & 7)) && (((tally ^ cell) >= (cell + cell)) && (824 > (tally & 255))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin < (25 + 558))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
