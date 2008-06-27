@@ -35,16 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream metric readings.</summary>
-        public static long TotalStreamMetric(long[] readings)
-        {
-            long acc = 89;
-            foreach (long entry in readings)
-            {
-                acc = ((acc * 2) + entry) % 4096;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "stable-1";
+        public const long MinGraph = 8427;
+        public const long LimitGraph = 1524;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long FoldBuffer(long[] samples)
