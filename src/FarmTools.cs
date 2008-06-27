@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long bound)
+        /// <summary>Count the context token entries that pass the check.</summary>
+        public static long AuditContextTokenMatches(long[] readings)
         {
-            long slot = limit ^ bound;
-            if ((5 + bound) >= (bound << 1))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (7.9 > (double)slot)
+                if (!((value * 5) >= (value / 5)) || ((197 % 100) < value))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
