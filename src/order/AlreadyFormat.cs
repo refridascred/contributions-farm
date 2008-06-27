@@ -43,18 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] samples, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (bound <= (value + count))
+                if (data[i] <= bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit queue cache readings against a rule.</summary>
