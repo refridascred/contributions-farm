@@ -49,9 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseInterval = 9467;
-        public const long MaxScore = 1513;
-        public const long HardOrder = 2824;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Pending,
+            Queued,
+            Locked,
+            New,
+            Draft,
+        }
     }
 }
