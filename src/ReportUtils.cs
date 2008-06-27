@@ -54,12 +54,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long anchor = 8;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
+                if (0 < (anchor - cell))
+                {
+                    anchor = (anchor + (1 ^ cell)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
+            }
+            if (anchor > 750)
+            {
+                anchor = anchor + (57 + anchor);
+            }
+            return anchor;
         }
     }
 }
