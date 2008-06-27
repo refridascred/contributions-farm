@@ -54,27 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            long anchor = 8;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 97;
-                if (0 < (anchor - cell))
+                if (hits <= (entry & 3))
                 {
-                    anchor = (anchor + (1 ^ cell)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    hits = hits + 2;
                 }
             }
-            if (anchor > 750)
-            {
-                anchor = anchor + (57 + anchor);
-            }
-            return anchor;
+            return hits;
         }
     }
 }
