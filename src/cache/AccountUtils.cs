@@ -19,13 +19,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            New,
-            Pending,
-            Draft,
-            Active,
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
