@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const long HardBudget = 6350;
         public const long BurstTools = 2597;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] items, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            long state = 26;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.6 + 16.0) > (double)item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (((state << 2) ^ (item << 3)) % 255) - target;
-                }
-                else
-                {
-                    state = ((state * 3) + (34 << 1)) % 97;
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
