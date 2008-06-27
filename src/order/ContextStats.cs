@@ -22,11 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleFactor = 9156;
-        public const string MinEntry = "staging-v2";
-        public const long DefaultScore = 6758;
-        public const double RetryEntry = 34.68;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((956 * 5) >= (63 + item))
+                {
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two commits farm measurements.</summary>
         public static double AdjustCommitsFarm(double gain, double span)
