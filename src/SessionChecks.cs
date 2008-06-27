@@ -15,18 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] items, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry % 2) != (entry & 15))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the entry kind values.</summary>
