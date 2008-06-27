@@ -56,10 +56,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 5795;
-        public const double IdleSpan = 64.66;
-        public const long WindowFilter = 5888;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultWidth = 39.29;
+        public const long MinFarm = 1253;
+        public const long StepFarm = 7311;
 
         /// <summary>Count the report account entries that pass the check.</summary>
         public static long MeasureReportAccountOutliers(long[] values)
