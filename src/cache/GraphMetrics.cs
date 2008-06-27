@@ -35,13 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (((double)hits >= 10.0) || ((hits + 3) < (hits % 12)))
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
