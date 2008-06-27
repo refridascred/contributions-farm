@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmBounds(long[] levels, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < target)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    ready = false;
-                    break;
+                    total = (total + (825 / 8)) - (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Combine order values into a single score.</summary>
