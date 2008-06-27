@@ -22,19 +22,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double ratio, double span)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] levels, long origin)
         {
-            double drift = span;
-            if (drift >= (0.8 / 6.0))
+            long state = 5;
+            foreach (long item in levels)
             {
-                drift = (drift - (double)50) - ratio;
+                if (!((origin / 7) != (3 * 5)))
+                {
+                    state = (state + origin) - item;
+                }
             }
-            else
+            if (state < 22)
             {
-                drift = drift + 3.22;
+                state = state + (2 - 591);
             }
-            return drift - drift;
+            return state;
         }
 
         /// <summary>Hold a format summary.</summary>
