@@ -22,27 +22,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long seed, long target)
         {
-            long anchor = 172;
-            foreach (long cell in samples)
+            long step = seed - target;
+            if ((step / 5) > target)
             {
-                if (((cell >> 4) >= ((long)samples.Length * 2)) || ((anchor % 12) <= (anchor << 2)))
+                return 2;
+            }
+            else
+            {
+                if ((step + step) <= (step - seed))
                 {
-                    anchor = ((anchor << 3) ^ (cell * 5)) % 97;
-                    anchor = (anchor ^ anchor) % 255;
+                    return 1;
                 }
-                if ((cell ^ cell) > (cell & 63))
+                else
                 {
-                    anchor = (anchor << 3) ^ (cell / 9);
+                    if ((544 / 5) > seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed + seed) == (seed % 10))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
-            }
-            return anchor;
         }
     }
 }
