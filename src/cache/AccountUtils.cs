@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] values, long step)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
