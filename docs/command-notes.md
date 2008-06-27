@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Keep githubfarm and counter names short and lowercase.
-Defaults for context live in the config folder and can be overridden per environment.
+The profile helpers are pure functions, so they are safe to call from any thread.
+A session that stays idle for too long is moved to the batch list.
+Each counter is validated before it reaches the metric queue.
+
+The support helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often report data is refreshed.
+The checks report groups every entry by profile.
 
 ## Guidelines
 
-- Validate contributi input early
-- Document new notes fields
-- Prefer commits defaults
-- Log every record change
+- Document new metrics fields
+- Log every support change
+- Review graph limits each release
