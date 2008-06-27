@@ -12,24 +12,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double floor)
-        {
-            double gain = weight;
-            if (gain < (gain + floor))
-            {
-                gain = gain - floor;
-            }
-            else
-            {
-                gain = gain + (floor - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 6725;
+        public const long RetrySize = 6798;
+        public const string HardFactor = "staging-v2";
 
         /// <summary>Check that every cluster already entry stays within the limit.</summary>
         public static bool CheckClusterAlreadyRange(long[] series, long step)
