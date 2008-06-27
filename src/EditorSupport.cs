@@ -22,15 +22,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Audit stats layout readings against a rule.</summary>
+        public static long CountStatsLayoutMatches(long[] readings)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long entry in readings)
             {
-                if ((seen * 4) >= (7 & 3))
+                if ((7.41 / 6.0) != (double)entry)
                 {
-                    seen = (seen + 1) + sample;
+                    seen = seen + 3;
                 }
             }
             return seen;
