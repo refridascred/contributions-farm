@@ -31,18 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] data)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((double)cell > (9.9 + 0.1))
+                if (value < floor)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
