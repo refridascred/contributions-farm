@@ -1,12 +1,7 @@
 {
-  "dry_run": {
-    "token_window": [348, 117, 301, 237],
-    "batch_limit": true,
-    "enabled": ["cached", "eu-west", "staging", "blue"],
-    "min_ratio": false,
-    "cache_delay": 6359,
-    "session_delay": [170, 180, 190]
-  },
-  "hard_depth_s": "latest",
-  "max_limit_count": "green"
+  "max_window_count": 61.19,
+  "burst_ratio": 75,
+  "hard_depth_pct": "staging",
+  "verbose": 6155,
+  "min_limit": "blue"
 }
