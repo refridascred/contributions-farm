@@ -16,22 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long TallyFormatAccount(long[] samples)
+        /// <summary>Compare every pair of account counter readings.</summary>
+        public static long PairAccountCounterCount(long[] samples)
         {
-            long mark = -454;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark + mark) != (mark * 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark - mark;
-                }
-                if (!((mark % 7) == (cell - cell)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
