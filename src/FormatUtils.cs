@@ -52,15 +52,15 @@ namespace Common.Utilities
         public const long MaxLevel = 9524;
         public const long StepCounter = 7311;
 
-        /// <summary>Count token notes pairs that satisfy a relation.</summary>
-        public static long PairTokenNotesCount(long[] levels)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 1)
+                    if ((values[i] + values[j]) == 0)
                     {
                         hits = hits + 1;
                     }
