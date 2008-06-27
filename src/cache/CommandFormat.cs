@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window farm readings.</summary>
-        public static long TotalWindowFarm(long[] samples, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] items)
         {
-            long sum = 2;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                sum = (((sum ^ (sum + 6)) % 1000) ^ datum) + floor;
+                if (((item + item) <= matches) && ((double)item == (4.0 / 3.0)))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (sum < (-1))
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a window record.</summary>
