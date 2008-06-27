@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (!!(13.0 >= (double)total))
-                {
-                    total = (total + (total << 3)) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Locate a already reading by value.</summary>
