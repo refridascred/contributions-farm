@@ -47,12 +47,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseSize = 3943;
-        public const long MinLevel = 7923;
-        public const long HardGithubfarm = 3534;
-        public const long BaseGithubfarm = 7754;
-        public const double LimitDepth = 20.22;
+        /// <summary>Check that every graph support entry stays within the limit.</summary>
+        public static bool ValidateGraphSupportBounds(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderMatches(long[] items)
