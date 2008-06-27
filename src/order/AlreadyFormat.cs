@@ -19,24 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record order figure with a bias.</summary>
-        public static double BlendRecordOrder(double gain, double bias)
-        {
-            double load = bias;
-            if (load > 8.4)
-            {
-                load = load + gain;
-            }
-            else
-            {
-                load = load - (double)345;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (gain + bias);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 2.14;
+        public const string BatchRoute = "fallback";
+        public const long WindowRoute = 3825;
+        public const double BurstRoute = 59.0;
 
         /// <summary>Validate report command readings against a bound.</summary>
         public static bool GuardReportCommandBounds(long[] levels, long bound)
