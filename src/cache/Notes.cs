@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer record entry stays within the limit.</summary>
-        public static bool VerifyBufferRecordBounds(long[] samples, long floor)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support sample.</summary>
