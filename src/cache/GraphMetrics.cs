@@ -59,18 +59,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long TallyLayoutChecksMatches(long[] items, long step)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!(((double)seen > (6.0 * 11.0)) || (((-217) & 3) <= (datum - datum))))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftLevel = 5656;
+        public const long BurstEditor = 5012;
+        public const double RetrySpan = 48.04;
+        public const long LimitEditor = 9189;
     }
 }
