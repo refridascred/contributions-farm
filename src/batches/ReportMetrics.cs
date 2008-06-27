@@ -39,15 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long limit, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            long offset2 = limit ^ offset;
+            if (((double)offset2 < (6.0 + 7.6)) && ((limit ^ limit) < (limit & 31)))
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (4.4 <= (double)offset2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
