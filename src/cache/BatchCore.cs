@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] values, long target)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
