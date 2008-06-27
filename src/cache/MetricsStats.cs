@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] readings)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mix = 70;
+            foreach (long sample in levels)
             {
-                if ((46 ^ 53) < count)
-                {
-                    count = (count + 2) + value;
-                }
+                mix = ((mix * 2) + mix) ^ sample;
             }
-            return count;
+            if (mix > 5)
+            {
+                mix = (mix + (98 + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
