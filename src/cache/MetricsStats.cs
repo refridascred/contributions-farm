@@ -42,38 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank profile context input into a small class.</summary>
-        public static long BucketProfileContext(long target, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((target * 4) != (target * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((origin * 3) < (target / 6)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-659) - 29) >= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target > (target & 15))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Audit stream farm readings against a rule.</summary>
