@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
 mode="${1:-local}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=399
-log "limit is ${COMMAND_LIMIT}"
+for item in fallback local staging stable; do
+    log "checking ${item}"
+done
