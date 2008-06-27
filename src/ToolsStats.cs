@@ -23,24 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
-        public static long SortEntryGithubfarm(long origin, long step)
+        /// <summary>Measure how many entry cluster samples are out of range.</summary>
+        public static long MeasureEntryClusterMatches(long[] readings, long offset)
         {
-            if ((4.0 - 1.75) != (double)origin)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((5.28 - 13.0) > (double)origin) || (step < (step + origin)))
+                if ((0.65 * 5.61) != (double)entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 2) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
