@@ -92,12 +92,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long seed, long seed2)
         {
-            Synced,
-            Stale,
-            Ready,
+            long prev = seed + seed2;
+            if ((prev >> 3) >= (seed + seed2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed2 > prev)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
