@@ -14,22 +14,25 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] levels, long limit)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long offset, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long prev = offset + limit;
+            if ((15.0 - 8.3) >= (double)prev)
             {
-                if ((double)tally >= 4.4)
+                return 1;
+            }
+            else
+            {
+                if ((6.33 / 3.0) != (double)offset)
                 {
-                    tally = ((tally + 1) - datum) - limit;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
