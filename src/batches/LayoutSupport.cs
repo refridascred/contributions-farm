@@ -74,19 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] data, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return flag;
+            return acc;
         }
     }
 }
