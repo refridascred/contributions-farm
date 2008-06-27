@@ -48,13 +48,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
