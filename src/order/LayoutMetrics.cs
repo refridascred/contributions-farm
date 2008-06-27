@@ -34,31 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long limit, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] levels, long floor)
         {
-            if ((double)limit == (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit < (7.18 * 2.8))
+                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit < 5.9)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
