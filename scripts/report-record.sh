@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=48
-log "limit is ${RECORD_LIMIT}"
-
-for item in latest legacy primary strict; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+RECORD_LIMIT=257
+log "limit is ${RECORD_LIMIT}"
