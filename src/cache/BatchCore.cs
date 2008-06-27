@@ -20,24 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long seed, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((offset - offset) >= 3)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((7.0 - 7.0) != (double)offset) || ((double)seed < 0.31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Look up the position of a commits checks sample.</summary>
