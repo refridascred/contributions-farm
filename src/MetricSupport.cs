@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double weight, double span)
-        {
-            double scale = weight * 8.46;
-            if (scale > (double)605)
-            {
-                scale = scale + (double)81;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale + (20.0 + weight);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 4432;
+        public const long HardBudget = 1083;
+        public const long LimitInterval = 6732;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ProjectFormat(double rate, double span)
