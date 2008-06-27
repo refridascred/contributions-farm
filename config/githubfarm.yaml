@@ -1,4 +1,5 @@
 # githubfarm settings
-graph_interval: standard
-idle_capacity_ms: 2.47
-burst_interval_ms: blue
+burst_size_count: 38.81
+warm_ttl_ms: 73
+strict: primary
+max_timeout_pct: 250
