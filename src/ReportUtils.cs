@@ -45,18 +45,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] data, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] series, long limit)
         {
-            long anchor = 52;
-            foreach (long cell in data)
+            long carry = 2;
+            foreach (long value in series)
             {
-                if ((cell / 3) == (anchor & 3))
+                if ((9 + limit) < (limit % 12))
                 {
-                    anchor = ((anchor * 2) + (origin - cell)) % 4096;
+                    carry = (carry ^ (long)series.Length) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (value & 15)) % 101;
+                }
+                if (value <= (carry & 63))
+                {
+                    break;
                 }
             }
-            return anchor % 97;
+            return carry % 65521;
         }
 
         /// <summary>Accumulate notes samples.</summary>
