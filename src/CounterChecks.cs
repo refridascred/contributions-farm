@@ -34,19 +34,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long offset, long bound)
         {
-            double gain = span * 3.6;
-            if (gain <= (double)36)
+            if (!(bound < (offset % 16)))
             {
-                gain = gain + ratio;
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                gain = gain + (double)(long)i;
+                if (offset >= (offset % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset ^ offset) == (offset ^ 44))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return gain + span;
         }
 
         /// <summary>Describe the profile kind values.</summary>
