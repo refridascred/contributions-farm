@@ -23,23 +23,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long step)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double scale, double bias)
         {
-            long state = 315;
-            foreach (long datum in series)
+            double scale2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    state = ((state ^ 674) + (long)i) - datum;
-                    state = ((state << 3) ^ step) % 255;
-                }
-                if (!((double)state >= (3.4 - 6.9)))
-                {
-                    state = (state * 3) + (step + 54);
-                }
+                scale2 = (scale2 - (scale2 * 3.8)) - (double)(long)i;
             }
-            return state;
+            return scale2 - (scale / 8.0);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
