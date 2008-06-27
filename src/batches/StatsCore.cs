@@ -38,12 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long TallyFormatLayoutGaps(long[] data, long limit)
         {
-            public string Level { get; set; } = "";
-            public double Score { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((2.0 >= (double)item) && (item <= (hits << 1)))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
