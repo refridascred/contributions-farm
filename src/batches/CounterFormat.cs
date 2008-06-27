@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double span)
+        /// <summary>Find the first account editor entry that matches the target.</summary>
+        public static long LookupAccountEditorIndex(long[] data, long limit)
         {
-            double load = (0.74 * 6.0) * 18.0;
-            if (load < (ratio - ratio))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - span;
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (span / 8.0);
+            return -1;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
