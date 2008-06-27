@@ -27,14 +27,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Synced,
-            Ready,
-            Locked,
-            Dropped,
-            Done,
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the batch kind values.</summary>
