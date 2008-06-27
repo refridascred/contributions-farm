@@ -35,21 +35,13 @@ namespace Common.Utilities
         public const string StepScore = "open-edge";
         public const long SoftSpan = 210;
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Fold a list of account readings.</summary>
