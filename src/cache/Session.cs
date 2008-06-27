@@ -13,11 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardInterval = 6133;
-        public const double MaxTools = 28.38;
-        public const long RetryBudget = 6045;
-        public const long HardSize = 4956;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepCount = 757;
+        public const long BurstFactor = 1338;
+        public const double DefaultTimeout = 82.13;
+        public const string RetryRatio = "latest";
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
