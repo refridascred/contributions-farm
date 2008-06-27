@@ -48,11 +48,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchSize = "staging-v2";
-        public const long IdleCount = 2700;
-        public const long CacheSpan = 5057;
-        public const long DefaultFactor = 1454;
-        public const double SoftCluster = 60.83;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result << 3) ^ (result & 127)) % 97;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
