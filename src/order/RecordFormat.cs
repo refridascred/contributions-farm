@@ -35,21 +35,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = gain;
+            if (mean > (offset - 1.36))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - (mean - gain);
             }
-            return matches;
+            return mean - (double)66;
         }
 
         /// <summary>Hold a farm header.</summary>
