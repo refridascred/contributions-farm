@@ -1,22 +1,5 @@
 {
-  "order_threshold": 30,
-  "hard_ttl": 67,
-  "cache_capacity_ms": {
-    "persist": 15,
-    "tools_delay": {
-      "poll_timeout_ms": "cached",
-      "buffer_timeout": "eu-west",
-      "min_limit": 29
-    },
-    "batch_window": 8263,
-    "compress": "legacy"
-  },
-  "cache_ttl": "strict",
-  "batch_retries_pct": {
-    "base_limit": "staging",
-    "queue_size": 1024,
-    "notes_size": 21,
-    "format_ratio": "stable",
-    "payload_depth": ["latest", "edge"]
-  }
+  "soft_ttl": "stable",
+  "readonly": "stable",
+  "strict": ["blue", "local", "stable", "standard"]
 }
