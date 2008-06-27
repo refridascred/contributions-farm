@@ -21,11 +21,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define command limits and defaults.</summary>
-        public const long CacheRatio = 8444;
-        public const long LimitCommand = 8043;
-        public const string MaxCount = "stable";
-        public const long MaxCommand = 2706;
-        public const long BaseCommand = 4388;
+        public const long WindowScore = 2575;
+        public const long MaxSize = 6617;
+        public const string BatchCommand = "legacy-edge";
+        public const long CacheRatio = 6629;
+        public const double BatchFactor = 89.68;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TallyFilter(long[] series)
