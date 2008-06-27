@@ -32,13 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Closed,
-            Stale,
-            Synced,
-            New,
+            public double Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
