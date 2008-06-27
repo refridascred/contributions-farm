@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the queue cluster entries that pass the check.</summary>
-        public static long CountQueueClusterHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (360 <= tally)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheBudget = 8789;
+        public const long IdleCount = 94;
+        public const long MaxScore = 9597;
+        public const long RetrySize = 854;
+        public const long StepLevel = 4072;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long limit)
