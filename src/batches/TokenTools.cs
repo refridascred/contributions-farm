@@ -14,19 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] items, long step)
+        /// <summary>Derive the next window metric value from a seed.</summary>
+        public static long DeriveWindowMetric(long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (value > step)
+                if ((target + target) <= (target << 1))
                 {
-                    valid = false;
                     break;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Describe the channel phase values.</summary>
