@@ -45,21 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Measure how many report metric samples are out of range.</summary>
+        public static long MeasureReportMetricMatches(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((entry + 46) < (entry % 100)))
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
