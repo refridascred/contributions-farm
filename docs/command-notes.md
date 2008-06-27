@@ -1,15 +1,11 @@
 # Command notes
 
-Run the channel check before changing any batch limits.
-Each checks is validated before it reaches the report queue.
-The token report groups every schema by support.
-
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Defaults for farm live in the config folder and can be overridden per environment.
-Use support settings to tune how often record data is refreshed.
+Run the payload check before changing any token limits.
+A stream that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Keep schema values small
-- Validate window input early
-- Log every profile change
+- Review graph limits each release
+- Keep tools values small
+- Prefer notes defaults
+- Validate metrics input early
