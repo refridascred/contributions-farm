@@ -66,14 +66,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long seed, long origin)
         {
-            Retry,
-            Draft,
-            Failed,
-            Stale,
-            Synced,
+            if (origin >= (seed - 58))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin < (4.4 * 1.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >> 4) == (seed ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(83 <= seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
