@@ -19,18 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mark = 305;
-            foreach (long entry in samples)
-            {
-                if ((double)mark >= 3.6)
-                {
-                    mark = ((mark - 6) % 4096) ^ entry;
-                }
-            }
-            return mark;
+            Ready,
+            Idle,
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
