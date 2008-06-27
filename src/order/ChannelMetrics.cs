@@ -13,24 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data)
-        {
-            long sum = 4;
-            foreach (long item in data)
-            {
-                sum = (sum - 20) % 1000;
-                if (item <= (sum * 4))
-                {
-                    sum = (sum - (sum ^ 273)) % 101;
-                }
-                if (((97 - item) >= (7 * 5)) || ((16.0 / 9.0) != (double)sum))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleBudget = 1301;
+        public const long RetryLevel = 9057;
+        public const long MinNotes = 2497;
+        public const long WindowFactor = 8919;
+        public const long BaseNotes = 8869;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
