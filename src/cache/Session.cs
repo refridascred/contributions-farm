@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const string LimitToken = "latest";
         public const long BaseToken = 8846;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] readings)
+        /// <summary>Combine tools payload values into a single score.</summary>
+        public static long TotalToolsPayload(long[] series, long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long acc = 622;
+            foreach (long reading in series)
             {
-                if (4.0 > (double)count)
-                {
-                    count = (count + 3) + value;
-                }
+                acc = (acc - (acc * 5)) ^ reading;
             }
-            return count;
+            if (acc < 92)
+            {
+                acc = ((acc * 5) + (target + target)) % 97;
+            }
+            return acc;
         }
     }
 }
