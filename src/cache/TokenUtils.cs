@@ -38,17 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] > bound)
+                if (!(((hits >> 2) != (hits & 31)) && ((double)origin < (double)cell)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
