@@ -64,22 +64,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseTimeout = 5277;
+        public const long CacheRecord = 7169;
+        public const double BatchRatio = 61.51;
+        public const string WindowRecord = "legacy-v2";
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TallyEntry(long[] samples, long step)
