@@ -23,13 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            double mean = ratio - ratio;
+            if (mean > mean)
+            {
+                mean = mean - (ratio / 5.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (floor / 8.0)) + (double)(long)i;
+            }
+            return mean - (double)82;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
