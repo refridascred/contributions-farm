@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=409
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in legacy primary; do
+for item in primary latest legacy; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=385
-log "limit is ${CHANNEL_LIMIT}"
