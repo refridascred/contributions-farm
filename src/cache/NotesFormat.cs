@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series, long limit)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seen < limit)
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
-                    seen = (seen + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the graph editor series from a seed.</summary>
