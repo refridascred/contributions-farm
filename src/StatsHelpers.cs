@@ -54,38 +54,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a order notes value against two limits.</summary>
-        public static long GradeOrderNotes(long seed, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            if (((seed << 2) == (48 + 803)) || ((bound << 3) >= bound))
+            long mix = 3;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed + seed) != (bound - bound))
+                if ((mix - datum) <= (datum & 7))
                 {
-                    return 6;
+                    mix = (mix - ((-802) - mix)) % 255;
                 }
-                else
+                if (15 < (datum - mix))
                 {
-                    if ((bound << 1) < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed ^ bound) >= (bound + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = (mix + datum) % 101;
+                }
+                if (((mix * 5) > datum) || ((mix << 1) < mix))
+                {
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
