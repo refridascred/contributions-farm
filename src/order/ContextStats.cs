@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] items, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((956 * 5) >= (63 + item))
+                if (reading >= bound)
                 {
-                    seen = (seen + 2) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
