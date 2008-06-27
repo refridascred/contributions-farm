@@ -69,18 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter contributi readings against a rule.</summary>
-        public static long CountCounterContributiGaps(long[] readings, long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((step - step) > 510)
-                {
-                    matches = (matches + 1) - value;
-                }
-            }
-            return matches;
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a cache header.</summary>
