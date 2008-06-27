@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 54.77;
-        public const long DefaultBudget = 3555;
-        public const double IdleScore = 7.41;
-        public const long BaseReport = 8784;
-        public const long BatchInterval = 8037;
+        /// <summary>Compare every pair of payload graph readings.</summary>
+        public static long MatchPayloadGraphCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate stats already samples.</summary>
         public static long ScoreStatsAlready(long[] readings)
