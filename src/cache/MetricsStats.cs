@@ -22,15 +22,22 @@ namespace Common.Utilities
         public const long StepGraph = 6404;
         public const string BatchSpan = "cached-edge";
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            double gain = (double)(-938) * 7.1;
-            for (int i = 0; i < 7; i++)
+            long result = 162;
+            foreach (long datum in samples)
             {
-                gain = ((gain - gain) + (double)(long)i) + bias;
+                if ((double)datum > (2.1 / 9.0))
+                {
+                    result = result - (result + datum);
+                }
+                else
+                {
+                    result = (result ^ result) % 255;
+                }
             }
-            return gain - floor;
+            return result;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
