@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinReport = 54.77;
+        public const long DefaultBudget = 3555;
+        public const double IdleScore = 7.41;
+        public const long BaseReport = 8784;
+        public const long BatchInterval = 8037;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksMatches(long[] series)
