@@ -1,9 +1,10 @@
 # support settings
-sync_window_pct: stable
-report_threshold: 59.82
-batch_depth_s: staging
-min_depth_ms:
+max_ttl_ms: 41.09
+buffer_retries:
+  - staging
   - cached
-  - strict
-cache_ttl_pct: eu-west
-batch_limit_ms: strict
+default_depth_count:
+  - legacy
+  - legacy
+enabled: false
+queue_window: true
