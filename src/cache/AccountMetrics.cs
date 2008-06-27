@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long acc = 398;
+            foreach (long entry in data)
+            {
+                if ((1.3 + 4.0) == (double)(long)data.Length)
+                {
+                    acc = ((acc + (acc - acc)) % 101) + entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
