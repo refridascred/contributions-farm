@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchDepth = 3022;
+        public const long LimitScore = 9502;
+        public const long BatchCount = 5292;
+        public const double RetryCluster = 6.32;
+        public const long CacheCluster = 2253;
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double rate, double span)
