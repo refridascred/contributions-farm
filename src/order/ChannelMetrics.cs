@@ -19,19 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double weight, double offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] series, long seed)
         {
-            double ratio = 10.0;
-            if (ratio <= weight)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + (ratio * 12.0)) + offset;
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + 6.2) + (double)(long)i;
-            }
-            return ratio - weight;
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
