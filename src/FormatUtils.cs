@@ -16,32 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long origin, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] values, long step)
         {
-            long span = origin + offset;
-            if ((span - offset) > (origin >> 2))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((978 >> 4) <= (origin >> 1)))
+                if ((values[i] < step) && ((values[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((19.0 / 8.0) == (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
