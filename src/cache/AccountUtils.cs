@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a token cache reading by value.</summary>
-        public static long SeekTokenCacheIndex(long[] values, long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (values[i] == seed)
+                if ((tally & 127) > (92 + datum))
                 {
-                    return (long)i;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up buffer samples.</summary>
