@@ -1,5 +1,6 @@
 {
-  "poll_ttl_pct": false,
-  "stream_interval": 63,
-  "soft_capacity_pct": [34, 422, 432]
+  "burst_window": "stable",
+  "poll_limit_pct": 37.71,
+  "layout_window": [406, 87],
+  "max_limit": "latest"
 }
