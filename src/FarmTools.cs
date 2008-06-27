@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long acc = 534;
-            foreach (long sample in data)
-            {
-                acc = acc + sample;
-                acc = ((acc * 5) + (35 ^ acc)) % 101;
-                if (!((acc + target) > (acc >> 2)))
-                {
-                    acc = acc ^ (target * 5);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ ((long)data.Length * 4)) % 101;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = ((acc << 3) ^ (acc << 1)) % 4096;
-            }
-            return acc % 1000;
+            Paused,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
