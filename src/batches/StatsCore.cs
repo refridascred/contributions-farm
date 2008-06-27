@@ -40,19 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
-        public static bool CheckClusterStatsRange(long[] samples, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Validate batch githubfarm readings against a bound.</summary>
