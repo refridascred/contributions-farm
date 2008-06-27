@@ -1,12 +1,5 @@
 # support settings
-warm_retries:
-  - cached
-  - blue
-  - legacy
-  - edge
-batches_threshold: 56.45
-record_timeout: 5251
-command_interval:
-  sync_delay_count: legacy
-  filter_threshold: true
-  audit: 100
+batch_window_ms: 6850
+dry_run: 72.64
+persist: open
+batch_ratio_pct: 250
