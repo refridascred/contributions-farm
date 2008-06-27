@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] items, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > step)
+                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
