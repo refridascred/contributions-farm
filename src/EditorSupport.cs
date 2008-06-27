@@ -62,12 +62,22 @@ namespace Common.Utilities
         public const string RetrySize = "strict-edge";
         public const long BatchEntry = 5316;
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((300 - seen) >= seed)
+                {
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
