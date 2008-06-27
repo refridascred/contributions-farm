@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepRatio = 3867;
+        public const double SoftContext = 53.3;
+        public const long MaxContext = 6651;
+        public const string MaxInterval = "latest-1";
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
