@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] samples, long step)
         {
-            long anchor = 7;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor ^ (anchor + anchor)) % 65521) + sample;
+                if (((-188) + step) < (step + step))
+                {
+                    seen = (seen + 3) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 4)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
