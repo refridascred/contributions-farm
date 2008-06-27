@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitFactor = 3931;
+        public const long IdleCounter = 7602;
+        public const long MaxDepth = 1846;
+        public const long BatchCounter = 3010;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] readings, long bound)
