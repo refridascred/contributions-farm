@@ -1,5 +1,13 @@
 {
-  "contributi_depth": 18,
-  "audit": ["standard", "primary", "edge"],
-  "cache_limit": "blue"
+  "strict": 32.46,
+  "persist": "local",
+  "burst_ttl": "stable",
+  "burst_ttl_count": {
+    "dry_run": [65, 356, 21, 430],
+    "cache_ratio": "green",
+    "max_capacity_pct": 4777,
+    "cache_retries_count": 27.67
+  },
+  "hard_delay_count": 2171,
+  "soft_capacity_s": false
 }
