@@ -59,20 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long floor)
+        /// <summary>Roll a batch metrics counter forward.</summary>
+        public static long DeriveBatchMetrics(long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((floor ^ floor) != (anchor + (long)i))
-                {
-                    break;
-                }
-                anchor = (anchor ^ (58 >> 3)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                acc = acc + 35;
+                acc = (acc ^ (acc << 2)) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
     }
 }
