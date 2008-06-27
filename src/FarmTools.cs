@@ -14,26 +14,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long floor, long seed)
-        {
-            long slot = floor - seed;
-            if (((double)0 < (double)slot) || ((seed + floor) > (seed - floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (slot < (seed + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowSize = 55.31;
+        public const double DefaultLayout = 56.86;
+        public const double BatchWidth = 93.11;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long offset)
