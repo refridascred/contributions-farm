@@ -48,11 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Look up the position of a support githubfarm sample.</summary>
+        public static long LookupSupportGithubfarmIndex(long[] values, long step)
         {
-            double weight = 9.0;
-            return (weight - (span - weight)) + gain;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
