@@ -1,5 +1,13 @@
 {
-  "warm_interval": [299, 114, 317, 272],
-  "burst_threshold": "strict",
-  "notes_timeout": 24
+  "default_retries_ms": [295, 211, 83, 175],
+  "warm_window_count": ["open", "legacy", "local", "open"],
+  "queue_ratio": 500,
+  "warm_size_ms": {
+    "strict": false,
+    "verbose": "blue",
+    "queue_threshold": "latest",
+    "warm_capacity": [69, 412],
+    "burst_ratio_s": "fallback"
+  },
+  "burst_window_count": "staging"
 }
