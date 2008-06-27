@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Compare every pair of channel tools readings.</summary>
+        public static long OverlapChannelToolsCount(long[] series)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((long)i >= ((long)i & 7))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc << 2) ^ acc;
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = acc ^ (4 - (long)i);
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
