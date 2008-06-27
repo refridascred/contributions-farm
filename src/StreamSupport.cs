@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] items, long target)
+        /// <summary>Digest a series of cache channel entries.</summary>
+        public static long CombineCacheChannel(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long acc = 4;
+            foreach (long datum in readings)
             {
-                if (((double)count <= (0.1 / 9.0)) && ((target + count) >= (cell % 3)))
+                if (((5.0 / 8.0) != (double)target) && ((double)target < (double)acc))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = ((acc - ((long)readings.Length - target)) % 4096) - datum;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
