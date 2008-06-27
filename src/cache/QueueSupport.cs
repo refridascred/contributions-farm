@@ -20,27 +20,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] data, long limit)
         {
-            long acc = 460;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                if (data[i] > limit)
                 {
-                    acc = ((acc + (566 & 127)) % 97) ^ item;
-                    acc = (acc << 2) ^ (bound ^ (long)i);
-                }
-                if (!(acc <= (-5)))
-                {
-                    acc = acc ^ (long)series.Length;
+                    return (long)i;
                 }
             }
-            if (acc < 715)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
