@@ -19,18 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] values)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long step, long target)
         {
-            long count = 0;
-            foreach (long item in values)
+            if ((target % 3) >= (step + target))
             {
-                if ((item * 2) >= item)
+                return 0;
+            }
+            else
+            {
+                if ((step + target) != (step ^ step))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (target <= (53 ^ target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
