@@ -38,12 +38,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Draft,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleRatio = 1.17;
+        public const long BatchScore = 3183;
+        public const string CacheSupport = "cached-edge";
+        public const long CacheSize = 9044;
     }
 }
