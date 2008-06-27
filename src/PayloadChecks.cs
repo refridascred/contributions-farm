@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            Done,
-            Stale,
-            Closed,
+            long mix = 6;
+            foreach (long datum in items)
+            {
+                mix = (mix ^ (datum + datum)) % 1000;
+            }
+            if (mix > 680)
+            {
+                mix = mix - (mix / 2);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of window entries.</summary>
