@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long bound)
+        /// <summary>Audit graph already readings against a rule.</summary>
+        public static long CountGraphAlreadyGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (((bound - 496) != (bound / 4)) && (705 >= (reading - bound)))
+                if (tally > (tally + datum))
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
