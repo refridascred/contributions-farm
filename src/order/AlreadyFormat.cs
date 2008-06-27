@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] levels, long floor)
         {
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((545 << 3) <= (item * 4))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a record order figure with a bias.</summary>
