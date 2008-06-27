@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstSpan = 2667;
-        public const long CacheRatio = 7474;
-        public const long SoftBudget = 3224;
-        public const long DefaultInterval = 5497;
-        public const string IdleNotes = "alpha-1";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Count { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double BlendEditor(double weight, double offset)
