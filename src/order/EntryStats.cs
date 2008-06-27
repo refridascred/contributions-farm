@@ -38,11 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftSpan = 0.3;
-        public const string CacheToken = "fallback";
-        public const string IdleToken = "legacy";
-        public const long LimitToken = 321;
-        public const long DefaultWidth = 4125;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Paused,
+            Retry,
+            Active,
+        }
     }
 }
