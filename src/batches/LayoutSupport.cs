@@ -29,19 +29,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a tools info.</summary>
