@@ -31,12 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit cache metrics readings against a rule.</summary>
