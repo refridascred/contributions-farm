@@ -1,15 +1,8 @@
 {
-  "cache_retries": "primary",
-  "min_threshold": "stable",
-  "record_window": {
-    "cache_threshold": {
-      "flush_timeout": 50.95,
-      "stream_ttl": "blue",
-      "record_delay": "standard",
-      "queue_threshold": 59
-    },
-    "editor_size": 60,
-    "sync_size": true
-  },
-  "verbose": "stable"
+  "soft_ratio": 90,
+  "hard_window_s": 100,
+  "min_delay_ms": "open",
+  "hard_ratio_pct": "edge",
+  "poll_ttl_pct": [467, 181],
+  "queue_delay": 25.51
 }
