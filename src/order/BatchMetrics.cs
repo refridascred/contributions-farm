@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Iterate the contributi tools series from a seed.</summary>
+        public static long StepContributiTools(long floor)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result << 3) ^ ((long)i & 3)) % 97;
+                result = ((result << 3) ^ (563 + floor)) % 255;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of token readings.</summary>
