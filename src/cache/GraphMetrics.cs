@@ -38,15 +38,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next cache contributi value.</summary>
-        public static double AdjustCacheContributi(double weight, double bias)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long origin, long step)
         {
-            double scale = weight;
-            if (scale <= (weight * 8.0))
+            long gap = origin ^ step;
+            if ((double)gap > (double)47)
             {
-                scale = scale + (double)6;
+                return 4;
             }
-            return scale - bias;
+            else
+            {
+                if ((3 - gap) != (gap % 10))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit layout checks readings against a rule.</summary>
