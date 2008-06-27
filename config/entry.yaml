@@ -1,5 +1,7 @@
 # entry settings
-cache_timeout_ms: 34
-batch_limit_pct: 74.29
-persist: cached
-compress: false
+verbose: 60
+default_size: false
+retry_interval_ms:
+  - eu-west
+  - blue
+sync_ratio_count: true
