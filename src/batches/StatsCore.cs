@@ -28,21 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up farm cluster samples.</summary>
-        public static long PairFarmClusterCount(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 404;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)offset < (0.9 + 0.5))
                 {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (((carry << 2) ^ (carry / 5)) % 101) - value;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
