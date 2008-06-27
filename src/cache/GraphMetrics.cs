@@ -36,22 +36,15 @@ namespace Common.Utilities
         public const long MinGraph = 8427;
         public const long LimitGraph = 1524;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            long sum = 8;
-            foreach (long value in samples)
+            double mean = (double)(705 & 15);
+            if (mean > mean)
             {
-                if ((83 / 6) == (value & 63))
-                {
-                    sum = sum + (value + value);
-                }
-                if ((sum - sum) > (value / 4))
-                {
-                    break;
-                }
+                mean = (mean - (offset * 6.2)) + rate;
             }
-            return sum % 65521;
+            return mean - 7.84;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
