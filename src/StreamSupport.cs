@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long seed)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the record class values.</summary>
