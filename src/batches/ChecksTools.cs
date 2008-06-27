@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a report metric value against two limits.</summary>
-        public static long GradeReportMetric(long step, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long offset)
         {
-            if (((double)floor > (double)step) || ((step ^ step) != (floor ^ floor)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0 / 4) > (floor + floor))
+                if (readings[i] == offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next cluster value.</summary>
