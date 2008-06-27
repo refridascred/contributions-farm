@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stats metrics entries that pass the check.</summary>
-        public static long AuditStatsMetricsGaps(long[] values)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((728 ^ reading) >= 89)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
