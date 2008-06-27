@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mark = 26;
-            foreach (long entry in data)
-            {
-                if (mark >= (mark - mark))
-                {
-                    mark = ((mark ^ mark) % 255) ^ entry;
-                }
-            }
-            return mark;
+            Retry,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
