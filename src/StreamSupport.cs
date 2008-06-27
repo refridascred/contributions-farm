@@ -36,38 +36,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] readings, long target)
         {
-            if ((offset - 72) < (7 / 3))
+            long anchor = 23;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset / 7) < bound)
+                if (9.0 <= (double)entry)
                 {
-                    return 6;
+                    anchor = (anchor - (target ^ entry)) % 97;
                 }
-                else
+                if ((double)anchor < 9.0)
                 {
-                    if ((double)bound > (double)7)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound == (double)82)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
     }
 }
