@@ -19,17 +19,14 @@ namespace Common.Utilities
         public const long RetryBudget = 6045;
         public const long HardSize = 4956;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long target)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Retry,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Validate schema githubfarm readings against a bound.</summary>
