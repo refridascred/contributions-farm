@@ -1,7 +1,7 @@
 # githubfarm settings
-strict: true
-cache_threshold_s: 30
-verbose: false
-base_window_pct: true
-burst_window_pct: local
-enabled: legacy
+max_retries_pct: open
+batches_threshold: stable
+support_timeout: 60
+strict: false
+base_timeout: eu-west
+enabled: true
