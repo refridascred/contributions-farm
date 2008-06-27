@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] data, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (((entry + step) >= (938 - 5)) && !(entry < step))
+                if (reading > bound)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
