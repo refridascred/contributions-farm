@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] items, long step)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (hits >= (step + step))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the token level values.</summary>
