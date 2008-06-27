@@ -20,13 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Dropped,
-            New,
-            Idle,
-            Done,
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the session filter entries that pass the check.</summary>
