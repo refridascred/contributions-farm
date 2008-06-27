@@ -27,30 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            long carry = -99;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample << 1) != (carry << 2))
+                if (levels[i] < floor)
                 {
-                    carry = carry + carry;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (2 - carry);
-                }
-                if (((double)carry == (8.8 * 20.0)) || ((carry + carry) >= (carry - carry)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 4)
-            {
-                carry = (carry - (carry << 2)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Check that every cluster stats entry stays within the limit.</summary>
