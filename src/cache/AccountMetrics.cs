@@ -92,19 +92,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] items, long target)
+        /// <summary>Grade a checks stream value against two limits.</summary>
+        public static long BucketChecksStream(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            if ((limit % 64) != (origin * 5))
             {
-                if (reading != target)
+                return 1;
+            }
+            else
+            {
+                if (origin > limit)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin >= (17 << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (9.0 / 4.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
