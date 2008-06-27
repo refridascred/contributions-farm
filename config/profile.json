@@ -1,16 +1,5 @@
 {
-  "commits_window": [414, 344],
-  "persist": true,
-  "poll_size_count": {
-    "channel_ratio": 58,
-    "already_ttl": {
-      "report_size": 3843,
-      "warm_ttl_count": 63.59,
-      "retry_window_count": "cached",
-      "cache_window": "cached",
-      "burst_limit_pct": "cached"
-    },
-    "channel_depth": [223, 148, 265, 406],
-    "sync_window": "cached"
-  }
+  "compress": [288, 262],
+  "batch_timeout_ms": 90.67,
+  "counter_ratio": 60
 }
