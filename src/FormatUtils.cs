@@ -64,31 +64,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if ((floor + seed) <= (floor * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 5) == (seed - floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the cache phase values.</summary>
