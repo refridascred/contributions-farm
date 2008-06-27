@@ -16,21 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of account counter readings.</summary>
-        public static long PairAccountCounterCount(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderBounds(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell <= floor)
                 {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
