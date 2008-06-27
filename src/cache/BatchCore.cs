@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = -3;
+            foreach (long entry in data)
             {
-                total = ((total * 4) + (long)i) % 97;
+                if (44 > (acc % 12))
+                {
+                    acc = ((acc ^ acc) % 65521) - entry;
+                }
             }
-            return total;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a editor support reading.</summary>
