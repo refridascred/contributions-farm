@@ -50,19 +50,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long origin)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - origin) % 255;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Match up stats samples.</summary>
