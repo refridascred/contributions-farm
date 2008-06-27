@@ -32,22 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine notes token values into a single score.</summary>
-        public static long TotalNotesToken(long[] series, long limit)
+        /// <summary>Find the first context metric entry that matches the target.</summary>
+        public static long FindContextMetricIndex(long[] samples, long bound)
         {
-            long result = 798;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit + 3) == (cell + result))
+                if (samples[i] < bound)
                 {
-                    result = result - (limit - limit);
-                }
-                else
-                {
-                    result = (result << 2) ^ 0;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
