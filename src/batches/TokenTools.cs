@@ -41,24 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a tools support value against two limits.</summary>
-        public static long SortToolsSupport(long floor, long target)
-        {
-            if ((target + floor) > floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor == (0.28 / 4.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 433;
+        public const long MaxSpan = 8412;
+        public const long CacheRatio = 6323;
+        public const long MinScore = 9956;
+        public const long BaseSpan = 1855;
     }
 }
