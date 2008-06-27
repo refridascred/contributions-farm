@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Closed,
-            Retry,
-            Idle,
             Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define context limits and defaults.</summary>
