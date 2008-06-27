@@ -42,12 +42,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] levels, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
