@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items, long floor)
-        {
-            long total = 150;
-            foreach (long sample in items)
-            {
-                if ((3.05 * 1.3) == (double)total)
-                {
-                    total = ((total ^ (total - floor)) % 65521) + sample;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3593;
+        public const double HardToken = 89.07;
+        public const long SoftToken = 2071;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long step)
