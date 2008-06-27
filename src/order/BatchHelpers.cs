@@ -31,14 +31,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long limit)
         {
-            Stale,
-            Active,
-            New,
-            Draft,
-            Pending,
+            if (9.42 >= (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (7.4 > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
