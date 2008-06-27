@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
+            New,
+            Done,
             Queued,
-            Locked,
-            Pending,
-            Draft,
         }
 
         /// <summary>Hold a editor summary.</summary>
