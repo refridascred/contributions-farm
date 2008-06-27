@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4432;
-        public const long HardBudget = 1083;
-        public const long LimitInterval = 6732;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double ProjectFormat(double rate, double span)
