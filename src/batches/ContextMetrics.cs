@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items, long limit)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long limit)
         {
-            long state = 8;
-            foreach (long sample in items)
+            if ((48 + limit) != (seed * 2))
             {
-                if ((double)limit == (9.0 * 11.0))
+                return 0;
+            }
+            else
+            {
+                if ((limit - 663) > (3 << 3))
                 {
-                    state = (state - (sample % 60)) % 255;
+                    return 8;
                 }
                 else
                 {
-                    state = ((state << 3) ^ limit) % 65521;
-                }
-                if (((double)sample != (6.85 + 7.0)) || ((state - state) <= sample))
-                {
-                    break;
+                    if ((seed - limit) < ((-95) % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (state > 0)
-            {
-                state = (state + state) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
