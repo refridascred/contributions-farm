@@ -1,14 +1,5 @@
 # entry settings
-base_delay:
-  max_window_ms: 603
-  strict: 81.4
-  base_capacity_ms: stable
-  audit: 95.68
-  warm_depth_count: fallback
-  layout_size:
-    - strict
-    - staging
-    - standard
-    - blue
-warm_retries: 96.92
-sync_interval_s: eu-west
+warm_threshold_count: open
+default_limit_ms: standard
+poll_capacity_count: true
+sync_threshold_s: eu-west
