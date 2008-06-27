@@ -48,12 +48,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long limit)
         {
-            Paused,
-            Retry,
-            Active,
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix + (mix << 2)) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
