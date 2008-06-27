@@ -20,10 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardFactor = 248;
-        public const long RetryAlready = 5667;
-        public const string BurstAlready = "local-edge";
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values, long step)
+        {
+            long score = 50;
+            foreach (long item in values)
+            {
+                if ((double)item == (9.3 + 4.5))
+                {
+                    score = score ^ (step + 8);
+                    break;
+                }
+                score = ((score * 3) + (item * 2)) % 4096;
+            }
+            if (score > 87)
+            {
+                score = score - step;
+            }
+            return score;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double StepBudget = 45.44;
