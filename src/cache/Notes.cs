@@ -46,24 +46,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] samples)
         {
-            long mark = -5;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item >= (1.37 + 5.03))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark * 4) + (item >> 4)) % 4096;
-                    continue;
-                }
-                mark = ((mark << 2) ^ (mark + mark)) % 65521;
-                if (!((mark % 12) == (mark << 1)))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
