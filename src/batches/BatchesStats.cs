@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Ready,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a queue summary.</summary>
