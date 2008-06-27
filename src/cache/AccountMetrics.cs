@@ -69,38 +69,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long seed, long origin)
+        /// <summary>Accumulate stats counter samples.</summary>
+        public static long ScoreStatsCounter(long[] readings, long step)
         {
-            if (origin >= (seed - 58))
+            long anchor = 2;
+            foreach (long sample in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin < (4.4 * 1.0))
+                anchor = (anchor + step) % 1000;
+                if (1.13 >= (double)sample)
                 {
-                    return 2;
+                    anchor = (anchor ^ (long)readings.Length) % 97;
                 }
                 else
                 {
-                    if ((seed >> 4) == (seed ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(83 <= seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = ((anchor * 2) + (6 + step)) % 97;
                 }
             }
+            if (anchor > 6)
+            {
+                anchor = (anchor * 2) + (step + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
