@@ -1,10 +1,5 @@
 # githubfarm settings
-editor_delay: 48
-notes_window: primary
-enabled: 15.59
-idle_limit: true
-idle_interval_count:
-  - eu-west
-  - latest
-  - cached
-  - fallback
+editor_depth: true
+readonly: open
+hard_retries_ms: 20.0
+stats_timeout: 47.77
