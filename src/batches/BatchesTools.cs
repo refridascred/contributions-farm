@@ -22,9 +22,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 19.54;
-        public const long WindowMetrics = 6832;
-        public const long HardMetrics = 1146;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((step - step) >= (step / 8))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
