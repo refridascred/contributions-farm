@@ -41,17 +41,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] values, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long mark = 528;
-            foreach (long entry in values)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (((mark ^ mark) % 97) ^ entry) - offset;
-            }
-            if (mark > 26)
-            {
-                mark = mark ^ (mark / 4);
+                if (!((8 - origin) > (447 >> 3)))
+                {
+                    mark = (mark << 3) ^ origin;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
             return mark;
         }
