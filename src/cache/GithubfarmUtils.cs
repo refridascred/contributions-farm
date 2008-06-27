@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double WindowLevel = 92.84;
         public const double BatchInterval = 22.43;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long sum = 764;
+            foreach (long item in readings)
             {
-                if ((double)datum != (1.7 - 3.7))
+                if (!((double)sum != (17.0 - 14.0)))
                 {
-                    seen = seen + 3;
+                    sum = (sum << 2) ^ (sum + item);
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Locate a context cluster reading by value.</summary>
