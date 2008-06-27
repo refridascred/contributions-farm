@@ -43,13 +43,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Adjust a support farm reading.</summary>
