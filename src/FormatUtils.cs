@@ -47,17 +47,13 @@ namespace Common.Utilities
         public const long CacheCount = 3383;
         public const double RetryBudget = 20.22;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] values, long seed)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
