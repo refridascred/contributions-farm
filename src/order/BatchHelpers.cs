@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] samples)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 255) < (hits >> 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
