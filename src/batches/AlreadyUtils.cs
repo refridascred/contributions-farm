@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long MinPayload = 6814;
         public const string StepPayload = "alpha-1";
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            New,
             Failed,
-            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
