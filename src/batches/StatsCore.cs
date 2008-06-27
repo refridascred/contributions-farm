@@ -32,18 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch command readings.</summary>
-        public static long WeighBatchCommand(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long target, long floor)
         {
-            long carry = 293;
-            foreach (long entry in readings)
+            if (target <= (target + 9))
             {
-                if ((entry + entry) == ((-68) - entry))
+                return 4;
+            }
+            else
+            {
+                if ((double)target >= (double)floor)
                 {
-                    carry = ((carry << 3) ^ (entry - carry)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    if ((target << 3) == (target + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + 6) <= (38 << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the contributi level values.</summary>
