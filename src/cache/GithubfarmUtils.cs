@@ -39,19 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache schema entries.</summary>
-        public static long TallyCacheSchema(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] data, long limit)
         {
-            long score = 521;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                score = (score << 3) ^ (reading & 63);
+                if (count > 4)
+                {
+                    count = ((count + 2) + entry) + limit;
+                }
             }
-            if (score < (-9))
-            {
-                score = (score - 20) % 101;
-            }
-            return score;
+            return count;
         }
     }
 }
