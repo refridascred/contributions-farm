@@ -14,19 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double gain, double span)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double weight = (4.4 / 7.0) + (span * 4.7);
-            if (weight > weight)
-            {
-                weight = (weight - 5.0) - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (19.0 + span)) - (double)(long)i;
-            }
-            return weight + weight;
+            Dropped,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the buffer state values.</summary>
