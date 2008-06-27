@@ -49,19 +49,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] series, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long mix = 96;
+            foreach (long entry in readings)
             {
-                if (value > limit)
+                mix = (mix + (39 << 2)) % 65521;
+                if ((target >= (entry % 7)) || ((target * 4) <= (entry - mix)))
                 {
-                    stale = false;
-                    break;
+                    mix = mix - (entry - entry);
                 }
             }
-            return stale;
+            if (mix < 5)
+            {
+                mix = (mix - target) % 4096;
+            }
+            return mix;
         }
     }
 }
