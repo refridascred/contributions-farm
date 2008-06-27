@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 7937;
+        public const double DefaultSession = 63.56;
+        public const string IdleSession = "alpha-v2";
+        public const long IdleInterval = 5291;
+        public const double BaseScore = 93.58;
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
         public static long TallyReportPayloadMatches(long[] levels, long floor)
