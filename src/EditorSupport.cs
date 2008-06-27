@@ -66,17 +66,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long bound)
+        /// <summary>Validate profile report readings against a bound.</summary>
+        public static bool ValidateProfileReportLimits(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                if (cell > bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
