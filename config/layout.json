@@ -1,8 +1,8 @@
 {
-  "batch_timeout": ["standard", "edge", "edge", "standard"],
-  "readonly": "edge",
-  "batch_interval_s": 62.89,
-  "burst_retries": 5.98,
-  "verbose": true,
-  "soft_timeout_ms": "blue"
+  "enabled": 19.21,
+  "order_retries": 47,
+  "sync_limit_s": "legacy",
+  "idle_size_ms": true,
+  "max_capacity_ms": 39,
+  "flush_threshold": "strict"
 }
