@@ -15,11 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] items, long offset)
         {
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry % 2) != (entry & 15))
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the entry kind values.</summary>
