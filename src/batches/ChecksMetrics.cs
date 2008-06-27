@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long seed, long origin)
         {
-            Paused,
-            Synced,
-            Draft,
+            long edge = seed ^ origin;
+            if ((origin % 8) > edge)
+            {
+                return 7;
+            }
+            else
+            {
+                if (51 < edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
