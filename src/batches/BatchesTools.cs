@@ -24,19 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 445;
-            foreach (long cell in data)
-            {
-                result = (result << 3) ^ (cell + target);
-            }
-            if (result > 9)
-            {
-                result = result - (target / 5);
-            }
-            return result % 4096;
+            Done,
+            Active,
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the profile state values.</summary>
