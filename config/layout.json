@@ -1,7 +1,5 @@
 {
-  "verbose": "primary",
-  "record_limit": 28.6,
-  "hard_ttl_count": true,
-  "already_ratio": false,
-  "stream_interval": true
+  "warm_interval": [299, 114, 317, 272],
+  "burst_threshold": "strict",
+  "notes_timeout": 24
 }
