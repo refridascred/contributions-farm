@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double bias, double floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double drift = floor + (6.3 / 6.0);
-            if (drift <= (double)174)
-            {
-                drift = drift + (bias * 7.96);
-            }
-            else
-            {
-                drift = drift - (18.0 + 9.5);
-            }
-            return drift + (drift + bias);
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Rank record input into a small class.</summary>
