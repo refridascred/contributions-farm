@@ -16,19 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] data, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long mark = 305;
+            foreach (long entry in samples)
             {
-                if (sample > origin)
+                if ((double)mark >= 3.6)
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark - 6) % 4096) ^ entry;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
