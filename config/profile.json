@@ -1,15 +1,5 @@
 {
-  "idle_retries_ms": {
-    "cache_interval_s": 60,
-    "command_retries": true,
-    "cache_threshold_s": 9
-  },
-  "queue_limit": 8147,
-  "burst_interval_count": {
-    "hard_size_s": 1657,
-    "max_window_s": "green",
-    "max_delay_pct": "latest",
-    "sync_interval": "green"
-  },
-  "sync_ratio": true
+  "dry_run": 30,
+  "flush_timeout_count": 75,
+  "hard_threshold": "strict"
 }
