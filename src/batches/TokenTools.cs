@@ -41,19 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long bound)
+        /// <summary>Grade a tools support value against two limits.</summary>
+        public static long SortToolsSupport(long floor, long target)
         {
-            long diff = step - bound;
-            if (!(step >= (diff << 3)))
+            if ((target + floor) > floor)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((2.5 - 1.0) <= (double)bound)
+                if ((double)floor == (0.28 / 4.0))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
