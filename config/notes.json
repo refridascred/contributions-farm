@@ -1,11 +1,8 @@
 {
-  "min_ttl_pct": 47,
-  "persist": 1024,
-  "burst_timeout": {
-    "flush_ratio_s": "stable",
-    "flush_size": true,
-    "cache_retries_count": [473, 444, 321, 239]
-  },
-  "batch_capacity_ms": 84,
-  "default_retries_pct": 100
+  "readonly": 17.41,
+  "base_size_s": 24,
+  "strict": 74,
+  "compress": true,
+  "channel_depth": 78.95,
+  "channel_ttl": 30
 }
