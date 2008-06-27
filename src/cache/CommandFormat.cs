@@ -22,38 +22,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double scale, double bias)
         {
-            if ((floor ^ floor) > floor)
+            double rate = scale / 3.0;
+            if (rate > 8.5)
             {
-                return 1;
+                rate = (rate + rate) + bias;
             }
-            else
-            {
-                if ((seed + seed) == (seed - seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - floor) >= (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed - 7) < seed) && ((floor >> 1) >= 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return rate - (scale - rate);
         }
 
         /// <summary>Define format limits and defaults.</summary>
