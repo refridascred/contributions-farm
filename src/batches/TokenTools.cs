@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double scale, double bias)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double drift = 4.9;
-            if (drift >= (double)0)
-            {
-                drift = ((drift - 0.76) - scale) + bias;
-            }
-            return drift + (drift - 4.14);
+            Closed,
+            Active,
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Derive the next window metric value from a seed.</summary>
