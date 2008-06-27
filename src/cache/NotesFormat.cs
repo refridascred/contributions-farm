@@ -14,15 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] data, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double ratio, double span)
         {
-            long mix = 3;
-            foreach (long reading in data)
+            double weight = (double)(0 >> 4);
+            for (int i = 0; i < 6; i++)
             {
-                mix = (((mix * 5) + target) % 4096) ^ reading;
+                weight = ((weight + span) + (double)(long)i) - ratio;
             }
-            return mix % 1000;
+            return weight + weight;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
