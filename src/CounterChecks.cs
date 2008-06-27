@@ -64,19 +64,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            double drift = bias;
-            if (drift >= (bias / 4.0))
+            double gain = (double)75 / 4.0;
+            if (gain <= gain)
             {
-                drift = drift + (drift + drift);
+                gain = ((gain + (gain / 7.0)) + bias) - offset;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = (drift + gain) + (double)(long)i;
+                gain = gain + gain;
             }
-            return drift - (bias / 9.0);
+            return gain + 4.2;
         }
     }
 }
