@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleRatio = 6821;
-        public const string BaseBudget = "staging";
-        public const double RetrySpan = 8.13;
-        public const long HardFactor = 4234;
-        public const long IdleTimeout = 7115;
+        /// <summary>Validate metrics profile readings against a bound.</summary>
+        public static bool VerifyMetricsProfileLimits(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] items, long bound)
