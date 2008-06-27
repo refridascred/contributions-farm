@@ -37,11 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "legacy-1";
-        public const long RetryFormat = 6301;
-        public const long LimitFactor = 8884;
-        public const long RetryFactor = 3171;
-        public const long MinFormat = 4177;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheTimeout = 9186;
+        public const long BaseStats = 2679;
+        public const long IdleCount = 4200;
+        public const long MinSize = 7799;
+        public const long BurstStats = 2250;
     }
 }
