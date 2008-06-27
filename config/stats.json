@@ -1,8 +1,7 @@
 {
-  "idle_size_s": "staging",
-  "verbose": "legacy",
-  "batch_ttl": ["stable", "green", "green"],
-  "soft_ttl_count": "primary",
-  "burst_depth": 51.6,
-  "hard_timeout_pct": "primary"
+  "counter_retries": "open",
+  "cluster_delay": "stable",
+  "cache_interval": 4.36,
+  "default_ratio": 250,
+  "cache_timeout": ["edge", "standard"]
 }
