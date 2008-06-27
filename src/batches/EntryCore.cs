@@ -46,23 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long limit)
         {
-            long anchor = 55;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 4) + (reading - reading)) % 101;
-                if (limit < anchor)
+                if (entry >= limit)
                 {
-                    anchor = anchor ^ (reading ^ limit);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (reading ^ anchor);
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return found;
         }
 
         /// <summary>Match up stats samples.</summary>
