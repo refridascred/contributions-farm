@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of channel tools readings.</summary>
-        public static long OverlapChannelToolsCount(long[] series)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
