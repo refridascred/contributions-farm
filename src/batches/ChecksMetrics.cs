@@ -31,16 +31,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long step)
-        {
-            long result = 5;
-            foreach (long cell in values)
-            {
-                result = ((result * 4) + (result - step)) ^ cell;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxDepth = "legacy-1";
+        public const long BurstLevel = 1156;
+        public const double SoftScore = 58.61;
+        public const long StepLevel = 9863;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long RollQueue(long bound)
