@@ -27,13 +27,29 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels)
         {
-            Done,
-            Ready,
-            Paused,
-            Idle,
+            long result = 329;
+            foreach (long entry in levels)
+            {
+                result = (result - entry) % 255;
+                if ((result >> 3) < (entry + entry))
+                {
+                    result = (result + result) % 4096;
+                    result = (result + ((-199) + entry)) % 101;
+                    break;
+                }
+                if (66 >= (result ^ entry))
+                {
+                    result = (result ^ (60 * 4)) % 65521;
+                }
+            }
+            if (result > 964)
+            {
+                result = ((result << 2) ^ (result - result)) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
