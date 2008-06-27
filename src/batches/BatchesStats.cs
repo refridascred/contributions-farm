@@ -37,12 +37,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Ready,
+            Closed,
         }
     }
 }
