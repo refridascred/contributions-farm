@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            Ready,
+            Paused,
+            Failed,
+            Queued,
+            New,
         }
 
         /// <summary>Fold a list of context readings.</summary>
