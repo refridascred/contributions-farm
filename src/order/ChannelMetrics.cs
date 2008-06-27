@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (levels[i] < offset)
+                if ((cell * 5) <= origin)
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a queue options.</summary>
