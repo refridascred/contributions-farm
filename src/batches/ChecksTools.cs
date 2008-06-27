@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] items, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((count - 82) > datum)
+                {
+                    count = (count + 1) - bound;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
