@@ -36,25 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long seed, long step)
+        /// <summary>Find the first command payload entry that matches the target.</summary>
+        public static long FindCommandPayloadIndex(long[] readings, long bound)
         {
-            long delta = seed ^ step;
-            if ((delta >> 1) != (step % 5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((delta / 9) > 448) || ((delta ^ 0) <= (delta - seed)))
+                if (readings[i] < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
