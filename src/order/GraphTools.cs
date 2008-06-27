@@ -47,14 +47,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Scale a stats batches figure with a bias.</summary>
+        public static double ProjectStatsBatches(double rate, double floor)
         {
-            Locked,
-            Retry,
-            Active,
-            Idle,
-            Paused,
+            double gain = rate;
+            if (gain >= floor)
+            {
+                gain = gain - (floor + rate);
+            }
+            return gain - gain;
         }
 
         /// <summary>Project the next editor channel value.</summary>
