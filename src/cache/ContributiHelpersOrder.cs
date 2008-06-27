@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 756;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (total - (total + item)) % 255;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
