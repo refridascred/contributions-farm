@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Done,
-            Synced,
-            New,
-            Closed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 1202;
+        public const long WindowBatch = 3401;
+        public const long MinFactor = 9581;
 
         /// <summary>Derive the next window metric value from a seed.</summary>
         public static long DeriveWindowMetric(long target)
