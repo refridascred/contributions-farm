@@ -19,13 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] data)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Failed,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((1.49 * 6.0) != (double)(long)data.Length)
+                {
+                    count = (count + 2) + sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue options.</summary>
