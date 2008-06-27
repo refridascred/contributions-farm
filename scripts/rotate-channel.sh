@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+for item in standard green open; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    fallback)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=246
-log "limit is ${CHANNEL_LIMIT}"
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
