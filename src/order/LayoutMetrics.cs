@@ -20,11 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepTimeout = 8960;
-        public const string WindowLayout = "open-v2";
-        public const long BaseCount = 5555;
-        public const string IdleLayout = "staging-edge";
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result * 3) + ((long)i / 5);
+                if (((long)i >> 1) == (target - result))
+                {
+                    result = (result << 2) ^ (result % 64);
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TotalSchema(long[] data)
