@@ -22,10 +22,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "stable-1";
-        public const long MinGraph = 8427;
-        public const long LimitGraph = 1524;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double SmoothStream(double rate, double offset)
