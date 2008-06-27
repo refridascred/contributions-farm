@@ -23,14 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Dropped,
-            Synced,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 70.95;
+        public const double BurstChannel = 35.14;
+        public const string WindowWidth = "cached-edge";
+        public const long DefaultChannel = 1407;
+        public const long SoftChannel = 6575;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] samples, long origin)
