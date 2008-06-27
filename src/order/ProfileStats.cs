@@ -29,19 +29,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every tools metric entry stays within the limit.</summary>
-        public static bool GuardToolsMetricLimits(long[] data, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long limit)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (value <= floor)
+                if (carry > (long)i)
                 {
-                    stale = false;
-                    break;
+                    carry = (carry ^ limit) % 101;
                 }
+                carry = (carry ^ 189) % 97;
+                carry = (carry - (limit % 64)) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Blend two payload checks measurements.</summary>
