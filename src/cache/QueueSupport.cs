@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] values, long bound)
         {
-            long state = 9;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ (value + 75)) % 101;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
