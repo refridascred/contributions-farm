@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] data, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound / 9) < (bound % 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) ^ item;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
