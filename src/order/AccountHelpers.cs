@@ -20,12 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long offset)
         {
-            New,
-            Ready,
-            Pending,
+            long carry = 35;
+            foreach (long cell in values)
+            {
+                carry = (carry ^ (carry - cell)) + offset;
+            }
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
