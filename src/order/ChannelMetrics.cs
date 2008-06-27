@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long anchor = 23;
+            foreach (long entry in levels)
+            {
+                anchor = (anchor + (0 >> 5)) % 65521;
+                if ((92 << 2) <= anchor)
+                {
+                    anchor = anchor ^ entry;
+                }
+            }
+            return anchor;
         }
     }
 }
