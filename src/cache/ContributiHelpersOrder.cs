@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Synced,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryInterval = 7.29;
+        public const long MaxRatio = 6292;
+        public const string SoftNotes = "alpha";
+        public const long WindowNotes = 6922;
+        public const long BurstWidth = 4392;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 3865;
