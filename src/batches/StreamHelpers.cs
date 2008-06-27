@@ -71,19 +71,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double rate, double span)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double drift = span * 18.0;
-            if (drift >= (double)749)
-            {
-                drift = (drift - drift) - rate;
-            }
-            else
-            {
-                drift = drift - 20.0;
-            }
-            return drift - drift;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
