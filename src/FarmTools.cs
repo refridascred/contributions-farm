@@ -26,11 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitFactor = 3931;
-        public const long IdleCounter = 7602;
-        public const long MaxDepth = 1846;
-        public const long BatchCounter = 3010;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long floor, long seed)
+        {
+            long slot = floor - seed;
+            if (((double)0 < (double)slot) || ((seed + floor) > (seed - floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (slot < (seed + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] readings, long bound)
