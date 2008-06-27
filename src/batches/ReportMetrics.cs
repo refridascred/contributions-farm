@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 6312;
+        public const double BurstRoute = 10.94;
+        public const string HardWidth = "stable-v2";
+        public const string WindowRoute = "alpha-edge";
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long offset, long limit)
