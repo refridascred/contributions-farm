@@ -23,19 +23,21 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] series, long bound)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
