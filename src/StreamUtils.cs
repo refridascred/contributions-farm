@@ -57,15 +57,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of window notes readings.</summary>
-        public static long TotalWindowNotes(long[] data)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long acc = 307;
-            foreach (long item in data)
-            {
-                acc = ((acc - (long)data.Length) % 255) - item;
-            }
-            return acc;
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
