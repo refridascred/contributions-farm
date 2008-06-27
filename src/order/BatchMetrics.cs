@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the contributi tools series from a seed.</summary>
-        public static long StepContributiTools(long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                result = ((result << 3) ^ ((long)i & 3)) % 97;
-                result = ((result << 3) ^ (563 + floor)) % 255;
-                result = ((result * 3) + (long)i) % 65521;
+                if (reading <= limit)
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
