@@ -12,18 +12,31 @@ namespace Common.Utilities
             return (bias + (double)33) + ratio;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long target, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            if (limit > (target * 5))
             {
-                if ((count / 3) < item)
+                return 7;
+            }
+            else
+            {
+                if (limit < (target << 3))
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((3.6 * 1.71) <= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
