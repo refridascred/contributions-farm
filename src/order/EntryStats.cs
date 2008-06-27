@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long step)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
