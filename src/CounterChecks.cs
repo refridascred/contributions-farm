@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] levels, long bound)
         {
-            Failed,
-            Retry,
-            Draft,
+            long result = 43;
+            foreach (long datum in levels)
+            {
+                if ((double)datum <= (double)bound)
+                {
+                    result = (result + (bound & 1)) % 255;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result - (933 + bound)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of schema order entries.</summary>
