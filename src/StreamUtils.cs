@@ -42,15 +42,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double rate, double floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double bias = rate / 3.0;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (bias / 9.0);
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of window notes readings.</summary>
