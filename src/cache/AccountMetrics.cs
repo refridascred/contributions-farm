@@ -97,13 +97,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Idle,
-            Stale,
-            Retry,
-            Queued,
+            New,
+            Pending,
+            Failed,
+            Synced,
         }
     }
 }
