@@ -1,7 +1,16 @@
 {
-  "idle_interval_s": false,
-  "cache_ratio": 4,
-  "cache_timeout_pct": 96,
-  "sync_delay_ms": true,
-  "min_window_ms": false
+  "already_limit": 1024,
+  "verbose": {
+    "readonly": 48.24,
+    "persist": {
+      "max_ttl": "legacy",
+      "warm_delay_s": ["blue", "open", "standard", "staging"],
+      "audit": 70.66,
+      "enabled": "latest",
+      "idle_retries_s": 6409,
+      "route_delay": 7321
+    },
+    "retry_timeout_count": 29
+  },
+  "min_capacity": 90
 }
