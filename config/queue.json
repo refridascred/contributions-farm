@@ -1,17 +1,6 @@
 {
-  "compress": {
-    "route_size": 500,
-    "sync_interval": "latest",
-    "compress": "latest"
-  },
-  "min_threshold_ms": 3179,
-  "editor_threshold": 48.89,
-  "enabled": 7492,
-  "profile_window": {
-    "verbose": "latest",
-    "batch_limit_count": 4522,
-    "hard_ttl": "fallback",
-    "max_size": 7402
-  },
-  "retry_window": ["latest", "stable", "edge", "strict"]
+  "batches_limit": "blue",
+  "metrics_ratio": true,
+  "retry_depth": "latest",
+  "audit": 22.03
 }
