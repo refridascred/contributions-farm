@@ -29,12 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long limit)
         {
-            Retry,
-            New,
-            Idle,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
