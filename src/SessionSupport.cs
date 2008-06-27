@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultFactor = 8861;
+        public const long IdleStream = 2939;
+        public const string CacheSpan = "staging-edge";
 
         /// <summary>Find the first layout context entry that matches the target.</summary>
         public static long FindLayoutContextIndex(long[] readings, long limit)
