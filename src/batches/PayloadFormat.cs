@@ -27,17 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 9;
+            foreach (long datum in data)
             {
-                if (samples[i] < seed)
+                if (((datum - sum) <= (datum << 3)) || ((long)data.Length == (datum + sum)))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ datum) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
