@@ -17,12 +17,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "fallback";
-        public const long IdleOrder = 918;
-        public const string MinDepth = "staging-1";
-        public const string MinOrder = "strict";
-        public const long WindowOrder = 1935;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor + 47;
+                if (anchor > step)
+                {
+                    anchor = ((anchor << 3) ^ (step % 5)) % 1000;
+                }
+                anchor = (anchor ^ (181 + anchor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the entry cluster entries that pass the check.</summary>
         public static long MeasureEntryClusterGaps(long[] values, long target)
