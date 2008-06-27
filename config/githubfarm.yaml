@@ -1,4 +1,9 @@
 # githubfarm settings
-format_delay: 60
-batches_ttl: 82
-readonly: latest
+context_limit: green
+notes_interval:
+  - 290
+  - 443
+  - 405
+  - 182
+batch_size_count: cached
+payload_interval: true
