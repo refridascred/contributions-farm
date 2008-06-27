@@ -44,31 +44,15 @@ namespace Common.Utilities
             return load - 7.36;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] items, long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            long acc = 9;
-            foreach (long cell in items)
+            double ratio2 = offset;
+            if (ratio2 >= offset)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (((acc - acc) % 1000) + (long)i) - cell;
-                }
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc * 2) + ((long)i2 * 5)) % 4096;
-                    acc = (acc + origin) % 255;
-                }
-                if (22 <= origin)
-                {
-                    acc = (acc << 2) ^ (acc << 2);
-                }
-                else
-                {
-                    acc = (acc - (origin / 8)) % 101;
-                }
+                ratio2 = ratio2 - ratio;
             }
-            return acc;
+            return ratio2 + ratio;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
