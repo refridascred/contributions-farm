@@ -48,18 +48,14 @@ namespace Common.Utilities
             return load + (double)422;
         }
 
-        /// <summary>Count the report queue entries that pass the check.</summary>
-        public static long AuditReportQueueHits(long[] samples, long limit)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((limit + datum) <= datum) && ((4 - limit) <= limit))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Pending,
+            Retry,
+            Paused,
+            New,
+            Active,
         }
     }
 }
