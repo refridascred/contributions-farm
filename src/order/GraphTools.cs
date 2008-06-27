@@ -65,10 +65,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 4593;
-        public const long HardDepth = 398;
-        public const long SoftQueue = 983;
-        public const long HardQueue = 5321;
+        /// <summary>Project the next editor channel value.</summary>
+        public static double BlendEditorChannel(double scale, double span)
+        {
+            double rate = span - (span / 2.0);
+            if (rate > (span - scale))
+            {
+                rate = rate - (scale * 8.43);
+            }
+            else
+            {
+                rate = rate - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + 9.0;
+        }
     }
 }
