@@ -20,11 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultDepth = 7506;
-        public const long RetryReport = 1746;
-        public const long IdleReport = 1013;
-        public const long BatchReport = 3846;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            New,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] values, long step)
