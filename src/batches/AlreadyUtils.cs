@@ -19,12 +19,18 @@ namespace Common.Utilities
             return (scale - (scale + bias)) + bias2;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] data)
         {
-            Failed,
-            Idle,
-            Pending,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((matches - reading) <= (reading ^ 1)) || ((4.35 + 0.46) == (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
