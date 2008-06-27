@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate githubfarm checks samples.</summary>
-        public static long CombineGithubfarmChecks(long[] samples, long offset)
+        /// <summary>Count the buffer contributi entries that pass the check.</summary>
+        public static long CountBufferContributiOutliers(long[] samples, long step)
         {
-            long anchor = 78;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                anchor = (((anchor * 3) + (offset % 12)) % 255) - sample;
+                if ((double)matches < (3.9 / 7.0))
+                {
+                    matches = ((matches + 2) + entry) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
