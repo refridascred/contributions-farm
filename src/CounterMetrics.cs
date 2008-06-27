@@ -44,15 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the contributi metric entries that pass the check.</summary>
-        public static long AuditContributiMetricMatches(long[] levels)
+        /// <summary>Count the tools context entries that pass the check.</summary>
+        public static long AuditToolsContextGaps(long[] readings)
         {
             long count = 0;
-            foreach (long datum in levels)
+            foreach (long cell in readings)
             {
-                if ((datum >> 1) < ((long)levels.Length + (-5)))
+                if ((cell * 3) > (cell - count))
                 {
                     count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
