@@ -26,19 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch report entry stays within the limit.</summary>
-        public static bool ValidateBatchReportRange(long[] levels, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long score = 356;
+            foreach (long reading in levels)
             {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score << 2) ^ score) % 1000) + reading;
+                score = score ^ (score % 8);
             }
-            return ready;
+            if (score > 13)
+            {
+                score = (score + 45) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
