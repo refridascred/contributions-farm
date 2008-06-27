@@ -1,12 +1,10 @@
 # githubfarm settings
-context_interval:
-  - 11
-  - 465
-  - 435
-flush_timeout_ms: false
-support_retries: 51
-metric_capacity: open
-warm_timeout:
-  - 443
-  - 184
-max_capacity_ms: true
+retry_retries: latest
+flush_window_pct: cached
+stream_size: cached
+sync_ttl: local
+poll_limit:
+  - 182
+  - 396
+  - 472
+  - 370
