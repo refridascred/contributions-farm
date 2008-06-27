@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
+        /// <summary>Find the first route window entry that matches the target.</summary>
+        public static long LookupRouteWindowIndex(long[] values, long origin)
         {
-            long state = 83;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state + entry;
-                if (entry <= (state * 4))
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
                 {
-                    state = (state * 3) + ((long)values.Length & 1);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a counter stats.</summary>
