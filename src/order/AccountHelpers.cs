@@ -43,17 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                if (sample < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Hold a counter info.</summary>
