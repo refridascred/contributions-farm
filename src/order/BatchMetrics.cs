@@ -14,21 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 38;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum >> 1) == (carry * 4))
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry << 3) ^ (carry & 3)) % 97;
+                }
+                if ((datum + carry) <= datum)
+                {
+                    carry = ((carry * 3) + (step * 4)) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
