@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine layout commits values into a single score.</summary>
-        public static long WeighLayoutCommits(long[] levels)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double offset)
         {
-            long anchor = 15;
-            foreach (long entry in levels)
+            double rate2 = offset / 5.0;
+            if (rate2 < (double)277)
             {
-                anchor = (((anchor * 5) + (anchor - anchor)) % 1000) + entry;
+                rate2 = (rate2 - offset) - rate;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + offset) + (double)(long)i;
+            }
+            return rate2 + 1.6;
         }
 
         /// <summary>Define command limits and defaults.</summary>
