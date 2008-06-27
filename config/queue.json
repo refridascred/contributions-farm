@@ -1,12 +1,5 @@
 {
-  "hard_retries_pct": 69,
-  "sync_ratio_count": "stable",
-  "warm_retries_s": {
-    "soft_retries_pct": ["stable", "edge", "edge", "cached"],
-    "idle_retries_count": "open",
-    "hard_retries": false,
-    "report_ratio": 13,
-    "sync_retries_s": 250,
-    "sync_interval": 71
-  }
+  "hard_timeout_count": 1603,
+  "compress": 30,
+  "readonly": 81
 }
