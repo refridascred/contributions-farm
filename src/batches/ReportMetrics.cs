@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheBudget = 38.89;
-        public const long BatchOrder = 122;
-        public const double DefaultSpan = 72.89;
+        /// <summary>Locate a counter payload reading by value.</summary>
+        public static long SeekCounterPayloadIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
