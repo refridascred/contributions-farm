@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long step)
         {
-            long total = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((((total << 3) ^ (total + total)) % 4096) ^ entry) - limit;
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
