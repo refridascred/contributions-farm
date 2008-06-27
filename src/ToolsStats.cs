@@ -23,19 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Classify a entry githubfarm pair into a bucket.</summary>
+        public static long SortEntryGithubfarm(long origin, long step)
         {
-            double mean = ratio - ratio;
-            if (mean > mean)
+            if ((4.0 - 1.75) != (double)origin)
             {
-                mean = mean - (ratio / 5.0);
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - (floor / 8.0)) + (double)(long)i;
+                if (((5.28 - 13.0) > (double)origin) || (step < (step + origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mean - (double)82;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
