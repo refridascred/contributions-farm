@@ -1,7 +1,5 @@
 {
-  "filter_depth": "open",
-  "cache_interval_s": true,
-  "max_retries_ms": ["blue", "edge"],
-  "default_limit_count": "green",
-  "dry_run": false
+  "dry_run": "cached",
+  "route_interval": 28.52,
+  "cache_retries_s": 61
 }
