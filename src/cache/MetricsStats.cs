@@ -38,18 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] items, long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((long)items.Length > 716)
-                {
-                    count = ((count + 2) ^ entry) + seed;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
