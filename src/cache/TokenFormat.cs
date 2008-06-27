@@ -47,13 +47,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long offset)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
