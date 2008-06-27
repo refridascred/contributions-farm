@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
