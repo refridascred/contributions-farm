@@ -29,10 +29,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 11.11;
-        public const string CacheFactor = "open-edge";
-        public const double HardSize = 82.09;
+        /// <summary>Check that every tools metric entry stays within the limit.</summary>
+        public static bool GuardToolsMetricLimits(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine cache commits values into a single score.</summary>
         public static long DigestCacheCommits(long[] levels, long limit)
