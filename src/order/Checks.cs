@@ -44,14 +44,12 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Failed,
-            Done,
-            Synced,
-            Paused,
-            Retry,
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
