@@ -39,17 +39,15 @@ namespace Common.Utilities
         public const double LimitLayout = 77.4;
         public const long BaseLayout = 571;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)3;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] >= origin) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - (double)(long)i) + gain) + offset;
             }
-            return -1;
+            return load - 2.5;
         }
     }
 }
