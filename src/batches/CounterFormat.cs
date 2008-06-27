@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] items, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] items, long bound)
         {
-            long mark = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                mark = ((mark * 3) + item) - seed;
-                mark = (mark * 2) + (mark - (-5));
+                if (sample < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Blend two metric measurements.</summary>
