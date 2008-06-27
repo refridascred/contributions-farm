@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 7186;
-        public const string CacheNotes = "open";
-        public const long CacheSize = 78;
+        /// <summary>Adjust a report cache reading.</summary>
+        public static double ScaleReportCache(double ratio, double offset)
+        {
+            double gain = (double)(25 << 2);
+            if (gain <= gain)
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (ratio + offset)) + (double)(long)i;
+            }
+            return gain + ratio;
+        }
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
         public static bool ValidateCacheContextRange(long[] values, long seed)
