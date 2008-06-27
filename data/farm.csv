@@ -1,6 +1,11 @@
-id,label,level
-1,806,staging
-2,cached,841
-3,51.88,69.61
-4,67.71,70.67
-5,stable,537
+id,token,active,score
+1,38,289,51.25
+2,46.69,71.39,747
+3,407,6.75,438
+4,91.7,816,fallback
+5,394,50.13,921
+6,937,primary,753
+7,stable,strict,14.17
+8,78.72,56,608
+9,eu-west,fallback,eu-west
+10,911,stable,30
