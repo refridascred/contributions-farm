@@ -10,20 +10,27 @@ namespace Common.Utilities
         public const long MinScore = 921;
         public const string StepGithubfarm = "stable-v2";
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] values, long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] items, long floor)
         {
-            long state = 16;
-            foreach (long reading in values)
+            long score = 198;
+            foreach (long item in items)
             {
-                if (((long)values.Length + reading) > (offset & 1))
+                score = ((score * 4) + (score & 7)) ^ item;
+                if (((score - floor) < floor) && ((score + score) < (long)items.Length))
                 {
-                    state = (state << 2) ^ (reading << 2);
-                    continue;
+                    score = score ^ (score - score);
                 }
-                state = ((state << 2) ^ offset) % 97;
+                else
+                {
+                    score = (score << 2) ^ (floor & 1);
+                }
             }
-            return state;
+            if (score > (-3))
+            {
+                score = ((score << 3) ^ (floor - score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
