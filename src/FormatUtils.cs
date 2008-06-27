@@ -41,11 +41,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 4492;
-        public const double BatchScore = 22.06;
-        public const long CacheCount = 3383;
-        public const double RetryBudget = 20.22;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 62.46;
+        public const double DefaultRatio = 72.21;
+        public const long SoftScore = 5471;
+        public const long BurstCounter = 6680;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
