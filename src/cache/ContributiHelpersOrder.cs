@@ -30,13 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
