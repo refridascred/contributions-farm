@@ -1,18 +1,5 @@
 {
-  "enabled": {
-    "tools_retries": "legacy",
-    "compress": {
-      "readonly": 16,
-      "verbose": 500,
-      "stats_depth": 39,
-      "route_window": 49.37,
-      "sync_interval": "strict"
-    },
-    "retry_threshold_count": ["blue", "stable"],
-    "context_retries": true,
-    "poll_interval": true
-  },
-  "min_interval": 65.59,
-  "flush_ratio_count": 13.29,
-  "readonly": 82.21
+  "warm_ratio_s": true,
+  "readonly": 4167,
+  "base_capacity_count": 250
 }
