@@ -36,10 +36,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "staging-1";
-        public const string BatchScore = "standard-v2";
-        public const long LimitRatio = 1485;
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry - (floor >> 2)) % 101;
+                carry = (carry ^ ((long)i + floor)) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
