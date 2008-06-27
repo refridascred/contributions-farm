@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long HardWidth = 7501;
         public const long SoftFactor = 9780;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseStats = 60.91;
-        public const long MaxStats = 5909;
-        public const string IdleStats = "alpha-edge";
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Synced,
+            Pending,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
