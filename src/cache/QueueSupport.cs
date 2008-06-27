@@ -43,18 +43,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] levels, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((tally % 24) <= entry)
+                if (sample < bound)
                 {
-                    tally = (tally + 2) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
