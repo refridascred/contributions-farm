@@ -26,10 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 5634;
-        public const long RetryRecord = 3608;
-        public const long MaxRecord = 6499;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((origin / 4) == (matches + origin))
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
