@@ -1,8 +1,5 @@
 {
-  "retry_delay": "staging",
-  "batch_size_s": "open",
-  "order_size": 60,
-  "profile_size": "strict",
-  "readonly": 31.45,
-  "command_threshold": true
+  "dry_run": "cached",
+  "payload_retries": "strict",
+  "max_capacity_count": ["green", "cached"]
 }
