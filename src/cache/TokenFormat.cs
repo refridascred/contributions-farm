@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] samples, long seed)
         {
-            Active,
-            Pending,
-            Closed,
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up profile samples.</summary>
