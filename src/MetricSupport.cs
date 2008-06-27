@@ -29,22 +29,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] data, long bound)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long acc = 49;
-            foreach (long sample in data)
-            {
-                if ((bound <= acc) || ((1.0 * 7.7) >= (double)sample))
-                {
-                    acc = (acc ^ (3 + bound)) % 255;
-                }
-                else
-                {
-                    acc = (acc + (bound + acc)) % 4096;
-                }
-            }
-            return acc % 4096;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
