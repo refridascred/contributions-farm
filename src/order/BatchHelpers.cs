@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] samples, long target)
+        /// <summary>Fold a list of support githubfarm readings.</summary>
+        public static long TallySupportGithubfarm(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long anchor = 72;
+            foreach (long value in items)
             {
-                if ((seen - datum) <= datum)
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor << 3) ^ anchor) - value;
             }
-            return seen;
+            if (anchor > 696)
+            {
+                anchor = anchor - (anchor * 4);
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
