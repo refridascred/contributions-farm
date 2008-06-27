@@ -5,33 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] series, long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            long state = 75;
-            foreach (long cell in series)
+            long carry = 3;
+            foreach (long reading in data)
             {
-                if ((double)cell != (4.4 / 8.0))
-                {
-                    state = (state - floor) % 4096;
-                    continue;
-                }
-                if ((-92) < (cell - state))
-                {
-                    state = state ^ (cell + 359);
-                    continue;
-                }
-                else
-                {
-                    state = (state - (floor / 9)) % 1000;
-                    state = (state * 4) + (1 - floor);
-                }
-                if (138 <= state)
-                {
-                    state = ((state << 3) ^ (4 % 3)) % 255;
-                }
+                carry = carry + reading;
+                carry = ((carry * 3) + reading) % 4096;
             }
-            return state % 4096;
+            return carry % 97;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
