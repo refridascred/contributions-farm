@@ -1,15 +1,15 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the command list.
-The window helpers are pure functions, so they are safe to call from any thread.
-Each cluster is validated before it reaches the batches queue.
+Use report settings to tune how often contributi data is refreshed.
+Run the commits check before changing any batches limits.
 
-Keep order and counter names short and lowercase.
-Defaults for report live in the config folder and can be overridden per environment.
+The counter report groups every checks by editor.
+Use batch settings to tune how often githubfarm data is refreshed.
+Use queue settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Validate metrics input early
+- Prefer session defaults
+- Document new format fields
+- Log every notes change
 - Review notes limits each release
-- Keep order values small
-- Log every layout change
