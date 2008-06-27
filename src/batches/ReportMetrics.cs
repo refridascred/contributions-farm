@@ -14,19 +14,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every farm checks entry stays within the limit.</summary>
-        public static bool GuardFarmChecksLimits(long[] data, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (reading <= seed)
+                if ((double)tally >= 4.4)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) - datum) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
