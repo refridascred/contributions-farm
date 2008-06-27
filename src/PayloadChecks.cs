@@ -55,22 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] values)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((count + count) >= 45)
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
