@@ -33,19 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel route readings.</summary>
-        public static long TotalChannelRoute(long[] levels)
-        {
-            long anchor = 864;
-            foreach (long cell in levels)
-            {
-                if ((10.0 / 4.0) <= (double)anchor)
-                {
-                    anchor = (anchor + (171 - 77)) + cell;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepBudget = 45.44;
+        public const double DefaultReport = 4.35;
+        public const long RetryFactor = 477;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportMatches(long[] series)
