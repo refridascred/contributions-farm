@@ -30,15 +30,13 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Iterate the support githubfarm series from a seed.</summary>
-        public static long StepSupportGithubfarm(long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
