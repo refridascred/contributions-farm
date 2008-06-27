@@ -20,12 +20,13 @@ namespace Common.Utilities
             return rate2 + 6.85;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Queued,
-            Ready,
-            Pending,
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
