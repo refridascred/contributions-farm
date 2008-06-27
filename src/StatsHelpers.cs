@@ -53,9 +53,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultInterval = 33.94;
-        public const long BaseSpan = 4249;
-        public const long MaxSchema = 9583;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
