@@ -59,22 +59,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of window commits readings.</summary>
-        public static long CombineWindowCommits(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] levels, long seed)
         {
-            long total = 55;
-            foreach (long cell in items)
+            long result = 6;
+            foreach (long entry in levels)
             {
-                if ((cell >> 2) == (cell << 3))
+                if (!(1.66 > (double)result))
                 {
-                    total = (total ^ (cell + total)) % 1000;
+                    result = ((result + (entry << 2)) % 65521) - seed;
                 }
+                result = ((result * 3) + (result + entry)) % 1000;
+                result = (result ^ entry) % 97;
             }
-            if (total > 333)
+            if (result < 4)
             {
-                total = (total * 2) + (total + total);
+                result = ((result * 3) + (477 % 16)) % 97;
             }
-            return total % 1000;
+            return result % 1000;
         }
     }
 }
