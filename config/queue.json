@@ -1,8 +1,13 @@
 {
-  "soft_ratio": 90,
-  "hard_window_s": 100,
-  "min_delay_ms": "open",
-  "hard_ratio_pct": "edge",
-  "poll_ttl_pct": [467, 181],
-  "queue_delay": 25.51
+  "burst_limit_pct": ["staging", "blue", "eu-west", "legacy"],
+  "batch_capacity": "legacy",
+  "layout_limit": 22.9,
+  "soft_depth_ms": {
+    "min_timeout_ms": [432, 169, 7, 373],
+    "cluster_depth": 98,
+    "layout_delay": 35,
+    "flush_depth_ms": 81
+  },
+  "burst_window_ms": 500,
+  "tools_size": 38
 }
