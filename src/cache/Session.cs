@@ -36,21 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Combine tools payload values into a single score.</summary>
