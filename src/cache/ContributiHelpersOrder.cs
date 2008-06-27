@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryInterval = 7.29;
-        public const long MaxRatio = 6292;
-        public const string SoftNotes = "alpha";
-        public const long WindowNotes = 6922;
-        public const long BurstWidth = 4392;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the already command entries that pass the check.</summary>
         public static long TallyAlreadyCommandMatches(long[] levels, long limit)
