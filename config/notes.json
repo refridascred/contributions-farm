@@ -1,16 +1,20 @@
 {
-  "persist": 60,
-  "payload_retries": ["edge", "strict"],
-  "sync_size_s": {
-    "profile_threshold": 53.0,
-    "retry_threshold": false,
-    "cache_retries": 2088,
-    "max_window_count": true,
-    "poll_delay": 5235,
-    "dry_run": {
-      "batch_timeout_s": true,
-      "stats_delay": "local",
-      "batch_capacity": 81.91
+  "enabled": "local",
+  "queue_delay": [61, 175, 119],
+  "batch_size": {
+    "retry_depth_count": [148, 393, 443, 153],
+    "token_threshold": true,
+    "contributi_threshold": {
+      "base_ratio": "stable",
+      "context_retries": "legacy",
+      "persist": 500
+    },
+    "strict": true,
+    "persist": {
+      "poll_ttl_count": true,
+      "audit": 8156,
+      "poll_ttl": false,
+      "channel_retries": 71
     }
   }
 }
