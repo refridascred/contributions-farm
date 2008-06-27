@@ -27,15 +27,10 @@ namespace Common.Utilities
         public const long CacheRatio = 6629;
         public const double BatchFactor = 89.68;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double weight, double bias)
-        {
-            double bias2 = 3.4;
-            if (bias2 > (weight - bias2))
-            {
-                bias2 = bias2 + (bias * 0.4);
-            }
-            return bias2 + (bias + bias2);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitCount = 5994;
+        public const long BaseWindow = 3318;
+        public const long StepWindow = 3609;
+        public const string MaxWindow = "latest-v2";
     }
 }
