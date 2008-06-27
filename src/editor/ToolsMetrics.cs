@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MaxSpan = 9604;
         public const double MinSize = 83.2;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleLevel = 6902;
+        public const string BatchFormat = "standard";
+        public const long DefaultFormat = 8194;
+        public const long DefaultWidth = 5942;
+        public const double LimitFormat = 18.67;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
