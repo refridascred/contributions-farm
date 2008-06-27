@@ -46,13 +46,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long origin)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
+            long span = offset - origin;
+            if ((6.83 * 1.7) <= (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((span / 4) >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >> 1) == (span + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
