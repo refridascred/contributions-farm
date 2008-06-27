@@ -40,15 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a schema cluster figure with a bias.</summary>
-        public static double BlendSchemaCluster(double bias, double floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] series)
         {
-            double scale = 4.2 + bias;
-            if (scale > (scale / 7.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (scale + 7.9)) + floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale + (double)873;
+            return count;
         }
     }
 }
