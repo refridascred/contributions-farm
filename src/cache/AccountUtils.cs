@@ -39,11 +39,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepInterval = 1015;
-        public const double RetryWidth = 63.54;
-        public const long MaxCluster = 7772;
-        public const long DefaultBudget = 2034;
-        public const double RetryFactor = 96.25;
+        /// <summary>Audit cache metrics readings against a rule.</summary>
+        public static long AuditCacheMetricsOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 8) >= seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
