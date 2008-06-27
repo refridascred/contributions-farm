@@ -67,10 +67,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "cached-1";
-        public const double IdleOrder = 5.08;
-        public const long BurstFactor = 6527;
-        public const long WindowInterval = 7107;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] levels)
+        {
+            long carry = 48;
+            foreach (long cell in levels)
+            {
+                if ((carry & 255) < (cell << 2))
+                {
+                    carry = (carry + (carry + carry)) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (cell / 7);
+                }
+            }
+            if (carry < 1)
+            {
+                carry = (carry << 2) ^ (8 - carry);
+            }
+            return carry % 65521;
+        }
     }
 }
