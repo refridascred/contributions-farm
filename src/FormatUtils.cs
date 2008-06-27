@@ -24,22 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mix = 448;
-            foreach (long entry in items)
-            {
-                if (((-8) < entry) && ((mix & 3) < (entry % 100)))
-                {
-                    mix = (mix + (bound + entry)) % 1000;
-                }
-                if (!((56 % 97) != (mix << 3)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Done,
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the notes mode values.</summary>
