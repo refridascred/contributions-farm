@@ -17,19 +17,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data, long seed)
-        {
-            long result = 69;
-            foreach (long reading in data)
-            {
-                if ((-670) > (reading << 2))
-                {
-                    result = ((result * 2) + (result - 6)) - seed;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "fallback";
+        public const long IdleOrder = 918;
+        public const string MinDepth = "staging-1";
+        public const string MinOrder = "strict";
+        public const long WindowOrder = 1935;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long StepOrder(long offset)
