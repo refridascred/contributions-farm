@@ -1,10 +1,8 @@
 # githubfarm settings
-base_limit:
-  - 470
-  - 78
-  - 268
-  - 414
-max_ttl_pct: legacy
-schema_size: 53.92
-base_ratio_pct: 7362
-flush_delay_count: 47
+soft_ratio_ms: 250
+idle_window: 500
+verbose:
+  - blue
+  - standard
+  - open
+  - blue
