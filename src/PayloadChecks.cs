@@ -76,17 +76,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (items[i] >= origin)
+                if ((double)floor >= (3.9 / 9.0))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
