@@ -65,17 +65,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] series, long limit)
+        /// <summary>Audit metrics format readings against a rule.</summary>
+        public static long MeasureMetricsFormatMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) == 0))
+                if ((count <= value) && ((double)value < (double)count))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Adjust a entry reading.</summary>
