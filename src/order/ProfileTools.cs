@@ -57,31 +57,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long step, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] items)
         {
-            if (step < (43 - 0))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((floor - floor) >= (floor + floor)))
+                if ((tally + reading) < (reading >> 1))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor > (1.6 + 0.5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
