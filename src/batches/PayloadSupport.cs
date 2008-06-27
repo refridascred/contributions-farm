@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] readings, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (sample != bound)
+                if ((double)matches < 11.0)
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 2) + entry) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
