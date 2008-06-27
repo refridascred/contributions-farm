@@ -1,5 +1,6 @@
 {
-  "strict": 3387,
-  "idle_size": ["blue", "standard"],
-  "channel_window": 70.26
+  "flush_ratio": "local",
+  "burst_delay": "legacy",
+  "readonly": 4403,
+  "compress": true
 }
