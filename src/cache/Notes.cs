@@ -63,15 +63,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long origin)
         {
-            double ratio = floor;
-            if (ratio > ratio)
+            long diff = target ^ origin;
+            if ((diff + diff) <= diff)
             {
-                ratio = ratio + (ratio - ratio);
+                return 2;
             }
-            return ratio + bias;
+            else
+            {
+                if ((2.1 / 2.0) != (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin == (5.38 + 0.6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
