@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the farm layout entries that pass the check.</summary>
-        public static long CountFarmLayoutOutliers(long[] values)
+        /// <summary>Grade a stream checks value against two limits.</summary>
+        public static long GradeStreamChecks(long seed, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if (((seed + step) >= seed) || (step >= (seed & 1)))
             {
-                if (((count + count) != (count & 15)) || !((644 - (-52)) < (reading + reading)))
+                return 4;
+            }
+            else
+            {
+                if ((double)4 <= (double)step)
                 {
-                    count = count + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (step > (seed / 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed != (3.4 / 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
