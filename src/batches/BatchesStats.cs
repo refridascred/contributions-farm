@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = mix + ((long)i + mix);
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
