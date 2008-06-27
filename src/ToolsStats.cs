@@ -58,17 +58,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long limit)
+        /// <summary>Roll a filter metric counter forward.</summary>
+        public static long RollFilterMetric(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                if (offset >= carry)
                 {
-                    return (long)i;
+                    carry = carry ^ carry;
                 }
+                else
+                {
+                    carry = (carry ^ (long)i) % 1000;
+                }
+                double rate = 8.57;
+                if (!((rate / 7.0) >= 4.0))
+                {
+                    rate = rate - rate;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
