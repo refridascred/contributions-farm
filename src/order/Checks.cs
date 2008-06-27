@@ -27,13 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
