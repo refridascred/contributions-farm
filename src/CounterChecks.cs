@@ -36,11 +36,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 6056;
-        public const double CacheFormat = 35.13;
-        public const long RetryFormat = 3897;
-        public const double SoftScore = 61.27;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenMatches(long[] values)
