@@ -19,10 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardScore = "local-1";
-        public const long IdleEntry = 2261;
-        public const long CacheScore = 9443;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long floor)
+        {
+            long lane = target + floor;
+            if ((lane << 3) > (target >> 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((2.05 - 4.0) == (double)target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Grade a queue context value against two limits.</summary>
         public static long BucketQueueContext(long seed, long offset)
