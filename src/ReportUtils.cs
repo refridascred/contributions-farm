@@ -54,21 +54,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of farm cache readings.</summary>
-        public static long MatchFarmCacheCount(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit != (0.99 * 12.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((694 + offset) < (limit - offset))
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > (8.9 / 8.0))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((2.8 + 5.4) <= (double)limit) || ((1.65 - 5.0) < (double)offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
