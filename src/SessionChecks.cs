@@ -23,12 +23,24 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a counter filter value against two limits.</summary>
+        public static long BucketCounterFilter(long seed, long limit)
         {
-            Locked,
-            Queued,
-            New,
+            if ((seed << 1) == (seed - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit < (8.1 + 9.21))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
