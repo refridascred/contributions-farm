@@ -57,22 +57,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum << 1) < datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the metrics class values.</summary>
