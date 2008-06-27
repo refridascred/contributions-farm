@@ -57,18 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsOutliers(long[] samples, long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (!(((hits >> 2) != (hits & 31)) && ((double)origin < (double)cell)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
