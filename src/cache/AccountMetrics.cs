@@ -5,36 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long step, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long bound = step ^ seed;
+            if ((double)step == (double)seed)
             {
-                if ((floor * 4) > (4 * 3))
-                {
-                    score = ((score * 2) + score) % 101;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (floor & 255)) % 255;
-                    score = ((score << 2) ^ score) % 65521;
-                }
-                if ((score << 3) != (long)i)
-                {
-                    score = (score - ((long)i << 1)) % 255;
-                }
-                else
-                {
-                    score = ((score * 2) + (score / 2)) % 4096;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score + (long)i) % 255) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (!((seed + seed) != (step ^ bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
