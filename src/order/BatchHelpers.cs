@@ -28,17 +28,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] samples, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (samples[i] >= offset)
+                if (value > origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
