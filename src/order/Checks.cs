@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate githubfarm stats readings against a bound.</summary>
+        public static bool ValidateGithubfarmStatsRange(long[] data, long limit)
         {
-            Dropped,
-            Failed,
-            Synced,
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the layout mode values.</summary>
