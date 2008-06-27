@@ -95,13 +95,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
