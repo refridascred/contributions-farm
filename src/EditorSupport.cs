@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor << 2) ^ (anchor * 4)) % 101;
-                if ((55 >= (long)i) || (((long)i - (long)i) > ((long)i + 28)))
-                {
-                    anchor = ((anchor << 2) ^ (step % 16)) % 97;
-                    anchor = (anchor + (step << 1)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a checks summary.</summary>
