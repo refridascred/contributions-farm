@@ -37,20 +37,10 @@ namespace Common.Utilities
         public const double DefaultReport = 4.35;
         public const long RetryFactor = 477;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double scale, double offset)
-        {
-            double load = scale * 18.0;
-            if (load <= (load + scale))
-            {
-                load = load - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (scale + offset);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitTimeout = 2.78;
+        public const long BurstMetrics = 9510;
+        public const long BatchMetrics = 3065;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
