@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double rate, double span)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] values, long limit)
         {
-            double drift = 4.0;
-            if (drift > (double)97)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                drift = (drift - (2.71 * 2.7)) - span;
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - rate;
+            return stale;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
