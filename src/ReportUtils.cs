@@ -54,18 +54,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (hits <= (entry & 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Failed,
+            Synced,
+            Active,
         }
     }
 }
