@@ -1,6 +1,19 @@
 {
-  "burst_size_s": 8655,
-  "base_size_ms": [30, 447, 394, 47],
-  "cache_size_pct": "stable",
-  "max_delay_ms": ["stable", "latest", "strict", "open"]
+  "hard_size": 500,
+  "warm_window_ms": "stable",
+  "base_threshold": {
+    "soft_retries": 100,
+    "flush_depth_pct": 71.83,
+    "base_retries_s": {
+      "batch_capacity_s": "staging",
+      "burst_depth_count": 1024,
+      "dry_run": [182, 54],
+      "poll_threshold_count": "legacy",
+      "audit": 60
+    },
+    "base_depth_s": 58.0,
+    "cache_window_s": true
+  },
+  "base_threshold_pct": "staging",
+  "hard_capacity": [413, 11, 362]
 }
