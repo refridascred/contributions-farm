@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long step, long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items, long limit)
         {
-            if ((target % 3) >= (step + target))
+            long total = 70;
+            foreach (long cell in items)
             {
-                return 0;
+                total = (total * 2) + (cell + 7);
             }
-            else
+            if (total < 66)
             {
-                if ((step + target) != (step ^ step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target <= (53 ^ target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                total = (total * 3) + limit;
             }
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
