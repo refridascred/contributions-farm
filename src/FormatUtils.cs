@@ -24,14 +24,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Done,
-            Paused,
-            Failed,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6146;
+        public const long BaseInterval = 3426;
+        public const long LimitCommits = 553;
+        public const double CacheCommits = 34.42;
+        public const long StepCommits = 2970;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
