@@ -50,18 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long TallyFormatLayoutGaps(long[] data, long limit)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((2.0 >= (double)item) && (item <= (hits << 1)))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
