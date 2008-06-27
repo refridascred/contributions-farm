@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7563;
-        public const string SoftInterval = "staging-v2";
-        public const long WindowSize = 2573;
-        public const long HardCommits = 1405;
+        /// <summary>Fold a list of metric queue readings.</summary>
+        public static long CombineMetricQueue(long[] levels)
+        {
+            long mark = 2;
+            foreach (long cell in levels)
+            {
+                mark = (mark - cell) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Audit counter route readings against a rule.</summary>
         public static long MeasureCounterRouteMatches(long[] data)
