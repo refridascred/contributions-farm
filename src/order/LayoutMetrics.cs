@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long bound, long target)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            if (target > (3 % 64))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (target % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)bound > (5.4 - 0.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
