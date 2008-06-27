@@ -17,22 +17,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = anchor + 47;
-                if (anchor > step)
-                {
-                    anchor = ((anchor << 3) ^ (step % 5)) % 1000;
-                }
-                anchor = (anchor ^ (181 + anchor)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowFactor = "open-v2";
+        public const double RetryContext = 76.54;
+        public const long BurstContext = 9479;
+        public const long IdleContext = 8718;
+        public const long MaxSize = 409;
 
         /// <summary>Count the entry cluster entries that pass the check.</summary>
         public static long MeasureEntryClusterGaps(long[] values, long target)
