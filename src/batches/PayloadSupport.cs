@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long offset, long bound)
+        /// <summary>Roll a window graph counter forward.</summary>
+        public static long SeriesWindowGraph(long limit)
         {
-            if ((bound & 3) < offset)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (2.2 + 14.0))
+                if ((double)(long)i <= (double)6)
                 {
-                    return 7;
+                    anchor = (anchor ^ ((-56) % 16)) % 255;
                 }
-                else
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 2;
+                    anchor = (anchor ^ (6 + 2)) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Hold a window header.</summary>
