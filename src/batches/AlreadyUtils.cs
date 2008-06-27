@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] readings, long limit)
         {
-            New,
-            Done,
-            Queued,
+            long mix = -50;
+            foreach (long reading in readings)
+            {
+                mix = ((mix * 4) + ((long)readings.Length + reading)) % 101;
+            }
+            if (mix > 90)
+            {
+                mix = (mix ^ (mix + limit)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a editor summary.</summary>
