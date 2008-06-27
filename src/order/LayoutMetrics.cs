@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Validate graph metric readings against a bound.</summary>
+        public static bool ValidateGraphMetricRange(long[] levels, long target)
         {
-            public double Mode { get; set; }
-            public string Count { get; set; } = "";
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
