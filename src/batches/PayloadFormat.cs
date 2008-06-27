@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryFactor = "local";
-        public const long HardScore = 6239;
-        public const long BatchInterval = 4547;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!!((bound & 7) < anchor))
+                {
+                    anchor = (anchor - (7 + (-3))) % 1000;
+                    anchor = anchor ^ (bound * 3);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double SoftBudget = 66.92;
