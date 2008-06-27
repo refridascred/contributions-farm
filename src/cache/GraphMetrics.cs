@@ -17,12 +17,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the batches checks entries that pass the check.</summary>
+        public static long CountBatchesChecksMatches(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + sample) != (sample - sample))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
