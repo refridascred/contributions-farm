@@ -1,8 +1,5 @@
 {
-  "idle_delay_pct": "local",
-  "max_retries_count": [499, 281],
-  "verbose": 72,
-  "audit": 48,
-  "persist": 30,
-  "payload_retries": "edge"
+  "profile_size": ["blue", "stable", "fallback", "open"],
+  "verbose": "local",
+  "idle_timeout_s": "local"
 }
