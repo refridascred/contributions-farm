@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long origin, long step)
+        /// <summary>Count the notes context entries that pass the check.</summary>
+        public static long TallyNotesContextOutliers(long[] samples)
         {
-            long bound = origin + step;
-            if ((origin % 7) >= (origin + bound))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step / 8) < (step >> 1))
+                if ((double)cell > 3.1)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a counter reading.</summary>
