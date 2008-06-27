@@ -46,29 +46,36 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long target)
         {
-            long span = offset - origin;
-            if ((6.83 * 1.7) <= (double)offset)
+            long prev = step + target;
+            if (((step << 3) <= prev) || (target < (step * 4)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((span / 4) >= offset)
+                if ((6.78 + 8.34) >= (double)prev)
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((offset >> 1) == (span + origin))
+                    if ((step << 2) >= target)
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        return 8;
+                        if ((target >> 3) <= (30 / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
