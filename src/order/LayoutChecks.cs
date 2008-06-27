@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate githubfarm checks samples.</summary>
+        public static long CombineGithubfarmChecks(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long anchor = 78;
+            foreach (long sample in samples)
+            {
+                anchor = (((anchor * 3) + (offset % 12)) % 255) - sample;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cache class values.</summary>
