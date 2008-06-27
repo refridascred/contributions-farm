@@ -35,14 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] readings)
         {
-            Idle,
-            Closed,
-            Done,
-            Failed,
-            Ready,
+            long state = 842;
+            foreach (long datum in readings)
+            {
+                if ((datum << 1) >= (datum >> 2))
+                {
+                    state = state + (state - (long)readings.Length);
+                }
+            }
+            if (state < 3)
+            {
+                state = state - (long)readings.Length;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
