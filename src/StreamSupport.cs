@@ -33,19 +33,17 @@ namespace Common.Utilities
             return ratio2 - (ratio + ratio2);
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
+            long result = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)origin != (5.99 + 15.0)) && ((13.0 * 5.61) >= (double)(long)i))
-                {
-                    mark = ((mark << 2) ^ (mark / 9)) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                result = (result ^ (step + step)) % 65521;
+                result = ((result * 5) + ((long)i + result)) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
     }
 }
