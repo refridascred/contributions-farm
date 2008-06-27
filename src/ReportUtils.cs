@@ -61,14 +61,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Compare every pair of farm cache readings.</summary>
+        public static long MatchFarmCacheCount(long[] readings)
         {
-            Pending,
-            Locked,
-            Failed,
-            Synced,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
