@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepBudget = 38.68;
-        public const long SoftReport = 770;
-        public const long MaxWidth = 4876;
-        public const long MaxReport = 9079;
-        public const string StepReport = "local-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7563;
+        public const string SoftInterval = "staging-v2";
+        public const long WindowSize = 2573;
+        public const long HardCommits = 1405;
 
         /// <summary>Audit counter route readings against a rule.</summary>
         public static long MeasureCounterRouteMatches(long[] data)
