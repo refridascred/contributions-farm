@@ -29,21 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally * 2) != (value / 3))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
