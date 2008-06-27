@@ -55,19 +55,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next session counter value.</summary>
-        public static double ProjectSessionCounter(double ratio, double offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double gain = (ratio * 4.2) - ratio;
-            if (gain < offset)
-            {
-                gain = gain - (1.8 + 4.2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - ratio) - (double)(long)i;
-            }
-            return gain + (ratio + 6.92);
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Locate a cache reading by value.</summary>
