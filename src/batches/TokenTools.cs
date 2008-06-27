@@ -27,18 +27,18 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Audit account format readings against a rule.</summary>
-        public static long TallyAccountFormatHits(long[] values, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((floor + hits) != (hits << 3))
+                if ((2.73 + 2.0) >= (double)target)
                 {
-                    hits = (hits + 1) - value;
+                    count = (count + 3) ^ item;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
