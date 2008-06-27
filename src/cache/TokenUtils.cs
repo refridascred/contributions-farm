@@ -20,19 +20,22 @@ namespace Common.Utilities
             return rate2 + 1.6;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            long acc = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                acc = ((acc * 4) + origin) - item;
+                if ((item & 3) == (item - (long)series.Length))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc < 554)
-            {
-                acc = acc - (672 + origin);
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
