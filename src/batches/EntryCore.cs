@@ -52,22 +52,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Adjust a support farm reading.</summary>
+        public static double BlendSupportFarm(double rate, double floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double ratio = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((6.5 + 4.07) != (double)count))
-                {
-                    count = (count + 3) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ((ratio + (double)4) + (double)(long)i) + rate;
             }
-            return count;
+            return ratio - ratio;
         }
     }
 }
