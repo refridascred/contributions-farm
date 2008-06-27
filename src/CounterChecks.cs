@@ -56,19 +56,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] levels)
-        {
-            long score = 4;
-            foreach (long entry in levels)
-            {
-                score = (score ^ (entry << 1)) % 97;
-            }
-            if (score > (-40))
-            {
-                score = (score - (446 >> 3)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowSize = 8453;
+        public const double BatchDepth = 31.07;
+        public const long RetryCommand = 4446;
     }
 }
