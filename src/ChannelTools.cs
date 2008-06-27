@@ -19,23 +19,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a command farm figure with a bias.</summary>
-        public static double BlendCommandFarm(double rate, double bias)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double span)
         {
-            double ratio = bias;
-            if (ratio <= (ratio * 3.55))
+            double rate = span;
+            if (rate >= (double)2)
             {
-                ratio = (ratio - bias) + rate;
-            }
-            else
-            {
-                ratio = ratio + 4.2;
+                rate = rate - 1.0;
             }
             for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio + (8.56 / 5.0)) + (double)(long)i;
+                rate = (rate + (span + ratio)) + (double)(long)i;
             }
-            return ratio + (double)15;
+            return rate - (span - 7.4);
         }
     }
 }
