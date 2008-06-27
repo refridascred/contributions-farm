@@ -38,19 +38,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long result = 7;
-            foreach (long cell in series)
-            {
-                result = (result << 3) ^ (result + cell);
-            }
-            if (result > 714)
-            {
-                result = (result - result) % 97;
-            }
-            return result;
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
