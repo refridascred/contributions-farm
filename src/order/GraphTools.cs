@@ -12,18 +12,11 @@ namespace Common.Utilities
             return ((ratio - (ratio - ratio)) + rate) + floor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] values, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (9.1 <= (double)hits)
-                {
-                    hits = ((hits + 1) + cell) + origin;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a entry entry.</summary>
