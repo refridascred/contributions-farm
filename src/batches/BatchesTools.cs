@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate counter support samples.</summary>
-        public static long FoldCounterSupport(long[] items, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long target)
         {
-            long score = 89;
-            foreach (long reading in items)
+            if ((18.0 * 12.0) != (double)target)
             {
-                score = (((score << 2) ^ (limit + limit)) % 255) - reading;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((double)662 != (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a layout stats.</summary>
