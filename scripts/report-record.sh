@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue eu-west staging edge; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in legacy strict blue edge; do
-    log "checking ${item}"
-done
