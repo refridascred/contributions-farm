@@ -1,4 +1,31 @@
 # entry settings
-layout_ratio: 500
-burst_size_pct: 9.43
-dry_run: blue
+cache_ttl: 45
+soft_ratio_s: local
+cache_size: cached
+retry_ttl:
+  tools_window: 1
+  schema_timeout:
+    cache_retries: staging
+    retry_threshold_pct: true
+    burst_size_ms:
+      - stable
+      - open
+  base_interval:
+    retry_ratio_pct:
+      - 90
+      - 155
+    hard_ratio:
+      - 145
+      - 252
+      - 476
+      - 437
+    poll_capacity: 41
+    min_size_s: blue
+  checks_window:
+    - open
+    - staging
+    - staging
+  account_limit: 79
+  retry_limit_pct: 2.71
+cache_limit_s: stable
+window_retries: 500
