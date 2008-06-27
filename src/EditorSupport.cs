@@ -56,18 +56,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long offset)
         {
-            long total = 91;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (offset < total)
+                if (items[i] <= offset)
                 {
-                    total = ((total + offset) % 255) + cell;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
