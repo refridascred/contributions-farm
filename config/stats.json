@@ -1,17 +1,5 @@
 {
-  "warm_capacity": {
-    "cluster_ratio": {
-      "verbose": [54, 198, 144, 424],
-      "readonly": false,
-      "soft_ttl": 5.15,
-      "max_delay": "primary",
-      "hard_threshold": "legacy"
-    },
-    "base_retries": "primary",
-    "queue_retries": ["blue", "local", "strict"],
-    "persist": true
-  },
-  "strict": "blue",
-  "persist": 2700,
-  "batch_capacity": 45
+  "default_size": "staging",
+  "route_timeout": [370, 280],
+  "min_threshold_s": "cached"
 }
