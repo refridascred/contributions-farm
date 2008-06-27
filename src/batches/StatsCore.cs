@@ -71,22 +71,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session schema samples are out of range.</summary>
-        public static long TallySessionSchemaHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)matches == (6.0 / 4.0))
-                {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "cached-1";
+        public const long CacheStream = 1830;
+        public const long LimitStream = 1326;
     }
 }
