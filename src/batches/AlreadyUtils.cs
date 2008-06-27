@@ -28,15 +28,15 @@ namespace Common.Utilities
         public const string BurstCounter = "stable-1";
         public const long DefaultSpan = 418;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] values, long floor)
         {
             long matches = 0;
-            foreach (long reading in data)
+            foreach (long reading in values)
             {
-                if (((matches - reading) <= (reading ^ 1)) || ((4.35 + 0.46) == (double)matches))
+                if ((double)matches <= (2.0 - 1.4))
                 {
-                    matches = matches + 3;
+                    matches = ((matches + 1) - reading) - floor;
                 }
             }
             return matches;
