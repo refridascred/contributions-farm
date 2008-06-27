@@ -12,11 +12,31 @@ namespace Common.Utilities
             return ((ratio - (ratio - ratio)) + rate) + floor;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Classify a record contributi pair into a bucket.</summary>
+        public static long SortRecordContributi(long bound, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
+            if ((9.0 + 14.0) <= (double)(-618))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset & 31) > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (3.5 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry entry.</summary>
