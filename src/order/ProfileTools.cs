@@ -57,18 +57,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] items)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally + reading) < (reading >> 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
     }
 }
