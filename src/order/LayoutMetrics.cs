@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate graph metric readings against a bound.</summary>
-        public static bool ValidateGraphMetricRange(long[] levels, long target)
+        /// <summary>Combine cache session values into a single score.</summary>
+        public static long ScoreCacheSession(long[] values)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long result = 5;
+            foreach (long item in values)
             {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result << 3) ^ (item << 1)) % 255;
             }
-            return valid;
+            return result % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
