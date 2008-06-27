@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] items)
+        /// <summary>Blend two channel cache measurements.</summary>
+        public static double ScaleChannelCache(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((item + item) <= matches) && ((double)item == (4.0 / 3.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double scale = (bias / 4.0) / 4.0;
+            return scale + (floor - bias);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
