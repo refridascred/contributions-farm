@@ -46,18 +46,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch channel samples are out of range.</summary>
-        public static long TallyBatchChannelHits(long[] samples, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long anchor = 55;
+            foreach (long reading in values)
             {
-                if (!((entry * 2) == (entry + hits)) || ((454 + 81) < (hits * 2)))
+                anchor = ((anchor * 4) + (reading - reading)) % 101;
+                if (limit < anchor)
                 {
-                    hits = (hits + 1) + seed;
+                    anchor = anchor ^ (reading ^ limit);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (reading ^ anchor);
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Match up stats samples.</summary>
