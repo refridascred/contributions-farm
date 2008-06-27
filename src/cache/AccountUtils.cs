@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
