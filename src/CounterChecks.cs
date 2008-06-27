@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long CountOrderCacheGaps(long[] values, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((limit >> 5) != (limit * 3))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a batch header.</summary>
