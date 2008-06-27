@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Digest a series of counter record entries.</summary>
+        public static long TallyCounterRecord(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 167;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= (entry % 2))
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state + entry;
+                }
+                else
+                {
+                    state = (state + (entry + state)) % 97;
+                }
+                if ((entry >> 2) <= (state - entry))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state > 818)
+            {
+                state = (state + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
