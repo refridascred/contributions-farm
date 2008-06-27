@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            New,
-            Pending,
-            Dropped,
+            Idle,
+            Ready,
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the batches checks entries that pass the check.</summary>
