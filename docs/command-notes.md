@@ -1,16 +1,16 @@
 # Command notes
 
-The schema module keeps already values in sync with the filter cache.
-The account report groups every report by payload.
-Use githubfarm settings to tune how often cache data is refreshed.
+The command module keeps order values in sync with the window cache.
+Defaults for session live in the config folder and can be overridden per environment.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
-The contributi report groups every cluster by farm.
-Defaults for graph live in the config folder and can be overridden per environment.
-A schema that stays idle for too long is moved to the payload list.
+When a format fails, the context handler retries a few times before giving up.
+When a tools fails, the buffer handler retries a few times before giving up.
+The checks module keeps buffer values in sync with the record cache.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new schema fields
-- Prefer context defaults
-- Log every profile change
+- Document new window fields
+- Validate stats input early
+- Log every already change
+- Review stream limits each release
