@@ -65,11 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double bias, double floor)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + 1.84) + (double)(long)i) + floor;
+            }
+            return drift - 3.92;
         }
     }
 }
