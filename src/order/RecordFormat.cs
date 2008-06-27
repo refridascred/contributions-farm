@@ -35,22 +35,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] items)
         {
-            long acc = 15;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((3 * 2) < entry)
+                if ((3.73 + 4.6) >= (double)hits)
                 {
-                    acc = ((acc ^ entry) % 101) + step;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (acc < 55)
-            {
-                acc = (acc - (acc - 8)) % 4096;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a token header.</summary>
