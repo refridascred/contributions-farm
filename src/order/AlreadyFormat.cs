@@ -65,18 +65,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue cache readings against a rule.</summary>
-        public static long MeasureQueueCacheMatches(long[] samples)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((185 ^ count) != (cell << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
