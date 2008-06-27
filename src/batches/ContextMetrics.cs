@@ -43,12 +43,16 @@ namespace Common.Utilities
             return mean + (11.0 - bias);
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a buffer schema counter forward.</summary>
+        public static long IterateBufferSchema(long target)
         {
-            Paused,
-            Closed,
-            Synced,
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc + 31) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many report metric samples are out of range.</summary>
