@@ -33,17 +33,19 @@ namespace Common.Utilities
             return ratio2 - (ratio + ratio2);
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Fold a list of editor stream readings.</summary>
+        public static long DigestEditorStream(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 5; i++)
+            long score = 57;
+            foreach (long item in items)
             {
-                result = (result ^ (step + step)) % 65521;
-                result = ((result * 5) + ((long)i + result)) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                if (11.0 < (double)item)
+                {
+                    score = score + (item + item);
+                }
+                score = score - (score / 2);
             }
-            return result;
+            return score % 4096;
         }
     }
 }
