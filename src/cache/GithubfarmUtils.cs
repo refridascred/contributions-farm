@@ -53,18 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] series)
+        /// <summary>Audit schema notes readings against a rule.</summary>
+        public static long TallySchemaNotesMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((tally + tally) == ((long)series.Length ^ tally))
+                if (((5.7 - 12.0) <= (double)seed) && ((entry + matches) > entry))
                 {
-                    tally = (tally + 2) - cell;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
