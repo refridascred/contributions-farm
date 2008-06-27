@@ -58,18 +58,39 @@ namespace Common.Utilities
         public const long StepSize = 2774;
         public const double LimitWidth = 8.15;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] readings, long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long next = limit + offset;
+            if (limit <= (next + offset))
             {
-                if ((hits + 4) > step)
+                return 6;
+            }
+            else
+            {
+                if (((-63) / 8) >= (offset / 7))
                 {
-                    hits = (hits + 2) ^ value;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 1) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit <= next) || ((8.02 + 8.0) < (double)next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
