@@ -14,21 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of metrics session readings.</summary>
-        public static long MatchMetricsSessionCount(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((datum >= (datum / 6)) || ((3.1 - 19.0) >= (double)datum)))
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the report state values.</summary>
