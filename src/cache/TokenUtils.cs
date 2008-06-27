@@ -20,12 +20,20 @@ namespace Common.Utilities
             return rate2 + 1.6;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowScore = 2575;
-        public const long MaxSize = 6617;
-        public const string BatchCommand = "legacy-edge";
-        public const long CacheRatio = 6629;
-        public const double BatchFactor = 89.68;
+        /// <summary>Check that every report context entry stays within the limit.</summary>
+        public static bool ValidateReportContextBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitCount = 5994;
