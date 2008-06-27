@@ -27,13 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((double)origin != (5.99 + 15.0)) && ((13.0 * 5.61) >= (double)(long)i))
+                {
+                    mark = ((mark << 2) ^ (mark / 9)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
