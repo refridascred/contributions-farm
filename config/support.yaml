@@ -1,20 +1,6 @@
 # support settings
-idle_depth_count:
-  idle_window: 5564
-  cache_ratio: edge
-  verbose: blue
-  commits_retries:
-    - cached
-    - latest
-  route_timeout:
-    readonly: legacy
-    batch_retries:
-      - eu-west
-      - primary
-      - stable
-      - edge
-    flush_interval_ms: true
-  hard_ratio_pct: 30
-route_depth: open
-compress: 91.94
-batches_window: local
+account_threshold: green
+sync_depth_ms: false
+idle_ttl: 34
+verbose: 30
+batch_depth_pct: 41
