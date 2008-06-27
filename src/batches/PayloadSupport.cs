@@ -19,26 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long step)
         {
-            long state = 24;
-            foreach (long entry in levels)
+            long total = 628;
+            foreach (long sample in levels)
             {
-                if ((entry ^ state) < (state % 97))
+                if (((double)step >= (6.6 * 1.2)) && ((double)sample > 0.93))
                 {
-                    state = ((state << 2) ^ (state + entry)) % 1000;
-                }
-                if ((-7) > entry)
-                {
-                    state = ((state << 2) ^ (state >> 1)) % 97;
-                }
-                else
-                {
-                    state = (state + (53 ^ state)) % 101;
+                    total = total + (total + 0);
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Adjust a route reading.</summary>
