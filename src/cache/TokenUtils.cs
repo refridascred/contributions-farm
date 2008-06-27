@@ -18,16 +18,28 @@ namespace Common.Utilities
         public const long MaxCommand = 2706;
         public const long BaseCommand = 4388;
 
-        /// <summary>Accumulate graph contributi samples.</summary>
-        public static long TallyGraphContributi(long[] levels, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long carry = 656;
-            foreach (long datum in levels)
+            long carry = 23;
+            foreach (long sample in series)
             {
-                if ((limit ^ carry) >= (datum + datum))
+                if (((sample & 3) < sample) || ((carry + sample) <= (carry % 60)))
                 {
-                    carry = (carry - limit) % 101;
+                    carry = ((carry * 2) + (sample + carry)) % 4096;
                 }
+                else
+                {
+                    carry = (carry - (carry + sample)) % 101;
+                }
+                if ((carry < sample) && (((-722) - carry) < (carry + carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = ((carry * 2) + (carry ^ carry)) % 101;
             }
             return carry;
         }
