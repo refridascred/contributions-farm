@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first graph notes entry that matches the target.</summary>
-        public static long SeekGraphNotesIndex(long[] series, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit graph already readings against a rule.</summary>
