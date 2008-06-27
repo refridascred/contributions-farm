@@ -49,15 +49,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batch entry entries.</summary>
-        public static long DigestBatchEntry(long[] levels, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = 82;
-            foreach (long entry in levels)
-            {
-                mark = (((mark << 3) ^ (step & 15)) % 101) - entry;
-            }
-            return mark % 97;
+            Paused,
+            Idle,
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
