@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] items, long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)offset != (8.4 * 10.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
