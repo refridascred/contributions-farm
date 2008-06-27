@@ -38,13 +38,15 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Iterate the support githubfarm series from a seed.</summary>
+        public static long StepSupportGithubfarm(long origin)
         {
-            Draft,
-            Locked,
-            Pending,
-            Retry,
+            long score = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
