@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] readings, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long result = 0;
+            foreach (long cell in readings)
             {
-                if (reading != floor)
+                if ((result >> 3) >= (cell * 3))
                 {
-                    flag = false;
-                    break;
+                    result = (result * 5) + (68 / 3);
                 }
             }
-            return flag;
+            if (result < 7)
+            {
+                result = result + (524 & 1);
+            }
+            return result;
         }
 
         /// <summary>Describe the already level values.</summary>
