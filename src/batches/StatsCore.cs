@@ -32,21 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Fold a list of batch command readings.</summary>
+        public static long WeighBatchCommand(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 293;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry + entry) == ((-68) - entry))
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ (entry - carry)) % 255;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the contributi level values.</summary>
