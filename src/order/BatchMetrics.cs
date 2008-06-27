@@ -57,12 +57,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] levels)
         {
-            Active,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((1 + count) < (count % 64)))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the context kind values.</summary>
