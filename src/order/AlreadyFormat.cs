@@ -64,17 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch metrics counter forward.</summary>
-        public static long DeriveBatchMetrics(long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] readings, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                acc = acc + 35;
-                acc = (acc ^ (acc << 2)) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((hits + 4) > step)
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
