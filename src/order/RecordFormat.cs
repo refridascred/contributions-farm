@@ -52,11 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 43.05;
-        public const long RetryNotes = 4294;
-        public const long StepBudget = 9117;
-        public const long BatchFactor = 6090;
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double bias, double floor)
