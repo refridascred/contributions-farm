@@ -48,17 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window buffer sample.</summary>
-        public static long SeekWindowBufferIndex(long[] data, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long floor, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)target < (double)59)
             {
-                if (data[i] < origin)
+                return 4;
+            }
+            else
+            {
+                if ((502 <= floor) && (floor >= (66 + floor)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((13 + floor) != (target % 60))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
