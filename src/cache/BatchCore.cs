@@ -44,32 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of report filter readings.</summary>
-        public static long ScoreReportFilter(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] series, long target)
         {
-            long carry = 818;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((carry >> 4) >= carry)
+                if (item != target)
                 {
+                    found = false;
                     break;
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ (sample - sample)) % 101;
-                }
-                if ((1.74 >= (double)carry) || ((carry - sample) >= sample))
-                {
-                    carry = ((carry * 5) + carry) % 4096;
-                    break;
-                }
-                else
-                {
-                    carry = (carry * 4) + (sample * 3);
-                }
-                carry = (carry - (sample + sample)) % 4096;
             }
-            return carry;
+            return found;
         }
     }
 }
