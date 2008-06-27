@@ -1,23 +1,11 @@
 # support settings
-batches_window: 34
-base_ratio: 89.16
-token_timeout: staging
-batch_window:
-  stream_threshold: true
-  cache_interval_count:
-    strict: 12
-    cache_delay: blue
-    persist: strict
-    burst_ratio_pct: strict
-  editor_timeout: 1024
-  base_depth_pct: 91.03
-  max_delay_ms: 9223
-  compress:
-    - fallback
-    - stable
-enabled: eu-west
-default_interval_count:
-  - 43
-  - 176
-  - 258
-  - 379
+warm_limit_count: open
+cache_window: strict
+retry_threshold_pct: open
+batch_size_s: stable
+readonly:
+  - 106
+  - 157
+  - 339
+  - 74
+warm_timeout: staging
