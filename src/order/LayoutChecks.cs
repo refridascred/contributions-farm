@@ -65,22 +65,12 @@ namespace Common.Utilities
         public const long WindowCount = 4972;
         public const long WindowLevel = 4637;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] values, long floor)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((7 & 7) <= (value ^ floor))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
