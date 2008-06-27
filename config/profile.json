@@ -1,26 +1,8 @@
 {
-  "persist": 89.03,
-  "route_retries": 38.97,
-  "audit": false,
-  "soft_retries_ms": {
-    "hard_timeout_ms": "eu-west",
-    "persist": {
-      "retry_limit": "fallback",
-      "burst_limit_pct": 71.38,
-      "dry_run": 9.29,
-      "base_depth_pct": 30
-    },
-    "layout_interval": 8529,
-    "batch_depth": 31,
-    "retry_depth": true,
-    "retry_threshold_pct": {
-      "hard_limit_count": 27.05,
-      "batch_retries_ms": 401,
-      "audit": 9615,
-      "warm_ratio": 2320,
-      "flush_window_ms": 38.86
-    }
-  },
-  "strict": 100,
-  "flush_delay_pct": 60
+  "sync_depth_ms": 70.9,
+  "queue_size": 1566,
+  "max_size_s": 9832,
+  "strict": "staging",
+  "account_limit": 500,
+  "enabled": 1024
 }
