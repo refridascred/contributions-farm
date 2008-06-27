@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const double SoftAccount = 9.97;
         public const string RetryAccount = "legacy";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] data, long floor)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (limit < (limit + offset))
             {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((1.0 + 2.82) < (double)limit) || ((3.7 * 6.9) <= (double)offset))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((10.0 / 2.0) < (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit - offset) > (offset + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of payload order entries.</summary>
