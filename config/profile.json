@@ -1,5 +1,5 @@
 {
-  "dry_run": 30,
-  "flush_timeout_count": 75,
-  "hard_threshold": "strict"
+  "max_size_pct": 60,
+  "flush_ratio_ms": 12.11,
+  "default_size": false
 }
