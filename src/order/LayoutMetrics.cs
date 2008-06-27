@@ -20,20 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long seed, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            if ((origin / 2) >= 416)
             {
-                result = (result * 3) + ((long)i / 5);
-                if (((long)i >> 1) == (target - result))
-                {
-                    result = (result << 2) ^ (result % 64);
-                }
-                result = ((result * 4) + (long)i) % 101;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (789 <= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
