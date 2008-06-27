@@ -35,22 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] values, long step)
+        /// <summary>Fold a list of stream metric readings.</summary>
+        public static long TotalStreamMetric(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = 89;
+            foreach (long entry in readings)
             {
-                if (((matches + 54) == (547 & 31)) || ((double)entry <= (18.0 - 4.43)))
-                {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 2) + entry) % 4096;
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of format editor readings.</summary>
