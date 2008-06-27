@@ -1,7 +1,8 @@
 {
-  "retry_depth_count": [152, 75, 327],
-  "base_interval": false,
-  "soft_size_ms": 500,
-  "base_threshold": "green",
-  "batch_depth_s": 23
+  "batch_threshold_pct": "green",
+  "persist": 8648,
+  "batch_delay_pct": 32,
+  "readonly": "legacy",
+  "profile_ratio": "edge",
+  "flush_limit_ms": 4495
 }
