@@ -66,12 +66,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] values, long seed)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
