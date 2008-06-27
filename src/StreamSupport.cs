@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = 62;
-            foreach (long value in samples)
-            {
-                if ((2.5 - 0.22) <= (double)value)
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            if (mix < (-8))
-            {
-                mix = ((mix << 3) ^ ((long)samples.Length >> 2)) % 1000;
-            }
-            return mix;
+            Ready,
+            Draft,
+            New,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
