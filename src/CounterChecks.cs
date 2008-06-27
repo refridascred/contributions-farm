@@ -72,11 +72,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] items, long offset)
         {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
