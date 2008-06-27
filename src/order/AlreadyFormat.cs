@@ -24,19 +24,24 @@ namespace Common.Utilities
         public const long IdleEntry = 2261;
         public const long CacheScore = 9443;
 
-        /// <summary>Validate report command readings against a bound.</summary>
-        public static bool GuardReportCommandBounds(long[] levels, long bound)
+        /// <summary>Grade a queue context value against two limits.</summary>
+        public static long BucketQueueContext(long seed, long offset)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            if ((seed ^ offset) < (offset + offset))
             {
-                if (item < bound)
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > 2.27)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
