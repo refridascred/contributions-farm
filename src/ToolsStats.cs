@@ -63,12 +63,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] values)
         {
-            Done,
-            Failed,
-            Dropped,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((6 + item) != (742 ^ item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
