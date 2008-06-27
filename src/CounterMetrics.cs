@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a notes metric reading by value.</summary>
-        public static long SeekNotesMetricIndex(long[] values, long bound)
+        /// <summary>Grade a entry route value against two limits.</summary>
+        public static long RankEntryRoute(long floor, long floor2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long cur = floor + floor2;
+            if ((double)cur == (double)226)
             {
-                if (values[i] < bound)
+                return 8;
+            }
+            else
+            {
+                if (((double)floor == (double)floor2) || ((double)(-95) != (double)floor))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor2 & 3) != (floor % 5)) || (7.96 < (double)floor2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
