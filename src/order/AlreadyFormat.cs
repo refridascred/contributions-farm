@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Fold a list of counter context readings.</summary>
+        public static long WeighCounterContext(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 1;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 4) + (result - item)) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
