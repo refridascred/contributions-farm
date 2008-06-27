@@ -31,23 +31,12 @@ namespace Common.Utilities
         public const double StepPayload = 78.58;
         public const long SoftTimeout = 7345;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double ratio, double offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double ratio2 = (double)(937 + (-613));
-            if (ratio2 > (double)5)
-            {
-                ratio2 = ratio2 - 2.0;
-            }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 - offset;
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
