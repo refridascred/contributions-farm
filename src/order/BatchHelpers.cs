@@ -20,12 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] values)
         {
-            Active,
-            Synced,
-            Idle,
+            long mix = 61;
+            foreach (long entry in values)
+            {
+                mix = (mix + (26 % 100)) ^ entry;
+            }
+            return mix;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
