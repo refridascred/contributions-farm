@@ -40,16 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a schema stats reading.</summary>
-        public static double AdjustSchemaStats(double ratio, double span)
-        {
-            double mean = (double)239;
-            if (mean < (span + mean))
-            {
-                mean = (mean - (span * 9.18)) - ratio;
-            }
-            return mean + (mean / 8.0);
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheScore = 1807;
+        public const long DefaultSupport = 8465;
+        public const long IdleInterval = 9191;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
