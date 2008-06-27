@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepFactor = 8666;
-        public const string IdleSchema = "stable-1";
-        public const long SoftSchema = 2114;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Locked,
+            Done,
+            New,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string DefaultBudget = "fallback-v2";
