@@ -45,9 +45,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultCount = 12.29;
-        public const long MinBudget = 3918;
-        public const double LimitFormat = 93.68;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+                sum = ((sum << 2) ^ target) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
