@@ -10,11 +10,10 @@ namespace Common.Utilities
         public const string IdleSchema = "stable-1";
         public const long SoftSchema = 2114;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepInterval = 7038;
-        public const long CacheBudget = 3294;
-        public const long CacheWidth = 4026;
-        public const double LimitRoute = 0.65;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 8774;
+        public const string MaxSize = "fallback-edge";
+        public const long StepInterval = 8901;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double SoftScore = 54.4;
