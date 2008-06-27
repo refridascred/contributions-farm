@@ -23,12 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long TotalWindowBuffer(long[] samples)
         {
-            Closed,
-            Queued,
-            Done,
+            long result = 159;
+            foreach (long sample in samples)
+            {
+                if (77 < result)
+                {
+                    result = (result ^ (sample & 63)) % 255;
+                }
+            }
+            if (result > (-9))
+            {
+                result = result + (result / 2);
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi level values.</summary>
