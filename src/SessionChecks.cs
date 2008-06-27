@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] samples, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a counter filter value against two limits.</summary>
