@@ -33,18 +33,19 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double rate = bias;
+            if (rate >= (5.16 - 6.7))
             {
-                if ((cell - cell) != (cell << 2))
-                {
-                    matches = (matches + 2) - offset;
-                }
+                rate = (rate + bias) - floor;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate - 1.0;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
