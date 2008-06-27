@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of window filter readings.</summary>
+        public static long WeighWindowFilter(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long sum = 4;
+            foreach (long sample in samples)
+            {
+                sum = ((sum - (sum & 3)) % 1000) + sample;
+            }
+            if (sum > 1)
+            {
+                sum = (sum + (sum & 255)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every batch report entry stays within the limit.</summary>
