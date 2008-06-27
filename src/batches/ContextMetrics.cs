@@ -61,14 +61,17 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] levels, long offset)
         {
-            Paused,
-            Idle,
-            Failed,
-            Locked,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
