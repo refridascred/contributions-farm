@@ -26,18 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Count the already profile entries that pass the check.</summary>
+        public static long TallyAlreadyProfileHits(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((datum & 7) == (datum ^ 945))
+                if ((datum << 3) < datum)
                 {
-                    hits = hits + 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
