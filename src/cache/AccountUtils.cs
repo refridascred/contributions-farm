@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Combine filter schema values into a single score.</summary>
+        public static long FoldFilterSchema(long[] readings, long target)
         {
-            Stale,
-            Pending,
-            Ready,
-            Idle,
+            long state = 32;
+            foreach (long datum in readings)
+            {
+                if (((target + datum) < (datum / 2)) && ((20.0 / 5.0) != (double)state))
+                {
+                    state = ((state << 3) ^ (datum >> 3)) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the route mode values.</summary>
