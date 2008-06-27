@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
