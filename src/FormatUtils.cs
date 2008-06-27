@@ -70,14 +70,17 @@ namespace Common.Utilities
         public const long CacheCount = 3383;
         public const double RetryBudget = 20.22;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] values, long seed)
         {
-            Dropped,
-            Closed,
-            Done,
-            Draft,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
