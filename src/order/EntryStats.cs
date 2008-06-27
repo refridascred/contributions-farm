@@ -26,13 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] values)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Stale,
+            long result = 2;
+            foreach (long cell in values)
+            {
+                if ((result + result) <= 57)
+                {
+                    result = ((result * 2) + (result % 64)) + cell;
+                }
+            }
+            if (result < 8)
+            {
+                result = (result ^ (long)values.Length) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
