@@ -1,15 +1,15 @@
 # Command notes
 
-Run the payload check before changing any window limits.
-Use format settings to tune how often batches data is refreshed.
-Keep window and counter names short and lowercase.
+Run the channel check before changing any batch limits.
+Each checks is validated before it reaches the report queue.
+The token report groups every schema by support.
 
-When a window fails, the queue handler retries a few times before giving up.
-Use layout settings to tune how often route data is refreshed.
-The entry module keeps buffer values in sync with the batch cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use support settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep layout values small
-- Validate schema input early
+- Keep schema values small
+- Validate window input early
+- Log every profile change
