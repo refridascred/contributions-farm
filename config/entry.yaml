@@ -1,10 +1,4 @@
 # entry settings
-strict: 250
-soft_timeout_s:
-  - 209
-  - 178
-flush_retries_count:
-  verbose: false
-  sync_ttl_count: green
-  contributi_depth: strict
-compress: true
+layout_ratio: 500
+burst_size_pct: 9.43
+dry_run: blue
