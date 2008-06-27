@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const long SoftCount = 2312;
         public const double CacheSpan = 31.02;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] items, long seed)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
