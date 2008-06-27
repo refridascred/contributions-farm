@@ -22,26 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] readings, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] data, long origin)
         {
-            long mix = 616;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if ((step - step) == (mix % 10))
+                if (sample > origin)
                 {
-                    mix = ((mix << 2) ^ 76) + entry;
-                }
-                else
-                {
-                    mix = mix ^ (404 - mix);
+                    ready = false;
+                    break;
                 }
             }
-            if (mix > 808)
-            {
-                mix = ((mix * 4) + (step << 3)) % 4096;
-            }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
