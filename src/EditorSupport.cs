@@ -22,20 +22,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine editor notes values into a single score.</summary>
-        public static long TallyEditorNotes(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] samples)
         {
-            long anchor = 330;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 4) + ((long)series.Length >> 5)) % 101;
-                anchor = ((anchor * 3) + (datum + anchor)) % 65521;
+                if (!(((datum - tally) >= (tally + 284)) || ((datum - datum) != (5 * 4))))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (anchor < 678)
-            {
-                anchor = ((anchor * 5) + (anchor * 3)) % 255;
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
