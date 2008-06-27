@@ -1,16 +1,5 @@
 {
-  "already_limit": 1024,
-  "verbose": {
-    "readonly": 48.24,
-    "persist": {
-      "max_ttl": "legacy",
-      "warm_delay_s": ["blue", "open", "standard", "staging"],
-      "audit": 70.66,
-      "enabled": "latest",
-      "idle_retries_s": 6409,
-      "route_delay": 7321
-    },
-    "retry_timeout_count": 29
-  },
-  "min_capacity": 90
+  "readonly": "edge",
+  "metric_size": 250,
+  "filter_window": 100
 }
