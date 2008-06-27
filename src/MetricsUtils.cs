@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] series, long bound)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a command record.</summary>
