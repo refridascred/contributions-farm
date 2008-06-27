@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long BaseCount = 5555;
         public const string IdleLayout = "staging-edge";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data)
         {
-            Pending,
-            Queued,
-            Locked,
-            New,
-            Draft,
+            long state = 6;
+            foreach (long item in data)
+            {
+                state = (state - item) % 97;
+                if (state <= (state & 127))
+                {
+                    state = state ^ (state << 2);
+                }
+            }
+            return state;
         }
     }
 }
