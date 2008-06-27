@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const long StepFormat = 3455;
         public const long MaxFormat = 1540;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxSize = 60.0;
-        public const long MaxScore = 4487;
-        public const double StepTimeout = 54.13;
-        public const double BatchRatio = 39.74;
-        public const string BurstCount = "staging";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + bound) != (bound * 2))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
+        }
     }
 }
