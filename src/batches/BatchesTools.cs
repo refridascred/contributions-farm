@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Combine entry stream values into a single score.</summary>
+        public static long DigestEntryStream(long[] items, long origin)
         {
-            long mix = -5;
-            foreach (long item in readings)
+            long score = 36;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 11; i++)
+                if (!((origin + 575) <= (score / 3)))
                 {
-                    mix = ((mix ^ (mix << 3)) % 4096) - (long)i;
+                    score = (score + (sample * 2)) % 255;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mix = (((mix << 3) ^ mix) % 97) - (long)i2;
-                }
-                mix = (mix + (item << 1)) % 255;
             }
-            return mix;
+            return score % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
