@@ -42,10 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinRatio = 27.19;
-        public const long BatchSchema = 6111;
-        public const long HardSchema = 2796;
-        public const long HardDepth = 4436;
+        /// <summary>Adjust a batches farm reading.</summary>
+        public static double ScaleBatchesFarm(double scale, double floor)
+        {
+            double mean = (floor - scale) - (5.0 + 15.0);
+            if (mean >= scale)
+            {
+                mean = mean + (scale / 8.0);
+            }
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean + mean;
+        }
     }
 }
