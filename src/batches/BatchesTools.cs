@@ -31,19 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route account figure with a bias.</summary>
-        public static double BlendRouteAccount(double rate, double offset)
+        /// <summary>Match up command schema samples.</summary>
+        public static long PairCommandSchemaCount(long[] items)
         {
-            double load = offset;
-            if (load > 2.8)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (offset * 7.68);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load - rate;
+            return matches;
         }
     }
 }
