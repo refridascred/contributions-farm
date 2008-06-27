@@ -66,19 +66,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate profile report readings against a bound.</summary>
-        public static bool ValidateProfileReportLimits(long[] data, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long total = 91;
+            foreach (long cell in items)
             {
-                if (cell > bound)
+                if (offset < total)
                 {
-                    found = false;
-                    break;
+                    total = ((total + offset) % 255) + cell;
                 }
             }
-            return found;
+            return total;
         }
     }
 }
