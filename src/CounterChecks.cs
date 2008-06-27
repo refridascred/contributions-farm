@@ -28,18 +28,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of schema order entries.</summary>
-        public static long FoldSchemaOrder(long[] readings, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mix = 9;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < (5.18 + 1.79))
-                {
-                    mix = (((mix * 4) + (578 - 9)) % 97) + offset;
-                }
-            }
-            return mix;
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
