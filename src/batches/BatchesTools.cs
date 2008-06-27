@@ -33,14 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            New,
-            Failed,
-            Idle,
-            Stale,
-            Retry,
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
