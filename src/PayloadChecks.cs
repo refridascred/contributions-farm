@@ -90,10 +90,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 86.69;
-        public const long RetryWidth = 5550;
-        public const long BaseLayout = 3688;
-        public const long RetryLayout = 5826;
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long TallyBufferEditorGaps(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((double)8 <= (double)count)
+                {
+                    count = ((count + 3) ^ item) - limit;
+                }
+            }
+            return count;
+        }
     }
 }
