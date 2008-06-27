@@ -1,9 +1,7 @@
-id,count,state
-1,398,primary
-2,352,345
-3,527,33.82
-4,242,364
-5,fallback,primary
-6,162,79.78
-7,984,29.48
-8,15.99,local
+id,weight,score
+1,774,71.29
+2,fallback,eu-west
+3,13.28,89.9
+4,cached,fallback
+5,428,primary
+6,63.62,345
