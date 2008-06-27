@@ -31,11 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 5353;
-        public const double BatchBuffer = 38.29;
-        public const long IdleRatio = 1205;
-        public const long BaseRatio = 3922;
-        public const long MaxBuffer = 4530;
+        /// <summary>Roll a token format counter forward.</summary>
+        public static long StepTokenFormat(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((target + target) != (4 ^ target))
+                {
+                    sum = (sum ^ 1) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
