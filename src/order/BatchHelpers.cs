@@ -22,11 +22,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinTimeout = 8702;
-        public const double BatchInterval = 75.0;
-        public const string DefaultTimeout = "alpha-edge";
-        public const double MaxLevel = 29.79;
-        public const double MaxToken = 18.72;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
