@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] series, long bound)
         {
-            long span = origin - step;
-            if ((span >> 1) != (origin ^ span))
+            long carry = 40;
+            foreach (long entry in series)
             {
-                return 7;
+                carry = (carry ^ carry) ^ entry;
             }
-            else
+            if (carry > 0)
             {
-                if (7.0 > (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                carry = ((carry * 2) + (bound << 2)) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
