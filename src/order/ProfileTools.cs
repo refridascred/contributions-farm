@@ -67,31 +67,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long origin, long seed)
+        /// <summary>Fold a list of window commits readings.</summary>
+        public static long CombineWindowCommits(long[] items)
         {
-            if ((459 << 1) >= seed)
+            long total = 55;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin < (seed + 56)) && ((seed + origin) != (seed & 255)))
+                if ((cell >> 2) == (cell << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)origin > (6.4 * 1.24)) || ((double)seed < (14.0 - 3.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total ^ (cell + total)) % 1000;
                 }
             }
+            if (total > 333)
+            {
+                total = (total * 2) + (total + total);
+            }
+            return total % 1000;
         }
     }
 }
