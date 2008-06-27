@@ -27,17 +27,21 @@ namespace Common.Utilities
         public const long CacheRatio = 6629;
         public const double BatchFactor = 89.68;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] readings, long offset)
+        /// <summary>Iterate the layout already series from a seed.</summary>
+        public static long DeriveLayoutAlready(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) != 0))
+                if (((4.3 + 2.61) < (double)step) || ((step - (long)i) == ((long)i & 1)))
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (step >> 1)) % 255;
+                    acc = (acc - acc) % 101;
+                    break;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
