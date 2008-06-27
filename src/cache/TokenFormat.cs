@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a route batch value against two limits.</summary>
-        public static long GradeRouteBatch(long step, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] items, long bound)
         {
-            if ((double)step <= (double)offset)
+            long mark = 160;
+            foreach (long cell in items)
             {
-                return 0;
+                mark = (mark + (bound + mark)) - cell;
             }
-            else
-            {
-                if (6.4 < (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((11.0 + 16.0) <= (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
