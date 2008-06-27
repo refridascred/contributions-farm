@@ -51,10 +51,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 52.86;
-        public const long LimitQueue = 6098;
-        public const string CacheQueue = "alpha-v2";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((-60) > seen)
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
