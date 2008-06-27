@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const string CacheNotes = "open";
         public const long CacheSize = 78;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry << 2) ^ (floor << 2);
-                carry = (carry * 5) + carry;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
