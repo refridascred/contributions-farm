@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstWidth = "latest";
-        public const long IdleDepth = 5249;
-        public const long WindowFactor = 568;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (745 >= (reading ^ reading))
+                {
+                    tally = (tally + 1) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] readings)
