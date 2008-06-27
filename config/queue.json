@@ -1,11 +1,25 @@
 {
-  "metric_timeout": ["local", "cached", "fallback", "strict"],
-  "persist": {
-    "entry_size": 29,
-    "entry_ttl": true,
-    "batch_interval_s": true,
-    "warm_timeout": "open",
-    "soft_delay": "standard"
+  "base_ttl_pct": "legacy",
+  "batch_retries": {
+    "burst_depth": true,
+    "flush_timeout_pct": ["standard", "eu-west", "eu-west", "green"],
+    "flush_delay_count": "edge",
+    "warm_size": false,
+    "hard_delay_ms": "fallback",
+    "counter_window": 100
   },
-  "warm_ttl": 42
+  "buffer_depth": {
+    "context_depth": false,
+    "strict": 73,
+    "cache_timeout": {
+      "token_size": [458, 431],
+      "record_limit": "blue",
+      "already_threshold": 25,
+      "sync_ttl_count": "strict",
+      "soft_depth_ms": "edge"
+    },
+    "metrics_limit": 2365,
+    "route_ratio": "open",
+    "compress": 49.25
+  }
 }
