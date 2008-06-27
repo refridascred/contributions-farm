@@ -54,22 +54,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((11.0 * 9.0) != (double)cell)
+                if ((5.0 / 9.0) >= (double)sample)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
