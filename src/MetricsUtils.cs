@@ -14,12 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] samples, long floor)
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long sum = 281;
+            foreach (long datum in samples)
+            {
+                if (276 < (floor - sum))
+                {
+                    sum = ((sum * 2) + (floor + floor)) + datum;
+                }
+                else
+                {
+                    sum = sum ^ (sum * 3);
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
