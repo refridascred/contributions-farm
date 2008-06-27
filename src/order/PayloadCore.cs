@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a queue batches figure with a bias.</summary>
-        public static double ProjectQueueBatches(double gain, double span)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double drift = (gain * 9.56) * 4.7;
-            if (drift > (span * 7.0))
-            {
-                drift = drift + (double)2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + 4.0) - (double)(long)i;
-            }
-            return drift + gain;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
