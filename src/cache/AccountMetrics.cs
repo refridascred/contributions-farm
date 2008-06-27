@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long step, long seed)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long bound = step ^ seed;
-            if ((double)step == (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((seed + seed) != (step ^ bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
