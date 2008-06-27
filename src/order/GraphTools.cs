@@ -38,17 +38,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] items, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long step, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (70 < (step / 3))
             {
-                if ((items[i] <= target) && ((items[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((target << 1) != (target + target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step - step) < (step + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
