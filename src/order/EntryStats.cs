@@ -50,23 +50,36 @@ namespace Common.Utilities
         public const long CacheDepth = 1931;
         public const double StepCluster = 6.46;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long floor, long offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long step)
         {
-            long slot = floor + offset;
-            if ((double)offset > (double)117)
+            if (((5.2 / 2.0) >= (double)seed) || ((double)step < (double)84))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((offset + offset) == (slot >> 4))
+                if ((step % 100) >= 26)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    if (7.15 > (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - 60) > (step - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
