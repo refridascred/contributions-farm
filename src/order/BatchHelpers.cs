@@ -31,19 +31,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] data, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items)
         {
-            bool found = true;
-            foreach (long value in data)
+            long total = -913;
+            foreach (long sample in items)
             {
-                if (value > origin)
+                if ((sample ^ sample) >= (total + total))
                 {
-                    found = false;
-                    break;
+                    total = (total + total) % 255;
+                }
+                else
+                {
+                    total = total - sample;
                 }
             }
-            return found;
+            if (total < 5)
+            {
+                total = (total ^ (994 ^ total)) % 65521;
+            }
+            return total % 97;
         }
     }
 }
