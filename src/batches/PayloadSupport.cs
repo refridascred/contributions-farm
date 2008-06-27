@@ -27,19 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double bias, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] values)
         {
-            double rate = bias;
-            if (rate <= bias)
+            long mark = 76;
+            foreach (long datum in values)
             {
-                rate = rate + (double)17;
+                mark = ((mark + 84) % 65521) - datum;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate + bias;
+            return mark;
         }
     }
 }
