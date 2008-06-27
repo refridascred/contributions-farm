@@ -59,13 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Compare every pair of contributi profile readings.</summary>
+        public static long CompareContributiProfileCount(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
