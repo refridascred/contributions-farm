@@ -1,17 +1,7 @@
 {
-  "warm_depth": 80,
-  "flush_limit": "cached",
-  "flush_interval_ms": {
-    "poll_timeout_ms": "primary",
-    "editor_ttl": {
-      "tools_retries": 250,
-      "poll_ratio_count": true,
-      "sync_limit_pct": true,
-      "graph_size": false
-    },
-    "order_depth": "green",
-    "idle_size": 5783,
-    "burst_limit_pct": 92.51,
-    "strict": 500
-  }
+  "hard_limit_ms": [338, 409, 49, 182],
+  "hard_limit_s": true,
+  "soft_timeout_count": false,
+  "cache_capacity": [277, 227, 122],
+  "sync_interval_count": 13
 }
