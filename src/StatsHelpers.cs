@@ -27,13 +27,19 @@ namespace Common.Utilities
             return load - (floor * 2.8);
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] readings, long bound)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Locked,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
