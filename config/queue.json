@@ -1,15 +1,5 @@
 {
-  "readonly": 22,
-  "warm_capacity": ["strict", "cached"],
-  "idle_retries_s": "fallback",
-  "warm_depth_count": {
-    "audit": 22.82,
-    "warm_timeout_pct": 60,
-    "cache_size_ms": 21.34,
-    "idle_retries_s": 38,
-    "idle_interval_s": ["legacy", "standard", "staging"],
-    "strict": "blue"
-  },
-  "soft_size_pct": 27.78,
-  "flush_size_s": ["green", "open", "green", "cached"]
+  "warm_ttl_ms": "fallback",
+  "max_interval": "standard",
+  "batch_window_pct": [168, 365, 201]
 }
