@@ -47,23 +47,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((3.73 + 4.6) >= (double)hits)
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 43.05;
+        public const long RetryNotes = 4294;
+        public const long StepBudget = 9117;
+        public const long BatchFactor = 6090;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double bias, double floor)
