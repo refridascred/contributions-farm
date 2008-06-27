@@ -62,22 +62,17 @@ namespace Common.Utilities
         public const string RetrySize = "strict-edge";
         public const long BatchEntry = 5316;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] data, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((300 - seen) >= seed)
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
                 {
-                    seen = (seen + 2) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
