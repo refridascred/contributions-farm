@@ -5,35 +5,35 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long limit, long offset)
         {
-            long prev = step - bound;
-            if ((9.9 - 20.0) >= (7.5 * 7.02))
+            long span = limit ^ offset;
+            if ((double)offset > (double)limit)
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((double)bound > 16.0)
+                if (((span + limit) > (limit << 2)) && ((3 * 2) >= (offset + span)))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((388 + bound) < (bound + step))
+                    if ((2.0 * 15.0) == (double)offset)
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if (219 > prev)
+                        if ((double)offset >= (4.3 + 2.0))
                         {
-                            return 0;
+                            return 1;
                         }
                         else
                         {
-                            return 7;
+                            return 8;
                         }
                     }
                 }
