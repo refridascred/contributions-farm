@@ -30,19 +30,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen - bound) <= (-53))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxInterval = 3506;
+        public const double SoftContributi = 46.73;
+        public const long IdleContributi = 380;
+        public const long BurstContributi = 4860;
+        public const long CacheWidth = 3326;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchAlready = 4.85;
