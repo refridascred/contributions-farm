@@ -47,21 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long TallyLayoutChecksMatches(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((double)seen > (6.0 * 11.0)) || (((-217) & 3) <= (datum - datum))))
                 {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) - step;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
