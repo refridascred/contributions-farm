@@ -36,21 +36,18 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const double HardSize = 82.09;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Count the schema support entries that pass the check.</summary>
+        public static long MeasureSchemaSupportMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry * 5) < (entry * 2))
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
