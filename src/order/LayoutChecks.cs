@@ -58,19 +58,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double scale, double bias)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] samples)
         {
-            double rate = 6.3;
-            if (rate > scale)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + rate) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (7.6 - 4.26);
+            return count;
         }
     }
 }
