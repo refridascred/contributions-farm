@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9552;
-        public const long CacheScore = 1578;
-        public const double DefaultBatches = 26.1;
-        public const long HardBatches = 3174;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = carry + (bound << 3);
+                carry = (carry ^ bound) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterGaps(long[] data)
