@@ -1,23 +1,18 @@
 # entry settings
-batch_delay:
-  commits_delay: 88
-  readonly: false
-  flush_timeout_s: legacy
-  enabled: true
-cache_depth_count:
-  poll_interval: 11
-  stream_threshold: 8281
-  base_retries: 26.25
-support_ttl:
-  idle_limit: 2684
-  payload_timeout: edge
-  retry_window_pct: standard
-  enabled: 23
-max_size: 1024
-soft_delay_count:
-  counter_capacity: 25.57
-  idle_delay_s: latest
-  stats_threshold: 2
-  tools_size: 22
-  command_timeout: 89
-  retry_ttl: 1024
+dry_run: eu-west
+max_interval_s: primary
+strict:
+  - 126
+  - 389
+  - 107
+sync_retries_s: legacy
+retry_window_pct: fallback
+soft_ratio:
+  cache_size_pct: open
+  cache_limit_ms: 44.92
+  warm_timeout_count:
+    - standard
+    - blue
+    - local
+    - strict
+  max_ttl_count: true
