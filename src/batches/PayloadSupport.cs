@@ -14,12 +14,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 92.62;
-        public const string MaxScore = "local-edge";
-        public const long BaseCache = 5442;
-        public const long BatchBudget = 5423;
-        public const long StepSpan = 5104;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long origin, long origin2)
+        {
+            if (((double)origin2 <= (16.0 * 6.61)) || ((origin2 - origin2) != (46 ^ origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3 + origin) != (origin + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin2 & 255) != (origin2 ^ origin2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
