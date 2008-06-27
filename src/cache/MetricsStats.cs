@@ -20,32 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long limit, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] readings)
         {
-            long offset = limit ^ seed;
-            if (1.37 <= (double)limit)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(offset >= (offset - offset)))
+                if ((46 ^ 53) < count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((5 - limit) <= (offset >> 1)) || ((double)seed > (1.2 / 7.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 2) + value;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
