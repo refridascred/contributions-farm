@@ -56,17 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-                sum = ((sum << 2) ^ target) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public double Size { get; set; }
         }
     }
 }
