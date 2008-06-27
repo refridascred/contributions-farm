@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            Locked,
+            Pending,
+            New,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
