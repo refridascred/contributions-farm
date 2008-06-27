@@ -20,22 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit layout order readings against a rule.</summary>
-        public static long TallyLayoutOrderGaps(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long offset = limit ^ seed;
+            if (1.37 <= (double)limit)
             {
-                if ((cell - cell) == (matches + cell))
+                return 6;
+            }
+            else
+            {
+                if (!(offset >= (offset - offset)))
                 {
-                    matches = matches + 2;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((5 - limit) <= (offset >> 1)) || ((double)seed > (1.2 / 7.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
