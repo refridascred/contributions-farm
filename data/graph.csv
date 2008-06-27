@@ -1,8 +1,8 @@
-id,level,rank
-1,local,fallback
-2,38.17,86
-3,edge,408
-4,438,cached
-5,596,681
-6,655,local
-7,646,90.94
+id,score,count,level,label
+1,stable,cached,standard,339
+2,283,45.44,cached,935
+3,33.79,primary,67.11,75.15
+4,cached,200,40,915
+5,59.33,567,856,848
+6,open,807,43.76,84.49
+7,edge,blue,legacy,339
