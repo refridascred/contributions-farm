@@ -29,13 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the contributi metric entries that pass the check.</summary>
+        public static long AuditContributiMetricMatches(long[] levels)
         {
-            Draft,
-            Ready,
-            Dropped,
-            Pending,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 1) < ((long)levels.Length + (-5)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
