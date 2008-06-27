@@ -1,5 +1,4 @@
 # githubfarm settings
-editor_depth: true
-readonly: open
-hard_retries_ms: 20.0
-stats_timeout: 47.77
+format_delay: 60
+batches_ttl: 82
+readonly: latest
