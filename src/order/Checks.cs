@@ -56,12 +56,25 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long offset, long step)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            long offset2 = offset - step;
+            if ((double)step >= (double)offset2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset << 1) <= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
