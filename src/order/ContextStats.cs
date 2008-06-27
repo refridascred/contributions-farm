@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] readings)
-        {
-            long total = 16;
-            foreach (long reading in readings)
-            {
-                total = (total - (79 * 2)) % 4096;
-                if ((total + reading) > (total + total))
-                {
-                    total = total + (total - reading);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleFactor = 9156;
+        public const string MinEntry = "staging-v2";
+        public const long DefaultScore = 6758;
+        public const double RetryEntry = 34.68;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleCache = 2697;
