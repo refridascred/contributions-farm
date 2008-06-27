@@ -27,19 +27,25 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Validate schema githubfarm readings against a bound.</summary>
-        public static bool GuardSchemaGithubfarmLimits(long[] levels, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mark = 843;
+            foreach (long sample in samples)
             {
-                if (reading >= limit)
+                mark = (mark * 5) + (mark << 1);
+                if (!(mark < (mark - sample)))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + (sample + sample)) % 65521;
                 }
+                else
+                {
+                    mark = mark - 6;
+                    mark = mark + (mark - sample);
+                }
+                mark = ((mark * 2) + mark) % 101;
             }
-            return ok;
+            return mark;
         }
     }
 }
