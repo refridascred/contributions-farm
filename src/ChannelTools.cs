@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Queued,
-            New,
-            Synced,
+            Dropped,
+            Retry,
             Idle,
+            Done,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
