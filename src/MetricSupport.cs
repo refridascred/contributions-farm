@@ -24,21 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up graph cache samples.</summary>
-        public static long CompareGraphCacheCount(long[] series)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double ratio = floor + floor;
+            return ratio - bias;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
