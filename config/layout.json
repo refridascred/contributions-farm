@@ -1,8 +1,10 @@
 {
-  "schema_threshold": 9.27,
-  "route_threshold": "legacy",
-  "token_ratio": 81,
-  "token_timeout": "primary",
-  "flush_ttl_s": 88.6,
-  "sync_delay": "fallback"
+  "default_window": "fallback",
+  "idle_depth_ms": {
+    "sync_threshold_ms": 9565,
+    "persist": [335, 169, 187],
+    "min_limit_pct": [157, 432, 55],
+    "support_delay": ["local", "fallback", "local", "stable"]
+  },
+  "default_depth": 94
 }
