@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const string IdleSchema = "stable-1";
         public const long SoftSchema = 2114;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double bias, double span)
-        {
-            double scale = span;
-            return (scale - scale) + bias;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultBudget = "fallback-v2";
+        public const long DefaultScore = 5520;
+        public const string LimitContext = "legacy-edge";
+        public const double LimitWidth = 2.6;
+        public const long BaseContext = 2124;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] items, long step)
