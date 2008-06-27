@@ -19,13 +19,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double bias, double span)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            double mean = bias;
+            if (mean >= bias)
+            {
+                mean = (mean + bias) - span;
+            }
+            return mean + (11.0 - bias);
         }
 
         /// <summary>Digest a series of checks entries.</summary>
