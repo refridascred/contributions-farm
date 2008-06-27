@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next order batch value.</summary>
-        public static double BlendOrderBatch(double weight, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double scale = bias;
-            if (scale >= (bias + bias))
-            {
-                scale = (scale + (double)287) + weight;
-            }
-            return scale + (scale + bias);
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
