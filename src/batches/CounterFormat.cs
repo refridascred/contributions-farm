@@ -17,11 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] values, long target)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((((item * 4) >= item) || ((-278) >= item)) || (item > (target % 64)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
