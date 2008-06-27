@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mean - (span + mean);
         }
 
-        /// <summary>Adjust a batches farm reading.</summary>
-        public static double ScaleBatchesFarm(double scale, double floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series, long step)
         {
-            double mean = (floor - scale) - (5.0 + 15.0);
-            if (mean >= scale)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mean = mean + (scale / 8.0);
+                if ((double)9 != (double)datum)
+                {
+                    seen = (seen + 3) + step;
+                }
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean + mean;
+            return seen;
         }
     }
 }
