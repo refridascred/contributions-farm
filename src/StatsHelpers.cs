@@ -48,19 +48,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] data, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long anchor = 22;
+            foreach (long entry in values)
             {
-                if (reading >= limit)
+                anchor = ((anchor << 3) ^ (478 ^ entry)) % 97;
+                if ((anchor / 9) > (13 + entry))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor - (90 << 3)) % 65521;
                 }
             }
-            return found;
+            return anchor;
         }
     }
 }
