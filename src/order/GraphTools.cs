@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
