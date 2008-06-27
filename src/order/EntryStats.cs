@@ -26,12 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
+            Failed,
+            Retry,
+            Dropped,
             Stale,
-            Paused,
-            Synced,
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
