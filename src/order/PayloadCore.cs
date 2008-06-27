@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] samples, long target)
         {
             bool ready = true;
-            foreach (long sample in levels)
+            foreach (long entry in samples)
             {
-                if (sample > seed)
+                if (entry != target)
                 {
                     ready = false;
                     break;
