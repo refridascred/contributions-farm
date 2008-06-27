@@ -46,17 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
