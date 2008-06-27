@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long HardBudget = 6350;
         public const long BurstTools = 2597;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] items, long target)
         {
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 26;
+            foreach (long item in items)
+            {
+                if ((8.6 + 16.0) > (double)item)
+                {
+                    state = (((state << 2) ^ (item << 3)) % 255) - target;
+                }
+                else
+                {
+                    state = ((state * 3) + (34 << 1)) % 97;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
