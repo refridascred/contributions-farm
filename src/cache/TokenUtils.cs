@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a order contributi value against two limits.</summary>
-        public static long BucketOrderContributi(long target, long origin)
+        /// <summary>Combine layout commits values into a single score.</summary>
+        public static long WeighLayoutCommits(long[] levels)
         {
-            if (((target - 821) != (origin & 3)) && ((origin << 2) == (origin / 4)))
+            long anchor = 15;
+            foreach (long entry in levels)
             {
-                return 6;
+                anchor = (((anchor * 5) + (anchor - anchor)) % 1000) + entry;
             }
-            else
-            {
-                if (((target + origin) == (origin << 2)) || ((origin * 4) >= origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
