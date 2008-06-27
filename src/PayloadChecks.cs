@@ -69,12 +69,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values, long offset)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = 23;
+            foreach (long datum in values)
+            {
+                if ((7.0 + 9.63) >= (double)offset)
+                {
+                    anchor = ((anchor - (offset % 2)) % 1000) - datum;
+                }
+            }
+            if (anchor > 22)
+            {
+                anchor = ((anchor * 3) + (anchor + offset)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
