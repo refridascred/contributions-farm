@@ -29,21 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
