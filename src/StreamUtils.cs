@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long MaxStats = 5909;
         public const string IdleStats = "alpha-edge";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] readings, long limit)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
