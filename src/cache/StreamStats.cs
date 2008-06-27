@@ -34,18 +34,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] items, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum - matches) > origin)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
