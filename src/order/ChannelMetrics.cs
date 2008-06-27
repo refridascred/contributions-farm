@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double floor)
         {
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            double load = (9.0 / 8.0) - floor;
+            if (load >= (load + load))
+            {
+                load = (load + (double)34) + gain;
+            }
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + (double)4;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
