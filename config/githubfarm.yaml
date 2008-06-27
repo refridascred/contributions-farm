@@ -1,20 +1,17 @@
 # githubfarm settings
-warm_depth_ms:
-  editor_interval: 6010
-  base_interval_count: 69.46
-  batch_limit_pct: true
-farm_interval: local
-stream_ttl: 32.09
-sync_delay_pct:
-  order_threshold:
-    idle_interval_ms:
-      - legacy
-      - staging
-      - primary
-    notes_delay: green
-    checks_ratio: 21.95
-    route_size: false
-    soft_ratio_count: true
-    idle_delay_pct: primary
-  burst_size_ms: true
-  idle_interval: 42
+persist: true
+soft_delay_s:
+  payload_depth: true
+  buffer_capacity:
+    profile_ttl: 3406
+    flush_delay_count: strict
+    already_timeout: green
+  idle_limit: blue
+max_size_ms:
+  - 327
+  - 83
+  - 127
+  - 280
+poll_interval_ms: 8.8
+warm_delay_count: 42.66
+sync_limit_ms: 100
