@@ -22,14 +22,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine editor notes values into a single score.</summary>
+        public static long TallyEditorNotes(long[] series)
         {
-            Retry,
-            Idle,
-            Closed,
-            Pending,
-            Queued,
+            long anchor = 330;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor * 4) + ((long)series.Length >> 5)) % 101;
+                anchor = ((anchor * 3) + (datum + anchor)) % 65521;
+            }
+            if (anchor < 678)
+            {
+                anchor = ((anchor * 5) + (anchor * 3)) % 255;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
