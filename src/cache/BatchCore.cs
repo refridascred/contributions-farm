@@ -29,19 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] readings, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (sample <= target)
+                if ((sample + hits) >= sample)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
