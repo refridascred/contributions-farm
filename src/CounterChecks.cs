@@ -65,19 +65,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool VerifyBatchProfileLimits(long[] levels, long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (reading >= limit)
+                if (((-857) * 3) <= (offset << 3))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
