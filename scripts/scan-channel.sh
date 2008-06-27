@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-open}"
+mode="${1:-legacy}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in open edge standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
