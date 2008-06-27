@@ -42,18 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (20.0 < (double)matches)
-                {
-                    matches = ((matches + 1) ^ cell) + seed;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
