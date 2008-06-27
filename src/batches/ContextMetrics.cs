@@ -39,22 +39,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] readings)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long mix = 138;
+            foreach (long reading in values)
             {
-                if (count < (count % 8))
+                mix = (mix - (mix & 1)) % 101;
+                if ((step & 31) >= (mix - mix))
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    mix = (mix - (step + reading)) % 101;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
