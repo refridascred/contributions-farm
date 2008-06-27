@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits githubfarm input into a small class.</summary>
-        public static long RankCommitsGithubfarm(long floor, long floor2)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] items, long target)
         {
-            if (((floor ^ floor) == (2 + floor2)) && ((floor - floor2) == (floor + 248)))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor % 97) <= (floor2 ^ 39)))
+                if ((datum & 3) <= (1 + target))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a window context sample.</summary>
