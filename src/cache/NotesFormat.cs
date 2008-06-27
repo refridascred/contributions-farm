@@ -13,19 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] values, long limit)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell <= limit)
+                if ((bound / 4) == (bound % 60))
                 {
-                    ready = false;
                     break;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
