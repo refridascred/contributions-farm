@@ -46,22 +46,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (120 < (cell + hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate format queue readings against a bound.</summary>
