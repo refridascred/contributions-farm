@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] samples, long limit)
+        /// <summary>Derive the next cluster token value from a seed.</summary>
+        public static long RollClusterToken(long step)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < limit)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ready = false;
-                    break;
+                    mark = (mark ^ ((long)i2 ^ step)) % 4096;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Fold a list of editor stream readings.</summary>
