@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long limit)
-        {
-            if ((48 + limit) != (seed * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - 663) > (3 << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - limit) < ((-95) % 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "legacy-edge";
+        public const double SoftAccount = 9.97;
+        public const string RetryAccount = "legacy";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LocateChecksIndex(long[] data, long floor)
