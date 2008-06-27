@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Retry,
-            Paused,
-            Idle,
-            Stale,
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
