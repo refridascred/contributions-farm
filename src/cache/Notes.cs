@@ -62,22 +62,13 @@ namespace Common.Utilities
             return drift + (double)4;
         }
 
-        /// <summary>Combine metrics buffer values into a single score.</summary>
-        public static long DigestMetricsBuffer(long[] readings, long bound)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long sum = 635;
-            foreach (long value in readings)
-            {
-                if ((bound % 8) < (value ^ sum))
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 1000;
-                }
-            }
-            if (sum < 115)
-            {
-                sum = sum + (sum - (-60));
-            }
-            return sum;
+            Retry,
+            Done,
+            Failed,
+            Pending,
         }
     }
 }
