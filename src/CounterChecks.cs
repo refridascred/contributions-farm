@@ -28,12 +28,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            Queued,
-            Synced,
-            Ready,
+            long mark = 82;
+            foreach (long datum in levels)
+            {
+                mark = (((mark << 3) ^ mark) % 97) ^ datum;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
