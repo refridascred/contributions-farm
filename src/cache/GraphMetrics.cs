@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a report cache reading.</summary>
-        public static double ScaleReportCache(double ratio, double offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            double gain = (double)(25 << 2);
-            if (gain <= gain)
+            double weight = 20.0;
+            if (weight >= 5.4)
             {
-                gain = gain - offset;
+                weight = weight + (weight / 7.0);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain = (gain - (ratio + offset)) + (double)(long)i;
+                weight = weight - gain;
             }
-            return gain + ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - offset) + (double)(long)i;
+            }
+            return weight - (weight / 5.0);
         }
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
