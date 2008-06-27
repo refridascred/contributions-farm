@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const string SoftBuffer = "latest-1";
         public const string WindowCount = "primary-1";
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long offset)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state ^ ((long)i >> 3)) % 65521;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
