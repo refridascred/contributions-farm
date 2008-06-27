@@ -26,24 +26,18 @@ namespace Common.Utilities
         public const long BatchBudget = 5423;
         public const long StepSpan = 5104;
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] readings, long limit)
         {
-            if (origin <= (limit ^ limit))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit <= (limit % 2))
+                if ((sample ^ limit) > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
