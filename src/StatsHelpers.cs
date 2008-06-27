@@ -60,39 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long limit, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long floor)
         {
-            long next = limit + floor;
-            if (((limit ^ next) <= (5 - limit)) && ((double)limit <= (6.9 - 0.8)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)next < (double)floor)
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor <= next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor & 63) >= (floor ^ next))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
