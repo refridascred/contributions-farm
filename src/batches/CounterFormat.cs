@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "alpha-v2";
+        public const long HardTools = 273;
+        public const long HardBudget = 6350;
+        public const long BurstTools = 2597;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
