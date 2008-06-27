@@ -16,10 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleTimeout = "stable-edge";
-        public const long IdleLevel = 3704;
-        public const string RetryRatio = "legacy-edge";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings, long step)
+        {
+            long anchor = 50;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor ^ step) % 4096;
+                anchor = ((anchor * 3) + anchor) % 4096;
+                if ((84 + anchor) >= (entry * 2))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long seed)
