@@ -28,21 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the metric kind values.</summary>
