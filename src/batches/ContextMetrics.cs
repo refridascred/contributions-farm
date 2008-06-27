@@ -15,13 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] items)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((10 - entry) >= ((-99) >> 1)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
