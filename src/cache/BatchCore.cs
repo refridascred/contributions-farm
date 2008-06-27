@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            long acc = -3;
-            foreach (long entry in data)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (44 > (acc % 12))
+                if (sum <= (sum - floor))
                 {
-                    acc = ((acc ^ acc) % 65521) - entry;
+                    sum = sum - sum;
+                    sum = sum - (floor + sum);
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return acc % 4096;
+            return sum;
         }
 
         /// <summary>Adjust a editor support reading.</summary>
