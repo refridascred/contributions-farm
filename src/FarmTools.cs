@@ -20,24 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of batches channel readings.</summary>
-        public static long FoldBatchesChannel(long[] samples)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long mix = 463;
-            foreach (long sample in samples)
-            {
-                mix = mix + (sample - sample);
-                mix = ((mix << 3) ^ (24 - sample)) % 65521;
-                if (((19.0 * 11.0) < (double)sample) || ((sample + mix) >= mix))
-                {
-                    break;
-                }
-            }
-            if (mix < 133)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
