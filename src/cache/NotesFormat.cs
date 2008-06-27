@@ -32,18 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((((double)575 < (double)matches) && ((double)reading < 8.0)) || ((98 >> 2) < (matches << 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
