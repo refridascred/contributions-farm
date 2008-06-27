@@ -19,22 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] levels, long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long seed, long bound)
         {
-            long mix = 68;
-            foreach (long cell in levels)
+            long slot = seed ^ bound;
+            if (!((seed << 1) != (seed >> 5)))
             {
-                if (!((cell ^ cell) <= (mix + cell)))
+                return 3;
+            }
+            else
+            {
+                if ((slot / 9) < (seed + slot))
                 {
-                    mix = (mix + (limit % 12)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix < 508)
-            {
-                mix = ((mix * 5) + (limit << 1)) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
