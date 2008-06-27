@@ -28,12 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 6151;
-        public const string CacheContributi = "cached-v2";
-        public const long BurstContributi = 1532;
-        public const double LimitSize = 45.78;
-        public const long WindowLevel = 6446;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double LimitEntry = 79.11;
