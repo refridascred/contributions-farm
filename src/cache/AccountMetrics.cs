@@ -50,12 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples, long offset)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            long mix = 221;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length / 6) >= ((long)samples.Length / 8))
+                {
+                    mix = ((mix ^ (sample - mix)) % 255) - offset;
+                }
+                if (!(((-380) - mix) >= sample))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
