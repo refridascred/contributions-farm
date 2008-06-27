@@ -64,17 +64,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)offset2 != (11.0 * 11.0)))
             {
-                if (levels[i] == bound)
+                return 6;
+            }
+            else
+            {
+                if (offset2 <= (149 / 9))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset2 - 91) <= offset2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine metrics buffer values into a single score.</summary>
