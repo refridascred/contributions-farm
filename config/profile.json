@@ -1,6 +1,25 @@
 {
-  "hard_window": 98.81,
-  "sync_capacity_count": "cached",
-  "payload_depth": "fallback",
-  "warm_limit_ms": 1024
+  "sync_retries_pct": 57.64,
+  "batch_ttl_s": 26.61,
+  "burst_ttl_pct": "blue",
+  "layout_window": 84.98,
+  "default_interval_pct": {
+    "editor_retries": true,
+    "persist": {
+      "base_size_ms": 3084,
+      "poll_size": 6743,
+      "warm_delay": 55,
+      "sync_size": "cached",
+      "sync_size_count": "blue",
+      "entry_interval": [114, 396]
+    },
+    "dry_run": true,
+    "cache_limit_count": false
+  },
+  "readonly": {
+    "flush_timeout_ms": 18.76,
+    "burst_threshold_ms": 38.04,
+    "filter_window": 77,
+    "account_delay": "local"
+  }
 }
