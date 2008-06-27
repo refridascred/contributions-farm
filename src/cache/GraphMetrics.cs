@@ -25,31 +25,19 @@ namespace Common.Utilities
         public const string CacheNotes = "open";
         public const long CacheSize = 78;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool ValidateCacheContextRange(long[] values, long seed)
         {
-            if (!((bound << 2) == ((-86) - bound)))
+            bool found = true;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) <= (6 << 3))
+                if (item < seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin > (bound - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
