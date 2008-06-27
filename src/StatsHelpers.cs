@@ -38,19 +38,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] values, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum <= target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
