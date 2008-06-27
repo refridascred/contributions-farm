@@ -17,15 +17,13 @@ namespace Common.Utilities
         public const long BurstStream = 2133;
         public const long MaxDepth = 5340;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double weight, double span)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double rate = weight;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - span;
+            Idle,
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Grade a order notes value against two limits.</summary>
