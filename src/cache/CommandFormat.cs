@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardWidth = "strict-v2";
-        public const long DefaultRatio = 6567;
-        public const long RetryBatches = 1155;
-        public const long RetryLevel = 4518;
-        public const long MaxCount = 5181;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 38.19;
+        public const double MinCount = 17.41;
+        public const long RetryFormat = 2307;
+        public const long MaxSize = 4270;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] samples)
