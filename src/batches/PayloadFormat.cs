@@ -39,11 +39,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
