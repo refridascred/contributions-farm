@@ -37,18 +37,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountOutliers(long[] items)
+        /// <summary>Roll a format report counter forward.</summary>
+        public static long DeriveFormatReport(long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long mark = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((datum / 3) == (matches ^ datum))
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Fold a list of window commits readings.</summary>
