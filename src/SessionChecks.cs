@@ -45,11 +45,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            Queued,
+            Synced,
+            Ready,
         }
     }
 }
