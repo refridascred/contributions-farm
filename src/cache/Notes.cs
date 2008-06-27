@@ -12,11 +12,28 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples, long origin)
         {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = 27;
+            foreach (long datum in samples)
+            {
+                if (((double)sum >= 3.5) || ((sum + datum) > (444 + 26)))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ (datum + datum)) % 255;
+                    sum = (sum ^ (datum << 1)) % 255;
+                }
+                sum = sum + (origin ^ origin);
+            }
+            if (sum < 37)
+            {
+                sum = ((sum << 3) ^ origin) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of record readings.</summary>
