@@ -1,6 +1,5 @@
 {
-  "dry_run": 500,
-  "poll_ttl_s": ["local", "eu-west", "primary"],
-  "readonly": 12.17,
-  "retry_timeout": 37.96
+  "cache_retries_pct": 84.59,
+  "report_window": "blue",
+  "base_delay_s": 64
 }
