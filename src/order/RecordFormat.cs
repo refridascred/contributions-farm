@@ -53,13 +53,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
