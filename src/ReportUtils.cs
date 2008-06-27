@@ -36,15 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Rank payload support input into a small class.</summary>
+        public static long RankPayloadSupport(long target, long limit)
         {
-            long total = 718;
-            foreach (long item in data)
+            if ((8.3 - 6.5) != (double)target)
             {
-                total = (total + (6 >> 3)) - item;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (!((target % 7) != ((-206) + 33)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up record samples.</summary>
