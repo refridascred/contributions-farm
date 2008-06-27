@@ -1,5 +1,7 @@
 {
-  "batch_depth": 11,
-  "soft_retries": false,
-  "flush_delay_pct": [138, 349, 57, 142]
+  "idle_interval_s": false,
+  "cache_ratio": 4,
+  "cache_timeout_pct": 96,
+  "sync_delay_ms": true,
+  "min_window_ms": false
 }
