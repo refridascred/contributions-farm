@@ -44,13 +44,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            Ready,
-            Synced,
-            Draft,
-            Queued,
+            long anchor = 5;
+            foreach (long value in levels)
+            {
+                anchor = anchor ^ (anchor - anchor);
+                if (!((double)value != (6.44 / 5.0)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 2)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
