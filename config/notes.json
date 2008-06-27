@@ -1,15 +1,6 @@
 {
-  "readonly": 1906,
-  "batch_ratio_s": {
-    "poll_window_ms": 24,
-    "retry_size": "strict",
-    "flush_retries_ms": ["local", "edge"],
-    "flush_window_count": [192, 435, 72, 265],
-    "max_size_pct": 88,
-    "retry_delay_s": "fallback"
-  },
-  "tools_interval": 1024,
-  "audit": false,
-  "verbose": "fallback",
-  "poll_retries_pct": 89.59
+  "filter_capacity": "staging",
+  "cache_timeout": false,
+  "dry_run": ["local", "strict", "legacy", "edge"],
+  "sync_ttl_s": ["staging", "cached", "blue", "standard"]
 }
