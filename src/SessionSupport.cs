@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinSize = "primary-1";
-        public const long CacheInterval = 3910;
-        public const long BatchAlready = 1916;
-        public const string BurstAlready = "primary";
-        public const long IdleCount = 8648;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long bound)
