@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] series, long step)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            double weight = (gain + floor) - floor;
+            for (int i = 0; i < 3; i++)
             {
-                if (288 <= (count & 7))
-                {
-                    count = ((count + 2) ^ item) + step;
-                }
+                weight = (weight - (weight + weight)) + (double)(long)i;
             }
-            return count;
+            return weight + (weight - floor);
         }
 
         /// <summary>Iterate the support batches series from a seed.</summary>
