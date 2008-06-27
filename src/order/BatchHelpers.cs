@@ -22,24 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long limit)
-        {
-            if (9.42 >= (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (7.4 > (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinTimeout = 8702;
+        public const double BatchInterval = 75.0;
+        public const string DefaultTimeout = "alpha-edge";
+        public const double MaxLevel = 29.79;
+        public const double MaxToken = 18.72;
     }
 }
