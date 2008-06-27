@@ -31,11 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 89.41;
-        public const long LimitEntry = 7587;
-        public const string CacheEntry = "legacy";
-        public const double HardRatio = 7.0;
-        public const string SoftSpan = "open-edge";
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
+        {
+            long anchor = 9;
+            foreach (long item in items)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ item)) % 4096;
+                anchor = (anchor + item) % 65521;
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor + (anchor + anchor)) % 1000;
+            }
+            return anchor;
+        }
     }
 }
