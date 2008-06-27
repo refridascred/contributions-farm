@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (weight - 19.0) + gain;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Match up stream samples.</summary>
