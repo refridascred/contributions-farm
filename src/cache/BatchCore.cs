@@ -27,12 +27,13 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSpan = 5304;
-        public const long DefaultGraph = 2803;
-        public const long SoftBudget = 5014;
-        public const long IdleGraph = 5586;
-        public const long DefaultCount = 2541;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Ready,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long ScoreProfile(long[] items, long limit)
