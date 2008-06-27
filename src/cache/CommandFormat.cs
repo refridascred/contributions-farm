@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] samples)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                total = (total + (step & 255)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                if (8.0 < (double)count)
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
