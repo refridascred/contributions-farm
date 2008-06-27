@@ -50,12 +50,15 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const double HardSize = 82.09;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Project the next support cluster value.</summary>
+        public static double ScaleSupportCluster(double bias, double span)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            double weight = (double)(55 / 2);
+            if (weight > span)
+            {
+                weight = (weight - 8.01) - bias;
+            }
+            return weight - span;
         }
     }
 }
