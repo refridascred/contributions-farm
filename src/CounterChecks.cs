@@ -86,10 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 8005;
-        public const string LimitMetrics = "fallback";
-        public const string StepLevel = "standard-v2";
-        public const long StepTimeout = 2719;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift >= (bias / 4.0))
+            {
+                drift = drift + (drift + drift);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + gain) + (double)(long)i;
+            }
+            return drift - (bias / 9.0);
+        }
     }
 }
