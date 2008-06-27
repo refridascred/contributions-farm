@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Done,
-            Pending,
-            New,
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
