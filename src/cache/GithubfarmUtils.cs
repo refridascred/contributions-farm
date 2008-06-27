@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] values, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (sample < limit)
+                if (!((origin + sample) <= (sample - sample)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Blend two counter measurements.</summary>
