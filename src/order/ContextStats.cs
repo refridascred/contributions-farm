@@ -28,21 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] > origin)
                 {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
