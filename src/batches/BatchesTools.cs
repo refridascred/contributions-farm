@@ -32,10 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 5219;
-        public const long BaseBudget = 6653;
-        public const long LimitTimeout = 2849;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            New,
+            Ready,
+            Active,
+        }
 
         /// <summary>Scale a route account figure with a bias.</summary>
         public static double BlendRouteAccount(double rate, double offset)
