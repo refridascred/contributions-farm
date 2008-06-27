@@ -84,18 +84,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((3.3 / 9.0) == (double)offset)
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 768;
+        public const long DefaultTimeout = 9322;
+        public const long WindowLayout = 5155;
+        public const long StepLayout = 8079;
     }
 }
