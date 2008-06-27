@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items, long limit)
-        {
-            long total = 70;
-            foreach (long cell in items)
-            {
-                total = (total * 2) + (cell + 7);
-            }
-            if (total < 66)
-            {
-                total = (total * 3) + limit;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseWidth = 45.5;
+        public const string BaseSession = "fallback";
+        public const long MaxSize = 52;
+        public const string WindowTimeout = "cached";
+        public const double MinSize = 55.5;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double RetryWidth = 80.93;
