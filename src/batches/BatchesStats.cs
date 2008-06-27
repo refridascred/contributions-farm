@@ -40,16 +40,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total + (seed << 2)) % 101;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
