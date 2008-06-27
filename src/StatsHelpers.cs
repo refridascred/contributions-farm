@@ -35,22 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long state = 842;
-            foreach (long datum in readings)
-            {
-                if ((datum << 1) >= (datum >> 2))
-                {
-                    state = state + (state - (long)readings.Length);
-                }
-            }
-            if (state < 3)
-            {
-                state = state - (long)readings.Length;
-            }
-            return state % 65521;
+            Queued,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
