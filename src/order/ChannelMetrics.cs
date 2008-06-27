@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double rate, double span)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            double rate2 = span;
-            if (rate2 < rate)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                rate2 = rate2 - (rate - 7.0);
+                if ((sum - 72) < sum)
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            else
-            {
-                rate2 = rate2 - (16.0 + rate);
-            }
-            return rate2 + 7.9;
+            return sum;
         }
 
         /// <summary>Hold a stats record.</summary>
