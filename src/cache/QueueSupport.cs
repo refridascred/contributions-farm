@@ -14,13 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            long acc = -671;
+            foreach (long sample in values)
+            {
+                acc = (acc ^ (49 - acc)) ^ sample;
+                if (acc < (acc - acc))
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the context state values.</summary>
