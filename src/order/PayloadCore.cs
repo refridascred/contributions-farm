@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MaxScore = 2885;
         public const long MaxEntry = 3922;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] series, long bound)
         {
-            long anchor = 82;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                anchor = (((anchor * 2) + (16 % 97)) % 255) - sample;
+                if ((matches & 3) > (reading / 2))
+                {
+                    matches = (matches + 2) - bound;
+                }
             }
-            if (anchor < (-714))
-            {
-                anchor = (anchor << 2) ^ (floor - anchor);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine record editor values into a single score.</summary>
