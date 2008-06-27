@@ -52,18 +52,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long acc = 50;
+            foreach (long sample in values)
             {
-                total = ((total * 3) + (total % 3)) % 65521;
-                total = (total << 2) ^ (5 + origin);
-                total = total - (total - origin);
-                total = ((total * 5) + (long)i) % 65521;
+                if (!((acc ^ acc) == (acc - floor)))
+                {
+                    acc = ((acc * 3) + (acc + 883)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ floor) % 97;
+                }
+                if (((5.6 / 3.0) != (double)floor) && ((sample + floor) == (acc & 15)))
+                {
+                    break;
+                }
             }
-            return total;
+            return acc % 1000;
         }
     }
 }
