@@ -31,18 +31,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Count the filter route entries that pass the check.</summary>
+        public static long MeasureFilterRouteGaps(long[] values)
         {
-            long total = 63;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!(total > (total * 5)))
+                if ((285 <= (matches * 3)) || !((0.2 * 18.0) < (1.0 - 6.6)))
                 {
-                    total = ((total + (total >> 3)) % 65521) + entry;
+                    matches = (matches + 3) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Project the next cache value.</summary>
