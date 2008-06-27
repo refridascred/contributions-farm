@@ -52,15 +52,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((floor << 3) == (floor + 1))
+                {
+                    mark = (mark ^ ((-3) << 3)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
     }
 }
