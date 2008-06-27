@@ -1,11 +1,23 @@
 # support settings
-warm_limit_count: open
-cache_window: strict
-retry_threshold_pct: open
-batch_size_s: stable
-readonly:
-  - 106
-  - 157
-  - 339
-  - 74
-warm_timeout: staging
+default_size_count: 250
+max_capacity_ms:
+  batch_interval_ms:
+    soft_window_s:
+      - cached
+      - legacy
+      - blue
+      - strict
+    hard_interval: false
+    readonly: 1024
+    editor_retries: latest
+    cluster_timeout: 1379
+  compress: 5654
+  retry_depth_s: true
+base_ratio_pct:
+  - latest
+  - latest
+already_interval: green
+default_timeout_count:
+  - 14
+  - 44
+  - 8
