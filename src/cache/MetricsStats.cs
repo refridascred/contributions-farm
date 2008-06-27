@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] series, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((hits + origin) < (origin & 1))
+                if (reading > limit)
                 {
-                    hits = (hits + 2) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit layout order readings against a rule.</summary>
