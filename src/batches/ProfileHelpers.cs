@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] data)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (!(seed >= floor))
             {
-                if (5.8 > (double)tally)
+                return 6;
+            }
+            else
+            {
+                if (floor < (seed * 4))
                 {
-                    tally = (tally + 2) - entry;
+                    return 2;
+                }
+                else
+                {
+                    if (((seed << 2) < (20 ^ seed)) && ((seed * 5) == (seed + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed >> 4) < floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a order counter forward.</summary>
