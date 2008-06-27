@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Scale a notes queue figure with a bias.</summary>
+        public static double SmoothNotesQueue(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = span;
+            if (mean <= span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean + (double)1) + ratio;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - 10.0) - (double)(long)i;
+            }
+            return mean - (double)745;
         }
 
         /// <summary>Hold a metric entry.</summary>
