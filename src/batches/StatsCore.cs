@@ -55,19 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch githubfarm readings against a bound.</summary>
-        public static bool GuardBatchGithubfarmLimits(long[] readings, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Draft,
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate format queue readings against a bound.</summary>
