@@ -39,24 +39,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long seed, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long slot = seed - offset;
+            if ((offset - seed) >= seed)
             {
-                if (limit <= anchor)
-                {
-                    anchor = (anchor << 3) ^ limit;
-                }
-                if ((limit ^ anchor) != ((long)i >> 2))
-                {
-                    anchor = (anchor - (2 + (long)i)) % 97;
-                }
-                anchor = ((anchor * 3) + ((long)i + (long)i)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((slot + offset) == (seed << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)seed >= 6.1) || ((slot - 34) >= (slot - seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a order reading by value.</summary>
