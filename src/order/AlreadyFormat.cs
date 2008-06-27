@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] levels, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((545 << 3) <= (item * 4))
-                {
-                    seen = (seen + 3) + floor;
-                }
-            }
-            return seen;
+            Locked,
+            Ready,
+            New,
+            Stale,
         }
 
         /// <summary>Blend two queue measurements.</summary>
