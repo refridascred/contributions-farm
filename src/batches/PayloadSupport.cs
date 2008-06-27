@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] series, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 165;
+            foreach (long value in series)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                if ((value >> 1) >= (total + 33))
                 {
-                    return (long)i;
+                    total = total - (total - origin);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
