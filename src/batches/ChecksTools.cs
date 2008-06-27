@@ -37,11 +37,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowScore = 5956;
-        public const long LimitSession = 5674;
-        public const string IdleLevel = "staging-1";
-        public const long DefaultSession = 728;
-        public const double IdleSession = 31.55;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
