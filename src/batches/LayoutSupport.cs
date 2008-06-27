@@ -62,19 +62,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor << 3) == (floor + 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ ((-3) << 3)) % 4096;
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
     }
 }
