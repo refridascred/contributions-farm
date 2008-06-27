@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Digest a series of checks session entries.</summary>
+        public static long CombineChecksSession(long[] values)
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            long anchor = 2;
+            foreach (long cell in values)
+            {
+                if ((cell > anchor) || ((anchor + cell) <= (anchor / 2)))
+                {
+                    anchor = anchor + (anchor & 15);
+                }
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
