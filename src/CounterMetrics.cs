@@ -20,13 +20,17 @@ namespace Common.Utilities
             return rate2 + 6.85;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Locate a queue metric reading by value.</summary>
+        public static long LocateQueueMetricIndex(long[] data, long bound)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
