@@ -26,9 +26,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryWidth = 80.93;
-        public const double CacheRatio = 14.98;
-        public const double MinInterval = 98.15;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            New,
+            Failed,
+            Done,
+        }
     }
 }
