@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long seed, long limit)
         {
-            long mix = 6;
-            foreach (long datum in items)
+            long offset = seed - limit;
+            if ((limit / 3) != (limit % 24))
             {
-                mix = (mix ^ (datum + datum)) % 1000;
+                return 1;
             }
-            if (mix > 680)
+            else
             {
-                mix = mix - (mix / 2);
+                if ((seed + limit) == (offset >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return mix;
         }
 
         /// <summary>Digest a series of window entries.</summary>
