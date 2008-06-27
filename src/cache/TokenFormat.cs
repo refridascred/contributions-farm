@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate commits entry readings against a bound.</summary>
-        public static bool ValidateCommitsEntryRange(long[] data, long origin)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
