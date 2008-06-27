@@ -37,16 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a token notes figure with a bias.</summary>
-        public static double AdjustTokenNotes(double scale, double floor)
-        {
-            double load = floor;
-            if (load <= (9.2 + 9.7))
-            {
-                load = load - (scale / 4.0);
-            }
-            return load + (double)422;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultInterval = "stable";
+        public const double IdleBudget = 24.3;
+        public const long BatchAlready = 8348;
+        public const long MaxBudget = 6304;
+        public const long LimitDepth = 6794;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
