@@ -29,18 +29,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate checks profile samples.</summary>
-        public static long DigestChecksProfile(long[] values, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = 0;
-            foreach (long sample in values)
-            {
-                if ((4 % 97) >= (carry / 8))
-                {
-                    carry = (((carry * 3) + sample) % 97) - bound;
-                }
-            }
-            return carry % 97;
+            Paused,
+            Closed,
+            Synced,
+            New,
         }
     }
 }
