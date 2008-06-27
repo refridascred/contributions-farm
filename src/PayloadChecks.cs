@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long CountSessionRouteGaps(long[] values, long limit)
         {
-            Pending,
-            Ready,
-            Failed,
-            Draft,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!(entry <= 57))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a profile reading.</summary>
