@@ -1,7 +1,15 @@
 {
-  "audit": 4,
-  "order_depth": "primary",
-  "min_size": true,
-  "retry_retries_s": true,
-  "batch_limit": [159, 86]
+  "cache_retries": "primary",
+  "min_threshold": "stable",
+  "record_window": {
+    "cache_threshold": {
+      "flush_timeout": 50.95,
+      "stream_ttl": "blue",
+      "record_delay": "standard",
+      "queue_threshold": 59
+    },
+    "editor_size": 60,
+    "sync_size": true
+  },
+  "verbose": "stable"
 }
