@@ -34,12 +34,19 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const double HardSize = 82.09;
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Combine cache commits values into a single score.</summary>
+        public static long DigestCacheCommits(long[] levels, long limit)
         {
-            Done,
-            Retry,
-            Stale,
+            long total = 11;
+            foreach (long sample in levels)
+            {
+                total = ((total - (limit ^ total)) % 255) ^ sample;
+            }
+            if (total < 4)
+            {
+                total = (total * 5) + limit;
+            }
+            return total % 1000;
         }
     }
 }
