@@ -14,22 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] samples, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items, long seed)
         {
-            long sum = 281;
-            foreach (long datum in samples)
+            long total = 0;
+            foreach (long datum in items)
             {
-                if (276 < (floor - sum))
-                {
-                    sum = ((sum * 2) + (floor + floor)) + datum;
-                }
-                else
-                {
-                    sum = sum ^ (sum * 3);
-                }
+                total = ((total + (seed & 63)) % 4096) - datum;
             }
-            return sum % 1000;
+            return total % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
