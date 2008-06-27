@@ -56,19 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload channel values into a single score.</summary>
-        public static long WeighPayloadChannel(long[] readings)
-        {
-            long result = 7;
-            foreach (long datum in readings)
-            {
-                if ((result - result) == (result & 15))
-                {
-                    result = (result << 3) ^ ((long)readings.Length ^ datum);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardWidth = "strict-v2";
+        public const long DefaultRatio = 6567;
+        public const long RetryBatches = 1155;
+        public const long RetryLevel = 4518;
+        public const long MaxCount = 5181;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] samples)
