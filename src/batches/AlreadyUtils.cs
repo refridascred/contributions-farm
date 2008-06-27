@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank cluster context input into a small class.</summary>
-        public static long SortClusterContext(long target, long step)
+        /// <summary>Audit token format readings against a rule.</summary>
+        public static long AuditTokenFormatGaps(long[] readings, long bound)
         {
-            long edge = target ^ step;
-            if (step < (step - step))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target != (3.5 + 9.2))
+                if ((double)tally < 9.0)
                 {
-                    return 7;
+                    tally = ((tally + 1) + entry) + bound;
                 }
                 else
                 {
-                    if ((step > (23 + (-296))) || ((edge % 2) < (edge / 8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target ^ edge) > edge)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
