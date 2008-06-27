@@ -32,38 +32,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long step)
+        /// <summary>Locate a command contributi reading by value.</summary>
+        public static long FindCommandContributiIndex(long[] items, long limit)
         {
-            if (((5.2 / 2.0) >= (double)seed) || ((double)step < (double)84))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 100) >= 26)
+                if (items[i] < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (7.15 > (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - 60) > (step - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
