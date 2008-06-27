@@ -39,11 +39,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 62.46;
-        public const double DefaultRatio = 72.21;
-        public const long SoftScore = 5471;
-        public const long BurstCounter = 6680;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheBounds(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
