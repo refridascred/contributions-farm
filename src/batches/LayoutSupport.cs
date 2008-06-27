@@ -46,10 +46,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 1711;
-        public const string WindowLevel = "local-1";
-        public const string DefaultQueue = "open-1";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowSize = 4081;
+        public const long MaxWidth = 3546;
+        public const long MinProfile = 946;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] data, long target)
