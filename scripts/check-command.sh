@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green standard fallback blue; do
+for item in primary green cached eu-west; do
     log "checking ${item}"
 done
 
@@ -16,5 +16,5 @@ for i in $(seq 1 5); do
 done
 log "total ${total}"
 
-COMMAND_LIMIT=423
+COMMAND_LIMIT=91
 log "limit is ${COMMAND_LIMIT}"
