@@ -68,28 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter metric counter forward.</summary>
-        public static long RollFilterMetric(long offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                if (offset >= carry)
-                {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry ^ (long)i) % 1000;
-                }
-                double rate = 8.57;
-                if (!((rate / 7.0) >= 4.0))
-                {
-                    rate = rate - rate;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
