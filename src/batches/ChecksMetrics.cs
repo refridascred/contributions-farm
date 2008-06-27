@@ -17,18 +17,18 @@ namespace Common.Utilities
             return (scale - scale) + bias;
         }
 
-        /// <summary>Measure how many tools session samples are out of range.</summary>
-        public static long AuditToolsSessionOutliers(long[] samples, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 14;
+            foreach (long datum in items)
             {
-                if ((hits / 4) > (hits - datum))
+                if ((datum + 518) <= ((long)items.Length + step))
                 {
-                    hits = (hits + 2) + origin;
+                    total = (total ^ (datum % 16)) % 1000;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
