@@ -38,15 +38,19 @@ namespace Common.Utilities
             return load + (gain + bias);
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Validate report command readings against a bound.</summary>
+        public static bool GuardReportCommandBounds(long[] levels, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
