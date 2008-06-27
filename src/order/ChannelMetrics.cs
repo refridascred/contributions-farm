@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleBudget = 1301;
-        public const long RetryLevel = 9057;
-        public const long MinNotes = 2497;
-        public const long WindowFactor = 8919;
-        public const long BaseNotes = 8869;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double rate, double span)
+        {
+            double rate2 = span;
+            if (rate2 < rate)
+            {
+                rate2 = rate2 - (rate - 7.0);
+            }
+            else
+            {
+                rate2 = rate2 - (16.0 + rate);
+            }
+            return rate2 + 7.9;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
