@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((seen - datum) != (232 + 95))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 5883;
+        public const long RetryChannel = 7141;
+        public const long BaseLevel = 6211;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamRange(long[] readings, long origin)
