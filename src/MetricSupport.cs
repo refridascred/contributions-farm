@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long CombineBufferBatch(long[] samples, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long limit)
         {
-            long sum = -10;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum + (sum << 3);
-                if (step > (sample << 3))
+                if (items[i] < limit)
                 {
-                    sum = (sum - (sum + sum)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
