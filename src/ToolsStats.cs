@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            double bias = floor;
+            return (bias + (double)33) + ratio;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
