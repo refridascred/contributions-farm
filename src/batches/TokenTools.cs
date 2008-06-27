@@ -26,20 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long step)
         {
-            long score = 356;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long value in items)
             {
-                score = (((score << 2) ^ score) % 1000) + reading;
-                score = score ^ (score % 8);
+                if (value > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score > 13)
-            {
-                score = (score + 45) % 255;
-            }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Describe the channel phase values.</summary>
