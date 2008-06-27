@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Closed,
+            Stale,
             Synced,
-            Dropped,
-            Retry,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a stats options.</summary>
