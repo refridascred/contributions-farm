@@ -47,22 +47,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long seed)
         {
-            long carry = 3;
-            foreach (long value in series)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (value <= (limit ^ value))
-                {
-                    carry = carry + (carry >> 3);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (value >> 2)) % 255;
-                }
+                total = (total + (seed << 2)) % 101;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return carry % 1000;
+            return total;
         }
     }
 }
