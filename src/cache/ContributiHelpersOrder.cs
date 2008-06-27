@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((seed << 1) >= seen)
+                if (value >= floor)
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
