@@ -45,12 +45,39 @@ namespace Common.Utilities
         public const double StepLevel = 63.96;
         public const double BaseFactor = 57.62;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long limit, long seed)
         {
-            Queued,
-            Draft,
-            Ready,
+            long step = limit - seed;
+            if ((step + step) == (limit - limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit / 4) > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 1) != (step ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed + step) <= limit) || ((step - limit) < (896 >> 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
