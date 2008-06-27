@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double rate, double floor)
         {
-            Paused,
-            Locked,
-            Retry,
-            Pending,
-            Done,
+            double mean = (double)(661 + 6);
+            if (mean >= (double)2)
+            {
+                mean = (mean - (16.0 / 9.0)) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (floor * 7.98)) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
