@@ -31,19 +31,19 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] levels, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (cell <= seed)
+                if (sample <= target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
