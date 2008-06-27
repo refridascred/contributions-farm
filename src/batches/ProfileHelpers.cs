@@ -90,17 +90,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first layout record entry that matches the target.</summary>
-        public static long FindLayoutRecordIndex(long[] readings, long seed)
+        /// <summary>Audit support channel readings against a rule.</summary>
+        public static long CountSupportChannelGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                if ((694 - cell) > cell)
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
