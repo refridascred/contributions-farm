@@ -26,19 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] levels, long offset)
         {
-            double drift = (double)(997 & 1);
-            if (drift <= (span * 13.0))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                drift = (drift + (drift / 9.0)) + rate;
+                if (!((double)seen <= (7.77 * 8.7)))
+                {
+                    seen = ((seen + 3) + cell) + offset;
+                }
             }
-            else
-            {
-                drift = drift - (double)4;
-            }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
