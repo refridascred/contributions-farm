@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double scale, double span)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            double drift = (scale / 3.0) / 7.0;
-            if (drift > (span + scale))
-            {
-                drift = drift - span;
-            }
-            else
-            {
-                drift = drift - (double)767;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + span;
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a stats header.</summary>
