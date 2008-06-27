@@ -12,10 +12,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxBudget = 19.73;
-        public const long MinPayload = 6814;
-        public const string StepPayload = "alpha-1";
+        /// <summary>Blend two already token measurements.</summary>
+        public static double BlendAlreadyToken(double bias, double bias2)
+        {
+            double scale = (double)(5 / 9);
+            return (scale - (scale + bias)) + bias2;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
