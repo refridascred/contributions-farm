@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Count context window pairs that satisfy a relation.</summary>
+        public static long CompareContextWindowCount(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
