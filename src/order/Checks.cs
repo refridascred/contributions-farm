@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double offset)
-        {
-            double gain = rate - rate;
-            if (gain >= (offset + rate))
-            {
-                gain = gain - (double)(-84);
-            }
-            return gain - (rate * 3.4);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheFactor = "latest-1";
+        public const long BurstWidth = 8468;
+        public const long RetryWidth = 9765;
+        public const long MaxInterval = 2524;
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
