@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=194
-log "limit is ${RECORD_LIMIT}"
+for item in local stable primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-stable}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
