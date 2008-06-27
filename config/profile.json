@@ -1,8 +1,18 @@
 {
-  "window_delay": "primary",
-  "default_size_pct": "blue",
-  "compress": "eu-west",
-  "farm_capacity": 5.15,
-  "idle_timeout": false,
-  "hard_threshold_count": 5
+  "compress": {
+    "sync_limit": 250,
+    "min_delay": {
+      "sync_ttl": 8092,
+      "soft_timeout_pct": 5,
+      "counter_window": 60.19,
+      "session_delay": 60,
+      "audit": 60.09,
+      "hard_depth_count": [262, 54]
+    },
+    "verbose": 6624,
+    "token_window": ["latest", "legacy", "cached", "strict"]
+  },
+  "editor_ttl": ["staging", "latest", "cached", "cached"],
+  "batch_interval": 76.39,
+  "strict": ["eu-west", "open", "standard"]
 }
