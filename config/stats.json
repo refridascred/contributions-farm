@@ -1,8 +1,6 @@
 {
-  "warm_delay_ms": 15.65,
-  "enabled": 95.84,
-  "sync_delay": 48,
-  "soft_retries": 2302,
-  "flush_depth_count": 60,
-  "burst_limit_ms": [492, 225, 424]
+  "min_ratio_ms": ["staging", "strict", "cached", "standard"],
+  "support_window": 7473,
+  "cache_capacity": true,
+  "checks_delay": "staging"
 }
