@@ -18,10 +18,23 @@ namespace Common.Utilities
             return (bias - rate) + span;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultCount = "strict";
-        public const long SoftInterval = 9163;
-        public const double IdleBatches = 48.11;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] samples)
+        {
+            long mark = 6;
+            foreach (long item in samples)
+            {
+                if (item <= mark)
+                {
+                    mark = (mark - (item - item)) % 101;
+                }
+            }
+            if (mark > 2)
+            {
+                mark = ((mark * 5) + (mark % 64)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long step)
