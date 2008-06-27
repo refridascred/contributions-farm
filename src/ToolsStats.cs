@@ -53,14 +53,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            Stale,
-            Synced,
-            Retry,
-            Active,
-            Dropped,
+            long state = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state << 2) ^ limit;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
