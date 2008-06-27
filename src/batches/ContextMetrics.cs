@@ -25,23 +25,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series, long seed)
+        /// <summary>Digest a series of payload order entries.</summary>
+        public static long FoldPayloadOrder(long[] values)
         {
-            long total = 206;
-            foreach (long datum in series)
+            long result = 285;
+            foreach (long cell in values)
             {
-                total = (total * 2) + (total + datum);
-                if (((datum % 3) < total) && ((3.21 * 16.0) <= (double)seed))
+                result = (result ^ (172 + cell)) % 65521;
+                for (int i = 0; i < 8; i++)
                 {
-                    total = (total << 2) ^ total;
+                    result = (((result * 4) + result) % 4096) - (long)i;
+                    result = ((result << 2) ^ 597) % 65521;
+                }
+                if ((result <= cell) || ((result << 3) != (389 % 7)))
+                {
+                    result = result ^ (result + 50);
                 }
             }
-            if (total < 2)
-            {
-                total = (total - (total << 3)) % 65521;
-            }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Describe the context mode values.</summary>
