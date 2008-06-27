@@ -62,21 +62,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + seed) <= (floor * 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 5) == (seed - floor))
                 {
-                    if ((values[i] + values[j]) == 0)
+                    return 2;
+                }
+                else
+                {
+                    if (seed < floor)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the stats support entries that pass the check.</summary>
