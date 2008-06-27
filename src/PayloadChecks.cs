@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double scale, double bias)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double scale2 = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (scale2 * 3.8)) - (double)(long)i;
-            }
-            return scale2 - (scale / 8.0);
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
