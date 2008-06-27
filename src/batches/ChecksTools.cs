@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            long total = 5;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (total <= 8)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total - (total + total)) % 65521) + entry;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 9)
-            {
-                total = ((total * 5) + (71 & 127)) % 4096;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Locate a already reading by value.</summary>
