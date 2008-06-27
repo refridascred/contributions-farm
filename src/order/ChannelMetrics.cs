@@ -19,22 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] data)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.49 * 6.0) != (double)(long)data.Length)
+                if (levels[i] < offset)
                 {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
