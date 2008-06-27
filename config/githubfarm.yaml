@@ -1,7 +1,12 @@
 # githubfarm settings
-persist: staging
-record_depth:
+editor_depth:
   - latest
-  - eu-west
-  - strict
-metrics_ratio: 14.74
+  - standard
+checks_capacity:
+  enabled:
+    - stable
+    - cached
+  soft_window: 9291
+  flush_ttl_ms: 43
+verbose: edge
+order_threshold: 500
