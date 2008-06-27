@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long step)
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool CheckNotesBatchesRange(long[] series, long bound)
         {
-            long anchor = -830;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                anchor = ((anchor - (step / 7)) % 101) + item;
+                if (sample != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor > 374)
-            {
-                anchor = (anchor - (anchor / 7)) % 1000;
-            }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Digest a series of record entries.</summary>
