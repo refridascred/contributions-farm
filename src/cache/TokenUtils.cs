@@ -20,19 +20,19 @@ namespace Common.Utilities
             return rate2 + 1.6;
         }
 
-        /// <summary>Check that every report context entry stays within the limit.</summary>
-        public static bool ValidateReportContextBounds(long[] readings, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long acc = 0;
+            foreach (long item in values)
             {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + origin) - item;
             }
-            return found;
+            if (acc < 554)
+            {
+                acc = acc - (672 + origin);
+            }
+            return acc % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
