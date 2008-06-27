@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseWidth = 45.5;
-        public const string BaseSession = "fallback";
-        public const long MaxSize = 52;
-        public const string WindowTimeout = "cached";
-        public const double MinSize = 55.5;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Count { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double RetryWidth = 80.93;
