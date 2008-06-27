@@ -17,12 +17,18 @@ namespace Common.Utilities
             return (scale - scale) + bias;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many tools session samples are out of range.</summary>
+        public static long AuditToolsSessionOutliers(long[] samples, long origin)
         {
-            Synced,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits / 4) > (hits - datum))
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
