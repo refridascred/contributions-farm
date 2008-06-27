@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long offset)
         {
-            long carry = 805;
-            foreach (long reading in values)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (((carry << 2) ^ (173 - (long)values.Length)) % 101) + reading;
+                long offset2 = state << 1;
+                double scale = (double)(long)i + (8.4 - 6.3);
+                if (scale < (double)offset2)
+                {
+                    state = state + (offset * 4);
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (carry < 37)
-            {
-                carry = carry + 46;
-            }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a format header.</summary>
