@@ -55,14 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] series)
         {
-            Paused,
-            Draft,
-            New,
-            Idle,
-            Synced,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (120 < (cell + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate format queue readings against a bound.</summary>
