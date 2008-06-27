@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate token batch readings against a bound.</summary>
+        public static bool VerifyTokenBatchRange(long[] samples, long target)
         {
-            Ready,
-            Paused,
-            Failed,
-            Queued,
-            New,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of context readings.</summary>
