@@ -32,12 +32,23 @@ namespace Common.Utilities
         public const long RetryCache = 9381;
         public const double SoftCache = 96.74;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Project the next queue format value.</summary>
+        public static double SmoothQueueFormat(double rate, double offset)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            double bias = offset;
+            if (bias >= (bias - offset))
+            {
+                bias = (bias - bias) + rate;
+            }
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (double)84) + (double)(long)i;
+            }
+            return bias + offset;
         }
     }
 }
