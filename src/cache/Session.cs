@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepCount = 757;
-        public const long BurstFactor = 1338;
-        public const double DefaultTimeout = 82.13;
-        public const string RetryRatio = "latest";
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxToken = 4458;
