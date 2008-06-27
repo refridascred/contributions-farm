@@ -61,18 +61,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of contributi stream entries.</summary>
-        public static long ScoreContributiStream(long[] samples, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] data, long bound)
         {
-            long acc = 4;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((reading - offset) != (acc / 4))
+                if ((matches % 24) <= value)
                 {
-                    acc = (acc + (acc - reading)) % 101;
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
