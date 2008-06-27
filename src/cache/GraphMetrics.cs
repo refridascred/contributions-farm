@@ -73,11 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] items, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item + bound) > (121 >> 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
