@@ -22,28 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples, long origin)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long sum = 27;
-            foreach (long datum in samples)
-            {
-                if (((double)sum >= 3.5) || ((sum + datum) > (444 + 26)))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ (datum + datum)) % 255;
-                    sum = (sum ^ (datum << 1)) % 255;
-                }
-                sum = sum + (origin ^ origin);
-            }
-            if (sum < 37)
-            {
-                sum = ((sum << 3) ^ origin) % 1000;
-            }
-            return sum % 65521;
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
