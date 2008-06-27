@@ -42,11 +42,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 433;
-        public const long MaxSpan = 8412;
-        public const long CacheRatio = 6323;
-        public const long MinScore = 9956;
-        public const long BaseSpan = 1855;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Active,
+            Queued,
+            Idle,
+            Draft,
+        }
     }
 }
