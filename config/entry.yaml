@@ -1,5 +1,20 @@
 # entry settings
-warm_threshold_count: open
-default_limit_ms: standard
-poll_capacity_count: true
-sync_threshold_s: eu-west
+payload_size:
+  retry_window_ms: 36.16
+  idle_delay_count: 97
+  tools_size: 5608
+  order_capacity:
+    audit: eu-west
+    editor_window:
+      - 442
+      - 3
+      - 425
+      - 150
+    enabled: true
+    batch_window_count:
+      - 1
+      - 334
+      - 341
+  verbose: 39.19
+soft_delay_s: fallback
+poll_window: edge
