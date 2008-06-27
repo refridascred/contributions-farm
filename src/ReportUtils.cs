@@ -56,15 +56,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double gain, double span)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double bias = gain;
-            if (bias < (gain + span))
-            {
-                bias = bias - (double)6;
-            }
-            return bias + (4.98 - gain);
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
