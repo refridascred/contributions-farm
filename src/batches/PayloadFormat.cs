@@ -36,22 +36,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] readings, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long state = 3;
-            foreach (long value in readings)
-            {
-                if ((value / 7) > seed)
-                {
-                    state = (state + (value % 97)) % 4096;
-                }
-                else
-                {
-                    state = state ^ (value * 4);
-                }
-            }
-            return state % 4096;
+            Pending,
+            Dropped,
+            Queued,
+            Failed,
+            Retry,
         }
     }
 }
