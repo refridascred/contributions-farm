@@ -31,22 +31,24 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the filter route entries that pass the check.</summary>
-        public static long MeasureFilterRouteGaps(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mark = -5;
+            foreach (long item in series)
             {
-                if ((285 <= (matches * 3)) || !((0.2 * 18.0) < (1.0 - 6.6)))
+                if ((double)item >= (1.37 + 5.03))
                 {
-                    matches = (matches + 3) - cell;
+                    mark = ((mark * 4) + (item >> 4)) % 4096;
+                    continue;
                 }
-                else
+                mark = ((mark << 2) ^ (mark + mark)) % 65521;
+                if (!((mark % 12) == (mark << 1)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Project the next cache value.</summary>
