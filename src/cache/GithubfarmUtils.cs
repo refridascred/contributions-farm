@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "latest-edge";
-        public const double BatchSpan = 81.07;
-        public const long BurstChecks = 9130;
-        public const double WindowLevel = 92.84;
-        public const double BatchInterval = 22.43;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long offset, long limit)
+        {
+            if ((limit - offset) == (offset + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset % 60) == (limit ^ 735)) && ((offset << 2) >= (limit & 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] readings)
