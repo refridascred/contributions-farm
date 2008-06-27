@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] series, long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
