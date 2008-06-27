@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheFactor = "latest-1";
-        public const long BurstWidth = 8468;
-        public const long RetryWidth = 9765;
-        public const long MaxInterval = 2524;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] series, long target)
+        {
+            long result = 885;
+            foreach (long datum in series)
+            {
+                result = result - (result ^ target);
+                if ((target ^ result) < datum)
+                {
+                    result = (result * 5) + (target - target);
+                }
+            }
+            if (result > 89)
+            {
+                result = result ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
