@@ -61,17 +61,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] levels, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (levels[i] > offset)
+                if (count < (count % 8))
                 {
-                    return (long)i;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
