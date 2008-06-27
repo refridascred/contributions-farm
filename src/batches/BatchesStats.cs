@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double MinContributi = 64.84;
         public const long LimitContributi = 3788;
 
-        /// <summary>Adjust a metric stats reading.</summary>
-        public static double AdjustMetricStats(double rate, double span)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double rate, double floor)
         {
-            double bias = (double)3 / 6.0;
-            return (bias - rate) + span;
+            double ratio = (double)(462 + 1);
+            if (ratio < floor)
+            {
+                ratio = (ratio + floor) - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + 9.0;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
