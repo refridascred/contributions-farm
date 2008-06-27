@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=34
+BUFFER_LIMIT=368
 log "limit is ${BUFFER_LIMIT}"
 
-for item in edge local cached legacy; do
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in stable standard; do
     log "checking ${item}"
 done
