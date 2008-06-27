@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] items, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            long total = 6;
+            foreach (long entry in series)
             {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((((total << 3) ^ (total + total)) % 4096) ^ entry) - limit;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
