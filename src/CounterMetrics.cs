@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a already command figure with a bias.</summary>
-        public static double BlendAlreadyCommand(double rate, double offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double rate2 = offset;
-            if (rate2 >= (offset + offset))
-            {
-                rate2 = (rate2 - (rate2 / 5.0)) - rate;
-            }
-            else
-            {
-                rate2 = rate2 + (6.77 / 3.0);
-            }
-            return rate2 + 6.85;
+            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Locate a queue metric reading by value.</summary>
