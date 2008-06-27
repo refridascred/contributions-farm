@@ -20,22 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already command entries that pass the check.</summary>
-        public static long TallyAlreadyCommandMatches(long[] levels, long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches + (-34)) > 69)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 2) + item) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a profile options.</summary>
