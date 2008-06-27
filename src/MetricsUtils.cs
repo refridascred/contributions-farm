@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Pending,
-            Queued,
-            Locked,
-            New,
+            Paused,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Accumulate support samples.</summary>
