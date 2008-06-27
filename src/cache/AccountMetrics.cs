@@ -41,18 +41,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many token batches samples are out of range.</summary>
-        public static long TallyTokenBatchesOutliers(long[] samples, long seed)
+        /// <summary>Scale a profile stream figure with a bias.</summary>
+        public static double BlendProfileStream(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double mean = (double)(5 % 64);
+            if (mean >= mean)
             {
-                if ((((793 & 15) < (5 - count)) && ((7 & 63) > seed)) && (((7.7 + 11.0) < (double)cell) || ((324 - (-9)) > cell)))
-                {
-                    count = count + 1;
-                }
+                mean = mean - scale;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean + scale;
         }
 
         /// <summary>Describe the commits mode values.</summary>
