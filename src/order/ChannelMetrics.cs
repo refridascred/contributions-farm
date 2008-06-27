@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultScore = 73.87;
-        public const long IdleSpan = 9504;
-        public const long LimitTimeout = 4084;
-        public const long BatchBudget = 7904;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] data, long seed)
