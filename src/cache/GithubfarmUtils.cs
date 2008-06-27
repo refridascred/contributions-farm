@@ -40,9 +40,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 5027;
-        public const string RetryScore = "staging-1";
-        public const long StepCount = 6630;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen << 1) < item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
