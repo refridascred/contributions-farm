@@ -44,19 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] data, long origin)
+        /// <summary>Find the first support session entry that matches the target.</summary>
+        public static long SeekSupportSessionIndex(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= origin)
+                if (readings[i] < bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
