@@ -50,19 +50,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] values, long bound)
+        /// <summary>Blend two contributi command measurements.</summary>
+        public static double ProjectContributiCommand(double weight, double floor)
         {
-            long carry = 14;
-            foreach (long value in values)
+            double ratio = (double)(1 / 9);
+            if (ratio <= ratio)
             {
-                carry = (carry ^ (bound >> 2)) + value;
+                ratio = (ratio + weight) + floor;
             }
-            if (carry < 506)
-            {
-                carry = ((carry << 2) ^ carry) % 255;
-            }
-            return carry;
+            return ratio + (double)344;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
