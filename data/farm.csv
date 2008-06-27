@@ -1,8 +1,8 @@
-id,token,state,rank,region
-1,33.36,stable,374,45.95
-2,92.3,16.44,open,26.18
-3,657,62.93,fallback,78.36
-4,81.21,165,83.45,558
-5,991,579,689,228
-6,57.87,867,169,609
-7,latest,primary,93.82,staging
+id,active,label
+1,360,strict
+2,56.29,latest
+3,417,222
+4,primary,252
+5,latest,stable
+6,401,362
+7,16,833
