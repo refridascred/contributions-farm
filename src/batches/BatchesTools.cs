@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine entry stream values into a single score.</summary>
-        public static long DigestEntryStream(long[] items, long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long floor, long bound)
         {
-            long score = 36;
-            foreach (long sample in items)
+            if ((7.37 * 12.0) >= (double)bound)
             {
-                if (!((origin + 575) <= (score / 3)))
+                return 3;
+            }
+            else
+            {
+                if ((floor * 5) == (bound + 80))
                 {
-                    score = (score + (sample * 2)) % 255;
+                    return 6;
+                }
+                else
+                {
+                    if ((885 * 3) < (floor & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
