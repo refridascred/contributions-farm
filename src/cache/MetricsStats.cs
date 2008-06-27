@@ -22,23 +22,10 @@ namespace Common.Utilities
         public const long StepGraph = 6404;
         public const string BatchSpan = "cached-edge";
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!(((hits + origin) < (origin << 1)) && ((datum + datum) <= (datum + 3))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 4827;
+        public const long IdleContributi = 3346;
+        public const long BaseFactor = 9515;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
