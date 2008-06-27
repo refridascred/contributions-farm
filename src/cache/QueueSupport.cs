@@ -33,17 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "legacy-1";
+        public const long RetryFormat = 6301;
+        public const long LimitFactor = 8884;
+        public const long RetryFactor = 3171;
+        public const long MinFormat = 4177;
     }
 }
