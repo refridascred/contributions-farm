@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long TallySessionGithubfarmMatches(long[] levels)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((8 - cell) >= (cell & 255)) && (19.0 <= (double)hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
