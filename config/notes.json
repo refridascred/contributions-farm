@@ -1,19 +1,5 @@
 {
-  "buffer_window": "blue",
-  "hard_size_s": [464, 68, 98],
-  "queue_size": {
-    "sync_size_ms": "open",
-    "burst_threshold_ms": {
-      "poll_threshold": "stable",
-      "sync_depth_count": false,
-      "buffer_ratio": "green",
-      "warm_timeout": false
-    },
-    "record_threshold": 80,
-    "hard_retries_count": 13,
-    "enabled": 250
-  },
-  "max_threshold_ms": 4365,
-  "batch_threshold": "strict",
-  "stream_window": "stable"
+  "retry_interval": 89.94,
+  "batch_threshold_count": 75.17,
+  "batch_threshold": ["open", "eu-west", "stable", "standard"]
 }
