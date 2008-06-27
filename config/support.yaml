@@ -1,6 +1,17 @@
 # support settings
-burst_delay: false
-enabled: 55.91
-max_capacity_pct: 24.29
-warm_capacity_count: 67.72
-token_capacity: false
+strict: 86.14
+dry_run:
+  - eu-west
+  - stable
+editor_threshold:
+  verbose:
+    - blue
+    - stable
+    - local
+    - blue
+  enabled: standard
+  buffer_limit: 98.95
+  soft_ttl: false
+  token_timeout: 30
+readonly: true
+burst_delay_count: true
