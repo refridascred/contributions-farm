@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total + (step & 255)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
