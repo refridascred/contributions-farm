@@ -28,21 +28,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
