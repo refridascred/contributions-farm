@@ -1,5 +1,6 @@
 {
-  "warm_ratio_s": true,
-  "readonly": 4167,
-  "base_capacity_count": 250
+  "strict": "green",
+  "soft_limit_count": true,
+  "cache_window_pct": "latest",
+  "soft_limit": 28.27
 }
