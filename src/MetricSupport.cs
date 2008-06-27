@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long step)
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long CombineBufferBatch(long[] samples, long step)
         {
-            long offset2 = offset + step;
-            if (offset <= (119 + 9))
+            long sum = -10;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset2 <= (step + step))
+                sum = sum + (sum << 3);
+                if (step > (sample << 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    sum = (sum - (sum + sum)) % 65521;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
