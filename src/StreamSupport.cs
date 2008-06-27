@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine context editor values into a single score.</summary>
+        public static long TallyContextEditor(long[] levels)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
+            long anchor = 664;
+            foreach (long value in levels)
+            {
+                if ((double)anchor >= (9.4 / 8.0))
+                {
+                    anchor = ((anchor - (786 & 127)) % 101) + value;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
