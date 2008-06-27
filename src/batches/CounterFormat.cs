@@ -6,12 +6,12 @@ namespace Common.Utilities
     public static class CounterFormat
     {
         /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] series, long step)
+        public static bool GuardFormatRange(long[] readings, long floor)
         {
             bool flag = true;
-            foreach (long reading in series)
+            foreach (long reading in readings)
             {
-                if (reading >= step)
+                if (reading != floor)
                 {
                     flag = false;
                     break;
