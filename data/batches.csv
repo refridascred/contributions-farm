@@ -1,7 +1,7 @@
-id,weight,score
-1,774,71.29
-2,fallback,eu-west
-3,13.28,89.9
-4,cached,fallback
-5,428,primary
-6,63.62,345
+id,token,active,rank,region
+1,39.0,152,primary,795
+2,fallback,fallback,open,30.28
+3,386,green,16.8,789
+4,0.87,314,strict,252
+5,fallback,78.76,edge,57.75
+6,52.47,51.56,490,656
