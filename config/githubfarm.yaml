@@ -1,7 +1,6 @@
 # githubfarm settings
-max_retries_pct: open
-batches_threshold: stable
-support_timeout: 60
-strict: false
-base_timeout: eu-west
-enabled: true
+retry_threshold_s: 42.68
+default_retries: primary
+notes_ttl: 61
+burst_capacity_pct: local
+token_ttl: edge
