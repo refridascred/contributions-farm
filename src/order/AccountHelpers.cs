@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const string StepScore = "open-edge";
         public const long SoftSpan = 210;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] readings, long seed)
         {
-            Pending,
-            Failed,
-            Stale,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every graph support entry stays within the limit.</summary>
