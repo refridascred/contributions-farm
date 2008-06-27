@@ -25,12 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a payload batches sample.</summary>
+        public static long FindPayloadBatchesIndex(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < floor)
+                if ((samples[i] < step) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
