@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long floor, long step)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long edge = floor + step;
+            if ((step > (step + step)) && ((double)step != (3.61 / 9.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (0 < (edge / 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((edge / 5) < step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cluster token value from a seed.</summary>
