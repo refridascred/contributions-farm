@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Closed,
+            Stale,
+            Ready,
+            New,
+            Locked,
             Paused,
-            Dropped,
-            Synced,
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
