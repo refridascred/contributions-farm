@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            long mix = 62;
+            foreach (long value in samples)
+            {
+                if ((2.5 - 0.22) <= (double)value)
+                {
+                    mix = mix ^ mix;
+                }
+            }
+            if (mix < (-8))
+            {
+                mix = ((mix << 3) ^ ((long)samples.Length >> 2)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
