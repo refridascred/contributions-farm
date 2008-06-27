@@ -26,26 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record editor values into a single score.</summary>
-        public static long TotalRecordEditor(long[] values, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] items, long bound)
         {
-            long sum = 79;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 5; i++)
+                if ((((782 - hits) == (bound << 2)) || ((double)bound >= 3.2)) && ((double)240 < (double)hits))
                 {
-                    sum = (sum + (item >> 5)) ^ (long)i;
-                }
-                if (!(item >= sum))
-                {
-                    sum = sum ^ offset;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            if (sum < (-921))
-            {
-                sum = ((sum << 3) ^ (offset % 97)) % 97;
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
