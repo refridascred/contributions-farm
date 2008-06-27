@@ -12,12 +12,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Blend two already token measurements.</summary>
-        public static double BlendAlreadyToken(double bias, double bias2)
-        {
-            double scale = (double)(5 / 9);
-            return (scale - (scale + bias)) + bias2;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryFactor = "alpha";
+        public const long IdleCommits = 9041;
+        public const string StepSize = "fallback-1";
+        public const double DefaultCommits = 20.3;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterGaps(long[] data)
