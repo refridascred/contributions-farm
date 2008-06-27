@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] items)
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!((84 / 8) < cell) || !((matches - cell) > (matches + matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the format kind values.</summary>
