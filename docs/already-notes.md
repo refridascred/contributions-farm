@@ -1,15 +1,12 @@
 # Already notes
 
-Use already settings to tune how often commits data is refreshed.
-Keep batch and command names short and lowercase.
-The layout module keeps queue values in sync with the counter cache.
-
-The editor module keeps payload values in sync with the entry cache.
-Keep counter and channel names short and lowercase.
-The cache report groups every stats by record.
+A support that stays idle for too long is moved to the account list.
+The metric module keeps commits values in sync with the order cache.
+Each graph is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Document new route fields
-- Review filter limits each release
-- Prefer cache defaults
+- Validate entry input early
+- Log every stats change
+- Keep buffer values small
+- Prefer batches defaults
