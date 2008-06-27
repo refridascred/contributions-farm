@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long step)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long span = origin - step;
+            if ((span >> 1) != (origin ^ span))
             {
-                if (sample != offset)
+                return 7;
+            }
+            else
+            {
+                if (7.0 > (double)origin)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
