@@ -28,22 +28,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
-        public static long CompareProfileCommitsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 6151;
+        public const string CacheContributi = "cached-v2";
+        public const long BurstContributi = 1532;
+        public const double LimitSize = 45.78;
+        public const long WindowLevel = 6446;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double LimitEntry = 79.11;
