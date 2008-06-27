@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long limit)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long floor, long limit)
         {
-            if ((step >> 2) >= limit)
+            if ((limit + floor) != (floor >> 4))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((limit & 15) > (limit / 7)) && (((-3) - step) == (limit / 5)))
+                if ((limit - floor) != (3 << 1))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    if (limit > 639)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor > (1.5 - 2.6))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
