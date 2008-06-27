@@ -29,21 +29,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of stats queue readings.</summary>
-        public static long MatchStatsQueueCount(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 12;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score - (66 >> 2)) % 101) + cell;
             }
-            return hits;
+            if (score > 64)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
