@@ -86,18 +86,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((double)floor >= (3.9 / 9.0))
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 86.69;
+        public const long RetryWidth = 5550;
+        public const long BaseLayout = 3688;
+        public const long RetryLayout = 5826;
     }
 }
