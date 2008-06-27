@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const string MaxAlready = "stable-1";
         public const string MaxWidth = "primary";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings, long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mark = 806;
-            foreach (long sample in readings)
-            {
-                mark = (((mark ^ (1 % 100)) % 255) - sample) + floor;
-            }
-            if (mark > 5)
-            {
-                mark = ((mark << 3) ^ (mark & 31)) % 4096;
-            }
-            return mark % 97;
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
