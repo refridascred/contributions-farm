@@ -24,14 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] data, long step)
         {
-            Done,
-            Active,
-            New,
-            Stale,
-            Failed,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((step * 2) < step)
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batch level values.</summary>
