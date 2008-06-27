@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const string IdleSchema = "stable-1";
         public const long SoftSchema = 2114;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 8774;
-        public const string MaxSize = "fallback-edge";
-        public const long StepInterval = 8901;
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double bias, double span)
+        {
+            double scale = span;
+            return (scale - scale) + bias;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
