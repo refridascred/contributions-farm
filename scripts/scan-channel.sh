@@ -6,24 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in stable latest edge blue; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-open}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=468
+log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
