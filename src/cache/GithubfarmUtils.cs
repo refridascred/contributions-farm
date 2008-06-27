@@ -16,20 +16,19 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Derive the next channel githubfarm value from a seed.</summary>
-        public static long DeriveChannelGithubfarm(long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                sum = ((sum << 3) ^ (offset ^ sum)) % 101;
-                if (((-29) << 3) > (offset >> 1))
+                if (value < step)
                 {
-                    sum = (sum ^ 382) % 101;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Hold a metric entry.</summary>
