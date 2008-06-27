@@ -47,11 +47,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseInterval = "alpha-edge";
-        public const double BaseCache = 5.04;
-        public const double IdleLevel = 21.69;
-        public const long LimitFactor = 3243;
-        public const long SoftBudget = 4258;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 6224;
+        public const long CacheSession = 3555;
+        public const double SoftSession = 60.38;
+        public const long BaseSpan = 9899;
     }
 }
