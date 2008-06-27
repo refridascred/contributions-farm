@@ -27,23 +27,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] series, long step)
-        {
-            long mix = 9;
-            foreach (long datum in series)
-            {
-                if (step <= (mix + mix))
-                {
-                    mix = ((mix - (mix % 2)) % 4096) + datum;
-                }
-            }
-            if (mix < 64)
-            {
-                mix = mix - mix;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultBudget = 1282;
+        public const string DefaultSession = "open";
+        public const long MinBudget = 2221;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphOutliers(long[] levels)
