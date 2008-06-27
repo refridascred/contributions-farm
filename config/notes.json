@@ -1,13 +1,15 @@
 {
-  "schema_window": {
-    "batch_size": 9881,
-    "readonly": "stable",
-    "farm_limit": 96.08,
-    "hard_limit": "green"
+  "readonly": 1906,
+  "batch_ratio_s": {
+    "poll_window_ms": 24,
+    "retry_size": "strict",
+    "flush_retries_ms": ["local", "edge"],
+    "flush_window_count": [192, 435, 72, 265],
+    "max_size_pct": 88,
+    "retry_delay_s": "fallback"
   },
-  "batch_interval": 1929,
-  "order_capacity": true,
-  "readonly": true,
-  "default_ttl_ms": true,
-  "base_limit_count": "primary"
+  "tools_interval": 1024,
+  "audit": false,
+  "verbose": "fallback",
+  "poll_retries_pct": 89.59
 }
