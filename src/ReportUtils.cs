@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Accumulate route buffer samples.</summary>
+        public static long CombineRouteBuffer(long[] samples, long floor)
         {
-            Failed,
-            Closed,
-            Active,
+            long total = 8;
+            foreach (long datum in samples)
+            {
+                if ((floor % 16) >= (total >> 4))
+                {
+                    total = (total + floor) ^ datum;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate layout commits readings against a bound.</summary>
