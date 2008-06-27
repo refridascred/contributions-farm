@@ -46,39 +46,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long prev = step + target;
-            if (((step << 3) <= prev) || (target < (step * 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.78 + 8.34) >= (double)prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step << 2) >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target >> 3) <= (30 / 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
