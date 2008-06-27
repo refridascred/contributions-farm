@@ -1,6 +1,5 @@
 {
-  "queue_depth": 30,
-  "idle_depth_s": "fallback",
-  "strict": [197, 157, 204],
-  "cache_timeout": "stable"
+  "buffer_ratio": false,
+  "dry_run": "primary",
+  "audit": 1044
 }
