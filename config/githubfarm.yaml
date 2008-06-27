@@ -1,8 +1,17 @@
 # githubfarm settings
-soft_ratio_ms: 250
-idle_window: 500
-verbose:
-  - blue
-  - standard
-  - open
-  - blue
+audit: 94.23
+session_interval:
+  max_ratio_s: open
+  default_depth_count: 68
+  sync_limit_count: false
+  queue_window:
+    queue_delay: 32.59
+    cache_capacity: legacy
+    hard_window: 3293
+    hard_size_s:
+      - open
+      - cached
+      - blue
+profile_capacity: latest
+entry_delay: 1024
+poll_interval: 35
