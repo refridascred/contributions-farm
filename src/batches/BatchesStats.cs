@@ -27,12 +27,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            Done,
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
