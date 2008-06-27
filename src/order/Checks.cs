@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstDepth = 1005;
-        public const long DefaultMetric = 3531;
-        public const string LimitDepth = "cached-1";
-        public const long MinRatio = 1674;
-        public const string MaxRatio = "latest";
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double offset)
+        {
+            double gain = rate - rate;
+            if (gain >= (offset + rate))
+            {
+                gain = gain - (double)(-84);
+            }
+            return gain - (rate * 3.4);
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long OverlapCommandCount(long[] samples)
