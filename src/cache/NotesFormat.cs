@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count >> 5) <= (entry - entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a format header.</summary>
