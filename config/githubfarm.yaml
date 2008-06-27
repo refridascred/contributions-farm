@@ -1,11 +1,4 @@
 # githubfarm settings
-warm_depth_ms:
-  - green
-  - latest
-audit: blue
-batch_capacity: 2
-soft_retries_count: 63
-verbose:
-  soft_interval_count: 3996
-  profile_ratio: false
-  min_depth: 1024
+base_limit: 98
+compress: blue
+retry_limit: 23.75
