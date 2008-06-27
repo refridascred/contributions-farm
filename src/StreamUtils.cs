@@ -44,17 +44,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
+        /// <summary>Count the commits window entries that pass the check.</summary>
+        public static long CountCommitsWindowOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (samples[i] <= offset)
+                if ((double)limit > (5.9 - 11.0))
                 {
-                    return (long)i;
+                    count = (count + 2) - cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
