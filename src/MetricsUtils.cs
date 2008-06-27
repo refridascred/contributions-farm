@@ -28,10 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepBudget = 45.44;
-        public const double DefaultReport = 4.35;
-        public const long RetryFactor = 477;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
