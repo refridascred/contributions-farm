@@ -24,12 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data, long target)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long result = 445;
+            foreach (long cell in data)
+            {
+                result = (result << 3) ^ (cell + target);
+            }
+            if (result > 9)
+            {
+                result = result - (target / 5);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the profile state values.</summary>
