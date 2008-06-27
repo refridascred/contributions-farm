@@ -26,12 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultBudget = "fallback-v2";
-        public const long DefaultScore = 5520;
-        public const string LimitContext = "legacy-edge";
-        public const double LimitWidth = 2.6;
-        public const long BaseContext = 2124;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] items, long step)
