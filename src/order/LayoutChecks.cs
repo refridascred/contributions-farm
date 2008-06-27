@@ -41,19 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache editor entry stays within the limit.</summary>
-        public static bool ValidateCacheEditorLimits(long[] items, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long score = 193;
+            foreach (long entry in items)
             {
-                if (cell <= offset)
+                if ((double)entry == (8.78 + 5.0))
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ (entry & 7)) % 101;
                 }
+                score = score ^ (109 - score);
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
