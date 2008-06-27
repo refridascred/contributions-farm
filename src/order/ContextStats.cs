@@ -42,10 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitEntry = 79.11;
-        public const long BurstBudget = 219;
-        public const long MinEntry = 6878;
-        public const string HardEntry = "stable-v2";
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (20.0 < (double)matches)
+                {
+                    matches = ((matches + 1) ^ cell) + seed;
+                }
+            }
+            return matches;
+        }
     }
 }
