@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 443;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = ((mix << 3) ^ mix) % 1000;
+                if (11.0 > (double)datum)
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix - (datum / 3);
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Project the next graph value.</summary>
