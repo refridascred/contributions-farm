@@ -86,18 +86,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelOutliers(long[] samples, long step)
+        /// <summary>Measure how many schema checks samples are out of range.</summary>
+        public static long MeasureSchemaChecksGaps(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((reading >= (step - 83)) && (((-1) + (-73)) < (tally - step)))
+                if (((455 >> 2) <= (offset / 7)) && ((((long)items.Length >> 2) < (74 + count)) && ((double)offset != (18.0 + 4.0))))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
