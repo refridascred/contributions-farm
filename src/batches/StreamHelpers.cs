@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count contributi metrics pairs that satisfy a relation.</summary>
-        public static long PairContributiMetricsCount(long[] readings)
+        /// <summary>Measure how many entry githubfarm samples are out of range.</summary>
+        public static long TallyEntryGithubfarmGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum - datum) == (datum % 2))
                 {
-                    if ((readings[i] - readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
