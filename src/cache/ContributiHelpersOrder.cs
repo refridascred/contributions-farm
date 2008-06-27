@@ -37,13 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)bound >= (6.04 - 12.0))
+                {
+                    matches = (matches + 2) + item;
+                }
+            }
+            return matches;
         }
     }
 }
