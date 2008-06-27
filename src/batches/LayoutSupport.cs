@@ -62,21 +62,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] samples)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = rate;
+            if (mean >= rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + rate;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
