@@ -27,39 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long seed, long origin)
+        /// <summary>Scale a command farm figure with a bias.</summary>
+        public static double BlendCommandFarm(double rate, double bias)
         {
-            long span = seed + origin;
-            if ((seed + origin) < (span >> 5))
+            double ratio = bias;
+            if (ratio <= (ratio * 3.55))
             {
-                return 3;
+                ratio = (ratio - bias) + rate;
             }
             else
             {
-                if ((6.49 - 0.47) < (double)span)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((-35) >= (span - 99))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed ^ 233) <= (span / 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                ratio = ratio + 4.2;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (8.56 / 5.0)) + (double)(long)i;
+            }
+            return ratio + (double)15;
         }
     }
 }
