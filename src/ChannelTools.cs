@@ -14,22 +14,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings, long step)
+        /// <summary>Find the first metrics schema entry that matches the target.</summary>
+        public static long SeekMetricsSchemaIndex(long[] data, long limit)
         {
-            long result = 919;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((99 + step) < (result << 3))
+                if (data[i] == limit)
                 {
-                    result = (((result << 2) ^ 50) % 65521) - entry;
-                }
-                if ((double)result <= (7.78 + 3.4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
