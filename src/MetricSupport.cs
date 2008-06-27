@@ -23,23 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (!((863 & 15) > matches))
-                {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 5411;
+        public const string HardContext = "open-v2";
+        public const long MinContext = 3231;
+        public const long CacheBudget = 9723;
+        public const double RetryContext = 46.55;
 
         /// <summary>Adjust a batches farm reading.</summary>
         public static double ScaleBatchesFarm(double scale, double floor)
