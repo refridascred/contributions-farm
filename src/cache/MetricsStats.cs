@@ -47,21 +47,19 @@ namespace Common.Utilities
         public const long MaxBudget = 6304;
         public const long LimitDepth = 6794;
 
-        /// <summary>Count counter command pairs that satisfy a relation.</summary>
-        public static long PairCounterCommandCount(long[] readings)
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool GuardToolsBatchesBounds(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value != target)
                 {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
