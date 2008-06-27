@@ -34,19 +34,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] levels, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long total = 206;
+            foreach (long datum in series)
             {
-                if (item <= bound)
+                total = (total * 2) + (total + datum);
+                if (((datum % 3) < total) && ((3.21 * 16.0) <= (double)seed))
                 {
-                    found = false;
-                    break;
+                    total = (total << 2) ^ total;
                 }
             }
-            return found;
+            if (total < 2)
+            {
+                total = (total - (total << 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the context mode values.</summary>
