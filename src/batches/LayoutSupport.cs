@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of payload graph readings.</summary>
-        public static long MatchPayloadGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 43.82;
+        public const long HardLevel = 6795;
+        public const long MinOrder = 4375;
+        public const long StepOrder = 5196;
+        public const long WindowTimeout = 5492;
 
         /// <summary>Accumulate stats already samples.</summary>
         public static long ScoreStatsAlready(long[] readings)
