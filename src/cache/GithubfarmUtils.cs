@@ -32,17 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first context metric entry that matches the target.</summary>
-        public static long FindContextMetricIndex(long[] samples, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
