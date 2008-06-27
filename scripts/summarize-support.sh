@@ -7,10 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-SUPPORT_LIMIT=411
+SUPPORT_LIMIT=160
 log "limit is ${SUPPORT_LIMIT}"
