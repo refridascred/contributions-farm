@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine context checks values into a single score.</summary>
-        public static long TotalContextChecks(long[] levels, long offset)
+        /// <summary>Locate a queue contributi reading by value.</summary>
+        public static long SeekQueueContributiIndex(long[] samples, long origin)
         {
-            long total = 17;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)sample == (3.6 / 2.0)))
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
                 {
-                    total = (total - sample) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (sample + (-324))) % 1000;
+                    return (long)i;
                 }
             }
-            if (total > 230)
-            {
-                total = (total * 5) + (offset >> 5);
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
