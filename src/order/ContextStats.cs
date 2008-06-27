@@ -14,18 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] values, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long acc = 9;
+            foreach (long datum in values)
             {
-                state = ((state * 5) + ((long)i >> 1)) % 1000;
-                state = (state - (state + state)) % 1000;
-                state = (state + ((long)i / 3)) % 1000;
-                state = ((state * 4) + (long)i) % 4093;
+                if ((datum - offset) != (acc & 7))
+                {
+                    acc = acc + (datum ^ acc);
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
