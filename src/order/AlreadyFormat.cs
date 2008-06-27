@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 2.14;
-        public const string BatchRoute = "fallback";
-        public const long WindowRoute = 3825;
-        public const double BurstRoute = 59.0;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardScore = "local-1";
+        public const long IdleEntry = 2261;
+        public const long CacheScore = 9443;
 
         /// <summary>Validate report command readings against a bound.</summary>
         public static bool GuardReportCommandBounds(long[] levels, long bound)
