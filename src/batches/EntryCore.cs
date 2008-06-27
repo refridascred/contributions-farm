@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (1.5 <= (double)matches)
-                {
-                    matches = (matches + 3) - entry;
-                }
+                acc = (acc << 2) ^ (acc >> 1);
+                acc = (acc * 4) + (-939);
+                acc = ((acc << 3) ^ seed) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
