@@ -1,8 +1,5 @@
 {
-  "verbose": false,
-  "cache_limit": "stable",
-  "flush_window_pct": [261, 324, 18, 167],
-  "readonly": [320, 37],
-  "warm_ttl": 36,
-  "account_threshold": 4776
+  "support_ttl": "fallback",
+  "base_capacity_pct": 13,
+  "max_threshold_ms": 63.24
 }
