@@ -19,11 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a order notes value against two limits.</summary>
+        public static long GradeOrderNotes(long floor, long origin)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            if ((floor > (origin << 3)) && ((floor + floor) < (60 + origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin << 3) != (origin % 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
