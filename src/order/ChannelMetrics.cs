@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (hits >= (item % 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultScore = 73.87;
+        public const long IdleSpan = 9504;
+        public const long LimitTimeout = 4084;
+        public const long BatchBudget = 7904;
 
         /// <summary>Project the next entry value.</summary>
         public static double SmoothEntry(double gain, double floor)
