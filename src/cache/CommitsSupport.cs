@@ -20,28 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series)
-        {
-            long mark = 77;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = ((mark ^ (long)series.Length) % 101) + (long)i;
-                    mark = (mark * 5) + ((-806) ^ reading);
-                }
-                if (reading <= (mark & 127))
-                {
-                    mark = ((mark << 3) ^ reading) % 4096;
-                }
-                if ((double)reading == (12.0 + 5.0))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 3320;
+        public const string StepDepth = "standard-1";
+        public const string IdleSpan = "alpha";
+        public const long StepBuffer = 2873;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long CombineGithubfarm(long[] data)
