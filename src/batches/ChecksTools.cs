@@ -32,10 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryDepth = "local-v2";
-        public const string BurstFactor = "primary-v2";
-        public const long BatchBuffer = 5837;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Paused,
+            Locked,
+            Retry,
+            Pending,
+            Done,
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long seed)
