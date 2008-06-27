@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((1.24 / 5.0) >= (double)seed))
-                {
-                    state = ((state << 2) ^ (state % 7)) % 1000;
-                }
-                state = ((state * 3) + (seed ^ seed)) % 65521;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            Ready,
+            Pending,
+            New,
+            Dropped,
         }
 
         /// <summary>Fold a list of window farm readings.</summary>
