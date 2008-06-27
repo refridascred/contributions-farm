@@ -46,21 +46,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of format editor readings.</summary>
-        public static long PairFormatEditorCount(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((83 / 6) == (value & 63))
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = sum + (value + value);
+                }
+                if ((sum - sum) > (value / 4))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
