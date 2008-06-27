@@ -28,18 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry stream samples are out of range.</summary>
-        public static long MeasureEntryStreamGaps(long[] levels, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (matches >= (item & 63))
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Active,
         }
     }
 }
