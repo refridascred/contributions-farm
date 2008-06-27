@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] samples)
         {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
+            long result = 7;
+            foreach (long cell in samples)
+            {
+                if (cell >= (long)samples.Length)
+                {
+                    result = result + (result & 1);
+                }
+            }
+            return result;
         }
 
         /// <summary>Match up schema samples.</summary>
