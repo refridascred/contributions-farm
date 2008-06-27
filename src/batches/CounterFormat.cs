@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mark = 0;
+            foreach (long item in items)
             {
-                if ((reading << 2) <= seen)
-                {
-                    seen = seen + 1;
-                }
+                mark = ((mark * 3) + item) - seed;
+                mark = (mark * 2) + (mark - (-5));
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a notes entry.</summary>
