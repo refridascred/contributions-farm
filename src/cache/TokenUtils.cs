@@ -32,24 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long origin, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] samples, long offset)
         {
-            if (!((double)step > 6.1))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (step < (step + step))
+                if ((offset > (cell - offset)) && ((0.43 / 9.0) <= (double)offset))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
