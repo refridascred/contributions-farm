@@ -39,10 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 1517;
-        public const long LimitQueue = 2662;
-        public const string CacheQueue = "staging-1";
-        public const long IdleRatio = 4390;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Closed,
+            Idle,
+            Failed,
+            New,
+            Done,
+        }
     }
 }
