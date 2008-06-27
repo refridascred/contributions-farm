@@ -1,20 +1,5 @@
 # entry settings
-payload_size:
-  retry_window_ms: 36.16
-  idle_delay_count: 97
-  tools_size: 5608
-  order_capacity:
-    audit: eu-west
-    editor_window:
-      - 442
-      - 3
-      - 425
-      - 150
-    enabled: true
-    batch_window_count:
-      - 1
-      - 334
-      - 341
-  verbose: 39.19
-soft_delay_s: fallback
-poll_window: edge
+cache_timeout_ms: 34
+batch_limit_pct: 74.29
+persist: cached
+compress: false
