@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = 418;
+            foreach (long cell in levels)
             {
-                if (4.6 < (double)sample)
-                {
-                    count = count + 1;
-                }
+                mark = (((mark << 2) ^ (mark ^ cell)) % 97) + offset;
             }
-            return count;
+            if (mark > 7)
+            {
+                mark = ((mark << 2) ^ (mark + 0)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
