@@ -1,6 +1,10 @@
-id,state,level
-1,primary,68.19
-2,2.62,634
-3,staging,812
-4,30.15,16.54
-5,legacy,57.3
+id,state,token,owner
+1,8.06,974,27.46
+2,66.67,88.16,205
+3,288,511,green
+4,6.38,staging,local
+5,993,25.26,55.25
+6,80.08,strict,edge
+7,710,standard,58.05
+8,52.53,local,cached
+9,cached,eu-west,93.02
