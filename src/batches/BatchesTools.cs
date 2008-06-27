@@ -14,21 +14,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Match up command schema samples.</summary>
