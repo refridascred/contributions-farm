@@ -83,18 +83,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] data)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample < (hits ^ hits)) && !((hits >> 5) > 110))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
