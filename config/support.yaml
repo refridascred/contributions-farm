@@ -1,5 +1,7 @@
 # support settings
-compress: 250
-enabled: 7
-min_retries: 500
-editor_threshold: 82
+cache_capacity_count: 98.98
+channel_ratio: 3835
+filter_delay:
+  sync_size_pct: standard
+  sync_threshold: eu-west
+  soft_size_count: true
