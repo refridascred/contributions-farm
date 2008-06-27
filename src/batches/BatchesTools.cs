@@ -25,21 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up command schema samples.</summary>
-        public static long PairCommandSchemaCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 5201;
+        public const long MinToken = 4793;
+        public const long LimitWidth = 771;
+        public const double CacheScore = 52.51;
+        public const double HardLevel = 96.5;
     }
 }
