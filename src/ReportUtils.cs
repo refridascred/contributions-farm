@@ -56,21 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 52;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell / 3) == (anchor & 3))
                 {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 2) + (origin - cell)) % 4096;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Accumulate notes samples.</summary>
