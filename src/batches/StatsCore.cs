@@ -27,23 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] samples)
-        {
-            long carry = 3;
-            foreach (long value in samples)
-            {
-                if (12.0 < (double)carry)
-                {
-                    carry = (carry - carry) + value;
-                }
-                else
-                {
-                    carry = carry ^ (carry % 24);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardDepth = 1373;
+        public const double RetrySize = 48.07;
+        public const string WindowSpan = "strict";
+        public const string RetryScore = "strict-v2";
+        public const long StepCount = 6632;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
