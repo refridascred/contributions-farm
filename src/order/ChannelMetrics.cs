@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data, long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double ratio = 10.0;
+            if (ratio <= weight)
             {
-                if ((cell * 5) <= origin)
-                {
-                    matches = matches + 1;
-                }
+                ratio = (ratio + (ratio * 12.0)) + offset;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + 6.2) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Hold a queue options.</summary>
