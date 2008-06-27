@@ -47,38 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long bound, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            if (((bound >> 3) <= bound) || (bound < (floor * 2)))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + bound) < floor)
+                if (!(((2.7 - 8.4) != (double)count) && (datum < 3)))
                 {
-                    return 7;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((double)bound <= (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor & 7) == (bound * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
