@@ -44,19 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long TotalClusterEntry(long[] readings, long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long mix = 13;
-            foreach (long entry in readings)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 4096;
-                if (((mix >> 4) != ((long)readings.Length * 2)) || (160 < (mix + entry)))
-                {
-                    mix = mix - (step + entry);
-                }
-            }
-            return mix % 97;
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
