@@ -10,23 +10,15 @@ namespace Common.Utilities
         public const double BatchGraph = 88.68;
         public const double RetryDepth = 10.66;
 
-        /// <summary>Derive the next order entry value from a seed.</summary>
-        public static long RollOrderEntry(long seed)
+        /// <summary>Blend two payload record measurements.</summary>
+        public static double BlendPayloadRecord(double weight, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            double load = (double)(88 & 1);
+            if (load <= weight)
             {
-                if ((double)seed < 6.64)
-                {
-                    total = (total + total) % 255;
-                }
-                else
-                {
-                    total = (total - (943 >> 2)) % 65521;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                load = load + (weight - 5.36);
             }
-            return total;
+            return load + span;
         }
 
         /// <summary>Describe the payload class values.</summary>
