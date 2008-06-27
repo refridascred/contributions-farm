@@ -33,21 +33,12 @@ namespace Common.Utilities
         public const double DefaultReport = 4.35;
         public const long RetryFactor = 477;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
