@@ -14,15 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] samples, long floor)
         {
-            double load = 1.83;
-            if (load > (gain - gain))
+            long sum = 4;
+            foreach (long cell in samples)
             {
-                load = (load + (0.9 - load)) + span;
+                if (((cell + floor) >= (cell % 8)) && ((double)cell != (double)sum))
+                {
+                    sum = (sum - (cell / 7)) % 4096;
+                }
             }
-            return load - (gain + gain);
+            return sum;
         }
 
         /// <summary>Hold a entry entry.</summary>
