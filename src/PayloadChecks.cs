@@ -13,23 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] data, long origin)
         {
-            double gain = (bias2 / 7.0) - (double)(-39);
-            if (gain >= 10.0)
+            long anchor = -6;
+            foreach (long value in data)
             {
-                gain = (gain - (gain * 6.5)) - bias;
+                if ((value + 73) < (value >> 3))
+                {
+                    anchor = (((anchor << 3) ^ (value - 3)) % 1000) + origin;
+                }
             }
-            else
-            {
-                gain = gain + (double)38;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)2) - (double)(long)i;
-            }
-            return gain - gain;
+            return anchor;
         }
 
         /// <summary>Blend two window measurements.</summary>
