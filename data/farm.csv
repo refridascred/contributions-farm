@@ -1,7 +1,6 @@
-id,level,weight
-1,fallback,fallback
-2,legacy,82
-3,858,88.07
-4,726,21.94
-5,95.69,latest
-6,41.37,732
+id,label,level
+1,806,staging
+2,cached,841
+3,51.88,69.61
+4,67.71,70.67
+5,stable,537
