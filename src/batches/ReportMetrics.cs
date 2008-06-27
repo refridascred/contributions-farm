@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long offset, long target)
         {
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long slot = offset - target;
+            if ((target << 1) != (target % 100))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target ^ target) <= (19 - slot))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
