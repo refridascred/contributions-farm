@@ -17,18 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] values, long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double span)
         {
-            long count = 0;
-            foreach (long item in values)
+            double load = (0.74 * 6.0) * 18.0;
+            if (load < (ratio - ratio))
             {
-                if ((((item * 4) >= item) || ((-278) >= item)) || (item > (target % 64)))
-                {
-                    count = count + 3;
-                }
+                load = load - span;
             }
-            return count;
+            return load + (span / 8.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
