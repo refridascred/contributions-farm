@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowFactor = "open-v2";
-        public const double RetryContext = 76.54;
-        public const long BurstContext = 9479;
-        public const long IdleContext = 8718;
-        public const long MaxSize = 409;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Active,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LocateFarmIndex(long[] samples, long offset)
