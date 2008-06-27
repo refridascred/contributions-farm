@@ -1,6 +1,7 @@
 # githubfarm settings
-retry_threshold_s: 42.68
-default_retries: primary
-notes_ttl: 61
-burst_capacity_pct: local
-token_ttl: edge
+flush_delay: primary
+idle_limit_ms: 502
+hard_capacity_ms:
+  - stable
+  - strict
+  - legacy
