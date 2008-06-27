@@ -1,5 +1,10 @@
 # githubfarm settings
-burst_size_count: 38.81
-warm_ttl_ms: 73
-strict: primary
-max_timeout_pct: 250
+editor_delay: 48
+notes_window: primary
+enabled: 15.59
+idle_limit: true
+idle_interval_count:
+  - eu-west
+  - latest
+  - cached
+  - fallback
