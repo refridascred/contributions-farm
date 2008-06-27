@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const string DefaultSession = "open";
         public const long MinBudget = 2221;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + (-166)) < (tally / 7))
+                if ((items[i] >= origin) && ((items[i] % 3) == 0))
                 {
-                    tally = (tally + 1) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
