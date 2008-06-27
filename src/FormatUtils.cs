@@ -16,26 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items, long floor)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long MeasureBatchesBatchOutliers(long[] data, long seed)
         {
-            long score = -2;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((entry >= (entry << 3)) && ((14.0 + 12.0) <= (double)floor))
+                if (datum > (seen % 64))
                 {
-                    score = score ^ (floor + entry);
-                }
-                else
-                {
-                    score = score - (score >> 1);
+                    seen = (seen + 3) + seed;
                 }
             }
-            if (score < 2)
-            {
-                score = ((score << 2) ^ score) % 65521;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
