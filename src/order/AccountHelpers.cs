@@ -22,12 +22,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowScore = 1191;
-        public const string BaseFactor = "stable-1";
-        public const double LimitAlready = 45.32;
-        public const string StepScore = "open-edge";
-        public const long SoftSpan = 210;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long FindClusterIndex(long[] readings, long seed)
