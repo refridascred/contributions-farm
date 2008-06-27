@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload record measurements.</summary>
-        public static double BlendPayloadRecord(double weight, double span)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double load = (double)(88 & 1);
-            if (load <= weight)
-            {
-                load = load + (weight - 5.36);
-            }
-            return load + span;
+            Active,
+            Done,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the payload class values.</summary>
