@@ -1,7 +1,6 @@
 {
-  "audit": 24.52,
-  "retry_delay_pct": [376, 370, 120],
-  "checks_delay": [155, 473, 276, 47],
-  "verbose": 64.41,
-  "poll_depth": true
+  "hard_window": 98.81,
+  "sync_capacity_count": "cached",
+  "payload_depth": "fallback",
+  "warm_limit_ms": 1024
 }
