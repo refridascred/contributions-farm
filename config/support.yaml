@@ -1,17 +1,6 @@
 # support settings
-strict: 86.14
-dry_run:
-  - eu-west
-  - stable
-editor_threshold:
-  verbose:
-    - blue
-    - stable
-    - local
-    - blue
-  enabled: standard
-  buffer_limit: 98.95
-  soft_ttl: false
-  token_timeout: 30
-readonly: true
-burst_delay_count: true
+base_size_s: 27.84
+cache_delay_ms: 97
+default_limit_s: local
+layout_timeout: 250
+hard_timeout_ms: 46
