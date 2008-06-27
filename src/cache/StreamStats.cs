@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchDepth = 3022;
-        public const long LimitScore = 9502;
-        public const long BatchCount = 5292;
-        public const double RetryCluster = 6.32;
-        public const long CacheCluster = 2253;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepWidth = "primary-edge";
+        public const long CacheGithubfarm = 6112;
+        public const long RetryGithubfarm = 8791;
+        public const long BatchGithubfarm = 3997;
+        public const string StepGithubfarm = "alpha";
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double rate, double span)
