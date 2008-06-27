@@ -39,16 +39,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batch editor counter forward.</summary>
-        public static long StepBatchEditor(long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry - offset) % 65521;
-                carry = ((carry * 3) + (long)i) % 4093;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the tools mode values.</summary>
