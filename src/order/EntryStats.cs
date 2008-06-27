@@ -34,17 +34,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a command contributi reading by value.</summary>
-        public static long FindCommandContributiIndex(long[] items, long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
