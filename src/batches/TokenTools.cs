@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of window filter readings.</summary>
-        public static long WeighWindowFilter(long[] samples)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long step)
         {
-            long sum = 4;
-            foreach (long sample in samples)
+            long bound2 = bound + step;
+            if (((-197) - bound2) > (step - bound2))
             {
-                sum = ((sum - (sum & 3)) % 1000) + sample;
+                return 7;
             }
-            if (sum > 1)
+            else
             {
-                sum = (sum + (sum & 255)) % 101;
+                if (3.37 >= (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return sum % 1000;
         }
 
         /// <summary>Check that every batch report entry stays within the limit.</summary>
