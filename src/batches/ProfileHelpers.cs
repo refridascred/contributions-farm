@@ -55,20 +55,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] values, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            long anchor = -1;
-            foreach (long reading in values)
+            long total = 20;
+            foreach (long item in levels)
             {
-                anchor = (anchor - anchor) + reading;
-                anchor = (anchor - anchor) % 65521;
+                total = ((total + total) % 255) + item;
+                total = total + total;
             }
-            if (anchor < 83)
-            {
-                anchor = anchor - (step & 15);
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Accumulate support buffer samples.</summary>
