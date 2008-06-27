@@ -12,9 +12,12 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=182
-log "limit is ${COMMAND_LIMIT}"
-
-for item in primary legacy; do
-    log "checking ${item}"
-done
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
