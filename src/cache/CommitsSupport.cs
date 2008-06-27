@@ -51,17 +51,19 @@ namespace Common.Utilities
             return load - 7.36;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] data, long target)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (data[i] <= target)
+                if (value > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count farm context pairs that satisfy a relation.</summary>
