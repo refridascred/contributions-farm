@@ -31,12 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] items, long step)
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
