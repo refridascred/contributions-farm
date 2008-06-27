@@ -81,19 +81,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format queue readings against a bound.</summary>
-        public static bool ValidateFormatQueueRange(long[] levels, long step)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long mark = 43;
+            foreach (long reading in samples)
             {
-                if (value != step)
+                if ((mark >> 3) >= (mark + reading))
                 {
-                    valid = false;
-                    break;
+                    mark = mark + (step + mark);
                 }
+                mark = ((mark * 2) + (mark + step)) % 97;
             }
-            return valid;
+            if (mark > 2)
+            {
+                mark = (mark ^ (step ^ mark)) % 4096;
+            }
+            return mark;
         }
     }
 }
