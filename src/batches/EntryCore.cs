@@ -46,20 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 1679;
+        public const long DefaultEditor = 1452;
+        public const double BaseLevel = 50.06;
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] values)
