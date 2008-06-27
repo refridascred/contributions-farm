@@ -1,6 +1,14 @@
 # entry settings
-warm_window_pct: 60.65
-flush_threshold_count: 80.66
-order_interval: 100
-verbose: 1024
-command_capacity: fallback
+persist: 60
+warm_timeout_s: 7220
+batch_size_ms:
+  farm_depth:
+    - 328
+    - 362
+    - 101
+  default_limit: false
+  retry_interval_count: stable
+  strict: standard
+  max_depth_ms: true
+context_limit: 58.9
+flush_ttl_ms: 8550
