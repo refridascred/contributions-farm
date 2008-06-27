@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state - (limit >> 4)) % 97;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the batches checks entries that pass the check.</summary>
