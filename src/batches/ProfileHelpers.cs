@@ -90,13 +90,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Find the first layout record entry that matches the target.</summary>
+        public static long FindLayoutRecordIndex(long[] readings, long seed)
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
