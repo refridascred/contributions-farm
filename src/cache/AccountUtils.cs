@@ -16,26 +16,12 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long seed, long bound)
-        {
-            long slot = seed ^ bound;
-            if (!((seed << 1) != (seed >> 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot / 9) < (seed + slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 4366;
+        public const long StepFactor = 2545;
+        public const string MaxInterval = "staging-1";
+        public const string LimitDepth = "standard-v2";
+        public const long StepGithubfarm = 2731;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long SortRecord(long bound, long step)
