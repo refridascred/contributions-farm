@@ -1,12 +1,15 @@
 # entry settings
-strict: 60
-warm_ratio: blue
-cache_retries_s: 96.96
-route_ratio: 9
-retry_capacity_ms:
-  cache_timeout_s:
-    - staging
-    - latest
-  profile_delay: 293
-  context_limit: 380
-  hard_delay_count: false
+base_ratio_ms:
+  - 48
+  - 22
+  - 121
+  - 142
+cache_timeout: 5560
+soft_ratio_pct: primary
+dry_run: 8480
+burst_retries_pct:
+  retry_size: 100
+  flush_retries: false
+  batch_retries_s:
+    - stable
+    - primary
