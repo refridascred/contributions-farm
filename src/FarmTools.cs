@@ -20,19 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate cache cluster readings against a bound.</summary>
-        public static bool VerifyCacheClusterLimits(long[] readings, long floor)
+        /// <summary>Fold a list of batches channel readings.</summary>
+        public static long FoldBatchesChannel(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long mix = 463;
+            foreach (long sample in samples)
             {
-                if (value != floor)
+                mix = mix + (sample - sample);
+                mix = ((mix << 3) ^ (24 - sample)) % 65521;
+                if (((19.0 * 11.0) < (double)sample) || ((sample + mix) >= mix))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (mix < 133)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
