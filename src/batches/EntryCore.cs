@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double gain, double floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double mean = (double)(173 >> 2);
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean + floor) + (double)(long)i) - gain;
-            }
-            return mean + (double)56;
+            public string Owner { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
