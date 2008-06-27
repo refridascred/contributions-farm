@@ -38,19 +38,10 @@ namespace Common.Utilities
         public const double DefaultReport = 4.35;
         public const long RetryFactor = 477;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((-60) > seen)
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5132;
+        public const string StepAccount = "standard-edge";
+        public const string BurstScore = "open-edge";
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
