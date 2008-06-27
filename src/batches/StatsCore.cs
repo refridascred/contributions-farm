@@ -25,17 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload batches sample.</summary>
-        public static long FindPayloadBatchesIndex(long[] samples, long step)
+        /// <summary>Match up farm cluster samples.</summary>
+        public static long PairFarmClusterCount(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many format layout samples are out of range.</summary>
