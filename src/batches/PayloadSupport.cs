@@ -34,12 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Rank { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
