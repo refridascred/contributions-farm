@@ -20,10 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultTimeout = 6752;
-        public const string StepStream = "primary-v2";
-        public const long RetryStream = 4531;
+        /// <summary>Audit channel schema readings against a rule.</summary>
+        public static long TallyChannelSchemaGaps(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((10.0 / 8.0) <= (double)target)
+                {
+                    count = (count + 2) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphRange(long[] data, long step)
