@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every graph session entry stays within the limit.</summary>
-        public static bool GuardGraphSessionRange(long[] data, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading < step)
+                if (!((offset + 5) >= (6 % 10)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
