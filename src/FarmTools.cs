@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (((6 << 2) > matches) && (((double)matches != (5.92 / 9.0)) && ((321 >> 5) < (matches << 3))))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
