@@ -52,16 +52,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] readings, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mix = (mix + (mix << 2)) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((offset - 587) > (item - offset))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
