@@ -15,11 +15,13 @@ namespace Common.Utilities
         public const string MaxSize = "fallback-edge";
         public const long StepInterval = 8901;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftScore = 54.4;
-        public const double HardInterval = 95.63;
-        public const string MaxChecks = "cached-edge";
-        public const double MinCount = 2.61;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Synced,
+            Pending,
+            Done,
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] series)
