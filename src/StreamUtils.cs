@@ -27,23 +27,19 @@ namespace Common.Utilities
         public const long MaxStats = 5909;
         public const string IdleStats = "alpha-edge";
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double ratio, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] readings, long limit)
         {
-            double rate = (span / 7.0) - (double)3;
-            if (rate >= (double)294)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                rate = rate - (double)715;
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - 9.1;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate + (span * 7.94);
+            return stale;
         }
 
         /// <summary>Blend two profile measurements.</summary>
