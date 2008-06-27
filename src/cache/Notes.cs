@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = -13;
+            foreach (long value in readings)
             {
-                if ((5.68 * 20.0) > (double)matches)
+                if ((value / 6) < 268)
                 {
-                    matches = (matches + 3) + reading;
+                    acc = (acc * 5) + step;
                 }
-                else
+                if ((value ^ value) <= acc)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every buffer record entry stays within the limit.</summary>
