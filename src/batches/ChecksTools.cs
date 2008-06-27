@@ -26,20 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double rate, double floor)
-        {
-            double mean = (double)(661 + 6);
-            if (mean >= (double)2)
-            {
-                mean = (mean - (16.0 / 9.0)) - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (floor * 7.98)) + (double)(long)i;
-            }
-            return mean + floor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseLevel = 4129;
+        public const long MaxCommits = 1570;
+        public const double BaseCommits = 92.0;
+        public const double CacheCommits = 49.06;
+        public const long WindowCommits = 665;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] values)
