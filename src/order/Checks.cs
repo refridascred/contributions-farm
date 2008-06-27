@@ -68,25 +68,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long offset, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long limit)
         {
-            long offset2 = offset - step;
-            if ((double)step >= (double)offset2)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 1) <= offset)
+                if (entry <= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
