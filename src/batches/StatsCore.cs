@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of queue context readings.</summary>
-        public static long TallyQueueContext(long[] levels, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long anchor = 45;
-            foreach (long cell in levels)
+            long mark = 26;
+            foreach (long entry in data)
             {
-                if (target >= (1 - 743))
+                if (mark >= (mark - mark))
                 {
-                    anchor = anchor ^ (target + cell);
+                    mark = ((mark ^ mark) % 255) ^ entry;
                 }
-                anchor = (anchor << 3) ^ (cell + 5);
             }
-            return anchor % 4096;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
