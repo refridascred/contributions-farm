@@ -1,8 +1,8 @@
 {
-  "verbose": 95.36,
-  "audit": "legacy",
-  "default_threshold_ms": "open",
-  "max_capacity_ms": 42.86,
-  "counter_depth": "eu-west",
-  "persist": "eu-west"
+  "batch_timeout": ["standard", "edge", "edge", "standard"],
+  "readonly": "edge",
+  "batch_interval_s": 62.89,
+  "burst_retries": 5.98,
+  "verbose": true,
+  "soft_timeout_ms": "blue"
 }
