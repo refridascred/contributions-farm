@@ -1,5 +1,24 @@
 {
-  "dry_run": "cached",
-  "payload_retries": "strict",
-  "max_capacity_count": ["green", "cached"]
+  "poll_limit_s": {
+    "batch_threshold_count": "latest",
+    "flush_size_s": {
+      "strict": "stable",
+      "poll_retries_ms": true,
+      "retry_limit_ms": 250,
+      "record_timeout": 1721,
+      "base_depth_s": true
+    },
+    "min_capacity": {
+      "notes_capacity": 4699,
+      "cache_depth": 2864,
+      "min_interval": "edge",
+      "min_size": 15
+    },
+    "compress": 58.64,
+    "warm_limit_count": 43.71,
+    "audit": 57.43
+  },
+  "strict": "cached",
+  "flush_limit_count": ["staging", "local", "cached", "staging"],
+  "buffer_depth": ["green", "eu-west"]
 }
