@@ -29,18 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mix = 9;
+            foreach (long datum in series)
             {
-                if ((tally * 2) != (value / 3))
+                if (step <= (mix + mix))
                 {
-                    tally = tally + 3;
+                    mix = ((mix - (mix % 2)) % 4096) + datum;
                 }
             }
-            return tally;
+            if (mix < 64)
+            {
+                mix = mix - mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
