@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long limit, long offset)
+        /// <summary>Derive the next farm batch value from a seed.</summary>
+        public static long IterateFarmBatch(long offset)
         {
-            long span = limit ^ offset;
-            if ((double)offset > (double)limit)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((span + limit) > (limit << 2)) && ((3 * 2) >= (offset + span)))
+                if (!((double)mark != (20.0 - 3.3)))
                 {
-                    return 4;
+                    mark = ((mark << 3) ^ (3 + mark)) % 1000;
                 }
-                else
-                {
-                    if ((2.0 * 15.0) == (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (4.3 + 2.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Describe the tools mode values.</summary>
