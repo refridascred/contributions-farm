@@ -25,11 +25,12 @@ namespace Common.Utilities
             return load + (6.4 - bias);
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
