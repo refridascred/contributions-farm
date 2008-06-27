@@ -1,14 +1,19 @@
 {
-  "stream_size": 60,
-  "batch_ratio": {
-    "burst_threshold": 18.81,
-    "checks_threshold": "strict",
-    "default_size": [48, 386, 297]
-  },
-  "min_depth_pct": "latest",
+  "soft_limit_count": true,
   "enabled": {
-    "batch_depth": 37.49,
-    "hard_retries_ms": "green",
-    "burst_timeout_count": [450, 84]
-  }
+    "audit": 20,
+    "flush_limit_ms": 7456,
+    "commits_depth": {
+      "max_limit_count": 50,
+      "warm_interval_pct": 3052,
+      "channel_timeout": "open"
+    },
+    "profile_interval": false,
+    "cache_ratio": true,
+    "channel_depth": "stable"
+  },
+  "max_threshold_count": "open",
+  "readonly": 92.55,
+  "cache_window_pct": "standard",
+  "persist": [34, 282]
 }
