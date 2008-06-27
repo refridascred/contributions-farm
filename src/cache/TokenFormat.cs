@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items, long floor)
+        /// <summary>Classify a report account pair into a bucket.</summary>
+        public static long RankReportAccount(long limit, long offset)
         {
-            long anchor = 839;
-            foreach (long entry in items)
+            if (!(offset < (offset ^ 2)))
             {
-                if (!((double)floor <= (4.33 - 3.6)))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (4.5 * 3.0))
                 {
-                    anchor = ((anchor * 5) + (entry >> 4)) % 1000;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= (11.0 * 3.01))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit < offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the support class values.</summary>
