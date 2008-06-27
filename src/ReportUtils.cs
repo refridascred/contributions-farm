@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Done,
-            Draft,
-            Failed,
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
