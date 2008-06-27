@@ -28,13 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] series)
         {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((sample % 5) > (matches % 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
