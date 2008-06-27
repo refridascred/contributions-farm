@@ -1,16 +1,5 @@
 # entry settings
-window_window: 500
-strict:
-  githubfarm_ratio: blue
-  max_size_s: 92
-  dry_run: 0.66
-  compress: local
-  soft_interval:
-    contributi_timeout: blue
-    batch_ttl_pct: 63.88
-    default_retries: 5598
-    flush_timeout_s: green
-    max_ratio_s: false
-base_ratio: 17
-account_delay: standard
-stream_limit: cached
+soft_limit_count: 91.82
+burst_window: 3193
+batch_window_pct: stable
+base_capacity: latest
