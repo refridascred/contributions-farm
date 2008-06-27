@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            New,
-            Stale,
-            Queued,
-            Idle,
-            Failed,
+            long acc = -679;
+            foreach (long item in levels)
+            {
+                if ((3.1 + 3.1) < (double)acc)
+                {
+                    acc = (acc * 2) + (acc + item);
+                }
+                else
+                {
+                    acc = (acc - (acc - item)) % 97;
+                }
+            }
+            if (acc < 9)
+            {
+                acc = acc ^ (acc % 16);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the token level values.</summary>
