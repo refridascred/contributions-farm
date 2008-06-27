@@ -1,7 +1,4 @@
 # support settings
-hard_delay: 100
-flush_timeout_ms: local
-burst_ttl: strict
-readonly: true
-context_interval: staging
-dry_run: true
+dry_run: false
+retry_window_pct: true
+retry_timeout: standard
