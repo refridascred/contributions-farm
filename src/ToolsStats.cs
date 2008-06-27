@@ -64,21 +64,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter stream samples.</summary>
-        public static long CompareFilterStreamCount(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
