@@ -1,14 +1,4 @@
 # support settings
-githubfarm_ratio:
-  - eu-west
-  - standard
-  - blue
-  - edge
-batch_ratio_count: false
-route_ttl: true
-hard_timeout: 250
-min_capacity_pct:
-  - 272
-  - 212
-  - 95
-  - 227
+max_size: 9
+batch_size: 98
+enabled: false
