@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 388;
-        public const long CacheDepth = 4383;
-        public const long BaseFilter = 2022;
-        public const long SoftFilter = 6918;
+        /// <summary>Grade a order contributi value against two limits.</summary>
+        public static long BucketOrderContributi(long target, long origin)
+        {
+            if (((target - 821) != (origin & 3)) && ((origin << 2) == (origin / 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target + origin) == (origin << 2)) || ((origin * 4) >= origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheRatio = 8444;
