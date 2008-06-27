@@ -1,5 +1,16 @@
 {
-  "max_size_pct": 60,
-  "flush_ratio_ms": 12.11,
-  "default_size": false
+  "commits_window": [414, 344],
+  "persist": true,
+  "poll_size_count": {
+    "channel_ratio": 58,
+    "already_ttl": {
+      "report_size": 3843,
+      "warm_ttl_count": 63.59,
+      "retry_window_count": "cached",
+      "cache_window": "cached",
+      "burst_limit_pct": "cached"
+    },
+    "channel_depth": [223, 148, 265, 406],
+    "sync_window": "cached"
+  }
 }
