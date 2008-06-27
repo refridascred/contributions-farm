@@ -56,18 +56,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] values)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((6 + item) != (742 ^ item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
