@@ -1,7 +1,8 @@
 {
-  "hard_size_pct": 54,
-  "max_interval_ms": 50.54,
-  "sync_limit_pct": ["eu-west", "edge", "local"],
-  "burst_ttl": "legacy",
-  "flush_delay_s": 60
+  "retry_delay": "staging",
+  "batch_size_s": "open",
+  "order_size": 60,
+  "profile_size": "strict",
+  "readonly": 31.45,
+  "command_threshold": true
 }
