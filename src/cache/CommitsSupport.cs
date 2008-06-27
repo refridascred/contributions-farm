@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
