@@ -25,13 +25,31 @@ namespace Common.Utilities
         public const string CacheNotes = "open";
         public const long CacheSize = 78;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            if (!((bound << 2) == ((-86) - bound)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) <= (6 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin > (bound - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
