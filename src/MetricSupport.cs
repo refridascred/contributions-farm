@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 9008;
+        public const long DefaultChecks = 4644;
+        public const string RetryChecks = "fallback";
+        public const long StepScore = 2035;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long LookupCommandIndex(long[] items, long step)
