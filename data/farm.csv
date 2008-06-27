@@ -1,8 +1,7 @@
-id,region,level
-1,682,526
-2,744,975
-3,642,green
-4,92.75,local
-5,latest,edge
-6,standard,42.54
-7,primary,893
+id,active,level,rank
+1,legacy,527,standard
+2,open,102,226
+3,stable,fallback,355
+4,fallback,85.43,96.43
+5,204,159,307
+6,65.06,434,48.72
