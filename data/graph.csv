@@ -1,8 +1,9 @@
-id,rank,region,weight
-1,75.81,22.48,edge
-2,eu-west,984,354
-3,855,90.58,442
-4,standard,18.51,18.32
-5,828,602,fallback
-6,720,green,218
-7,932,85.19,green
+id,label,rank,token,count
+1,cached,736,182,62
+2,92,latest,886,452
+3,500,standard,516,green
+4,376,latest,923,primary
+5,814,cached,39.06,63.07
+6,89,628,91.88,local
+7,open,43.27,21,575
+8,0.71,519,fallback,primary
