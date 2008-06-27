@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long score = 59;
-            foreach (long sample in readings)
-            {
-                score = ((score * 5) + (sample << 3)) % 1000;
-            }
-            if (score < 79)
-            {
-                score = (score << 3) ^ (score - 49);
-            }
-            return score % 97;
+            public double Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
