@@ -21,16 +21,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] values)
         {
-            long acc = 250;
-            foreach (long sample in data)
+            long score = 357;
+            foreach (long value in values)
             {
-                acc = (acc ^ (acc << 3)) ^ sample;
-                acc = acc + acc;
+                if ((value / 3) <= (value << 1))
+                {
+                    score = (score + (score - score)) % 101;
+                }
             }
-            return acc;
+            if (score > 89)
+            {
+                score = ((score * 2) + score) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Adjust a notes reading.</summary>
