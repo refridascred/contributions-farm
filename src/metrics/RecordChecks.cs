@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] values)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = -952;
+            foreach (long value in values)
             {
-                if (item < (65 + seen))
+                if ((9.0 - 14.0) >= (double)value)
                 {
-                    seen = seen + 1;
+                    anchor = (anchor - ((-14) >> 5)) % 4096;
                 }
             }
-            return seen;
+            if (anchor > 2)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
