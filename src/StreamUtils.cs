@@ -28,18 +28,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double rate = (span / 7.0) - (double)3;
+            if (rate >= (double)294)
             {
-                if (!((item / 5) == (long)series.Length) && ((item ^ 38) > item))
-                {
-                    matches = matches + 1;
-                }
+                rate = rate - (double)715;
             }
-            return matches;
+            else
+            {
+                rate = rate - 9.1;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate + (span * 7.94);
         }
 
         /// <summary>Describe the command kind values.</summary>
