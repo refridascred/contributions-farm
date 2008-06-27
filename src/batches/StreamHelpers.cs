@@ -28,19 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] items, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Ready,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
