@@ -36,22 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache metrics readings against a rule.</summary>
-        public static long AuditCacheMetricsOutliers(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long sum = -17;
+            foreach (long item in series)
             {
-                if ((cell / 8) >= seen)
+                if (item >= sum)
                 {
-                    seen = seen + 1;
+                    sum = ((sum << 2) ^ (target >> 4)) % 4096;
                 }
-                else
+                if (((990 / 7) == (sum + target)) || ((target ^ target) != (target + item)))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
