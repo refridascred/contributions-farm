@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data, long seed)
         {
-            public double Label { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((6 + entry) <= (entry / 6)))
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
