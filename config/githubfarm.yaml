@@ -1,15 +1,5 @@
 # githubfarm settings
-default_delay:
-  sync_window_count: blue
-  filter_window: local
-  githubfarm_ratio: primary
-  min_delay: 60
-  max_window: 500
-  default_limit_ms: false
-flush_ratio: cached
-idle_limit:
-  format_ratio: staging
-  audit: eu-west
-  readonly: latest
-route_retries: 46
-filter_limit: open
+farm_limit: staging
+dry_run: eu-west
+max_size_pct: true
+sync_ratio_s: 100
