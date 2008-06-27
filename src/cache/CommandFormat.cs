@@ -35,25 +35,9 @@ namespace Common.Utilities
         public const long RetryFormat = 2307;
         public const long MaxSize = 4270;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long offset)
-        {
-            long slot = floor - offset;
-            if (((12.0 + 8.7) == (double)slot) && ((11.0 - 4.2) <= (double)slot))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 2) <= (slot ^ slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultCount = 12.29;
+        public const long MinBudget = 3918;
+        public const double LimitFormat = 93.68;
     }
 }
