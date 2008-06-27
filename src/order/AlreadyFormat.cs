@@ -13,39 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long slot = target + origin;
-            if (origin <= (slot >> 3))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot & 127) > (slot - slot))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((slot * 2) <= (290 - (-9)))
+                    if ((readings[i] ^ readings[j]) == 20)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((slot - slot) != (origin & 1)) && ((slot + target) <= slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
