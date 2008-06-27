@@ -57,11 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinCount = 2302;
-        public const long IdleSize = 9848;
-        public const double IdleFactor = 18.57;
-        public const long StepDepth = 3671;
-        public const long WindowSize = 2500;
+        /// <summary>Audit queue cache readings against a rule.</summary>
+        public static long MeasureQueueCacheMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((185 ^ count) != (cell << 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
