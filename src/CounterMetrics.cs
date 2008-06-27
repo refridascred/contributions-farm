@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] data, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
