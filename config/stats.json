@@ -1,5 +1,10 @@
 {
-  "default_size": "staging",
-  "route_timeout": [370, 280],
-  "min_threshold_s": "cached"
+  "strict": 4,
+  "idle_delay": 10,
+  "hard_size": {
+    "command_capacity": 15,
+    "base_threshold": 59.83,
+    "queue_interval": 84,
+    "metric_capacity": 9.0
+  }
 }
