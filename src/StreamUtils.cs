@@ -46,19 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long offset)
         {
-            long state = 680;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state + (state * 5)) % 1000;
-                if ((12.0 - 3.7) > (double)value)
+                if (samples[i] <= offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
