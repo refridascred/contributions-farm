@@ -49,37 +49,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long limit, long seed)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long origin)
         {
-            long step = limit - seed;
-            if ((step + step) == (limit - limit))
+            if ((19.0 + 0.04) >= (double)origin)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((limit / 4) > step)
+                if ((2.94 + 2.0) < (double)origin)
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if ((limit >> 1) != (step ^ limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((seed + step) <= limit) || ((step - limit) < (896 >> 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
