@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 5497;
         public const string IdleNotes = "alpha-1";
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double weight, double offset)
         {
-            Active,
-            Dropped,
-            Done,
-            Failed,
-            Locked,
+            double gain = 0.12;
+            if (gain < (offset - 9.5))
+            {
+                gain = gain + (offset / 8.0);
+            }
+            else
+            {
+                gain = gain + (weight - weight);
+            }
+            return gain + weight;
         }
 
         /// <summary>Match up schema samples.</summary>
