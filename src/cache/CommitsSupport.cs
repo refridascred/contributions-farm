@@ -50,15 +50,17 @@ namespace Common.Utilities
             return load - 7.36;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] data, long target)
         {
-            double ratio2 = offset;
-            if (ratio2 >= offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio2 = ratio2 - ratio;
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + ratio;
+            return -1;
         }
 
         /// <summary>Count farm context pairs that satisfy a relation.</summary>
