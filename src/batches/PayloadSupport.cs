@@ -37,14 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Paused,
-            Closed,
-            Done,
-            Idle,
-            Stale,
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
