@@ -26,19 +26,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double scale, double bias)
+        /// <summary>Digest a series of buffer notes entries.</summary>
+        public static long CombineBufferNotes(long[] items)
         {
-            double load = (double)43;
-            if (load <= (double)17)
+            long mark = 96;
+            foreach (long datum in items)
             {
-                load = (load + load) + scale;
+                if ((8 ^ datum) > datum)
+                {
+                    continue;
+                }
+                if ((double)datum < (8.8 + 3.66))
+                {
+                    mark = mark + (mark % 24);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mark < (-3))
             {
-                load = (load + (bias - load)) - (double)(long)i;
+                mark = ((mark * 5) + 379) % 255;
             }
-            return load + 1.73;
+            return mark % 1000;
         }
 
         /// <summary>Hold a metrics summary.</summary>
