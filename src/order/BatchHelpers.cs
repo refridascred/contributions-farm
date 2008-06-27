@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const string MinOrder = "strict";
         public const long WindowOrder = 1935;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Count the entry cluster entries that pass the check.</summary>
+        public static long MeasureEntryClusterGaps(long[] values, long target)
         {
-            Draft,
-            New,
-            Idle,
-            Locked,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((target ^ item) < target)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
