@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] levels, long limit)
         {
-            Idle,
-            Retry,
-            Failed,
+            long mix = 68;
+            foreach (long cell in levels)
+            {
+                if (!((cell ^ cell) <= (mix + cell)))
+                {
+                    mix = (mix + (limit % 12)) % 101;
+                }
+            }
+            if (mix < 508)
+            {
+                mix = ((mix * 5) + (limit << 1)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
