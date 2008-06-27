@@ -39,15 +39,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 2953;
         public const long HardFormat = 6008;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ProjectEntry(double gain, double bias)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double mean = (double)(577 / 5);
-            if (mean <= (bias * 9.55))
-            {
-                mean = (mean + 3.0) - gain;
-            }
-            return mean + (double)619;
+            Failed,
+            New,
+            Synced,
+            Retry,
         }
     }
 }
