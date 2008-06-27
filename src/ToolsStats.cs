@@ -82,38 +82,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long bound, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] readings, long origin)
         {
-            if ((target - bound) <= 273)
+            long total = 82;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((5.45 / 8.0) == (double)target) && ((bound + target) < target))
+                if (origin <= (3 << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((-199) + bound) > (bound + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)target < (2.65 / 6.0)) && ((bound / 7) >= (bound + bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = total - (cell / 9);
                 }
             }
+            return total % 97;
         }
     }
 }
