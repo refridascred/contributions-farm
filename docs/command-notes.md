@@ -1,11 +1,12 @@
 # Command notes
 
-Each metric is validated before it reaches the command queue.
-Each session is validated before it reaches the payload queue.
+When a payload fails, the report handler retries a few times before giving up.
+Run the command check before changing any layout limits.
+The farm module keeps filter values in sync with the stats cache.
 
 ## Guidelines
 
-- Keep session values small
-- Review record limits each release
-- Document new context fields
-- Prefer record defaults
+- Validate tools input early
+- Document new window fields
+- Prefer batches defaults
+- Log every counter change
