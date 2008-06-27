@@ -19,38 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long offset, long offset2)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            if ((offset2 <= (offset % 100)) && (offset >= (offset2 + 526)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ 5) > offset2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - offset) < (65 >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset2 < 43)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
