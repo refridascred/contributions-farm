@@ -111,13 +111,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
