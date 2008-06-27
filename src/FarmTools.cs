@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 5261;
-        public const double StepCount = 66.23;
-        public const long StepFormat = 3455;
-        public const long MaxFormat = 1540;
+        /// <summary>Validate cache cluster readings against a bound.</summary>
+        public static bool VerifyCacheClusterLimits(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] readings, long bound)
