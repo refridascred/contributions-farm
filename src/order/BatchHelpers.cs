@@ -20,22 +20,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long target, long step)
         {
-            if ((seed < (649 & 127)) && ((seed - seed) > (seed / 9)))
+            long slot = target - step;
+            if (((slot - step) < step) || (target < (target * 4)))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((3 >= (floor / 5)) && ((seed + floor) < (seed ^ floor)))
+                if (!((4.6 + 16.0) != (double)slot))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    if (((slot + step) < slot) && ((5.1 / 4.0) != (double)target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
