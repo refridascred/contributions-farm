@@ -42,19 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] samples, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long result = 871;
+            foreach (long datum in data)
             {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result << 3) ^ (result + datum)) % 4096;
             }
-            return ok;
+            if (result < 4)
+            {
+                result = (result * 3) + result;
+            }
+            return result;
         }
     }
 }
