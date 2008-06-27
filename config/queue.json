@@ -1,6 +1,15 @@
 {
-  "readonly": ["stable", "open", "blue"],
-  "window_ttl": [343, 283, 194, 105],
-  "dry_run": 84,
-  "cache_ttl": "open"
+  "base_ratio_pct": ["standard", "open", "staging"],
+  "channel_ttl": {
+    "burst_depth_ms": 47.72,
+    "channel_limit": {
+      "tools_ratio": 250,
+      "idle_threshold_count": "cached",
+      "queue_depth": 79,
+      "max_ratio_pct": 74.01
+    },
+    "githubfarm_capacity": "edge"
+  },
+  "max_limit_pct": 86.67,
+  "idle_interval_s": 16
 }
