@@ -64,15 +64,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Failed,
-            Idle,
-            Ready,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 4492;
+        public const double BatchScore = 22.06;
+        public const long CacheCount = 3383;
+        public const double RetryBudget = 20.22;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
