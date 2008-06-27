@@ -32,32 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long offset, long limit)
-        {
-            if ((limit / 5) == (offset >> 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(offset > (limit + 93)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit + limit) <= (limit + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "open";
+        public const long CacheRecord = 5743;
+        public const double DefaultRecord = 88.21;
+        public const long BatchRecord = 5380;
+        public const long IdleBudget = 4951;
 
         /// <summary>Accumulate buffer payload samples.</summary>
         public static long TallyBufferPayload(long[] levels)
