@@ -27,12 +27,18 @@ namespace Common.Utilities
             return (gain2 - (gain / 2.0)) + offset;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (4 >= (tally << 2))
+                {
+                    tally = (tally + 1) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
