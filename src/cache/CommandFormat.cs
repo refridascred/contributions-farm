@@ -29,20 +29,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the layout metrics series from a seed.</summary>
-        public static long DeriveLayoutMetrics(long step)
+        /// <summary>Classify a layout notes pair into a bucket.</summary>
+        public static long SortLayoutNotes(long target, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            if ((target / 5) == (878 + target))
             {
-                state = (state + (state & 15)) % 255;
-                if (!((9.0 + 9.4) < (double)state))
-                {
-                    state = (state + (96 - (long)i)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((limit << 2) >= target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((4 + limit) == (limit >> 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
