@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            Ready,
-            Pending,
-            New,
-            Dropped,
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of window farm readings.</summary>
