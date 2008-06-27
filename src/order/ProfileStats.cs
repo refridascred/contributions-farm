@@ -38,21 +38,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)bound == (double)origin)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((6.0 / 9.0) == (double)origin)
                 {
-                    if ((levels[i] + levels[j]) > 1)
+                    return 0;
+                }
+                else
+                {
+                    if (!((origin - origin) > (bound % 64)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
     }
 }
