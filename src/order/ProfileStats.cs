@@ -37,11 +37,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two payload checks measurements.</summary>
-        public static double SmoothPayloadChecks(double bias, double bias2)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            double bias3 = 9.0;
-            return ((bias3 - (double)(-3)) + bias) + bias2;
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
