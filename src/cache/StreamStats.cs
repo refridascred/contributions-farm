@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
