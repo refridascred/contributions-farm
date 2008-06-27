@@ -46,24 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long bound)
-        {
-            if ((step % 60) > step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (step >= (step + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepInterval = 5534;
+        public const string CacheEntry = "local";
+        public const long BurstCount = 1347;
+        public const long MaxEntry = 189;
     }
 }
