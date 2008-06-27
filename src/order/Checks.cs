@@ -49,19 +49,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double weight, double span)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            double ratio = (5.5 - span) + (weight + 2.0);
-            if (ratio < (double)(-4))
+            long mix = 361;
+            foreach (long item in readings)
             {
-                ratio = ratio + (weight - ratio);
+                if ((long)readings.Length <= (item + mix))
+                {
+                    mix = mix + (mix / 7);
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mix < 847)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                mix = mix - mix;
             }
-            return ratio - weight;
+            return mix % 1000;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
