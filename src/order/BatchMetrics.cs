@@ -52,22 +52,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] levels)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item & 15) != (item + item))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the notes level values.</summary>
