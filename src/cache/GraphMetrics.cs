@@ -15,22 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batches checks entries that pass the check.</summary>
-        public static long CountBatchesChecksMatches(long[] series)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + sample) != (sample - sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
