@@ -19,10 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstLevel = 8977;
-        public const long CacheTimeout = 2877;
-        public const long RetryStats = 9159;
+        /// <summary>Iterate the support batches series from a seed.</summary>
+        public static long RollSupportBatches(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate farm already samples.</summary>
         public static long DigestFarmAlready(long[] samples)
