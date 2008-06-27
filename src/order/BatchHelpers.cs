@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const string SoftBuffer = "latest-1";
         public const string WindowCount = "primary-1";
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = 36;
-            foreach (long entry in items)
-            {
-                if (acc >= entry)
-                {
-                    acc = (acc * 5) + (entry ^ entry);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (entry * 5)) % 255;
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
