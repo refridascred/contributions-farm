@@ -52,18 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] data, long limit)
+        /// <summary>Locate a graph support reading by value.</summary>
+        public static long LocateGraphSupportIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count > 4)
+                if (series[i] == target)
                 {
-                    count = ((count + 2) + entry) + limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
