@@ -30,12 +30,19 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] levels, long seed)
         {
-            Ready,
-            Queued,
-            Idle,
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
