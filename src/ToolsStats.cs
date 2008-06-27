@@ -29,11 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] series, long floor)
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
+            long acc = 11;
+            foreach (long reading in series)
+            {
+                if (!((acc + reading) > (reading - floor)))
+                {
+                    acc = (acc - acc) % 101;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
