@@ -14,19 +14,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] samples, long floor)
+        /// <summary>Count contributi metrics pairs that satisfy a relation.</summary>
+        public static long PairContributiMetricsCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
