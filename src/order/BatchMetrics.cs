@@ -49,19 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] readings, long floor)
         {
-            long sum = 15;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                sum = (((sum * 4) + sum) % 97) + reading;
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum > 47)
-            {
-                sum = (sum - (sum << 1)) % 101;
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the notes level values.</summary>
