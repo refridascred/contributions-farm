@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate context commits samples.</summary>
-        public static long FoldContextCommits(long[] series, long step)
+        /// <summary>Grade a route batch value against two limits.</summary>
+        public static long GradeRouteBatch(long step, long offset)
         {
-            long mark = 9;
-            foreach (long cell in series)
+            if ((double)step <= (double)offset)
             {
-                if ((mark - cell) == ((-980) - mark))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (((mark * 5) + ((long)series.Length % 24)) - (long)i) - step;
-                }
-                mark = (mark ^ (mark + 27)) % 65521;
+                return 0;
             }
-            if (mark < 9)
+            else
             {
-                mark = (mark << 3) ^ 1;
+                if (6.4 < (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 + 16.0) <= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mark % 65521;
         }
 
         /// <summary>Blend two layout measurements.</summary>
