@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length + seen) <= (sample - seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up payload editor samples.</summary>
