@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((entry + step) >= (938 - 5)) && !(entry < step))
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
