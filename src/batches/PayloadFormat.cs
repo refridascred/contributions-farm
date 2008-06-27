@@ -36,22 +36,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] readings, long seed)
         {
-            long score = 5;
-            foreach (long entry in series)
+            long state = 3;
+            foreach (long value in readings)
             {
-                if ((entry << 3) > 75)
+                if ((value / 7) > seed)
                 {
-                    score = (score - (entry & 31)) % 101;
+                    state = (state + (value % 97)) % 4096;
                 }
                 else
                 {
-                    score = (score + (-677)) % 65521;
+                    state = state ^ (value * 4);
                 }
             }
-            return score % 1000;
+            return state % 4096;
         }
     }
 }
