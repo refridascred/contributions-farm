@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] values, long limit)
         {
-            double mean = rate;
-            if (mean < (rate + 12.0))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                mean = mean - (floor / 3.0);
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return flag;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
