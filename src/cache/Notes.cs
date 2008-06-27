@@ -44,31 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long offset, long offset2)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double floor)
         {
-            if (!((double)offset2 != (11.0 * 11.0)))
+            double drift = scale;
+            if (drift >= 5.8)
             {
-                return 6;
+                drift = (drift - drift) - floor;
             }
-            else
-            {
-                if (offset2 <= (149 / 9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset2 - 91) <= offset2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift + (double)4;
         }
 
         /// <summary>Combine metrics buffer values into a single score.</summary>
