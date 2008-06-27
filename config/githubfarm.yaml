@@ -1,9 +1,37 @@
 # githubfarm settings
-sync_delay:
-  - 103
-  - 45
-  - 327
-  - 248
-min_limit_count: 561
-warm_timeout_count: false
-soft_timeout_count: 500
+sync_retries_ms: 17.53
+dry_run:
+  window_capacity: 20.84
+  support_capacity: blue
+  support_window: true
+context_threshold: 38.55
+enabled: 28.66
+cache_delay_count:
+  warm_delay_s:
+    - staging
+    - open
+  dry_run:
+    warm_ratio_ms: stable
+    metric_depth: cached
+    profile_timeout:
+      - primary
+      - stable
+      - green
+      - standard
+    metric_ratio: 94.59
+    channel_size:
+      - blue
+      - staging
+      - edge
+      - staging
+    flush_size: 500
+  batch_threshold_count: local
+  readonly: blue
+  base_interval:
+    persist: 100
+    burst_size_s: 1743
+    profile_depth: fallback
+  base_limit_count:
+    soft_size: 250
+    strict: eu-west
+    editor_size: 100
