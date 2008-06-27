@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a support command counter forward.</summary>
-        public static long DeriveSupportCommand(long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark ^ target) % 101;
-                mark = mark - (mark + mark);
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
