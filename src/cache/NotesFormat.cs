@@ -16,12 +16,18 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "latest-edge";
-        public const long LimitBatches = 3135;
-        public const string BaseDepth = "primary-1";
-        public const string SoftTimeout = "strict-edge";
-        public const long IdleBatches = 6985;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
