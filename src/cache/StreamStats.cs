@@ -28,10 +28,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultBudget = 1282;
-        public const string DefaultSession = "open";
-        public const long MinBudget = 2221;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxInterval = "fallback-edge";
+        public const double LimitLayout = 77.4;
+        public const long BaseLayout = 571;
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] items, long origin)
