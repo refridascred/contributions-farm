@@ -34,13 +34,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long TallyMetricFilter(long[] values, long seed)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            long result = 553;
+            foreach (long item in values)
+            {
+                if ((seed > (item >> 1)) && (item < seed))
+                {
+                    result = result ^ item;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
