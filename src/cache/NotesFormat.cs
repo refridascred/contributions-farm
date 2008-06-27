@@ -29,13 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (!((10.0 + 15.0) > (double)seen))
+                {
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
