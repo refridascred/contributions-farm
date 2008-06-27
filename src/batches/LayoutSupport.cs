@@ -45,10 +45,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowSize = 4081;
-        public const long MaxWidth = 3546;
-        public const long MinProfile = 946;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterBounds(long[] data, long target)
