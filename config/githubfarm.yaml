@@ -1,15 +1,13 @@
 # githubfarm settings
-notes_size:
-  - 336
-  - 316
-  - 77
-  - 195
-command_limit: 3.4
-idle_ratio: false
-warm_retries_ms: 868
-soft_depth: 250
-max_size:
-  - stable
-  - latest
-  - eu-west
-  - latest
+strict: 8243
+record_interval:
+  audit:
+    verbose: 80.46
+    checks_ratio: true
+    dry_run: 4099
+    farm_window: false
+  layout_depth: false
+  buffer_depth: true
+  flush_retries_count: 27.73
+batch_timeout: true
+burst_limit: fallback
