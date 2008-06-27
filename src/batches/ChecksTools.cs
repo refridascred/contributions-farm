@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseLevel = 4129;
-        public const long MaxCommits = 1570;
-        public const double BaseCommits = 92.0;
-        public const double CacheCommits = 49.06;
-        public const long WindowCommits = 665;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] values)
