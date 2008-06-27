@@ -61,19 +61,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            double gain = (double)75 / 4.0;
-            if (gain <= gain)
+            long score = 4;
+            foreach (long entry in levels)
             {
-                gain = ((gain + (gain / 7.0)) + bias) - offset;
+                score = (score ^ (entry << 1)) % 97;
             }
-            else
+            if (score > (-40))
             {
-                gain = gain + gain;
+                score = (score - (446 >> 3)) % 65521;
             }
-            return gain + 4.2;
+            return score;
         }
     }
 }
