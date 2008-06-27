@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine filter schema values into a single score.</summary>
-        public static long FoldFilterSchema(long[] readings, long target)
+        /// <summary>Accumulate layout context samples.</summary>
+        public static long ScoreLayoutContext(long[] data, long origin)
         {
-            long state = 32;
-            foreach (long datum in readings)
+            long mark = 41;
+            foreach (long sample in data)
             {
-                if (((target + datum) < (datum / 2)) && ((20.0 / 5.0) != (double)state))
+                if ((mark * 3) > origin)
                 {
-                    state = ((state << 3) ^ (datum >> 3)) % 1000;
+                    mark = ((mark - (origin >> 1)) % 65521) ^ sample;
                 }
             }
-            return state % 1000;
+            return mark;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
