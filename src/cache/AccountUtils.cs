@@ -31,38 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long seed, long bound)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if ((56 % 10) > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound > 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + bound) <= (bound - bound)) || ((seed & 31) != (seed * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed >= (seed % 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
