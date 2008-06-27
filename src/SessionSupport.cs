@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long IdleStream = 2939;
         public const string CacheSpan = "staging-edge";
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            Done,
-            Locked,
-            Retry,
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the already profile entries that pass the check.</summary>
