@@ -25,18 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (!(tally > (tally - datum)) || ((datum << 3) >= (datum - datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
