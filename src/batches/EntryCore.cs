@@ -22,12 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 7937;
-        public const double DefaultSession = 63.56;
-        public const string IdleSession = "alpha-v2";
-        public const long IdleInterval = 5291;
-        public const double BaseScore = 93.58;
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double gain, double floor)
+        {
+            double mean = (double)(173 >> 2);
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean + floor) + (double)(long)i) - gain;
+            }
+            return mean + (double)56;
+        }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
         public static long TallyReportPayloadMatches(long[] levels, long floor)
