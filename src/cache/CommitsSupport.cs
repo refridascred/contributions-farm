@@ -52,10 +52,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 768;
-        public const long DefaultTimeout = 9322;
-        public const long WindowLayout = 5155;
-        public const long StepLayout = 8079;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)tally <= (double)(long)readings.Length) || ((limit % 64) <= tally))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
     }
 }
