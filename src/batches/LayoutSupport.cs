@@ -52,19 +52,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] levels)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long carry = -9;
-            foreach (long value in levels)
-            {
-                carry = ((carry ^ (carry / 2)) % 65521) + value;
-            }
-            if (carry > 82)
-            {
-                carry = (carry << 3) ^ (carry & 31);
-            }
-            return carry;
+            Locked,
+            Pending,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
