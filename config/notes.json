@@ -1,8 +1,20 @@
 {
-  "readonly": 17.41,
-  "base_size_s": 24,
-  "strict": 74,
-  "compress": true,
-  "channel_depth": 78.95,
-  "channel_ttl": 30
+  "poll_timeout_ms": 5110,
+  "batch_capacity_ms": 30,
+  "batch_ttl": "legacy",
+  "cache_depth": {
+    "warm_ratio": "eu-west",
+    "cache_interval": {
+      "cache_delay": 100,
+      "flush_ttl": "stable",
+      "tools_threshold": true,
+      "context_interval": 2,
+      "readonly": 30,
+      "verbose": "standard"
+    },
+    "min_interval_ms": false,
+    "idle_interval": "edge"
+  },
+  "warm_interval_ms": 7,
+  "idle_threshold": 250
 }
