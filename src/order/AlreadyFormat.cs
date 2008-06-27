@@ -53,25 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long origin)
-        {
-            if ((19.0 + 0.04) >= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2.94 + 2.0) < (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 4040;
+        public const long StepSize = 2774;
+        public const double LimitWidth = 8.15;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long CountNotesGaps(long[] readings, long step)
