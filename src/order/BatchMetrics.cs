@@ -74,11 +74,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7705;
-        public const long WindowCommits = 5750;
-        public const double BurstCommits = 3.36;
-        public const long WindowScore = 8302;
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data, long bound)
+        {
+            long sum = 2;
+            foreach (long value in data)
+            {
+                if (68 <= (value + bound))
+                {
+                    sum = ((sum * 3) + (bound - bound)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
