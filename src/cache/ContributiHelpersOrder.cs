@@ -28,15 +28,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] samples)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long datum in samples)
             {
-                if ((double)bound >= (6.04 - 12.0))
+                if ((matches - 561) != (3 ^ datum))
                 {
-                    matches = (matches + 2) + item;
+                    matches = matches + 3;
                 }
             }
             return matches;
