@@ -16,20 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderBounds(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleTimeout = "stable-edge";
+        public const long IdleLevel = 3704;
+        public const string RetryRatio = "legacy-edge";
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long seed)
