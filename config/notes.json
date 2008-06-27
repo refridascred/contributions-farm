@@ -1,5 +1,6 @@
 {
-  "route_delay": 13,
-  "flush_depth": false,
-  "channel_threshold": "latest"
+  "sync_depth": 6,
+  "poll_ttl_count": 250,
+  "hard_threshold_pct": 33,
+  "report_interval": 100
 }
