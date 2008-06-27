@@ -35,22 +35,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long step)
         {
-            long mix = 361;
+            bool stale = true;
             foreach (long item in readings)
             {
-                if ((long)readings.Length <= (item + mix))
+                if (item <= step)
                 {
-                    mix = mix + (mix / 7);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 847)
-            {
-                mix = mix - mix;
-            }
-            return mix % 1000;
+            return stale;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
