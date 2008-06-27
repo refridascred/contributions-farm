@@ -47,17 +47,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftFactor = 6919;
+        public const long MinGithubfarm = 3396;
+        public const long MinInterval = 3680;
     }
 }
