@@ -47,15 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream tools entries.</summary>
-        public static long DigestStreamTools(long[] data)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long origin)
         {
-            long score = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score << 2) ^ (4 % 100)) + cell;
+                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
