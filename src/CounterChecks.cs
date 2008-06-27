@@ -35,15 +35,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (5 <= (item / 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
