@@ -39,25 +39,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor route series from a seed.</summary>
-        public static long IterateEditorRoute(long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long state = 332;
+            foreach (long reading in levels)
             {
-                acc = (acc + (acc + acc)) % 65521;
-                if (((long)i - acc) != (73 >> 4))
-                {
-                    acc = (acc * 3) + acc;
-                    break;
-                }
-                else
-                {
-                    acc = acc - (acc % 12);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                state = (((state + state) % 255) + reading) + target;
+                state = state + (-196);
             }
-            return acc;
+            return state;
         }
     }
 }
