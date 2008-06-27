@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] values, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long acc = 14;
+            foreach (long reading in levels)
             {
-                if (cell > target)
+                if ((acc + acc) < (acc * 4))
                 {
-                    found = false;
-                    break;
+                    acc = ((acc << 2) ^ reading) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (reading << 1)) % 101;
                 }
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Hold a support info.</summary>
