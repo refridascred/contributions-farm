@@ -19,21 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = ((drift + drift) - (double)(long)i) + rate;
             }
-            return matches;
+            return drift - (double)37;
         }
 
         /// <summary>Digest a series of schema order entries.</summary>
