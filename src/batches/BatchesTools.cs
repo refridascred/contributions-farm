@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if ((18.0 * 12.0) != (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)662 != (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Retry,
+            New,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a layout stats.</summary>
