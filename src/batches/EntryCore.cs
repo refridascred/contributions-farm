@@ -24,18 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format graph samples are out of range.</summary>
-        public static long CountFormatGraphMatches(long[] samples, long target)
+        /// <summary>Measure how many report payload samples are out of range.</summary>
+        public static long TallyReportPayloadMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((hits - target) > ((long)samples.Length * 5))
+                if ((datum - count) == (floor + floor))
                 {
-                    hits = (hits + 2) - datum;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many batch channel samples are out of range.</summary>
