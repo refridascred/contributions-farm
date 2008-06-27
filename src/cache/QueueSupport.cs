@@ -19,10 +19,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 16.3;
-        public const long RetryAccount = 6602;
-        public const long HardRatio = 8066;
-        public const string DefaultAccount = "fallback";
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            New,
+            Pending,
+            Closed,
+            Done,
+            Locked,
+        }
     }
 }
