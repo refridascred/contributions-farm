@@ -1,24 +1,8 @@
 {
-  "record_threshold": ["local", "stable", "eu-west", "blue"],
-  "soft_capacity_s": 63,
-  "flush_depth": {
-    "enabled": {
-      "batch_window_ms": "strict",
-      "enabled": 1504,
-      "default_threshold": 67.09
-    },
-    "batch_capacity": [295, 214, 384],
-    "metrics_interval": {
-      "audit": 82,
-      "burst_timeout": "primary",
-      "command_interval": "green",
-      "already_window": 30,
-      "filter_retries": 87.38
-    },
-    "poll_ratio_count": [160, 231, 174],
-    "command_interval": 5904
-  },
-  "poll_capacity": false,
-  "metric_ttl": "green",
-  "idle_depth": 60.17
+  "warm_delay_ms": 15.65,
+  "enabled": 95.84,
+  "sync_delay": 48,
+  "soft_retries": 2302,
+  "flush_depth_count": 60,
+  "burst_limit_ms": [492, 225, 424]
 }
