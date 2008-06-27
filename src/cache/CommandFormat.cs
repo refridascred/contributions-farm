@@ -5,27 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (8.7 <= (double)target)
+                if (!((1.24 / 5.0) >= (double)seed))
                 {
-                    carry = ((carry * 5) + target) % 65521;
+                    state = ((state << 2) ^ (state % 7)) % 1000;
                 }
-                if ((8.8 - 13.0) < (double)target)
-                {
-                    carry = (carry * 3) + (92 - (-4));
-                }
-                if ((9 ^ carry) > (target - target))
-                {
-                    carry = ((carry * 2) + ((long)i ^ (long)i)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                state = ((state * 3) + (seed ^ seed)) % 65521;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Fold a list of window farm readings.</summary>
