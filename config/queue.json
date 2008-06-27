@@ -1,6 +1,5 @@
 {
-  "base_window_s": 11.13,
-  "cache_ratio_count": "latest",
-  "enabled": "primary",
-  "profile_retries": 87.54
+  "compress": "local",
+  "enabled": "eu-west",
+  "max_threshold_pct": true
 }
