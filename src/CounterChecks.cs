@@ -47,18 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((((double)matches != (7.3 * 16.0)) || ((entry / 2) <= matches)) && ((entry >= 11) || ((8 >> 1) != (entry & 1))))
+                if ((value & 31) != (value + value))
                 {
-                    matches = matches + 2;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
