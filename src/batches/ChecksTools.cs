@@ -23,14 +23,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Idle,
-            Pending,
-            Closed,
-            Paused,
-            Stale,
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Locate a cache reading by value.</summary>
