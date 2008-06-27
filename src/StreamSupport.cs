@@ -26,12 +26,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long bound)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
+            if ((offset - 72) < (7 / 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset / 7) < bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound > (double)7)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound == (double)82)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
