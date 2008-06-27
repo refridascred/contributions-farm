@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a batches context reading.</summary>
-        public static double ScaleBatchesContext(double gain, double offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double gain2 = gain * 16.0;
-            return (gain2 - (gain / 2.0)) + offset;
+            Paused,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
