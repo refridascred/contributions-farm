@@ -32,19 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long anchor = 23;
-            foreach (long entry in levels)
-            {
-                anchor = (anchor + (0 >> 5)) % 65521;
-                if ((92 << 2) <= anchor)
-                {
-                    anchor = anchor ^ entry;
-                }
-            }
-            return anchor;
+            Draft,
+            Locked,
+            Pending,
+            Retry,
         }
     }
 }
