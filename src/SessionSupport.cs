@@ -33,11 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseLevel = 27.14;
-        public const long BatchDepth = 1214;
-        public const long StepGraph = 8667;
-        public const double BurstGraph = 77.99;
-        public const long MinInterval = 1856;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] levels, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
