@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Accumulate profile samples.</summary>
