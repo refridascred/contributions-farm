@@ -40,17 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics schema entry that matches the target.</summary>
-        public static long SeekMetricsSchemaIndex(long[] data, long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
