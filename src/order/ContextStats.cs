@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] values, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Count the editor channel entries that pass the check.</summary>
