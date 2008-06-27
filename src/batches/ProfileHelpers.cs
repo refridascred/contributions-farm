@@ -75,22 +75,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 2364;
+        public const string MaxTimeout = "staging-v2";
+        public const string RetryEntry = "staging";
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long ClassifyEntry(long seed, long seed2)
