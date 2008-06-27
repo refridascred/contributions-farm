@@ -10,38 +10,13 @@ namespace Common.Utilities
         public const double SoftAccount = 9.97;
         public const string RetryAccount = "legacy";
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if (limit < (limit + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((1.0 + 2.82) < (double)limit) || ((3.7 * 6.9) <= (double)offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 / 2.0) < (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit - offset) > (offset + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Digest a series of payload order entries.</summary>
