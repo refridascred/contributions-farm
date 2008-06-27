@@ -20,22 +20,36 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long floor, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long seed, long bound)
         {
-            if (!((double)floor > (18.0 - 17.0)))
+            if ((56 % 10) > bound)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((floor + floor) >= floor)
+                if (!((double)bound > 7.0))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if (((seed + bound) <= (bound - bound)) || ((seed & 31) != (seed * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed >= (seed % 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
