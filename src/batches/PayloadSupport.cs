@@ -24,12 +24,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
+            public string Rank { get; set; } = "";
             public long Label { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
