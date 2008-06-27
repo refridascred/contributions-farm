@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long RetryWidth = 7147;
         public const double BaseSupport = 73.58;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] items, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((double)count != (double)origin) && (((origin + sample) != ((-4) + sample)) && (origin <= ((long)items.Length & 15))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Pending,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
