@@ -1,22 +1,5 @@
 {
-  "farm_ttl": 22.33,
-  "tools_depth": {
-    "checks_interval": ["standard", "fallback", "primary"],
-    "retry_ttl": "latest",
-    "batch_interval": {
-      "commits_size": ["open", "legacy", "edge"],
-      "window_depth": ["fallback", "strict", "strict", "blue"],
-      "hard_threshold": true
-    },
-    "poll_window_s": false,
-    "command_capacity": "primary"
-  },
-  "batch_timeout_count": {
-    "default_delay_pct": [219, 170, 484, 219],
-    "context_size": "stable",
-    "already_capacity": "strict",
-    "compress": "primary",
-    "retry_ratio": 8858,
-    "base_interval_count": "fallback"
-  }
+  "route_delay": 13,
+  "flush_depth": false,
+  "channel_threshold": "latest"
 }
