@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up stats graph samples.</summary>
-        public static long CompareStatsGraphCount(long[] items)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
