@@ -1,5 +1,16 @@
 {
-  "compress": "local",
-  "enabled": "eu-west",
-  "max_threshold_pct": true
+  "max_delay_count": 60,
+  "stats_size": true,
+  "cluster_limit": {
+    "warm_depth_pct": 1024,
+    "enabled": "legacy",
+    "stats_ratio": 34.32,
+    "account_ttl": ["eu-west", "stable"],
+    "command_window": "blue",
+    "contributi_threshold": {
+      "cache_limit_ms": [156, 481, 79, 53],
+      "farm_threshold": 9956,
+      "poll_size": 71
+    }
+  }
 }
