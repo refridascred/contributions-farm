@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double StepCounter = 15.24;
         public const long BatchCounter = 4437;
 
-        /// <summary>Derive the next cluster token value from a seed.</summary>
-        public static long RollClusterToken(long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (mark ^ ((long)i2 ^ step)) % 4096;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
