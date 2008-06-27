@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long offset, long bound)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            if ((1.5 + 0.7) < (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (20.0 - 7.28))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset / 7) >= (offset + 414))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((0.1 * 12.0) >= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile level values.</summary>
