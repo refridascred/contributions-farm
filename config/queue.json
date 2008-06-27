@@ -1,8 +1,17 @@
 {
-  "soft_ratio_ms": 250,
-  "session_limit": 8557,
-  "default_delay": ["latest", "blue"],
-  "min_size": 59,
-  "audit": true,
-  "batch_capacity": 31.82
+  "compress": {
+    "route_size": 500,
+    "sync_interval": "latest",
+    "compress": "latest"
+  },
+  "min_threshold_ms": 3179,
+  "editor_threshold": 48.89,
+  "enabled": 7492,
+  "profile_window": {
+    "verbose": "latest",
+    "batch_limit_count": 4522,
+    "hard_ttl": "fallback",
+    "max_size": 7402
+  },
+  "retry_window": ["latest", "stable", "edge", "strict"]
 }
