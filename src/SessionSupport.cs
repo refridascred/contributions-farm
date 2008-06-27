@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long IdleStream = 2939;
         public const string CacheSpan = "staging-edge";
 
-        /// <summary>Find the first layout context entry that matches the target.</summary>
-        public static long FindLayoutContextIndex(long[] readings, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the already profile entries that pass the check.</summary>
