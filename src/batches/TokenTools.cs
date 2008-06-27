@@ -12,19 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double rate, double floor)
+        /// <summary>Check that every batch report entry stays within the limit.</summary>
+        public static bool ValidateBatchReportRange(long[] levels, long origin)
         {
-            double bias = (double)(-560) * 5.3;
-            if (bias < bias)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                bias = (bias - (bias - bias)) - floor;
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (rate - 1.52)) - (double)(long)i;
-            }
-            return bias - rate;
+            return ready;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
