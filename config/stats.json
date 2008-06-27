@@ -1,9 +1,17 @@
 {
-  "order_window": 3640,
-  "checks_threshold": 49,
-  "hard_window_count": {
-    "batch_ttl": 1248,
-    "batch_ttl_s": [215, 362, 253],
-    "cache_timeout_s": 19.6
-  }
+  "warm_capacity": {
+    "cluster_ratio": {
+      "verbose": [54, 198, 144, 424],
+      "readonly": false,
+      "soft_ttl": 5.15,
+      "max_delay": "primary",
+      "hard_threshold": "legacy"
+    },
+    "base_retries": "primary",
+    "queue_retries": ["blue", "local", "strict"],
+    "persist": true
+  },
+  "strict": "blue",
+  "persist": 2700,
+  "batch_capacity": 45
 }
