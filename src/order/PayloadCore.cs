@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] samples, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (entry != target)
+                if ((seen - value) > seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + seed;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
