@@ -71,12 +71,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate support buffer samples.</summary>
+        public static long DigestSupportBuffer(long[] series, long floor)
         {
-            Paused,
-            Synced,
-            Ready,
+            long carry = 907;
+            foreach (long item in series)
+            {
+                if (((1.98 - 13.0) <= (double)floor) && ((carry ^ carry) < (floor / 3)))
+                {
+                    carry = carry ^ carry;
+                }
+                carry = (carry ^ (carry >> 5)) % 1000;
+                if (((double)item == (7.97 + 4.13)) && ((double)floor > (double)306))
+                {
+                    carry = (carry << 2) ^ (carry >> 2);
+                }
+                else
+                {
+                    carry = carry + (item & 31);
+                }
+                if (item > (item & 63))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
