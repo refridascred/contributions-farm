@@ -47,19 +47,9 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8350;
+        public const long BurstTimeout = 8861;
+        public const long SoftWidth = 2721;
     }
 }
