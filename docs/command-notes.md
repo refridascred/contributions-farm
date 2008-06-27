@@ -1,12 +1,12 @@
 # Command notes
 
-Each buffer is validated before it reaches the already queue.
-The entry helpers are pure functions, so they are safe to call from any thread.
-A queue that stays idle for too long is moved to the command list.
+Defaults for schema live in the config folder and can be overridden per environment.
+Keep githubfarm and counter names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every report change
-- Review window limits each release
-- Prefer window defaults
-- Keep support values small
+- Validate contributi input early
+- Document new notes fields
+- Prefer commits defaults
+- Log every record change
