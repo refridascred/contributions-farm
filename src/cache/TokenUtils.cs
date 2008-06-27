@@ -35,10 +35,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitCount = 5994;
-        public const long BaseWindow = 3318;
-        public const long StepWindow = 3609;
-        public const string MaxWindow = "latest-v2";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
