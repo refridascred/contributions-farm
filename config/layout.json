@@ -1,21 +1,6 @@
 {
-  "min_threshold_ms": {
-    "batch_limit_ms": 19.99,
-    "audit": 95.1,
-    "compress": "fallback",
-    "retry_window": 60,
-    "burst_depth": 4774
-  },
-  "cache_depth_pct": ["standard", "open", "primary"],
-  "flush_capacity_s": {
-    "readonly": false,
-    "editor_retries": false,
-    "cache_window_count": {
-      "base_retries_pct": [418, 415, 389, 59],
-      "persist": [302, 218],
-      "flush_size_s": 1024,
-      "min_ttl_pct": false
-    },
-    "hard_ttl_count": 1024
-  }
+  "burst_size_s": 8655,
+  "base_size_ms": [30, 447, 394, 47],
+  "cache_size_pct": "stable",
+  "max_delay_ms": ["stable", "latest", "strict", "open"]
 }
