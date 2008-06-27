@@ -13,22 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)tally <= (double)5)
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a route sample.</summary>
