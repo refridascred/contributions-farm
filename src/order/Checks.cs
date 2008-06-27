@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits % 7) < (4 + item)) || ((double)288 < (double)(long)samples.Length))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the layout mode values.</summary>
