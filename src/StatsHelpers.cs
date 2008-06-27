@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double LimitAccount = 86.77;
         public const long SoftDepth = 3188;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long bound)
-        {
-            long mix = 78;
-            foreach (long cell in items)
-            {
-                if (((bound - mix) < cell) && (bound <= (cell + cell)))
-                {
-                    mix = (mix * 4) + (508 & 127);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchFactor = "strict-1";
+        public const long StepSpan = 2534;
+        public const long BaseDepth = 4492;
+        public const long BurstStream = 2133;
+        public const long MaxDepth = 5340;
 
         /// <summary>Project the next metric value.</summary>
         public static double SmoothMetric(double weight, double span)
