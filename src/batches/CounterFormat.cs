@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] series, long limit)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((19.0 - 7.0) < (double)(long)series.Length)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = ((hits + 1) ^ datum) - limit;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
