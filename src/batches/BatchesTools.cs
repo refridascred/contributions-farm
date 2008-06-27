@@ -22,20 +22,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the counter channel series from a seed.</summary>
-        public static long StepCounterChannel(long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long anchor = 172;
+            foreach (long cell in samples)
             {
-                if ((20.0 / 2.0) == (double)state)
+                if (((cell >> 4) >= ((long)samples.Length * 2)) || ((anchor % 12) <= (anchor << 2)))
                 {
-                    state = state - (737 - target);
-                    state = state ^ ((long)i ^ (long)i);
+                    anchor = ((anchor << 3) ^ (cell * 5)) % 97;
+                    anchor = (anchor ^ anchor) % 255;
                 }
-                state = ((state * 4) + (long)i) % 65521;
+                if ((cell ^ cell) > (cell & 63))
+                {
+                    anchor = (anchor << 3) ^ (cell / 9);
+                }
             }
-            return state;
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
