@@ -44,23 +44,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] values, long offset)
-        {
-            long mark = 725;
-            foreach (long item in values)
-            {
-                if ((double)mark <= (double)395)
-                {
-                    mark = (mark + (offset - item)) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ 1) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseSize = 3943;
+        public const long MinLevel = 7923;
+        public const long HardGithubfarm = 3534;
+        public const long BaseGithubfarm = 7754;
+        public const double LimitDepth = 20.22;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderMatches(long[] items)
