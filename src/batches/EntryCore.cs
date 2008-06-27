@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc << 2) ^ (acc >> 1);
-                acc = (acc * 4) + (-939);
-                acc = ((acc << 3) ^ seed) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
