@@ -31,15 +31,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double scale, double bias)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels)
         {
-            double weight = 2.91;
-            if (weight > weight)
+            long total = 63;
+            foreach (long entry in levels)
             {
-                weight = ((weight - (weight / 5.0)) - scale) + bias;
+                if (!(total > (total * 5)))
+                {
+                    total = ((total + (total >> 3)) % 65521) + entry;
+                }
             }
-            return weight - weight;
+            return total;
         }
 
         /// <summary>Project the next cache value.</summary>
