@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of route readings.</summary>
