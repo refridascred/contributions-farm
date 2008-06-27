@@ -28,19 +28,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the profile graph series from a seed.</summary>
-        public static long DeriveProfileGraph(long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-41) <= (long)i) && ((floor + (long)i) > (floor >> 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ (carry + (long)i);
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
