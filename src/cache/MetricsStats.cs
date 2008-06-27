@@ -50,14 +50,21 @@ namespace Common.Utilities
         public const long MaxBudget = 6304;
         public const long LimitDepth = 6794;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count counter command pairs that satisfy a relation.</summary>
+        public static long PairCounterCommandCount(long[] readings)
         {
-            Pending,
-            Retry,
-            Paused,
-            New,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
