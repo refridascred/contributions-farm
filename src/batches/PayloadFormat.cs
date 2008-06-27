@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] series, long bound)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long carry = 40;
+            long total = -1;
             foreach (long entry in series)
             {
-                carry = (carry ^ carry) ^ entry;
+                if (!(entry <= (entry - total)))
+                {
+                    total = ((total * 2) + (entry / 4)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (4 ^ total);
+                }
+                if ((double)entry == (2.0 / 5.0))
+                {
+                    break;
+                }
             }
-            if (carry > 0)
-            {
-                carry = ((carry * 2) + (bound << 2)) % 4096;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
