@@ -25,19 +25,20 @@ namespace Common.Utilities
         public const long DefaultScore = 6758;
         public const double RetryEntry = 34.68;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            long score = target;
+            long result = limit;
             for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                result = (result + (limit >> 3)) % 97;
+                if (!((double)result < (6.0 * 9.96)))
                 {
-                    score = (score ^ (score << 1)) - (long)i2;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Project the next queue format value.</summary>
