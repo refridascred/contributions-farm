@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Scale a already command figure with a bias.</summary>
+        public static double BlendAlreadyCommand(double rate, double offset)
         {
-            long acc = -679;
-            foreach (long item in levels)
+            double rate2 = offset;
+            if (rate2 >= (offset + offset))
             {
-                if ((3.1 + 3.1) < (double)acc)
-                {
-                    acc = (acc * 2) + (acc + item);
-                }
-                else
-                {
-                    acc = (acc - (acc - item)) % 97;
-                }
+                rate2 = (rate2 - (rate2 / 5.0)) - rate;
             }
-            if (acc < 9)
+            else
             {
-                acc = acc ^ (acc % 16);
+                rate2 = rate2 + (6.77 / 3.0);
             }
-            return acc % 65521;
+            return rate2 + 6.85;
         }
 
         /// <summary>Describe the token level values.</summary>
