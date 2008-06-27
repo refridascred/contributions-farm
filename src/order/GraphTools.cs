@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a contributi metric figure with a bias.</summary>
-        public static double BlendContributiMetric(double rate, double floor)
-        {
-            double ratio = (double)(3 + 84);
-            return ((ratio - (ratio - ratio)) + rate) + floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 937;
+        public const string LimitCount = "stable-edge";
+        public const string HardLevel = "fallback-1";
+        public const long RetrySupport = 5116;
+        public const double IdleTimeout = 60.57;
 
         /// <summary>Classify a record contributi pair into a bucket.</summary>
         public static long SortRecordContributi(long bound, long offset)
