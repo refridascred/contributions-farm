@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            if ((4.41 - 5.91) != (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (target <= (target / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((16 + origin) > (target - 45))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            New,
+            Done,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the context phase values.</summary>
