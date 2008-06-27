@@ -41,12 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every cache editor entry stays within the limit.</summary>
+        public static bool ValidateCacheEditorLimits(long[] items, long offset)
         {
-            Locked,
-            Idle,
-            Queued,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
