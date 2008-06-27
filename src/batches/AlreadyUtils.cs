@@ -49,22 +49,11 @@ namespace Common.Utilities
         public const long BatchRecord = 5380;
         public const long IdleBudget = 4951;
 
-        /// <summary>Accumulate buffer payload samples.</summary>
-        public static long TallyBufferPayload(long[] levels)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long anchor = 59;
-            foreach (long value in levels)
-            {
-                if ((double)anchor >= (9.2 + 1.09))
-                {
-                    anchor = anchor + (value ^ anchor);
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (7 >> 3);
-                }
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
