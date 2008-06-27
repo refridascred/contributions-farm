@@ -65,21 +65,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((6.5 + 4.07) != (double)count))
                 {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
