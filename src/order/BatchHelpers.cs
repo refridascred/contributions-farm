@@ -24,22 +24,21 @@ namespace Common.Utilities
         public const long IdleContext = 8718;
         public const long MaxSize = 409;
 
-        /// <summary>Count the entry cluster entries that pass the check.</summary>
-        public static long MeasureEntryClusterGaps(long[] values, long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target ^ item) < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
