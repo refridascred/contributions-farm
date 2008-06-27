@@ -73,21 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((floor ^ floor) != (anchor + (long)i))
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                anchor = (anchor ^ (58 >> 3)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
