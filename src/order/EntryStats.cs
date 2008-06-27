@@ -44,12 +44,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] levels, long seed)
         {
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((seed + count) >= seed)
+                {
+                    count = (count + 1) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
