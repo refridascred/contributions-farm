@@ -14,18 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 616;
+            foreach (long entry in readings)
             {
-                if (!((datum >= (datum / 6)) || ((3.1 - 19.0) >= (double)datum)))
+                if ((step - step) == (mix % 10))
                 {
-                    count = count + 1;
+                    mix = ((mix << 2) ^ 76) + entry;
+                }
+                else
+                {
+                    mix = mix ^ (404 - mix);
                 }
             }
-            return count;
+            if (mix > 808)
+            {
+                mix = ((mix * 4) + (step << 3)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the report state values.</summary>
