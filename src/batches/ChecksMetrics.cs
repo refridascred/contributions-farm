@@ -47,17 +47,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 827;
+            foreach (long reading in data)
             {
-                if (values[i] <= seed)
+                sum = (sum + reading) % 65521;
+                if ((sum >> 5) < sum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum > (-28))
+            {
+                sum = ((sum << 2) ^ (705 - sum)) % 255;
+            }
+            return sum % 4096;
         }
     }
 }
