@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 1545;
-        public const double BaseCommand = 55.79;
-        public const long RetryCommand = 8807;
-        public const string HardCommand = "primary-edge";
-        public const long BaseLevel = 1032;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long limit)
+        {
+            long score = 30;
+            foreach (long reading in series)
+            {
+                score = (score - (limit + limit)) - reading;
+                score = ((score * 2) + (score * 4)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterLimits(long[] levels, long bound)
