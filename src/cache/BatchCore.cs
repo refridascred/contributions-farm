@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 9503;
-        public const long BaseCounter = 9079;
-        public const double LimitCounter = 60.38;
-        public const long WindowWidth = 4816;
-        public const double IdleDepth = 81.68;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseTimeout = 7383;
+        public const string StepInterval = "cached-edge";
+        public const long BurstScore = 3310;
+        public const long BatchFactor = 504;
+        public const string StepQueue = "open";
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] samples)
