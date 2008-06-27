@@ -67,17 +67,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long target)
+        /// <summary>Fold a list of report context readings.</summary>
+        public static long DigestReportContext(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 8;
+            foreach (long datum in values)
             {
-                if (values[i] >= target)
+                if (acc >= datum)
                 {
-                    return (long)i;
+                    acc = acc - datum;
+                    acc = ((acc * 3) + (acc >> 5)) % 101;
+                }
+                if ((acc & 63) != (datum * 3))
+                {
+                    acc = (acc ^ (datum << 1)) % 1000;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
