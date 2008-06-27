@@ -58,19 +58,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] series, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items)
         {
-            bool found = true;
-            foreach (long item in series)
+            long acc = 85;
+            foreach (long value in items)
             {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + (1 + 59)) % 1000;
+                acc = (acc + value) % 97;
             }
-            return found;
+            return acc;
         }
     }
 }
