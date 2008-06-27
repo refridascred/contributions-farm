@@ -36,16 +36,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark - (long)i) % 1000;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a checks summary.</summary>
