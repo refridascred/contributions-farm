@@ -1,12 +1,15 @@
 # Command notes
 
-Keep metric and graph names short and lowercase.
-Defaults for channel live in the config folder and can be overridden per environment.
-Use already settings to tune how often batches data is refreshed.
+Each schema is validated before it reaches the channel queue.
+Defaults for context live in the config folder and can be overridden per environment.
+A window that stays idle for too long is moved to the batch list.
+
+A format that stays idle for too long is moved to the route list.
+Defaults for token live in the config folder and can be overridden per environment.
+The batch module keeps account values in sync with the editor cache.
 
 ## Guidelines
 
-- Validate payload input early
-- Review layout limits each release
-- Document new account fields
-- Log every contributi change
+- Keep counter values small
+- Log every account change
+- Review tools limits each release
