@@ -46,32 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long floor, long step)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] levels, long bound)
         {
-            long cur = floor - step;
-            if ((cur ^ floor) != (floor * 4))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step - 2) <= 865)
+                if (datum >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 1) <= step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
