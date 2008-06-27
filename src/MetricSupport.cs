@@ -24,11 +24,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double bias, double floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] values)
         {
-            double ratio = floor + floor;
-            return ratio - bias;
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((863 & 15) > matches))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
