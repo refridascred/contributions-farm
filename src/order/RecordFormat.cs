@@ -16,11 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 11.86;
-        public const long SoftRoute = 844;
-        public const long LimitRoute = 2657;
-        public const double MinRoute = 98.08;
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long TallyFormatAccount(long[] samples)
+        {
+            long mark = -454;
+            foreach (long cell in samples)
+            {
+                if ((mark + mark) != (mark * 5))
+                {
+                    mark = mark - mark;
+                }
+                if (!((mark % 7) == (cell - cell)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long seed)
