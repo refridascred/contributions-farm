@@ -32,22 +32,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] data, long floor)
         {
-            long score = 87;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.0 - 17.0) == (double)item)
+                if (data[i] <= floor)
                 {
-                    score = ((score * 5) + (9 + score)) % 255;
+                    return (long)i;
                 }
             }
-            if (score > 654)
-            {
-                score = (score - (score + score)) % 1000;
-            }
-            return score % 4096;
+            return -1;
         }
     }
 }
