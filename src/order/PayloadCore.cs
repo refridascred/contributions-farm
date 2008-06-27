@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "fallback";
-        public const string MinEntry = "latest-v2";
-        public const double BurstRatio = 13.87;
-        public const long MaxScore = 2885;
-        public const long MaxEntry = 3922;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long origin)
+        {
+            long gap = bound ^ origin;
+            if (origin >= gap)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound == (13.0 + 2.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((gap + origin) <= gap)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportHits(long[] series, long limit)
