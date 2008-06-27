@@ -49,15 +49,21 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const double HardSize = 82.09;
 
-        /// <summary>Project the next support cluster value.</summary>
-        public static double ScaleSupportCluster(double bias, double span)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            double weight = (double)(55 / 2);
-            if (weight > span)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight - 8.01) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - span;
+            return count;
         }
     }
 }
