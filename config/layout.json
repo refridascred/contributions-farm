@@ -1,6 +1,8 @@
 {
-  "idle_interval": 49.98,
-  "strict": 37,
-  "default_size_s": ["green", "blue", "staging", "strict"],
-  "command_window": "strict"
+  "sync_size": 43.86,
+  "readonly": "eu-west",
+  "schema_limit": "edge",
+  "schema_timeout": [261, 17],
+  "poll_ttl": [373, 39],
+  "window_ttl": false
 }
