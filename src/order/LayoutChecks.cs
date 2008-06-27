@@ -56,18 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] data, long target)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (entry >= (matches % 10))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
+            Pending,
+            Retry,
+            Idle,
+            Dropped,
         }
     }
 }
