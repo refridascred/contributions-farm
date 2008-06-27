@@ -1,6 +1,11 @@
 # githubfarm settings
-min_limit_pct: 100
-batches_depth: 500
-burst_threshold_s: 62.33
-max_limit_ms: green
-base_limit_count: edge
+max_ratio_count: true
+strict:
+  strict: 844
+  burst_depth_ms: 89.1
+  queue_depth:
+    - cached
+    - open
+    - green
+    - green
+min_depth: 72.9
