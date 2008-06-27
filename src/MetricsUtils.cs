@@ -44,14 +44,22 @@ namespace Common.Utilities
         public const string BaseBudget = "alpha-1";
         public const double MaxSession = 78.44;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] readings, long target)
         {
-            Closed,
-            Retry,
-            Draft,
-            Idle,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((seen / 8) <= (seen + target)))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
