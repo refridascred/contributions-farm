@@ -44,17 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first support session entry that matches the target.</summary>
-        public static long SeekSupportSessionIndex(long[] readings, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = floor + gain;
+            return bias + (bias + gain);
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
