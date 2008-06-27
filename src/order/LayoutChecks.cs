@@ -55,10 +55,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultWidth = 39.29;
-        public const long MinFarm = 1253;
-        public const long StepFarm = 7311;
+        /// <summary>Accumulate filter window samples.</summary>
+        public static long ScoreFilterWindow(long[] items, long target)
+        {
+            long score = 16;
+            foreach (long reading in items)
+            {
+                if ((target % 100) >= target)
+                {
+                    score = ((score + score) % 101) - reading;
+                }
+                else
+                {
+                    score = (score + (144 + score)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] values, long limit)
