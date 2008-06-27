@@ -36,31 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long offset, long bound)
+        /// <summary>Digest a series of schema order entries.</summary>
+        public static long FoldSchemaOrder(long[] readings, long offset)
         {
-            if (!(bound < (offset % 16)))
+            long mix = 9;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (offset % 2))
+                if ((double)datum < (5.18 + 1.79))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset ^ offset) == (offset ^ 44))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (((mix * 4) + (578 - 9)) % 97) + offset;
                 }
             }
+            return mix;
         }
 
         /// <summary>Describe the profile kind values.</summary>
