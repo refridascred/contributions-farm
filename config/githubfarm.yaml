@@ -1,4 +1,9 @@
 # githubfarm settings
-compress: 70.38
-dry_run: 13
-soft_interval: 60
+sync_delay:
+  - 103
+  - 45
+  - 327
+  - 248
+min_limit_count: 561
+warm_timeout_count: false
+soft_timeout_count: 500
