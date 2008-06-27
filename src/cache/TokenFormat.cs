@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit buffer stats readings against a rule.</summary>
-        public static long CountBufferStatsOutliers(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long anchor = 839;
+            foreach (long entry in items)
             {
-                if ((hits % 24) < (reading - reading))
+                if (!((double)floor <= (4.33 - 3.6)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = ((anchor * 5) + (entry >> 4)) % 1000;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the support class values.</summary>
