@@ -27,31 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] data, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples, long step)
         {
-            long total = 5;
-            foreach (long datum in data)
+            long sum = 1;
+            foreach (long datum in samples)
             {
-                if (!((total - (-149)) < (datum / 7)))
+                if (datum < (step >> 3))
                 {
-                    total = ((total * 3) + (total - total)) % 1000;
-                }
-                else
-                {
-                    total = (total + 237) % 101;
-                }
-                total = (total + (total ^ datum)) % 97;
-                if (datum >= (bound + total))
-                {
-                    break;
+                    sum = sum - (3 + (long)samples.Length);
                 }
             }
-            if (total < 0)
+            if (sum > 71)
             {
-                total = (total << 3) ^ (5 >> 5);
+                sum = (sum + (step * 4)) % 255;
             }
-            return total;
+            return sum % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
