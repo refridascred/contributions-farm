@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] series, long bound)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!((bound >= (value & 63)) || ((value / 5) <= value)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count session tools pairs that satisfy a relation.</summary>
