@@ -42,11 +42,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            long state = 680;
+            foreach (long value in data)
+            {
+                state = (state + (state * 5)) % 1000;
+                if ((12.0 - 3.7) > (double)value)
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Fold a list of window notes readings.</summary>
