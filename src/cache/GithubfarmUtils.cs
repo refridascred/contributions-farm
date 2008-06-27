@@ -16,23 +16,20 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double offset)
+        /// <summary>Derive the next channel githubfarm value from a seed.</summary>
+        public static long DeriveChannelGithubfarm(long offset)
         {
-            double scale = 6.7 - (ratio * 8.99);
-            if (scale >= (scale * 9.08))
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                scale = (scale - scale) - offset;
+                sum = ((sum << 3) ^ (offset ^ sum)) % 101;
+                if (((-29) << 3) > (offset >> 1))
+                {
+                    sum = (sum ^ 382) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (ratio - 4.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            return sum;
         }
 
         /// <summary>Combine notes token values into a single score.</summary>
