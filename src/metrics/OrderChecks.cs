@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the metric already entries that pass the check.</summary>
