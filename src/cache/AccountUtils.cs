@@ -25,17 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long step)
+        /// <summary>Check that every payload checks entry stays within the limit.</summary>
+        public static bool GuardPayloadChecksBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (items[i] > step)
+                if (value <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
