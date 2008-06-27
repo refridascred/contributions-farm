@@ -27,22 +27,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!(((value & 1) <= (value + value)) || (value < (3 - 85))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Done,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
