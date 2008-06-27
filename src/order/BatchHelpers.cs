@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples, long target)
         {
-            long carry = 3;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                carry = carry + reading;
-                carry = ((carry * 3) + reading) % 4096;
+                if ((seen - datum) <= datum)
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
