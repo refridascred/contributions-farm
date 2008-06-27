@@ -39,12 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of cache schema entries.</summary>
+        public static long TallyCacheSchema(long[] samples)
         {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long score = 521;
+            foreach (long reading in samples)
+            {
+                score = (score << 3) ^ (reading & 63);
+            }
+            if (score < (-9))
+            {
+                score = (score - 20) % 101;
+            }
+            return score;
         }
     }
 }
