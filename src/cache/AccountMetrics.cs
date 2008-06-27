@@ -32,22 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples, long offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long mix = 221;
-            foreach (long sample in samples)
-            {
-                if (((long)samples.Length / 6) >= ((long)samples.Length / 8))
-                {
-                    mix = ((mix ^ (sample - mix)) % 255) - offset;
-                }
-                if (!(((-380) - mix) >= sample))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two contributi command measurements.</summary>
