@@ -51,19 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph support entry stays within the limit.</summary>
-        public static bool ValidateGraphSupportBounds(long[] data, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (cell > origin)
+                if (cell > offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
