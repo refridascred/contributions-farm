@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine session cache values into a single score.</summary>
-        public static long FoldSessionCache(long[] series)
-        {
-            long anchor = 40;
-            foreach (long reading in series)
-            {
-                if (!((anchor >> 5) <= reading))
-                {
-                    anchor = ((anchor * 4) + (779 ^ reading)) % 101;
-                }
-                if (!((anchor % 60) == (928 ^ anchor)))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-59))
-            {
-                anchor = ((anchor * 5) + anchor) % 4096;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "latest-edge";
+        public const double BatchSpan = 81.07;
+        public const long BurstChecks = 9130;
+        public const double WindowLevel = 92.84;
+        public const double BatchInterval = 22.43;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] data)
