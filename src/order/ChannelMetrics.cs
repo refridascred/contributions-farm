@@ -19,39 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long gap = floor - step;
-            if (((step - gap) < (step * 5)) && (((-174) - floor) < gap))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >= floor) || ((0.6 + 1.4) == (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor < (1.61 - 18.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor & 63) == (step >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a queue options.</summary>
