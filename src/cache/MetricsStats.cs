@@ -27,17 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate farm already samples.</summary>
-        public static long DigestFarmAlready(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] values, long origin)
         {
-            long acc = 1;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in values)
             {
-                acc = acc ^ ((-794) << 3);
-                acc = (acc << 3) ^ (item + item);
-                acc = acc ^ (acc >> 2);
+                if (item <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
