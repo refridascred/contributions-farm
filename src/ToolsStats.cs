@@ -56,11 +56,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
