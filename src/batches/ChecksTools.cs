@@ -48,18 +48,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item + item) >= 67)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
