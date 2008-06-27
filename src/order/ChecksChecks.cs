@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first route window entry that matches the target.</summary>
-        public static long LookupRouteWindowIndex(long[] values, long origin)
+        /// <summary>Derive the next session notes value from a seed.</summary>
+        public static long RollSessionNotes(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a stream header.</summary>
