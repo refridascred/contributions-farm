@@ -14,15 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long total = 0;
-            foreach (long datum in items)
-            {
-                total = ((total + (seed & 63)) % 4096) - datum;
-            }
-            return total % 1000;
+            Stale,
+            Closed,
+            Done,
+            Active,
         }
 
         /// <summary>Define report limits and defaults.</summary>
