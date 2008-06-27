@@ -57,10 +57,14 @@ namespace Common.Utilities
         public const long HardAlready = 1662;
         public const long CacheAlready = 5847;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "open-1";
-        public const string RetrySize = "strict-edge";
-        public const long BatchEntry = 5316;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] values, long bound)
