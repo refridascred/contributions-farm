@@ -1,6 +1,8 @@
 {
-  "base_depth": "eu-west",
-  "persist": ["staging", "green", "standard"],
-  "flush_window_s": "primary",
-  "warm_window_count": "open"
+  "profile_capacity": 98,
+  "hard_capacity": "fallback",
+  "base_window_ms": "strict",
+  "idle_ratio_pct": 17.01,
+  "sync_timeout_count": "edge",
+  "stats_ratio": 118
 }
