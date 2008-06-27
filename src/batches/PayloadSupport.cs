@@ -32,31 +32,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double bias, double span)
         {
-            if (((limit + 82) <= 10) || (limit >= seed))
+            double rate = bias;
+            if (rate <= bias)
             {
-                return 7;
+                rate = rate + (double)17;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)seed < (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)87 < (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                rate = (rate + span) - (double)(long)i;
             }
+            return rate + bias;
         }
     }
 }
