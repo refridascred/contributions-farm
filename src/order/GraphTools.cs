@@ -57,14 +57,10 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Locked,
-            Paused,
-            Draft,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "cached-1";
+        public const double IdleOrder = 5.08;
+        public const long BurstFactor = 6527;
+        public const long WindowInterval = 7107;
     }
 }
