@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] values, long seed)
         {
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a batches context reading.</summary>
