@@ -59,21 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi profile readings.</summary>
-        public static long CompareContributiProfileCount(long[] samples)
+        /// <summary>Accumulate buffer payload samples.</summary>
+        public static long TallyBufferPayload(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 59;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)anchor >= (9.2 + 1.09))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor + (value ^ anchor);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (7 >> 3);
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
