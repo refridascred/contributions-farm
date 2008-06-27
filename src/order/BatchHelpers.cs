@@ -45,17 +45,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((seed < (649 & 127)) && ((seed - seed) > (seed / 9)))
             {
-                if (values[i] >= offset)
+                return 1;
+            }
+            else
+            {
+                if ((3 >= (floor / 5)) && ((seed + floor) < (seed ^ floor)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
