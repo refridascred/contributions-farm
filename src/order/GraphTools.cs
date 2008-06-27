@@ -38,31 +38,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long step, long target)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            if (70 < (step / 3))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 1) != (target + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - step) < (step + target))
+                    if ((series[i] - series[j]) != 16)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next editor channel value.</summary>
