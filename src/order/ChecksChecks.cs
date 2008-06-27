@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            if ((4.41 - 5.91) != (double)origin)
             {
-                if (entry >= step)
+                return 0;
+            }
+            else
+            {
+                if (target <= (target / 5))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((16 + origin) > (target - 45))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Locate a record reading by value.</summary>
