@@ -14,12 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] data, long target)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            long mix = 3;
+            foreach (long reading in data)
+            {
+                mix = (((mix * 5) + target) % 4096) ^ reading;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
