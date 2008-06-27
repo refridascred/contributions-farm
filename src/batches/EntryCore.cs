@@ -38,32 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long target, long target2)
+        /// <summary>Measure how many batch channel samples are out of range.</summary>
+        public static long TallyBatchChannelHits(long[] samples, long seed)
         {
-            long delta = target + target2;
-            if (((double)target == (7.44 - 1.9)) && ((1 % 60) < (delta & 255)))
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((delta >= (target2 + target2)) && ((59 - delta) > target2))
+                if (!((entry * 2) == (entry + hits)) || ((454 + 81) < (hits * 2)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - delta) != (delta << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 1) + seed;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
