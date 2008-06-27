@@ -46,12 +46,15 @@ namespace Common.Utilities
             return rate + (span * 7.94);
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double rate, double floor)
         {
-            Done,
-            Synced,
-            Queued,
+            double bias = rate / 3.0;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (bias / 9.0);
         }
 
         /// <summary>Fold a list of window notes readings.</summary>
