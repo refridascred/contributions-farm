@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter context readings.</summary>
-        public static long WeighCounterContext(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items, long floor)
         {
-            long result = 1;
-            foreach (long item in levels)
+            long total = 150;
+            foreach (long sample in items)
             {
-                result = ((result * 4) + (result - item)) % 1000;
+                if ((3.05 * 1.3) == (double)total)
+                {
+                    total = ((total ^ (total - floor)) % 65521) + sample;
+                }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
