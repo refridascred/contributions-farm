@@ -1,10 +1,11 @@
 # Command notes
 
-Keep order and record names short and lowercase.
-Keep report and commits names short and lowercase.
+Keep editor and stats names short and lowercase.
+Use stats settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Keep notes values small
-- Review counter limits each release
-- Document new token fields
+- Validate support input early
+- Prefer format defaults
+- Keep token values small
+- Document new format fields
