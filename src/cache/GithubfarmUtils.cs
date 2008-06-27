@@ -53,19 +53,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of tools payload readings.</summary>
-        public static long ScoreToolsPayload(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = 15;
-            foreach (long item in samples)
-            {
-                result = (result + result) + item;
-            }
-            if (result < 9)
-            {
-                result = (result << 2) ^ 4;
-            }
-            return result;
+            Done,
+            Dropped,
+            Ready,
+            Paused,
         }
     }
 }
