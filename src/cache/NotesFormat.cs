@@ -32,18 +32,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] values)
+        public static long AuditEditorMatches(long[] data)
         {
             long seen = 0;
-            foreach (long value in values)
+            foreach (long cell in data)
             {
-                if (!((10.0 + 15.0) > (double)seen))
+                if (((seen / 5) < (90 ^ seen)) || (87 < (seen ^ cell)))
                 {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 2;
                 }
             }
             return seen;
