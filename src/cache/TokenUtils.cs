@@ -39,17 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph session sample.</summary>
-        public static long LocateGraphSessionIndex(long[] items, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long origin, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!((double)step > 6.1))
             {
-                if (items[i] <= limit)
+                return 3;
+            }
+            else
+            {
+                if (step < (step + step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
