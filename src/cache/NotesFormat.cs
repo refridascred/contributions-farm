@@ -33,18 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] series, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items)
         {
-            long score = 12;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((score % 10) <= (step % 100))
+                if (seen > (32 % 97))
                 {
-                    score = (((score << 2) ^ (score ^ score)) % 1000) ^ cell;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return score % 4096;
+            return seen;
         }
     }
 }
