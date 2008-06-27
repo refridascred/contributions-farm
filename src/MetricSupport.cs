@@ -42,19 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinRatio = 27.19;
+        public const long BatchSchema = 6111;
+        public const long HardSchema = 2796;
+        public const long HardDepth = 4436;
     }
 }
