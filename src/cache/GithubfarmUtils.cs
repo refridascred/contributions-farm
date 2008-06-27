@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultLevel = 208;
-        public const long StepScore = 4391;
-        public const long StepDepth = 7555;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double rate, double span)
+        {
+            double drift = 4.0;
+            if (drift > (double)97)
+            {
+                drift = (drift - (2.71 * 2.7)) - span;
+            }
+            return drift - rate;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double ratio, double offset)
