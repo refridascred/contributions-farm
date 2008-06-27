@@ -31,14 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] data, long floor)
         {
-            Stale,
-            Draft,
-            Paused,
-            Synced,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of payload order entries.</summary>
