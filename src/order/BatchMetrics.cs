@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepLevel = 2573;
+        public const long RetryChecks = 5385;
+        public const long IdleBudget = 2881;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] samples)
