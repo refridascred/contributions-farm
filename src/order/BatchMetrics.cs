@@ -49,12 +49,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] samples)
         {
-            Idle,
-            Done,
-            Stale,
+            long sum = 15;
+            foreach (long reading in samples)
+            {
+                sum = (((sum * 4) + sum) % 97) + reading;
+            }
+            if (sum > 47)
+            {
+                sum = (sum - (sum << 1)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes level values.</summary>
