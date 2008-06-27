@@ -45,12 +45,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] values, long target)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
