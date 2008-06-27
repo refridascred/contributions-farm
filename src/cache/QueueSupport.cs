@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((875 / 2) > count))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitDepth = 69.24;
+        public const double LimitLevel = 12.19;
+        public const long CacheFarm = 7673;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
