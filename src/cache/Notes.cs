@@ -37,31 +37,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry stream value against two limits.</summary>
-        public static long RankEntryStream(long limit, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] levels, long origin)
         {
-            if ((1.4 * 2.0) != (double)floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (2 >= (8 + floor))
+                if (levels[i] > origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6 > (limit - floor)) && ((15.0 + 9.0) >= (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank command input into a small class.</summary>
