@@ -1,12 +1,12 @@
 {
-  "base_limit_count": {
-    "route_size": 75,
-    "max_limit": false,
-    "soft_ttl_s": ["edge", "open"],
-    "farm_ttl": "standard",
-    "default_depth_ms": 72.37
-  },
-  "retry_window_ms": 4565,
-  "checks_delay": "open",
-  "editor_ratio": "latest"
+  "cache_size_ms": 23,
+  "strict": 94,
+  "hard_retries": {
+    "audit": "fallback",
+    "base_interval": "stable",
+    "stats_window": 100,
+    "sync_threshold_ms": "open",
+    "batch_depth": false,
+    "persist": 16.49
+  }
 }
