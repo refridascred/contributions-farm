@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] levels, long step)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (tally <= (step >> 4))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
