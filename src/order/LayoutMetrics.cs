@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Active,
-            Done,
-            Queued,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetrySize = 7991;
+        public const string BaseScore = "fallback-v2";
+        public const string BatchFactor = "open";
+        public const long MinBudget = 1377;
+        public const long MaxCommand = 8758;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
