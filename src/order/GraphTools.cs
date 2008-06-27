@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinScore = "fallback-1";
+        public const string StepWidth = "stable-edge";
+        public const long IdleFactor = 3973;
+        public const long BaseChannel = 1492;
+        public const long BurstChannel = 8029;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] series)
