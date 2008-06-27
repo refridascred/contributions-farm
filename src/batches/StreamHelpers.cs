@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate metrics profile readings against a bound.</summary>
-        public static bool VerifyMetricsProfileLimits(long[] values, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (value <= limit)
+                if (value < floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
