@@ -32,18 +32,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] levels, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((double)count > (9.5 + 2.0)) && ((double)count >= (5.32 + 0.1)))
-                {
-                    count = ((count + 1) - reading) - step;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
