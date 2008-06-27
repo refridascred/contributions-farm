@@ -29,12 +29,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Compare every pair of stats queue readings.</summary>
+        public static long MatchStatsQueueCount(long[] levels)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
