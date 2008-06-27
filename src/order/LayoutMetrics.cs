@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long bound, long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if (target > (3 % 64))
             {
-                if ((double)tally <= (double)sample)
+                return 7;
+            }
+            else
+            {
+                if (bound >= (target % 97))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound > (5.4 - 0.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
