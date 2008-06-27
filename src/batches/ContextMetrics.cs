@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = ((score ^ (limit + score)) % 101) ^ (long)i2;
-                    score = score - (score - limit);
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
