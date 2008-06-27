@@ -32,18 +32,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double rate = weight;
+            for (int i = 0; i < 4; i++)
             {
-                if (hits >= (hits >> 5))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                rate = (rate - weight) + (double)(long)i;
             }
-            return hits;
+            return rate - span;
         }
 
         /// <summary>Grade a order notes value against two limits.</summary>
