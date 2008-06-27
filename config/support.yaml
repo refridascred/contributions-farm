@@ -1,10 +1,10 @@
 # support settings
-max_ttl_ms: 41.09
-buffer_retries:
-  - staging
-  - cached
-default_depth_count:
-  - legacy
-  - legacy
-enabled: false
-queue_window: true
+retry_capacity_ms: 44
+poll_limit: 42
+already_size:
+  cache_size: 2309
+  flush_timeout_s: cached
+  soft_window_count: true
+window_capacity: 9549
+poll_delay_s: 25.06
+schema_timeout: latest
