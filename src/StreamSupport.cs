@@ -35,19 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
