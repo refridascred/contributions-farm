@@ -1,12 +1,43 @@
 # entry settings
-min_depth_ms:
-  - latest
-  - local
-  - cached
-  - cached
-record_depth: eu-west
-persist:
-  - 68
-  - 155
-batch_ttl: legacy
-enabled: staging
+idle_window_count:
+  dry_run: legacy
+  hard_ratio_pct: standard
+  soft_ratio_ms:
+    flush_size_pct: 74.69
+    entry_ttl: edge
+    burst_threshold: 8828
+    readonly: cached
+    soft_retries: true
+    profile_limit: 3321
+  default_delay:
+    strict: true
+    min_window:
+      - standard
+      - staging
+      - latest
+      - open
+    compress: 5
+    poll_limit_pct: legacy
+    warm_size_ms:
+      - staging
+      - blue
+    persist: primary
+poll_delay_count: strict
+max_ratio_s: 8867
+audit:
+  warm_threshold:
+    order_capacity: 1024
+    counter_ratio: primary
+    stats_threshold:
+      - staging
+      - standard
+  batch_window_count: 50
+  max_threshold_count: 90.47
+  poll_capacity_s: cached
+  enabled:
+    flush_capacity_pct: 34.85
+    order_delay: 100
+    persist: true
+    batch_threshold: local
+    order_retries: 52.67
+  strict: 500
