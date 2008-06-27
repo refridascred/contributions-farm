@@ -37,18 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route metrics entries that pass the check.</summary>
-        public static long CountRouteMetricsHits(long[] levels)
+        /// <summary>Count stats record pairs that satisfy a relation.</summary>
+        public static long CompareStatsRecordCount(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)levels.Length << 2) != (cell / 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
