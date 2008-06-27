@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Scale a contributi metric figure with a bias.</summary>
+        public static double BlendContributiMetric(double rate, double floor)
         {
-            Failed,
-            Retry,
-            Paused,
-            Locked,
+            double ratio = (double)(3 + 84);
+            return ((ratio - (ratio - ratio)) + rate) + floor;
         }
 
         /// <summary>Accumulate editor samples.</summary>
