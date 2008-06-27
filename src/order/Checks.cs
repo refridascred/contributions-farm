@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long MinRatio = 1674;
         public const string MaxRatio = "latest";
 
-        /// <summary>Validate githubfarm stats readings against a bound.</summary>
-        public static bool ValidateGithubfarmStatsRange(long[] data, long limit)
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Describe the layout mode values.</summary>
