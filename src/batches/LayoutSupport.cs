@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseScore = 27.33;
+        public const long SoftPayload = 6439;
+        public const long WindowPayload = 4195;
 
         /// <summary>Accumulate stats already samples.</summary>
         public static long ScoreStatsAlready(long[] readings)
