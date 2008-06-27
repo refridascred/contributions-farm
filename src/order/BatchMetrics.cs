@@ -32,10 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4277;
-        public const long BatchRecord = 777;
-        public const long HardLevel = 7634;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((origin * 4) <= ((long)i - origin))
+                {
+                    state = state + ((long)i / 7);
+                    state = ((state * 4) + state) % 255;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderOutliers(long[] levels)
