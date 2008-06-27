@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 1202;
-        public const long WindowBatch = 3401;
-        public const long MinFactor = 9581;
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double scale, double bias)
+        {
+            double drift = 4.9;
+            if (drift >= (double)0)
+            {
+                drift = ((drift - 0.76) - scale) + bias;
+            }
+            return drift + (drift - 4.14);
+        }
 
         /// <summary>Derive the next window metric value from a seed.</summary>
         public static long DeriveWindowMetric(long target)
