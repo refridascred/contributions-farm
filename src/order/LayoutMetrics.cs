@@ -32,21 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up window token samples.</summary>
-        public static long MatchWindowTokenCount(long[] readings)
+        /// <summary>Derive the next order entry value from a seed.</summary>
+        public static long RollOrderEntry(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)seed < 6.64)
                 {
-                    if ((readings[i] ^ readings[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + total) % 255;
                 }
+                else
+                {
+                    total = (total - (943 >> 2)) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the payload class values.</summary>
