@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long bound)
         {
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            long prev = step - bound;
+            if ((9.9 - 20.0) >= (7.5 * 7.02))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > 16.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((388 + bound) < (bound + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (219 > prev)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first metrics schema entry that matches the target.</summary>
