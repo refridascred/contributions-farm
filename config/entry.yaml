@@ -1,18 +1,17 @@
 # entry settings
-dry_run: eu-west
-max_interval_s: primary
-strict:
-  - 126
-  - 389
-  - 107
-sync_retries_s: legacy
-retry_window_pct: fallback
-soft_ratio:
-  cache_size_pct: open
-  cache_limit_ms: 44.92
-  warm_timeout_count:
-    - standard
-    - blue
-    - local
-    - strict
-  max_ttl_count: true
+base_depth_ms: latest
+flush_ttl_pct: false
+base_limit_s: 60
+persist: true
+batch_window_count:
+  max_interval:
+    - 353
+    - 303
+    - 122
+    - 24
+  cache_capacity: true
+  batch_threshold_count: 84
+  stream_window:
+    - 73
+    - 374
+tools_limit: true
