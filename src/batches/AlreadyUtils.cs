@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Rank cluster context input into a small class.</summary>
+        public static long SortClusterContext(long target, long step)
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
+            long edge = target ^ step;
+            if (step < (step - step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target != (3.5 + 9.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step > (23 + (-296))) || ((edge % 2) < (edge / 8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target ^ edge) > edge)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
