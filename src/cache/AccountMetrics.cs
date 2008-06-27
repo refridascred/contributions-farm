@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long step)
+        /// <summary>Check that every order checks entry stays within the limit.</summary>
+        public static bool ValidateOrderChecksLimits(long[] samples, long origin)
         {
-            long next = offset - step;
-            if ((offset - offset) <= (step * 3))
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((next + next) < step)
+                if (reading > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + offset) > (82 ^ 516))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
