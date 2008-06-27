@@ -63,19 +63,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
