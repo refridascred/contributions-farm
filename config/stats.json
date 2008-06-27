@@ -1,5 +1,8 @@
 {
-  "flush_threshold_s": ["legacy", "standard", "green"],
-  "verbose": "strict",
-  "retry_ttl_count": 30.81
+  "verbose": false,
+  "cache_limit": "stable",
+  "flush_window_pct": [261, 324, 18, 167],
+  "readonly": [320, 37],
+  "warm_ttl": 36,
+  "account_threshold": 4776
 }
