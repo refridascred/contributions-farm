@@ -20,14 +20,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 7429;
+        public const double BurstFactor = 68.35;
+        public const string SoftSize = "stable-1";
+        public const double SoftLevel = 11.78;
+        public const long BatchBudget = 4347;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long CacheTimeout = 9186;
