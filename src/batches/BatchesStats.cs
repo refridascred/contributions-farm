@@ -33,23 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer account figure with a bias.</summary>
-        public static double SmoothBufferAccount(double ratio, double bias)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double load = 7.7;
-            if (load <= (bias / 2.0))
-            {
-                load = load - (ratio - load);
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load + bias;
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a checks counter forward.</summary>
