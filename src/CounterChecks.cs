@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double rate, double floor)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double drift = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift + drift) - (double)(long)i) + rate;
-            }
-            return drift - (double)37;
+            Failed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of schema order entries.</summary>
