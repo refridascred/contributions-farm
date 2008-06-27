@@ -50,16 +50,10 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Roll a payload buffer counter forward.</summary>
-        public static long RollPayloadBuffer(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry + (limit - carry)) % 65521;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 97.0;
+        public const string BurstRatio = "open-v2";
+        public const long DefaultRatio = 2517;
+        public const string CacheCount = "strict-edge";
     }
 }
