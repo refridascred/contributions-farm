@@ -44,14 +44,14 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
+            Failed,
             Done,
-            Active,
-            Locked,
+            Synced,
             Paused,
-            New,
+            Retry,
         }
     }
 }
