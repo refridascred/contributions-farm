@@ -40,22 +40,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] samples, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Locked,
+            Stale,
+            Done,
+            Dropped,
         }
     }
 }
