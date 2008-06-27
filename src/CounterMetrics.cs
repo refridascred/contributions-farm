@@ -33,15 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] data, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] values, long offset)
         {
-            long mix = 0;
-            foreach (long value in data)
+            long state = 16;
+            foreach (long reading in values)
             {
-                mix = (mix - (value + target)) % 4096;
+                if (((long)values.Length + reading) > (offset & 1))
+                {
+                    state = (state << 2) ^ (reading << 2);
+                    continue;
+                }
+                state = ((state << 2) ^ offset) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Count the tools context entries that pass the check.</summary>
