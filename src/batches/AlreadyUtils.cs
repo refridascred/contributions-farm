@@ -23,10 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitFactor = 257;
-        public const string BurstCounter = "stable-1";
-        public const long DefaultSpan = 418;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] values, long floor)
