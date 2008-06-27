@@ -31,18 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = 5;
+            foreach (long sample in samples)
             {
-                if (((seen / 5) < (90 ^ seen)) || (87 < (seen ^ cell)))
+                mark = (mark ^ sample) % 101;
+                if ((mark << 2) != (mark % 5))
                 {
-                    seen = seen + 2;
+                    mark = ((mark << 3) ^ (sample * 2)) % 101;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
     }
 }
