@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepLevel = 2573;
-        public const long RetryChecks = 5385;
-        public const long IdleBudget = 2881;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Done,
+            Retry,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long target)
