@@ -50,14 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Failed,
-            Pending,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 6056;
+        public const double CacheFormat = 35.13;
+        public const long RetryFormat = 3897;
+        public const double SoftScore = 61.27;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long AuditTokenMatches(long[] values)
