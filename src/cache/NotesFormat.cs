@@ -39,11 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] series, long step)
         {
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            long score = 12;
+            foreach (long cell in series)
+            {
+                if ((score % 10) <= (step % 100))
+                {
+                    score = (((score << 2) ^ (score ^ score)) % 1000) ^ cell;
+                }
+            }
+            return score % 4096;
         }
     }
 }
