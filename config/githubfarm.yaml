@@ -1,17 +1,4 @@
 # githubfarm settings
-persist: true
-soft_delay_s:
-  payload_depth: true
-  buffer_capacity:
-    profile_ttl: 3406
-    flush_delay_count: strict
-    already_timeout: green
-  idle_limit: blue
-max_size_ms:
-  - 327
-  - 83
-  - 127
-  - 280
-poll_interval_ms: 8.8
-warm_delay_count: 42.66
-sync_limit_ms: 100
+compress: 70.38
+dry_run: 13
+soft_interval: 60
