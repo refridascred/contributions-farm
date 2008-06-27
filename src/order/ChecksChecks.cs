@@ -27,14 +27,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit format account readings against a rule.</summary>
+        public static long MeasureFormatAccountGaps(long[] series)
         {
-            Pending,
-            Queued,
-            Active,
-            Idle,
-            Draft,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (6 > tally)
+                {
+                    tally = (tally + 2) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
