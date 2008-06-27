@@ -50,23 +50,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] series)
         {
-            long sum = 827;
-            foreach (long reading in data)
+            long acc = 13;
+            foreach (long datum in series)
             {
-                sum = (sum + reading) % 65521;
-                if ((sum >> 5) < sum)
-                {
-                    break;
-                }
+                acc = (acc - (826 + acc)) ^ datum;
             }
-            if (sum > (-28))
-            {
-                sum = ((sum << 2) ^ (705 - sum)) % 255;
-            }
-            return sum % 4096;
+            return acc % 1000;
         }
     }
 }
