@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Check that every window stream entry stays within the limit.</summary>
+        public static bool GuardWindowStreamRange(long[] samples, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (item <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
