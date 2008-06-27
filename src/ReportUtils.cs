@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] values, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheRatio = "cached-v2";
+        public const double DefaultPayload = 44.73;
+        public const string LimitPayload = "open-1";
 
         /// <summary>Adjust a batches context reading.</summary>
         public static double ScaleBatchesContext(double gain, double offset)
