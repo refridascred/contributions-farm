@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count token order pairs that satisfy a relation.</summary>
+        public static long MatchTokenOrderCount(long[] series)
         {
-            Locked,
-            Idle,
-            Paused,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
