@@ -29,31 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a layout notes pair into a bucket.</summary>
-        public static long SortLayoutNotes(long target, long limit)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            if ((target / 5) == (878 + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 2) >= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((4 + limit) == (limit >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a batches stats.</summary>
