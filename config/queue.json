@@ -1,7 +1,6 @@
 {
-  "flush_ratio": true,
-  "metrics_limit": "latest",
-  "flush_ttl": true,
-  "flush_depth": 500,
-  "report_window": ["green", "eu-west"]
+  "readonly": ["stable", "open", "blue"],
+  "window_ttl": [343, 283, 194, 105],
+  "dry_run": 84,
+  "cache_ttl": "open"
 }
