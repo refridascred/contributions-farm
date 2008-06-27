@@ -50,10 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardScore = 7703;
-        public const double SoftSpan = 98.64;
-        public const string IdleGithubfarm = "strict-v2";
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] values)
