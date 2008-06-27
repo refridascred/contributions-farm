@@ -23,31 +23,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long origin, long origin2)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] readings, long bound)
         {
-            if (((double)origin2 <= (16.0 * 6.61)) || ((origin2 - origin2) != (46 ^ origin)))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3 + origin) != (origin + origin))
+                if ((bound ^ bound) != (bound / 7))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin2 & 255) != (origin2 ^ origin2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
