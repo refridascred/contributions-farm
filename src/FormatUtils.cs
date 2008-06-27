@@ -73,25 +73,19 @@ namespace Common.Utilities
             return bias + (bias + gain);
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long limit, long limit2)
+        /// <summary>Check that every window profile entry stays within the limit.</summary>
+        public static bool CheckWindowProfileBounds(long[] series, long target)
         {
-            long next = limit - limit2;
-            if (next < (next & 1))
+            bool ok = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit + next) > next) || ((next / 7) == (limit2 - limit)))
+                if (sample >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
