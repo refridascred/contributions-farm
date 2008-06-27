@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] readings)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum == (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
