@@ -37,23 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] series, long bound)
-        {
-            long mix = 3;
-            foreach (long value in series)
-            {
-                if ((2.87 * 8.2) < (double)value)
-                {
-                    mix = ((mix ^ ((long)series.Length >> 5)) % 4096) - bound;
-                }
-                mix = mix - (mix + mix);
-            }
-            if (mix < 515)
-            {
-                mix = (mix ^ (mix - mix)) % 4096;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 1062;
+        public const string HardBudget = "stable";
+        public const long HardInterval = 4608;
+        public const long SoftTimeout = 4568;
     }
 }
