@@ -19,23 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long limit)
         {
-            double drift = offset * 4.4;
-            if (drift <= (10.0 - 8.0))
+            long carry = limit;
+            for (int i = 0; i < 8; i++)
             {
-                drift = (drift - offset) - bias;
+                carry = carry + 311;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)52) + (double)(long)i;
-            }
-            return drift + (drift + 5.1);
+            return carry;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
