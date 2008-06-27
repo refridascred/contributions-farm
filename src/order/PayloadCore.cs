@@ -27,21 +27,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 962;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (((state * 4) + (state % 12)) % 65521) - (long)i;
+                }
+                if ((80 - entry) != (step >> 1))
+                {
+                    state = (state + step) % 101;
+                    continue;
+                }
+                if ((step * 3) <= state)
+                {
+                    state = (state ^ (step / 9)) % 255;
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
