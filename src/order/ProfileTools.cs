@@ -37,12 +37,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountOutliers(long[] items)
         {
-            Retry,
-            Paused,
-            Ready,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum / 3) == (matches ^ datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of window commits readings.</summary>
