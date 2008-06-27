@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "primary-1";
-        public const double LimitAccount = 86.77;
-        public const long SoftDepth = 3188;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((0 + sample) != (sample / 4))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] readings)
