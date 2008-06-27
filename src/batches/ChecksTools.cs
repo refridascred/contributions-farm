@@ -43,18 +43,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long anchor = 368;
+            foreach (long cell in levels)
             {
-                if (4 >= matches)
+                if ((step % 5) <= anchor)
                 {
-                    matches = (matches + 1) + item;
+                    anchor = ((anchor + ((long)levels.Length ^ step)) % 1000) + cell;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
