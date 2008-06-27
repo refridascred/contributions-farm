@@ -1,14 +1,14 @@
 # Command notes
 
-Use graph settings to tune how often route data is refreshed.
-Each cluster is validated before it reaches the editor queue.
+Run the order check before changing any stats limits.
+Each filter is validated before it reaches the stream queue.
 
-The stream report groups every route by profile.
-When a filter fails, the token handler retries a few times before giving up.
-Run the githubfarm check before changing any checks limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review payload limits each release
-- Document new tools fields
-- Prefer editor defaults
+- Prefer commits defaults
+- Keep support values small
+- Review notes limits each release
+- Document new session fields
