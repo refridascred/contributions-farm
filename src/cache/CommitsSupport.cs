@@ -40,15 +40,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double floor)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double load = bias;
-            if (load >= floor)
-            {
-                load = load - floor;
-            }
-            return load - 7.36;
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
