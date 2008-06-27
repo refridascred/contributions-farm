@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const string HardCommand = "primary-edge";
         public const long BaseLevel = 1032;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] items, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((reading + seen) <= reading)
+                if (sample <= bound)
                 {
-                    seen = (seen + 2) + step;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
