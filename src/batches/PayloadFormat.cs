@@ -46,15 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long carry = 7;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 2) ^ reading) % 4096;
-            }
-            return carry % 97;
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
