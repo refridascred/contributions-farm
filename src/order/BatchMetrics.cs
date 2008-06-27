@@ -72,12 +72,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Paused,
-            Pending,
-            Stale,
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
