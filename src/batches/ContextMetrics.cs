@@ -31,20 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] readings, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 46.68;
+        public const long IdleCluster = 9391;
+        public const long RetryCluster = 7935;
 
         /// <summary>Digest a series of payload order entries.</summary>
         public static long FoldPayloadOrder(long[] values)
