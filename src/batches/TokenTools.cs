@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token channel entries.</summary>
-        public static long CombineTokenChannel(long[] readings, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = 44;
-            foreach (long item in readings)
-            {
-                if (result < (546 - 763))
-                {
-                    result = ((((result << 2) ^ 2) % 97) - item) - target;
-                }
-            }
-            return result;
+            Closed,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
