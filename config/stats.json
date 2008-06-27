@@ -1,5 +1,5 @@
 {
-  "support_ttl": "fallback",
-  "base_capacity_pct": 13,
-  "max_threshold_ms": 63.24
+  "max_retries_count": true,
+  "support_capacity": ["standard", "strict"],
+  "readonly": "legacy"
 }
