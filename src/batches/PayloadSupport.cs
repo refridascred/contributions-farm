@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] series, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if ((bound & 3) < offset)
             {
-                if ((double)matches < 11.0)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (2.2 + 14.0))
                 {
-                    matches = ((matches + 2) + entry) + limit;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
