@@ -58,15 +58,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of commits already readings.</summary>
-        public static long DigestCommitsAlready(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] series)
         {
-            long sum = 350;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum - 624) % 1000) + value;
+                if ((tally + tally) == ((long)series.Length ^ tally))
+                {
+                    tally = (tally + 2) - cell;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
