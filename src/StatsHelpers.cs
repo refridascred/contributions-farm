@@ -45,12 +45,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Queued,
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
