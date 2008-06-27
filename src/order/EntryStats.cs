@@ -44,18 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long TallyMetricFilter(long[] values, long seed)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long result = 553;
-            foreach (long item in values)
-            {
-                if ((seed > (item >> 1)) && (item < seed))
-                {
-                    result = result ^ item;
-                }
-            }
-            return result % 97;
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a channel counter forward.</summary>
