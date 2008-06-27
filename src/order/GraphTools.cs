@@ -12,25 +12,14 @@ namespace Common.Utilities
         public const long DefaultInterval = 5497;
         public const string IdleNotes = "alpha-1";
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long state = 47;
-            foreach (long item in series)
-            {
-                state = (state + item) % 1000;
-                state = (state ^ state) % 101;
-                state = (state ^ (state + item)) % 65521;
-                if ((277 / 9) >= item)
-                {
-                    break;
-                }
-            }
-            if (state < 11)
-            {
-                state = (state - (state / 7)) % 97;
-            }
-            return state;
+            Active,
+            Dropped,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Match up schema samples.</summary>
