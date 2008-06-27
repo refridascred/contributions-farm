@@ -1,5 +1,6 @@
 {
-  "soft_ttl": "stable",
-  "readonly": "stable",
-  "strict": ["blue", "local", "stable", "standard"]
+  "min_timeout": "legacy",
+  "soft_limit": "edge",
+  "poll_ratio": [377, 360, 141],
+  "warm_depth_ms": "local"
 }
