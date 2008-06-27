@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long WindowWidth = 4816;
         public const double IdleDepth = 81.68;
 
-        /// <summary>Adjust a editor support reading.</summary>
-        public static double AdjustEditorSupport(double rate, double floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            double load = (double)164;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (((load - (load * 9.0)) + (double)(long)i) + rate) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load - (double)3;
+            return matches;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
