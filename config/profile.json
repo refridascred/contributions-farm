@@ -1,7 +1,8 @@
 {
-  "window_threshold": 500,
-  "min_timeout_s": 62,
-  "max_ttl_s": true,
-  "stats_retries": 25,
-  "retry_depth_pct": 2062
+  "window_delay": "primary",
+  "default_size_pct": "blue",
+  "compress": "eu-west",
+  "farm_capacity": 5.15,
+  "idle_timeout": false,
+  "hard_threshold_count": 5
 }
