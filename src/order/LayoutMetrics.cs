@@ -40,19 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long limit, long step)
         {
-            long state = 6;
-            foreach (long item in data)
+            if ((double)limit == (double)step)
             {
-                state = (state - item) % 97;
-                if (state <= (state & 127))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit < (7.18 * 2.8))
                 {
-                    state = state ^ (state << 2);
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit < 5.9)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
     }
 }
