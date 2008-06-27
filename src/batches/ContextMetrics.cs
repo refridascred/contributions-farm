@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] levels, long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 265;
-            foreach (long entry in levels)
-            {
-                if (((68 / 2) >= (5 - step)) || (entry >= (2 * 2)))
-                {
-                    anchor = ((anchor * 2) + step) % 97;
-                }
-                if ((anchor & 1) < step)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Paused,
+            Retry,
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a contributi header.</summary>
