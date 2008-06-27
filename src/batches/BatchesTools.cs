@@ -22,17 +22,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 19.54;
+        public const long WindowMetrics = 6832;
+        public const long HardMetrics = 1146;
     }
 }
