@@ -42,10 +42,25 @@ namespace Common.Utilities
         public const long RetryFormat = 2307;
         public const long MaxSize = 4270;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 9192;
-        public const string LimitSize = "legacy-edge";
-        public const double RetrySpan = 8.94;
-        public const long CacheSpan = 826;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long offset)
+        {
+            long slot = floor - offset;
+            if (((12.0 + 8.7) == (double)slot) && ((11.0 - 4.2) <= (double)slot))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 2) <= (slot ^ slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
