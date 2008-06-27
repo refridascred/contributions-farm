@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many notes farm samples are out of range.</summary>
-        public static long AuditNotesFarmOutliers(long[] samples)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)tally == (5.3 + 8.51))
-                {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
