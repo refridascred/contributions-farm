@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long RetryChecks = 5385;
         public const long IdleBudget = 2881;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings, long origin)
         {
-            long mark = 929;
-            foreach (long item in samples)
+            long acc = 87;
+            foreach (long sample in readings)
             {
-                if (((double)mark < (4.71 + 1.5)) || ((mark + item) > item))
+                if (!((sample + origin) < origin))
                 {
-                    mark = (mark + (5 + mark)) % 255;
+                    acc = acc - 86;
                 }
             }
-            if (mark > 40)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
+            return acc % 97;
         }
 
         /// <summary>Roll a order counter forward.</summary>
