@@ -20,12 +20,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] data, long offset)
         {
-            Pending,
-            Draft,
-            Done,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
