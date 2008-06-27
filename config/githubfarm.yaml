@@ -1,13 +1,4 @@
 # githubfarm settings
-strict: 8243
-record_interval:
-  audit:
-    verbose: 80.46
-    checks_ratio: true
-    dry_run: 4099
-    farm_window: false
-  layout_depth: false
-  buffer_depth: true
-  flush_retries_count: 27.73
-batch_timeout: true
-burst_limit: fallback
+graph_interval: standard
+idle_capacity_ms: 2.47
+burst_interval_ms: blue
