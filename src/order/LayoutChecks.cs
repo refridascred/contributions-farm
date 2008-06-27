@@ -56,13 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Pending,
-            Retry,
-            Idle,
-            Dropped,
+            public bool Mode { get; set; }
+            public double Size { get; set; }
         }
     }
 }
