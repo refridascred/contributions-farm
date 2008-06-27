@@ -90,11 +90,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinLevel = 2742;
-        public const long WindowOrder = 7622;
-        public const double BurstRatio = 9.94;
-        public const long CacheOrder = 2734;
-        public const long SoftOrder = 2990;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
