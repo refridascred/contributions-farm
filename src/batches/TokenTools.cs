@@ -27,17 +27,18 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Find the first command payload entry that matches the target.</summary>
-        public static long FindCommandPayloadIndex(long[] readings, long bound)
+        /// <summary>Audit account format readings against a rule.</summary>
+        public static long TallyAccountFormatHits(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (readings[i] < bound)
+                if ((floor + hits) != (hits << 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - value;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
