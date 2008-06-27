@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long step, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] series)
         {
-            if ((2 / 7) != (floor & 255))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor + 960) != (floor % 64))
+                if (tally >= (item + tally))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step < (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the notes mode values.</summary>
