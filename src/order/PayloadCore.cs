@@ -37,23 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Audit buffer entry readings against a rule.</summary>
+        public static long AuditBufferEntryHits(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (entry < seen)
                 {
-                    total = ((total << 2) ^ (total % 97)) ^ (long)i2;
+                    seen = seen + 1;
                 }
-                if (!((origin << 3) != ((long)i + 30)))
+                else
                 {
-                    continue;
+                    seen = seen - 1;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
     }
 }
