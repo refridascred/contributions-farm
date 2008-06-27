@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data, long target)
         {
-            Stale,
-            Active,
-            Done,
+            long mark = 497;
+            foreach (long cell in data)
+            {
+                if ((0.21 < (double)(long)data.Length) || (target >= (target / 6)))
+                {
+                    continue;
+                }
+                mark = ((mark - 5) % 4096) ^ cell;
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
