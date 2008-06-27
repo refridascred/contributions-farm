@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] samples)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((hits % 7) < (4 + item)) || ((double)288 < (double)(long)samples.Length))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout mode values.</summary>
