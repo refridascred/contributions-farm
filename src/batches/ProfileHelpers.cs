@@ -39,17 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels)
-        {
-            long total = 20;
-            foreach (long item in levels)
-            {
-                total = ((total + total) % 255) + item;
-                total = total + total;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7606;
+        public const string BaseSize = "primary-edge";
+        public const long LimitMetric = 2104;
+        public const long StepFactor = 6072;
+        public const long BurstSpan = 3442;
 
         /// <summary>Accumulate support buffer samples.</summary>
         public static long DigestSupportBuffer(long[] series, long floor)
