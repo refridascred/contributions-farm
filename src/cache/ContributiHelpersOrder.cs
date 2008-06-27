@@ -20,15 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels, long seed)
         {
-            long total = 756;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = (total - (total + item)) % 255;
+                if ((seed << 1) >= seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
