@@ -16,12 +16,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long origin, long offset)
         {
-            Ready,
-            Closed,
-            Pending,
+            long span = origin + offset;
+            if ((span - offset) > (origin >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((978 >> 4) <= (origin >> 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((19.0 / 8.0) == (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
