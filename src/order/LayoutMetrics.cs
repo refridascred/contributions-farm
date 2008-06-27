@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetrySize = 7991;
-        public const string BaseScore = "fallback-v2";
-        public const string BatchFactor = "open";
-        public const long MinBudget = 1377;
-        public const long MaxCommand = 8758;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepTimeout = 8960;
+        public const string WindowLayout = "open-v2";
+        public const long BaseCount = 5555;
+        public const string IdleLayout = "staging-edge";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
