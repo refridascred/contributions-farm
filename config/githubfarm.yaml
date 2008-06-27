@@ -1,5 +1,6 @@
 # githubfarm settings
-farm_limit: staging
-dry_run: eu-west
-max_size_pct: true
-sync_ratio_s: 100
+hard_retries_count: green
+default_retries_count: 60
+default_delay: true
+flush_limit_s: local
+strict: open
