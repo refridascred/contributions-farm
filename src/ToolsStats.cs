@@ -29,18 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry cluster samples are out of range.</summary>
-        public static long MeasureEntryClusterMatches(long[] readings, long offset)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((0.65 * 5.61) != (double)entry)
-                {
-                    tally = (tally + 2) + offset;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
