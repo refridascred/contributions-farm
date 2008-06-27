@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const string BurstAlready = "primary";
         public const long IdleCount = 8648;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark * 5) + ((long)i ^ mark)) - (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                mix = (mix ^ mix) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
