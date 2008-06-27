@@ -14,21 +14,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((offset - offset) >= 3)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((7.0 - 7.0) != (double)offset) || ((double)seed < 0.31))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a commits checks sample.</summary>
