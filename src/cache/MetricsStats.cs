@@ -22,22 +22,11 @@ namespace Common.Utilities
         public const long StepGraph = 6404;
         public const string BatchSpan = "cached-edge";
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] readings)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (hits >= (hits << 3))
-                {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
