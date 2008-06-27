@@ -40,22 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long bound)
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long TotalClusterEntry(long[] readings, long step)
         {
-            long acc = 695;
-            foreach (long value in series)
+            long mix = 13;
+            foreach (long entry in readings)
             {
-                if ((13.0 - 0.82) <= (double)value)
+                mix = ((mix << 3) ^ (mix + mix)) % 4096;
+                if (((mix >> 4) != ((long)readings.Length * 2)) || (160 < (mix + entry)))
                 {
-                    acc = (acc + (acc << 1)) % 255;
+                    mix = mix - (step + entry);
                 }
             }
-            if (acc < 640)
-            {
-                acc = acc ^ (bound + bound);
-            }
-            return acc % 1000;
+            return mix % 97;
         }
     }
 }
