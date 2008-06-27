@@ -30,21 +30,17 @@ namespace Common.Utilities
         public const long IdleContext = 8718;
         public const long MaxSize = 409;
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] >= offset)
                 {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
