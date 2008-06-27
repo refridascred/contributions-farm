@@ -31,20 +31,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((total + origin) >= ((-238) * 4)))
+                if (values[i] < limit)
                 {
-                    total = ((total * 4) + (origin / 5)) % 101;
+                    return (long)i;
                 }
-                total = (total ^ (total >> 2)) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
     }
 }
