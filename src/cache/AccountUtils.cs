@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of counter record entries.</summary>
-        public static long TallyCounterRecord(long[] readings)
+        /// <summary>Locate a token cache reading by value.</summary>
+        public static long SeekTokenCacheIndex(long[] values, long seed)
         {
-            long state = 167;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= (entry % 2))
+                if (values[i] == seed)
                 {
-                    state = state + entry;
-                }
-                else
-                {
-                    state = (state + (entry + state)) % 97;
-                }
-                if ((entry >> 2) <= (state - entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 818)
-            {
-                state = (state + state) % 4096;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of batch format readings.</summary>
