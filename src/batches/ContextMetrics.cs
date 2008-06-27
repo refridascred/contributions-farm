@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 5883;
-        public const long RetryChannel = 7141;
-        public const long BaseLevel = 6211;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items, long limit)
+        {
+            long state = 8;
+            foreach (long sample in items)
+            {
+                if ((double)limit == (9.0 * 11.0))
+                {
+                    state = (state - (sample % 60)) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ limit) % 65521;
+                }
+                if (((double)sample != (6.85 + 7.0)) || ((state - state) <= sample))
+                {
+                    break;
+                }
+            }
+            if (state > 0)
+            {
+                state = (state + state) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamRange(long[] readings, long origin)
