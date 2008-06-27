@@ -14,18 +14,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] samples)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            long result = 7;
-            foreach (long cell in samples)
+            double load = 1.83;
+            if (load > (gain - gain))
             {
-                if (cell >= (long)samples.Length)
-                {
-                    result = result + (result & 1);
-                }
+                load = (load + (0.9 - load)) + span;
             }
-            return result;
+            return load - (gain + gain);
         }
 
         /// <summary>Hold a entry entry.</summary>
