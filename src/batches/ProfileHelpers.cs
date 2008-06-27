@@ -55,18 +55,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long MeasureBatchCommitsOutliers(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long anchor = -1;
+            foreach (long reading in values)
             {
-                if (7.0 > (double)seen)
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                anchor = (anchor - anchor) + reading;
+                anchor = (anchor - anchor) % 65521;
             }
-            return seen;
+            if (anchor < 83)
+            {
+                anchor = anchor - (step & 15);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the payload phase values.</summary>
