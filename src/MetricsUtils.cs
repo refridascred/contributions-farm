@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] series, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (!((offset + 5) >= (6 % 10)))
+                if (entry <= bound)
                 {
-                    seen = (seen + 1) ^ value;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
