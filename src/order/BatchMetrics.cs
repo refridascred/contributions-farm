@@ -97,12 +97,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] levels, long origin)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
