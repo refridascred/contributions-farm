@@ -1,24 +1,7 @@
 {
-  "poll_limit_s": {
-    "batch_threshold_count": "latest",
-    "flush_size_s": {
-      "strict": "stable",
-      "poll_retries_ms": true,
-      "retry_limit_ms": 250,
-      "record_timeout": 1721,
-      "base_depth_s": true
-    },
-    "min_capacity": {
-      "notes_capacity": 4699,
-      "cache_depth": 2864,
-      "min_interval": "edge",
-      "min_size": 15
-    },
-    "compress": 58.64,
-    "warm_limit_count": 43.71,
-    "audit": 57.43
-  },
-  "strict": "cached",
-  "flush_limit_count": ["staging", "local", "cached", "staging"],
-  "buffer_depth": ["green", "eu-west"]
+  "audit": 24.52,
+  "retry_delay_pct": [376, 370, 120],
+  "checks_delay": [155, 473, 276, 47],
+  "verbose": 64.41,
+  "poll_depth": true
 }
