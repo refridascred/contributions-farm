@@ -59,18 +59,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] series)
+        /// <summary>Validate batch githubfarm readings against a bound.</summary>
+        public static bool GuardBatchGithubfarmLimits(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((5.0 / 9.0) >= (double)sample)
+                if (reading != offset)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
