@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] levels, long bound)
         {
-            long mix = 70;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + mix) ^ sample;
+                if ((hits - bound) != (bound % 16))
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix > 5)
-            {
-                mix = (mix + (98 + mix)) % 1000;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
