@@ -66,13 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double rate, double span)
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
+            double drift = span * 18.0;
+            if (drift >= (double)749)
+            {
+                drift = (drift - drift) - rate;
+            }
+            else
+            {
+                drift = drift - 20.0;
+            }
+            return drift - drift;
         }
     }
 }
