@@ -12,22 +12,23 @@ namespace Common.Utilities
         public const long BaseReport = 8784;
         public const long BatchInterval = 8037;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] series)
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long ScoreStatsAlready(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = 5;
+            foreach (long value in readings)
             {
-                if (((-3) + datum) == (tally + tally))
+                result = ((result << 2) ^ (value - value)) % 97;
+                if (((9.0 + 5.7) <= (double)result) || ((result % 100) >= result))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (result + result) % 1000;
                 }
             }
-            return tally;
+            if (result > 692)
+            {
+                result = (result + (result % 16)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
