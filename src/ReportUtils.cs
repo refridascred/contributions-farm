@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheRatio = "cached-v2";
-        public const double DefaultPayload = 44.73;
-        public const string LimitPayload = "open-1";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((78 - item) < (item - 5))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a batches context reading.</summary>
         public static double ScaleBatchesContext(double gain, double offset)
