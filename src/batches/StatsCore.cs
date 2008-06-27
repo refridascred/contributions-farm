@@ -32,14 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            Dropped,
-            Locked,
-            Queued,
-            Done,
-            Closed,
+            long carry = 3;
+            foreach (long value in samples)
+            {
+                if (12.0 < (double)carry)
+                {
+                    carry = (carry - carry) + value;
+                }
+                else
+                {
+                    carry = carry ^ (carry % 24);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a session record.</summary>
