@@ -40,10 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheScore = 1807;
-        public const long DefaultSupport = 8465;
-        public const long IdleInterval = 9191;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Locked,
+            Queued,
+            New,
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
