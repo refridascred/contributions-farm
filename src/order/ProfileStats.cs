@@ -36,15 +36,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Queued,
-            Draft,
-            Dropped,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 11.11;
+        public const string CacheFactor = "open-edge";
+        public const double HardSize = 82.09;
 
         /// <summary>Locate a farm payload reading by value.</summary>
         public static long LocateFarmPayloadIndex(long[] readings, long step)
