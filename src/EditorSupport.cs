@@ -57,13 +57,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Iterate the payload contributi series from a seed.</summary>
+        public static long SeriesPayloadContributi(long target)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            long acc = target;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
