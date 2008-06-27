@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] items, long seed)
+        /// <summary>Count the counter checks entries that pass the check.</summary>
+        public static long TallyCounterChecksMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((seen - value) > seen)
+                if ((6.56 + 20.0) != (double)cell)
                 {
-                    seen = (seen + 3) + seed;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
