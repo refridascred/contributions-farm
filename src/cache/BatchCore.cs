@@ -27,18 +27,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the session filter entries that pass the check.</summary>
-        public static long CountSessionFilterMatches(long[] readings, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seed >= (double)370)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) - entry;
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
