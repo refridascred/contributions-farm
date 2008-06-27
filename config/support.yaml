@@ -1,4 +1,16 @@
 # support settings
-retry_threshold_ms: 27.08
-already_retries: 837
-compress: fallback
+hard_depth: strict
+warm_interval_ms:
+  - 8
+  - 42
+order_retries: 58.41
+sync_ttl:
+  verbose: 82
+  idle_capacity_ms: 1024
+  idle_threshold_ms: 77.73
+  retry_depth_s: 100
+  max_timeout: 100
+flush_capacity:
+  - open
+  - primary
+  - strict
