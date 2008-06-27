@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
+            Failed,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
