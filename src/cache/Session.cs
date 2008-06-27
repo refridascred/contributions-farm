@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 2) + sum) % 97;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
