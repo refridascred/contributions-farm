@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit graph already readings against a rule.</summary>
