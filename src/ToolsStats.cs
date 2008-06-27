@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Derive the next record contributi value from a seed.</summary>
+        public static long DeriveRecordContributi(long bound)
         {
-            double bias = floor;
-            return (bias + (double)33) + ratio;
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
