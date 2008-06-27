@@ -50,18 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings, long bound)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen + bound) != (bound * 2))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public double Count { get; set; }
         }
     }
 }
