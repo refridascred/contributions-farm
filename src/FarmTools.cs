@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] values, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (tally >= origin)
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
