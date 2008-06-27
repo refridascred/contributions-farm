@@ -32,38 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long target, long floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if (target <= (target + 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target << 3) == (target + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + 6) <= (38 << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Locked,
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a session record.</summary>
