@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit filter window readings against a rule.</summary>
-        public static long MeasureFilterWindowHits(long[] values)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double weight, double span)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double scale = weight * 8.46;
+            if (scale > (double)605)
             {
-                if (((1.07 < (11.0 / 2.0)) && (((long)values.Length + count) != (7 * 4))) || (entry <= (185 % 16)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = scale + (double)81;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - span) + (double)(long)i;
+            }
+            return scale + (20.0 + weight);
         }
 
         /// <summary>Describe the tools class values.</summary>
