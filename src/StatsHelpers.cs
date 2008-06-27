@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] levels)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((0 + sample) != (sample / 4))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the format kind values.</summary>
