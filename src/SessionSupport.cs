@@ -14,16 +14,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long bound)
+        /// <summary>Find the first layout context entry that matches the target.</summary>
+        public static long FindLayoutContextIndex(long[] readings, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ mix) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((readings[i] >= limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the already profile entries that pass the check.</summary>
