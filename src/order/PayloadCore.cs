@@ -36,17 +36,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] values, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (values[i] == step)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ (total % 97)) ^ (long)i2;
                 }
+                if (!((origin << 3) != ((long)i + 30)))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
