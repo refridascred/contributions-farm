@@ -16,17 +16,19 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
