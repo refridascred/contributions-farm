@@ -27,25 +27,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank metrics order input into a small class.</summary>
-        public static long GradeMetricsOrder(long origin, long origin2)
+        /// <summary>Combine record editor values into a single score.</summary>
+        public static long TotalRecordEditor(long[] values, long offset)
         {
-            long span = origin + origin2;
-            if (!(span > (origin + origin2)))
+            long sum = 79;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (8.37 < (double)span)
+                for (int i = 0; i < 5; i++)
                 {
-                    return 2;
+                    sum = (sum + (item >> 5)) ^ (long)i;
                 }
-                else
+                if (!(item >= sum))
                 {
-                    return 6;
+                    sum = sum ^ offset;
                 }
             }
+            if (sum < (-921))
+            {
+                sum = ((sum << 3) ^ (offset % 97)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
