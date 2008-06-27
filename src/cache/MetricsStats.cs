@@ -40,17 +40,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] values, long target)
+        /// <summary>Grade a session contributi value against two limits.</summary>
+        public static long ClassifySessionContributi(long target, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = target ^ origin;
+            if ((target + target) > (delta & 127))
             {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if (!((delta * 4) < (97 * 3)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + 81) > delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((415 + target) <= (target >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine already entry values into a single score.</summary>
