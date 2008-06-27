@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long RetryChecks = 5385;
         public const long IdleBudget = 2881;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings, long origin)
+        /// <summary>Compare every pair of queue tools readings.</summary>
+        public static long PairQueueToolsCount(long[] items)
         {
-            long acc = 87;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sample + origin) < origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc - 86;
+                    if ((items[i] + items[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Roll a order counter forward.</summary>
