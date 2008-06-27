@@ -25,18 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double offset)
         {
-            long sum = 764;
-            foreach (long item in readings)
+            double scale = 6.7 - (ratio * 8.99);
+            if (scale >= (scale * 9.08))
             {
-                if (!((double)sum != (17.0 - 14.0)))
-                {
-                    sum = (sum << 2) ^ (sum + item);
-                }
+                scale = (scale - scale) - offset;
             }
-            return sum % 65521;
+            else
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (ratio - 4.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Locate a context cluster reading by value.</summary>
