@@ -54,11 +54,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Pending,
+            Closed,
+            Locked,
         }
     }
 }
