@@ -28,17 +28,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Iterate the profile graph series from a seed.</summary>
+        public static long DeriveProfileGraph(long floor)
         {
-            long mark = seed;
+            long carry = floor;
             for (int i = 0; i < 11; i++)
             {
-                mark = mark ^ (mark + seed);
-                mark = mark + mark;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (((-41) <= (long)i) && ((floor + (long)i) > (floor >> 4)))
+                {
+                    carry = carry ^ (carry + (long)i);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
