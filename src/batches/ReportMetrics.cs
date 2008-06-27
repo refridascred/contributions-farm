@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Check that every farm checks entry stays within the limit.</summary>
+        public static bool GuardFarmChecksLimits(long[] data, long seed)
         {
-            long carry = -8;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                carry = carry - (value << 1);
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (carry > 553)
-            {
-                carry = (carry + (carry & 255)) % 1000;
-            }
-            return carry % 1000;
+            return valid;
         }
 
         /// <summary>Roll a token format counter forward.</summary>
