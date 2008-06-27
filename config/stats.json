@@ -1,14 +1,7 @@
 {
-  "base_retries_s": {
-    "enabled": 43,
-    "compress": "edge",
-    "flush_delay_s": "eu-west",
-    "context_window": 88.86,
-    "burst_threshold_s": ["green", "latest", "blue", "primary"],
-    "cache_ttl": true
-  },
-  "soft_ratio_pct": true,
-  "verbose": false,
-  "record_limit": 100,
-  "compress": "stable"
+  "retry_depth_count": [152, 75, 327],
+  "base_interval": false,
+  "soft_size_ms": 500,
+  "base_threshold": "green",
+  "batch_depth_s": 23
 }
