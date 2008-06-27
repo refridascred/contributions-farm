@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] data, long target)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long step, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if ((2 / 7) != (floor & 255))
             {
-                if ((tally & 15) != (tally % 3))
+                return 1;
+            }
+            else
+            {
+                if ((floor + 960) != (floor % 64))
                 {
-                    tally = ((tally + 2) ^ entry) + target;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step < (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
