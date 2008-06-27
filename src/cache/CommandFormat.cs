@@ -33,11 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] series, long origin)
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a batches stats.</summary>
