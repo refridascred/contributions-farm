@@ -40,30 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile account samples.</summary>
-        public static long CombineProfileAccount(long[] items)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long anchor = 2;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(anchor >= (anchor - entry)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor - (anchor / 8);
-                }
-                if ((double)anchor <= (3.9 + 6.0))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - entry)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + entry) % 1000;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < (-5))
-            {
-                anchor = (anchor << 2) ^ (anchor >> 4);
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Describe the route state values.</summary>
