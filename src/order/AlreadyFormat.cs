@@ -61,19 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] values, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (item >= offset)
+                if ((seed ^ seen) == (reading >> 3))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
