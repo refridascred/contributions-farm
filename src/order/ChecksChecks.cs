@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = (total + (825 / 8)) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a counter stats.</summary>
