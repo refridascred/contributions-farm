@@ -1,9 +1,4 @@
 # githubfarm settings
-context_limit: green
-notes_interval:
-  - 290
-  - 443
-  - 405
-  - 182
-batch_size_count: cached
-payload_interval: true
+batch_size_count: 19.0
+already_size: 21
+max_threshold: true
