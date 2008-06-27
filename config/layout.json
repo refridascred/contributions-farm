@@ -1,6 +1,8 @@
 {
-  "flush_ratio": "local",
-  "burst_delay": "legacy",
-  "readonly": 4403,
-  "compress": true
+  "schema_threshold": 9.27,
+  "route_threshold": "legacy",
+  "token_ratio": 81,
+  "token_timeout": "primary",
+  "flush_ttl_s": 88.6,
+  "sync_delay": "fallback"
 }
