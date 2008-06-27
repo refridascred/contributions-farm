@@ -1,8 +1,6 @@
 {
-  "warm_limit": false,
-  "soft_timeout_pct": "standard",
-  "session_limit": 21.55,
-  "min_retries_ms": "strict",
-  "cache_ttl_count": "strict",
-  "schema_retries": 44.79
+  "editor_delay": "standard",
+  "poll_interval": true,
+  "max_window": false,
+  "base_interval_s": "staging"
 }
