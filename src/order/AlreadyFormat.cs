@@ -39,17 +39,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long origin)
+        /// <summary>Roll a batch editor counter forward.</summary>
+        public static long StepBatchEditor(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry - offset) % 65521;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the tools mode values.</summary>
