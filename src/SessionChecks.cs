@@ -38,12 +38,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] values)
         {
-            Queued,
-            Synced,
-            Ready,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen - (long)values.Length) < (datum & 15))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
