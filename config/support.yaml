@@ -1,5 +1,12 @@
 # support settings
-flush_retries_s: 85
-verbose: open
-audit: 500
-retry_threshold_s: 4327
+warm_retries:
+  - cached
+  - blue
+  - legacy
+  - edge
+batches_threshold: 56.45
+record_timeout: 5251
+command_interval:
+  sync_delay_count: legacy
+  filter_threshold: true
+  audit: 100
