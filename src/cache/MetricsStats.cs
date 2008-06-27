@@ -42,12 +42,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultInterval = "stable";
-        public const double IdleBudget = 24.3;
-        public const long BatchAlready = 8348;
-        public const long MaxBudget = 6304;
-        public const long LimitDepth = 6794;
+        /// <summary>Rank profile context input into a small class.</summary>
+        public static long BucketProfileContext(long target, long origin)
+        {
+            if ((target * 4) != (target * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((origin * 3) < (target / 6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-659) - 29) >= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target > (target & 15))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate tools batches readings against a bound.</summary>
         public static bool GuardToolsBatchesBounds(long[] levels, long target)
