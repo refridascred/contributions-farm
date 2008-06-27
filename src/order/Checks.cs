@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell > (cell >> 1))
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a report record.</summary>
