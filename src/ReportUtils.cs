@@ -12,17 +12,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] levels, long seed)
+        /// <summary>Adjust a batches context reading.</summary>
+        public static double ScaleBatchesContext(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain2 = gain * 16.0;
+            return (gain2 - (gain / 2.0)) + offset;
         }
 
         /// <summary>Hold a command options.</summary>
