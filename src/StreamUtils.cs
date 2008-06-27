@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheSpan = 2808;
-        public const long HardSpan = 4365;
-        public const long BatchWindow = 7794;
-        public const long RetryWindow = 3025;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] levels, long floor)
