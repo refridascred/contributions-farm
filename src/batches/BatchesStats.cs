@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Adjust a metric stats reading.</summary>
+        public static double AdjustMetricStats(double rate, double span)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            double bias = (double)3 / 6.0;
+            return (bias - rate) + span;
         }
 
         /// <summary>Fold a list of route readings.</summary>
