@@ -37,10 +37,13 @@ namespace Common.Utilities
         public const double DefaultReport = 4.35;
         public const long RetryFactor = 477;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5132;
-        public const string StepAccount = "standard-edge";
-        public const string BurstScore = "open-edge";
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Dropped,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
