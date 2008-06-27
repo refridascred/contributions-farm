@@ -57,11 +57,14 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardInterval = "legacy-edge";
-        public const long HardRatio = 4690;
-        public const long SoftCounter = 2852;
-        public const long BatchScore = 4273;
-        public const double CacheCounter = 55.47;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Locked,
+            Paused,
+            Draft,
+            Synced,
+            Idle,
+        }
     }
 }
