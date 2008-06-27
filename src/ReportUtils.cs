@@ -27,19 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Validate layout commits readings against a bound.</summary>
+        public static bool VerifyLayoutCommitsRange(long[] items, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (!!((seed / 3) >= (anchor * 4)))
+                if (reading > step)
                 {
-                    anchor = ((anchor * 5) + ((long)i << 3)) % 65521;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
