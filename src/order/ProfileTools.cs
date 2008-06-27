@@ -57,24 +57,31 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] levels, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long step, long floor)
         {
-            long result = 6;
-            foreach (long entry in levels)
+            if (step < (43 - 0))
             {
-                if (!(1.66 > (double)result))
+                return 2;
+            }
+            else
+            {
+                if (!((floor - floor) >= (floor + floor)))
                 {
-                    result = ((result + (entry << 2)) % 65521) - seed;
+                    return 0;
                 }
-                result = ((result * 3) + (result + entry)) % 1000;
-                result = (result ^ entry) % 97;
+                else
+                {
+                    if ((double)floor > (1.6 + 0.5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            if (result < 4)
-            {
-                result = ((result * 3) + (477 % 16)) % 97;
-            }
-            return result % 1000;
         }
     }
 }
