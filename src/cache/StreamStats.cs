@@ -45,9 +45,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8350;
-        public const long BurstTimeout = 8861;
-        public const long SoftWidth = 2721;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally + (-166)) < (tally / 7))
+                {
+                    tally = (tally + 1) + value;
+                }
+            }
+            return tally;
+        }
     }
 }
