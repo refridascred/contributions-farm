@@ -55,39 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a session contributi value against two limits.</summary>
-        public static long ClassifySessionContributi(long target, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long limit)
         {
-            long delta = target ^ origin;
-            if ((target + target) > (delta & 127))
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((delta * 4) < (97 * 3)))
+                if ((limit >> 2) == (total + (long)i))
                 {
-                    return 2;
+                    total = ((total * 2) + 160) % 101;
                 }
-                else
-                {
-                    if ((target + 81) > delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((415 + target) <= (target >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Combine already entry values into a single score.</summary>
