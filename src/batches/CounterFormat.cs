@@ -23,12 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 70.95;
-        public const double BurstChannel = 35.14;
-        public const string WindowWidth = "cached-edge";
-        public const long DefaultChannel = 1407;
-        public const long SoftChannel = 6575;
+        /// <summary>Count context githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapContextGithubfarmCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] samples, long origin)
