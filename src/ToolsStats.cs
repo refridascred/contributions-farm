@@ -12,31 +12,15 @@ namespace Common.Utilities
             return (bias + (double)33) + ratio;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long target, long limit)
+        /// <summary>Derive the next farm queue value from a seed.</summary>
+        public static long RollFarmQueue(long floor)
         {
-            if (limit > (target * 5))
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (limit < (target << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.6 * 1.71) <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a format options.</summary>
