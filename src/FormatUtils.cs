@@ -89,18 +89,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats support entries that pass the check.</summary>
-        public static long MeasureStatsSupportHits(long[] series)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!(((27 % 100) <= (datum + count)) || ((count * 5) >= count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Done,
+            Draft,
+            New,
         }
     }
 }
