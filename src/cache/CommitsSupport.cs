@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
