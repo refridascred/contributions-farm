@@ -63,18 +63,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the contributi channel entries that pass the check.</summary>
-        public static long MeasureContributiChannelMatches(long[] readings, long origin)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (origin >= (tally + tally))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 3883;
+        public const long StepChecks = 9167;
+        public const string HardSpan = "fallback-edge";
+        public const string MaxChecks = "strict-v2";
     }
 }
