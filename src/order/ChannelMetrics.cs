@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 4954;
+        public const long IdleSupport = 5507;
+        public const long CacheSupport = 27;
+        public const long WindowSupport = 2310;
+        public const long StepSupport = 1935;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] data, long seed)
