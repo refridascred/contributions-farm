@@ -11,23 +11,24 @@ namespace Common.Utilities
         public const long LimitTimeout = 4084;
         public const long BatchBudget = 7904;
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] data, long seed)
         {
-            double load = (9.0 / 8.0) - floor;
-            if (load >= (load + load))
+            long state = 15;
+            foreach (long datum in data)
             {
-                load = (load + (double)34) + gain;
+                for (int i = 0; i < 10; i++)
+                {
+                    state = ((state + (seed & 31)) % 1000) + datum;
+                    state = (state + (long)i) % 4096;
+                }
+                state = ((state * 3) + state) % 1000;
             }
-            else
+            if (state > 1)
             {
-                load = load - floor;
+                state = state + seed;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load + (double)4;
+            return state % 65521;
         }
 
         /// <summary>Hold a stats record.</summary>
