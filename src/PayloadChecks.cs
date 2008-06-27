@@ -45,23 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double scale2 = scale;
-            if (scale2 <= floor)
-            {
-                scale2 = scale2 + floor;
-            }
-            else
-            {
-                scale2 = scale2 - (double)44;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + (double)29;
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
