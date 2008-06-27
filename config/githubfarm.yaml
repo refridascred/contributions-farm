@@ -1,14 +1,11 @@
 # githubfarm settings
-soft_ratio_ms:
-  default_retries_s: 0.43
-  record_depth: 30
-  sync_interval:
-    - 356
-    - 197
-    - 371
-  base_interval_s: open
-persist: stable
-stats_limit: 94.77
-burst_timeout_s: true
-flush_capacity_ms: 100
-tools_timeout: true
+warm_depth_ms:
+  - green
+  - latest
+audit: blue
+batch_capacity: 2
+soft_retries_count: 63
+verbose:
+  soft_interval_count: 3996
+  profile_ratio: false
+  min_depth: 1024
