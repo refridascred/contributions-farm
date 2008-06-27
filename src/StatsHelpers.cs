@@ -41,24 +41,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double bias, double span)
-        {
-            double drift = (bias / 9.0) - (span / 5.0);
-            if (drift <= (bias * 3.0))
-            {
-                drift = drift + (drift - span);
-            }
-            else
-            {
-                drift = drift - (6.3 + bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (double)2;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 5514;
+        public const string BaseRecord = "local";
+        public const long RetryRecord = 9597;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] values)
