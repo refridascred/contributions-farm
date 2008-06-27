@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
-            public double Mode { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinRatio = 7317;
+        public const long BatchTimeout = 8822;
+        public const long IdleBatch = 7422;
+        public const long MinDepth = 4393;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
