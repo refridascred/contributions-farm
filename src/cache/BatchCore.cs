@@ -47,14 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] readings, long floor)
         {
-            Failed,
-            Dropped,
-            Draft,
-            Done,
-            Ready,
+            long carry = 184;
+            foreach (long value in readings)
+            {
+                carry = (((carry + (long)readings.Length) % 1000) ^ value) - floor;
+            }
+            if (carry < 77)
+            {
+                carry = (carry + (carry & 3)) % 97;
+            }
+            return carry;
         }
     }
 }
