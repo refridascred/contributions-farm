@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Project the next order batch value.</summary>
+        public static double BlendOrderBatch(double weight, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = bias;
+            if (scale >= (bias + bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (double)287) + weight;
             }
-            return hits;
+            return scale + (scale + bias);
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
