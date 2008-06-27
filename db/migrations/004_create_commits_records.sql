@@ -2,12 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    label TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    ratio REAL,
+    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
 
-INSERT INTO commits_records (region, label, state) VALUES ('edge', 'strict', 'legacy');
-INSERT INTO commits_records (region, label, state) VALUES ('green', 'local', 'strict');
-INSERT INTO commits_records (region, label, state) VALUES ('blue', 'standard', 'local');
+INSERT INTO commits_records (region, ratio, token, count, active) VALUES ('cached', 39.76, 'blue', 0, 68);
