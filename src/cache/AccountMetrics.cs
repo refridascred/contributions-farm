@@ -62,22 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many schema checks samples are out of range.</summary>
-        public static long MeasureSchemaChecksGaps(long[] items, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (((455 >> 2) <= (offset / 7)) && ((((long)items.Length >> 2) < (74 + count)) && ((double)offset != (18.0 + 4.0))))
+                if (reading != target)
                 {
-                    count = (count + 3) + item;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
