@@ -23,18 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = carry + (bound << 3);
-                carry = (carry ^ bound) % 255;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitFactor = 257;
+        public const string BurstCounter = "stable-1";
+        public const long DefaultSpan = 418;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterGaps(long[] data)
