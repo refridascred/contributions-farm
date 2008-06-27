@@ -103,22 +103,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support channel readings against a rule.</summary>
-        public static long CountSupportChannelGaps(long[] values)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((694 - cell) > cell)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Stale,
+            Ready,
         }
     }
 }
