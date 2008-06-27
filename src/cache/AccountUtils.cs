@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double gain, double span)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double load = (gain + gain) / 6.0;
-            if (load < gain)
-            {
-                load = load - (load / 4.0);
-            }
-            return load + span;
+            Stale,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the route mode values.</summary>
