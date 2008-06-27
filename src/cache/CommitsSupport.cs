@@ -24,19 +24,12 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] levels, long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
