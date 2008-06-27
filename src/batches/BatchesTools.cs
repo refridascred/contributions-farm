@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            if ((7.37 * 12.0) >= (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 5) == (bound + 80))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((885 * 3) < (floor & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
