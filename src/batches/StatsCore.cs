@@ -19,14 +19,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long bound)
         {
-            Locked,
-            Idle,
-            Failed,
-            New,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
