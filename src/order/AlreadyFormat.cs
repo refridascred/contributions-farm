@@ -61,18 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] readings, long seed)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((seed ^ seen) == (reading >> 3))
+                if (bound <= (value + count))
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
