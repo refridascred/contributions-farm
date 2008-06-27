@@ -44,13 +44,13 @@ namespace Common.Utilities
         public const long HardAlready = 1662;
         public const long CacheAlready = 5847;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
             public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
