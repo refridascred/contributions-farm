@@ -64,26 +64,17 @@ namespace Common.Utilities
             return scale2 + (double)29;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long floor)
         {
-            long anchor = 23;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.98 >= (double)anchor) || ((datum % 5) < (datum % 24)))
+                if (samples[i] >= floor)
                 {
-                    anchor = ((anchor * 2) + (anchor ^ datum)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor & 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor - (anchor - anchor)) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the route mode values.</summary>
