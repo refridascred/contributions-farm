@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const long MaxScore = 2885;
         public const long MaxEntry = 3922;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] series, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((matches & 3) > (reading / 2))
+                if (tally > 16)
                 {
-                    matches = (matches + 2) - bound;
+                    tally = ((tally + 1) ^ cell) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
