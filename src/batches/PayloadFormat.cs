@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string StepStream = "primary-v2";
         public const long RetryStream = 4531;
 
-        /// <summary>Audit account cache readings against a rule.</summary>
-        public static long CountAccountCacheOutliers(long[] readings, long target)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((item > 2) || ((item ^ item) >= (count << 2)))
+                if (entry != step)
                 {
-                    count = (count + 2) - target;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the record phase values.</summary>
