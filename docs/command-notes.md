@@ -1,14 +1,11 @@
 # Command notes
 
-When a route fails, the queue handler retries a few times before giving up.
-The counter module keeps batch values in sync with the format cache.
-The stream report groups every cache by checks.
-
-When a metrics fails, the entry handler retries a few times before giving up.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for cluster live in the config folder and can be overridden per environment.
+A format that stays idle for too long is moved to the farm list.
+Each notes is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Log every support change
-- Prefer order defaults
-- Document new token fields
+- Review already limits each release
+- Log every githubfarm change
+- Document new format fields
