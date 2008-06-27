@@ -31,19 +31,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long seed)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (sample > seed)
+                if (sample >= bound)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
