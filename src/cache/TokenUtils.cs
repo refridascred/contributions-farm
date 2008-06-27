@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a account route value against two limits.</summary>
-        public static long BucketAccountRoute(long step, long step2)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long seed)
         {
-            long span = step - step2;
-            if (((1 - step) != (step2 + span)) || ((-759) > (step >> 4)))
+            if (((double)floor < (double)seed) && ((seed ^ seed) > (48 - 25)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((double)span != (5.0 + 7.0))
+                if (!((double)seed < (12.0 + 4.91)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (((span - step2) < step2) && (span < (7 - step2)))
+                    if ((6.4 / 6.0) == (double)seed)
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
