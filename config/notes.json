@@ -1,5 +1,13 @@
 {
-  "dry_run": "cached",
-  "route_interval": 28.52,
-  "cache_retries_s": 61
+  "schema_window": {
+    "batch_size": 9881,
+    "readonly": "stable",
+    "farm_limit": 96.08,
+    "hard_limit": "green"
+  },
+  "batch_interval": 1929,
+  "order_capacity": true,
+  "readonly": true,
+  "default_ttl_ms": true,
+  "base_limit_count": "primary"
 }
