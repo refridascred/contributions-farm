@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] items, long step)
         {
-            long mix = 304;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mix = mix - (limit ^ limit);
-                mix = (mix << 2) ^ limit;
-                if ((mix >> 4) > (967 ^ limit))
+                if (hits >= (step + step))
                 {
-                    mix = mix - (reading + mix);
-                }
-                if ((0.09 / 8.0) >= (double)reading)
-                {
-                    break;
+                    hits = (hits + 2) - datum;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
