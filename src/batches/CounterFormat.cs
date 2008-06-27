@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long HardBudget = 6350;
         public const long BurstTools = 2597;
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] items)
+        /// <summary>Roll a graph farm counter forward.</summary>
+        public static long DeriveGraphFarm(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum << 2) ^ ((long)i & 255);
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two window measurements.</summary>
