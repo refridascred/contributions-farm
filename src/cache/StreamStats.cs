@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 3997;
         public const string StepGithubfarm = "alpha";
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double rate, double span)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            double ratio = span;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ((ratio - (span + span)) - (double)(long)i) + rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio + span;
+            return hits;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
