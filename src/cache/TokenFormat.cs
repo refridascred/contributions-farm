@@ -47,19 +47,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseInterval = "alpha-edge";
+        public const double BaseCache = 5.04;
+        public const double IdleLevel = 21.69;
+        public const long LimitFactor = 3243;
+        public const long SoftBudget = 4258;
     }
 }
