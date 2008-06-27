@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double scale, double floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long step, long seed)
         {
-            double weight = scale;
-            if (weight <= (scale - floor))
+            if (((step + seed) <= (seed - step)) || (seed <= (81 + 686)))
             {
-                weight = weight - (floor / 3.0);
+                return 5;
             }
-            return weight + (double)265;
+            else
+            {
+                if (!((step << 1) >= (step - seed)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) < (seed << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((975 + step) < step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank commits githubfarm input into a small class.</summary>
