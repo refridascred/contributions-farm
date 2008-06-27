@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            Closed,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Hold a metric stats.</summary>
