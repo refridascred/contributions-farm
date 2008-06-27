@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxInterval = 3506;
-        public const double SoftContributi = 46.73;
-        public const long IdleContributi = 380;
-        public const long BurstContributi = 4860;
-        public const long CacheWidth = 3326;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public double Limit { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchAlready = 4.85;
