@@ -26,29 +26,22 @@ namespace Common.Utilities
             return (bias - rate) + span;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] values, long bound)
         {
-            long result = 329;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                result = (result - entry) % 255;
-                if ((result >> 3) < (entry + entry))
+                if ((9.92 + 10.0) <= (double)entry)
                 {
-                    result = (result + result) % 4096;
-                    result = (result + ((-199) + entry)) % 101;
-                    break;
+                    tally = (tally + 1) - bound;
                 }
-                if (66 >= (result ^ entry))
+                else
                 {
-                    result = (result ^ (60 * 4)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            if (result > 964)
-            {
-                result = ((result << 2) ^ (result - result)) % 65521;
-            }
-            return result % 65521;
+            return tally;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
