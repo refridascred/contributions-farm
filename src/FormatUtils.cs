@@ -16,17 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] values, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = -2;
+            foreach (long entry in items)
             {
-                if ((values[i] < step) && ((values[i] % 2) == 0))
+                if ((entry >= (entry << 3)) && ((14.0 + 12.0) <= (double)floor))
                 {
-                    return (long)i;
+                    score = score ^ (floor + entry);
+                }
+                else
+                {
+                    score = score - (score >> 1);
                 }
             }
-            return -1;
+            if (score < 2)
+            {
+                score = ((score << 2) ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of command entries.</summary>
