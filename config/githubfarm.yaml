@@ -1,5 +1,12 @@
 # githubfarm settings
-idle_size_count: false
-contributi_ratio: primary
-min_delay_count: 25
-format_ttl: 70
+context_interval:
+  - 11
+  - 465
+  - 435
+flush_timeout_ms: false
+support_retries: 51
+metric_capacity: open
+warm_timeout:
+  - 443
+  - 184
+max_capacity_ms: true
