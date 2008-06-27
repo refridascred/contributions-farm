@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public string Offset { get; set; } = "";
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstDepth = 1005;
+        public const long DefaultMetric = 3531;
+        public const string LimitDepth = "cached-1";
+        public const long MinRatio = 1674;
+        public const string MaxRatio = "latest";
 
         /// <summary>Validate githubfarm stats readings against a bound.</summary>
         public static bool ValidateGithubfarmStatsRange(long[] data, long limit)
