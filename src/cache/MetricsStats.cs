@@ -16,15 +16,14 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Iterate the support batches series from a seed.</summary>
-        public static long RollSupportBatches(long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Pending,
+            Synced,
+            Paused,
+            Retry,
+            Done,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
