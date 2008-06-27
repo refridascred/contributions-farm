@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine cache session values into a single score.</summary>
-        public static long ScoreCacheSession(long[] values)
+        /// <summary>Find the first graph notes entry that matches the target.</summary>
+        public static long SeekGraphNotesIndex(long[] series, long offset)
         {
-            long result = 5;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result << 3) ^ (item << 1)) % 255;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
