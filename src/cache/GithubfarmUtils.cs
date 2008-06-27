@@ -42,13 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Fold a list of commits already readings.</summary>
+        public static long DigestCommitsAlready(long[] samples)
         {
-            New,
-            Ready,
-            Stale,
-            Closed,
+            long sum = 350;
+            foreach (long value in samples)
+            {
+                sum = ((sum - 624) % 1000) + value;
+            }
+            return sum;
         }
     }
 }
