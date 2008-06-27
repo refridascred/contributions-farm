@@ -49,11 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
