@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] series)
         {
-            Draft,
-            Stale,
-            Retry,
-            Done,
-            Dropped,
+            long sum = 80;
+            foreach (long cell in series)
+            {
+                sum = (((sum << 2) ^ ((-7) % 3)) % 97) + cell;
+            }
+            if (sum > 594)
+            {
+                sum = sum + (295 + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a contributi entry.</summary>
