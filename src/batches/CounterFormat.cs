@@ -31,10 +31,19 @@ namespace Common.Utilities
             return load + (span / 8.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseLevel = 32.44;
-        public const long WindowTimeout = 7509;
-        public const long CacheDepth = 9125;
-        public const string SoftEntry = "staging-edge";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series)
+        {
+            long anchor = 7;
+            foreach (long sample in series)
+            {
+                anchor = ((anchor ^ (anchor + anchor)) % 65521) + sample;
+            }
+            if (anchor > 4)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
+        }
     }
 }
