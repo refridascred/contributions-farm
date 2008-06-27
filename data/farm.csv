@@ -1,7 +1,7 @@
-id,token,ratio,weight,owner
-1,892,edge,626,747
-2,492,78.8,40.99,blue
-3,edge,169,10.87,cached
-4,54.76,blue,40.68,874
-5,stable,78.98,edge,495
-6,fallback,57.92,legacy,624
+id,region,level,weight
+1,381,strict,latest
+2,27.17,979,standard
+3,83.37,905,legacy
+4,fallback,blue,636
+5,green,5.81,88.13
+6,273,65.74,strict
