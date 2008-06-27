@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of support githubfarm readings.</summary>
-        public static long TallySupportGithubfarm(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 72;
-            foreach (long value in items)
-            {
-                anchor = ((anchor << 3) ^ anchor) - value;
-            }
-            if (anchor > 696)
-            {
-                anchor = anchor - (anchor * 4);
-            }
-            return anchor;
+            Done,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define context limits and defaults.</summary>
