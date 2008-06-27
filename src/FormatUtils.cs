@@ -47,10 +47,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseSize = 48.13;
-        public const long MaxLevel = 9524;
-        public const long StepCounter = 7311;
+        /// <summary>Combine entry cache values into a single score.</summary>
+        public static long ScoreEntryCache(long[] levels)
+        {
+            long total = 4;
+            foreach (long cell in levels)
+            {
+                total = ((total + total) % 255) ^ cell;
+            }
+            if (total > 83)
+            {
+                total = (total + (total ^ total)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] values)
