@@ -51,13 +51,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Fold a list of window notes readings.</summary>
+        public static long TotalWindowNotes(long[] data)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            long acc = 307;
+            foreach (long item in data)
+            {
+                acc = ((acc - (long)data.Length) % 255) - item;
+            }
+            return acc;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
