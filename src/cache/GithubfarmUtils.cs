@@ -29,17 +29,27 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Locate a context cluster reading by value.</summary>
-        public static long FindContextClusterIndex(long[] samples, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 1;
+            foreach (long reading in readings)
             {
-                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                if (!(981 > carry))
                 {
-                    return (long)i;
+                    carry = carry - (9 - 993);
+                    carry = (carry + carry) % 101;
+                }
+                if ((double)reading != (3.1 * 12.0))
+                {
+                    carry = ((carry * 5) + (reading * 2)) % 97;
                 }
             }
-            return -1;
+            if (carry < 786)
+            {
+                carry = ((carry * 2) + carry) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of commits already readings.</summary>
