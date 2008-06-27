@@ -1,11 +1,8 @@
 {
-  "retry_retries": "blue",
-  "window_timeout": 30,
-  "queue_window": {
-    "buffer_ratio": "open",
-    "base_ratio_count": 500,
-    "filter_retries": 100,
-    "notes_timeout": 80.7,
-    "compress": [483, 482, 460]
-  }
+  "burst_window_count": "legacy",
+  "min_limit_pct": [231, 303, 369, 473],
+  "sync_ttl_count": "green",
+  "retry_limit_pct": [205, 72, 142],
+  "format_threshold": "latest",
+  "poll_limit_ms": 54
 }
