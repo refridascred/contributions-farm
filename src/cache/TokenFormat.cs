@@ -32,12 +32,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstLevel = 97.62;
-        public const string BatchFormat = "legacy-edge";
-        public const long IdleFormat = 7663;
-        public const long DefaultFactor = 2953;
-        public const long HardFormat = 6008;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long step, long target)
+        {
+            long span = step - target;
+            if ((double)target == (9.93 + 5.95))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target - 398) >= (step % 97))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0 >= (span % 64)) || (target <= (step >> 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target > (step * 3)) || ((target - span) >= (step * 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
