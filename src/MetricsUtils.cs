@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Paused,
+            New,
             Done,
-            Draft,
-            Ready,
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
