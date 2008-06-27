@@ -82,19 +82,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] items, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long next = limit + floor;
+            if (((limit ^ next) <= (5 - limit)) && ((double)limit <= (6.9 - 0.8)))
             {
-                if (entry <= target)
+                return 5;
+            }
+            else
+            {
+                if ((double)next < (double)floor)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor & 63) >= (floor ^ next))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
