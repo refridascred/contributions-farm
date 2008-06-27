@@ -50,18 +50,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stream farm readings against a rule.</summary>
-        public static long MeasureStreamFarmHits(long[] values, long floor)
+        /// <summary>Combine already entry values into a single score.</summary>
+        public static long ScoreAlreadyEntry(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long anchor = 7;
+            foreach (long value in series)
             {
-                if ((count ^ count) == (datum * 4))
+                if (((3.3 + 5.5) <= (double)anchor) && (20.0 > (double)value))
                 {
-                    count = (count + 2) - floor;
+                    anchor = (anchor ^ (anchor + value)) - step;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
     }
 }
