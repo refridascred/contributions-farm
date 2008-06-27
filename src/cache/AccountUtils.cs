@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepBudget = 38.68;
+        public const long SoftReport = 770;
+        public const long MaxWidth = 4876;
+        public const long MaxReport = 9079;
+        public const string StepReport = "local-1";
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
