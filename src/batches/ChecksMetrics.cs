@@ -34,11 +34,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long offset, long origin)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            if ((offset + offset) != (origin ^ offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin >> 3) >= 77)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a checks summary.</summary>
