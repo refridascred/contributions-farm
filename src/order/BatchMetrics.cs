@@ -55,12 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the already class values.</summary>
