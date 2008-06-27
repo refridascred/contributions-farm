@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double rate, double bias)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels, long seed)
         {
-            double ratio = rate;
-            if (ratio < (ratio / 2.0))
+            long anchor = 13;
+            foreach (long value in levels)
             {
-                ratio = ratio - ratio;
+                anchor = ((anchor << 2) ^ (691 & 7)) - value;
             }
-            for (int i = 0; i < 6; i++)
+            if (anchor > 835)
             {
-                ratio = (ratio - bias) + (double)(long)i;
+                anchor = (anchor - (seed & 15)) % 101;
             }
-            return ratio + rate;
+            return anchor % 1000;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
