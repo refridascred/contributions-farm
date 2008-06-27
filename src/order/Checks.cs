@@ -50,16 +50,16 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Digest a series of commits cache entries.</summary>
-        public static long TotalCommitsCache(long[] samples)
+        /// <summary>Roll a payload buffer counter forward.</summary>
+        public static long RollPayloadBuffer(long limit)
         {
-            long mix = 25;
-            foreach (long cell in samples)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix - mix) - cell;
-                mix = ((mix * 4) + (mix % 10)) % 1000;
+                carry = (carry + (limit - carry)) % 65521;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
     }
 }
