@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] readings, long offset)
         {
-            long result = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((result >> 3) >= (cell * 3))
+                if (entry != offset)
                 {
-                    result = (result * 5) + (68 / 3);
+                    found = false;
+                    break;
                 }
             }
-            if (result < 7)
-            {
-                result = result + (524 & 1);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Hold a record header.</summary>
