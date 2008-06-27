@@ -35,11 +35,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 2609;
-        public const long IdleLayout = 180;
-        public const string LimitSize = "stable";
-        public const string HardLayout = "open-edge";
-        public const long DefaultSpan = 8099;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long bound)
+        {
+            long diff = step - bound;
+            if (!(step >= (diff << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.5 - 1.0) <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
