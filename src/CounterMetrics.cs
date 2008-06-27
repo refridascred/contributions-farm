@@ -47,14 +47,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long bound, long floor)
         {
-            Paused,
-            Stale,
-            Pending,
-            Retry,
-            Locked,
+            if (((bound >> 3) <= bound) || (bound < (floor * 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor + bound) < floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor & 7) == (bound * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
