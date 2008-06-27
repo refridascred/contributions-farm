@@ -22,18 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = 963;
+            foreach (long value in series)
             {
-                if ((entry - (-1)) == (entry & 255))
+                anchor = (anchor ^ value) % 255;
+                anchor = ((anchor << 3) ^ (anchor * 5)) % 97;
+                if ((value >> 2) < (value >> 4))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
