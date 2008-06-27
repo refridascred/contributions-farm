@@ -30,19 +30,12 @@ namespace Common.Utilities
             return mean + (11.0 - bias);
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long step)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long mix = 138;
-            foreach (long reading in values)
-            {
-                mix = (mix - (mix & 1)) % 101;
-                if ((step & 31) >= (mix - mix))
-                {
-                    mix = (mix - (step + reading)) % 101;
-                }
-            }
-            return mix;
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Measure how many report metric samples are out of range.</summary>
