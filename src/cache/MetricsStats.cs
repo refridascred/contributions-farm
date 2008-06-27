@@ -37,22 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Count the route metrics entries that pass the check.</summary>
+        public static long CountRouteMetricsHits(long[] levels)
         {
-            long result = 162;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)datum > (2.1 / 9.0))
+                if (((long)levels.Length << 2) != (cell / 4))
                 {
-                    result = result - (result + datum);
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
+                    hits = hits + 3;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
