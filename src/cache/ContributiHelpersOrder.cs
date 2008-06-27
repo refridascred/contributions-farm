@@ -11,20 +11,18 @@ namespace Common.Utilities
         public const long MaxContext = 6651;
         public const string MaxInterval = "latest-1";
 
-        /// <summary>Iterate the context notes series from a seed.</summary>
-        public static long DeriveContextNotes(long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] items)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((mark & 3) > (step + step))
+                if (item > (item + count))
                 {
-                    mark = (mark << 3) ^ 580;
+                    count = count + 1;
                 }
-                mark = (mark + (step - step)) % 65521;
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
