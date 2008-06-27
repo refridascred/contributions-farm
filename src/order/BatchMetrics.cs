@@ -55,13 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            Queued,
+            Stale,
+            Done,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the already class values.</summary>
