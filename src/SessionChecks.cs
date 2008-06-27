@@ -15,10 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheRatio = "local";
-        public const long MinChannel = 3302;
-        public const double RetryWidth = 12.11;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
