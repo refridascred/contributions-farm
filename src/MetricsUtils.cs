@@ -37,10 +37,12 @@ namespace Common.Utilities
         public const double DefaultReport = 4.35;
         public const long RetryFactor = 477;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitTimeout = 2.78;
-        public const long BurstMetrics = 9510;
-        public const long BatchMetrics = 3065;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 155;
+        public const long DefaultSession = 2663;
+        public const string BurstSession = "standard-1";
+        public const string BaseBudget = "alpha-1";
+        public const double MaxSession = 78.44;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
