@@ -1,19 +1,7 @@
 {
-  "soft_limit_count": true,
-  "enabled": {
-    "audit": 20,
-    "flush_limit_ms": 7456,
-    "commits_depth": {
-      "max_limit_count": 50,
-      "warm_interval_pct": 3052,
-      "channel_timeout": "open"
-    },
-    "profile_interval": false,
-    "cache_ratio": true,
-    "channel_depth": "stable"
-  },
-  "max_threshold_count": "open",
-  "readonly": 92.55,
-  "cache_window_pct": "standard",
-  "persist": [34, 282]
+  "flush_ratio": true,
+  "metrics_limit": "latest",
+  "flush_ttl": true,
+  "flush_depth": 500,
+  "report_window": ["green", "eu-west"]
 }
