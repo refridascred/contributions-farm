@@ -54,22 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] readings, long target)
+        /// <summary>Digest a series of stream tools entries.</summary>
+        public static long DigestStreamTools(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = 0;
+            foreach (long cell in data)
             {
-                if (!((seen / 8) <= (seen + target)))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score << 2) ^ (4 % 100)) + cell;
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
