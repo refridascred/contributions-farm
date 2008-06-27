@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long RetryChecks = 5385;
         public const long IdleBudget = 2881;
 
-        /// <summary>Compare every pair of queue tools readings.</summary>
-        public static long PairQueueToolsCount(long[] items)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((target + target) <= (target - target)) && ((double)state > 1.41))
                 {
-                    if ((items[i] + items[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Roll a order counter forward.</summary>
