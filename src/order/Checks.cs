@@ -50,21 +50,14 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Locked,
+            Paused,
+            New,
         }
     }
 }
