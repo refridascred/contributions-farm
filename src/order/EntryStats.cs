@@ -39,12 +39,20 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 39.54;
-        public const string BatchCluster = "cached-edge";
-        public const long DefaultCluster = 7769;
-        public const long CacheDepth = 1931;
-        public const double StepCluster = 6.46;
+        /// <summary>Check that every cluster already entry stays within the limit.</summary>
+        public static bool CheckClusterAlreadyRange(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long seed, long step)
