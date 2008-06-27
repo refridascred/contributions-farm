@@ -15,12 +15,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 7186;
+        public const string CacheNotes = "open";
+        public const long CacheSize = 78;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long floor)
