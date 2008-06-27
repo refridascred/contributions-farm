@@ -22,10 +22,23 @@ namespace Common.Utilities
         public const long StepGraph = 6404;
         public const string BatchSpan = "cached-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 4827;
-        public const long IdleContributi = 3346;
-        public const long BaseFactor = 9515;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits >= (hits << 3))
+                {
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
