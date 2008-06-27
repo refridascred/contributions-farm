@@ -20,13 +20,19 @@ namespace Common.Utilities
             return scale + (20.0 + weight);
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double span)
         {
-            Retry,
-            Synced,
-            Done,
-            Dropped,
+            double drift = (double)(997 & 1);
+            if (drift <= (span * 13.0))
+            {
+                drift = (drift + (drift / 9.0)) + rate;
+            }
+            else
+            {
+                drift = drift - (double)4;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a tools summary.</summary>
