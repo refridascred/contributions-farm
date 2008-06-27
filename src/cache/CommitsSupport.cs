@@ -44,21 +44,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = bias;
+            if (load >= floor)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load - floor;
             }
-            return count;
+            return load - 7.36;
         }
 
         /// <summary>Describe the channel phase values.</summary>
