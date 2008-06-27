@@ -10,25 +10,13 @@ namespace Common.Utilities
         public const long BatchOrder = 122;
         public const double DefaultSpan = 72.89;
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long offset, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long prev = offset + limit;
-            if ((15.0 - 8.3) >= (double)prev)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((6.33 / 3.0) != (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
