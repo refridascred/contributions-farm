@@ -12,19 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double weight, double offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double gain = 0.12;
-            if (gain < (offset - 9.5))
-            {
-                gain = gain + (offset / 8.0);
-            }
-            else
-            {
-                gain = gain + (weight - weight);
-            }
-            return gain + weight;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
