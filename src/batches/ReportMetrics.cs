@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 6312;
-        public const double BurstRoute = 10.94;
-        public const string HardWidth = "stable-v2";
-        public const string WindowRoute = "alpha-edge";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheBudget = 38.89;
+        public const long BatchOrder = 122;
+        public const double DefaultSpan = 72.89;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long SortEditor(long offset, long limit)
