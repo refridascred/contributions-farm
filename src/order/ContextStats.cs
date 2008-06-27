@@ -34,18 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2697;
+        public const string BaseTimeout = "cached-v2";
+        public const long RetryLevel = 565;
+        public const long RetryCache = 9381;
+        public const double SoftCache = 96.74;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
