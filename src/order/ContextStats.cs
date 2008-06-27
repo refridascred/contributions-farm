@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] data, long origin)
         {
-            long mark = 418;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mark = (((mark << 2) ^ (mark ^ cell)) % 97) + offset;
+                if (matches > (value & 3))
+                {
+                    matches = (matches + 3) - origin;
+                }
             }
-            if (mark > 7)
-            {
-                mark = ((mark << 2) ^ (mark + 0)) % 1000;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
