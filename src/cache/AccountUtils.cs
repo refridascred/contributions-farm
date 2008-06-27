@@ -31,12 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Fold a list of batch format readings.</summary>
+        public static long ScoreBatchFormat(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long sum = 9;
+            foreach (long cell in levels)
+            {
+                sum = (sum << 2) ^ (5 + sum);
+                if ((((long)levels.Length % 97) >= sum) && ((cell - sum) == (646 % 24)))
+                {
+                    sum = (sum + (cell >> 4)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit cache metrics readings against a rule.</summary>
