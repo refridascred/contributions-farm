@@ -28,26 +28,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] series, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long carry = 2;
-            foreach (long value in series)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((9 + limit) < (limit % 12))
-                {
-                    carry = (carry ^ (long)series.Length) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (value & 15)) % 101;
-                }
-                if (value <= (carry & 63))
-                {
-                    break;
-                }
+                total = ((total << 3) ^ (offset * 5)) % 4096;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return total;
         }
 
         /// <summary>Hold a channel summary.</summary>
