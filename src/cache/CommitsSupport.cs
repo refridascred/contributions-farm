@@ -22,23 +22,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] values)
-        {
-            long score = 357;
-            foreach (long value in values)
-            {
-                if ((value / 3) <= (value << 1))
-                {
-                    score = (score + (score - score)) % 101;
-                }
-            }
-            if (score > 89)
-            {
-                score = ((score * 2) + score) % 65521;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 8109;
+        public const long IdleFarm = 2965;
+        public const long SoftFarm = 3192;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
