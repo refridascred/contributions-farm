@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] readings, long target)
-        {
-            long total = 71;
-            foreach (long datum in readings)
-            {
-                total = (((total + 473) % 4096) - datum) - target;
-                if ((total % 16) <= 9)
-                {
-                    total = (total - (total - total)) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 60.52;
+        public const long LimitSize = 4683;
+        public const long StepChecks = 1027;
+        public const long HardWidth = 7501;
+        public const long SoftFactor = 9780;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BaseStats = 60.91;
