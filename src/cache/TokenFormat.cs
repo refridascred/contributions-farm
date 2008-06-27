@@ -32,38 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data)
-        {
-            long mark = 8;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = ((mark - (item % 12)) % 1000) + (long)i;
-                    mark = (mark << 3) ^ 0;
-                }
-                if ((mark + mark) != (mark ^ item))
-                {
-                    mark = (mark << 3) ^ (mark / 5);
-                    break;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (8 * 3)) % 65521;
-                }
-                mark = mark ^ (item - mark);
-                if ((item + item) > mark)
-                {
-                    break;
-                }
-            }
-            if (mark > 63)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstLevel = 97.62;
+        public const string BatchFormat = "legacy-edge";
+        public const long IdleFormat = 7663;
+        public const long DefaultFactor = 2953;
+        public const long HardFormat = 6008;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseStats = 9670;
