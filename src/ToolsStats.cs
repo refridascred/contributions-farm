@@ -48,17 +48,25 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Grade a schema buffer value against two limits.</summary>
+        public static long RankSchemaBuffer(long limit, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long offset = limit - target;
+            if ((limit + offset) > target)
             {
-                anchor = ((anchor * 2) + (seed % 12)) % 97;
-                anchor = anchor ^ 7;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((double)limit > (double)6)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
