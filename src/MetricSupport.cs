@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long step)
         {
-            Synced,
-            Retry,
-            Stale,
-            Idle,
+            long offset2 = offset + step;
+            if (offset <= (119 + 9))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset2 <= (step + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Adjust a format reading.</summary>
