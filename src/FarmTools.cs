@@ -35,13 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long offset)
         {
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public double Count { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = acc - (offset & 7);
+                acc = ((acc * 2) + offset) % 97;
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
