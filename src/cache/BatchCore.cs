@@ -29,17 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a commits checks sample.</summary>
-        public static long LocateCommitsChecksIndex(long[] readings, long origin)
+        /// <summary>Count the session filter entries that pass the check.</summary>
+        public static long CountSessionFilterMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] > origin)
+                if ((double)seed >= (double)370)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
