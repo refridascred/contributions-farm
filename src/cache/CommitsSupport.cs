@@ -22,10 +22,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 8109;
-        public const long IdleFarm = 2965;
-        public const long SoftFarm = 3192;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double ratio, double span)
+        {
+            double drift = span;
+            if (drift >= (0.8 / 6.0))
+            {
+                drift = (drift - (double)50) - ratio;
+            }
+            else
+            {
+                drift = drift + 3.22;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
