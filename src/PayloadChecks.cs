@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long seed, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] levels, long offset)
         {
-            long offset = seed - limit;
-            if ((limit / 3) != (limit % 24))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed + limit) == (offset >> 1))
+                if ((tally + 84) > (reading ^ tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 3) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
