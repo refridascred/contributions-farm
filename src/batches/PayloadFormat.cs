@@ -40,14 +40,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] readings, long bound)
         {
-            Closed,
-            Idle,
-            Failed,
-            New,
-            Done,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
