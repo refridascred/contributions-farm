@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] levels, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] levels, long bound)
         {
-            long tally = 0;
+            long carry = 5;
             foreach (long reading in levels)
             {
-                if ((tally + 84) > (reading ^ tally))
+                if ((bound - reading) >= reading)
                 {
-                    tally = (tally + 3) - offset;
+                    carry = (carry ^ (reading - bound)) % 65521;
                 }
             }
-            return tally;
+            if (carry < 448)
+            {
+                carry = (carry ^ (-212)) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
