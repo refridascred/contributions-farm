@@ -31,21 +31,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 5;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 4) + (result - step)) ^ cell;
             }
-            return tally;
+            return result % 4096;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
