@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long step)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix - step) % 1000) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Accumulate window samples.</summary>
