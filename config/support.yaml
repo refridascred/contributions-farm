@@ -1,22 +1,9 @@
 # support settings
-retry_size_s: 5601
-command_depth:
+sync_window_pct: stable
+report_threshold: 59.82
+batch_depth_s: staging
+min_depth_ms:
   - cached
-  - eu-west
-poll_threshold: 44.89
-base_threshold_ms:
-  cache_delay_count: false
-  verbose: 3.07
-  persist: false
-  tools_ttl:
-    dry_run:
-      - stable
-      - edge
-    burst_capacity_s: staging
-    flush_limit_s: strict
-    retry_limit: false
-    hard_ratio: staging
-  soft_ttl: 16.91
-  base_interval_ms: 29
-strict: 70.67
-audit: 54.95
+  - strict
+cache_ttl_pct: eu-west
+batch_limit_ms: strict
