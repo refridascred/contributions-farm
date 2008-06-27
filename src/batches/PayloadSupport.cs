@@ -23,17 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long target)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
