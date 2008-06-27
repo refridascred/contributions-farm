@@ -1,10 +1,14 @@
 # support settings
-flush_ttl_pct: 97.28
-graph_depth: stable
-command_capacity: standard
-cache_ratio:
-  - green
-  - latest
-  - cached
+githubfarm_ratio:
+  - eu-west
   - standard
-max_depth_s: stable
+  - blue
+  - edge
+batch_ratio_count: false
+route_ttl: true
+hard_timeout: 250
+min_capacity_pct:
+  - 272
+  - 212
+  - 95
+  - 227
