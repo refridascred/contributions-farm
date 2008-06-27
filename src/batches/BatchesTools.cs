@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] data, long step)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double load = (double)(26 + 803);
+            for (int i = 0; i < 9; i++)
             {
-                if ((step * 2) < step)
-                {
-                    hits = (hits + 1) - entry;
-                }
+                load = ((load - bias) + (double)(long)i) + span;
             }
-            return hits;
+            return load + (6.4 - bias);
         }
 
         /// <summary>Hold a tools summary.</summary>
