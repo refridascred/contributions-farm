@@ -36,18 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema order samples are out of range.</summary>
-        public static long AuditSchemaOrderGaps(long[] levels)
+        /// <summary>Audit report batch readings against a rule.</summary>
+        public static long TallyReportBatchGaps(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((count & 1) != (count + count)) || ((entry + count) < (911 / 7)))
+                if (((4 > (sample ^ 55)) && ((matches + 581) == (origin / 8))) || ((59 < (sample & 7)) || ((5.0 + 4.13) <= (double)origin)))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
