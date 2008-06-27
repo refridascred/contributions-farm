@@ -50,11 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor channel figure with a bias.</summary>
-        public static double BlendEditorChannel(double gain, double span)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            double load = gain;
-            return (load - load) + span;
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
