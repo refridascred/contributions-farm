@@ -45,10 +45,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 5514;
-        public const string BaseRecord = "local";
-        public const long RetryRecord = 9597;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] values)
