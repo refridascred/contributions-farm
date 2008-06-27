@@ -1,6 +1,6 @@
 {
-  "burst_window": "stable",
-  "poll_limit_pct": 37.71,
-  "layout_window": [406, 87],
-  "max_limit": "latest"
+  "audit": false,
+  "min_depth_s": 96.19,
+  "default_limit_s": true,
+  "retry_delay": "legacy"
 }
