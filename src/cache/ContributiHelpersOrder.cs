@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long WindowNotes = 6922;
         public const long BurstWidth = 4392;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 3865;
-        public const string BaseWidth = "alpha-1";
-        public const string HardSpan = "open-v2";
-        public const double MinWidth = 86.26;
-        public const long HardMetrics = 305;
+        /// <summary>Count the already command entries that pass the check.</summary>
+        public static long TallyAlreadyCommandMatches(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches + (-34)) > 69)
+                {
+                    matches = ((matches + 2) + item) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
