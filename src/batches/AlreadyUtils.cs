@@ -20,12 +20,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 1370;
-        public const long LimitSpan = 6960;
-        public const long BatchStats = 9044;
-        public const long StepStats = 1805;
-        public const double BurstStats = 22.49;
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long offset, long target)
+        {
+            if ((double)target == (15.0 * 4.76))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (3.32 + 5.09))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + offset) < (14 / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] values, long floor)
