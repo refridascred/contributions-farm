@@ -66,14 +66,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Pending,
-            Queued,
-            Retry,
-            Draft,
-            New,
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
