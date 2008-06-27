@@ -36,14 +36,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Synced,
-            Paused,
+            Locked,
+            Retry,
+            Active,
             Idle,
-            Stale,
-            New,
+            Paused,
         }
 
         /// <summary>Project the next editor channel value.</summary>
