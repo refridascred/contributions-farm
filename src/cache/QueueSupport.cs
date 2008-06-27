@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 7298;
-        public const double HardEntry = 98.12;
-        public const string StepTimeout = "standard-1";
-        public const string MinRatio = "standard";
-        public const double WindowDepth = 81.39;
+        /// <summary>Audit commits stream readings against a rule.</summary>
+        public static long MeasureCommitsStreamMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (datum < (hits & 31))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] series, long bound)
