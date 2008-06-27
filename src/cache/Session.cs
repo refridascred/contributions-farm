@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long total = 6;
+            foreach (long reading in series)
             {
-                sum = ((sum * 2) + sum) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((reading < (reading ^ reading)) || ((total >> 2) == (reading & 127)))
+                {
+                    total = total ^ (total / 7);
+                }
             }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
