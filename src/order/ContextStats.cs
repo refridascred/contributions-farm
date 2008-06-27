@@ -45,18 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item + hits) <= (hits ^ item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitEntry = 79.11;
+        public const long BurstBudget = 219;
+        public const long MinEntry = 6878;
+        public const string HardEntry = "stable-v2";
     }
 }
