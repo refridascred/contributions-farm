@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseScore = 27.33;
-        public const long SoftPayload = 6439;
-        public const long WindowPayload = 4195;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate stats already samples.</summary>
         public static long ScoreStatsAlready(long[] readings)
