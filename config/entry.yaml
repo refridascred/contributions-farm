@@ -1,28 +1,5 @@
 # entry settings
-channel_ttl:
-  idle_depth_s:
-    checks_window: local
-    githubfarm_ttl: 90
-    stream_delay: 3150
-    metrics_limit: 28.03
-  burst_capacity_ms:
-    warm_delay_pct: primary
-    strict: 4735
-    persist: open
-    farm_capacity: standard
-  commits_retries: false
-  persist: blue
-  warm_timeout_count:
-    burst_retries:
-      - 79
-      - 395
-      - 259
-      - 168
-    base_ratio_pct: true
-    persist: true
-  githubfarm_interval: 17
-poll_threshold_ms:
-  - 216
-  - 137
-  - 447
-channel_window: 3514
+route_ratio: fallback
+cache_window: 77.48
+default_limit: 70
+max_capacity_s: 81
