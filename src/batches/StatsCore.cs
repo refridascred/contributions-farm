@@ -66,12 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Pending,
-            Retry,
-            Locked,
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
