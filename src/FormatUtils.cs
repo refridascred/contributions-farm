@@ -31,12 +31,17 @@ namespace Common.Utilities
         public const double CacheCommits = 34.42;
         public const long StepCommits = 2970;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] readings, long offset)
         {
-            Ready,
-            Done,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
