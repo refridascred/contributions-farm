@@ -15,13 +15,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] data, long floor)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long mix = 73;
+            foreach (long datum in data)
+            {
+                if (((datum + 23) <= floor) && (4.61 >= (double)mix))
+                {
+                    mix = ((mix * 3) + (floor + floor)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ datum;
+                }
+                if ((datum >> 4) == (mix * 3))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of format readings.</summary>
