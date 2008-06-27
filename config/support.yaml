@@ -1,6 +1,14 @@
 # support settings
-idle_size: 1024
-entry_delay: false
-batch_threshold: latest
-order_window: true
-persist: 100
+readonly: 29.3
+checks_timeout: fallback
+burst_ratio_count: 7.45
+sync_timeout_ms:
+  burst_limit_pct: latest
+  warm_window: true
+  format_size:
+    - primary
+    - strict
+    - strict
+    - latest
+  burst_limit_count: latest
+  strict: primary
