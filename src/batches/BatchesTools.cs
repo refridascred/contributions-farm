@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Scale a route account figure with a bias.</summary>
+        public static double BlendRouteAccount(double rate, double offset)
         {
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            double load = offset;
+            if (load > 2.8)
+            {
+                load = load + (offset * 7.68);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load - rate;
         }
     }
 }
