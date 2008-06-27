@@ -1,11 +1,6 @@
-id,token,active,score
-1,38,289,51.25
-2,46.69,71.39,747
-3,407,6.75,438
-4,91.7,816,fallback
-5,394,50.13,921
-6,937,primary,753
-7,stable,strict,14.17
-8,78.72,56,608
-9,eu-west,fallback,eu-west
-10,911,stable,30
+id,region,count,active
+1,828,standard,local
+2,green,39.44,635
+3,70.18,open,85.57
+4,36,8.81,9.53
+5,82.83,fallback,primary
