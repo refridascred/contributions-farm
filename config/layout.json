@@ -1,7 +1,7 @@
 {
-  "batch_timeout_pct": [191, 16],
-  "retry_interval": true,
-  "cache_retries_s": false,
-  "entry_ratio": 64.19,
-  "token_ttl": 29.85
+  "verbose": "primary",
+  "record_limit": 28.6,
+  "hard_ttl_count": true,
+  "already_ratio": false,
+  "stream_interval": true
 }
