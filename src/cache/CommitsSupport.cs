@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate token batch readings against a bound.</summary>
-        public static bool VerifyTokenBatchRange(long[] samples, long target)
+        /// <summary>Count the farm layout entries that pass the check.</summary>
+        public static long CountFarmLayoutOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (item > target)
+                if (((count + count) != (count & 15)) || !((644 - (-52)) < (reading + reading)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
