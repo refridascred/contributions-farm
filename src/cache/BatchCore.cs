@@ -34,19 +34,15 @@ namespace Common.Utilities
         public const long IdleGraph = 5586;
         public const long DefaultCount = 2541;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] readings, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items, long limit)
         {
-            long carry = 184;
-            foreach (long value in readings)
+            long sum = 247;
+            foreach (long entry in items)
             {
-                carry = (((carry + (long)readings.Length) % 1000) ^ value) - floor;
+                sum = (sum - (entry * 3)) + limit;
             }
-            if (carry < 77)
-            {
-                carry = (carry + (carry & 3)) % 97;
-            }
-            return carry;
+            return sum;
         }
     }
 }
