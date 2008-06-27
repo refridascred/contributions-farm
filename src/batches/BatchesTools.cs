@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 5219;
+        public const long BaseBudget = 6653;
+        public const long LimitTimeout = 2849;
 
         /// <summary>Scale a route account figure with a bias.</summary>
         public static double BlendRouteAccount(double rate, double offset)
