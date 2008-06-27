@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long offset, long offset2)
         {
-            Idle,
-            Stale,
-            Active,
+            if (((offset2 / 7) >= (offset >> 2)) && (3.8 < (double)offset2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset > (offset + offset2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset2 < (offset2 / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((7.59 + 1.82) >= (double)offset2) || ((double)offset2 <= (2.9 + 8.63)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
