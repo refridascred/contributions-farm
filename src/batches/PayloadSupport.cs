@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const long BatchBudget = 5423;
         public const long StepSpan = 5104;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] readings, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ limit) > limit)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Done,
+            Idle,
+            Stale,
         }
     }
 }
