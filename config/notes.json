@@ -1,8 +1,5 @@
 {
-  "min_retries_ms": 100,
-  "enabled": 53.61,
-  "strict": "staging",
-  "order_capacity": ["local", "legacy"],
-  "audit": "latest",
-  "min_interval_pct": 32.97
+  "contributi_depth": 18,
+  "audit": ["standard", "primary", "edge"],
+  "cache_limit": "blue"
 }
