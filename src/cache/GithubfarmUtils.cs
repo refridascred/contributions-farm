@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long offset, long limit)
-        {
-            if ((limit - offset) == (offset + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset % 60) == (limit ^ 735)) && ((offset << 2) >= (limit & 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultLevel = 208;
+        public const long StepScore = 4391;
+        public const long StepDepth = 7555;
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double ratio, double offset)
