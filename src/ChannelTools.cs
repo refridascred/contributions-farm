@@ -37,10 +37,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 1062;
-        public const string HardBudget = "stable";
-        public const long HardInterval = 4608;
-        public const long SoftTimeout = 4568;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long seed, long origin)
+        {
+            long span = seed + origin;
+            if ((seed + origin) < (span >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.49 - 0.47) < (double)span)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((-35) >= (span - 99))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed ^ 233) <= (span / 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
