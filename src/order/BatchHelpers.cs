@@ -31,26 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long total = -913;
-            foreach (long sample in items)
-            {
-                if ((sample ^ sample) >= (total + total))
-                {
-                    total = (total + total) % 255;
-                }
-                else
-                {
-                    total = total - sample;
-                }
-            }
-            if (total < 5)
-            {
-                total = (total ^ (994 ^ total)) % 65521;
-            }
-            return total % 97;
+            Ready,
+            Pending,
+            Closed,
+            Failed,
         }
     }
 }
