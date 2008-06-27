@@ -54,22 +54,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] data, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((matches % 24) <= value)
+                if (entry < seed)
                 {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
