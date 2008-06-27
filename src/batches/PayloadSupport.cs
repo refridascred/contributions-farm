@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit window commits readings against a rule.</summary>
-        public static long TallyWindowCommitsHits(long[] values)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches <= (matches % 16))
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
                 {
-                    matches = (matches + 1) - item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
