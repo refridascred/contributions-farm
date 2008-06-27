@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] items, long bound)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Pending,
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
