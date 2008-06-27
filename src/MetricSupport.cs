@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] levels, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((double)seen <= (7.77 * 8.7)))
+                if (item > step)
                 {
-                    seen = ((seen + 3) + cell) + offset;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
