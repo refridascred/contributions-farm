@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] items, long bound)
+        /// <summary>Audit buffer stats readings against a rule.</summary>
+        public static long CountBufferStatsOutliers(long[] readings)
         {
-            long mark = 160;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mark = (mark + (bound + mark)) - cell;
+                if ((hits % 24) < (reading - reading))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
