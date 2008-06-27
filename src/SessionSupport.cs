@@ -34,11 +34,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] samples)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((long)samples.Length - datum) > (tally + 883))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
