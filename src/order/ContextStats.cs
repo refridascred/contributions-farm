@@ -14,18 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] values, long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] samples)
         {
-            long acc = 9;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((datum - offset) != (acc & 7))
+                if (((seen - sample) >= (sample ^ sample)) && (sample <= (sample + seen)))
                 {
-                    acc = acc + (datum ^ acc);
+                    seen = seen + 2;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
