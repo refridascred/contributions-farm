@@ -36,11 +36,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxDepth = "legacy-1";
-        public const long BurstLevel = 1156;
-        public const double SoftScore = 58.61;
-        public const long StepLevel = 9863;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark - (long)i) % 1000;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long RollQueue(long bound)
