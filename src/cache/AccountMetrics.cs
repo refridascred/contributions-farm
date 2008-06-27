@@ -20,23 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long origin)
+        /// <summary>Rank order filter input into a small class.</summary>
+        public static long SortOrderFilter(long step, long origin)
         {
-            long cur = target ^ origin;
-            if ((double)target != (double)origin)
+            if (12.0 < (double)step)
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (((origin - cur) >= (target & 127)) && (80 <= (cur ^ origin)))
+                if ((146 + step) <= (origin - origin))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    return 0;
+                    return 5;
                 }
             }
         }
