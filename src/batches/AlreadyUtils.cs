@@ -59,21 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
