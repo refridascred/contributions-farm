@@ -1,10 +1,14 @@
 # githubfarm settings
-retry_retries: latest
-flush_window_pct: cached
-stream_size: cached
-sync_ttl: local
-poll_limit:
-  - 182
-  - 396
-  - 472
-  - 370
+soft_ratio_ms:
+  default_retries_s: 0.43
+  record_depth: 30
+  sync_interval:
+    - 356
+    - 197
+    - 371
+  base_interval_s: open
+persist: stable
+stats_limit: 94.77
+burst_timeout_s: true
+flush_capacity_ms: 100
+tools_timeout: true
