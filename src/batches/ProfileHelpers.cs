@@ -66,22 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account cache values into a single score.</summary>
-        public static long DigestAccountCache(long[] levels, long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long carry = 6;
-            foreach (long item in levels)
-            {
-                if ((origin + origin) != (origin / 3))
-                {
-                    carry = ((carry ^ (origin * 2)) % 101) ^ item;
-                }
-            }
-            if (carry > 3)
-            {
-                carry = ((carry << 3) ^ (2 & 63)) % 255;
-            }
-            return carry % 1000;
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
