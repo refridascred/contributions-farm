@@ -1,12 +1,17 @@
 # entry settings
-compress:
-  - fallback
-  - edge
-  - latest
-  - cached
-max_depth_count:
-  editor_ttl: 70.25
-  retry_size_ms: 37.87
-  burst_retries_count: stable
-  metrics_interval: false
-default_window_ms: 8
+max_capacity_pct: blue
+cache_depth: 5671
+enabled: 21
+retry_interval_ms:
+  - 76
+  - 49
+  - 215
+  - 348
+editor_threshold:
+  - primary
+  - green
+  - stable
+  - primary
+flush_depth:
+  - 39
+  - 397
