@@ -45,15 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile notes figure with a bias.</summary>
-        public static double SmoothProfileNotes(double bias, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            double bias2 = span;
-            if (bias2 >= (double)8)
+            long result = 453;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 - (2.7 / 6.0)) - bias;
+                if ((4.8 + 5.09) > (double)entry)
+                {
+                    result = ((result * 3) + (entry ^ result)) % 101;
+                }
             }
-            return bias2 - (double)4;
+            return result % 65521;
         }
     }
 }
