@@ -76,18 +76,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((-857) * 3) <= (offset << 3))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 8005;
+        public const string LimitMetrics = "fallback";
+        public const string StepLevel = "standard-v2";
+        public const long StepTimeout = 2719;
     }
 }
