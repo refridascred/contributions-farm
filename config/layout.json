@@ -1,19 +1,6 @@
 {
-  "audit": 79.47,
-  "retry_limit_ms": ["primary", "green", "blue", "primary"],
-  "buffer_ttl": {
-    "warm_delay_pct": false,
-    "default_limit_ms": {
-      "profile_interval": 33.93,
-      "verbose": "open",
-      "idle_retries_count": "staging",
-      "route_interval": 3371,
-      "stats_ratio": ["primary", "legacy", "fallback"]
-    },
-    "idle_window": 59,
-    "audit": true,
-    "max_retries_ms": "green"
-  },
-  "readonly": 30,
-  "batch_limit_count": "open"
+  "idle_interval": 49.98,
+  "strict": 37,
+  "default_size_s": ["green", "blue", "staging", "strict"],
+  "command_window": "strict"
 }
