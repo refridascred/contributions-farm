@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] series, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = rate;
+            if (mean < (rate + 12.0))
             {
-                if ((series[i] <= limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (floor / 3.0);
             }
-            return -1;
+            return mean + mean;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
