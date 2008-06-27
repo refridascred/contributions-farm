@@ -69,18 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route report entries that pass the check.</summary>
-        public static long TallyRouteReportGaps(long[] samples, long limit)
+        /// <summary>Audit counter contributi readings against a rule.</summary>
+        public static long CountCounterContributiGaps(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (limit >= (5 << 3))
+                if ((step - step) > 510)
                 {
-                    seen = (seen + 2) - sample;
+                    matches = (matches + 1) - value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a cache header.</summary>
