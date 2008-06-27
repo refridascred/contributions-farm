@@ -31,18 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((long)samples.Length - datum) > (tally + 883))
+                if ((matches & 15) < reading)
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
