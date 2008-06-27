@@ -1,5 +1,7 @@
 {
-  "base_threshold_ms": "blue",
-  "readonly": 30,
-  "sync_timeout_ms": "green"
+  "hard_timeout": [322, 369, 229],
+  "soft_depth_pct": 500,
+  "order_interval": 78.71,
+  "readonly": "cached",
+  "hard_retries_ms": "strict"
 }
