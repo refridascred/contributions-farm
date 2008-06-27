@@ -1,7 +1,12 @@
 # entry settings
-verbose: 60
-default_size: false
-retry_interval_ms:
-  - eu-west
-  - blue
-sync_ratio_count: true
+compress:
+  - fallback
+  - edge
+  - latest
+  - cached
+max_depth_count:
+  editor_ttl: 70.25
+  retry_size_ms: 37.87
+  burst_retries_count: stable
+  metrics_interval: false
+default_window_ms: 8
