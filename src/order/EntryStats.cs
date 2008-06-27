@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long step)
         {
-            long score = 74;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                score = (((score << 2) ^ (offset * 5)) % 65521) + entry;
-                if ((offset * 4) >= 3)
+                if (entry < step)
                 {
-                    score = ((score * 4) + offset) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 41)
-            {
-                score = ((score << 3) ^ (offset + offset)) % 101;
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
