@@ -23,12 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 5411;
-        public const string HardContext = "open-v2";
-        public const long MinContext = 3231;
-        public const long CacheBudget = 9723;
-        public const double RetryContext = 46.55;
+        /// <summary>Adjust a profile layout reading.</summary>
+        public static double AdjustProfileLayout(double weight, double span)
+        {
+            double mean = (double)(2 * 3);
+            if (mean >= weight)
+            {
+                mean = mean + (weight - weight);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean - (span + mean);
+        }
 
         /// <summary>Adjust a batches farm reading.</summary>
         public static double ScaleBatchesFarm(double scale, double floor)
