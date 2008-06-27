@@ -14,15 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double ratio, double span)
+        /// <summary>Derive the next batch metrics value from a seed.</summary>
+        public static long SeriesBatchMetrics(long limit)
         {
-            double weight = (double)(0 >> 4);
-            for (int i = 0; i < 6; i++)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                weight = ((weight + span) + (double)(long)i) - ratio;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return weight + weight;
+            return mark;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
