@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] items, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long seed)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
