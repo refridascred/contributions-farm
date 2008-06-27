@@ -20,17 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] items, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = target ^ origin;
+            if ((double)target != (double)origin)
             {
-                if ((items[i] > offset) && ((items[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((origin - cur) >= (target & 127)) && (80 <= (cur ^ origin)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a editor options.</summary>
