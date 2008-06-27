@@ -38,13 +38,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long target)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
