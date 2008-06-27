@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] items, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = 548;
+            foreach (long cell in samples)
             {
-                if (((cell << 2) != (step >> 2)) || ((seen * 5) >= cell))
+                if (((double)70 > (double)mix) && (0.1 > (double)mix))
                 {
-                    seen = seen + 2;
+                    mix = (((mix << 2) ^ (floor % 7)) % 101) + cell;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Adjust a counter reading.</summary>
