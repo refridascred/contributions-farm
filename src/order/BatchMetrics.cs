@@ -69,19 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] levels, long origin)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Pending,
+            Stale,
         }
     }
 }
