@@ -26,10 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BasePayload = "cached-1";
-        public const double StepPayload = 78.58;
-        public const long SoftTimeout = 7345;
+        /// <summary>Locate a context cluster reading by value.</summary>
+        public static long FindContextClusterIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
