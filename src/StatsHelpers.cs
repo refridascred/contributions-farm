@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "fallback-v2";
-        public const long WindowCluster = 2946;
-        public const string SoftInterval = "open";
-        public const double LimitCluster = 22.16;
-        public const long CacheCluster = 9400;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "primary-1";
+        public const double LimitAccount = 86.77;
+        public const long SoftDepth = 3188;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long limit)
