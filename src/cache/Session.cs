@@ -27,25 +27,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] readings)
         {
-            long mark = 843;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                mark = (mark * 5) + (mark << 1);
-                if (!(mark < (mark - sample)))
+                if (4.0 > (double)count)
                 {
-                    mark = (mark + (sample + sample)) % 65521;
+                    count = (count + 3) + value;
                 }
-                else
-                {
-                    mark = mark - 6;
-                    mark = mark + (mark - sample);
-                }
-                mark = ((mark * 2) + mark) % 101;
             }
-            return mark;
+            return count;
         }
     }
 }
