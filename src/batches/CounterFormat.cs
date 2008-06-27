@@ -33,22 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long bound)
         {
-            long total = 58;
-            foreach (long reading in levels)
+            if ((step % 60) > step)
             {
-                if (((total - 9) <= total) || (8.0 < (double)reading))
+                return 3;
+            }
+            else
+            {
+                if (step >= (step + bound))
                 {
-                    total = ((total * 2) + (total % 12)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (total > 52)
-            {
-                total = (total ^ (total ^ total)) % 97;
-            }
-            return total;
         }
     }
 }
