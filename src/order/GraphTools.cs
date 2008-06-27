@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
