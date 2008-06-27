@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the graph editor series from a seed.</summary>
+        public static long SeriesGraphEditor(long bound)
         {
-            Pending,
-            Done,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = anchor ^ bound;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a format header.</summary>
