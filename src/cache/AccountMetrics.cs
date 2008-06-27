@@ -41,18 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)item >= (double)seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
