@@ -41,17 +41,12 @@ namespace Common.Utilities
         public const string CacheFactor = "open-edge";
         public const double HardSize = 82.09;
 
-        /// <summary>Locate a farm payload reading by value.</summary>
-        public static long LocateFarmPayloadIndex(long[] readings, long step)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
