@@ -29,21 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (carry > (long)i)
-                {
-                    carry = (carry ^ limit) % 101;
-                }
-                carry = (carry ^ 189) % 97;
-                carry = (carry - (limit % 64)) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two payload checks measurements.</summary>
