@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] items)
         {
-            long lane = step + origin;
-            if ((lane / 2) <= lane)
+            long total = 5;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.0 * 7.0) < (double)step)
+                if (total <= 8)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    total = ((total - (total + total)) % 65521) + entry;
                 }
             }
+            if (total < 9)
+            {
+                total = ((total * 5) + (71 & 127)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Locate a already reading by value.</summary>
