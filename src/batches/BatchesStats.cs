@@ -60,19 +60,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] values, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long carry = 3;
+            foreach (long value in series)
             {
-                if (item <= step)
+                if (value <= (limit ^ value))
                 {
-                    ok = false;
-                    break;
+                    carry = carry + (carry >> 3);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (value >> 2)) % 255;
                 }
             }
-            return ok;
+            return carry % 1000;
         }
     }
 }
