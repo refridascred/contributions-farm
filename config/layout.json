@@ -1,6 +1,15 @@
 {
-  "hard_interval_pct": 250,
-  "tools_capacity": [429, 80, 95, 17],
-  "enabled": true,
-  "session_interval": "fallback"
+  "audit": false,
+  "support_delay": true,
+  "layout_window": {
+    "default_depth_s": "latest",
+    "min_ttl_ms": {
+      "flush_window_s": "cached",
+      "checks_capacity": 45.55,
+      "warm_timeout_ms": "fallback",
+      "burst_size_pct": 86.78
+    },
+    "githubfarm_threshold": true,
+    "notes_timeout": 3610
+  }
 }
