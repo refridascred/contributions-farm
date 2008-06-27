@@ -25,11 +25,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 5201;
-        public const long MinToken = 4793;
-        public const long LimitWidth = 771;
-        public const double CacheScore = 52.51;
-        public const double HardLevel = 96.5;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
