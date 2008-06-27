@@ -76,14 +76,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] series)
         {
-            Paused,
-            Closed,
-            Retry,
-            Done,
-            Active,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (17.0 < (double)seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
