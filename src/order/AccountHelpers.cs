@@ -29,12 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
