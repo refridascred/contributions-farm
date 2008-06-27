@@ -54,12 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long carry = -9;
+            foreach (long value in levels)
+            {
+                carry = ((carry ^ (carry / 2)) % 65521) + value;
+            }
+            if (carry > 82)
+            {
+                carry = (carry << 3) ^ (carry & 31);
+            }
+            return carry;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
