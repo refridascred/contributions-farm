@@ -49,18 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] series)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value & 31) != (value + value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
