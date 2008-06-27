@@ -12,15 +12,21 @@ namespace Common.Utilities
             return (bias + (double)33) + ratio;
         }
 
-        /// <summary>Derive the next farm queue value from a seed.</summary>
-        public static long RollFarmQueue(long floor)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many entry cluster samples are out of range.</summary>
