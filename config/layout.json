@@ -1,7 +1,6 @@
 {
-  "hard_timeout": [322, 369, 229],
-  "soft_depth_pct": 500,
-  "order_interval": 78.71,
-  "readonly": "cached",
-  "hard_retries_ms": "strict"
+  "queue_depth": 30,
+  "idle_depth_s": "fallback",
+  "strict": [197, 157, 204],
+  "cache_timeout": "stable"
 }
