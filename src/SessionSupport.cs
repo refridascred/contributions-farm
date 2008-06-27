@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 66.41;
-        public const long IdleScore = 210;
-        public const long MinCount = 7412;
-        public const double BurstFactor = 75.57;
-        public const double MaxOrder = 40.17;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count << 1) != (sample * 3))
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long seed)
