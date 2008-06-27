@@ -53,13 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Check that every cluster stats entry stays within the limit.</summary>
+        public static bool CheckClusterStatsRange(long[] samples, long offset)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate batch githubfarm readings against a bound.</summary>
