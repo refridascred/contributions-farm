@@ -13,14 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardInterval = 6133;
+        public const double MaxTools = 28.38;
+        public const long RetryBudget = 6045;
+        public const long HardSize = 4956;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] readings, long target)
