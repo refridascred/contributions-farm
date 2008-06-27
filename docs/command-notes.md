@@ -1,11 +1,10 @@
 # Command notes
 
-When a metric fails, the record handler retries a few times before giving up.
-The command report groups every githubfarm by cluster.
+The record report groups every account by stats.
+The commits report groups every stats by token.
 
 ## Guidelines
 
-- Keep editor values small
-- Document new report fields
-- Prefer metric defaults
-- Validate batch input early
+- Prefer session defaults
+- Keep session values small
+- Validate metrics input early
