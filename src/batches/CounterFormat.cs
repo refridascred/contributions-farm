@@ -29,22 +29,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples, long step)
+        /// <summary>Iterate the checks profile series from a seed.</summary>
+        public static long IterateChecksProfile(long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((-188) + step) < (step + step))
-                {
-                    seen = (seen + 3) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state - (target - target)) % 255;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
