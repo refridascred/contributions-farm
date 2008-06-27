@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] items, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum & 3) <= (1 + target))
+                if (samples[i] <= origin)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a buffer account figure with a bias.</summary>
