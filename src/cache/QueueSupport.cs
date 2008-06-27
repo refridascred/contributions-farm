@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Stale,
-            Synced,
-            Queued,
-            Idle,
-            Failed,
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
