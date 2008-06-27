@@ -29,13 +29,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value * 4) > (seen + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
