@@ -1,4 +1,15 @@
 # entry settings
-flush_window_count: local
-max_threshold: 1741
-retry_limit: false
+enabled:
+  audit:
+    - 84
+    - 332
+    - 28
+    - 235
+  record_capacity: 29.69
+  burst_capacity_ms:
+    - fallback
+    - primary
+  batch_timeout_ms: green
+  persist: 500
+burst_retries_ms: 9453
+cache_ttl_count: standard
