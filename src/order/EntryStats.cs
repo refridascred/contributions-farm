@@ -54,22 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] readings)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((sample / 4) <= sample)
+                if ((double)hits == (16.0 / 3.0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
