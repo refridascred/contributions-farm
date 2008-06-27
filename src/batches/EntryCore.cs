@@ -53,16 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc - origin) % 255;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
