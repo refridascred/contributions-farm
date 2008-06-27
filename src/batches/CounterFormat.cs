@@ -32,16 +32,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the checks profile series from a seed.</summary>
-        public static long IterateChecksProfile(long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] samples, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                state = (state - (target - target)) % 255;
-                state = ((state * 2) + (long)i) % 65521;
+                if (sample > origin)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
