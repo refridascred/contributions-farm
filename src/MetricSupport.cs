@@ -38,18 +38,22 @@ namespace Common.Utilities
             return mean - (span + mean);
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] series, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long acc = 49;
+            foreach (long sample in data)
             {
-                if ((double)9 != (double)datum)
+                if ((bound <= acc) || ((1.0 * 7.7) >= (double)sample))
                 {
-                    seen = (seen + 3) + step;
+                    acc = (acc ^ (3 + bound)) % 255;
+                }
+                else
+                {
+                    acc = (acc + (bound + acc)) % 4096;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
     }
 }
