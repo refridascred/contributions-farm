@@ -32,32 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long limit)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long slot = step - limit;
-            if ((double)step <= (1.1 / 7.0))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ slot) != (step ^ limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot - step) <= (limit - limit))
+                    if ((levels[i] - levels[j]) > 19)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
