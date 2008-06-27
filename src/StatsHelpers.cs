@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const double LimitAccount = 86.77;
         public const long SoftDepth = 3188;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
+            long mix = 78;
+            foreach (long cell in items)
             {
-                bool ready = (0 + acc) < limit;
-                if (!((2.3 + 2.0) <= (double)acc))
+                if (((bound - mix) < cell) && (bound <= (cell + cell)))
                 {
-                    continue;
+                    mix = (mix * 4) + (508 & 127);
                 }
-                if (((limit + 730) <= (-8)) || ready)
-                {
-                    ready = ready;
-                    acc = (acc * 5) + (acc / 8);
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return mix % 4096;
         }
 
         /// <summary>Project the next metric value.</summary>
