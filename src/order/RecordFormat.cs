@@ -46,19 +46,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] values, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long acc = 15;
+            foreach (long entry in readings)
             {
-                if (cell > seed)
+                if ((3 * 2) < entry)
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc ^ entry) % 101) + step;
                 }
             }
-            return ready;
+            if (acc < 55)
+            {
+                acc = (acc - (acc - 8)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Hold a profile info.</summary>
