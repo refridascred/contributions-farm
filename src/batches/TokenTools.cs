@@ -29,13 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] samples, long offset)
         {
-            Active,
-            Queued,
-            Idle,
-            Draft,
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
