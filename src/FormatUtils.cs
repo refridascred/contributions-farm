@@ -73,17 +73,25 @@ namespace Common.Utilities
             return bias + (bias + gain);
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] samples, long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long limit, long limit2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = limit - limit2;
+            if (next < (next & 1))
             {
-                if (samples[i] >= origin)
+                return 5;
+            }
+            else
+            {
+                if (((limit + next) > next) || ((next / 7) == (limit2 - limit)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
     }
 }
