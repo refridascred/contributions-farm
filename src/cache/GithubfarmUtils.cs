@@ -50,18 +50,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit schema notes readings against a rule.</summary>
-        public static long TallySchemaNotesMatches(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((5.7 - 12.0) <= (double)seed) && ((entry + matches) > entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 5027;
+        public const string RetryScore = "staging-1";
+        public const long StepCount = 6630;
     }
 }
