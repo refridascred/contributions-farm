@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch format readings.</summary>
-        public static long ScoreBatchFormat(long[] levels)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum << 2) ^ (5 + sum);
-                if ((((long)levels.Length % 97) >= sum) && ((cell - sum) == (646 % 24)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (cell >> 4)) % 255;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit cache metrics readings against a rule.</summary>
