@@ -64,12 +64,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data)
         {
-            Active,
-            New,
-            Ready,
+            long score = 99;
+            foreach (long value in data)
+            {
+                score = ((score * 4) + (56 - 414)) % 1000;
+                score = ((score * 2) + (609 - score)) % 255;
+                if ((91 * 2) == ((long)data.Length ^ value))
+                {
+                    break;
+                }
+            }
+            if (score > 747)
+            {
+                score = (score + score) % 101;
+            }
+            return score;
         }
     }
 }
