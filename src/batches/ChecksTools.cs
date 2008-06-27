@@ -33,19 +33,21 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed - seed) == (seed + mix))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (mix ^ (long)i)) % 4096;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
