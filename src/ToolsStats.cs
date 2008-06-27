@@ -53,16 +53,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 4; i++)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                state = (state << 2) ^ limit;
-                state = ((state * 2) + (long)i) % 65521;
+                anchor = ((anchor * 2) + (seed % 12)) % 97;
+                anchor = anchor ^ 7;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
