@@ -1,15 +1,17 @@
 {
-  "profile_limit": "legacy",
-  "strict": false,
-  "batch_threshold_pct": {
-    "flush_interval_s": 60,
-    "cluster_size": {
-      "flush_retries_count": 8393,
-      "stats_size": "primary",
-      "burst_limit": [339, 325, 286, 218],
-      "cache_ttl": 1024,
-      "strict": 74
+  "warm_depth": 80,
+  "flush_limit": "cached",
+  "flush_interval_ms": {
+    "poll_timeout_ms": "primary",
+    "editor_ttl": {
+      "tools_retries": 250,
+      "poll_ratio_count": true,
+      "sync_limit_pct": true,
+      "graph_size": false
     },
-    "strict": 10.16
+    "order_depth": "green",
+    "idle_size": 5783,
+    "burst_limit_pct": 92.51,
+    "strict": 500
   }
 }
