@@ -49,23 +49,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] values, long floor)
         {
-            long mix = 96;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mix = (mix + (39 << 2)) % 65521;
-                if ((target >= (entry % 7)) || ((target * 4) <= (entry - mix)))
+                if ((0.7 / 4.0) > (double)matches)
                 {
-                    mix = mix - (entry - entry);
+                    matches = ((matches + 1) ^ cell) + floor;
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix - target) % 4096;
-            }
-            return mix;
+            return matches;
         }
     }
 }
