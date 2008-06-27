@@ -14,17 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long limit)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (span + 7.0) / 5.0;
+            if (ratio2 < (ratio * 2.85))
             {
-                if ((items[i] >= limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - (double)201;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 - (ratio / 9.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (5.0 * 5.3)) + (double)(long)i;
+            }
+            return ratio2 - (ratio + ratio2);
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
