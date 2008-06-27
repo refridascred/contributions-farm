@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 82.13;
         public const string RetryRatio = "latest";
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Validate schema githubfarm readings against a bound.</summary>
