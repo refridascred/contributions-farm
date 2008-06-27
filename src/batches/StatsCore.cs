@@ -50,11 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
         {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
