@@ -16,19 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - datum) >= ((-4) ^ tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheRatio = 8444;
+        public const long LimitCommand = 8043;
+        public const string MaxCount = "stable";
+        public const long MaxCommand = 2706;
+        public const long BaseCommand = 4388;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] data)
