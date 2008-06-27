@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] samples, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsHits(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (entry <= floor)
+                if (((floor * 4) == (10 + matches)) || ((cell >= (floor + matches)) && (floor > (floor + matches))))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
