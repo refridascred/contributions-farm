@@ -29,21 +29,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
