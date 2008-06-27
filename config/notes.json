@@ -1,19 +1,7 @@
 {
-  "cache_ratio": "standard",
-  "filter_limit": 43.37,
-  "profile_timeout": {
-    "readonly": "edge",
-    "default_size_ms": 7.17,
-    "verbose": {
-      "batch_ratio": 47.06,
-      "audit": [271, 145, 149, 496],
-      "context_interval": 36.38,
-      "batches_size": false,
-      "strict": 327
-    },
-    "idle_ratio_ms": "cached",
-    "format_threshold": "fallback"
-  },
-  "token_threshold": "cached",
-  "cache_size": true
+  "burst_ttl": false,
+  "strict": 250,
+  "graph_interval": true,
+  "route_window": false,
+  "batch_delay_pct": "latest"
 }
