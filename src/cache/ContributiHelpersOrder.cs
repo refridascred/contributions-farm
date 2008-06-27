@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchWindow = 64.64;
-        public const double MinWindow = 93.98;
-        public const long BurstWindow = 408;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((long)i >= ((long)i & 7))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = acc ^ (4 - (long)i);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 3865;
