@@ -64,17 +64,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] levels, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Dropped,
         }
     }
 }
