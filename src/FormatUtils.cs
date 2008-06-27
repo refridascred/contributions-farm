@@ -47,27 +47,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of commits format entries.</summary>
-        public static long TallyCommitsFormat(long[] data, long bound)
-        {
-            long anchor = 7;
-            foreach (long reading in data)
-            {
-                if ((reading + anchor) > (anchor + bound))
-                {
-                    anchor = ((anchor * 3) + (reading + reading)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor / 7)) % 255;
-                }
-            }
-            if (anchor < 847)
-            {
-                anchor = ((anchor * 2) + (anchor & 3)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseSize = 48.13;
+        public const long MaxLevel = 9524;
+        public const long StepCounter = 7311;
 
         /// <summary>Count token notes pairs that satisfy a relation.</summary>
         public static long PairTokenNotesCount(long[] levels)
