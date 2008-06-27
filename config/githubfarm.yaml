@@ -1,4 +1,5 @@
 # githubfarm settings
-base_limit_count: false
-idle_timeout: 30.69
-metric_interval: 8510
+idle_size_count: false
+contributi_ratio: primary
+min_delay_count: 25
+format_ttl: 70
