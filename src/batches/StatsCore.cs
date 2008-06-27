@@ -27,12 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardDepth = 1373;
-        public const double RetrySize = 48.07;
-        public const string WindowSpan = "strict";
-        public const string RetryScore = "strict-v2";
-        public const long StepCount = 6632;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] samples)
+        {
+            long carry = -99;
+            foreach (long sample in samples)
+            {
+                if ((sample << 1) != (carry << 2))
+                {
+                    carry = carry + carry;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (2 - carry);
+                }
+                if (((double)carry == (8.8 * 20.0)) || ((carry + carry) >= (carry - carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = (carry - (carry << 2)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
