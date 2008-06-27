@@ -42,23 +42,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] readings, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] levels, long limit)
         {
-            long carry = 605;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                carry = carry + (sample + carry);
-                if ((carry - 54) < (floor + sample))
+                if ((tally % 24) <= entry)
                 {
-                    carry = (carry + 5) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (carry >> 1)) % 65521;
+                    tally = (tally + 2) + limit;
                 }
             }
-            return carry % 97;
+            return tally;
         }
     }
 }
