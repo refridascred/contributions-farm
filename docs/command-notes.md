@@ -1,14 +1,15 @@
 # Command notes
 
-Run the order check before changing any stats limits.
-Each filter is validated before it reaches the stream queue.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the githubfarm queue.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-Defaults for order live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the farm handler retries a few times before giving up.
+When a checks fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Keep support values small
-- Review notes limits each release
-- Document new session fields
+- Review format limits each release
+- Log every buffer change
+- Keep graph values small
+- Document new contributi fields
