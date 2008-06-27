@@ -1,5 +1,7 @@
 # support settings
-batch_window_ms: 6850
-dry_run: 72.64
-persist: open
-batch_ratio_pct: 250
+enabled: 77
+default_limit_s: cached
+flush_size_ms: true
+order_threshold: local
+flush_limit: 66
+queue_delay: edge
