@@ -44,19 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cache commits values into a single score.</summary>
-        public static long DigestCacheCommits(long[] levels, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] series, long step)
         {
-            long total = 11;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = ((total - (limit ^ total)) % 255) ^ sample;
+                if (((step + step) >= ((-581) + entry)) || ((6.7 > (double)seen) || ((seen << 2) >= seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (total < 4)
-            {
-                total = (total * 5) + limit;
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
