@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool CheckNotesBatchesRange(long[] series, long bound)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 3009;
+        public const long BatchSchema = 6859;
+        public const long DefaultSchema = 778;
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
