@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long offset, long offset2)
-        {
-            if (((offset2 / 7) >= (offset >> 2)) && (3.8 < (double)offset2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset > (offset + offset2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset2 < (offset2 / 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((7.59 + 1.82) >= (double)offset2) || ((double)offset2 <= (2.9 + 8.63)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinSize = "primary-1";
+        public const long CacheInterval = 3910;
+        public const long BatchAlready = 1916;
+        public const string BurstAlready = "primary";
+        public const long IdleCount = 8648;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long SeriesCache(long seed)
