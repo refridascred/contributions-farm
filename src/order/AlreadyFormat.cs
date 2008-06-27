@@ -39,11 +39,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 3518;
-        public const long IdleSize = 4538;
-        public const double StepLevel = 63.96;
-        public const double BaseFactor = 57.62;
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long RankWindow(long limit, long seed)
