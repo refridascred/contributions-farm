@@ -72,18 +72,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] data, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (((origin & 63) < (4 & 63)) || !((long)data.Length > (4 >> 1)))
+                if ((5.3 * 1.2) > (double)matches)
                 {
-                    seen = (seen + 2) + cell;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the session state values.</summary>
