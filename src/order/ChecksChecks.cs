@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit format account readings against a rule.</summary>
