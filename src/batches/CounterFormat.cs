@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first account editor entry that matches the target.</summary>
-        public static long LookupAccountEditorIndex(long[] data, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 3) != 0))
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
