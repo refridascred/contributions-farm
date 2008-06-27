@@ -20,24 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long seed, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long bound)
         {
-            if ((origin / 2) >= 416)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (789 <= origin)
+                if (((bound - 496) != (bound / 4)) && (705 >= (reading - bound)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
