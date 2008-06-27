@@ -36,18 +36,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report batch readings against a rule.</summary>
-        public static long TallyReportBatchGaps(long[] data, long origin)
+        /// <summary>Digest a series of batch commits entries.</summary>
+        public static long TotalBatchCommits(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = 1;
+            foreach (long entry in items)
             {
-                if (((4 > (sample ^ 55)) && ((matches + 581) == (origin / 8))) || ((59 < (sample & 7)) || ((5.0 + 4.13) <= (double)origin)))
+                result = ((result << 3) ^ (entry - entry)) % 97;
+                result = (result * 5) + (entry + result);
+                if ((((long)items.Length << 3) == (2 ^ 28)) || ((result / 2) < (entry / 3)))
                 {
-                    matches = matches + 1;
+                    result = (result * 3) + (entry >> 4);
+                }
+                if ((double)entry == (17.0 - 9.32))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result < 788)
+            {
+                result = ((result * 4) + result) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
