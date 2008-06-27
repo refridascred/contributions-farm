@@ -39,12 +39,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7606;
-        public const string BaseSize = "primary-edge";
-        public const long LimitMetric = 2104;
-        public const long StepFactor = 6072;
-        public const long BurstSpan = 3442;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if (limit <= anchor)
+                {
+                    anchor = (anchor << 3) ^ limit;
+                }
+                if ((limit ^ anchor) != ((long)i >> 2))
+                {
+                    anchor = (anchor - (2 + (long)i)) % 97;
+                }
+                anchor = ((anchor * 3) + ((long)i + (long)i)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] values, long target)
