@@ -28,18 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((item / 5) == (long)series.Length) && ((item ^ 38) > item))
                 {
-                    if ((series[i] ^ series[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
