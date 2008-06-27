@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 43.82;
-        public const long HardLevel = 6795;
-        public const long MinOrder = 4375;
-        public const long StepOrder = 5196;
-        public const long WindowTimeout = 5492;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate stats already samples.</summary>
         public static long ScoreStatsAlready(long[] readings)
