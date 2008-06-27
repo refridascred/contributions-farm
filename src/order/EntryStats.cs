@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 6725;
-        public const long RetrySize = 6798;
-        public const string HardFactor = "staging-v2";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)offset != (8.4 * 10.0))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
