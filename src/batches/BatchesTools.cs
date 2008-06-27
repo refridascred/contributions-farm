@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            Retry,
-            New,
-            Locked,
-            Dropped,
-            Draft,
+            long mix = -5;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = ((mix ^ (mix << 3)) % 4096) - (long)i;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (((mix << 3) ^ mix) % 97) - (long)i2;
+                }
+                mix = (mix + (item << 1)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Hold a layout stats.</summary>
