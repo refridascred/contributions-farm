@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate layout context samples.</summary>
-        public static long ScoreLayoutContext(long[] data, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] samples, long bound)
         {
-            long mark = 41;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mark * 3) > origin)
+                if (samples[i] < bound)
                 {
-                    mark = ((mark - (origin >> 1)) % 65521) ^ sample;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
