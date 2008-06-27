@@ -46,11 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double gain = (scale * 9.5) * 4.4;
-            return (gain - (gain + 1.9)) + floor;
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
