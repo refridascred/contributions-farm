@@ -1,4 +1,14 @@
 # support settings
-dry_run: false
-retry_window_pct: true
-retry_timeout: standard
+enabled: false
+hard_delay_count:
+  - primary
+  - standard
+  - standard
+  - local
+hard_interval_ms:
+  support_ttl: 8130
+  strict: 6351
+  persist: 22.69
+channel_window: 94
+stats_threshold: 94
+compress: primary
