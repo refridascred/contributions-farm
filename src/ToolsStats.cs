@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] series)
         {
-            Done,
-            Active,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((count / 3) < item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
