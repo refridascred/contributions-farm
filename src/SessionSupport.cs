@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const long IdleStream = 2939;
         public const string CacheSpan = "staging-edge";
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                double load = (5.0 + 6.0) / 7.0;
+                if (load <= (load / 7.0))
+                {
+                    load = load + (1.02 * 1.66);
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count the already profile entries that pass the check.</summary>
