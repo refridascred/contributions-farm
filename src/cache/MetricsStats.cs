@@ -16,11 +16,23 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "staging";
-        public const string MinRatio = "fallback";
-        public const long StepGraph = 6404;
-        public const string BatchSpan = "cached-edge";
+        /// <summary>Audit layout order readings against a rule.</summary>
+        public static long TallyLayoutOrderGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - cell) == (matches + cell))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long FoldPayload(long[] samples)
