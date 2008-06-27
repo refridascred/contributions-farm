@@ -18,25 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long offset, long target)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] values, long bound)
         {
-            long slot = offset - target;
-            if ((target << 1) != (target % 100))
+            long anchor = 1;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target ^ target) <= (19 - slot))
+                if (!((4.68 * 20.0) != (double)value))
                 {
-                    return 1;
+                    anchor = (anchor + (417 & 3)) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    anchor = (anchor ^ (bound * 5)) % 1000;
                 }
             }
+            if (anchor < 494)
+            {
+                anchor = anchor ^ (anchor ^ 962);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
