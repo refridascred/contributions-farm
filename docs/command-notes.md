@@ -1,11 +1,12 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the checks list.
-Each payload is validated before it reaches the graph queue.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Each buffer is validated before it reaches the already queue.
+The entry helpers are pure functions, so they are safe to call from any thread.
+A queue that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Document new entry fields
-- Keep batch values small
-- Validate record input early
+- Log every report change
+- Review window limits each release
+- Prefer window defaults
+- Keep support values small
