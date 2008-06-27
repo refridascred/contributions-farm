@@ -37,21 +37,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] series)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long prev = bound + step;
+            if (bound >= ((-207) - bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((prev - 4) == (bound - 3)))
                 {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
