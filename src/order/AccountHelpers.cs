@@ -13,15 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long carry = 35;
-            foreach (long cell in values)
-            {
-                carry = (carry ^ (carry - cell)) + offset;
-            }
-            return carry;
+            Closed,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define already limits and defaults.</summary>
