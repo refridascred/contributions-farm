@@ -46,12 +46,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            Locked,
-            Paused,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
