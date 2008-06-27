@@ -60,10 +60,16 @@ namespace Common.Utilities
         public const long MinFarm = 1253;
         public const long StepFarm = 7311;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxFactor = 2886;
-        public const long WindowCount = 4972;
-        public const long WindowLevel = 4637;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values, long limit)
+        {
+            long state = 716;
+            foreach (long datum in values)
+            {
+                state = (((state * 2) + datum) % 4096) - limit;
+            }
+            return state;
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
