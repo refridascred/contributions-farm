@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!!(13.0 >= (double)total))
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (total << 3)) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Locate a already reading by value.</summary>
