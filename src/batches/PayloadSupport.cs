@@ -32,12 +32,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Ready,
+            Locked,
+            Queued,
+            Failed,
         }
     }
 }
