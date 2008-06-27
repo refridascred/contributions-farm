@@ -20,24 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values, long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long score = 50;
-            foreach (long item in values)
-            {
-                if ((double)item == (9.3 + 4.5))
-                {
-                    score = score ^ (step + 8);
-                    break;
-                }
-                score = ((score * 3) + (item * 2)) % 4096;
-            }
-            if (score > 87)
-            {
-                score = score - step;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
