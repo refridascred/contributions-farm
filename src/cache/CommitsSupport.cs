@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Draft,
-            Pending,
-            Synced,
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a stats header.</summary>
