@@ -1,6 +1,5 @@
 {
-  "persist": 20,
-  "githubfarm_window": 40.09,
-  "base_depth": false,
-  "hard_ttl_pct": 500
+  "base_ttl_s": "open",
+  "burst_window_pct": 83.9,
+  "readonly": "green"
 }
