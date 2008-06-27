@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] levels, long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = 43;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= (double)bound)
-                {
-                    result = (result + (bound & 1)) % 255;
-                }
-            }
-            if (result < 5)
-            {
-                result = (result - (933 + bound)) % 97;
-            }
-            return result;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of schema order entries.</summary>
