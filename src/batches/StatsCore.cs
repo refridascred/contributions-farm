@@ -70,9 +70,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "cached-1";
-        public const long CacheStream = 1830;
-        public const long LimitStream = 1326;
+        /// <summary>Validate format queue readings against a bound.</summary>
+        public static bool ValidateFormatQueueRange(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
