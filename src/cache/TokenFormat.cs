@@ -65,17 +65,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 9670;
+        public const long WindowLevel = 2162;
+        public const long BatchRatio = 1110;
+        public const long BaseInterval = 3356;
+        public const long SoftStats = 3192;
     }
 }
