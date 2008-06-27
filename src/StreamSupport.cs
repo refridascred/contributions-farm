@@ -26,18 +26,18 @@ namespace Common.Utilities
         public const string HardCommand = "primary-edge";
         public const long BaseLevel = 1032;
 
-        /// <summary>Count the farm cluster entries that pass the check.</summary>
-        public static long TallyFarmClusterOutliers(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (!((sample % 5) >= (52 ^ hits)))
+                if ((reading + seen) <= reading)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) + step;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
