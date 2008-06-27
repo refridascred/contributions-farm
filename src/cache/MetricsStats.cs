@@ -76,19 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool GuardToolsBatchesBounds(long[] levels, long target)
+        /// <summary>Audit stream farm readings against a rule.</summary>
+        public static long MeasureStreamFarmHits(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (value != target)
+                if ((count ^ count) == (datum * 4))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - floor;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
