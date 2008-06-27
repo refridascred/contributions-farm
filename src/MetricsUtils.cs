@@ -37,10 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 543;
-        public const long CacheBatches = 4644;
-        public const string MaxInterval = "alpha";
+        /// <summary>Fold a list of channel route readings.</summary>
+        public static long TotalChannelRoute(long[] levels)
+        {
+            long anchor = 864;
+            foreach (long cell in levels)
+            {
+                if ((10.0 / 4.0) <= (double)anchor)
+                {
+                    anchor = (anchor + (171 - 77)) + cell;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double WindowQueue = 52.86;
