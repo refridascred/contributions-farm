@@ -59,16 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitSize = 1807;
+        public const long IdleCommand = 4118;
+        public const string HardCommand = "stable";
 
         /// <summary>Count farm context pairs that satisfy a relation.</summary>
         public static long OverlapFarmContextCount(long[] levels)
