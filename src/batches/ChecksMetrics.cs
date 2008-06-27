@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((value + tally) > tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepFactor = 8666;
+        public const string IdleSchema = "stable-1";
+        public const long SoftSchema = 2114;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepInterval = 7038;
