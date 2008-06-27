@@ -53,24 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long step, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] series, long limit)
         {
-            if ((double)step > 1.96)
+            bool stale = true;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step == (14.0 / 5.0))
+                if (value > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
