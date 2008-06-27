@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] samples)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((item + tally) >= (item ^ item))
                 {
-                    carry = ((carry * 3) + step) ^ (long)i2;
+                    tally = tally + 2;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
