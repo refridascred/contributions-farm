@@ -40,23 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double gain, double bias)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double gain2 = (double)(265 + 4);
-            if (gain2 <= 0.3)
-            {
-                gain2 = (gain2 + (double)15) - gain;
-            }
-            else
-            {
-                gain2 = gain2 - (bias * 20.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (bias + bias)) - (double)(long)i;
-            }
-            return gain2 + gain2;
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the layout phase values.</summary>
