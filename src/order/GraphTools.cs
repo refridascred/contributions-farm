@@ -33,15 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a counter support figure with a bias.</summary>
-        public static double SmoothCounterSupport(double bias, double bias2)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] samples)
         {
-            double ratio = bias2;
-            if (ratio <= (bias - bias2))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + (bias2 + ratio);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio - (3.37 * 6.0);
+            return matches;
         }
 
         /// <summary>Scale a editor channel figure with a bias.</summary>
