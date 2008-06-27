@@ -34,24 +34,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long offset, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] readings, long target)
         {
-            if ((offset + offset) != (origin ^ offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin >> 3) >= 77)
+                if (readings[i] == target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a checks summary.</summary>
