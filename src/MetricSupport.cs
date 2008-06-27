@@ -28,13 +28,9 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowSize = 1970;
+        public const long StepAccount = 4204;
+        public const double BatchAccount = 86.27;
     }
 }
