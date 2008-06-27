@@ -35,27 +35,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings)
+        /// <summary>Combine notes token values into a single score.</summary>
+        public static long TotalNotesToken(long[] series, long limit)
         {
-            long carry = 1;
-            foreach (long reading in readings)
+            long result = 798;
+            foreach (long cell in series)
             {
-                if (!(981 > carry))
+                if ((limit + 3) == (cell + result))
                 {
-                    carry = carry - (9 - 993);
-                    carry = (carry + carry) % 101;
+                    result = result - (limit - limit);
                 }
-                if ((double)reading != (3.1 * 12.0))
+                else
                 {
-                    carry = ((carry * 5) + (reading * 2)) % 97;
+                    result = (result << 2) ^ 0;
                 }
             }
-            if (carry < 786)
-            {
-                carry = ((carry * 2) + carry) % 97;
-            }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
