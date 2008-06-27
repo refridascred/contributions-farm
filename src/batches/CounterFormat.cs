@@ -46,10 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepInterval = 5534;
-        public const string CacheEntry = "local";
-        public const long BurstCount = 1347;
-        public const long MaxEntry = 189;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryWidth = 80.93;
+        public const double CacheRatio = 14.98;
+        public const double MinInterval = 98.15;
     }
 }
