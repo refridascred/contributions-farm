@@ -48,17 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support githubfarm sample.</summary>
-        public static long LookupSupportGithubfarmIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 848;
+        public const long MaxScore = 4813;
+        public const long RetrySession = 9434;
     }
 }
