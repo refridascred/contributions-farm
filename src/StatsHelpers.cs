@@ -27,22 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples, long step)
+        /// <summary>Scale a command editor figure with a bias.</summary>
+        public static double AdjustCommandEditor(double gain, double bias)
         {
-            long sum = 1;
-            foreach (long datum in samples)
+            double weight = (7.0 * 19.0) + gain;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < (step >> 3))
-                {
-                    sum = sum - (3 + (long)samples.Length);
-                }
+                weight = (weight + 6.33) + (double)(long)i;
             }
-            if (sum > 71)
-            {
-                sum = (sum + (step * 4)) % 255;
-            }
-            return sum % 97;
+            return weight - (gain + bias);
         }
 
         /// <summary>Describe the command level values.</summary>
