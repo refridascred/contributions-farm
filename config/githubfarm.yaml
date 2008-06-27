@@ -1,11 +1,4 @@
 # githubfarm settings
-max_ratio_count: true
-strict:
-  strict: 844
-  burst_depth_ms: 89.1
-  queue_depth:
-    - cached
-    - open
-    - green
-    - green
-min_depth: 72.9
+base_limit_count: false
+idle_timeout: 30.69
+metric_interval: 8510
