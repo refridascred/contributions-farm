@@ -71,13 +71,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] values)
         {
-            Paused,
-            Ready,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count + count) >= 45)
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
