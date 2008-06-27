@@ -29,9 +29,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowSize = 1970;
-        public const long StepAccount = 4204;
-        public const double BatchAccount = 86.27;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 89.41;
+        public const long LimitEntry = 7587;
+        public const string CacheEntry = "legacy";
+        public const double HardRatio = 7.0;
+        public const string SoftSpan = "open-edge";
     }
 }
