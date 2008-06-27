@@ -19,14 +19,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 82.13;
         public const string RetryRatio = "latest";
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Done,
-            Retry,
-            Synced,
-            Ready,
-            Pending,
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate schema githubfarm readings against a bound.</summary>
