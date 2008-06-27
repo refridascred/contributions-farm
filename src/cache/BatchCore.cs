@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long acc = 14;
-            foreach (long reading in levels)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((acc + acc) < (acc * 4))
-                {
-                    acc = ((acc << 2) ^ reading) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (reading << 1)) % 101;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return acc % 4096;
+            return total;
         }
 
         /// <summary>Adjust a editor support reading.</summary>
