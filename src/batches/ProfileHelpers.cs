@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long floor, long seed)
+        /// <summary>Count the queue cluster entries that pass the check.</summary>
+        public static long CountQueueClusterHits(long[] values)
         {
-            if (!(seed >= floor))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor < (seed * 4))
+                if (360 <= tally)
                 {
-                    return 2;
+                    tally = (tally + 2) ^ datum;
                 }
                 else
                 {
-                    if (((seed << 2) < (20 ^ seed)) && ((seed * 5) == (seed + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed >> 4) < floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a order counter forward.</summary>
