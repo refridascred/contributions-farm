@@ -13,16 +13,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long step)
+        /// <summary>Derive the next account counter value from a seed.</summary>
+        public static long IterateAccountCounter(long limit)
         {
-            long total = 628;
-            foreach (long sample in levels)
+            long total = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)step >= (6.6 * 1.2)) && ((double)sample > 0.93))
-                {
-                    total = total + (total + 0);
-                }
+                total = total ^ ((long)i + total);
+                total = (total ^ (5 << 1)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
             return total;
         }
