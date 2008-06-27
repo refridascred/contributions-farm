@@ -34,19 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] series, long offset)
+        /// <summary>Count the editor channel entries that pass the check.</summary>
+        public static long TallyEditorChannelHits(long[] values)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (value != offset)
+                if (seen > (seen ^ datum))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Blend two schema measurements.</summary>
