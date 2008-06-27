@@ -23,21 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count context githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapContextGithubfarmCount(long[] values)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public bool Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the record class values.</summary>
