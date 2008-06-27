@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Roll a support command counter forward.</summary>
+        public static long DeriveSupportCommand(long target)
         {
-            Draft,
-            Pending,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark ^ target) % 101;
+                mark = mark - (mark + mark);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
