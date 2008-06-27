@@ -25,20 +25,19 @@ namespace Common.Utilities
         public const long DefaultScore = 6758;
         public const double RetryEntry = 34.68;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Blend two commits farm measurements.</summary>
+        public static double AdjustCommitsFarm(double gain, double span)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            double drift = span;
+            if (drift < (1.8 * 7.0))
             {
-                result = (result + (limit >> 3)) % 97;
-                if (!((double)result < (6.0 * 9.96)))
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                drift = drift + (span + gain);
             }
-            return result;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift + gain;
         }
 
         /// <summary>Project the next queue format value.</summary>
