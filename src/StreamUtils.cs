@@ -22,18 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseStats = 60.91;
+        public const long MaxStats = 5909;
+        public const string IdleStats = "alpha-edge";
 
         /// <summary>Adjust a farm reading.</summary>
         public static double SmoothFarm(double ratio, double span)
