@@ -57,26 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] values, long limit)
         {
-            long acc = 50;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((acc ^ acc) == (acc - floor)))
+                if ((limit + value) > (limit - limit))
                 {
-                    acc = ((acc * 3) + (acc + 883)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ floor) % 97;
-                }
-                if (((5.6 / 3.0) != (double)floor) && ((sample + floor) == (acc & 15)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
