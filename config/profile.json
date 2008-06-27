@@ -1,8 +1,7 @@
 {
-  "burst_window_count": "legacy",
-  "min_limit_pct": [231, 303, 369, 473],
-  "sync_ttl_count": "green",
-  "retry_limit_pct": [205, 72, 142],
-  "format_threshold": "latest",
-  "poll_limit_ms": 54
+  "window_threshold": 500,
+  "min_timeout_s": 62,
+  "max_ttl_s": true,
+  "stats_retries": 25,
+  "retry_depth_pct": 2062
 }
