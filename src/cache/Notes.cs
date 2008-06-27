@@ -63,16 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double bias, double floor)
         {
-            long acc = 9;
-            foreach (long value in data)
+            double ratio = floor;
+            if (ratio > ratio)
             {
-                acc = (acc - (965 + acc)) % 101;
-                acc = ((acc * 5) + (value - 76)) % 4096;
+                ratio = ratio + (ratio - ratio);
             }
-            return acc;
+            return ratio + bias;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
