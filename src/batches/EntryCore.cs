@@ -50,10 +50,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 1679;
-        public const long DefaultEditor = 1452;
-        public const double BaseLevel = 50.06;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] values)
