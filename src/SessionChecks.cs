@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] samples)
         {
-            long sum = 80;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                sum = (((sum << 2) ^ ((-7) % 3)) % 97) + cell;
+                if (!(((entry * 3) != (entry >> 2)) || ((hits + entry) != (hits - hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (sum > 594)
-            {
-                sum = sum + (295 + sum);
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Hold a contributi entry.</summary>
