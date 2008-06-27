@@ -20,17 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mix = mix + ((long)i + mix);
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the tools kind values.</summary>
