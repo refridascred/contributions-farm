@@ -1,12 +1,17 @@
 {
-  "hard_threshold": "staging",
-  "cluster_threshold": "green",
-  "retry_limit_pct": 10.25,
-  "batch_delay_count": true,
-  "audit": {
-    "hard_threshold": 7549,
-    "sync_ttl_ms": "open",
-    "burst_interval": [411, 158],
-    "default_threshold_s": 30
-  }
+  "farm_size": 250,
+  "counter_window": {
+    "soft_timeout": 1.78,
+    "batch_ratio_pct": 250,
+    "audit": {
+      "base_ttl_s": false,
+      "already_timeout": 100,
+      "base_threshold": "open"
+    },
+    "report_window": "primary"
+  },
+  "readonly": 87,
+  "soft_depth": "stable",
+  "verbose": 1024,
+  "default_depth": [220, 33, 266, 258]
 }
