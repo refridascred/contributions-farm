@@ -31,14 +31,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            New,
-            Pending,
-            Closed,
-            Done,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftSize = 3497;
+        public const double BurstTimeout = 39.44;
+        public const double IdleToken = 36.32;
+        public const long MinToken = 88;
+        public const long SoftTimeout = 1963;
     }
 }
