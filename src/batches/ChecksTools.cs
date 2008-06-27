@@ -23,21 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session tools pairs that satisfy a relation.</summary>
-        public static long CompareSessionToolsCount(long[] readings)
+        /// <summary>Look up the position of a window buffer sample.</summary>
+        public static long LocateWindowBufferIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
                 {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a editor entry.</summary>
