@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine context editor values into a single score.</summary>
-        public static long TallyContextEditor(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] items, long target)
         {
-            long anchor = 664;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((double)anchor >= (9.4 / 8.0))
+                if (((double)count <= (0.1 / 9.0)) && ((target + count) >= (cell % 3)))
                 {
-                    anchor = ((anchor - (786 & 127)) % 101) + value;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
