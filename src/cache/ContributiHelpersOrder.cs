@@ -27,22 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] values)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches * 5) < (2 * 3))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
