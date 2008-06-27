@@ -27,22 +27,12 @@ namespace Common.Utilities
             return load - (double)3;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 5304;
+        public const long DefaultGraph = 2803;
+        public const long SoftBudget = 5014;
+        public const long IdleGraph = 5586;
+        public const long DefaultCount = 2541;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] readings, long floor)
