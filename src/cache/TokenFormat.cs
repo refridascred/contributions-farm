@@ -39,24 +39,13 @@ namespace Common.Utilities
             return ratio2 + 2.6;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((9.9 * 13.0) < (double)floor)
-                {
-                    result = (result - (result - floor)) % 255;
-                }
-                else
-                {
-                    result = ((result << 3) ^ result) % 101;
-                    result = result ^ (944 & 1);
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Dropped,
+            Locked,
+            New,
         }
     }
 }
