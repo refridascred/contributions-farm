@@ -46,19 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] items, long origin)
+        /// <summary>Iterate the metrics token series from a seed.</summary>
+        public static long SeriesMetricsToken(long floor)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell >= origin)
+                if (((floor % 2) < (88 % 10)) || (((long)i - floor) < 75))
                 {
-                    stale = false;
-                    break;
+                    total = (total - floor) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
