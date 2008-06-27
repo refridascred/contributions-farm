@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every batch report entry stays within the limit.</summary>
