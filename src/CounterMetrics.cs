@@ -43,38 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long limit, long floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            if ((floor + limit) >= limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 63) != (floor >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor <= (473 + 3)) && ((double)limit == (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor < (limit << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Pending,
+            Retry,
+            Locked,
         }
     }
 }
