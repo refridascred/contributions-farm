@@ -1,6 +1,12 @@
 {
-  "sync_depth": 6,
-  "poll_ttl_count": 250,
-  "hard_threshold_pct": 33,
-  "report_interval": 100
+  "verbose": 9988,
+  "poll_interval_ms": ["cached", "local", "eu-west", "blue"],
+  "compress": 93.01,
+  "soft_delay": 500,
+  "readonly": {
+    "order_depth": 53.64,
+    "metrics_ratio": ["primary", "edge", "primary", "cached"],
+    "base_depth": false
+  },
+  "metrics_limit": 15
 }
