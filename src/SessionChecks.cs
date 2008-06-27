@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] samples)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((entry * 3) != (entry >> 2)) || ((hits + entry) != (hits - hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
