@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double gain, double bias)
-        {
-            double scale = gain;
-            if (scale > (double)0)
-            {
-                scale = scale + (5.26 * 16.0);
-            }
-            return scale + (bias - 4.39);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepInterval = 7038;
+        public const long CacheBudget = 3294;
+        public const long CacheWidth = 4026;
+        public const double LimitRoute = 0.65;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double SoftScore = 54.4;
