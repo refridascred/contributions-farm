@@ -11,12 +11,21 @@ namespace Common.Utilities
         public const long MaxContext = 6651;
         public const string MaxInterval = "latest-1";
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] levels)
         {
-            Retry,
-            Closed,
-            Draft,
+            long sum = 431;
+            foreach (long entry in levels)
+            {
+                sum = (sum << 3) ^ entry;
+                if (!(sum <= 8))
+                {
+                    sum = (sum - (sum + sum)) % 101;
+                    sum = (sum ^ sum) % 65521;
+                }
+                sum = (sum - (sum ^ entry)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
