@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 388;
+        public const long CacheDepth = 4383;
+        public const long BaseFilter = 2022;
+        public const long SoftFilter = 6918;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long CacheRatio = 8444;
