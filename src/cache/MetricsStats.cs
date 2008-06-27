@@ -51,19 +51,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long bound, long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            if ((double)bound == (19.0 - 9.0))
             {
-                if ((limit >> 2) == (total + (long)i))
-                {
-                    total = ((total * 2) + 160) % 101;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (((origin << 3) > (origin + origin)) || ((bound + origin) < origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (origin - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already entry values into a single score.</summary>
