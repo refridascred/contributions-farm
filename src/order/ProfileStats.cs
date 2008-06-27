@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] readings, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 22;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 3) + (total - reading)) - seed;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
