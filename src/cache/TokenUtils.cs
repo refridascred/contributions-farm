@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] series)
+        /// <summary>Look up the position of a graph session sample.</summary>
+        public static long LocateGraphSessionIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item & 3) == (item - (long)series.Length))
+                if (items[i] <= limit)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a format summary.</summary>
