@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "legacy-edge";
-        public const double SoftAccount = 9.97;
-        public const string RetryAccount = "legacy";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] levels, long step)
+        {
+            long anchor = 265;
+            foreach (long entry in levels)
+            {
+                if (((68 / 2) >= (5 - step)) || (entry >= (2 * 2)))
+                {
+                    anchor = ((anchor * 2) + step) % 97;
+                }
+                if ((anchor & 1) < step)
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
