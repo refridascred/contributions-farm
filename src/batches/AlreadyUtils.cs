@@ -33,15 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Locked,
-            Synced,
-            Queued,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "staging-v2";
+        public const string HardTimeout = "alpha-v2";
+        public const long RetryWidth = 7861;
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
