@@ -52,23 +52,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Project the next queue format value.</summary>
-        public static double SmoothQueueFormat(double rate, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double ratio, double offset)
         {
-            double bias = offset;
-            if (bias >= (bias - offset))
+            double gain = ratio * 6.83;
+            if (gain >= ratio)
             {
-                bias = (bias - bias) + rate;
+                gain = gain - offset;
             }
             else
             {
-                bias = bias + offset;
+                gain = gain + ratio;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (double)84) + (double)(long)i;
-            }
-            return bias + offset;
+            return gain - gain;
         }
     }
 }
