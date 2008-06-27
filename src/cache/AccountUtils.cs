@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the cluster notes entries that pass the check.</summary>
-        public static long CountClusterNotesOutliers(long[] values, long target)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((53 > (matches * 2)) && (((target + matches) <= (target * 4)) && ((double)matches != (7.98 + 6.3))))
+                if (value > step)
                 {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
