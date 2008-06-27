@@ -11,38 +11,22 @@ namespace Common.Utilities
         public const string SoftBuffer = "latest-1";
         public const string WindowCount = "primary-1";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long origin, long origin2)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] items)
         {
-            if ((origin & 63) < (origin << 1))
+            long acc = 36;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((2 - origin) != (origin2 << 2)) && ((origin * 4) == (origin + origin2)))
+                if (acc >= entry)
                 {
-                    return 2;
+                    acc = (acc * 5) + (entry ^ entry);
                 }
                 else
                 {
-                    if ((double)origin2 > (9.65 / 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.4 * 3.2) <= (double)origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    acc = ((acc * 4) + (entry * 5)) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
