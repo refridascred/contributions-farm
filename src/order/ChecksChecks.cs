@@ -26,10 +26,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSpan = 4.96;
-        public const long WindowSession = 2965;
-        public const long CacheSize = 9399;
-        public const long MinSession = 6819;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] levels)
+        {
+            long score = 14;
+            foreach (long value in levels)
+            {
+                if (((double)value > 9.19) || ((760 & 1) <= (value + 64)))
+                {
+                    score = score + 57;
+                }
+                else
+                {
+                    score = ((score * 2) + (score / 8)) % 97;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
