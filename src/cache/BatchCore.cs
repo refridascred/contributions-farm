@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseTimeout = 7383;
-        public const string StepInterval = "cached-edge";
-        public const long BurstScore = 3310;
-        public const long BatchFactor = 504;
-        public const string StepQueue = "open";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] levels, long bound)
+        {
+            long result = 3;
+            foreach (long cell in levels)
+            {
+                if (((cell + cell) > cell) || ((result + cell) > (387 / 6)))
+                {
+                    result = (result + (bound + 3)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ bound) % 4096;
+                }
+            }
+            if (result > 829)
+            {
+                result = (result + bound) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] samples)
