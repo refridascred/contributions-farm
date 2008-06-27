@@ -13,17 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a payload editor sample.</summary>
-        public static long LookupPayloadEditorIndex(long[] items, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (items[i] >= bound)
+                if ((double)tally <= (double)5)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
