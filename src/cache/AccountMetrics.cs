@@ -65,18 +65,14 @@ namespace Common.Utilities
             return ratio + (double)344;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] readings)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((5.3 * 1.2) > (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Retry,
+            Draft,
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Measure how many schema checks samples are out of range.</summary>
