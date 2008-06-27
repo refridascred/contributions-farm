@@ -45,21 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Project the next editor channel value.</summary>
