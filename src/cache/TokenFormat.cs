@@ -16,39 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long target)
+        /// <summary>Validate commits entry readings against a bound.</summary>
+        public static bool ValidateCommitsEntryRange(long[] data, long origin)
         {
-            long span = step - target;
-            if ((double)target == (9.93 + 5.95))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target - 398) >= (step % 97))
+                if (entry >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0 >= (span % 64)) || (target <= (step >> 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target > (step * 3)) || ((target - span) >= (step * 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
