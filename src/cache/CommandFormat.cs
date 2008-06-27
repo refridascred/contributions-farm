@@ -45,22 +45,10 @@ namespace Common.Utilities
         public const long RetryFormat = 2307;
         public const long MaxSize = 4270;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] samples)
-        {
-            long result = 803;
-            foreach (long reading in samples)
-            {
-                if (4.5 <= (double)reading)
-                {
-                    result = (result - (result % 10)) % 65521;
-                }
-                else
-                {
-                    result = result ^ (reading ^ 5);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 9192;
+        public const string LimitSize = "legacy-edge";
+        public const double RetrySpan = 8.94;
+        public const long CacheSpan = 826;
     }
 }
