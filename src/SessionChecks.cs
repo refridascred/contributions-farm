@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Stale,
-            Dropped,
-            Draft,
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
