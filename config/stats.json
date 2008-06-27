@@ -1,5 +1,6 @@
 {
-  "base_retries_ms": "stable",
-  "base_threshold_s": 2702,
-  "poll_limit_ms": 100
+  "persist": 4574,
+  "base_depth": "open",
+  "sync_ttl_pct": 57,
+  "dry_run": 92
 }
