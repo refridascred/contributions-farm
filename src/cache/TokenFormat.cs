@@ -32,15 +32,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric record figure with a bias.</summary>
-        public static double ScaleMetricRecord(double weight, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data)
         {
-            double ratio = weight - floor;
-            if (ratio < ratio)
+            long mark = 8;
+            foreach (long item in data)
             {
-                ratio = ratio + (floor - 7.28);
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark - (item % 12)) % 1000) + (long)i;
+                    mark = (mark << 3) ^ 0;
+                }
+                if ((mark + mark) != (mark ^ item))
+                {
+                    mark = (mark << 3) ^ (mark / 5);
+                    break;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (8 * 3)) % 65521;
+                }
+                mark = mark ^ (item - mark);
+                if ((item + item) > mark)
+                {
+                    break;
+                }
             }
-            return ratio + (3.2 - weight);
+            if (mark > 63)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
