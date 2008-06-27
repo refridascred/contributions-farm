@@ -1,4 +1,5 @@
 # support settings
-strict: legacy
-enabled: 42.86
-idle_depth_pct: strict
+flush_retries_s: 85
+verbose: open
+audit: 500
+retry_threshold_s: 4327
