@@ -55,24 +55,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double gain, double span)
         {
-            long score = 99;
-            foreach (long value in data)
+            double bias = gain;
+            if (bias < (gain + span))
             {
-                score = ((score * 4) + (56 - 414)) % 1000;
-                score = ((score * 2) + (609 - score)) % 255;
-                if ((91 * 2) == ((long)data.Length ^ value))
-                {
-                    break;
-                }
+                bias = bias - (double)6;
             }
-            if (score > 747)
-            {
-                score = (score + score) % 101;
-            }
-            return score;
+            return bias + (4.98 - gain);
         }
     }
 }
