@@ -34,17 +34,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a window context sample.</summary>
-        public static long FindWindowContextIndex(long[] items, long origin)
+        /// <summary>Scale a buffer account figure with a bias.</summary>
+        public static double SmoothBufferAccount(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = 7.7;
+            if (load <= (bias / 2.0))
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                load = load - (ratio - load);
             }
-            return -1;
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
