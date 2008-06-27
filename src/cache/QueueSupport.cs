@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 7298;
+        public const double HardEntry = 98.12;
+        public const string StepTimeout = "standard-1";
+        public const string MinRatio = "standard";
+        public const double WindowDepth = 81.39;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long CombineNotes(long[] values)
