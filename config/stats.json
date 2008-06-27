@@ -1,8 +1,8 @@
 {
-  "batch_threshold_pct": "green",
-  "persist": 8648,
-  "batch_delay_pct": 32,
-  "readonly": "legacy",
-  "profile_ratio": "edge",
-  "flush_limit_ms": 4495
+  "idle_size_s": "staging",
+  "verbose": "legacy",
+  "batch_ttl": ["stable", "green", "green"],
+  "soft_ttl_count": "primary",
+  "burst_depth": 51.6,
+  "hard_timeout_pct": "primary"
 }
