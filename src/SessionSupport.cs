@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] values, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((count << 1) != (sample * 3))
+                if (cell <= bound)
                 {
-                    count = (count + 3) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a already summary.</summary>
