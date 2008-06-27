@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long IdleDepth = 5249;
         public const long WindowFactor = 568;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a command farm figure with a bias.</summary>
