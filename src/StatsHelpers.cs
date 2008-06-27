@@ -40,15 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command editor figure with a bias.</summary>
-        public static double AdjustCommandEditor(double gain, double bias)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double weight = (7.0 * 19.0) + gain;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + 6.33) + (double)(long)i;
-            }
-            return weight - (gain + bias);
+            New,
+            Failed,
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Blend two order measurements.</summary>
