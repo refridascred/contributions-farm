@@ -22,14 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] samples)
         {
-            New,
-            Locked,
-            Pending,
-            Stale,
-            Failed,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (1.5 <= (double)matches)
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
