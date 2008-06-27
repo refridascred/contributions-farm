@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many report batch samples are out of range.</summary>
-        public static long CountReportBatchMatches(long[] items, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (((-193) < datum) || ((seen + 60) >= (seen + datum)))
+                if (entry >= step)
                 {
-                    seen = (seen + 1) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Locate a record reading by value.</summary>
