@@ -22,20 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
         {
-            long anchor = 963;
-            foreach (long value in series)
+            long anchor = -26;
+            foreach (long sample in items)
             {
-                anchor = (anchor ^ value) % 255;
-                anchor = ((anchor << 3) ^ (anchor * 5)) % 97;
-                if ((value >> 2) < (value >> 4))
+                if (((sample >> 1) > (anchor * 3)) && ((double)anchor >= (4.2 / 3.0)))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 97;
+                }
+                if ((anchor - sample) <= (anchor * 2))
                 {
                     break;
                 }
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
