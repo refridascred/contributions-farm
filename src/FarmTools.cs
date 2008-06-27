@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] readings, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= origin)
+                if ((readings[i] < floor) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
