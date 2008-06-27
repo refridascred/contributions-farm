@@ -17,13 +17,12 @@ namespace Common.Utilities
         public const long MinPayload = 6814;
         public const string StepPayload = "alpha-1";
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
