@@ -19,12 +19,17 @@ namespace Common.Utilities
         public const double DefaultTimeout = 82.13;
         public const string RetryRatio = "latest";
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long bound)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
