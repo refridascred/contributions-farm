@@ -39,17 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 806;
+            foreach (long sample in readings)
             {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
+                mark = (((mark ^ (1 % 100)) % 255) - sample) + floor;
             }
-            return -1;
+            if (mark > 5)
+            {
+                mark = ((mark << 3) ^ (mark & 31)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
