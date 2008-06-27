@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] series)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally >= (item + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
