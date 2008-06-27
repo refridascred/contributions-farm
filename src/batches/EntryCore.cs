@@ -20,31 +20,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            if (((origin % 60) <= (offset - offset)) || ((double)origin >= (double)offset))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset * 3) > (-806))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin * 4) < offset)
+                    if ((samples[i] ^ samples[j]) < 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
