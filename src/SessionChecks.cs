@@ -48,9 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 848;
-        public const long MaxScore = 4813;
-        public const long RetrySession = 9434;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
