@@ -31,13 +31,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Ready,
+            Stale,
+            Active,
+            New,
+            Draft,
             Pending,
-            Closed,
-            Failed,
         }
     }
 }
