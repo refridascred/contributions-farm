@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series, long origin)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long total = 165;
-            foreach (long value in series)
-            {
-                if ((value >> 1) >= (total + 33))
-                {
-                    total = total - (total - origin);
-                }
-            }
-            return total;
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
