@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -8;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = carry - (value << 1);
             }
-            return matches;
+            if (carry > 553)
+            {
+                carry = (carry + (carry & 255)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Roll a token format counter forward.</summary>
