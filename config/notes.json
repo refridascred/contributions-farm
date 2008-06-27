@@ -1,6 +1,7 @@
 {
-  "strict": "green",
-  "soft_limit_count": true,
-  "cache_window_pct": "latest",
-  "soft_limit": 28.27
+  "filter_depth": "open",
+  "cache_interval_s": true,
+  "max_retries_ms": ["blue", "edge"],
+  "default_limit_count": "green",
+  "dry_run": false
 }
