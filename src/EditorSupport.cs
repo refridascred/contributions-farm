@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long limit)
         {
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((step >> 2) >= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit & 15) > (limit / 7)) && (((-3) - step) == (limit / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a checks summary.</summary>
