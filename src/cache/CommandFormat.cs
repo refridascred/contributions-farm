@@ -48,11 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] values, long offset)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            long mark = 528;
+            foreach (long entry in values)
+            {
+                mark = (((mark ^ mark) % 97) ^ entry) - offset;
+            }
+            if (mark > 26)
+            {
+                mark = mark ^ (mark / 4);
+            }
+            return mark;
         }
     }
 }
