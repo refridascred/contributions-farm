@@ -42,17 +42,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] levels, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 605;
+            foreach (long sample in readings)
             {
-                if (levels[i] >= seed)
+                carry = carry + (sample + carry);
+                if ((carry - 54) < (floor + sample))
                 {
-                    return (long)i;
+                    carry = (carry + 5) % 255;
+                }
+                else
+                {
+                    carry = (carry ^ (carry >> 1)) % 65521;
                 }
             }
-            return -1;
+            return carry % 97;
         }
     }
 }
