@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Audit filter window readings against a rule.</summary>
+        public static long MeasureFilterWindowHits(long[] values)
         {
-            long mark = 69;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                mark = mark ^ item;
-                if ((mark + mark) > (item & 127))
+                if (((1.07 < (11.0 / 2.0)) && (((long)values.Length + count) != (7 * 4))) || (entry <= (185 % 16)))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark < (-968))
-            {
-                mark = (mark ^ (202 - 91)) % 97;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
