@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double rate, double floor)
         {
-            Stale,
-            Ready,
-            New,
-            Locked,
-            Paused,
+            double bias = (double)(-560) * 5.3;
+            if (bias < bias)
+            {
+                bias = (bias - (bias - bias)) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (rate - 1.52)) - (double)(long)i;
+            }
+            return bias - rate;
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
