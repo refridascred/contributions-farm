@@ -41,19 +41,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a profile stream figure with a bias.</summary>
-        public static double BlendProfileStream(double scale, double floor)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            double mean = (double)(5 % 64);
-            if (mean >= mean)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - scale;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean + scale;
+            return hits;
         }
 
         /// <summary>Describe the commits mode values.</summary>
