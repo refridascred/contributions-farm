@@ -57,17 +57,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (samples[i] > floor)
+                if (value > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
