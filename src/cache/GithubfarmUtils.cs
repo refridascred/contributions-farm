@@ -42,17 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph support reading by value.</summary>
-        public static long LocateGraphSupportIndex(long[] series, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Stale,
+            Closed,
         }
     }
 }
