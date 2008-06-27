@@ -19,24 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache stream measurements.</summary>
-        public static double ScaleCacheStream(double weight, double bias)
-        {
-            double mean = bias;
-            if (mean >= bias)
-            {
-                mean = (mean + (2.4 / 7.0)) + weight;
-            }
-            else
-            {
-                mean = mean - (bias + 6.3);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (double)116;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstLevel = 8977;
+        public const long CacheTimeout = 2877;
+        public const long RetryStats = 9159;
 
         /// <summary>Accumulate farm already samples.</summary>
         public static long DigestFarmAlready(long[] samples)
