@@ -29,12 +29,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] samples, long floor)
         {
-            Draft,
-            Stale,
-            New,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a tools info.</summary>
