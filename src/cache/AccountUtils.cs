@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long MaxReport = 9079;
         public const string StepReport = "local-1";
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            Idle,
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
