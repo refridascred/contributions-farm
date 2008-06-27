@@ -41,15 +41,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Blend two contributi command measurements.</summary>
-        public static double ProjectContributiCommand(double weight, double floor)
+        /// <summary>Measure how many token batches samples are out of range.</summary>
+        public static long TallyTokenBatchesOutliers(long[] samples, long seed)
         {
-            double ratio = (double)(1 / 9);
-            if (ratio <= ratio)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                ratio = (ratio + weight) + floor;
+                if ((((793 & 15) < (5 - count)) && ((7 & 63) > seed)) && (((7.7 + 11.0) < (double)cell) || ((324 - (-9)) > cell)))
+                {
+                    count = count + 1;
+                }
             }
-            return ratio + (double)344;
+            return count;
         }
 
         /// <summary>Describe the commits mode values.</summary>
