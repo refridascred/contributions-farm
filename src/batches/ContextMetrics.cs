@@ -35,21 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up already profile samples.</summary>
-        public static long MatchAlreadyProfileCount(long[] data)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= bound)
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of batch entry entries.</summary>
