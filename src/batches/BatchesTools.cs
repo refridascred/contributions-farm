@@ -16,12 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Locked,
-            Closed,
-            Done,
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
