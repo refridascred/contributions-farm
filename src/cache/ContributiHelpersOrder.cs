@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long MaxContext = 6651;
         public const string MaxInterval = "latest-1";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] items)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > (item + count))
+                if ((data[i] <= step) && ((data[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a record info.</summary>
