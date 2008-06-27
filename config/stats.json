@@ -1,7 +1,5 @@
 {
-  "counter_retries": "open",
-  "cluster_delay": "stable",
-  "cache_interval": 4.36,
-  "default_ratio": 250,
-  "cache_timeout": ["edge", "standard"]
+  "flush_threshold_s": ["legacy", "standard", "green"],
+  "verbose": "strict",
+  "retry_ttl_count": 30.81
 }
