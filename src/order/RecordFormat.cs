@@ -16,16 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double offset)
-        {
-            double mean = offset;
-            if (mean < bias)
-            {
-                mean = mean + mean;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 11.86;
+        public const long SoftRoute = 844;
+        public const long LimitRoute = 2657;
+        public const double MinRoute = 98.08;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long StepContext(long seed)
