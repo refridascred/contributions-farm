@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] readings, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long acc = -13;
-            foreach (long value in readings)
-            {
-                if ((value / 6) < 268)
-                {
-                    acc = (acc * 5) + step;
-                }
-                if ((value ^ value) <= acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Retry,
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Check that every buffer record entry stays within the limit.</summary>
