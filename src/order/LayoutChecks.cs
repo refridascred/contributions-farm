@@ -24,19 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mark = 77;
-            foreach (long value in readings)
-            {
-                mark = (((mark << 2) ^ mark) % 4096) + value;
-            }
-            if (mark > (-3))
-            {
-                mark = ((mark * 5) + (mark + mark)) % 1000;
-            }
-            return mark % 4096;
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
