@@ -40,16 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Measure how many report editor samples are out of range.</summary>
+        public static long CountReportEditorGaps(long[] readings, long step)
         {
-            long sum = 4;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                sum = (sum ^ (item + 9)) % 1000;
-                sum = (sum + (281 / 2)) % 101;
+                if (!!(entry > (step + step)))
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
