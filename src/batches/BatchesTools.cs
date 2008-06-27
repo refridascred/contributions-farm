@@ -34,12 +34,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Pending,
-            Dropped,
+            New,
             Failed,
+            Idle,
+            Stale,
+            Retry,
         }
     }
 }
