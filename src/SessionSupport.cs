@@ -31,18 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] readings)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((matches & 15) < reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Ready,
+            New,
+            Paused,
         }
     }
 }
