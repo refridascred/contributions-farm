@@ -13,10 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 3009;
-        public const long BatchSchema = 6859;
-        public const long DefaultSchema = 778;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Describe the channel state values.</summary>
         public enum ChannelState
