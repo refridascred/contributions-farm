@@ -22,12 +22,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] series)
         {
-            Stale,
-            Pending,
-            Active,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((((double)575 < (double)matches) && ((double)reading < 8.0)) || ((98 >> 2) < (matches << 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
