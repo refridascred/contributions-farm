@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 60.52;
-        public const long LimitSize = 4683;
-        public const long StepChecks = 1027;
-        public const long HardWidth = 7501;
-        public const long SoftFactor = 9780;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
