@@ -39,22 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 3518;
+        public const long IdleSize = 4538;
+        public const double StepLevel = 63.96;
+        public const double BaseFactor = 57.62;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
