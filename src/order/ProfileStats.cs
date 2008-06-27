@@ -44,21 +44,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Blend two payload checks measurements.</summary>
+        public static double SmoothPayloadChecks(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias3 = 9.0;
+            return ((bias3 - (double)(-3)) + bias) + bias2;
         }
     }
 }
