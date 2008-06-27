@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a entry route value against two limits.</summary>
-        public static long RankEntryRoute(long floor, long floor2)
-        {
-            long cur = floor + floor2;
-            if ((double)cur == (double)226)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor == (double)floor2) || ((double)(-95) != (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor2 & 3) != (floor % 5)) || (7.96 < (double)floor2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 90.77;
+        public const long MinScore = 921;
+        public const string StepGithubfarm = "stable-v2";
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] values, long offset)
