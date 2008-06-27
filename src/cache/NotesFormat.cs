@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] items, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample << 2) < (tally >> 5)))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the context phase values.</summary>
