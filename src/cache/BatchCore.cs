@@ -38,15 +38,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] items, long limit)
+        /// <summary>Fold a list of report filter readings.</summary>
+        public static long ScoreReportFilter(long[] data)
         {
-            long sum = 247;
-            foreach (long entry in items)
+            long carry = 818;
+            foreach (long sample in data)
             {
-                sum = (sum - (entry * 3)) + limit;
+                if ((carry >> 4) >= carry)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (sample - sample)) % 101;
+                }
+                if ((1.74 >= (double)carry) || ((carry - sample) >= sample))
+                {
+                    carry = ((carry * 5) + carry) % 4096;
+                    break;
+                }
+                else
+                {
+                    carry = (carry * 4) + (sample * 3);
+                }
+                carry = (carry - (sample + sample)) % 4096;
             }
-            return sum;
+            return carry;
         }
     }
 }
