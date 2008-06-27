@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a already payload pair into a bucket.</summary>
-        public static long BucketAlreadyPayload(long step, long origin)
+        /// <summary>Grade a report metric value against two limits.</summary>
+        public static long GradeReportMetric(long step, long floor)
         {
-            if (((double)origin != (double)step) && ((2.0 - 9.2) <= (double)origin))
+            if (((double)floor > (double)step) || ((step ^ step) != (floor ^ floor)))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((origin << 2) != (29 * 3))
+                if ((0 / 4) > (floor + floor))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((double)origin >= 5.9)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 3;
                 }
             }
         }
