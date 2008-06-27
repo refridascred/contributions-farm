@@ -39,11 +39,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 2953;
         public const long HardFormat = 6008;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 9670;
-        public const long WindowLevel = 2162;
-        public const long BatchRatio = 1110;
-        public const long BaseInterval = 3356;
-        public const long SoftStats = 3192;
+        /// <summary>Project the next entry value.</summary>
+        public static double ProjectEntry(double gain, double bias)
+        {
+            double mean = (double)(577 / 5);
+            if (mean <= (bias * 9.55))
+            {
+                mean = (mean + 3.0) - gain;
+            }
+            return mean + (double)619;
+        }
     }
 }
