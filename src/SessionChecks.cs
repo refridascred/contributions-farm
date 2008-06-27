@@ -40,21 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Adjust a schema stats reading.</summary>
+        public static double AdjustSchemaStats(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (double)239;
+            if (mean < (span + mean))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - (span * 9.18)) - ratio;
             }
-            return hits;
+            return mean + (mean / 8.0);
         }
 
         /// <summary>Describe the route state values.</summary>
