@@ -48,11 +48,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public string Score { get; set; } = "";
-            public double Label { get; set; }
+            Stale,
+            Synced,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
