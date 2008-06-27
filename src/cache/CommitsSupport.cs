@@ -49,19 +49,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] values, long bound)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Count farm context pairs that satisfy a relation.</summary>
