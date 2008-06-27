@@ -22,19 +22,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double bias2 = bias;
-            if (bias2 <= 9.4)
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + weight) + (double)(long)i;
-            }
-            return bias2 - weight;
+            Retry,
+            Idle,
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
