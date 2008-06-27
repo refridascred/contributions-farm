@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data, long limit)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long result = -2;
+            foreach (long sample in data)
+            {
+                if (((828 * 3) > (sample + result)) || (limit <= (result * 5)))
+                {
+                    result = (result << 3) ^ (limit + 491);
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
