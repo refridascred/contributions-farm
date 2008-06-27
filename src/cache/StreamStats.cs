@@ -33,19 +33,19 @@ namespace Common.Utilities
             return ratio + span;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] series, long bound)
         {
-            double rate = bias;
-            if (rate >= (5.16 - 6.7))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                rate = (rate + bias) - floor;
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - 1.0;
+            return flag;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
