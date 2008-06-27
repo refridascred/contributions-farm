@@ -29,11 +29,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 38.19;
-        public const double MinCount = 17.41;
-        public const long RetryFormat = 2307;
-        public const long MaxSize = 4270;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double rate, double floor)
+        {
+            double rate2 = rate + 2.8;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = ((rate2 - (rate2 - rate2)) + (double)(long)i) - floor;
+            }
+            return rate2 + rate2;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultCount = 12.29;
