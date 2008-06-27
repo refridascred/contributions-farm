@@ -1,8 +1,6 @@
 {
-  "sync_depth_ms": 70.9,
-  "queue_size": 1566,
-  "max_size_s": 9832,
-  "strict": "staging",
-  "account_limit": 500,
-  "enabled": 1024
+  "burst_interval": 8025,
+  "cache_depth": 30,
+  "poll_timeout_count": [25, 205, 36, 366],
+  "persist": 96
 }
