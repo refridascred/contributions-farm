@@ -1,9 +1,6 @@
-id,count
-1,262
-2,552
-3,689
-4,499
-5,stable
-6,63.98
-7,96.54
-8,428
+id,token,count,label
+1,primary,500,757
+2,23.28,974,182
+3,589,213,standard
+4,blue,primary,770
+5,1.47,cached,741
