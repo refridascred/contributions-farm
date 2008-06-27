@@ -27,18 +27,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((2.73 + 2.0) >= (double)target)
-                {
-                    count = (count + 3) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 2609;
+        public const long IdleLayout = 180;
+        public const string LimitSize = "stable";
+        public const string HardLayout = "open-edge";
+        public const long DefaultSpan = 8099;
     }
 }
