@@ -29,19 +29,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a token format counter forward.</summary>
-        public static long StepTokenFormat(long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long score = 87;
+            foreach (long item in values)
             {
-                if ((target + target) != (4 ^ target))
+                if ((2.0 - 17.0) == (double)item)
                 {
-                    sum = (sum ^ 1) % 101;
+                    score = ((score * 5) + (9 + score)) % 255;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            if (score > 654)
+            {
+                score = (score - (score + score)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
