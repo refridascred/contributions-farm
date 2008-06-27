@@ -1,8 +1,12 @@
 {
-  "payload_ratio": 60,
-  "poll_limit": false,
-  "dry_run": "green",
-  "githubfarm_limit": 46.84,
-  "hard_timeout_ms": 32.03,
-  "default_depth_pct": "strict"
+  "hard_threshold": "staging",
+  "cluster_threshold": "green",
+  "retry_limit_pct": 10.25,
+  "batch_delay_count": true,
+  "audit": {
+    "hard_threshold": 7549,
+    "sync_ttl_ms": "open",
+    "burst_interval": [411, 158],
+    "default_threshold_s": 30
+  }
 }
