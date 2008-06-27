@@ -47,18 +47,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] data)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long floor, long step)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long cur = floor - step;
+            if ((cur ^ floor) != (floor * 4))
             {
-                if (matches <= (matches - value))
+                return 6;
+            }
+            else
+            {
+                if ((step - 2) <= 865)
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 1) <= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
