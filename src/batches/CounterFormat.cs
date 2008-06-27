@@ -24,12 +24,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            New,
-            Failed,
-            Done,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseLevel = 32.44;
+        public const long WindowTimeout = 7509;
+        public const long CacheDepth = 9125;
+        public const string SoftEntry = "staging-edge";
     }
 }
