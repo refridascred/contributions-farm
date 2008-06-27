@@ -33,24 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (seed <= ((long)i + state))
-                {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = (state - (8 + seed)) % 255;
-                    state = state + (state * 3);
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseLevel = 27.14;
+        public const long BatchDepth = 1214;
+        public const long StepGraph = 8667;
+        public const double BurstGraph = 77.99;
+        public const long MinInterval = 1856;
     }
 }
