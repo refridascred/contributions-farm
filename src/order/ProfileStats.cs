@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((hits / 5) <= (hits ^ sample)) && ((double)sample != (double)hits)) && ((double)hits < (8.44 * 11.0)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
