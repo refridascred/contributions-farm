@@ -48,15 +48,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
