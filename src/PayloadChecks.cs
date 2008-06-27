@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] levels, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = 5;
-            foreach (long reading in levels)
-            {
-                if ((bound - reading) >= reading)
-                {
-                    carry = (carry ^ (reading - bound)) % 65521;
-                }
-            }
-            if (carry < 448)
-            {
-                carry = (carry ^ (-212)) % 4096;
-            }
-            return carry % 1000;
+            Pending,
+            Ready,
+            Failed,
+            Draft,
         }
 
         /// <summary>Adjust a profile reading.</summary>
