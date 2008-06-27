@@ -1,4 +1,18 @@
 # support settings
-max_size: 9
-batch_size: 98
-enabled: false
+tools_threshold:
+  compress: 35.66
+  readonly:
+    poll_ratio_s: 27.29
+    warm_limit_pct: 96
+    dry_run: green
+    graph_depth: 9391
+  verbose:
+    counter_ratio: legacy
+    cluster_interval: 80.13
+    order_timeout: blue
+    burst_limit_count: 60
+burst_ratio: false
+readonly: 3774
+account_timeout: standard
+stats_limit: false
+payload_threshold: blue
