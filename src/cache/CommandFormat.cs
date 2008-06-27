@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                bool ok = (double)mix <= 4.17;
-                if (ok)
+                if (8.7 <= (double)target)
                 {
-                    mix = mix + (mix ^ mix);
-                    ok = (double)offset != (2.0 - 0.9);
+                    carry = ((carry * 5) + target) % 65521;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((8.8 - 13.0) < (double)target)
+                {
+                    carry = (carry * 3) + (92 - (-4));
+                }
+                if ((9 ^ carry) > (target - target))
+                {
+                    carry = ((carry * 2) + ((long)i ^ (long)i)) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Blend two record measurements.</summary>
