@@ -34,15 +34,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of stream channel readings.</summary>
-        public static long ScoreStreamChannel(long[] values, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] items, long bound)
         {
-            long acc = 9;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                acc = (((acc - (acc * 4)) % 4096) - cell) + limit;
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a checks summary.</summary>
