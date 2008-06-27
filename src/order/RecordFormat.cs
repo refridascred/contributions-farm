@@ -22,22 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double offset)
         {
-            long anchor = -26;
-            foreach (long sample in items)
+            double mean = offset;
+            if (mean < bias)
             {
-                if (((sample >> 1) > (anchor * 3)) && ((double)anchor >= (4.2 / 3.0)))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 97;
-                }
-                if ((anchor - sample) <= (anchor * 2))
-                {
-                    break;
-                }
+                mean = mean + mean;
             }
-            return anchor;
+            return mean + offset;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
