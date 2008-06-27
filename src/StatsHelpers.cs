@@ -45,26 +45,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mix = 3;
-            foreach (long datum in levels)
-            {
-                if ((mix - datum) <= (datum & 7))
-                {
-                    mix = (mix - ((-802) - mix)) % 255;
-                }
-                if (15 < (datum - mix))
-                {
-                    mix = (mix + datum) % 101;
-                }
-                if (((mix * 5) > datum) || ((mix << 1) < mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
