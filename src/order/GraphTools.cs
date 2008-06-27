@@ -12,18 +12,18 @@ namespace Common.Utilities
             return ((ratio - (ratio - ratio)) + rate) + floor;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] samples, long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] values, long origin)
         {
-            long sum = 4;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((cell + floor) >= (cell % 8)) && ((double)cell != (double)sum))
+                if (9.1 <= (double)hits)
                 {
-                    sum = (sum - (cell / 7)) % 4096;
+                    hits = ((hits + 1) + cell) + origin;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a entry entry.</summary>
