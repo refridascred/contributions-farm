@@ -34,17 +34,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] readings, long target)
+        /// <summary>Fold a list of stream channel readings.</summary>
+        public static long ScoreStreamChannel(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 9;
+            foreach (long cell in values)
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                acc = (((acc - (acc * 4)) % 4096) - cell) + limit;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a checks summary.</summary>
