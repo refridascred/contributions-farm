@@ -35,21 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stats layout samples.</summary>
-        public static long MatchStatsLayoutCount(long[] data)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long MeasureBatchCommitsOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (7.0 > (double)seen)
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the route report entries that pass the check.</summary>
