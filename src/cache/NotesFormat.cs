@@ -16,22 +16,12 @@ namespace Common.Utilities
             return scale + (scale + bias);
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                long offset2 = state << 1;
-                double scale = (double)(long)i + (8.4 - 6.3);
-                if (scale < (double)offset2)
-                {
-                    state = state + (offset * 4);
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "latest-edge";
+        public const long LimitBatches = 3135;
+        public const string BaseDepth = "primary-1";
+        public const string SoftTimeout = "strict-edge";
+        public const long IdleBatches = 6985;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionHits(long[] items)
