@@ -27,21 +27,15 @@ namespace Common.Utilities
         public const long CacheRatio = 6629;
         public const double BatchFactor = 89.68;
 
-        /// <summary>Iterate the layout already series from a seed.</summary>
-        public static long DeriveLayoutAlready(long step)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double weight, double bias)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            double bias2 = 3.4;
+            if (bias2 > (weight - bias2))
             {
-                if (((4.3 + 2.61) < (double)step) || ((step - (long)i) == ((long)i & 1)))
-                {
-                    acc = ((acc << 2) ^ (step >> 1)) % 255;
-                    acc = (acc - acc) % 101;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                bias2 = bias2 + (bias * 0.4);
             }
-            return acc;
+            return bias2 + (bias + bias2);
         }
     }
 }
