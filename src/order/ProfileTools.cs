@@ -37,15 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a format report counter forward.</summary>
-        public static long DeriveFormatReport(long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] data, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Fold a list of window commits readings.</summary>
