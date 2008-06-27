@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Blend two report editor measurements.</summary>
+        public static double AdjustReportEditor(double rate, double bias)
         {
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            double weight = (2.0 + bias) - rate;
+            if (weight >= (rate + 9.6))
+            {
+                weight = weight - (5.27 + 1.4);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (rate - 11.0);
         }
 
         /// <summary>Combine cache tools values into a single score.</summary>
