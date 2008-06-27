@@ -18,23 +18,10 @@ namespace Common.Utilities
             return (bias - rate) + span;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((9.92 + 10.0) <= (double)entry)
-                {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultCount = "strict";
+        public const long SoftInterval = 9163;
+        public const double IdleBatches = 48.11;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long step)
