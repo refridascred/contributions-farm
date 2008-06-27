@@ -19,17 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] series, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long offset, long offset2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset2 <= (offset % 100)) && (offset >= (offset2 + 526)))
             {
-                if ((series[i] >= seed) && ((series[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((offset ^ 5) > offset2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - offset) < (65 >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset2 < 43)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
