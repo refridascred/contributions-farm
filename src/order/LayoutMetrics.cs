@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long offset, long origin)
-        {
-            if (offset < (origin << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.5 * 10.0) <= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((5.44 * 9.7) > (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseTimeout = 7457;
+        public const double BatchGraph = 88.68;
+        public const double RetryDepth = 10.66;
 
         /// <summary>Derive the next order entry value from a seed.</summary>
         public static long RollOrderEntry(long seed)
