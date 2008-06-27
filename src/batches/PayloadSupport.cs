@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a window graph counter forward.</summary>
-        public static long SeriesWindowGraph(long limit)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)(long)i <= (double)6)
-                {
-                    anchor = (anchor ^ ((-56) % 16)) % 255;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (anchor ^ (6 + 2)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Idle,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
