@@ -50,10 +50,15 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 97.0;
-        public const string BurstRatio = "open-v2";
-        public const long DefaultRatio = 2517;
-        public const string CacheCount = "strict-edge";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values, long floor)
+        {
+            long result = 9;
+            foreach (long entry in values)
+            {
+                result = (((result - ((long)values.Length ^ result)) % 97) + entry) + floor;
+            }
+            return result;
+        }
     }
 }
