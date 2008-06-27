@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((6 << 2) > matches) && (((double)matches != (5.92 / 9.0)) && ((321 >> 5) < (matches << 3))))
+                if (tally >= origin)
                 {
-                    matches = (matches + 2) ^ entry;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
