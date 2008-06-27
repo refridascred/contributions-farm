@@ -1,11 +1,11 @@
 # Command notes
 
-Run the payload check before changing any token limits.
-A stream that stays idle for too long is moved to the batches list.
+A cluster that stays idle for too long is moved to the checks list.
+Each payload is validated before it reaches the graph queue.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review graph limits each release
-- Keep tools values small
-- Prefer notes defaults
-- Validate metrics input early
+- Document new entry fields
+- Keep batch values small
+- Validate record input early
