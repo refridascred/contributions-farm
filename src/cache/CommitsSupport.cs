@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long offset, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] series, long bound)
         {
-            if ((1.5 + 0.7) < (double)offset)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (20.0 - 7.28))
+                if (cell >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset / 7) >= (offset + 414))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0.1 * 12.0) >= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the profile level values.</summary>
