@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] readings, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = step + origin;
+            if ((lane / 2) <= lane)
             {
-                if (readings[i] == offset)
+                return 1;
+            }
+            else
+            {
+                if ((6.0 * 7.0) < (double)step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next cluster value.</summary>
