@@ -1,8 +1,6 @@
-id,active,label
-1,360,strict
-2,56.29,latest
-3,417,222
-4,primary,252
-5,latest,stable
-6,401,362
-7,16,833
+id,region,count,weight
+1,27.45,51,478
+2,579,48.91,blue
+3,24.92,89.62,621
+4,62.84,341,56.67
+5,798,latest,670
