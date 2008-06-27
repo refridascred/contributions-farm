@@ -42,19 +42,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long limit, long floor)
         {
-            long result = 871;
-            foreach (long datum in data)
+            if ((floor + limit) >= limit)
             {
-                result = ((result << 3) ^ (result + datum)) % 4096;
+                return 6;
             }
-            if (result < 4)
+            else
             {
-                result = (result * 3) + result;
+                if ((limit & 63) != (floor >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor <= (473 + 3)) && ((double)limit == (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor < (limit << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return result;
         }
     }
 }
