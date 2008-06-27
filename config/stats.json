@@ -1,6 +1,9 @@
 {
-  "persist": 4574,
-  "base_depth": "open",
-  "sync_ttl_pct": 57,
-  "dry_run": 92
+  "order_window": 3640,
+  "checks_threshold": 49,
+  "hard_window_count": {
+    "batch_ttl": 1248,
+    "batch_ttl_s": [215, 362, 253],
+    "cache_timeout_s": 19.6
+  }
 }
