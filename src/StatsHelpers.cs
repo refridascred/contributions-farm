@@ -27,13 +27,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Match up profile already samples.</summary>
+        public static long CompareProfileAlreadyCount(long[] levels)
         {
-            Idle,
-            Done,
-            Active,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a order notes value against two limits.</summary>
