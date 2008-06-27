@@ -38,18 +38,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] values)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen - (long)values.Length) < (datum & 15))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Retry,
         }
     }
 }
