@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] readings, long floor)
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a editor entry.</summary>
