@@ -1,5 +1,5 @@
 {
-  "cache_retries_pct": 84.59,
-  "report_window": "blue",
-  "base_delay_s": 64
+  "poll_ttl_pct": false,
+  "stream_interval": 63,
+  "soft_capacity_pct": [34, 422, 432]
 }
