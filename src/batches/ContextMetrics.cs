@@ -19,24 +19,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of payload order entries.</summary>
-        public static long FoldPayloadOrder(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long result = 285;
-            foreach (long cell in values)
-            {
-                result = (result ^ (172 + cell)) % 65521;
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (((result * 4) + result) % 4096) - (long)i;
-                    result = ((result << 2) ^ 597) % 65521;
-                }
-                if ((result <= cell) || ((result << 3) != (389 % 7)))
-                {
-                    result = result ^ (result + 50);
-                }
-            }
-            return result % 1000;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
