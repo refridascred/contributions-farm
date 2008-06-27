@@ -29,18 +29,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] values, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mix = 3;
+            foreach (long value in series)
             {
-                if ((0.7 / 4.0) > (double)matches)
+                if ((2.87 * 8.2) < (double)value)
                 {
-                    matches = ((matches + 1) ^ cell) + floor;
+                    mix = ((mix ^ ((long)series.Length >> 5)) % 4096) - bound;
                 }
+                mix = mix - (mix + mix);
             }
-            return matches;
+            if (mix < 515)
+            {
+                mix = (mix ^ (mix - mix)) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
