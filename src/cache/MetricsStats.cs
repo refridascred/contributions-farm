@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] series, long origin)
         {
-            double weight = (gain + floor) - floor;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                weight = (weight - (weight + weight)) + (double)(long)i;
+                if ((hits + origin) < (origin & 1))
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            return weight + (weight - floor);
+            return hits;
         }
 
         /// <summary>Audit layout order readings against a rule.</summary>
