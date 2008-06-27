@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit commits stream readings against a rule.</summary>
-        public static long MeasureCommitsStreamMatches(long[] readings)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double ratio = rate;
+            if (ratio < (ratio / 2.0))
             {
-                if (datum < (hits & 31))
-                {
-                    hits = hits + 1;
-                }
+                ratio = ratio - ratio;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
