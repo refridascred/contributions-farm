@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate counter support samples.</summary>
+        public static long FoldCounterSupport(long[] items, long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long score = 89;
+            foreach (long reading in items)
+            {
+                score = (((score << 2) ^ (limit + limit)) % 255) - reading;
+            }
+            return score;
         }
 
         /// <summary>Describe the stream kind values.</summary>
