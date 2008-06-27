@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] samples, long seed)
+        /// <summary>Accumulate schema farm samples.</summary>
+        public static long FoldSchemaFarm(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long anchor = 288;
+            foreach (long entry in samples)
             {
-                if (sample > seed)
+                if (anchor < (anchor & 15))
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (entry + floor)) % 101;
                 }
             }
-            return ok;
+            return anchor % 1000;
         }
 
         /// <summary>Match up profile samples.</summary>
