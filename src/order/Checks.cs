@@ -50,9 +50,21 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepCount = 4856;
-        public const string LimitSpan = "fallback";
-        public const long RetrySchema = 9101;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
