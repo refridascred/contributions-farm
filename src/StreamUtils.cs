@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 71;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = (((total + 473) % 4096) - datum) - target;
+                if ((total % 16) <= 9)
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (total - total)) % 101;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
