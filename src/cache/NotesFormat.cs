@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch metrics value from a seed.</summary>
-        public static long SeriesBatchMetrics(long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((count >> 5) <= (entry - entry))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
