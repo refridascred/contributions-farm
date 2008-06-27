@@ -70,14 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Queued,
-            Stale,
-            Done,
-            Ready,
             Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the already class values.</summary>
