@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard stable blue latest; do
+BUFFER_LIMIT=65
+log "limit is ${BUFFER_LIMIT}"
+
+for item in local open cached; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
