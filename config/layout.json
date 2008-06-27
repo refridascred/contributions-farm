@@ -1,7 +1,11 @@
 {
-  "retry_delay": 20.67,
-  "soft_interval_pct": 80,
-  "account_limit": true,
-  "verbose": "legacy",
-  "metrics_timeout": ["green", "local", "legacy", "primary"]
+  "command_ratio": [141, 398, 411],
+  "min_capacity_count": ["legacy", "staging", "edge"],
+  "flush_retries": {
+    "verbose": "local",
+    "soft_interval": "standard",
+    "command_interval": true,
+    "flush_threshold_s": "open",
+    "idle_ttl_pct": true
+  }
 }
