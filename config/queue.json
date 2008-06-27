@@ -1,7 +1,8 @@
 {
-  "farm_window": 30,
-  "min_retries_pct": "fallback",
-  "enabled": ["fallback", "fallback", "strict", "eu-west"],
-  "min_interval": "standard",
-  "default_ratio_ms": 5954
+  "poll_size": "blue",
+  "layout_ttl": [290, 316, 384],
+  "account_timeout": "cached",
+  "cache_delay_ms": "strict",
+  "counter_interval": "blue",
+  "compress": "legacy"
 }
