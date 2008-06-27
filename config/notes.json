@@ -1,20 +1,12 @@
 {
-  "batches_timeout": true,
-  "base_capacity": {
-    "poll_capacity_ms": 50,
-    "soft_delay_s": "blue",
-    "retry_interval": {
-      "enabled": 100,
-      "warm_retries": [11, 179, 52, 266],
-      "already_delay": "staging",
-      "sync_limit": 22.86,
-      "batch_threshold_pct": "green",
-      "batch_interval": "strict"
-    },
-    "metrics_retries": false
+  "githubfarm_ttl": {
+    "warm_timeout_pct": true,
+    "retry_threshold_ms": true,
+    "graph_timeout": 9.17
   },
-  "min_threshold": "latest",
-  "base_size": "legacy",
-  "base_delay_count": 500,
-  "verbose": "blue"
+  "cache_depth_ms": 250,
+  "persist": 1288,
+  "cache_timeout_ms": 100,
+  "queue_retries": 2613,
+  "sync_window_s": 9122
 }
