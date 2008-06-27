@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double scale, double offset)
         {
-            Queued,
-            Ready,
-            Stale,
-            New,
+            double load = scale;
+            if (load < (double)9)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (3.9 / 4.0)) - (double)(long)i;
+            }
+            return load - (offset - scale);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
