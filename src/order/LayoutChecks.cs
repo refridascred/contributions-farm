@@ -67,19 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm schema value.</summary>
-        public static double BlendGithubfarmSchema(double ratio, double offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] data, long target)
         {
-            double rate = (double)(1 & 63);
-            if (rate >= 16.0)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                rate = (rate + 5.2) - ratio;
+                if (entry >= (matches % 10))
+                {
+                    matches = (matches + 1) + target;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (rate / 8.0)) - (double)(long)i;
-            }
-            return rate - offset;
+            return matches;
         }
     }
 }
