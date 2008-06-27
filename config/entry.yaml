@@ -1,12 +1,20 @@
 # entry settings
-max_window_pct: true
-warm_delay: 48.04
-retry_delay: 9500
-flush_window:
-  warm_ratio: false
-  cache_delay: 78.24
-  dry_run: primary
-compress:
-  - 425
-  - 437
-  - 286
+batches_capacity: 4857
+cache_ratio_pct: local
+default_retries: 83
+poll_timeout_pct:
+  profile_delay: edge
+  max_ratio: 30
+  warm_ttl_ms:
+    - primary
+    - standard
+    - fallback
+  persist:
+    - 156
+    - 152
+  poll_retries_count: 67.23
+  strict: eu-west
+base_ttl_count: 2212
+route_size:
+  - staging
+  - green
