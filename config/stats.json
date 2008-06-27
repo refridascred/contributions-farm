@@ -1,5 +1,13 @@
 {
-  "max_retries_count": true,
-  "support_capacity": ["standard", "strict"],
-  "readonly": "legacy"
+  "entry_ttl": 9454,
+  "base_threshold": [42, 330, 438],
+  "payload_ttl": {
+    "flush_threshold_s": 66.99,
+    "enabled": "cached",
+    "retry_capacity": "stable",
+    "strict": false
+  },
+  "sync_delay_s": 12,
+  "dry_run": "staging",
+  "strict": "stable"
 }
