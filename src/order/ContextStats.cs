@@ -30,11 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinWidth = 8757;
-        public const long IdleSpan = 36;
-        public const long IdleDepth = 8073;
-        public const long DefaultSchema = 5795;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Active,
+            Synced,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Blend two schema measurements.</summary>
         public static double ProjectSchema(double ratio, double offset)
