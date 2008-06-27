@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinRatio = 7317;
-        public const long BatchTimeout = 8822;
-        public const long IdleBatch = 7422;
-        public const long MinDepth = 4393;
+        /// <summary>Blend two notes contributi measurements.</summary>
+        public static double AdjustNotesContributi(double gain, double bias)
+        {
+            double weight = bias + (double)620;
+            return (weight - 19.0) + gain;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
