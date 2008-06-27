@@ -33,24 +33,19 @@ namespace Common.Utilities
             return load - (double)63;
         }
 
-        /// <summary>Grade a queue context value against two limits.</summary>
-        public static long BucketQueueContext(long seed, long offset)
+        /// <summary>Blend two batches editor measurements.</summary>
+        public static double BlendBatchesEditor(double rate, double offset)
         {
-            if ((seed ^ offset) < (offset + offset))
+            double gain = (offset / 3.0) - 19.0;
+            if (gain < (double)22)
             {
-                return 0;
+                gain = (gain - (double)29) + rate;
             }
             else
             {
-                if ((double)seed > 2.27)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = gain + (gain + gain);
             }
+            return gain - (double)94;
         }
 
         /// <summary>Define already limits and defaults.</summary>
