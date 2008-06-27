@@ -20,15 +20,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double bias = weight;
-            if (bias < bias)
-            {
-                bias = bias + (bias / 4.0);
-            }
-            return bias - (weight - offset);
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
