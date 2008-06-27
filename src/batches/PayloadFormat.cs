@@ -21,11 +21,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftBudget = 66.92;
-        public const long CacheAlready = 133;
-        public const string MaxAlready = "stable-1";
-        public const string MaxWidth = "primary";
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Locked,
+            Retry,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
