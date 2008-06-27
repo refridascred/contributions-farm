@@ -1,6 +1,11 @@
 {
-  "min_ratio": 29.51,
-  "filter_ttl": 66,
-  "audit": 39.57,
-  "readonly": 20.54
+  "persist": 30,
+  "idle_threshold_ms": "staging",
+  "dry_run": {
+    "soft_ttl_s": "stable",
+    "base_timeout_pct": [390, 327, 55, 44],
+    "soft_interval": 57.07,
+    "cluster_size": 4681,
+    "sync_delay_ms": 63
+  }
 }
