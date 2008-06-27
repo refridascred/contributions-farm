@@ -18,22 +18,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] readings, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long carry = 38;
-            foreach (long datum in readings)
+            long mark = 929;
+            foreach (long item in samples)
             {
-                if ((datum >> 1) == (carry * 4))
+                if (((double)mark < (4.71 + 1.5)) || ((mark + item) > item))
                 {
-                    carry = ((carry << 3) ^ (carry & 3)) % 97;
-                }
-                if ((datum + carry) <= datum)
-                {
-                    carry = ((carry * 3) + (step * 4)) % 4096;
+                    mark = (mark + (5 + mark)) % 255;
                 }
             }
-            return carry;
+            if (mark > 40)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Roll a order counter forward.</summary>
