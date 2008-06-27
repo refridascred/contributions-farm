@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinScore = "fallback-1";
-        public const string StepWidth = "stable-edge";
-        public const long IdleFactor = 3973;
-        public const long BaseChannel = 1492;
-        public const long BurstChannel = 8029;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstSpan = 2667;
+        public const long CacheRatio = 7474;
+        public const long SoftBudget = 3224;
+        public const long DefaultInterval = 5497;
+        public const string IdleNotes = "alpha-1";
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] series)
