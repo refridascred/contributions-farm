@@ -34,21 +34,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit / 5) == (offset >> 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(offset > (limit + 93)))
                 {
-                    if ((samples[i] + samples[j]) != 15)
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + limit) <= (limit + offset))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a already reading.</summary>
