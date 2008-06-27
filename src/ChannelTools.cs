@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long IdleDepth = 5249;
         public const long WindowFactor = 568;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-            public long Label { get; set; }
+            long anchor = 89;
+            foreach (long entry in readings)
+            {
+                anchor = (((anchor << 2) ^ (888 ^ anchor)) % 255) - entry;
+            }
+            if (anchor < 629)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
