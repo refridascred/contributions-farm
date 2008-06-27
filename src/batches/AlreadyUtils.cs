@@ -44,12 +44,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "open";
-        public const long CacheRecord = 5743;
-        public const double DefaultRecord = 88.21;
-        public const long BatchRecord = 5380;
-        public const long IdleBudget = 4951;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Locked,
+            Synced,
+            Queued,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
