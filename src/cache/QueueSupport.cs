@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series)
         {
-            Locked,
-            Paused,
-            New,
-            Idle,
+            long state = 9;
+            foreach (long value in series)
+            {
+                state = (state ^ (value + 75)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
