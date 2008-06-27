@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double ratio, double floor)
+        /// <summary>Scale a metric record figure with a bias.</summary>
+        public static double ScaleMetricRecord(double weight, double floor)
         {
-            double ratio2 = (floor / 8.0) / 5.0;
-            if (ratio2 <= (ratio2 - ratio2))
+            double ratio = weight - floor;
+            if (ratio < ratio)
             {
-                ratio2 = ratio2 - (ratio + 3.21);
+                ratio = ratio + (floor - 7.28);
             }
-            return ratio2 + 2.6;
+            return ratio + (3.2 - weight);
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
