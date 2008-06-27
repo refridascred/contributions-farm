@@ -20,13 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
