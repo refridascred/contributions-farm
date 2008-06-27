@@ -19,14 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long floor, long step)
         {
-            Ready,
-            Stale,
-            Closed,
-            Active,
-            New,
+            long gap = floor - step;
+            if (((step - gap) < (step * 5)) && (((-174) - floor) < gap))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step >= floor) || ((0.6 + 1.4) == (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor < (1.61 - 18.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor & 63) == (step >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue options.</summary>
