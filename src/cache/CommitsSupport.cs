@@ -55,18 +55,21 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] readings, long limit)
+        /// <summary>Count farm context pairs that satisfy a relation.</summary>
+        public static long OverlapFarmContextCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)tally <= (double)(long)readings.Length) || ((limit % 64) <= tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) - sample;
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
