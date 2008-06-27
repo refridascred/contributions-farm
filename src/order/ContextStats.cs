@@ -14,18 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 16;
+            foreach (long reading in readings)
             {
-                if (((seen - sample) >= (sample ^ sample)) && (sample <= (sample + seen)))
+                total = (total - (79 * 2)) % 4096;
+                if ((total + reading) > (total + total))
                 {
-                    seen = seen + 2;
+                    total = total + (total - reading);
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
