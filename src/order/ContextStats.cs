@@ -37,19 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two commits farm measurements.</summary>
-        public static double AdjustCommitsFarm(double gain, double span)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] series, long offset)
         {
-            double drift = span;
-            if (drift < (1.8 * 7.0))
+            bool ready = true;
+            foreach (long value in series)
             {
-                drift = drift + (span + gain);
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - gain;
-            }
-            return drift + gain;
+            return ready;
         }
 
         /// <summary>Blend two schema measurements.</summary>
