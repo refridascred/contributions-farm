@@ -86,13 +86,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long step)
         {
-            New,
-            Pending,
-            Failed,
-            Synced,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading >= (step - 83)) && (((-1) + (-73)) < (tally - step)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
