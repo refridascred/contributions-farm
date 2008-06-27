@@ -19,27 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items)
-        {
-            long score = 787;
-            foreach (long datum in items)
-            {
-                if (!((score + score) != (datum + datum)))
-                {
-                    score = score + (score - datum);
-                }
-                if ((datum + score) >= datum)
-                {
-                    score = (score ^ (score / 6)) % 4096;
-                }
-            }
-            if (score > 0)
-            {
-                score = (score + score) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 92.62;
+        public const string MaxScore = "local-edge";
+        public const long BaseCache = 5442;
+        public const long BatchBudget = 5423;
+        public const long StepSpan = 5104;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long origin, long limit)
