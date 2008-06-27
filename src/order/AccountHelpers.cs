@@ -28,18 +28,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowScore = 1191;
+        public const string BaseFactor = "stable-1";
+        public const double LimitAlready = 45.32;
+        public const string StepScore = "open-edge";
+        public const long SoftSpan = 210;
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long CompareToolsCount(long[] samples)
