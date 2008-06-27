@@ -26,23 +26,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] values)
         {
-            long carry = 648;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                carry = ((carry - 540) % 255) - bound;
-                if ((item & 31) < ((-1) - carry))
+                if ((matches * 5) < (2 * 3))
                 {
-                    carry = (carry ^ 69) % 4096;
+                    matches = (matches + 1) ^ item;
                 }
                 else
                 {
-                    carry = ((carry * 3) + (carry & 255)) % 97;
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
