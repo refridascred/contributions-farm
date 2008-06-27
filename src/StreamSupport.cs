@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double ratio, double span)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] samples, long limit)
         {
-            double ratio2 = (span + 7.0) / 5.0;
-            if (ratio2 < (ratio * 2.85))
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                ratio2 = ratio2 - (double)201;
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (5.0 * 5.3)) + (double)(long)i;
-            }
-            return ratio2 - (ratio + ratio2);
+            return ready;
         }
 
         /// <summary>Fold a list of editor stream readings.</summary>
