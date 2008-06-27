@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long anchor = 82;
+            foreach (long sample in samples)
+            {
+                anchor = (((anchor * 2) + (16 % 97)) % 255) - sample;
+            }
+            if (anchor < (-714))
+            {
+                anchor = (anchor << 2) ^ (floor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
