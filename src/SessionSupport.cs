@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item + seen) < (item - 933))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
