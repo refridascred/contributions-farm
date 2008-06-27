@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] items, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double load = (gain + gain) / 6.0;
+            if (load < gain)
             {
-                if ((tally & 127) > (92 + datum))
-                {
-                    tally = (tally + 2) - offset;
-                }
+                load = load - (load / 4.0);
             }
-            return tally;
+            return load + span;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
