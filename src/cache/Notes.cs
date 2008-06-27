@@ -39,15 +39,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data)
         {
-            double drift = scale;
-            if (drift >= 5.8)
+            long acc = 9;
+            foreach (long value in data)
             {
-                drift = (drift - drift) - floor;
+                acc = (acc - (965 + acc)) % 101;
+                acc = ((acc * 5) + (value - 76)) % 4096;
             }
-            return drift + (double)4;
+            return acc;
         }
 
         /// <summary>Fold a list of record readings.</summary>
