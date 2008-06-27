@@ -40,22 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] series, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long origin, long bound)
         {
-            long sum = -17;
-            foreach (long item in series)
+            if ((double)bound == (13.0 - 12.0))
             {
-                if (item >= sum)
+                return 1;
+            }
+            else
+            {
+                if (!((origin & 127) <= bound))
                 {
-                    sum = ((sum << 2) ^ (target >> 4)) % 4096;
+                    return 3;
                 }
-                if (((990 / 7) == (sum + target)) || ((target ^ target) != (target + item)))
+                else
                 {
-                    break;
+                    if ((bound - 644) >= (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin < (6.0 * 8.9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
