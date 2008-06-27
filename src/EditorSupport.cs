@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long floor, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            if ((limit + floor) != (floor >> 4))
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit - floor) != (3 << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit > 639)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor > (1.5 - 2.6))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a checks summary.</summary>
