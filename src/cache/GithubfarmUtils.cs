@@ -53,9 +53,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxWidth = 89.96;
-        public const double WindowLayout = 72.56;
-        public const long DefaultLevel = 1185;
+        /// <summary>Fold a list of tools payload readings.</summary>
+        public static long ScoreToolsPayload(long[] samples)
+        {
+            long result = 15;
+            foreach (long item in samples)
+            {
+                result = (result + result) + item;
+            }
+            if (result < 9)
+            {
+                result = (result << 2) ^ 4;
+            }
+            return result;
+        }
     }
 }
