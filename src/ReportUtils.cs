@@ -25,24 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload support input into a small class.</summary>
-        public static long RankPayloadSupport(long target, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] series, long step)
         {
-            if ((8.3 - 6.5) != (double)target)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((target % 7) != ((-206) + 33)))
+                if (series[i] == step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine route values into a single score.</summary>
