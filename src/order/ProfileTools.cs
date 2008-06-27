@@ -42,10 +42,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 5292;
-        public const string StepScore = "strict-v2";
-        public const string WindowDepth = "standard";
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Active,
+            New,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long DigestCluster(long[] levels, long seed)
