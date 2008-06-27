@@ -33,11 +33,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftSize = 3497;
-        public const double BurstTimeout = 39.44;
-        public const double IdleToken = 36.32;
-        public const long MinToken = 88;
-        public const long SoftTimeout = 1963;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] series)
+        {
+            long mark = 86;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length % 8) >= (reading ^ reading))
+                {
+                    mark = (mark + (68 / 7)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 101;
+                }
+            }
+            return mark;
+        }
     }
 }
