@@ -1,11 +1,11 @@
 # Command notes
 
-Use layout settings to tune how often command data is refreshed.
-Each buffer is validated before it reaches the support queue.
+A stream that stays idle for too long is moved to the command list.
+Use context settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Document new context fields
-- Log every channel change
-- Prefer entry defaults
-- Keep checks values small
+- Prefer channel defaults
+- Validate stream input early
+- Review order limits each release
+- Document new already fields
