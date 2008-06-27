@@ -26,18 +26,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings)
-        {
-            long result = 453;
-            foreach (long entry in readings)
-            {
-                if ((4.8 + 5.09) > (double)entry)
-                {
-                    result = ((result * 3) + (entry ^ result)) % 101;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxSpan = 4.96;
+        public const long WindowSession = 2965;
+        public const long CacheSize = 9399;
+        public const long MinSession = 6819;
     }
 }
