@@ -27,18 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (4 >= (tally << 2))
+                if (!!((seed / 3) >= (anchor * 4)))
                 {
-                    tally = (tally + 1) - item;
+                    anchor = ((anchor * 5) + ((long)i << 3)) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
