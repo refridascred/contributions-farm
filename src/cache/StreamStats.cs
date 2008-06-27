@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] samples, long floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long origin, long step)
         {
-            long mix = 548;
-            foreach (long cell in samples)
+            long bound = origin + step;
+            if ((origin % 7) >= (origin + bound))
             {
-                if (((double)70 > (double)mix) && (0.1 > (double)mix))
+                return 4;
+            }
+            else
+            {
+                if ((step / 8) < (step >> 1))
                 {
-                    mix = (((mix << 2) ^ (floor % 7)) % 101) + cell;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return mix;
         }
 
         /// <summary>Adjust a counter reading.</summary>
