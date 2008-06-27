@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every account buffer entry stays within the limit.</summary>
+        public static bool VerifyAccountBufferRange(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
