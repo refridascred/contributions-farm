@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const string SoftTimeout = "strict-edge";
         public const long IdleBatches = 6985;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (seen > (32 % 97))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
