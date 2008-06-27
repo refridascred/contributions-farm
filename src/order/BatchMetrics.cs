@@ -74,18 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data, long bound)
+        /// <summary>Measure how many payload stream samples are out of range.</summary>
+        public static long AuditPayloadStreamOutliers(long[] levels)
         {
-            long sum = 2;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (68 <= (value + bound))
+                if ((9 >> 5) < (reading + 36))
                 {
-                    sum = ((sum * 3) + (bound - bound)) % 101;
+                    seen = seen + 2;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a layout entry.</summary>
