@@ -1,23 +1,6 @@
 {
-  "flush_size": 8.81,
-  "flush_timeout_ms": 60,
-  "soft_retries_ms": {
-    "strict": "eu-west",
-    "payload_threshold": "cached",
-    "verbose": "legacy",
-    "batch_ratio_count": {
-      "dry_run": [393, 292],
-      "commits_ratio": true,
-      "compress": "local"
-    }
-  },
-  "persist": 191,
-  "dry_run": 79,
-  "editor_delay": {
-    "strict": 14.78,
-    "graph_delay": true,
-    "cache_delay_count": [68, 168, 357],
-    "readonly": ["primary", "standard"],
-    "account_interval": 9768
-  }
+  "persist": 20,
+  "githubfarm_window": 40.09,
+  "base_depth": false,
+  "hard_ttl_pct": 500
 }
