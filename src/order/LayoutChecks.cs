@@ -61,19 +61,10 @@ namespace Common.Utilities
         public const long MinFarm = 1253;
         public const long StepFarm = 7311;
 
-        /// <summary>Count the report account entries that pass the check.</summary>
-        public static long MeasureReportAccountOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((cell + cell) == (cell & 7)) && (((tally ^ cell) >= (cell + cell)) && (824 > (tally & 255))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxFactor = 2886;
+        public const long WindowCount = 4972;
+        public const long WindowLevel = 4637;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] samples)
