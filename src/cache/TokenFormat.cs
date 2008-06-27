@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Done,
-            Closed,
             Active,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
