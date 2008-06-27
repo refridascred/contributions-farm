@@ -31,19 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 5353;
+        public const double BatchBuffer = 38.29;
+        public const long IdleRatio = 1205;
+        public const long BaseRatio = 3922;
+        public const long MaxBuffer = 4530;
     }
 }
