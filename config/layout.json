@@ -1,10 +1,8 @@
 {
-  "default_window": "fallback",
-  "idle_depth_ms": {
-    "sync_threshold_ms": 9565,
-    "persist": [335, 169, 187],
-    "min_limit_pct": [157, 432, 55],
-    "support_delay": ["local", "fallback", "local", "stable"]
-  },
-  "default_depth": 94
+  "warm_limit": false,
+  "soft_timeout_pct": "standard",
+  "session_limit": 21.55,
+  "min_retries_ms": "strict",
+  "cache_ttl_count": "strict",
+  "schema_retries": 44.79
 }
