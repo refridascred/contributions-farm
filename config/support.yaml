@@ -1,16 +1,10 @@
 # support settings
-hard_depth: strict
-warm_interval_ms:
-  - 8
-  - 42
-order_retries: 58.41
-sync_ttl:
-  verbose: 82
-  idle_capacity_ms: 1024
-  idle_threshold_ms: 77.73
-  retry_depth_s: 100
-  max_timeout: 100
-flush_capacity:
-  - open
-  - primary
-  - strict
+flush_ttl_pct: 97.28
+graph_depth: stable
+command_capacity: standard
+cache_ratio:
+  - green
+  - latest
+  - cached
+  - standard
+max_depth_s: stable
