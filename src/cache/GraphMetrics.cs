@@ -33,18 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] data)
+        /// <summary>Project the next cache contributi value.</summary>
+        public static double AdjustCacheContributi(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double scale = weight;
+            if (scale <= (weight * 8.0))
             {
-                if (((double)hits >= 10.0) || ((hits + 3) < (hits % 12)))
-                {
-                    hits = (hits + 3) + sample;
-                }
+                scale = scale + (double)6;
             }
-            return hits;
+            return scale - bias;
         }
 
         /// <summary>Audit layout checks readings against a rule.</summary>
