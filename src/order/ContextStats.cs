@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] items)
         {
-            Dropped,
-            Ready,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (4.6 < (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
