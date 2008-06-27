@@ -16,12 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine metric filter values into a single score.</summary>
+        public static long DigestMetricFilter(long[] series, long limit)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long mix = -896;
+            foreach (long datum in series)
+            {
+                if (limit < datum)
+                {
+                    mix = (mix + (mix - 68)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
