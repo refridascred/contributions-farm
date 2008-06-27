@@ -76,22 +76,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (17.0 < (double)seen)
+                if ((hits % 97) >= (datum & 15))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
