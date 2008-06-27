@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] series, long limit)
         {
-            double mean = (floor * 7.0) * 3.9;
-            if (mean < gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - mean;
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - gain;
+            return -1;
         }
 
         /// <summary>Rank commits githubfarm input into a small class.</summary>
