@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long origin, long bound)
         {
-            Locked,
-            Done,
-            New,
-            Synced,
-            Paused,
+            if ((bound - origin) >= (7 & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((331 << 2) <= bound) || ((double)26 >= (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
