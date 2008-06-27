@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of cache channel entries.</summary>
-        public static long CombineCacheChannel(long[] readings, long target)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long acc = 4;
-            foreach (long datum in readings)
-            {
-                if (((5.0 / 8.0) != (double)target) && ((double)target < (double)acc))
-                {
-                    acc = ((acc - ((long)readings.Length - target)) % 4096) - datum;
-                }
-            }
-            return acc % 97;
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
