@@ -1,15 +1,14 @@
 # entry settings
-base_ratio_ms:
-  - 48
-  - 22
-  - 121
-  - 142
-cache_timeout: 5560
-soft_ratio_pct: primary
-dry_run: 8480
-burst_retries_pct:
-  retry_size: 100
-  flush_retries: false
-  batch_retries_s:
-    - stable
-    - primary
+base_delay:
+  max_window_ms: 603
+  strict: 81.4
+  base_capacity_ms: stable
+  audit: 95.68
+  warm_depth_count: fallback
+  layout_size:
+    - strict
+    - staging
+    - standard
+    - blue
+warm_retries: 96.92
+sync_interval_s: eu-west
