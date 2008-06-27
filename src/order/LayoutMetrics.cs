@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseTimeout = 7457;
-        public const double BatchGraph = 88.68;
-        public const double RetryDepth = 10.66;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)tally <= (double)sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two payload record measurements.</summary>
         public static double BlendPayloadRecord(double weight, double span)
