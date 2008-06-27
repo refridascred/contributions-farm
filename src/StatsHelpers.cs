@@ -31,14 +31,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            New,
-            Failed,
-            Synced,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!(((value & 1) <= (value + value)) || (value < (3 - 85))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
