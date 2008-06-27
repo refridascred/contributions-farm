@@ -27,27 +27,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels, long step)
+        /// <summary>Rank metrics order input into a small class.</summary>
+        public static long GradeMetricsOrder(long origin, long origin2)
         {
-            long state = 962;
-            foreach (long entry in levels)
+            long span = origin + origin2;
+            if (!(span > (origin + origin2)))
             {
-                for (int i = 0; i < 3; i++)
+                return 1;
+            }
+            else
+            {
+                if (8.37 < (double)span)
                 {
-                    state = (((state * 4) + (state % 12)) % 65521) - (long)i;
+                    return 2;
                 }
-                if ((80 - entry) != (step >> 1))
+                else
                 {
-                    state = (state + step) % 101;
-                    continue;
-                }
-                if ((step * 3) <= state)
-                {
-                    state = (state ^ (step / 9)) % 255;
+                    return 6;
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
