@@ -48,15 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double gain, double offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long seed)
         {
-            double load = (double)3;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load - (double)(long)i) + gain) + offset;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return load - 2.5;
+            return -1;
         }
     }
 }
