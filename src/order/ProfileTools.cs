@@ -26,19 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long limit)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double scale, double bias)
         {
-            bool found = true;
-            foreach (long cell in items)
+            double load = (double)43;
+            if (load <= (double)17)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + load) + scale;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias - load)) - (double)(long)i;
+            }
+            return load + 1.73;
         }
 
         /// <summary>Hold a metrics summary.</summary>
