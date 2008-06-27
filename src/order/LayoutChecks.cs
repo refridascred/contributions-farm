@@ -56,11 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double scale, double bias)
         {
-            public bool Mode { get; set; }
-            public double Size { get; set; }
+            double rate = 6.3;
+            if (rate > scale)
+            {
+                rate = (rate + rate) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (7.6 - 4.26);
         }
     }
 }
