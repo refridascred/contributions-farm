@@ -1,6 +1,20 @@
 {
-  "dry_run": 60,
-  "poll_interval": "fallback",
-  "verbose": 78,
-  "persist": "fallback"
+  "farm_interval": true,
+  "sync_ttl_pct": {
+    "githubfarm_ttl": 38.09,
+    "format_window": 74.69,
+    "default_timeout": false,
+    "idle_limit_ms": {
+      "layout_interval": 3665,
+      "persist": "latest",
+      "checks_ratio": [50, 115],
+      "cache_window": ["cached", "cached"],
+      "strict": 5055
+    },
+    "dry_run": "cached"
+  },
+  "batch_size_pct": false,
+  "soft_depth_ms": 10.88,
+  "hard_ttl_s": 41.27,
+  "account_capacity": ["legacy", "strict", "latest"]
 }
