@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (925 > (tally / 4))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first route buffer entry that matches the target.</summary>
