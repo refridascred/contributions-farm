@@ -47,17 +47,21 @@ namespace Common.Utilities
         public const string WindowDepth = "primary";
         public const long LimitFormat = 2834;
 
-        /// <summary>Find the first filter contributi entry that matches the target.</summary>
-        public static long LookupFilterContributiIndex(long[] series, long origin)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
