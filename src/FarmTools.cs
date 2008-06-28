@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (!(tally > (tally + tally)))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 5184;
+        public const string BaseRoute = "latest-edge";
+        public const long RetryCount = 9063;
 
         /// <summary>Hold a metrics record.</summary>
         public sealed class MetricsRecord
