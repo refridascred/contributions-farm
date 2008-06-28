@@ -25,23 +25,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long step, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            if (1 > (46 + seed))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = mix ^ ((long)i2 - offset);
-                }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    mix = ((mix * 4) + offset) + (long)i3;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (!((6.68 / 7.0) == (double)seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
