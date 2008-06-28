@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data, long step)
+        /// <summary>Accumulate contributi token samples.</summary>
+        public static long FoldContributiToken(long[] series, long target)
         {
-            long score = 584;
-            foreach (long sample in data)
+            long score = 1;
+            foreach (long reading in series)
             {
-                score = score - sample;
-                score = ((score * 5) + (step * 3)) % 65521;
-                if (score >= (score + score))
+                for (int i = 0; i < 10; i++)
                 {
-                    score = score + ((-23) / 2);
+                    score = score + (long)i;
+                }
+                if ((59 + target) < (reading + reading))
+                {
+                    score = score ^ (target & 1);
+                }
+                else
+                {
+                    score = ((score * 3) + score) % 255;
                 }
             }
-            if (score > 141)
+            if (score > 8)
             {
-                score = (score ^ (852 + 847)) % 1000;
+                score = score - 366;
             }
             return score;
         }
