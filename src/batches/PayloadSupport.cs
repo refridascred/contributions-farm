@@ -26,10 +26,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultInterval = "primary-edge";
-        public const string MaxCount = "alpha-1";
-        public const long IdleCommand = 4851;
-        public const string CacheSpan = "open-v2";
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
