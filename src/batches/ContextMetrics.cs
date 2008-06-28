@@ -40,19 +40,27 @@ namespace Common.Utilities
         public const long WindowBatches = 7201;
         public const string WindowSize = "open-v2";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] values, long step)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long state = 6;
+            foreach (long datum in items)
             {
-                if (sample > step)
+                if ((state - datum) < (state >> 2))
                 {
-                    found = false;
+                    state = ((state << 3) ^ (datum + state)) % 65521;
+                    state = (state ^ (datum / 5)) % 255;
+                }
+                if ((double)state >= (double)datum)
+                {
+                    state = state - (state % 60);
+                }
+                if (!((9.1 * 4.0) <= (double)state))
+                {
                     break;
                 }
             }
-            return found;
+            return state % 4096;
         }
 
         /// <summary>Combine window values into a single score.</summary>
