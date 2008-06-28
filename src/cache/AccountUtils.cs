@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleBudget = "alpha-1";
-        public const string IdleRoute = "open";
-        public const long WindowDepth = 1977;
-        public const long WindowSpan = 3152;
-        public const long MinSpan = 7777;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] series)
+        {
+            long sum = 80;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    sum = (((sum * 4) + sum) % 101) ^ (long)i;
+                }
+                if (((item + item) < (sum + sum)) && (5 >= item))
+                {
+                    sum = (sum - 77) % 101;
+                }
+                sum = (sum * 4) + (item * 2);
+            }
+            if (sum < 365)
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountGaps(long[] readings)
