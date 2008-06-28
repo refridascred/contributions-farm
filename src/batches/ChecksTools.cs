@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (sample >= (sample & 63))
+                if (sample < limit)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the schema cache entries that pass the check.</summary>
