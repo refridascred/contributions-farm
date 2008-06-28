@@ -48,22 +48,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit command filter readings against a rule.</summary>
-        public static long TallyCommandFilterMatches(long[] values, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (5.2 * 3.02))
-                {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Roll a window counter forward.</summary>
