@@ -49,10 +49,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 242;
-        public const string MinOrder = "alpha";
-        public const string BatchOrder = "alpha";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long target)
+        {
+            long carry = 25;
+            foreach (long reading in levels)
+            {
+                if ((5.2 * 17.0) > (double)carry)
+                {
+                    carry = (((carry << 2) ^ (12 + reading)) % 101) + target;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsLimits(long[] samples, long seed)
