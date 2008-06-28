@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultFactor = 8861;
-        public const long IdleStream = 2939;
-        public const string CacheSpan = "staging-edge";
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Locate a queue farm reading by value.</summary>
         public static long SeekQueueFarmIndex(long[] values, long target)
