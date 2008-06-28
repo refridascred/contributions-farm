@@ -59,15 +59,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit commits entry readings against a rule.</summary>
-        public static long TallyCommitsEntryHits(long[] readings)
+        /// <summary>Measure how many farm metric samples are out of range.</summary>
+        public static long AuditFarmMetricOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long entry in readings)
+            foreach (long cell in samples)
             {
-                if ((tally + tally) == (entry & 63))
+                if ((tally + tally) < (cell & 3))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
