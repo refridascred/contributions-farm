@@ -27,10 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheCount = "primary";
-        public const long MinQueue = 7282;
-        public const long BaseQueue = 4092;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double scale, double offset)
+        {
+            double weight = offset;
+            if (weight > offset)
+            {
+                weight = weight - offset;
+            }
+            else
+            {
+                weight = weight - (double)(-9);
+            }
+            return weight - scale;
+        }
 
         /// <summary>Accumulate graph buffer samples.</summary>
         public static long WeighGraphBuffer(long[] values, long offset)
