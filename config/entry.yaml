@@ -1,10 +1,5 @@
 # entry settings
-record_window: 3187
-enabled: false
-poll_size_pct: 69
-retry_delay_count:
-  - staging
-  - eu-west
-  - staging
-soft_ratio_count: 500
-min_timeout_s: fallback
+cache_limit: 98
+report_interval: 49.08
+soft_depth_pct: false
+poll_ttl: 9767
