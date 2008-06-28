@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const long WindowCount = 9983;
         public const string RetryFormat = "legacy";
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long offset)
         {
-            Done,
-            Paused,
-            Retry,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Project the next filter value.</summary>
