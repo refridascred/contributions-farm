@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] samples, long limit)
+        /// <summary>Find the first context payload entry that matches the target.</summary>
+        public static long SeekContextPayloadIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits << 3) < (limit + limit))
+                if (samples[i] > limit)
                 {
-                    hits = (hits + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
