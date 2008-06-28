@@ -1,15 +1,11 @@
 # Command notes
 
-The context module keeps token values in sync with the profile cache.
-The context helpers are pure functions, so they are safe to call from any thread.
-The commits report groups every route by stream.
-
-Keep context and profile names short and lowercase.
-The format report groups every format by counter.
+Keep layout and githubfarm names short and lowercase.
+When a githubfarm fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review schema limits each release
-- Validate report input early
-- Log every tools change
-- Keep checks values small
+- Document new counter fields
+- Log every context change
+- Validate entry input early
+- Keep window values small
