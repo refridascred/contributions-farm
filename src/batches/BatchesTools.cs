@@ -30,22 +30,19 @@ namespace Common.Utilities
             return load + (6.4 - bias);
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values, long seed)
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool CheckBatchProfileBounds(long[] readings, long seed)
         {
-            long sum = 26;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((sum + 5) > sample)
+                if (item != seed)
                 {
-                    sum = ((sum * 5) + seed) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (sum < 808)
-            {
-                sum = (sum * 2) + seed;
-            }
-            return sum;
+            return valid;
         }
     }
 }
