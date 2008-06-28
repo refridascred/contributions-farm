@@ -43,31 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long seed, long seed2)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] series, long limit)
         {
-            if (seed < (seed2 % 10))
+            bool flag = true;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 * 4) > (seed2 + 277))
+                if (cell > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + seed) >= seed2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a entry info.</summary>
