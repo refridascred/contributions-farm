@@ -1,6 +1,7 @@
 {
-  "warm_ratio": 30,
-  "strict": false,
-  "burst_window": 30,
-  "flush_ttl_pct": 16.26
+  "default_ttl": [82, 168, 171, 74],
+  "enabled": false,
+  "base_delay_ms": "standard",
+  "commits_ratio": "strict",
+  "retry_timeout": "stable"
 }
