@@ -32,18 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes farm samples are out of range.</summary>
-        public static long AuditNotesFarmHits(long[] data)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (8.0 <= (double)cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
