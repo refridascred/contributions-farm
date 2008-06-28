@@ -1,7 +1,7 @@
-id,state,rank,active
-1,green,449,2.72
-2,22,green,local
-3,46.17,624,423
-4,44.1,50.68,fallback
-5,39.27,468,56
-6,strict,534,local
+id,weight,region
+1,405,81.93
+2,local,82.01
+3,537,632
+4,51.26,485
+5,strict,cached
+6,3.0,legacy
