@@ -19,22 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long target)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((double)1 == (double)carry)
+                if (datum != target)
                 {
-                    carry = (carry ^ sample) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 56)
-            {
-                carry = carry + 6;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
