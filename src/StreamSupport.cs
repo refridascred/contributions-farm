@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLevel = 62.87;
+        public const double StepLayout = 7.65;
+        public const double RetryInterval = 75.86;
+        public const long MinLayout = 1947;
 
         /// <summary>Combine account contributi values into a single score.</summary>
         public static long CombineAccountContributi(long[] samples, long origin)
