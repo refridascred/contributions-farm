@@ -1,10 +1,5 @@
 {
-  "flush_ttl_s": {
-    "retry_ttl_count": 100,
-    "warm_threshold_s": false,
-    "verbose": "cached"
-  },
-  "sync_ttl_s": 1519,
-  "buffer_delay": "fallback",
-  "sync_retries_s": 45.48
+  "session_window": "open",
+  "strict": 7817,
+  "idle_ratio_count": 4482
 }
