@@ -38,19 +38,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches << 3) > value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 806;
+        public const long LimitOrder = 8081;
+        public const double MinOrder = 9.34;
+        public const long LimitDepth = 3448;
 
         /// <summary>Accumulate stats counter samples.</summary>
         public static long ScoreStatsCounter(long[] readings, long step)
