@@ -57,30 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] values, long offset)
+        /// <summary>Adjust a buffer already reading.</summary>
+        public static double AdjustBufferAlready(double weight, double floor)
         {
-            long anchor = -4;
-            foreach (long entry in values)
+            double load = floor;
+            if (load < floor)
             {
-                if ((double)offset == (2.93 - 14.0))
-                {
-                    anchor = ((anchor - (29 - offset)) % 1000) ^ entry;
-                }
-                if ((double)anchor > 18.0)
-                {
-                    anchor = (anchor ^ (offset << 1)) % 97;
-                }
-                if (((7.1 * 10.0) > (double)anchor) || ((527 + anchor) == (1 - anchor)))
-                {
-                    anchor = ((anchor << 2) ^ (938 * 2)) % 255;
-                }
+                load = (load - (load - load)) + weight;
             }
-            if (anchor < 26)
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor + (anchor << 3)) % 101;
+                load = (load - (floor * 6.0)) + (double)(long)i;
             }
-            return anchor;
+            return load - 7.49;
         }
     }
 }
