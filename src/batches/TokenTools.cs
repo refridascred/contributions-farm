@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] values, long floor)
+        /// <summary>Match up profile tools samples.</summary>
+        public static long CompareProfileToolsCount(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Hold a payload stats.</summary>
