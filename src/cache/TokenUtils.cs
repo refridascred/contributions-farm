@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long bound)
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long TallyTokenCommitsOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (value >= bound)
+                if ((double)cell > 3.9)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the graph level values.</summary>
