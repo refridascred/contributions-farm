@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] data)
         {
-            Draft,
-            Failed,
-            Ready,
-            Closed,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (tally >= (tally / 3))
+                {
+                    tally = (tally + 1) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
