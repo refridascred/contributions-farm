@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            Synced,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
