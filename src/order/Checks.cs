@@ -28,37 +28,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank already order input into a small class.</summary>
-        public static long RankAlreadyOrder(long limit, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long seed)
         {
-            long edge = limit ^ seed;
-            if ((edge * 4) <= (564 + edge))
+            long span = floor - seed;
+            if (((span - span) < (floor & 15)) || ((7.5 * 20.0) >= (double)span))
             {
                 return 6;
             }
             else
             {
-                if ((limit ^ 91) == (edge - limit))
+                if ((seed + floor) < (seed - floor))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((limit - limit) == (seed % 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit * 4) < (limit >> 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
