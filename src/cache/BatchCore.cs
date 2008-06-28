@@ -24,11 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] readings, long limit)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a support commits counter forward.</summary>
