@@ -33,17 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a queue cluster reading by value.</summary>
-        public static long FindQueueClusterIndex(long[] data, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
