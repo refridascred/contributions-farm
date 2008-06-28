@@ -23,22 +23,34 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the editor record entries that pass the check.</summary>
-        public static long TallyEditorRecordMatches(long[] readings, long offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = 12;
+            foreach (long reading in data)
             {
-                if (matches <= 2)
+                if ((reading + reading) <= reading)
                 {
-                    matches = ((matches + 1) ^ reading) - offset;
+                    sum = ((sum * 4) + (2 << 1)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = sum ^ (sum + seed);
+                }
+                if (reading >= (seed % 97))
+                {
+                    sum = (sum - (76 + reading)) % 4096;
+                }
+                if ((double)seed != (0.9 - 0.48))
+                {
+                    sum = (sum ^ (reading + reading)) % 101;
                 }
             }
-            return matches;
+            if (sum > 7)
+            {
+                sum = sum + seed;
+            }
+            return sum;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
