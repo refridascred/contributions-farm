@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Match up entry queue samples.</summary>
+        public static long OverlapEntryQueueCount(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next stream value.</summary>
