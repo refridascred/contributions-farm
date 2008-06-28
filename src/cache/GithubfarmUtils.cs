@@ -19,16 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Roll a farm tools counter forward.</summary>
+        public static long IterateFarmTools(long seed)
         {
-            long carry = limit;
+            long anchor = seed;
             for (int i = 0; i < 8; i++)
             {
-                carry = carry + 311;
-                carry = ((carry * 5) + (long)i) % 101;
+                anchor = (anchor << 3) ^ (seed * 5);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
