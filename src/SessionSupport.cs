@@ -23,15 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double gain, double offset)
+        /// <summary>Combine commits token values into a single score.</summary>
+        public static long WeighCommitsToken(long[] levels, long seed)
         {
-            double scale = (5.1 * 0.41) - 7.9;
-            if (scale >= 7.0)
+            long mark = 306;
+            foreach (long sample in levels)
             {
-                scale = (scale + offset) + gain;
+                if (((6.99 + 6.84) > (double)sample) && ((double)seed <= (9.0 - 16.0)))
+                {
+                    mark = ((mark << 3) ^ (sample + sample)) % 255;
+                }
             }
-            return scale + (offset + 7.22);
+            return mark;
         }
     }
 }
