@@ -37,15 +37,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a stats batches figure with a bias.</summary>
-        public static double ProjectStatsBatches(double rate, double floor)
+        /// <summary>Measure how many editor metrics samples are out of range.</summary>
+        public static long AuditEditorMetricsGaps(long[] data)
         {
-            double gain = rate;
-            if (gain >= floor)
+            long count = 0;
+            foreach (long sample in data)
             {
-                gain = gain - (floor + rate);
+                if ((sample << 2) <= 193)
+                {
+                    count = count + 1;
+                }
             }
-            return gain - gain;
+            return count;
         }
 
         /// <summary>Project the next editor channel value.</summary>
