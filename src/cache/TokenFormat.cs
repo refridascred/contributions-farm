@@ -33,17 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 6111;
+        public const long StepRatio = 4272;
+        public const long BurstCounter = 247;
+        public const double BatchSize = 46.53;
+        public const string BaseCounter = "open-1";
     }
 }
