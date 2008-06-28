@@ -40,14 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] readings, long offset)
         {
-            Draft,
-            Stale,
-            Closed,
-            Dropped,
-            Active,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (tally <= (tally + cell))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
