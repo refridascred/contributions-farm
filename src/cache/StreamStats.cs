@@ -39,11 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleFactor = 4158;
-        public const long BurstSpan = 4558;
-        public const long LimitLevel = 6949;
-        public const long CacheRatio = 9512;
-        public const string SoftLevel = "legacy-v2";
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
