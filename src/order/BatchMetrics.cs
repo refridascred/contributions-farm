@@ -66,12 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Done,
-            Draft,
-            Dropped,
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
