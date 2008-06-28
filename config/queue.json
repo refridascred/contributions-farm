@@ -1,5 +1,6 @@
 {
-  "idle_timeout_s": 82.26,
-  "sync_threshold": false,
-  "flush_depth_ms": false
+  "verbose": 9.16,
+  "max_interval_count": 89.81,
+  "default_interval_s": false,
+  "compress": 76
 }
