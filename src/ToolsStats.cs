@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "cached-edge";
-        public const string RetryQueue = "open";
-        public const long HardQueue = 8852;
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
