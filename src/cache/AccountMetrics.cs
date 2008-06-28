@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const string BaseInterval = "open-edge";
         public const long StepContext = 6703;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] items)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Done,
+            long result = 0;
+            foreach (long cell in items)
+            {
+                result = result - (cell ^ cell);
+            }
+            return result;
         }
 
         /// <summary>Fold a list of route readings.</summary>
