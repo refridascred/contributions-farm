@@ -68,23 +68,14 @@ namespace Common.Utilities
         public const double BatchRatio = 61.51;
         public const string WindowRecord = "legacy-v2";
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long step)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mark = 43;
-            foreach (long reading in samples)
-            {
-                if ((mark >> 3) >= (mark + reading))
-                {
-                    mark = mark + (step + mark);
-                }
-                mark = ((mark * 2) + (mark + step)) % 97;
-            }
-            if (mark > 2)
-            {
-                mark = (mark ^ (step ^ mark)) % 4096;
-            }
-            return mark;
+            Active,
+            Queued,
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
