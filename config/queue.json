@@ -1,14 +1,5 @@
 {
-  "verbose": {
-    "min_capacity_count": 6932,
-    "audit": {
-      "audit": "eu-west",
-      "stats_ratio": "blue",
-      "enabled": "fallback",
-      "flush_ratio_count": true
-    },
-    "default_window_ms": 24
-  },
-  "max_timeout_ms": 98,
-  "editor_threshold": "staging"
+  "soft_retries_pct": false,
+  "min_ttl_ms": "stable",
+  "min_depth_ms": [43, 322, 267, 455]
 }
