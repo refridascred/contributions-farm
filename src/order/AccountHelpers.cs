@@ -42,18 +42,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] values)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value * 4) > (seen + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
