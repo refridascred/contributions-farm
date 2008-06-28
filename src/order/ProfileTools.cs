@@ -40,13 +40,13 @@ namespace Common.Utilities
         public const long IdleLevel = 1488;
         public const string BurstScore = "stable";
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Failed,
-            Paused,
-            Dropped,
+            Closed,
+            Retry,
             Idle,
+            Paused,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
