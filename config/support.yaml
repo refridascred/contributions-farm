@@ -1,10 +1,39 @@
 # support settings
-flush_window_ms: 7495
-layout_limit: primary
-sync_retries_count: 29.65
-session_capacity: legacy
-dry_run: strict
-editor_depth:
-  - 69
-  - 7
-  - 382
+default_capacity: 250
+notes_capacity: stable
+record_ratio:
+  strict:
+    cache_limit_s: cached
+    already_timeout: 1024
+    metrics_ratio: false
+    persist:
+      - primary
+      - cached
+      - legacy
+      - blue
+  hard_capacity_ms: 70.17
+  metric_threshold:
+    dry_run: true
+    burst_delay_pct: primary
+    metrics_depth: 100
+    base_ttl:
+      - 49
+      - 161
+      - 377
+      - 307
+    verbose: 100
+  stream_threshold: 45.29
+  burst_interval:
+    - 217
+    - 284
+    - 195
+    - 63
+cache_ratio:
+  verbose: local
+  idle_capacity: false
+  idle_size_ms: latest
+  graph_interval: 7.15
+  max_window_s:
+    - 159
+    - 452
+    - 243
