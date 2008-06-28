@@ -37,23 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long state = 1;
-            foreach (long sample in data)
-            {
-                if (!(state <= (sample + sample)))
-                {
-                    state = state ^ (state ^ (-90));
-                }
-                state = ((state << 3) ^ (sample << 2)) % 97;
-                if (5.9 >= (double)state)
-                {
-                    state = state ^ (5 << 3);
-                }
-            }
-            return state;
+            Draft,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
