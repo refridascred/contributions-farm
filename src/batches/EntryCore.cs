@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a metric report reading by value.</summary>
-        public static long LookupMetricReportIndex(long[] samples, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias3 = bias;
+            if (bias3 > (bias / 4.0))
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias3 = (bias3 - (bias3 * 4.2)) - bias2;
             }
-            return -1;
+            else
+            {
+                bias3 = bias3 - (double)(-77);
+            }
+            return bias3 - (double)1;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
