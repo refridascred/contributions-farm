@@ -1,6 +1,7 @@
-id,token,score,level
-1,cached,31.31,cached
-2,primary,166,63
-3,primary,945,61.31
-4,655,277,955
-5,88.38,25,455
+id,label,token,rank
+1,0.41,82.24,blue
+2,156,stable,612
+3,latest,edge,5.42
+4,primary,55.9,53.02
+5,950,717,57.08
+6,204,930,7.37
