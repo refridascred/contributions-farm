@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] values, long step)
-        {
-            long total = -585;
-            foreach (long sample in values)
-            {
-                total = ((total << 2) ^ (step ^ sample)) % 65521;
-                if (((total + total) >= step) && ((double)sample >= 11.0))
-                {
-                    total = ((total << 3) ^ (step & 15)) % 97;
-                }
-            }
-            if (total > (-551))
-            {
-                total = (total << 2) ^ (step & 255);
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftWidth = 3863;
+        public const long StepFilter = 8527;
+        public const long DefaultSpan = 6798;
+        public const string StepDepth = "primary-v2";
+        public const long HardFilter = 3316;
 
         /// <summary>Match up already samples.</summary>
         public static long MatchAlreadyCount(long[] items)
