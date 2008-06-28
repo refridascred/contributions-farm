@@ -29,19 +29,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout already readings against a bound.</summary>
-        public static bool GuardLayoutAlreadyLimits(long[] levels, long offset)
+        /// <summary>Accumulate already entry samples.</summary>
+        public static long WeighAlreadyEntry(long[] data)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long score = 841;
+            foreach (long datum in data)
             {
-                if (item != offset)
+                if ((datum & 127) <= ((-293) >> 2))
                 {
-                    stale = false;
-                    break;
+                    score = score ^ (datum % 64);
+                }
+                if ((double)datum != (0.64 / 6.0))
+                {
+                    score = (score ^ score) % 101;
                 }
             }
-            return stale;
+            if (score < 757)
+            {
+                score = score + score;
+            }
+            return score;
         }
     }
 }
