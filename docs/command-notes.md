@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-A metric that stays idle for too long is moved to the batches list.
+When a command fails, the layout handler retries a few times before giving up.
+The record module keeps checks values in sync with the batch cache.
+
+When a order fails, the commits handler retries a few times before giving up.
+Each support is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep metric values small
-- Log every format change
-- Document new queue fields
+- Log every support change
+- Document new record fields
+- Review farm limits each release
