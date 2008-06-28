@@ -37,19 +37,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] readings, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (datum > floor)
+                if (entry > offset)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Adjust a session reading.</summary>
