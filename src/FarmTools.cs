@@ -38,11 +38,19 @@ namespace Common.Utilities
             return ((bias + bias) + scale) + offset;
         }
 
-        /// <summary>Scale a checks editor figure with a bias.</summary>
-        public static double SmoothChecksEditor(double ratio, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] samples, long limit)
         {
-            double load = offset;
-            return (load - load) + ratio;
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
