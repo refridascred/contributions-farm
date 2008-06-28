@@ -30,19 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool CheckBatchProfileBounds(long[] readings, long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            bool valid = true;
+            long carry = 7;
             foreach (long item in readings)
             {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (((carry * 3) + (carry - 6)) % 1000) - item;
             }
-            return valid;
+            if (carry > (-68))
+            {
+                carry = (carry * 5) + (carry * 5);
+            }
+            return carry;
         }
     }
 }
