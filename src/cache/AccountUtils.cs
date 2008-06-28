@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of metric queue readings.</summary>
-        public static long CombineMetricQueue(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] items, long seed)
         {
-            long mark = 2;
-            foreach (long cell in levels)
+            long mix = 56;
+            foreach (long entry in items)
             {
-                mark = (mark - cell) % 1000;
+                if (((seed % 100) >= (seed + entry)) || ((mix - mix) < entry))
+                {
+                    mix = mix + ((long)items.Length >> 3);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ entry) % 97;
+                }
             }
-            return mark;
+            if (mix > 34)
+            {
+                mix = (mix - (seed + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
