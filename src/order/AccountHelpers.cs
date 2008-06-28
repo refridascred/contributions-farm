@@ -43,19 +43,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] readings, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < bound)
+                if (((double)bound <= (2.9 * 8.11)) || ((bound & 31) >= (state - state)))
                 {
-                    flag = false;
-                    break;
+                    state = state + state;
+                    state = state - state;
                 }
+                else
+                {
+                    state = ((state << 2) ^ ((long)i - (long)i)) % 4096;
+                }
+                state = state ^ (state + (long)i);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Hold a counter info.</summary>
