@@ -47,26 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema contributi values into a single score.</summary>
-        public static long FoldSchemaContributi(long[] items)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long mix = 97;
-            foreach (long reading in items)
-            {
-                if ((5.01 / 5.0) == (double)mix)
-                {
-                    mix = mix ^ (reading ^ reading);
-                }
-                if ((reading + reading) > (mix ^ reading))
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = (mix ^ (mix / 5)) % 65521;
-                }
-            }
-            return mix;
+            Ready,
+            New,
+            Done,
+            Stale,
+            Draft,
         }
     }
 }
