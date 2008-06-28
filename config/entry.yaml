@@ -1,5 +1,5 @@
 # entry settings
-command_timeout: false
-profile_limit: 1996
-idle_delay: 90
-channel_ttl: false
+audit: open
+burst_window_count: 6221
+channel_retries: false
+persist: 23.53
