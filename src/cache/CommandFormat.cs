@@ -23,12 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 5752;
-        public const string MaxRatio = "latest-1";
-        public const string MaxScore = "legacy";
-        public const long BaseSpan = 908;
-        public const double LimitCounter = 94.14;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state << 2) ^ (state << 3);
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheHits(long[] samples)
