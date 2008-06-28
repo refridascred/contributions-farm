@@ -53,32 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format queue samples.</summary>
-        public static long WeighFormatQueue(long[] readings, long target)
-        {
-            long sum = 87;
-            foreach (long sample in readings)
-            {
-                if ((target - target) != (sample / 6))
-                {
-                    sum = ((sum * 4) + (target >> 4)) % 1000;
-                    break;
-                }
-                if (((double)sample >= 8.7) && ((13.0 / 5.0) != (double)sum))
-                {
-                    sum = sum + 590;
-                }
-                if (target < (sample + 2))
-                {
-                    break;
-                }
-            }
-            if (sum > 860)
-            {
-                sum = (sum + (target * 4)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryInterval = 6693;
+        public const string SoftBuffer = "alpha-1";
+        public const long BurstRatio = 1420;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinRatio = 8888;
