@@ -14,19 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next window metric value from a seed.</summary>
-        public static long DeriveWindowMetric(long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] levels, long target)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((target + target) <= (target << 1))
+                if (((matches % 7) == (sample ^ matches)) && !((target << 3) > (matches + target)))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
