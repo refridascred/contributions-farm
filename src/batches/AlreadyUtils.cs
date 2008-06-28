@@ -36,24 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long step, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            if (((11.0 - 2.79) > (double)step) && ((step >> 4) <= step))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step % 5) != (bound & 15))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Paused,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
