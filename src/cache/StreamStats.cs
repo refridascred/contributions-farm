@@ -34,14 +34,11 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Ready,
-            Stale,
-            Done,
-            Locked,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 94.83;
+        public const double SoftRoute = 32.58;
+        public const long CacheRatio = 8850;
+        public const long CacheRoute = 1665;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsRange(long[] values, long seed)
