@@ -26,11 +26,15 @@ namespace Common.Utilities
         public const double IdleBatches = 17.9;
         public const double BurstLevel = 48.09;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstBudget = 1744;
-        public const long RetryQueue = 8278;
-        public const string MinCount = "alpha";
-        public const double WindowQueue = 78.61;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Done,
+            Ready,
+            Dropped,
+            Idle,
+            New,
+        }
 
         /// <summary>Blend two batch measurements.</summary>
         public static double BlendBatch(double rate, double bias)
