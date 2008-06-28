@@ -54,13 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
+            Ready,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
