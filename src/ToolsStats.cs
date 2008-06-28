@@ -54,28 +54,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] samples)
-        {
-            long acc = 372;
-            foreach (long datum in samples)
-            {
-                acc = ((acc << 3) ^ datum) % 255;
-                if (acc < (datum * 5))
-                {
-                    acc = acc - (acc + datum);
-                }
-                else
-                {
-                    acc = ((acc * 5) + 950) % 1000;
-                }
-            }
-            if (acc < 785)
-            {
-                acc = (acc * 2) + (acc - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowBudget = 96.98;
+        public const long SoftBudget = 1197;
+        public const long MaxRecord = 6519;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double scale, double floor)
