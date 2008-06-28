@@ -28,31 +28,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long step, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            if ((896 ^ step) >= 42)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + step) > (860 >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (1.67 >= (double)floor)
+                    if ((series[i] ^ series[j]) == 8)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
