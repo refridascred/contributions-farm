@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double offset)
         {
-            long acc = 500;
-            foreach (long cell in items)
+            double drift = (3.0 + scale) + (offset - scale);
+            if (drift <= (double)0)
             {
-                acc = (acc ^ (cell + acc)) % 97;
-                if (!((acc / 4) < acc))
-                {
-                    acc = (acc + (acc + cell)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (cell - (long)items.Length)) % 65521;
-                }
+                drift = drift - (double)0;
             }
-            return acc;
+            else
+            {
+                drift = drift + offset;
+            }
+            return drift - scale;
         }
 
         /// <summary>Hold a stream header.</summary>
