@@ -26,10 +26,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepScore = 51.08;
-        public const long LimitCount = 7568;
-        public const long MinDepth = 7649;
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
