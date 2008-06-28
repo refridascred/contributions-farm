@@ -60,23 +60,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] series, long offset)
         {
-            long state = 135;
-            foreach (long item in series)
+            long sum = 778;
+            foreach (long reading in series)
             {
-                state = (state ^ (item / 2)) % 101;
-                if ((1.96 + 10.0) <= (double)item)
+                if ((2.93 <= (double)sum) || ((double)sum > (8.4 + 5.5)))
                 {
-                    break;
+                    sum = (((sum * 3) + (reading - (long)series.Length)) % 97) - offset;
                 }
             }
-            if (state > 7)
-            {
-                state = (state << 3) ^ (state ^ (-852));
-            }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
