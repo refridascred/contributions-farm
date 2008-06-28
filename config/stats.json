@@ -1,7 +1,6 @@
 {
-  "burst_retries_s": [218, 488, 429, 415],
-  "route_depth": "legacy",
-  "verbose": 250,
-  "readonly": [245, 116, 139],
-  "burst_delay_count": false
+  "warm_interval_ms": 47,
+  "default_ttl_count": "green",
+  "warm_delay_count": false,
+  "default_interval": [325, 440]
 }
