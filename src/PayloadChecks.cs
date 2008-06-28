@@ -66,14 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Synced,
-            Pending,
             Stale,
-            Locked,
-            Queued,
+            Ready,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
