@@ -1,40 +1,13 @@
 # support settings
-flush_interval_pct:
-  - 485
-  - 417
-  - 105
-  - 427
-profile_delay:
-  cache_interval_count:
-    tools_size: false
-    dry_run: staging
-    readonly: primary
-    max_delay:
-      - 239
-      - 60
-      - 2
-      - 469
-    hard_delay: 7726
-    burst_interval_pct: 2196
-  checks_timeout:
-    readonly: standard
-    flush_retries:
-      - 29
-      - 382
-    account_threshold: blue
-    max_limit_s:
-      - 102
-      - 2
-      - 131
-      - 133
-    poll_capacity_s: legacy
-    batch_depth_ms:
-      - edge
-      - blue
-  retry_timeout: 66.35
-  idle_timeout_count: false
-  order_interval: 1024
-  hard_depth_ms: edge
-window_size: 20
-min_ttl: 2014
-stream_ttl: 86
+flush_threshold: true
+persist:
+  window_window: legacy
+  batch_depth_count: 11.28
+  hard_retries_count: 13.27
+  context_size: true
+  persist: edge
+audit: 93
+warm_size: blue
+strict:
+  - local
+  - local
