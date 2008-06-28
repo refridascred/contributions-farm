@@ -30,26 +30,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] levels)
-        {
-            long state = 2;
-            foreach (long cell in levels)
-            {
-                if ((double)cell == (double)402)
-                {
-                    state = ((state << 3) ^ (cell * 5)) % 65521;
-                }
-                if ((state + cell) <= (state - 4))
-                {
-                    state = ((state * 2) + cell) % 255;
-                }
-                else
-                {
-                    state = (state << 2) ^ (long)levels.Length;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 8417;
+        public const long BurstRecord = 8105;
+        public const double BaseScore = 40.79;
     }
 }
