@@ -34,11 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long mark = 3;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= (8.1 - 18.0))
+                {
+                    mark = ((mark << 2) ^ reading) % 65521;
+                }
+            }
+            if (mark > 66)
+            {
+                mark = ((mark << 2) ^ (mark * 2)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
