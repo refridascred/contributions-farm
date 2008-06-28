@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] levels, long seed)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((count ^ 34) >= (datum % 97)) && (datum >= seed))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Active,
+            Idle,
+            Dropped,
+            Queued,
+            Draft,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
