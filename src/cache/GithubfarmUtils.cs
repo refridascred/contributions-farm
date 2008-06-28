@@ -36,12 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((-53) + 66) != (sample + seed))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
