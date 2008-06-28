@@ -48,19 +48,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] data, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long seed)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (value != seed)
+                if ((seed % 7) >= seed)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor - (anchor + (long)i)) % 101;
                 }
+                anchor = ((anchor << 3) ^ seed) % 97;
+                anchor = (anchor * 5) + (anchor << 1);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
     }
 }
