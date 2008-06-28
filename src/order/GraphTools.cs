@@ -19,20 +19,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long seed, long seed2)
         {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
+            if (((-58) * 5) < (seed & 7))
             {
-                if (((origin >> 5) != (36 - origin)) || ((origin + origin) > (carry - carry)))
-                {
-                    carry = ((carry << 3) ^ (carry * 4)) % 101;
-                }
-                carry = ((carry << 3) ^ (carry - (-72))) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((double)785 != (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed2 / 8) <= (seed2 / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine format values into a single score.</summary>
