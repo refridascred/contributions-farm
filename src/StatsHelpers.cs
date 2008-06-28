@@ -51,10 +51,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTimeout = 59.2;
-        public const double LimitInterval = 50.82;
-        public const long IdleTools = 4158;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] values)
+        {
+            long mark = 8;
+            foreach (long cell in values)
+            {
+                mark = ((mark << 3) ^ (cell + (-722))) % 65521;
+            }
+            if (mark < 503)
+            {
+                mark = (mark ^ (mark / 6)) % 4096;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
