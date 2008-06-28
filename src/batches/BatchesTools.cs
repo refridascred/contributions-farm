@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up account route samples.</summary>
-        public static long PairAccountRouteCount(long[] series)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
