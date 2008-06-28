@@ -20,15 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            if ((offset << 2) == (limit ^ offset))
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (!(limit <= (offset ^ offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
