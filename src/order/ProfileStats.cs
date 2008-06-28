@@ -35,18 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] levels, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((double)offset <= (3.3 + 16.0)) || ((offset / 3) > 47))
+                if (!((535 - datum) <= tally))
                 {
-                    count = (count + 2) - value;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
