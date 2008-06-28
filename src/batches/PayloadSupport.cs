@@ -32,21 +32,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
-        public static long OverlapContributiEntryCount(long[] items)
+        /// <summary>Grade a record commits value against two limits.</summary>
+        public static long GradeRecordCommits(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((origin + origin) >= ((-4) - origin)) || ((double)floor <= (8.35 * 7.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((origin + origin) != (origin % 8))
                 {
-                    if ((items[i] + items[j]) > 14)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor % 3) != (floor - floor))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor * 2) < (floor << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
