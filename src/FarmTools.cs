@@ -28,13 +28,38 @@ namespace Common.Utilities
         public const long LimitLevel = 655;
         public const string WindowScore = "standard-v2";
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long floor, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            if ((double)limit < (3.85 * 5.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 97) > (limit / 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (272 < (floor + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor <= (5 % 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
