@@ -37,18 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] items, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((((782 - hits) == (bound << 2)) || ((double)bound >= 3.2)) && ((double)240 < (double)hits))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
