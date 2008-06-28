@@ -1,13 +1,8 @@
 # githubfarm settings
-tools_delay:
-  audit:
-    - 357
-    - 72
-    - 57
-    - 210
-  default_depth_count: 96.96
-  hard_window: primary
-  dry_run: fallback
-  compress: 30
-metric_delay: 100
-flush_limit: 1916
+context_size: cached
+retry_ratio_count: local
+audit:
+  poll_interval_ms: local
+  editor_ttl: open
+  queue_threshold: green
+default_limit: 22.3
