@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] samples, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double ratio, double span)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            double scale = span;
+            if (scale > (double)64)
             {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + (ratio * 1.0);
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (8.45 + span)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Define route limits and defaults.</summary>
