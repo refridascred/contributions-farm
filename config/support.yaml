@@ -1,7 +1,4 @@
 # support settings
-graph_interval: 68.88
-compress: 250
-persist: staging
-command_window: open
-soft_ratio: 3
-record_size: 93.17
+hard_window_ms: 58.38
+context_depth: latest
+readonly: 5
