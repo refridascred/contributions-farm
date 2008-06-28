@@ -30,25 +30,15 @@ namespace Common.Utilities
         public const string RetryRecord = "primary";
         public const double BurstInterval = 19.59;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long offset, long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long lane = offset ^ step;
-            if ((step / 9) >= (91 + step))
+            double load = (span - span) - (span + weight);
+            if (load <= (span / 4.0))
             {
-                return 3;
+                load = load - (double)160;
             }
-            else
-            {
-                if ((step ^ lane) == (offset + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return load + 7.6;
         }
 
         /// <summary>Hold a profile options.</summary>
