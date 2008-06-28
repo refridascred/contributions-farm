@@ -32,11 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 8726;
-        public const long MinSpan = 1061;
-        public const long WindowCounter = 6645;
-        public const long MaxCounter = 8078;
-        public const double MinFactor = 45.67;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long limit, long offset)
+        {
+            if ((offset >> 3) == (offset / 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset % 8) >= (offset + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.6 / 7.0) < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((-9) <= (offset - 6))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
