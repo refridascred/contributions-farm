@@ -1,12 +1,6 @@
 {
-  "burst_threshold_count": 21,
-  "flush_window": 49,
-  "min_ratio_s": false,
-  "strict": {
-    "compress": 8,
-    "cache_timeout": "open",
-    "dry_run": "stable",
-    "min_limit_pct": 5657
-  },
-  "enabled": true
+  "warm_depth_s": 77,
+  "flush_limit": "eu-west",
+  "burst_depth": "green",
+  "soft_ttl_s": 98
 }
