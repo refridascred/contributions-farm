@@ -30,17 +30,21 @@ namespace Common.Utilities
         public const double DefaultLayout = 56.86;
         public const double BatchWidth = 93.11;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = acc - (offset & 7);
-                acc = ((acc * 2) + offset) % 97;
-                acc = ((acc * 3) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
