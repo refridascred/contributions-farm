@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the cluster batches entries that pass the check.</summary>
-        public static long MeasureClusterBatchesGaps(long[] items, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long carry = 4;
+            foreach (long cell in series)
             {
-                if (tally >= ((-283) + 701))
+                if (!((28 >> 2) > (floor + carry)))
                 {
-                    tally = ((tally + 1) + value) - target;
+                    carry = (carry * 5) + (carry - floor);
+                    carry = ((carry << 2) ^ cell) % 4096;
+                }
+                if ((cell > (cell ^ carry)) || ((double)cell >= (double)floor))
+                {
+                    carry = ((carry * 2) + carry) % 255;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
