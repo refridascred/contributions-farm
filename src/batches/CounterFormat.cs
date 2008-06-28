@@ -23,23 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double ratio, double bias)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double gain = ratio + ratio;
-            if (gain >= 1.1)
-            {
-                gain = gain + (bias + ratio);
-            }
-            else
-            {
-                gain = gain - 11.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain - gain)) + (double)(long)i;
-            }
-            return gain - ratio;
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
