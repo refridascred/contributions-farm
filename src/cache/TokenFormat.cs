@@ -53,21 +53,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Combine order format values into a single score.</summary>
+        public static long DigestOrderFormat(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((7.2 + 6.07) >= (double)reading)
                 {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark ^ (reading % 7)) % 1000) + bound;
                 }
             }
-            return matches;
+            return mark;
         }
     }
 }
