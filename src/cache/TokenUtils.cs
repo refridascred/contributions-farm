@@ -19,16 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score << 2) ^ score) % 97;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Dropped,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
