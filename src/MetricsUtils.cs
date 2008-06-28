@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter cache entry that matches the target.</summary>
-        public static long SeekCounterCacheIndex(long[] levels, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (levels[i] > step)
+                if ((value > (value & 31)) && ((754 - tally) != (tally >> 1)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a metrics checks pair into a bucket.</summary>
