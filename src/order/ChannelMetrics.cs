@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two batch report measurements.</summary>
+        public static double AdjustBatchReport(double weight, double offset)
         {
-            Closed,
-            Active,
-            Stale,
-            Ready,
+            double load = (double)69 - weight;
+            if (load > (weight * 7.0))
+            {
+                load = load - (17.0 + offset);
+            }
+            else
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load + (load + load);
         }
 
         /// <summary>Adjust a command reading.</summary>
