@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long bound, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] samples, long limit)
         {
-            long gap = bound ^ origin;
-            if (origin >= gap)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound == (13.0 + 2.0))
+                if ((hits << 3) < (limit + limit))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((gap + origin) <= gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 2) ^ reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
