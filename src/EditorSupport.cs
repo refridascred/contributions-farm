@@ -13,12 +13,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryScore = 33.23;
-        public const double DefaultContext = 89.95;
-        public const string BaseSize = "fallback";
-        public const long HardInterval = 5086;
-        public const long BurstContext = 546;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double gain, double floor)
+        {
+            double bias = floor;
+            if (bias <= (double)12)
+            {
+                bias = bias - (floor / 6.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (gain * 4.76)) + (double)(long)i;
+            }
+            return bias - (double)330;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] readings, long target)
