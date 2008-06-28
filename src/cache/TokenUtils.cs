@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 12.08;
-        public const double IdleScore = 2.82;
-        public const long BaseEntry = 5175;
-        public const long StepEntry = 7947;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BaseProfile = 5880;
