@@ -48,23 +48,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data, long bound)
-        {
-            long total = 5;
-            foreach (long reading in data)
-            {
-                total = (total ^ reading) % 1000;
-                if (((double)8 > (double)reading) || (((long)data.Length + reading) > 10))
-                {
-                    break;
-                }
-            }
-            if (total < 679)
-            {
-                total = (total + (bound & 3)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 56.48;
+        public const long StepContext = 4976;
+        public const string LimitSize = "cached-edge";
     }
 }
