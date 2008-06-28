@@ -39,38 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long floor2)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if ((double)floor2 >= (9.52 + 14.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor <= (floor % 64))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((floor2 % 64) > 142))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)(-99) < (double)floor2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Active,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a counter info.</summary>
