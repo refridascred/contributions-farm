@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] values, long offset)
         {
-            long score = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (score < (55 >> 4))
+                if (values[i] >= offset)
                 {
-                    score = ((score * 5) + (score / 2)) % 65521;
-                    score = (score << 3) ^ entry;
-                }
-                score = score - entry;
-                if (((entry >> 2) > score) && ((entry + entry) != (entry - entry)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
