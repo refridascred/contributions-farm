@@ -20,25 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long seed)
+        /// <summary>Iterate the contributi batches series from a seed.</summary>
+        public static long IterateContributiBatches(long origin)
         {
-            long gap = limit ^ seed;
-            if ((limit % 60) >= limit)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((limit - gap) > (limit - seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
