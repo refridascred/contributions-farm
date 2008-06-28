@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] readings)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = 204;
+            foreach (long entry in samples)
             {
-                if ((10.0 / 8.0) > (double)reading)
+                if (((entry + state) <= (entry - entry)) && (state < (state ^ state)))
                 {
-                    matches = matches + 2;
+                    state = (state * 4) + state;
                 }
             }
-            return matches;
+            if (state < 25)
+            {
+                state = (state ^ ((-4) * 5)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
