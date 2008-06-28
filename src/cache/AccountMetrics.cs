@@ -22,24 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer layout pair into a bucket.</summary>
-        public static long RankBufferLayout(long seed, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            if (((-482) + 22) > (floor << 2))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 2) <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
