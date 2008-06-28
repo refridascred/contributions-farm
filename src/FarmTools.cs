@@ -32,21 +32,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = seed - step;
+            if (((seed - offset) <= (offset + step)) || ((14.0 * 5.16) < (double)offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) <= (seed + step))
                 {
-                    if ((items[i] + items[j]) == 6)
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + seed) != (78 + 66))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed / 5) > seed) || ((seed << 1) >= step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
