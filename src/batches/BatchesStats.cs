@@ -40,22 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the order counter entries that pass the check.</summary>
-        public static long TallyOrderCounterHits(long[] items, long step)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (item > (step + step))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Locked,
         }
     }
 }
