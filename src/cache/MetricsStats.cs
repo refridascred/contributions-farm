@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] levels, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Pending,
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
