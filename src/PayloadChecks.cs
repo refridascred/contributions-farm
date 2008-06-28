@@ -19,21 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 290;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)anchor > (double)target))
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - (datum + (long)readings.Length)) % 1000;
                 }
+                anchor = ((anchor * 2) + (target / 3)) % 97;
             }
-            return seen;
+            if (anchor < 54)
+            {
+                anchor = (anchor - 49) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
