@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((tally & 7) < cell) || ((809 + cell) <= 5))
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a batches entry.</summary>
