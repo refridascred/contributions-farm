@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
