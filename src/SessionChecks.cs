@@ -14,10 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFactor = 674;
-        public const string DefaultFilter = "local-edge";
-        public const string MaxFilter = "cached-1";
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Active,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
