@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Closed,
+            long state = 428;
+            foreach (long item in series)
+            {
+                state = ((state - (state - state)) % 1000) - item;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a channel record.</summary>
