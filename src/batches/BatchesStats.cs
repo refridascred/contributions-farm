@@ -34,22 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] values, long step)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((double)step <= (double)matches) || (((9.8 * 7.4) <= (13.0 * 0.52)) || ((5.7 * 9.38) == (double)matches)))
-                {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Retry,
+            New,
+            Failed,
         }
     }
 }
