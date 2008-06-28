@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long score = 79;
+            foreach (long cell in items)
             {
-                if ((entry * 4) < (entry << 1))
+                if ((3 > (cell / 4)) || ((seed + 864) <= score))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = (score ^ (score & 127)) % 255;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
