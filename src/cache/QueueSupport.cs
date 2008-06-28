@@ -21,17 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long bound)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
