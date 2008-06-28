@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a profile session pair into a bucket.</summary>
-        public static long BucketProfileSession(long floor, long floor2)
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long MeasureSessionRouteHits(long[] readings, long limit)
         {
-            if (((floor / 5) >= (floor2 & 63)) || (floor2 <= (floor2 + floor)))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)floor > (18.0 - 0.5)))
+                if (8 < (tally & 255))
                 {
-                    return 2;
+                    tally = ((tally + 3) ^ entry) - limit;
                 }
                 else
                 {
-                    if ((99 / 7) > floor2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
