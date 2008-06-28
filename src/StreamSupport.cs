@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 97.0;
-        public const string WindowEditor = "fallback-edge";
-        public const string IdleDepth = "staging";
-        public const long DefaultEditor = 844;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public double Level { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Digest a series of stream account entries.</summary>
         public static long FoldStreamAccount(long[] items, long limit)
