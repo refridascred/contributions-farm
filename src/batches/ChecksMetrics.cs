@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstFactor = 5874;
-        public const long HardRatio = 8406;
-        public const double BatchTimeout = 78.15;
-        public const long BatchCommand = 9466;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 2429;
+        public const string SoftRatio = "standard";
+        public const long BatchSize = 1315;
+        public const long BurstCluster = 7467;
 
         /// <summary>Project the next filter layout value.</summary>
         public static double BlendFilterLayout(double scale, double offset)
