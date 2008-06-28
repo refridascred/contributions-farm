@@ -29,12 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate layout already readings against a bound.</summary>
+        public static bool GuardLayoutAlreadyLimits(long[] levels, long offset)
         {
-            Ready,
-            Active,
-            Paused,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
