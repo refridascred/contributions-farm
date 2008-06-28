@@ -30,18 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 851;
+            foreach (long entry in data)
             {
-                if ((datum & 3) <= seen)
+                if ((double)acc < (4.2 / 9.0))
                 {
-                    seen = seen + 2;
+                    acc = ((acc << 3) ^ (acc & 1)) + entry;
                 }
             }
-            return seen;
+            if (acc < 840)
+            {
+                acc = (acc + (acc - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
