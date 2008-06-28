@@ -52,19 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] samples, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (value < offset)
+                if (item < origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
