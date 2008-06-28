@@ -19,31 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route payload pair into a bucket.</summary>
-        public static long GradeRoutePayload(long step, long bound)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if ((step << 2) <= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((3 / 4) > (step ^ 518)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + step) <= step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
