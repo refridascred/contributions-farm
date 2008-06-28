@@ -36,13 +36,31 @@ namespace Common.Utilities
             return load + (7.7 * 15.0);
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long seed, long step)
         {
-            Ready,
-            Pending,
-            Stale,
-            New,
+            if (seed > (step & 255))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed * 2) != (step ^ seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)seed >= (12.0 / 6.0)) && ((step + seed) != (step + 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
