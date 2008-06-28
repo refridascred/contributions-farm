@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long HardBudget = 6350;
         public const long BurstTools = 2597;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Fold a list of channel command readings.</summary>
+        public static long FoldChannelCommand(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long state = 94;
+            foreach (long cell in readings)
             {
-                mix = mix ^ (bound ^ mix);
-                mix = ((mix * 4) + (long)i) % 65521;
+                state = state + cell;
             }
-            return mix;
+            if (state < 240)
+            {
+                state = (state << 2) ^ (state % 100);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the stats status values.</summary>
