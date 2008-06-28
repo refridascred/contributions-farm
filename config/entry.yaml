@@ -1,12 +1,6 @@
 # entry settings
-readonly:
-  base_retries: primary
-  metric_interval: true
-  min_threshold_pct:
-    - 379
-    - 90
-  filter_interval:
-    - 372
-    - 114
-max_capacity_s: 30
-strict: 202
+burst_ratio_pct: standard
+batch_retries: fallback
+warm_retries_count: 30
+soft_delay_pct: 9471
+idle_interval_pct: open
