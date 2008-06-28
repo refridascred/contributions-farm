@@ -66,19 +66,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] data, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items, long bound)
         {
-            long score = 17;
-            foreach (long reading in data)
+            long total = -3;
+            foreach (long value in items)
             {
-                score = ((score ^ (score >> 1)) - reading) - offset;
+                if ((total - total) > bound)
+                {
+                    total = total ^ (total + total);
+                }
+                if ((value / 4) <= (bound - value))
+                {
+                    total = total + (total / 2);
+                }
             }
-            if (score > 41)
+            if (total < (-998))
             {
-                score = (score * 2) + 23;
+                total = (total ^ bound) % 255;
             }
-            return score;
+            return total % 65521;
         }
     }
 }
