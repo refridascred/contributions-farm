@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] readings, long bound)
+        /// <summary>Find the first counter cache entry that matches the target.</summary>
+        public static long SeekCounterCacheIndex(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
