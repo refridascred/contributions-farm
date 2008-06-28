@@ -76,32 +76,9 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long origin, long offset)
-        {
-            long slot = origin - offset;
-            if ((slot + offset) >= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 127) >= (offset + 590))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot & 255) <= origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryDepth = 6846;
+        public const double WindowOrder = 47.86;
+        public const long DefaultOrder = 6746;
     }
 }
