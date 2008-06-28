@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
