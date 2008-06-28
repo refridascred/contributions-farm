@@ -38,22 +38,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of session cluster readings.</summary>
-        public static long MatchSessionClusterCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 9555;
+        public const long StepSupport = 302;
+        public const string LimitLevel = "alpha-v2";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] series, long origin)
