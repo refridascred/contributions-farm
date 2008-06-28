@@ -16,11 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "local-edge";
-        public const long MaxScore = 1341;
-        public const long MaxMetric = 3566;
-        public const double IdleMetric = 13.95;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] series, long limit)
