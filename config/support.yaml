@@ -1,36 +1,24 @@
 # support settings
-min_size: 1505
-poll_size_s: 1024
-retry_interval_count:
-  queue_capacity: 60
-  hard_ratio:
-    - latest
-    - open
-    - legacy
-    - latest
-  flush_capacity:
-    retry_depth_s: false
-    soft_interval:
-      - fallback
-      - primary
-      - cached
-    compress: true
-    dry_run: fallback
-    batch_timeout_s: 9
-  persist:
-    stats_delay: false
-    burst_depth_s:
+default_depth_ms: green
+sync_interval: edge
+window_delay: legacy
+verbose:
+  cache_delay:
+    - 183
+    - 37
+    - 80
+  max_timeout: 42
+  burst_interval:
+    order_limit: staging
+    poll_retries_pct: 2930
+    cache_ratio_pct: 54.72
+    profile_size:
       - green
       - latest
-    verbose: 61.98
-    warm_delay_s: 14
-    hard_interval: 73
-  hard_timeout:
-    batch_interval_count: 3446
-    min_timeout_s:
       - eu-west
-      - edge
-      - blue
-      - cached
-    hard_limit_ms: legacy
-burst_ttl: staging
+      - standard
+  enabled:
+    - stable
+    - primary
+    - local
+soft_timeout: 4.64
