@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values, long target)
         {
-            long sum = 80;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 3; i++)
+                if ((reading + seen) > (seen + seen))
                 {
-                    sum = (((sum * 4) + sum) % 101) ^ (long)i;
+                    seen = (seen + 1) - target;
                 }
-                if (((item + item) < (sum + sum)) && (5 >= item))
-                {
-                    sum = (sum - 77) % 101;
-                }
-                sum = (sum * 4) + (item * 2);
             }
-            if (sum < 365)
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
