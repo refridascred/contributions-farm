@@ -44,18 +44,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long span = floor + bound;
+            if (((3.0 * 0.2) > (double)bound) && (bound <= (floor & 127)))
             {
-                if ((sample + hits) >= sample)
+                return 3;
+            }
+            else
+            {
+                if (!((floor + span) >= (span - bound)))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((940 / 7) > bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound * 5) > (floor - span))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of context support readings.</summary>
