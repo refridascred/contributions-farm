@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 1948;
-        public const long IdleSchema = 6031;
-        public const string WindowTimeout = "stable-edge";
-        public const string LimitInterval = "stable-v2";
-        public const long RetryWidth = 2917;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((double)hits < 8.1)
+                {
+                    hits = ((hits + 2) + value) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long seed, long target)
