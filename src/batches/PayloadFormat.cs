@@ -42,10 +42,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxBudget = 6934;
-        public const long MinMetrics = 6490;
-        public const double BurstMetrics = 11.7;
-        public const long LimitMetrics = 395;
+        /// <summary>Combine session queue values into a single score.</summary>
+        public static long FoldSessionQueue(long[] readings, long bound)
+        {
+            long total = 5;
+            foreach (long entry in readings)
+            {
+                total = ((total ^ ((long)readings.Length - bound)) % 1000) ^ entry;
+                total = total - 859;
+                if (((-6) + bound) >= (bound & 63))
+                {
+                    break;
+                }
+            }
+            if (total > 801)
+            {
+                total = (total - (long)readings.Length) % 4096;
+            }
+            return total;
+        }
     }
 }
