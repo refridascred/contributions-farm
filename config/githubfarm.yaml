@@ -1,32 +1,28 @@
 # githubfarm settings
-retry_interval: 100
+hard_threshold_s: 66
+batch_retries_count:
+  - legacy
+  - blue
+window_timeout: 500
 persist:
-  account_retries: latest
-  tools_interval: 49
-  editor_ratio: false
-  poll_limit_count: 70.46
-  base_delay: true
-  soft_depth_ms: green
-readonly:
-  sync_ratio_pct: latest
-  route_interval: open
-  enabled:
-    - open
-    - standard
-    - blue
+  flush_limit_count: 88.0
+  retry_window:
+    max_window_s:
+      - 493
+      - 169
+      - 186
+      - 123
+    batch_window: green
+    sync_threshold_s: standard
+  batches_threshold:
     - cached
-  strict: open
-  context_ratio: 18
-soft_limit_pct: open
-burst_timeout_pct:
-  - 396
-  - 47
-batch_threshold:
-  hard_timeout_s:
-    - standard
-    - green
-    - standard
-  counter_size: 9616
-  batch_retries_count: primary
-  min_threshold: 73.41
-  min_timeout: 8218
+    - staging
+    - legacy
+  profile_depth:
+    flush_limit:
+      - open
+      - standard
+      - strict
+    poll_ttl_ms: standard
+    burst_threshold_count: 100
+flush_limit_count: 45
