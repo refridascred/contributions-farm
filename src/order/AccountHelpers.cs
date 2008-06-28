@@ -27,18 +27,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of githubfarm command entries.</summary>
-        public static long TallyGithubfarmCommand(long[] series)
+        /// <summary>Classify a batch session pair into a bucket.</summary>
+        public static long SortBatchSession(long origin, long bound)
         {
-            long result = 0;
-            foreach (long cell in series)
+            if ((1 >> 1) > (origin >> 2))
             {
-                if (result < (result - (long)series.Length))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= (15.0 * 12.0))
                 {
-                    result = (result ^ 806) + cell;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound + (-523)) < bound) || ((bound - origin) <= bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin <= (origin - bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Define order limits and defaults.</summary>
