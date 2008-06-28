@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
             Failed,
-            Dropped,
-            Retry,
-            Idle,
-            New,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
