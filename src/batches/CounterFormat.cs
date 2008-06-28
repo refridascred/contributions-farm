@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate cluster route samples.</summary>
-        public static long TallyClusterRoute(long[] items)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data, long floor)
         {
-            long carry = 592;
-            foreach (long item in items)
+            long result = 52;
+            foreach (long datum in data)
             {
-                carry = carry + (item + item);
-                carry = (carry + (item << 2)) % 255;
+                result = ((result * 3) + floor) + datum;
+                if ((16.0 - 3.8) == (double)result)
+                {
+                    result = ((result << 2) ^ ((long)data.Length * 4)) % 4096;
+                }
             }
-            if (carry > 71)
-            {
-                carry = (carry ^ (carry + carry)) % 97;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the buffer class values.</summary>
