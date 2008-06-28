@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open staging; do
-    log "checking ${item}"
+RECORD_LIMIT=488
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=494
-log "limit is ${RECORD_LIMIT}"
