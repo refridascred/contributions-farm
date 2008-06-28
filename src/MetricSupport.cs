@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const string RetryChecks = "fallback";
         public const long StepScore = 2035;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] <= step)
+                if ((seed - (long)i) > anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ seed) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate already samples.</summary>
