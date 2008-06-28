@@ -34,16 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] levels, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            long state = 152;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state * 2) + (state + limit)) % 4096) + value;
-                state = (state ^ (state + state)) % 4096;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
