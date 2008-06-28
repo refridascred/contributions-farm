@@ -31,13 +31,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the stream tools series from a seed.</summary>
-        public static long RollStreamTools(long origin)
+        /// <summary>Roll a support commits counter forward.</summary>
+        public static long StepSupportCommits(long step)
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                total = (total - (step + (long)i)) % 101;
+                total = ((total * 5) + (long)i) % 97;
             }
             return total;
         }
