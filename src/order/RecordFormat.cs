@@ -73,14 +73,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Audit route metric readings against a rule.</summary>
+        public static long AuditRouteMetricHits(long[] data)
         {
-            Active,
-            Dropped,
-            Idle,
-            Retry,
-            New,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (38 >= (tally ^ tally))
+                {
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
