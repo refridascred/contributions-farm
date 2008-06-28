@@ -27,21 +27,38 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] readings)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset < (5.9 / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (offset <= (bound & 1))
                 {
-                    if ((readings[i] ^ readings[j]) > 16)
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)bound <= (5.0 + 8.41)))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + 92) >= (offset << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
