@@ -30,9 +30,22 @@ namespace Common.Utilities
         public const double DefaultLayout = 56.86;
         public const double BatchWidth = 93.11;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepSize = 2135;
-        public const long HardSpan = 9846;
-        public const string SoftPayload = "primary-v2";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] levels, long floor)
+        {
+            long acc = 7;
+            foreach (long cell in levels)
+            {
+                if (830 < (acc % 64))
+                {
+                    acc = ((acc - (floor + acc)) % 4096) + cell;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (792 >> 1)) % 97;
+                }
+            }
+            return acc;
+        }
     }
 }
