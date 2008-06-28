@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a commits channel reading.</summary>
-        public static double ScaleCommitsChannel(double scale, double span)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double bias = scale;
-            if (bias > 5.5)
-            {
-                bias = (bias - 19.0) + span;
-            }
-            else
-            {
-                bias = bias + (double)10;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)1) - (double)(long)i;
-            }
-            return bias - (scale * 9.31);
+            Retry,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
