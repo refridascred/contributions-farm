@@ -61,23 +61,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series, long seed)
-        {
-            long anchor = 429;
-            foreach (long value in series)
-            {
-                if ((value % 7) <= value)
-                {
-                    anchor = anchor - (seed + value);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ 7;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 7379;
+        public const long LimitSpan = 8968;
+        public const string RetryBatch = "standard";
+        public const long SoftBatch = 6819;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] values, long offset)
