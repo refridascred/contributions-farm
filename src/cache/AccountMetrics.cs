@@ -78,13 +78,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            Pending,
-            Synced,
-            Stale,
-            Ready,
+            Closed,
+            Dropped,
+            Failed,
         }
     }
 }
