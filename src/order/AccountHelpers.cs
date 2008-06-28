@@ -37,12 +37,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchBudget = 9911;
-        public const long BurstOrder = 6837;
-        public const long BurstRatio = 373;
-        public const long StepWidth = 6309;
-        public const long MinOrder = 8316;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (offset <= (offset + reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double weight, double floor)
