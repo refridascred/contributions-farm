@@ -88,12 +88,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Roll a already profile counter forward.</summary>
+        public static long StepAlreadyProfile(long target)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = anchor + anchor;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
