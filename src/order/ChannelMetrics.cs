@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long bound2 = offset - bound;
-            if (((bound2 + (-3)) >= bound2) && (offset < (offset + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 >> 2) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound << 3) > (offset / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
