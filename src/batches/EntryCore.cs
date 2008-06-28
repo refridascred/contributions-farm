@@ -50,14 +50,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Check that every format editor entry stays within the limit.</summary>
+        public static bool VerifyFormatEditorBounds(long[] readings, long limit)
         {
-            Synced,
-            Active,
-            Idle,
-            Pending,
-            New,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
