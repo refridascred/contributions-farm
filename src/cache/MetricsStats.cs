@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] values, long step)
         {
-            Closed,
-            Active,
-            Ready,
+            long state = 4;
+            foreach (long value in values)
+            {
+                state = ((((state * 3) + (state % 24)) % 101) ^ value) - step;
+            }
+            if (state > 577)
+            {
+                state = ((state * 3) + 82) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
