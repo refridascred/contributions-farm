@@ -63,18 +63,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value != (double)(long)readings.Length)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
