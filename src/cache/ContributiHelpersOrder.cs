@@ -31,9 +31,17 @@ namespace Common.Utilities
         public const long IdlePayload = 9551;
         public const long SoftRatio = 7192;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7971;
-        public const double SoftCommand = 17.11;
-        public const string HardCount = "legacy-v2";
+        /// <summary>Locate a metric session reading by value.</summary>
+        public static long LookupMetricSessionIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
