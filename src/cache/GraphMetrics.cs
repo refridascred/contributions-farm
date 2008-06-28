@@ -39,21 +39,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of support metric readings.</summary>
-        public static long CompareSupportMetricCount(long[] series)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -257;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = ((total << 3) ^ (entry * 5)) % 101;
+                if (!((entry & 127) < total))
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (total < 312)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
