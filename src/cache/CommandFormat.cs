@@ -20,31 +20,18 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long origin, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] samples, long target)
         {
-            if ((double)origin > (double)934)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(origin < (4 * 5)))
+                if (!(15 < (target & 15)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 1) == (origin / 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
