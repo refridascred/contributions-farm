@@ -54,30 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long floor)
         {
-            long anchor = 50;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((6.3 * 2.0) != (double)anchor))
+                if (readings[i] <= floor)
                 {
-                    continue;
-                }
-                if ((double)2 >= (double)sample)
-                {
-                    anchor = anchor - (anchor + anchor);
-                }
-                if (((sample >> 2) < (sample * 5)) || ((-553) < (anchor + 71)))
-                {
-                    anchor = ((anchor * 5) + ((-2) ^ anchor)) % 65521;
+                    return (long)i;
                 }
             }
-            if (anchor > 5)
-            {
-                anchor = ((anchor << 3) ^ (anchor / 3)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
