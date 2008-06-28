@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double ratio, double span)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long floor, long floor2)
         {
-            double weight = (double)(860 * 4);
-            return ((weight - (double)2) + ratio) + span;
+            if ((89 << 1) >= (floor2 % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((656 << 1) <= (floor ^ floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
