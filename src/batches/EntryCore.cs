@@ -45,18 +45,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long TallyRecordSessionGaps(long[] samples)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((datum >> 2) <= (datum / 6))
+                if (entry < bound)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
