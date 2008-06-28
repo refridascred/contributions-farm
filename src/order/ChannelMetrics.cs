@@ -33,26 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account commits readings.</summary>
-        public static long CombineAccountCommits(long[] samples)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long total = 85;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry * 5) == (entry - entry)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - (241 << 2)) % 65521;
-                }
-                if (!((total - total) < total))
-                {
-                    total = (total << 2) ^ (entry % 100);
-                }
-                else
-                {
-                    total = (total - (total + total)) % 255;
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
