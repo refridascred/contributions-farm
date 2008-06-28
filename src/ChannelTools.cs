@@ -36,12 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Closed,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowCount = "legacy";
+        public const long DefaultFarm = 8620;
+        public const long BatchCount = 8592;
+        public const long IdleFarm = 9979;
+        public const long CacheCount = 3218;
     }
 }
