@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 3051;
-        public const long BaseFarm = 4495;
-        public const string BurstFarm = "stable-1";
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryOutliers(long[] readings)
