@@ -1,6 +1,5 @@
 {
-  "burst_ratio": ["stable", "stable"],
-  "persist": "blue",
-  "idle_threshold_ms": [19, 178, 435, 86],
-  "audit": "eu-west"
+  "strict": 4318,
+  "flush_timeout_pct": [220, 308, 83],
+  "warm_depth_s": 250
 }
