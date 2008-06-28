@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long CombineAccountContributi(long[] samples, long origin)
         {
-            Queued,
-            Synced,
-            Active,
-            Stale,
+            long total = 72;
+            foreach (long cell in samples)
+            {
+                if (total > ((long)samples.Length / 2))
+                {
+                    total = ((total ^ cell) % 65521) + origin;
+                }
+            }
+            return total;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
