@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a commits metrics counter forward.</summary>
-        public static long RollCommitsMetrics(long target)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double bias, double floor)
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix - (target - 68)) % 101;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            double rate = 7.99;
+            return (rate + (4.0 - bias)) + floor;
         }
 
         /// <summary>Match up stats samples.</summary>
