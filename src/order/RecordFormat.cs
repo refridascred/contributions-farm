@@ -30,19 +30,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate profile session samples.</summary>
-        public static long FoldProfileSession(long[] values)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double gain, double span)
         {
-            long total = 1;
-            foreach (long entry in values)
+            double rate = span;
+            if (rate > rate)
             {
-                total = (total + (total + total)) % 1000;
-                if ((17.0 - 3.9) >= (double)total)
-                {
-                    total = (total * 3) + (entry >> 3);
-                }
+                rate = rate - (0.66 / 8.0);
             }
-            return total % 97;
+            return rate - (gain + rate);
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
