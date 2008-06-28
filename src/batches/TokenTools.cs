@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long floor)
         {
-            Draft,
-            Ready,
-            Idle,
-            Stale,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
