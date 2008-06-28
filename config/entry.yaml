@@ -1,10 +1,9 @@
 # entry settings
-strict: 25.64
-sync_retries_pct: false
-githubfarm_delay:
-  sync_limit_ms: primary
-  compress: strict
-  retry_timeout_count: false
-compress: 30
-metrics_timeout: 30
-schema_size: 24.48
+sync_timeout_s:
+  batch_size: latest
+  soft_size_ms: true
+  sync_ttl_ms: stable
+support_size: 1024
+enabled: cached
+hard_size_count: 11.14
+base_timeout_pct: green
