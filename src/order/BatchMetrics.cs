@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleLevel = 4868;
-        public const long BaseStream = 9294;
-        public const string StepLevel = "staging-v2";
-        public const long CacheStream = 1241;
+        /// <summary>Validate already checks readings against a bound.</summary>
+        public static bool VerifyAlreadyChecksBounds(long[] values, long target)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double scale, double offset)
