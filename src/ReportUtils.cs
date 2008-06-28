@@ -24,22 +24,19 @@ namespace Common.Utilities
         public const long HardChannel = 931;
         public const long BurstTimeout = 3177;
 
-        /// <summary>Fold a list of batches batch readings.</summary>
-        public static long WeighBatchesBatch(long[] items, long seed)
+        /// <summary>Project the next stream support value.</summary>
+        public static double ProjectStreamSupport(double rate, double span)
         {
-            long acc = 769;
-            foreach (long entry in items)
+            double mean = span + (double)94;
+            if (mean < (mean - span))
             {
-                if (!((8.0 + 15.0) >= (double)seed))
-                {
-                    acc = (((acc << 2) ^ seed) % 255) + entry;
-                }
-                else
-                {
-                    acc = (acc - (acc % 8)) % 101;
-                }
+                mean = mean - span;
             }
-            return acc;
+            else
+            {
+                mean = mean + rate;
+            }
+            return mean - (15.0 + rate);
         }
 
         /// <summary>Locate a route reading by value.</summary>
