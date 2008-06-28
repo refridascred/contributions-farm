@@ -20,23 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a support format counter forward.</summary>
-        public static long DeriveSupportFormat(long floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double ratio, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            double weight = ratio * 10.0;
+            if (weight <= ratio)
             {
-                if (!((double)score <= (8.39 / 2.0)))
-                {
-                    score = score + (floor << 3);
-                }
-                if ((7.0 - 15.0) < (double)score)
-                {
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 101;
+                weight = weight + (double)(-531);
             }
-            return score;
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define window limits and defaults.</summary>
