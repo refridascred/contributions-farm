@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Count the cluster batches entries that pass the check.</summary>
+        public static long MeasureClusterBatchesGaps(long[] items, long target)
         {
-            long result = -13;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                result = (result + (value + result)) % 1000;
+                if (tally >= ((-283) + 701))
+                {
+                    tally = ((tally + 1) + value) - target;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
