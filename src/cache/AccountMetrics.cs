@@ -38,19 +38,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] levels, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long sum = 1;
+            foreach (long cell in data)
             {
-                if (item < seed)
+                if ((1.43 + 9.3) <= (double)sum)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum ^ 6) % 101) + cell;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (sum & 7)) % 65521;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
