@@ -21,18 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] values)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)hits != (1.0 * 7.0)) || ((6.63 / 8.0) != (double)entry))
+                if (items[i] <= origin)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the counter status values.</summary>
