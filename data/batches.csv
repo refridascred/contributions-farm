@@ -1,7 +1,8 @@
-id,label,token,rank
-1,0.41,82.24,blue
-2,156,stable,612
-3,latest,edge,5.42
-4,primary,55.9,53.02
-5,950,717,57.08
-6,204,930,7.37
+id,count,level,region,active
+1,93,primary,102,12.89
+2,648,staging,980,880
+3,48.22,green,241,blue
+4,3.1,48.06,714,45.84
+5,66.7,530,standard,570
+6,450,local,207,16.18
+7,93.02,79.65,stable,68.99
