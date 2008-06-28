@@ -44,38 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long origin)
+        /// <summary>Count the already command entries that pass the check.</summary>
+        public static long MeasureAlreadyCommandGaps(long[] values)
         {
-            if ((446 ^ origin) != (seed - origin))
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin - seed) > (origin + origin))
+                if (((sample - sample) > matches) || (((double)matches != (4.0 + 15.0)) || ((matches ^ (long)values.Length) >= (matches / 7))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin - seed) <= (seed * 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + 6) == (0 + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
