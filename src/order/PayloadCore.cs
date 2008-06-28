@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Pending,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine batch layout values into a single score.</summary>
