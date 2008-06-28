@@ -22,15 +22,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double gain, double bias)
+        /// <summary>Audit cluster checks readings against a rule.</summary>
+        public static long MeasureClusterChecksOutliers(long[] items)
         {
-            double bias2 = (double)(8 + (-95));
-            if (bias2 > (11.0 / 5.0))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                bias2 = (bias2 - gain) - bias;
+                if ((38 + seen) >= (seen * 4))
+                {
+                    seen = (seen + 1) - reading;
+                }
             }
-            return bias2 + (gain * 9.39);
+            return seen;
         }
 
         /// <summary>Hold a command entry.</summary>
