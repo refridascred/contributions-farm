@@ -31,24 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics checks pair into a bucket.</summary>
-        public static long BucketMetricsChecks(long offset, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            if ((bound % 3) >= (bound & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)bound == (5.6 * 12.0)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the filter window entries that pass the check.</summary>
