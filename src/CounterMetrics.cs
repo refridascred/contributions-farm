@@ -20,24 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
         {
-            if ((offset << 2) == (limit ^ offset))
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!(limit <= (offset ^ offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
