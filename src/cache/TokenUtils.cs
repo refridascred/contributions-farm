@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Active,
-            Queued,
-            Stale,
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
