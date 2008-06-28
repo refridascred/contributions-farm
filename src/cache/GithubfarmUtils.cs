@@ -26,22 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long bound)
         {
-            long mix = 1;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (27 >= mix)
+                if (datum > bound)
                 {
-                    mix = (mix + (datum / 8)) % 101;
-                }
-                else
-                {
-                    mix = mix ^ datum;
+                    valid = false;
+                    break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Hold a command entry.</summary>
