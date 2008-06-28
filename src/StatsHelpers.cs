@@ -19,11 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long step)
         {
-            double load = scale;
-            return load - (floor * 2.8);
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = acc - (acc - step);
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
