@@ -1,10 +1,6 @@
-id,label,token,count
-1,blue,48.53,38.24
-2,247,209,edge
-3,476,stable,30.43
-4,primary,eu-west,local
-5,734,51.05,301
-6,415,113,612
-7,latest,282,73.41
-8,latest,primary,334
-9,open,blue,148
+id,token,score,level
+1,cached,31.31,cached
+2,primary,166,63
+3,primary,945,61.31
+4,655,277,955
+5,88.38,25,455
