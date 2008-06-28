@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 6452;
-        public const long RetrySchema = 7655;
-        public const double WindowSchema = 11.39;
-        public const string HardSchema = "standard";
-        public const long BurstWidth = 2192;
+        /// <summary>Grade a already metrics value against two limits.</summary>
+        public static long BucketAlreadyMetrics(long seed, long seed2)
+        {
+            long diff = seed ^ seed2;
+            if ((seed2 % 16) <= (seed - 572))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((28 - diff) >= 97)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6 ^ diff) == (diff / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((11.0 / 8.0) >= (double)seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long RetryScore = 7391;
