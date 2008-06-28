@@ -72,13 +72,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double offset)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
+            double load = ratio - (offset + ratio);
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load + (ratio / 6.0);
         }
     }
 }
