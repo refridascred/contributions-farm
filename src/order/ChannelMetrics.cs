@@ -14,19 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((sum - 72) < sum)
+                if ((hits + entry) > (-563))
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
