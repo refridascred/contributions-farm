@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ((load + (double)51) + bias) + offset;
         }
 
-        /// <summary>Derive the next tools cache value from a seed.</summary>
-        public static long DeriveToolsCache(long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] values, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((values[i] < seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
