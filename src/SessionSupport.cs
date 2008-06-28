@@ -27,13 +27,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] series)
         {
-            Draft,
-            Closed,
-            Retry,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
