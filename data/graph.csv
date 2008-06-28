@@ -1,8 +1,8 @@
-id,state,level
-1,68,366
-2,797,39.61
-3,strict,green
-4,63.79,744
-5,337,open
-6,open,686
-7,59.23,61.22
+id,active,state,rank,count
+1,483,green,779,556
+2,standard,752,54.06,97.97
+3,683,29,blue,62.25
+4,open,65.64,597,standard
+5,655,177,746,991
+6,95.13,0,843,63.9
+7,96.0,932,legacy,primary
