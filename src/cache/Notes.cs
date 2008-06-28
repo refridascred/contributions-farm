@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 69;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state + (item * 3)) % 97;
             }
-            return hits;
+            return state % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
