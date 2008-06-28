@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] series, long step)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
