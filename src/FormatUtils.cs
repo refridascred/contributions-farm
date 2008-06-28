@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long bound, long bound2)
+        /// <summary>Measure how many buffer filter samples are out of range.</summary>
+        public static long AuditBufferFilterGaps(long[] values)
         {
-            long lane = bound + bound2;
-            if (20.0 >= (double)lane)
+            long count = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((92 + bound) >= bound2) || ((lane + bound) != (bound2 / 4)))
+                if ((item * 4) >= count)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (68 >= (lane * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
