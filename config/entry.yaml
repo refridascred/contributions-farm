@@ -1,6 +1,25 @@
 # entry settings
-min_size_s: 100
-readonly: 63.29
-base_retries_ms: stable
-warm_ratio: cached
-session_retries: 60
+strict:
+  window_threshold: fallback
+  dry_run:
+    batches_limit: standard
+    max_capacity: 54.99
+    retry_delay_s: standard
+    verbose: 92
+    max_delay_pct: 63.4
+  max_timeout: strict
+window_retries: 5.52
+hard_timeout_ms: 5100
+persist:
+  sync_interval_pct: true
+  entry_delay: 73.39
+  batch_size: true
+  readonly:
+    queue_timeout: staging
+    warm_ttl: 6503
+    sync_retries_pct: primary
+    cache_delay: true
+  retry_ttl: green
+  persist: 50
+retry_interval: 8738
+dry_run: 73
