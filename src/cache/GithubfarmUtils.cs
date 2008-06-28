@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftWidth = 3863;
-        public const long StepFilter = 8527;
-        public const long DefaultSpan = 6798;
-        public const string StepDepth = "primary-v2";
-        public const long HardFilter = 3316;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] items, long limit)
+        {
+            long total = 95;
+            foreach (long sample in items)
+            {
+                if ((limit < (sample - 57)) || ((6.25 + 3.8) != (double)total))
+                {
+                    total = ((total << 3) ^ (40 + 617)) % 4096;
+                }
+                else
+                {
+                    total = (total << 2) ^ (limit ^ limit);
+                }
+                if (9.0 <= (double)total)
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Match up already samples.</summary>
         public static long MatchAlreadyCount(long[] items)
