@@ -51,19 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double weight, double floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double weight2 = (double)330 / 6.0;
-            if (weight2 > floor)
-            {
-                weight2 = weight2 - 4.3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (9.1 - weight);
+            Closed,
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
