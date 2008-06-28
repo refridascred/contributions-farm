@@ -41,18 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((9.44 + 8.8) <= (1.24 - 1.0))
+                if (((double)step <= (6.0 / 4.0)) && (((-5) >= (cell - count)) && ((cell - count) >= (6 / 7))))
                 {
-                    matches = (matches + 1) + entry;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
