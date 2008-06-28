@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const double DefaultEditor = 20.67;
         public const string RetryEditor = "standard-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseSize = "strict-1";
-        public const long RetryRoute = 1929;
-        public const long HardWidth = 8480;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 85.86;
+        public const string LimitMetric = "primary-1";
+        public const long BaseInterval = 5078;
 
         /// <summary>Digest a series of command batches entries.</summary>
         public static long FoldCommandBatches(long[] readings)
