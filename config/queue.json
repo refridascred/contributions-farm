@@ -1,11 +1,7 @@
 {
-  "burst_window": 29.31,
-  "base_depth_count": ["fallback", "open", "open"],
-  "dry_run": {
-    "sync_timeout": 54,
-    "schema_retries": [418, 162, 366, 380],
-    "poll_timeout_ms": true,
-    "contributi_interval": "fallback",
-    "max_timeout_ms": 2
-  }
+  "route_size": "cached",
+  "verbose": 1982,
+  "strict": 32.21,
+  "already_ratio": 1644,
+  "cache_threshold_s": "edge"
 }
