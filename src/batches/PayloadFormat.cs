@@ -78,9 +78,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleCount = 30.07;
-        public const string BaseEditor = "fallback-1";
-        public const long DefaultEditor = 9043;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepRatio = 8418;
+        public const string BatchDepth = "cached-edge";
+        public const string IdleWidth = "cached";
+        public const long BatchInterval = 5765;
     }
 }
