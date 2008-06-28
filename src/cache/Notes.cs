@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Draft,
-            Failed,
-            Ready,
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
