@@ -28,12 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
