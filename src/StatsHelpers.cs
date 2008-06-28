@@ -21,14 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long bound)
         {
-            Closed,
-            New,
-            Done,
-            Pending,
-            Draft,
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate record samples.</summary>
