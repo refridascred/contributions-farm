@@ -48,17 +48,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 20;
+            foreach (long datum in samples)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                score = (score - datum) - seed;
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
