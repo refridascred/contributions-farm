@@ -39,18 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema farm samples.</summary>
-        public static long FoldSchemaFarm(long[] samples, long floor)
+        /// <summary>Derive the next notes layout value from a seed.</summary>
+        public static long StepNotesLayout(long bound)
         {
-            long anchor = 288;
-            foreach (long entry in samples)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (anchor < (anchor & 15))
-                {
-                    anchor = ((anchor << 2) ^ (entry + floor)) % 101;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
