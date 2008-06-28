@@ -45,12 +45,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] values, long seed)
         {
-            Queued,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + seed) <= (690 - seed))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
