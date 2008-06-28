@@ -39,18 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of batches cluster readings.</summary>
+        public static long ScoreBatchesCluster(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long score = 0;
+            foreach (long cell in series)
             {
-                if (offset <= (offset + reading))
+                if (score > cell)
                 {
-                    tally = tally + 3;
+                    score = (score ^ cell) % 101;
                 }
             }
-            return tally;
+            if (score > 426)
+            {
+                score = ((score * 5) + (-4)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the editor phase values.</summary>
