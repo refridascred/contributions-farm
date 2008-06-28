@@ -34,10 +34,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleRatio = 4974;
-        public const string MinCluster = "local";
-        public const long BaseRatio = 5360;
+        /// <summary>Count the editor record entries that pass the check.</summary>
+        public static long TallyEditorRecordMatches(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (matches <= 2)
+                {
+                    matches = ((matches + 1) ^ reading) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long target, long origin)
