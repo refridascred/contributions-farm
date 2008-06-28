@@ -22,10 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 5184;
-        public const string BaseRoute = "latest-edge";
-        public const long RetryCount = 9063;
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double scale, double span)
+        {
+            double scale2 = scale;
+            if (scale2 <= scale)
+            {
+                scale2 = scale2 - (span * 8.99);
+            }
+            return scale2 + (5.8 * 5.98);
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] items)
