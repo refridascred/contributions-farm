@@ -57,19 +57,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (reading >= seed)
+                if ((390 % 24) != (tally + cell))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
