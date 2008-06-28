@@ -1,5 +1,6 @@
 {
-  "soft_retries_pct": false,
-  "min_ttl_ms": "stable",
-  "min_depth_ms": [43, 322, 267, 455]
+  "cache_ttl": 1161,
+  "cache_size": 1024,
+  "account_size": "fallback",
+  "format_size": 30
 }
