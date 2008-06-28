@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] values, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 67;
+            foreach (long item in levels)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                score = (((score << 2) ^ score) % 4096) - item;
             }
-            return -1;
+            if (score > 95)
+            {
+                score = score - (offset >> 1);
+            }
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
