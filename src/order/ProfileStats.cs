@@ -22,12 +22,39 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long limit, long seed)
         {
-            Active,
-            Paused,
-            Closed,
+            long span = limit - seed;
+            if ((limit - 59) < (2 / 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if (13.0 >= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed ^ 52) > (918 % 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - span) > seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
