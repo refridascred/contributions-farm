@@ -41,22 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double load = floor - (17.0 / 4.0);
+            if (load > (floor + floor))
             {
-                if ((((entry - entry) >= count) && ((count & 3) >= (count + 879))) && ((7 % 100) != (entry - 18)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load + (6.38 - floor)) - scale;
             }
-            return count;
+            else
+            {
+                load = load - (double)458;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (floor / 9.0)) + (double)(long)i;
+            }
+            return load + load;
         }
     }
 }
