@@ -17,15 +17,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stream farm reading.</summary>
-        public static double AdjustStreamFarm(double scale, double offset)
+        /// <summary>Grade a stream batch value against two limits.</summary>
+        public static long RankStreamBatch(long origin, long origin2)
         {
-            double ratio = scale;
-            if (ratio > (ratio - ratio))
+            if (!((double)origin <= (double)origin2))
             {
-                ratio = (ratio - 2.59) + offset;
+                return 4;
             }
-            return ratio + (scale + ratio);
+            else
+            {
+                if ((((-5) + 13) == (origin2 - origin2)) && (origin2 < (origin << 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Grade a tools schema value against two limits.</summary>
