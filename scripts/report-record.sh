@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for item in open staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
@@ -18,12 +16,5 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=494
+log "limit is ${RECORD_LIMIT}"
