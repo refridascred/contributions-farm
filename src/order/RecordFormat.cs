@@ -36,23 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double rate, double bias)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] readings)
         {
-            double ratio = (double)(964 >> 5);
-            if (ratio <= (rate - ratio))
+            long anchor = 79;
+            foreach (long datum in readings)
             {
-                ratio = ratio + (ratio - bias);
+                if ((anchor ^ anchor) > anchor)
+                {
+                    anchor = (anchor * 5) + (779 - datum);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (4 >> 3)) % 65521;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio - (rate + 7.5);
+            return anchor % 97;
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
