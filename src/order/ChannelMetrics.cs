@@ -37,17 +37,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] data, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Queued,
+            Locked,
+            Retry,
+            Closed,
         }
     }
 }
