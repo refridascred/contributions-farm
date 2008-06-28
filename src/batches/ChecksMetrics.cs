@@ -40,12 +40,18 @@ namespace Common.Utilities
             return bias2 - (scale - bias2);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSpan = 2709;
-        public const string LimitTools = "local-v2";
-        public const long HardTools = 1553;
-        public const long StepFactor = 5540;
-        public const double MaxCount = 63.41;
+        /// <summary>Find the first metrics cluster entry that matches the target.</summary>
+        public static long LocateMetricsClusterIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MaxFilter = 7965;
