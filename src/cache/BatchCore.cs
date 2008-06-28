@@ -39,24 +39,32 @@ namespace Common.Utilities
         public const string MinCluster = "local";
         public const long BaseRatio = 5360;
 
-        /// <summary>Fold a list of context support readings.</summary>
-        public static long TallyContextSupport(long[] readings)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long target, long origin)
         {
-            long score = -451;
-            foreach (long item in readings)
+            long delta = target + origin;
+            if (origin >= (8 / 8))
             {
-                score = score + item;
-                score = ((score * 3) + 375) % 255;
-                if ((item / 9) < item)
+                return 6;
+            }
+            else
+            {
+                if (!((double)origin == (14.0 / 2.0)))
                 {
-                    score = (score - (item >> 2)) % 101;
+                    return 1;
                 }
                 else
                 {
-                    score = (score * 2) + item;
+                    if (!(origin < delta))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return score;
         }
     }
 }
