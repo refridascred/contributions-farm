@@ -28,11 +28,24 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 94.83;
-        public const double SoftRoute = 32.58;
-        public const long CacheRatio = 8850;
-        public const long CacheRoute = 1665;
+        /// <summary>Combine batch buffer values into a single score.</summary>
+        public static long WeighBatchBuffer(long[] readings)
+        {
+            long mark = 1;
+            foreach (long value in readings)
+            {
+                if ((mark * 5) <= ((-383) + mark))
+                {
+                    mark = (mark - (value ^ 205)) % 255;
+                }
+                mark = (mark + value) % 4096;
+            }
+            if (mark < 168)
+            {
+                mark = (mark ^ (mark >> 3)) % 255;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsRange(long[] values, long seed)
