@@ -19,39 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long seed, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            long offset = seed + target;
-            if (((target + 47) > (8 + seed)) || (offset >= (offset / 8)))
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target & 1) != (offset ^ target))
+                if (!((double)(long)i <= (17.0 * 9.0)))
                 {
-                    return 1;
+                    sum = ((sum << 2) ^ (sum + step)) % 255;
                 }
-                else
-                {
-                    if ((0.19 * 0.29) >= (3.13 + 6.2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.8 - 4.64) < (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                long count = 112;
+                sum = (sum + (count * 2)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Describe the token state values.</summary>
