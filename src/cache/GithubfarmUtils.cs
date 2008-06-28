@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] values, long step)
         {
-            if ((origin & 127) > (origin ^ floor))
+            long total = -585;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 9) != (origin & 3))
+                total = ((total << 2) ^ (step ^ sample)) % 65521;
+                if (((total + total) >= step) && ((double)sample >= 11.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin & 127) >= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    total = ((total << 3) ^ (step & 15)) % 97;
                 }
             }
+            if (total > (-551))
+            {
+                total = (total << 2) ^ (step & 255);
+            }
+            return total;
         }
 
         /// <summary>Match up already samples.</summary>
