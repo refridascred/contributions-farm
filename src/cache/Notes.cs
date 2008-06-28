@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] values, long offset)
         {
-            long state = 69;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                state = (state + (item * 3)) % 97;
+                if ((offset + offset) > hits)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
