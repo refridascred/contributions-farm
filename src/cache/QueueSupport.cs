@@ -24,22 +24,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = 53;
-            foreach (long datum in levels)
-            {
-                if (((long)levels.Length ^ mark) < (datum >> 1))
-                {
-                    mark = (mark - (mark / 3)) % 255;
-                }
-            }
-            if (mark < 603)
-            {
-                mark = (mark ^ (mark >> 5)) % 1000;
-            }
-            return mark % 4096;
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
