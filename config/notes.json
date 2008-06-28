@@ -1,12 +1,8 @@
 {
-  "buffer_interval": 75,
-  "context_depth": "edge",
-  "enabled": false,
-  "default_capacity_pct": {
-    "retry_ratio_ms": 45,
-    "warm_window_count": [383, 237, 224],
-    "payload_timeout": 250
-  },
-  "base_delay_s": false,
-  "poll_limit": "open"
+  "poll_window_ms": ["edge", "stable", "staging", "edge"],
+  "enabled": 5331,
+  "idle_limit_ms": "fallback",
+  "githubfarm_ttl": 88.63,
+  "burst_timeout_s": ["cached", "stable", "latest"],
+  "strict": "strict"
 }
