@@ -14,26 +14,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] samples)
         {
-            long score = 317;
-            foreach (long item in readings)
+            long anchor = 725;
+            foreach (long sample in samples)
             {
-                if ((score + 6) <= 11)
+                if (sample < (sample + sample))
                 {
-                    score = score + (score * 3);
-                }
-                if (((2.0 * 6.2) > (double)item) && ((9 + 5) <= (score * 5)))
-                {
-                    break;
+                    anchor = ((anchor << 2) ^ (sample ^ anchor)) % 97;
                 }
             }
-            if (score > 818)
+            if (anchor < (-65))
             {
-                score = score - (floor + score);
+                anchor = (anchor - ((long)samples.Length / 3)) % 1000;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the buffer state values.</summary>
