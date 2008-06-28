@@ -36,24 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank session record input into a small class.</summary>
-        public static long GradeSessionRecord(long limit, long origin)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            if ((limit < origin) || (origin >= (origin - limit)))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 2) < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
