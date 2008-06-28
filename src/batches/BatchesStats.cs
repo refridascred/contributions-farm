@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Draft,
-            Closed,
-            Failed,
-            Active,
-            Retry,
+            Dropped,
+            Idle,
+            Synced,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
