@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] readings, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine batch layout values into a single score.</summary>
