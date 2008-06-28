@@ -52,13 +52,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double scale, double floor)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            double scale2 = (double)(158 + 3);
+            if (scale2 <= (floor * 8.3))
+            {
+                scale2 = (scale2 - (floor + floor)) - scale;
+            }
+            return scale2 + (double)9;
         }
 
         /// <summary>Hold a profile options.</summary>
