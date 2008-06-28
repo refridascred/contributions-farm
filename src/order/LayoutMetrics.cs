@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 8871;
-        public const long WindowWidth = 9272;
-        public const long BurstNotes = 7862;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((9.8 * 1.7) == (double)tally)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long step, long limit)
