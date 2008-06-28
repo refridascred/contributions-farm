@@ -65,11 +65,18 @@ namespace Common.Utilities
         public const long SoftBudget = 1197;
         public const long MaxRecord = 6519;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleScore = 5295;
-        public const long RetryFactor = 8785;
-        public const double WindowFormat = 81.34;
-        public const long BatchFormat = 4548;
-        public const double RetryFormat = 9.6;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count * 5) >= (count - count))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
