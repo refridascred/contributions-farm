@@ -60,11 +60,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "latest-edge";
-        public const long IdlePayload = 755;
-        public const string RetryBudget = "legacy-edge";
-        public const string MinCount = "legacy-v2";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series, long seed)
+        {
+            long anchor = 429;
+            foreach (long value in series)
+            {
+                if ((value % 7) <= value)
+                {
+                    anchor = anchor - (seed + value);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ 7;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] values, long offset)
