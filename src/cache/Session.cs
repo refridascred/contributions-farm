@@ -19,19 +19,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (value < (value & 255))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 8806;
+        public const string MinRatio = "legacy-edge";
+        public const long BaseSpan = 88;
+        public const long WindowQueue = 9787;
+        public const double SoftCount = 55.99;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] levels)
