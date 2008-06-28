@@ -1,11 +1,10 @@
 # Command notes
 
-Keep layout and githubfarm names short and lowercase.
-When a githubfarm fails, the context handler retries a few times before giving up.
+The window report groups every layout by format.
+When a checks fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new counter fields
-- Log every context change
-- Validate entry input early
-- Keep window values small
+- Log every notes change
+- Review account limits each release
+- Validate filter input early
