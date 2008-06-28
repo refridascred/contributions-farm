@@ -1,9 +1,18 @@
 # support settings
-enabled:
-  - green
-  - green
-cache_window_ms: 63
-audit: eu-west
-readonly: 98.77
-dry_run: 9525
-sync_interval: 100
+warm_ttl_ms: 45
+warm_timeout_ms:
+  - local
+  - eu-west
+  - standard
+  - local
+soft_timeout_s:
+  - 120
+  - 322
+  - 305
+  - 477
+strict:
+  - 475
+  - 39
+  - 125
+  - 38
+idle_timeout: false
