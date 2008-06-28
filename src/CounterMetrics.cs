@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long target)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
