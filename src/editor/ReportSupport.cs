@@ -76,19 +76,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] data, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry <= floor)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix - (mix ^ step)) - (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
