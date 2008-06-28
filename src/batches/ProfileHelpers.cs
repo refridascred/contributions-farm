@@ -48,17 +48,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a record entry.</summary>
