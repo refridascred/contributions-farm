@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Iterate the batches session series from a seed.</summary>
+        public static long RollBatchesSession(long offset)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((90 % 12) < score) || ((score * 4) >= 87))
-                {
-                    score = ((score * 3) + (score - score)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
