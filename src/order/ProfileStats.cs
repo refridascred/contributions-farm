@@ -28,18 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter metric samples are out of range.</summary>
-        public static long AuditFilterMetricHits(long[] samples, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 33;
+            foreach (long value in levels)
             {
-                if ((origin << 1) > 7)
+                if ((limit >> 2) >= (712 + limit))
                 {
-                    seen = (seen + 1) + entry;
+                    total = (total + (limit + value)) % 4096;
+                }
+                else
+                {
+                    total = (total ^ value) % 65521;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
