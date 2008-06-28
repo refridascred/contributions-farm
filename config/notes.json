@@ -1,6 +1,7 @@
 {
-  "verbose": "eu-west",
-  "poll_interval": 66.08,
-  "default_depth": "legacy",
-  "persist": 68.67
+  "dry_run": 3968,
+  "audit": 60,
+  "metrics_size": 3604,
+  "stats_capacity": "latest",
+  "idle_threshold_ms": 5
 }
