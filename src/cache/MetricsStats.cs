@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSpan = 2483;
-        public const string MinDepth = "stable-edge";
-        public const long DefaultSession = 1097;
-        public const double MaxSession = 77.02;
-        public const long StepSession = 9038;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
