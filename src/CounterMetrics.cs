@@ -37,22 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token cache readings.</summary>
-        public static long ScoreTokenCache(long[] values, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long carry = 970;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((85 << 1) == (carry >> 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry + limit) % 4096) ^ value;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry > 903)
-            {
-                carry = ((carry * 3) + (carry % 12)) % 1000;
-            }
-            return carry % 97;
+            return count;
         }
     }
 }
