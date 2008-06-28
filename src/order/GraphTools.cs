@@ -20,31 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long seed, long seed2)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] data)
         {
-            if (((-58) * 5) < (seed & 7))
+            long mix = 5;
+            foreach (long datum in data)
             {
-                return 0;
+                mix = ((mix - ((long)data.Length / 3)) % 4096) + datum;
             }
-            else
+            if (mix > 20)
             {
-                if ((double)785 != (double)seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed2 / 8) <= (seed2 / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = mix + mix;
             }
+            return mix % 97;
         }
 
         /// <summary>Combine format values into a single score.</summary>
