@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Match up contributi batches samples.</summary>
+        public static long MatchContributiBatchesCount(long[] series)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
