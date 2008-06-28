@@ -1,7 +1,7 @@
 # githubfarm settings
-payload_interval: 28.51
-flush_depth_s: 97.38
-poll_ttl_pct: local
-min_depth_ms: true
-sync_size_count: false
-strict: false
+max_timeout_ms: 1829
+max_limit: 1043
+idle_capacity_count: strict
+poll_ttl_pct:
+  - 344
+  - 187
