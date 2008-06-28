@@ -53,22 +53,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] series, long offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long total = 7;
+            foreach (long item in data)
             {
-                if ((0 + hits) >= (entry + hits))
-                {
-                    hits = (hits + 2) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = (total - (item >> 3)) % 65521;
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
