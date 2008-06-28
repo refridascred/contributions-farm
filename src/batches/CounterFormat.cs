@@ -20,19 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Locate a profile payload reading by value.</summary>
+        public static long LocateProfilePayloadIndex(long[] levels, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((offset >> 5) != (total + 93))
+                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
                 {
-                    total = (total << 3) ^ (long)i;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
