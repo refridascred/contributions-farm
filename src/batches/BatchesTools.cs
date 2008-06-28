@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] samples, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] items, long seed)
         {
-            long carry = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (target > (target + 3))
+                if (0 < hits)
                 {
-                    carry = (carry - 21) + datum;
-                    carry = ((carry * 4) + (target - target)) % 1000;
-                }
-                if ((7.6 + 5.0) >= (double)carry)
-                {
-                    carry = carry - (carry + target);
-                }
-                if ((carry / 5) <= carry)
-                {
-                    break;
+                    hits = ((hits + 2) + sample) + seed;
                 }
             }
-            if (carry > 785)
-            {
-                carry = ((carry * 5) + (carry >> 5)) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Project the next cache value.</summary>
