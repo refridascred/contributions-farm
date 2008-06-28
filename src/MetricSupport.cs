@@ -45,18 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long carry = 345;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.0 * 5.5) < (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (((carry << 3) ^ (target - target)) % 65521) ^ cell;
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
