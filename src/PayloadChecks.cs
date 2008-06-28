@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double rate, double offset)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            double mean = rate;
-            if (mean < 4.7)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + mean) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + rate;
-            }
-            return mean - (double)0;
+            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
