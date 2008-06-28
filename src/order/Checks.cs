@@ -63,18 +63,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many graph already samples are out of range.</summary>
-        public static long AuditGraphAlreadyGaps(long[] items)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double mean = 4.9;
+            if (mean >= mean)
             {
-                if ((item + hits) >= (item - hits))
-                {
-                    hits = hits + 1;
-                }
+                mean = (mean - (floor * 19.0)) - ratio;
             }
-            return hits;
+            return mean - (double)92;
         }
     }
 }
