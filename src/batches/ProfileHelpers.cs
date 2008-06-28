@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] values, long origin)
-        {
-            long mix = 3;
-            foreach (long cell in values)
-            {
-                mix = (mix - (origin - cell)) % 1000;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultRatio = 2458;
+        public const double IdleReport = 41.43;
+        public const long DefaultFactor = 5923;
+        public const long RetryReport = 4853;
+        public const string LimitFactor = "local-v2";
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] levels)
