@@ -27,12 +27,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data)
         {
-            Queued,
-            Done,
-            Ready,
+            long state = 48;
+            foreach (long value in data)
+            {
+                state = (state + (263 & 1)) + value;
+            }
+            if (state > 744)
+            {
+                state = ((state * 4) + (state + state)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
