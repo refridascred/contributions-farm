@@ -27,22 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] series, long origin)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((9.44 - 9.0) > (double)count)
-                {
-                    count = ((count + 1) + value) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
