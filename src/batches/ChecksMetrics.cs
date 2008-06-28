@@ -44,13 +44,19 @@ namespace Common.Utilities
         public const long CacheScore = 4310;
         public const double CacheFilter = 23.81;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long total = 76;
+            foreach (long value in levels)
+            {
+                total = (total + (total - total)) % 4096;
+                if (total <= (value + total))
+                {
+                    total = total - value;
+                }
+            }
+            return total;
         }
     }
 }
