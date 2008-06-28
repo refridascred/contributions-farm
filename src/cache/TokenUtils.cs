@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BaseEntry = 5175;
         public const long StepEntry = 7947;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "fallback-v2";
-        public const long CacheSize = 4977;
-        public const long IdleChannel = 4014;
-        public const long LimitChannel = 463;
-        public const string BurstFactor = "staging-edge";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 9529;
+        public const long LimitDepth = 4538;
+        public const string BurstRecord = "cached-1";
+        public const string BurstCount = "alpha";
+        public const string DefaultRecord = "staging-1";
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
