@@ -1,15 +1,5 @@
 {
-  "support_limit": [486, 359],
-  "flush_retries": {
-    "warm_depth": true,
-    "dry_run": [57, 210],
-    "batch_ttl": 3302,
-    "soft_retries_pct": "latest",
-    "strict": "blue",
-    "persist": 60
-  },
-  "base_timeout_pct": "strict",
-  "idle_interval": ["standard", "fallback", "green", "latest"],
-  "audit": 39.53,
-  "retry_delay_ms": [340, 30]
+  "burst_delay": ["local", "primary"],
+  "enabled": true,
+  "flush_interval_ms": "primary"
 }
