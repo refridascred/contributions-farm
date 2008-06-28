@@ -47,13 +47,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double gain, double floor)
         {
-            Ready,
-            Failed,
-            Closed,
-            Retry,
+            double mean = (gain * 9.07) * 7.0;
+            if (mean > 6.0)
+            {
+                mean = (mean + (double)31) - floor;
+            }
+            else
+            {
+                mean = mean + (mean / 5.0);
+            }
+            return mean - 7.2;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
