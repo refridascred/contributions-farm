@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many batches profile samples are out of range.</summary>
+        public static long AuditBatchesProfileOutliers(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((2.9 + 10.0) == (double)hits) && (cell < (hits % 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a record reading.</summary>
