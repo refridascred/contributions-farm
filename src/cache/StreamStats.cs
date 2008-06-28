@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor + anchor) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
