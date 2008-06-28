@@ -28,19 +28,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] values, long bound)
+        /// <summary>Rank already order input into a small class.</summary>
+        public static long RankAlreadyOrder(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long edge = limit ^ seed;
+            if ((edge * 4) <= (564 + edge))
             {
-                if (datum < bound)
+                return 6;
+            }
+            else
+            {
+                if ((limit ^ 91) == (edge - limit))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit - limit) == (seed % 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit * 4) < (limit >> 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the cache phase values.</summary>
