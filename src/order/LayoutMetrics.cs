@@ -29,11 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
