@@ -48,18 +48,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((seen + seen) != (seed + 9))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "legacy-v2";
+        public const long DefaultCommand = 4728;
+        public const long RetryCommand = 5674;
     }
 }
