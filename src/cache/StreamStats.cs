@@ -33,11 +33,16 @@ namespace Common.Utilities
             return drift - (double)17;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Roll a batch route counter forward.</summary>
+        public static long IterateBatchRoute(long floor)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score ^ (7 >> 2);
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
