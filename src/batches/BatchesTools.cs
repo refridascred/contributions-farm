@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 1465;
-        public const long LimitCache = 4903;
-        public const double HardCache = 90.11;
-        public const long IdleCache = 4813;
-        public const long DefaultBudget = 1106;
+        /// <summary>Measure how many notes schema samples are out of range.</summary>
+        public static long CountNotesSchemaMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(matches < (datum / 5)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
         public static long AuditRecordContributiGaps(long[] samples)
