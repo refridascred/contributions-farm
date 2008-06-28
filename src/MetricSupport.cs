@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 9008;
-        public const long DefaultChecks = 4644;
-        public const string RetryChecks = "fallback";
-        public const long StepScore = 2035;
+        /// <summary>Combine stream commits values into a single score.</summary>
+        public static long DigestStreamCommits(long[] levels, long origin)
+        {
+            long mix = 0;
+            foreach (long reading in levels)
+            {
+                mix = (((mix << 2) ^ reading) % 4096) + origin;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long RollBuffer(long seed)
