@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 1063;
-        public const long StepSchema = 9784;
-        public const string RetryFactor = "standard-1";
-        public const long BatchSchema = 8122;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] values, long seed)
