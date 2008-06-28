@@ -38,13 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            New,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
