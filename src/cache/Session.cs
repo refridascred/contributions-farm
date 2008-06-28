@@ -31,12 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
