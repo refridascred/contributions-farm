@@ -64,22 +64,38 @@ namespace Common.Utilities
         public const long MaxEditor = 1119;
         public const long StepEditor = 3837;
 
-        /// <summary>Audit contributi stats readings against a rule.</summary>
-        public static long AuditContributiStatsOutliers(long[] readings, long target)
+        /// <summary>Grade a githubfarm window value against two limits.</summary>
+        public static long GradeGithubfarmWindow(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if ((16.0 - 4.81) > (double)floor)
             {
-                if (((6.0 - 7.24) != (double)target) && ((7.5 - 1.8) == (double)cell))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (14.0 * 5.7))
                 {
-                    matches = matches + 1;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((floor <= (52 / 9)) || ((double)floor == (1.41 / 5.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor == (1.8 * 6.8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
