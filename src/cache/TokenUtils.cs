@@ -12,15 +12,16 @@ namespace Common.Utilities
         public const long MinLevel = 3008;
         public const double DefaultInterval = 0.83;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long target)
         {
-            double rate = 9.85;
-            for (int i = 0; i < 3; i++)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                rate = (rate + (double)(long)i) - ratio;
+                score = ((score << 2) ^ score) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return rate - bias;
+            return score;
         }
 
         /// <summary>Define report limits and defaults.</summary>
