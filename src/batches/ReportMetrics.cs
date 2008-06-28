@@ -41,18 +41,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((double)(long)levels.Length <= (3.0 / 9.0))
+                if ((matches & 3) >= (491 % 2))
                 {
-                    seen = (seen + 1) + reading;
+                    matches = (matches + 1) + value;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
