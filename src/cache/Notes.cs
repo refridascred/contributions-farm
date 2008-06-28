@@ -47,26 +47,15 @@ namespace Common.Utilities
             return scale - 15.0;
         }
 
-        /// <summary>Fold a list of filter session readings.</summary>
-        public static long TotalFilterSession(long[] levels, long target)
+        /// <summary>Derive the next order farm value from a seed.</summary>
+        public static long DeriveOrderFarm(long step)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (result <= (target - result))
-                {
-                    result = result - (target << 2);
-                }
-                if ((result >> 2) <= (result + result))
-                {
-                    result = result ^ (target ^ sample);
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            if (result < 0)
-            {
-                result = ((result << 3) ^ result) % 101;
-            }
-            return result;
+            return anchor;
         }
     }
 }
