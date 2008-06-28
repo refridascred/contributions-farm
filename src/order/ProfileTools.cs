@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFactor = 160;
-        public const long SoftWidth = 7909;
-        public const long RetryFarm = 6814;
-        public const long LimitLevel = 4962;
-        public const long RetrySize = 1153;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Iterate the batches session series from a seed.</summary>
         public static long RollBatchesSession(long offset)
