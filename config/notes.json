@@ -1,5 +1,11 @@
 {
-  "max_timeout_s": 94.73,
-  "min_threshold_count": 42.37,
-  "max_retries_pct": "edge"
+  "soft_capacity_count": 8439,
+  "channel_timeout": "fallback",
+  "sync_interval_count": {
+    "flush_timeout_pct": 29,
+    "retry_window_s": 90,
+    "sync_ttl_s": [195, 88, 441],
+    "route_ratio": "latest",
+    "context_depth": ["legacy", "legacy", "strict"]
+  }
 }
