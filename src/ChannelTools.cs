@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] samples, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((step << 2) == (step / 8))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
