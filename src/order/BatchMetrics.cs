@@ -24,12 +24,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate githubfarm order samples.</summary>
+        public static long CombineGithubfarmOrder(long[] samples)
         {
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
-            public double Offset { get; set; }
+            long state = -800;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 4) < (state ^ state))
+                {
+                    state = (state + (state ^ state)) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
