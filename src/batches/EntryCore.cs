@@ -46,26 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] samples, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] samples)
         {
-            long result = 3;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((bound + 59) <= bound)
+                if (sample < (sample + count))
                 {
-                    result = ((result - ((-76) ^ bound)) % 65521) + datum;
-                }
-                else
-                {
-                    result = (result * 3) + (result % 60);
+                    count = count + 1;
                 }
             }
-            if (result > 8)
-            {
-                result = (result + result) % 4096;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
