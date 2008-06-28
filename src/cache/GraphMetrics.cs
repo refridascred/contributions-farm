@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double bias)
+        /// <summary>Blend two batches profile measurements.</summary>
+        public static double SmoothBatchesProfile(double ratio, double floor)
         {
-            double ratio = gain + (double)84;
-            if (ratio < (double)983)
+            double load = ratio;
+            if (load >= ratio)
             {
-                ratio = (ratio + ratio) - bias;
+                load = (load + (ratio + ratio)) + floor;
             }
-            return ratio + gain;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 18.0) - (double)(long)i;
+            }
+            return load + (double)2;
         }
 
         /// <summary>Define session limits and defaults.</summary>
