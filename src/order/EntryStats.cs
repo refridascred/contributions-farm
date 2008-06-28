@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long BurstScore = 9136;
         public const long SoftBuffer = 2666;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] levels)
         {
             long seen = 0;
-            foreach (long datum in items)
+            foreach (long value in levels)
             {
-                if (!((double)seen != (1.0 + 6.3)))
+                if (((seen << 3) <= (value << 1)) || ((seen % 97) == (value ^ (long)levels.Length)))
                 {
-                    seen = ((seen + 1) + datum) + bound;
+                    seen = seen + 2;
                 }
             }
             return seen;
