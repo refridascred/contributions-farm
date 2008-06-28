@@ -61,19 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double rate, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] readings, long target)
         {
-            double load = rate * 7.0;
-            if (load <= (rate / 7.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load + (rate + load)) - offset;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (double)7;
+            return -1;
         }
     }
 }
