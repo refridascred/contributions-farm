@@ -1,37 +1,7 @@
 # support settings
-flush_ttl_pct: 47.42
-warm_window: green
-soft_timeout_s:
-  batch_size_pct: true
-  strict: 30
-  cache_threshold_count: 7529
-  flush_threshold_pct:
-    cache_ttl: 60
-    base_interval_pct:
-      - 329
-      - 188
-      - 495
-    metrics_limit: edge
-    commits_size: 16
-    default_retries_ms: 46.94
-  persist: primary
-  verbose: false
-sync_depth_s: strict
-githubfarm_limit:
-  default_ratio_count: 901
-  report_timeout: legacy
-  hard_delay: eu-west
-  entry_capacity:
-    persist: 67.33
-    poll_limit_count: fallback
-    metric_interval:
-      - open
-      - open
-      - staging
-    batch_delay_pct:
-      - cached
-      - standard
-      - open
-      - cached
-  hard_depth_count: 80
-audit: 11
+dry_run: cached
+cache_size_count: green
+layout_timeout:
+  cache_interval: 4.03
+  burst_interval_count: latest
+  flush_threshold_ms: 500
