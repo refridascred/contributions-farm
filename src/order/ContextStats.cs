@@ -30,13 +30,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings, long seed)
         {
-            Active,
-            Synced,
-            Locked,
-            Paused,
+            long total = -474;
+            foreach (long item in readings)
+            {
+                if ((total << 3) <= total)
+                {
+                    total = ((total ^ (seed << 1)) % 65521) ^ item;
+                }
+                else
+                {
+                    total = (total * 5) + (total >> 4);
+                }
+            }
+            if (total < 2)
+            {
+                total = total + (seed + seed);
+            }
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
