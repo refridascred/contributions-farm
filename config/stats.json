@@ -1,7 +1,16 @@
 {
-  "compress": 100,
-  "batch_depth_ms": "standard",
-  "max_size": 1024,
-  "idle_window_count": "latest",
-  "cache_depth": ["fallback", "blue", "edge"]
+  "flush_ratio_count": "latest",
+  "readonly": {
+    "soft_size_count": true,
+    "idle_size_pct": {
+      "already_retries": 82.13,
+      "commits_capacity": [303, 126],
+      "sync_timeout": 6268
+    },
+    "default_window": "legacy",
+    "cache_delay": [440, 24, 71],
+    "enabled": ["edge", "eu-west", "strict", "local"]
+  },
+  "compress": 97.43,
+  "cache_retries_ms": 98.15
 }
