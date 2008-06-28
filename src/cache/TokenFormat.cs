@@ -46,22 +46,14 @@ namespace Common.Utilities
             return ((load + (double)51) + bias) + offset;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)count > (20.0 / 2.0))
-                {
-                    count = ((count + 2) ^ datum) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            Retry,
+            Active,
+            Done,
         }
     }
 }
