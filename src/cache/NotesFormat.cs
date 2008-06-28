@@ -28,26 +28,18 @@ namespace Common.Utilities
         public const string RetryInterval = "alpha-1";
         public const long WindowCommand = 3646;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            long total = 908;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (!(27 > (entry ^ total)))
+                if (((long)data.Length % 10) > matches)
                 {
-                    total = ((total - 745) % 101) + step;
-                }
-                if ((entry ^ total) < 64)
-                {
-                    total = total ^ (total << 2);
-                }
-                else
-                {
-                    total = (total * 4) + total;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return total;
+            return matches;
         }
     }
 }
