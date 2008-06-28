@@ -73,21 +73,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TallyEditor(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 101;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result - (reading * 3)) % 4096) + bound;
             }
-            return seen;
+            return result;
         }
     }
 }
