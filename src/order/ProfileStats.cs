@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double scale, double span)
         {
-            long lane = seed + floor;
-            if ((0 - floor) != (lane + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (lane >= (5 / 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double load = 5.71;
+            return (load + span) + scale;
         }
 
         /// <summary>Measure how many filter metric samples are out of range.</summary>
