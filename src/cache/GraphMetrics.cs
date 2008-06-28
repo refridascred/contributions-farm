@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two batches profile measurements.</summary>
-        public static double SmoothBatchesProfile(double ratio, double floor)
-        {
-            double load = ratio;
-            if (load >= ratio)
-            {
-                load = (load + (ratio + ratio)) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + 18.0) - (double)(long)i;
-            }
-            return load + (double)2;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseTimeout = 2582;
+        public const string BaseFactor = "staging-v2";
+        public const long DefaultWidth = 3624;
+        public const double IdleCache = 16.48;
+        public const long MinDepth = 7738;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] levels, long origin)
