@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 1618;
-        public const long BatchFactor = 3059;
-        public const long LimitReport = 3825;
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many counter commits samples are out of range.</summary>
         public static long CountCounterCommitsHits(long[] values)
