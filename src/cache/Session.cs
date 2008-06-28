@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)(860 * 4);
+            return ((weight - (double)2) + ratio) + span;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
