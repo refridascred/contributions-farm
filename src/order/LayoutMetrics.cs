@@ -30,23 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter support entries.</summary>
-        public static long DigestCounterSupport(long[] readings, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long step, long seed)
         {
-            long mix = 179;
-            foreach (long entry in readings)
+            if ((step - seed) == (step & 1))
             {
-                if ((entry % 97) > mix)
+                return 1;
+            }
+            else
+            {
+                if ((seed << 3) >= step)
                 {
-                    continue;
+                    return 7;
                 }
-                mix = ((mix * 2) + entry) % 255;
+                else
+                {
+                    if ((seed + step) < (step + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            if (mix < 117)
-            {
-                mix = mix ^ offset;
-            }
-            return mix;
         }
     }
 }
