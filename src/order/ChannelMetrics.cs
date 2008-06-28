@@ -46,19 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool CheckMetricsChannelBounds(long[] values, long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] samples, long floor)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell <= bound)
+                if (samples[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
