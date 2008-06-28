@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Count the checks record entries that pass the check.</summary>
+        public static long CountChecksRecordGaps(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (0 <= tally)
+                {
+                    tally = ((tally + 1) ^ datum) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
