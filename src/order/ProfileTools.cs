@@ -44,13 +44,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long seed, long step)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            if (((1.1 - 3.8) < (double)seed) && ((6.92 * 2.5) != (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step >> 2) <= (step << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step % 8) < (seed + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step > (step ^ 40)) || ((seed - step) <= (step % 16)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
