@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long limit2)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] data, long origin)
         {
-            if ((limit & 63) <= limit)
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((418 ^ limit) >= (8 & 15))
+                if (value != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Adjust a context farm reading.</summary>
