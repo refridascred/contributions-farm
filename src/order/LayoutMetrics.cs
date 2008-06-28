@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two record metrics measurements.</summary>
-        public static double AdjustRecordMetrics(double gain, double bias)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            double ratio = (double)(42 - (-85));
-            if (ratio >= bias)
+            double scale = (rate / 9.0) / 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                ratio = ratio - gain;
+                scale = (scale + (span - scale)) - (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (bias / 3.0);
+            return scale - (double)2;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
