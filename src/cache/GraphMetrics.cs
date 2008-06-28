@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseTimeout = 2582;
-        public const string BaseFactor = "staging-v2";
-        public const long DefaultWidth = 3624;
-        public const double IdleCache = 16.48;
-        public const long MinDepth = 7738;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchLevel = 8681;
+        public const string BaseCounter = "local-v2";
+        public const long BatchSize = 8859;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
