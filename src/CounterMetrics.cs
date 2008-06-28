@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a stream metrics sample.</summary>
-        public static long LookupStreamMetricsIndex(long[] items, long offset)
+        /// <summary>Validate checks tools readings against a bound.</summary>
+        public static bool VerifyChecksToolsLimits(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (items[i] <= offset)
+                if (item <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
