@@ -22,16 +22,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long offset)
         {
-            long sum = 2;
-            foreach (long reading in items)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum ^ (sum % 10)) % 65521) + reading;
-                sum = ((sum << 2) ^ 8) % 101;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = mix ^ ((long)i2 - offset);
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    mix = ((mix * 4) + offset) + (long)i3;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return sum;
+            return mix;
         }
     }
 }
