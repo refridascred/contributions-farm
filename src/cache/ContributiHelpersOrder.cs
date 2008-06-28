@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the already mode values.</summary>
