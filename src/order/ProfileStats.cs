@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Retry,
+            New,
+            Stale,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
