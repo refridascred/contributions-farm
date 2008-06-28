@@ -30,21 +30,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Accumulate profile session samples.</summary>
+        public static long FoldProfileSession(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 1;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = (total + (total + total)) % 1000;
+                if ((17.0 - 3.9) >= (double)total)
                 {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total * 3) + (entry >> 3);
                 }
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
