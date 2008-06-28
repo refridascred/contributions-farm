@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] items, long limit)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = state ^ (863 >> 5);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up context samples.</summary>
