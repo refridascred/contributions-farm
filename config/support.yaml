@@ -1,5 +1,36 @@
 # support settings
-account_ttl: standard
-base_capacity_ms: 9556
-soft_window: 3235
-batch_limit: cached
+min_size: 1505
+poll_size_s: 1024
+retry_interval_count:
+  queue_capacity: 60
+  hard_ratio:
+    - latest
+    - open
+    - legacy
+    - latest
+  flush_capacity:
+    retry_depth_s: false
+    soft_interval:
+      - fallback
+      - primary
+      - cached
+    compress: true
+    dry_run: fallback
+    batch_timeout_s: 9
+  persist:
+    stats_delay: false
+    burst_depth_s:
+      - green
+      - latest
+    verbose: 61.98
+    warm_delay_s: 14
+    hard_interval: 73
+  hard_timeout:
+    batch_interval_count: 3446
+    min_timeout_s:
+      - eu-west
+      - edge
+      - blue
+      - cached
+    hard_limit_ms: legacy
+burst_ttl: staging
