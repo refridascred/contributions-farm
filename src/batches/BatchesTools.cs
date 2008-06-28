@@ -31,38 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long limit, long offset)
+        /// <summary>Measure how many metric tools samples are out of range.</summary>
+        public static long TallyMetricToolsMatches(long[] series, long step)
         {
-            if ((offset >> 3) == (offset / 4))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 8) >= (offset + offset))
+                if ((1.97 + 11.0) < (double)step)
                 {
-                    return 7;
+                    tally = (tally + 2) - sample;
                 }
                 else
                 {
-                    if ((2.6 / 7.0) < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((-9) <= (offset - 6))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
