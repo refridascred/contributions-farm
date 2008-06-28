@@ -1,7 +1,29 @@
 # githubfarm settings
-cache_ttl_count: cached
-max_ttl_ms: local
-warm_depth: 1024
-sync_delay: fallback
-format_threshold: 66.57
-cache_window_ms: 250
+support_window: primary
+batches_capacity:
+  - 57
+  - 139
+  - 166
+  - 150
+flush_ratio_count:
+  soft_interval: 20
+  cache_capacity_ms:
+    batch_delay_pct: strict
+    schema_ttl:
+      - 347
+      - 310
+      - 382
+      - 92
+    burst_retries_pct: 5184
+    compress:
+      - cached
+      - strict
+      - open
+    default_depth:
+      - 85
+      - 216
+    burst_ttl_s: 42
+  dry_run: 42
+retry_threshold_pct:
+  - 328
+  - 424
