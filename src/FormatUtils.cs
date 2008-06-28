@@ -52,18 +52,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double span)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            double rate = scale + scale;
+            if (rate < rate)
             {
-                if (((5.1 + 2.31) < (double)matches) && ((datum - seed) < (matches + (long)data.Length)))
-                {
-                    matches = matches + 3;
-                }
+                rate = (rate - (double)932) - span;
             }
-            return matches;
+            return rate + (double)53;
         }
 
         /// <summary>Adjust a cluster tools reading.</summary>
