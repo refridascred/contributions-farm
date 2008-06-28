@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next checks graph value from a seed.</summary>
-        public static long DeriveChecksGraph(long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((6 << 3) <= (anchor & 255))
-                {
-                    anchor = (anchor ^ (anchor - origin)) % 1000;
-                }
-                anchor = ((anchor * 2) + anchor) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
