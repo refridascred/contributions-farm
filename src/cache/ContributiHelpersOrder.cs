@@ -25,11 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 5731;
-        public const long BatchPayload = 3234;
-        public const long IdlePayload = 9551;
-        public const long SoftRatio = 7192;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Draft,
+            Pending,
+            Queued,
+            Synced,
+            Active,
+        }
 
         /// <summary>Locate a metric session reading by value.</summary>
         public static long LookupMetricSessionIndex(long[] samples, long floor)
