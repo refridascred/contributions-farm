@@ -64,18 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!(tally <= (tally >> 2)) || !(tally > (tally + 7)))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Locked,
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
