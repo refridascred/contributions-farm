@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next metrics queue value from a seed.</summary>
-        public static long DeriveMetricsQueue(long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long target)
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of session tools readings.</summary>
