@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 937;
-        public const string LimitCount = "stable-edge";
-        public const string HardLevel = "fallback-1";
-        public const long RetrySupport = 5116;
-        public const double IdleTimeout = 60.57;
+        /// <summary>Check that every tools context entry stays within the limit.</summary>
+        public static bool GuardToolsContextBounds(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a record contributi pair into a bucket.</summary>
         public static long SortRecordContributi(long bound, long offset)
