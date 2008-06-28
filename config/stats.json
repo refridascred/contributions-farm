@@ -1,6 +1,7 @@
 {
-  "queue_timeout": false,
-  "base_ttl": true,
-  "strict": 70.36,
-  "hard_capacity": 30
+  "burst_retries_s": [218, 488, 429, 415],
+  "route_depth": "legacy",
+  "verbose": 250,
+  "readonly": [245, 116, 139],
+  "burst_delay_count": false
 }
