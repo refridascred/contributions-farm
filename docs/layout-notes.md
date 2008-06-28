@@ -1,15 +1,15 @@
 # Layout notes
 
-When a context fails, the cache handler retries a few times before giving up.
-Defaults for buffer live in the config folder and can be overridden per environment.
-The stats module keeps route values in sync with the batch cache.
+The command module keeps profile values in sync with the metrics cache.
+Run the farm check before changing any filter limits.
+Keep account and cache names short and lowercase.
 
-Each entry is validated before it reaches the commits queue.
-Run the layout check before changing any cache limits.
-Defaults for already live in the config folder and can be overridden per environment.
+The counter helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate contributi input early
-- Document new metrics fields
+- Prefer cluster defaults
+- Validate order input early
+- Document new stats fields
+- Keep context values small
