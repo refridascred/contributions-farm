@@ -18,24 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long step, long bound)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            if ((step + step) >= (step - 39))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((bound - 45) == (bound + (-72))))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Active,
+            Queued,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a stats options.</summary>
