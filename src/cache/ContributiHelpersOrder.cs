@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long LimitProfile = 2296;
         public const long SoftDepth = 2281;
 
-        /// <summary>Compare every pair of order route readings.</summary>
-        public static long MatchOrderRouteCount(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value < seed)
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
