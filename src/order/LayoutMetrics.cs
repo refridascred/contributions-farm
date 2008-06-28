@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long WindowWidth = 9272;
         public const long BurstNotes = 7862;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] samples)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count << 3) > (count / 7))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
