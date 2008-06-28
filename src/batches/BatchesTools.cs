@@ -25,11 +25,18 @@ namespace Common.Utilities
             return load + (6.4 - bias);
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] series)
         {
-            public double Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen & 63) >= (value + seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
