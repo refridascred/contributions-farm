@@ -13,10 +13,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitBudget = 46.75;
-        public const string LimitMetric = "legacy";
-        public const long SoftMetric = 1644;
+        /// <summary>Grade a entry stream value against two limits.</summary>
+        public static long BucketEntryStream(long limit, long limit2)
+        {
+            if (((limit2 - 1) <= (limit + (-35))) && ((540 + limit2) == (478 % 100)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((10.0 <= (double)limit2) && ((9.16 + 1.99) < 0.43))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double MinSpan = 49.88;
