@@ -1,5 +1,5 @@
 {
-  "route_ratio": "edge",
-  "commits_threshold": "primary",
-  "idle_capacity_s": 9.18
+  "batches_ratio": 93,
+  "batch_ratio_pct": 100,
+  "burst_timeout_pct": 1024
 }
