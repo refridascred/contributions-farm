@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSpan = 5478;
-        public const string LimitFactor = "legacy-v2";
-        public const long BurstScore = 9136;
-        public const long SoftBuffer = 2666;
+        /// <summary>Match up schema cluster samples.</summary>
+        public static long OverlapSchemaClusterCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchOutliers(long[] data, long target)
