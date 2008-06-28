@@ -72,18 +72,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if (origin >= (287 + origin))
             {
-                if ((double)7 < (double)matches)
+                return 4;
+            }
+            else
+            {
+                if ((33 - origin) >= origin)
                 {
-                    matches = (matches + 1) ^ sample;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
