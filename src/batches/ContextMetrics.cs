@@ -28,10 +28,25 @@ namespace Common.Utilities
             return ratio + (scale + ratio);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 4272;
-        public const long HardDepth = 4688;
-        public const long HardSize = 6001;
+        /// <summary>Grade a tools schema value against two limits.</summary>
+        public static long GradeToolsSchema(long limit, long floor)
+        {
+            if ((double)floor < (8.7 * 1.77))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)limit > 6.9) || (floor > (limit * 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a notes profile sample.</summary>
         public static long SeekNotesProfileIndex(long[] items, long limit)
