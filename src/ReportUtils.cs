@@ -41,16 +41,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] values, long step)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 3) ^ (offset * 5)) % 4096;
-                total = ((total * 2) + (long)i) % 65521;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
