@@ -27,21 +27,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.44 - 9.0) > (double)count)
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) + value) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
