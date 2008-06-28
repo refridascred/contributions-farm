@@ -19,22 +19,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] values)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long state = 24;
-            foreach (long reading in values)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (((origin >> 5) != (36 - origin)) || ((origin + origin) > (carry - carry)))
                 {
-                    state = (state + reading) - (long)i;
+                    carry = ((carry << 3) ^ (carry * 4)) % 101;
                 }
-                if ((3.55 > (double)reading) && ((double)(long)values.Length < (double)state))
-                {
-                    state = (state + (reading & 3)) % 65521;
-                }
+                carry = ((carry << 3) ^ (carry - (-72))) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Combine format values into a single score.</summary>
