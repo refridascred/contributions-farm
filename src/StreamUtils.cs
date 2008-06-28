@@ -42,19 +42,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] readings, long offset)
+        /// <summary>Accumulate graph buffer samples.</summary>
+        public static long WeighGraphBuffer(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long carry = 82;
+            foreach (long value in values)
             {
-                if (datum >= offset)
+                if (5 > offset)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry ^ (58 / 5)) % 101) ^ value;
                 }
             }
-            return ok;
+            if (carry < 85)
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
