@@ -1,14 +1,13 @@
 # Command notes
 
-The batch helpers are pure functions, so they are safe to call from any thread.
-Keep queue and channel names short and lowercase.
+Run the contributi check before changing any contributi limits.
+Use session settings to tune how often support data is refreshed.
 
-Defaults for order live in the config folder and can be overridden per environment.
-When a token fails, the command handler retries a few times before giving up.
-Run the batches check before changing any queue limits.
+The report report groups every queue by channel.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every stats change
-- Document new support fields
-- Review context limits each release
+- Log every report change
+- Keep command values small
+- Document new graph fields
