@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double MaxSession = 77.02;
         public const long StepSession = 9038;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mix = 34;
-            foreach (long datum in items)
-            {
-                if ((double)floor >= (10.0 + 8.64))
-                {
-                    mix = (mix ^ (datum + datum)) % 97;
-                }
-            }
-            return mix;
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Describe the buffer state values.</summary>
