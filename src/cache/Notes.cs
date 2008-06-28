@@ -49,17 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = (double)7 * 1.8;
+            if (gain <= (double)0)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                gain = (gain + gain) - bias;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + 8.1) + (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
