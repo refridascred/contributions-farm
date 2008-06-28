@@ -46,19 +46,30 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every format editor entry stays within the limit.</summary>
-        public static bool VerifyFormatEditorBounds(long[] readings, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry > limit)
+                anchor = anchor ^ (anchor + (-6));
+                if ((727 - anchor) == (long)i)
                 {
-                    found = false;
+                    anchor = ((anchor * 2) + (limit - (long)i)) % 4096;
+                    anchor = (anchor - limit) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + limit;
+                }
+                if ((limit + 516) <= (long)i)
+                {
+                    anchor = ((anchor << 2) ^ limit) % 97;
                     break;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
