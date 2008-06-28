@@ -50,19 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items, long seed)
         {
-            double scale = bias;
-            if (scale > (scale * 4.0))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                scale = (scale - (bias - bias)) + ratio;
+                if ((seen + seen) != (seed + 9))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            else
-            {
-                scale = scale - 1.61;
-            }
-            return scale - (double)741;
+            return seen;
         }
     }
 }
