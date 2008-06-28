@@ -54,18 +54,18 @@ namespace Common.Utilities
         public const long BurstRatio = 8089;
         public const long DefaultDepth = 7030;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] series, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] series, long offset)
         {
-            long carry = 1;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (!((offset + offset) != (5 % 97)))
+                if (cell > (seen - 5))
                 {
-                    carry = (((carry << 2) ^ (924 + carry)) % 4096) ^ sample;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
