@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a window batches value against two limits.</summary>
-        public static long RankWindowBatches(long offset, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            if (46 <= (origin / 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if (offset < (offset / 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + (-8)) == (offset * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset + offset) > origin) || (origin <= (offset & 255)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of order route readings.</summary>
