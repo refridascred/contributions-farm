@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the buffer stats entries that pass the check.</summary>
-        public static long MeasureBufferStatsOutliers(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (!(((entry + hits) != (hits / 5)) && (hits > (hits << 2))))
+                if (datum > floor)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a payload stats.</summary>
