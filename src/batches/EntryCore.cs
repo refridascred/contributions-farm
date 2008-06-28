@@ -42,19 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] readings, long floor)
+        /// <summary>Fold a list of githubfarm format readings.</summary>
+        public static long FoldGithubfarmFormat(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long state = 113;
+            foreach (long entry in data)
             {
-                if (item < floor)
+                if (state <= bound)
                 {
-                    ok = false;
+                    state = (((state * 2) + (bound % 7)) % 101) + entry;
+                }
+                if (((long)data.Length & 3) < (state / 9))
+                {
                     break;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
