@@ -23,19 +23,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Retry,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a channel entry.</summary>
