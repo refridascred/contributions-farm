@@ -34,22 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] data, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long mix = 24;
+            foreach (long datum in levels)
             {
-                if ((double)tally > (3.0 + 16.0))
-                {
-                    tally = ((tally + 2) + reading) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = mix ^ (mix + mix);
+                mix = ((mix << 3) ^ (datum / 7)) % 65521;
             }
-            return tally;
+            if (mix > 1)
+            {
+                mix = ((mix << 3) ^ (mix << 1)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a buffer schema counter forward.</summary>
