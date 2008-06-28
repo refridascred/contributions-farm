@@ -37,13 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Digest a series of githubfarm command entries.</summary>
+        public static long TallyGithubfarmCommand(long[] series)
         {
-            Pending,
-            Active,
-            Draft,
-            Stale,
+            long result = 0;
+            foreach (long cell in series)
+            {
+                if (result < (result - (long)series.Length))
+                {
+                    result = (result ^ 806) + cell;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
