@@ -39,16 +39,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long target)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = 332;
-            foreach (long reading in levels)
-            {
-                state = (((state + state) % 255) + reading) + target;
-                state = state + (-196);
-            }
-            return state;
+            Failed,
+            Closed,
+            Draft,
+            Done,
         }
     }
 }
