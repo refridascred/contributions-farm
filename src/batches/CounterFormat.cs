@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a profile payload reading by value.</summary>
-        public static long LocateProfilePayloadIndex(long[] levels, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias;
+            if (ratio >= ratio)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - 9.0) + span;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (bias / 7.0);
+            }
+            return ratio - 8.87;
         }
 
         /// <summary>Describe the token state values.</summary>
