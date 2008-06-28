@@ -12,23 +12,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Locate a batch githubfarm reading by value.</summary>
+        public static long SeekBatchGithubfarmIndex(long[] items, long seed)
         {
-            double weight = ratio * 10.0;
-            if (weight <= ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + (double)(-531);
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
