@@ -10,38 +10,17 @@ namespace Common.Utilities
         public const string MinCounter = "staging-v2";
         public const string LimitCounter = "cached-1";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long step, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] samples, long offset)
         {
-            if ((step % 97) == (seed % 97))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (step < (step >> 5))
+                if (samples[i] >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step ^ seed) >= (48 + seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step <= (14.0 - 13.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
