@@ -64,10 +64,10 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 2364;
-        public const string MaxTimeout = "staging-v2";
-        public const string RetryEntry = "staging";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 85.44;
+        public const double MaxSpan = 56.72;
+        public const long IdleMetrics = 3612;
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long ClassifyEntry(long seed, long seed2)
