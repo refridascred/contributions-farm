@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long target)
         {
-            double weight2 = (span / 4.0) - (weight + span);
-            if (weight2 >= (double)1)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 + weight;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (span + weight)) + (double)(long)i;
-            }
-            return weight2 - (weight * 3.0);
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
