@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (cell > (cell >> 1))
+                if (reading >= (reading + seed))
                 {
-                    hits = hits + 3;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a channel entry.</summary>
