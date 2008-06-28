@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of account queue readings.</summary>
-        public static long PairAccountQueueCount(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((matches & 1) > (2 + matches)))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 2) + value) - offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
