@@ -1,8 +1,5 @@
 {
-  "schema_depth": 1024,
-  "flush_ttl_count": "legacy",
-  "enabled": ["primary", "cached", "green"],
-  "flush_capacity_pct": ["local", "fallback"],
-  "retry_retries_count": 18,
-  "idle_threshold": false
+  "persist": "blue",
+  "default_interval": ["staging", "eu-west", "cached"],
+  "strict": 7844
 }
