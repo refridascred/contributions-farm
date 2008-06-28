@@ -1,8 +1,8 @@
 {
-  "max_retries": 4689,
-  "poll_timeout_ms": false,
-  "compress": [331, 114, 279, 142],
-  "verbose": 79.83,
-  "format_depth": 47,
-  "sync_capacity_ms": 3282
+  "default_delay": ["open", "blue"],
+  "soft_size_s": 500,
+  "batch_retries": 70,
+  "commits_threshold": "staging",
+  "entry_retries": 71.79,
+  "hard_interval_count": 26
 }
