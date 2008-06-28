@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many notes schema samples are out of range.</summary>
-        public static long CountNotesSchemaMatches(long[] items)
+        /// <summary>Match up account route samples.</summary>
+        public static long PairAccountRouteCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(matches < (datum / 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] ^ series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
