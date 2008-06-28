@@ -29,12 +29,20 @@ namespace Common.Utilities
         public const string SoftBudget = "latest";
         public const long DefaultChannel = 1320;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 2889;
-        public const string WindowCount = "legacy-edge";
-        public const long StepCache = 765;
-        public const string DefaultCache = "alpha-1";
-        public const string BurstFactor = "latest-v2";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] readings, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate filter window samples.</summary>
         public static long ScoreFilterWindow(long[] items, long target)
