@@ -1,5 +1,7 @@
 {
-  "idle_ratio": [69, 275, 57],
-  "sync_retries_s": false,
-  "readonly": 60
+  "max_timeout_s": "green",
+  "counter_limit": "primary",
+  "account_capacity": true,
+  "idle_threshold_count": 8931,
+  "strict": "strict"
 }
