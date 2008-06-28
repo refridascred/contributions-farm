@@ -1,7 +1,8 @@
-id,active,label
-1,stable,523
-2,386,edge
-3,91.52,36.41
-4,cached,613
-5,87.13,green
-6,309,447
+id,count,region
+1,933,edge
+2,latest,fallback
+3,554,606
+4,latest,372
+5,64.83,552
+6,44.19,staging
+7,primary,8
