@@ -37,21 +37,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Rank metric batch input into a small class.</summary>
+        public static long GradeMetricBatch(long limit, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = limit - target;
+            if (((14.0 - 1.1) == (double)limit) && (slot < (71 << 3)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((-133) < (target % 10))
                 {
-                    if ((data[i] + data[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((16.0 * 13.0) != (double)target)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
