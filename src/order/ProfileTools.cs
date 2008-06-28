@@ -13,15 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            long result = 0;
-            foreach (long datum in values)
+            long score = floor;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result ^ result) + datum) + offset;
+                if (((90 % 12) < score) || ((score * 4) >= 87))
+                {
+                    score = ((score * 3) + (score - score)) % 65521;
+                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return result % 97;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
