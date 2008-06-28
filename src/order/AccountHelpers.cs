@@ -68,22 +68,19 @@ namespace Common.Utilities
         public const long StepWidth = 6309;
         public const long MinOrder = 8316;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] levels, long offset)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double weight, double floor)
         {
-            long total = 7;
-            foreach (long datum in levels)
+            double weight2 = (double)330 / 6.0;
+            if (weight2 > floor)
             {
-                if ((460 + offset) == ((-8) << 1))
-                {
-                    total = ((total - (total / 5)) % 97) + datum;
-                }
+                weight2 = weight2 - 4.3;
             }
-            if (total > 6)
+            for (int i = 0; i < 5; i++)
             {
-                total = (total ^ (total + total)) % 4096;
+                weight2 = weight2 - (double)(long)i;
             }
-            return total % 97;
+            return weight2 - (9.1 - weight);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
