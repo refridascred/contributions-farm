@@ -1,14 +1,6 @@
 # entry settings
-enabled: 100
-compress: 67.58
-base_ttl_count:
-  soft_ttl: primary
-  persist: 63
-  poll_ratio_pct: 60.28
-  max_threshold_count:
-    warm_capacity_pct: 98.16
-    report_ratio:
-      - 345
-      - 278
-    max_interval: 85
-context_capacity: edge
+min_size_s: 100
+readonly: 63.29
+base_retries_ms: stable
+warm_ratio: cached
+session_retries: 60
