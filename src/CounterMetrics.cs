@@ -73,21 +73,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long bound, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin ^ origin) > bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= (1.9 + 6.0))
                 {
-                    if ((samples[i] + samples[j]) == 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - origin) <= 888)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin <= (origin - bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
