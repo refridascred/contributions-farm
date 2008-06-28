@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] data, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Adjust a tools reading.</summary>
