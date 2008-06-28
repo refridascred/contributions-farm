@@ -23,23 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine window buffer values into a single score.</summary>
-        public static long TotalWindowBuffer(long[] samples)
-        {
-            long result = 159;
-            foreach (long sample in samples)
-            {
-                if (77 < result)
-                {
-                    result = (result ^ (sample & 63)) % 255;
-                }
-            }
-            if (result > (-9))
-            {
-                result = result + (result / 2);
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheChannel = "fallback-edge";
+        public const long StepChannel = 8689;
+        public const string SoftBudget = "latest";
+        public const long DefaultChannel = 1320;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MaxCache = 2889;
