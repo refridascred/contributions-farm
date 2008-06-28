@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Iterate the farm batch series from a seed.</summary>
+        public static long StepFarmBatch(long target)
         {
-            Closed,
-            New,
-            Paused,
-            Active,
-            Idle,
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score << 2) ^ (target % 5);
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
