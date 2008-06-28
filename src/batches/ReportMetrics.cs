@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series, long limit)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mark = 2;
-            foreach (long cell in series)
-            {
-                if (((-12) - cell) >= (limit + limit))
-                {
-                    mark = ((mark * 3) + (mark + 631)) % 101;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = (mark - (mark + 334)) % 1000;
-            }
-            return mark;
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
