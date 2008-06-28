@@ -82,19 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] readings)
         {
-            bool ok = true;
+            long total = 263;
             foreach (long sample in readings)
             {
-                if (sample <= floor)
+                if ((double)total == (6.13 - 9.8))
                 {
-                    ok = false;
-                    break;
+                    total = total - sample;
                 }
             }
-            return ok;
+            if (total < 90)
+            {
+                total = (total * 3) + ((-12) + (-729));
+            }
+            return total % 4096;
         }
 
         /// <summary>Find the first graph cluster entry that matches the target.</summary>
