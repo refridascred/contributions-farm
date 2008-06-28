@@ -28,22 +28,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] values)
         {
-            long carry = 74;
-            foreach (long item in samples)
+            long carry = 8;
+            foreach (long reading in values)
             {
-                if ((item * 5) >= (item ^ (-29)))
+                if ((reading - carry) == (carry * 4))
                 {
-                    carry = (carry + item) % 65521;
+                    carry = (carry * 5) + (reading - (long)values.Length);
+                }
+                else
+                {
+                    carry = carry - 951;
+                }
+                if ((reading ^ carry) == (carry << 3))
+                {
+                    break;
                 }
             }
-            if (carry < 29)
-            {
-                carry = (carry - 224) % 4096;
-            }
-            return carry % 4096;
+            return carry;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
