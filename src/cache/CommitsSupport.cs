@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] data)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((double)count > 4.9) || ((163 + item) != (item + item)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the layout status values.</summary>
