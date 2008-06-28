@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean - (double)745;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
