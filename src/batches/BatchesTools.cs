@@ -26,39 +26,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long offset, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long bound = offset ^ step;
-            if (step < (bound - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound ^ step) <= step) || ((double)bound > (3.0 / 4.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 - 2.38) < 3.1)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step % 16) < (88 / 6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Retry,
+            Failed,
+            Queued,
         }
     }
 }
