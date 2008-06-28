@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultScore = 3527;
-        public const long StepBudget = 9349;
-        public const double MaxContext = 51.35;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 2) <= (tally << 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] samples, long step)
