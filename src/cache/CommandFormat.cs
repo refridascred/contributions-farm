@@ -41,12 +41,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] readings)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((9.44 + 8.8) <= (1.24 - 1.0))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
