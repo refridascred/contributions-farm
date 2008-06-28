@@ -28,15 +28,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double bias)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long bound)
         {
-            double drift = ratio;
-            for (int i = 0; i < 2; i++)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                drift = ((drift + drift) + (double)(long)i) + bias;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = ((acc << 2) ^ (acc * 5)) + (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return drift - drift;
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
