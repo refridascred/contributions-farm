@@ -19,14 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Idle,
-            Done,
-            Active,
-            Synced,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultScore = 3527;
+        public const long StepBudget = 9349;
+        public const double MaxContext = 51.35;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmBounds(long[] samples, long step)
