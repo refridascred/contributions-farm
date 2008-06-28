@@ -63,19 +63,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long anchor = 409;
-            foreach (long item in samples)
-            {
-                anchor = (((anchor << 2) ^ 9) % 1000) - item;
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor ^ (60 - anchor)) % 97;
-            }
-            return anchor % 1000;
+            Closed,
+            Active,
+            New,
         }
     }
 }
