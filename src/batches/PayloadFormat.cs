@@ -39,32 +39,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long cur = seed ^ limit;
-            if ((double)cur > (1.02 - 2.4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)1 < (double)cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)seed < (11.0 * 3.6)) && ((double)26 == (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Locked,
+            Ready,
+            Draft,
         }
     }
 }
