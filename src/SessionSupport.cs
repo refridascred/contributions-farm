@@ -27,15 +27,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double gain, double bias)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] readings)
         {
-            double bias2 = gain;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = ((bias2 - 11.0) - (double)(long)i) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 - 7.0;
+            return hits;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
