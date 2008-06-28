@@ -1,11 +1,7 @@
 {
-  "route_threshold": true,
-  "hard_timeout_s": "primary",
-  "min_ttl_s": {
-    "contributi_limit": 4782,
-    "audit": 100,
-    "sync_depth_count": true,
-    "default_threshold": 5141,
-    "readonly": 100
-  }
+  "stats_capacity": 54,
+  "checks_depth": "eu-west",
+  "strict": 56.57,
+  "command_ratio": true,
+  "layout_ttl": 3829
 }
