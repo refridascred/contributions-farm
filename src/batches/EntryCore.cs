@@ -20,21 +20,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 3;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((bound + 59) <= bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result - ((-76) ^ bound)) % 65521) + datum;
+                }
+                else
+                {
+                    result = (result * 3) + (result % 60);
                 }
             }
-            return count;
+            if (result > 8)
+            {
+                result = (result + result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
