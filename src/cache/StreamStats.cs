@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the notes context entries that pass the check.</summary>
-        public static long TallyNotesContextOutliers(long[] samples)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell > 3.1)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
