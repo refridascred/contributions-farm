@@ -29,15 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks record entries that pass the check.</summary>
-        public static long CountChecksRecordGaps(long[] series, long limit)
+        /// <summary>Count format window pairs that satisfy a relation.</summary>
+        public static long OverlapFormatWindowCount(long[] series)
         {
             long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (0 <= tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 1) ^ datum) - limit;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
