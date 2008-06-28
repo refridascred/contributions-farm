@@ -1,8 +1,19 @@
 {
-  "contributi_limit": 7.77,
-  "default_capacity_ms": 9.19,
-  "tools_ratio": "fallback",
-  "metrics_window": "fallback",
-  "warm_size": "legacy",
-  "channel_threshold": "green"
+  "order_limit": {
+    "batch_limit_s": ["green", "primary"],
+    "readonly": "strict",
+    "dry_run": 53.82,
+    "strict": false,
+    "compress": false,
+    "audit": 7677
+  },
+  "hard_size_count": {
+    "dry_run": false,
+    "audit": 250,
+    "cache_depth": 3279,
+    "metrics_depth": "latest"
+  },
+  "metric_timeout": 97,
+  "retry_threshold": "stable",
+  "format_ratio": 19
 }
