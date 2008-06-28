@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many counter commits samples are out of range.</summary>
