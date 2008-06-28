@@ -40,15 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] readings, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] data)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long reading in data)
             {
-                if (tally <= (tally + cell))
+                if ((((reading - reading) == (61 / 4)) && ((tally >> 2) < (reading + tally))) && (reading > (reading ^ reading)))
                 {
-                    tally = (tally + 1) - offset;
+                    tally = tally + 1;
                 }
             }
             return tally;
