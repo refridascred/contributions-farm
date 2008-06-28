@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double bias, double span)
         {
-            Ready,
-            Retry,
-            New,
-            Stale,
+            double ratio = span - span;
+            if (ratio > (span - ratio))
+            {
+                ratio = (ratio + span) - bias;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
