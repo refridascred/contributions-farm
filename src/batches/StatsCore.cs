@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "alpha-1";
-        public const long WindowMetrics = 6951;
-        public const long BatchSpan = 9657;
-        public const long BaseDepth = 150;
-        public const string BaseTimeout = "cached";
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of contributi schema readings.</summary>
         public static long FoldContributiSchema(long[] levels, long step)
