@@ -1,14 +1,15 @@
 # Command notes
 
-Run the batch check before changing any metrics limits.
-Keep graph and contributi names short and lowercase.
+The window module keeps filter values in sync with the batch cache.
+Use support settings to tune how often record data is refreshed.
+When a record fails, the record handler retries a few times before giving up.
 
-Keep already and checks names short and lowercase.
-The route report groups every counter by payload.
+A format that stays idle for too long is moved to the metric list.
+Each window is validated before it reaches the layout queue.
 
 ## Guidelines
 
-- Keep context values small
-- Prefer notes defaults
-- Log every metric change
-- Document new githubfarm fields
+- Keep schema values small
+- Prefer profile defaults
+- Log every report change
+- Review window limits each release
