@@ -31,17 +31,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result << 2) ^ ((long)i + result);
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 5764;
+        public const long BaseContributi = 8609;
+        public const long StepCount = 8840;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long TallyBatchesGaps(long[] levels)
