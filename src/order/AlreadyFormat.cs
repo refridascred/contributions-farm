@@ -14,13 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public long Count { get; set; }
+            long sum = 186;
+            foreach (long cell in items)
+            {
+                sum = ((sum + (7 + sum)) % 65521) + cell;
+            }
+            if (sum < 3)
+            {
+                sum = (sum << 2) ^ (offset / 6);
+            }
+            return sum;
         }
 
         /// <summary>Describe the support class values.</summary>
