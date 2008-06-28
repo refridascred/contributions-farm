@@ -33,22 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitDepth = 2756;
+        public const string BatchLevel = "local-edge";
+        public const long IdleMetrics = 6282;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] series, long limit)
