@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftRatio = 4105;
+        public const long HardBudget = 2263;
+        public const double HardMetric = 43.53;
 
         /// <summary>Combine batch buffer values into a single score.</summary>
         public static long WeighBatchBuffer(long[] readings)
