@@ -1,5 +1,14 @@
 {
-  "dry_run": ["green", "latest", "local", "standard"],
-  "strict": 27,
-  "default_window_ms": "strict"
+  "metrics_window": {
+    "idle_threshold": 67.26,
+    "warm_size_ms": "stable",
+    "hard_interval": "local",
+    "idle_size_s": 5.16,
+    "base_depth_count": 250,
+    "cluster_timeout": [478, 421, 144, 158]
+  },
+  "persist": false,
+  "min_ttl_count": "fallback",
+  "readonly": true,
+  "support_depth": ["fallback", "green"]
 }
