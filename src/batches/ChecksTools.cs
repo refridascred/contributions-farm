@@ -20,12 +20,16 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long floor)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (floor % 97);
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
