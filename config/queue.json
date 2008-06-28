@@ -1,16 +1,8 @@
 {
-  "window_ratio": "primary",
-  "hard_limit_pct": "strict",
-  "warm_interval_pct": {
-    "readonly": false,
-    "hard_window": 90,
-    "default_depth_s": "primary"
-  },
-  "base_ratio": {
-    "hard_threshold_ms": ["eu-west", "cached", "local", "standard"],
-    "burst_interval_s": false,
-    "dry_run": ["primary", "latest", "legacy", "green"]
-  },
-  "sync_retries": 250,
-  "verbose": "green"
+  "editor_ttl": [474, 382],
+  "cache_depth": 7868,
+  "command_threshold": 50,
+  "cache_limit_count": "blue",
+  "retry_window": 89.83,
+  "poll_window": "local"
 }
