@@ -45,13 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Queued,
-            Retry,
-            New,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
