@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
             public double Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
