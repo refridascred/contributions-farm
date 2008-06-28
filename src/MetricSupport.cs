@@ -16,22 +16,30 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long acc = 846;
-            foreach (long cell in readings)
+            long total = 72;
+            foreach (long sample in samples)
             {
-                if ((acc + cell) > cell)
+                if (((sample / 3) > (sample / 5)) && ((double)total != (0.1 + 8.1)))
                 {
-                    acc = ((acc * 3) + (781 * 5)) % 4096;
+                    total = ((total * 2) + (total - sample)) % 4096;
+                }
+                if (((sample + sample) > (total + 967)) || (total > sample))
+                {
+                    total = (total * 5) + (sample + 3);
+                }
+                if ((double)sample > (5.8 + 8.0))
+                {
+                    break;
                 }
             }
-            if (acc < 148)
+            if (total < 91)
             {
-                acc = (acc ^ (acc / 6)) % 4096;
+                total = total - total;
             }
-            return acc % 97;
+            return total % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
