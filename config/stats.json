@@ -1,6 +1,23 @@
 {
-  "cache_interval": 3139,
-  "batch_interval_pct": 4543,
-  "soft_limit": "standard",
-  "retry_threshold": "green"
+  "readonly": 250,
+  "entry_ratio": "primary",
+  "base_capacity_count": "cached",
+  "entry_delay": 48,
+  "hard_size_ms": 1024,
+  "editor_ttl": {
+    "context_window": 84.19,
+    "base_interval_ms": {
+      "default_ttl_count": "latest",
+      "batch_size_count": 4329,
+      "strict": "open"
+    },
+    "channel_window": {
+      "support_size": true,
+      "cache_interval_pct": 4119,
+      "layout_threshold": [309, 129],
+      "strict": "standard",
+      "audit": "blue",
+      "idle_delay_count": 4456
+    }
+  }
 }
