@@ -54,18 +54,19 @@ namespace Common.Utilities
             return weight2 - (weight * 3.0);
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] data, long bound)
         {
-            long score = 82;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((-23) + bound) <= (score + score))
+                if (reading > bound)
                 {
-                    score = ((score << 2) ^ (entry / 3)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
