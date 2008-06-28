@@ -30,19 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every payload checks entry stays within the limit.</summary>
-        public static bool GuardPayloadChecksBounds(long[] samples, long seed)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Retry,
+            Active,
+            Ready,
+            Closed,
         }
     }
 }
