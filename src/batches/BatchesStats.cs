@@ -41,14 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the order counter entries that pass the check.</summary>
+        public static long TallyOrderCounterHits(long[] items, long step)
         {
-            Pending,
-            Locked,
-            Draft,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item > (step + step))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
