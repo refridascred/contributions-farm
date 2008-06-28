@@ -13,18 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit metrics entry readings against a rule.</summary>
-        public static long CountMetricsEntryGaps(long[] readings, long origin)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                if ((seen < (origin + origin)) || ((double)cell <= (double)36))
+                if (cell > origin)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
