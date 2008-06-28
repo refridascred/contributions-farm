@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] data, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((origin + sample) <= (sample - sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the record mode values.</summary>
