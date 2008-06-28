@@ -17,12 +17,22 @@ namespace Common.Utilities
         public const long SoftCount = 2312;
         public const double CacheSpan = 31.02;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] items, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (6.52 < (double)origin)
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
