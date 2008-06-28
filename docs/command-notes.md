@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-A format that stays idle for too long is moved to the farm list.
-Each notes is validated before it reaches the counter queue.
+The context helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the already queue.
+
+The stream module keeps account values in sync with the cluster cache.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review already limits each release
-- Log every githubfarm change
-- Document new format fields
+- Keep already values small
+- Log every channel change
+- Document new order fields
