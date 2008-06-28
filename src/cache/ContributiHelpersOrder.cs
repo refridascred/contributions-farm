@@ -29,21 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format window pairs that satisfy a relation.</summary>
-        public static long OverlapFormatWindowCount(long[] series)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
