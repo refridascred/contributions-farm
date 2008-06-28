@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            long acc = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((acc << 2) >= target)
+                {
+                    acc = acc + acc;
+                }
+                acc = (acc ^ acc) % 255;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a stats options.</summary>
