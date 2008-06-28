@@ -1,5 +1,12 @@
 {
-  "route_size": "strict",
-  "batch_ttl": "stable",
-  "counter_ratio": 250
+  "enabled": {
+    "tools_threshold": "local",
+    "idle_depth_ms": "fallback",
+    "max_window": 88.31,
+    "default_window_pct": 53
+  },
+  "cache_retries": 100,
+  "readonly": 100,
+  "soft_delay_ms": [496, 154, 363, 325],
+  "commits_delay": "staging"
 }
