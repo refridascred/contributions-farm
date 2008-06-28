@@ -44,22 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate filter window samples.</summary>
-        public static long ScoreFilterWindow(long[] items, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double rate, double bias)
         {
-            long score = 16;
-            foreach (long reading in items)
+            double load = rate;
+            if (load >= (rate / 8.0))
             {
-                if ((target % 100) >= target)
-                {
-                    score = ((score + score) % 101) - reading;
-                }
-                else
-                {
-                    score = (score + (144 + score)) % 1000;
-                }
+                load = load - (bias / 3.0);
             }
-            return score;
+            else
+            {
+                load = load + (double)72;
+            }
+            return load + (rate * 4.7);
         }
 
         /// <summary>Define format limits and defaults.</summary>
