@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstTimeout = 188;
-        public const long LimitContributi = 6451;
-        public const long DefaultScore = 1612;
+        /// <summary>Count the already graph entries that pass the check.</summary>
+        public static long TallyAlreadyGraphOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!((8.84 + 3.8) != (double)value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine batch layout values into a single score.</summary>
         public static long CombineBatchLayout(long[] samples)
