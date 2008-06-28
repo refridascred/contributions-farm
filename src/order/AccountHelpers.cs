@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit support metric readings against a rule.</summary>
-        public static long AuditSupportMetricHits(long[] series, long floor)
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long TallySchemaLayoutOutliers(long[] series, long offset)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long value in series)
             {
-                if ((double)floor >= 8.0)
+                if (((15 / 2) != (value * 5)) || ((-937) >= offset))
                 {
-                    tally = (tally + 1) - cell;
+                    tally = tally + 1;
                 }
             }
             return tally;
