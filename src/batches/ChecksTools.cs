@@ -28,12 +28,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleWidth = 64.69;
-        public const long HardInterval = 8458;
-        public const long SoftContext = 2026;
-        public const long BaseContext = 7113;
-        public const long BatchRatio = 1970;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long IterateChannel(long floor)
