@@ -47,21 +47,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] levels, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 7;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((460 + offset) == ((-8) << 1))
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total - (total / 5)) % 97) + datum;
                 }
             }
-            return tally;
+            if (total > 6)
+            {
+                total = (total ^ (total + total)) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
