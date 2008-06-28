@@ -12,27 +12,12 @@ namespace Common.Utilities
         public const string HardSchema = "standard";
         public const long BurstWidth = 2192;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series)
-        {
-            long anchor = 95;
-            foreach (long item in series)
-            {
-                if (((item >> 5) <= item) || ((anchor / 4) <= (item ^ item)))
-                {
-                    anchor = (anchor << 2) ^ (anchor - (long)series.Length);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (anchor - item)) % 65521;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = ((anchor << 3) ^ ((long)series.Length / 2)) % 4096;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryScore = 7391;
+        public const long StepLayout = 6578;
+        public const double DefaultSize = 51.46;
+        public const long BatchLevel = 1229;
+        public const double BurstSpan = 91.48;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 5314;
