@@ -27,20 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 5293;
+        public const string WindowProfile = "cached-1";
+        public const long CacheProfile = 1689;
+        public const long IdleProfile = 7508;
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
