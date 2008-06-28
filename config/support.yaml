@@ -1,4 +1,5 @@
 # support settings
-hard_window_ms: 58.38
-context_depth: latest
-readonly: 5
+profile_ttl: 100
+context_depth: 89
+readonly: 80
+strict: local
