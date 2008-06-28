@@ -80,13 +80,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long target)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
