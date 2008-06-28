@@ -33,13 +33,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
+        public static long OverlapContributiEntryCount(long[] items)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
