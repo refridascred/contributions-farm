@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long result = -2;
-            foreach (long sample in data)
-            {
-                if (((828 * 3) > (sample + result)) || (limit <= (result * 5)))
-                {
-                    result = (result << 3) ^ (limit + 491);
-                }
-            }
-            return result;
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
