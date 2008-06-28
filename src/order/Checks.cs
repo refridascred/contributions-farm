@@ -28,25 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long span = floor - seed;
-            if (((span - span) < (floor & 15)) || ((7.5 * 20.0) >= (double)span))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed + floor) < (seed - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
