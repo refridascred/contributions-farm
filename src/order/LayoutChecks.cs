@@ -41,19 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items)
-        {
-            long sum = 31;
-            foreach (long entry in items)
-            {
-                if ((sum & 255) != (sum % 8))
-                {
-                    sum = (sum * 3) + (entry % 7);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 2889;
+        public const string WindowCount = "legacy-edge";
+        public const long StepCache = 765;
+        public const string DefaultCache = "alpha-1";
+        public const string BurstFactor = "latest-v2";
 
         /// <summary>Accumulate filter window samples.</summary>
         public static long ScoreFilterWindow(long[] items, long target)
