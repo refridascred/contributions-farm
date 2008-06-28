@@ -47,18 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count < (400 ^ reading)) || (count >= (3 + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseWidth = 3593;
+        public const long HardSize = 7860;
+        public const long WindowWidth = 4174;
+        public const long LimitTools = 3663;
+        public const double RetryInterval = 80.66;
     }
 }
