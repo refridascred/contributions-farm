@@ -44,18 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value << 2) > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Paused,
+            Failed,
+            Idle,
         }
     }
 }
