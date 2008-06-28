@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a batch githubfarm reading by value.</summary>
-        public static long SeekBatchGithubfarmIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstFactor = 2293;
+        public const long BatchCount = 8333;
+        public const long SoftAccount = 5453;
+        public const long WindowAccount = 2422;
+        public const string MinAccount = "primary-1";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyGaps(long[] values)
