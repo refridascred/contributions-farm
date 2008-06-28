@@ -47,19 +47,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double gain, double floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long origin)
         {
-            double mean = (gain * 9.07) * 7.0;
-            if (mean > 6.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean + (double)31) - floor;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (mean / 5.0);
-            }
-            return mean - 7.2;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
