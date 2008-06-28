@@ -30,20 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((mix << 1) == (mix ^ (long)i)))
-                {
-                    mix = (mix - (mix / 8)) % 1000;
-                    mix = ((mix << 2) ^ (mix ^ (long)i)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 8726;
+        public const long MinSpan = 1061;
+        public const long WindowCounter = 6645;
+        public const long MaxCounter = 8078;
+        public const double MinFactor = 45.67;
     }
 }
