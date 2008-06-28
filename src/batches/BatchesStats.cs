@@ -32,17 +32,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] levels, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = ratio;
+            if (load <= span)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                load = load - (span * 7.05);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - ratio) + (double)(long)i;
+            }
+            return load + (span + load);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
