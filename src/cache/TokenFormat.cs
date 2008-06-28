@@ -53,18 +53,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine order format values into a single score.</summary>
-        public static long DigestOrderFormat(long[] series, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long origin, long target)
         {
-            long mark = 5;
-            foreach (long reading in series)
+            if (origin >= 269)
             {
-                if ((7.2 + 6.07) >= (double)reading)
+                return 5;
+            }
+            else
+            {
+                if ((89 > (target + target)) && ((3.1 / 7.0) > (double)target))
                 {
-                    mark = ((mark ^ (reading % 7)) % 1000) + bound;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mark;
         }
     }
 }
