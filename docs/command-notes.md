@@ -1,13 +1,11 @@
 # Command notes
 
-When a command fails, the layout handler retries a few times before giving up.
-The record module keeps checks values in sync with the batch cache.
-
-When a order fails, the commits handler retries a few times before giving up.
-Each support is validated before it reaches the context queue.
+Run the entry check before changing any checks limits.
+Use schema settings to tune how often account data is refreshed.
+Keep stream and schema names short and lowercase.
 
 ## Guidelines
 
-- Log every support change
-- Document new record fields
-- Review farm limits each release
+- Document new entry fields
+- Log every route change
+- Prefer profile defaults
