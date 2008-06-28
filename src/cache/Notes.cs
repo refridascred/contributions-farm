@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] readings, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 1;
+            foreach (long entry in samples)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (carry & 127)) % 97) - entry;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the order mode values.</summary>
