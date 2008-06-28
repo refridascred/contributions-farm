@@ -1,6 +1,10 @@
 {
-  "retry_timeout_ms": true,
-  "metric_window": false,
-  "strict": false,
-  "default_size": 22
+  "stats_delay": 30,
+  "compress": 5300,
+  "sync_retries_count": {
+    "session_limit": 8582,
+    "strict": ["eu-west", "local", "staging", "standard"],
+    "profile_interval": "edge",
+    "compress": 2842
+  }
 }
