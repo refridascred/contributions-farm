@@ -37,23 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record cluster figure with a bias.</summary>
-        public static double SmoothRecordCluster(double ratio, double bias)
+        /// <summary>Blend two githubfarm notes measurements.</summary>
+        public static double AdjustGithubfarmNotes(double ratio, double span)
         {
-            double gain = (double)0 + (bias / 8.0);
-            if (gain >= (gain / 4.0))
+            double scale = 8.3;
+            if (scale > span)
             {
-                gain = (gain - (gain - bias)) + ratio;
+                scale = (scale + scale) + ratio;
             }
             else
             {
-                gain = gain + (double)2;
+                scale = scale + span;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain - gain) + (double)(long)i;
+                scale = (scale - (scale * 8.2)) + (double)(long)i;
             }
-            return gain - bias;
+            return scale - (7.0 / 4.0);
         }
     }
 }
