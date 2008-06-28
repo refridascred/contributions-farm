@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long origin, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] series, long seed)
         {
-            if (((step & 3) != (origin % 8)) && ((step & 1) >= (origin + step)))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin < (step * 3))
+                if (entry <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
