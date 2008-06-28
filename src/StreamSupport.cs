@@ -22,23 +22,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of stream account entries.</summary>
-        public static long FoldStreamAccount(long[] items, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] items, long origin)
         {
-            long total = 6;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                total = ((total << 3) ^ (36 + cell)) % 4096;
-                if (((cell + cell) > limit) || ((cell + cell) >= ((long)items.Length % 24)))
+                if (datum < origin)
                 {
-                    total = (total ^ (limit + total)) % 4096;
-                }
-                if (!((double)limit > (20.0 / 4.0)))
-                {
-                    total = (total * 5) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
     }
 }
