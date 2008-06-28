@@ -54,9 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultDepth = 8014;
-        public const long BaseReport = 9903;
-        public const long DefaultSize = 3998;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
