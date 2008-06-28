@@ -1,5 +1,6 @@
 {
-  "session_window": "open",
-  "strict": 7817,
-  "idle_ratio_count": 4482
+  "hard_retries": "edge",
+  "min_limit": false,
+  "cache_delay": 100,
+  "readonly": ["edge", "local"]
 }
