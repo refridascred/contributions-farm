@@ -1,19 +1,6 @@
 {
-  "burst_ratio": false,
-  "default_delay_pct": "cached",
-  "soft_timeout": 75,
-  "flush_window_count": [328, 110, 270],
-  "queue_ttl": {
-    "default_ttl_pct": {
-      "soft_threshold_count": "strict",
-      "soft_size_ms": 36,
-      "enabled": 9397
-    },
-    "poll_limit_count": "primary",
-    "warm_depth": 250,
-    "retry_ratio_count": 38.83,
-    "min_threshold_s": 17,
-    "dry_run": 20.14
-  },
-  "route_ttl": "strict"
+  "audit": 74.55,
+  "hard_limit": 62.05,
+  "max_size": true,
+  "batch_size": 97.16
 }
