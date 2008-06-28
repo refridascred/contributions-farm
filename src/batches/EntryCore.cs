@@ -45,19 +45,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] items, long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            double mean = bias;
+            if (mean < (double)979)
             {
-                if (entry < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean - (10.0 * 9.5);
             }
-            return ok;
+            else
+            {
+                mean = mean - (bias / 7.0);
+            }
+            return mean - (mean - offset);
         }
     }
 }
