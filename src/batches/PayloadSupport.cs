@@ -32,38 +32,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record commits value against two limits.</summary>
-        public static long GradeRecordCommits(long floor, long origin)
-        {
-            if (((origin + origin) >= ((-4) - origin)) || ((double)floor <= (8.35 * 7.0)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) != (origin % 8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor % 3) != (floor - floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor * 2) < (floor << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetrySpan = 131;
+        public const long RetryLevel = 968;
+        public const double BatchScore = 30.91;
+        public const long WindowScore = 8344;
     }
 }
