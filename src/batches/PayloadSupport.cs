@@ -37,12 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Adjust a context farm reading.</summary>
+        public static double SmoothContextFarm(double weight, double offset)
         {
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            double rate = offset;
+            return (rate + (rate + rate)) + weight;
         }
     }
 }
