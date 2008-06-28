@@ -18,20 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long step, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
+            if ((step + step) >= (step - 39))
             {
-                if ((acc << 2) >= target)
-                {
-                    acc = acc + acc;
-                }
-                acc = (acc ^ acc) % 255;
-                acc = ((acc * 3) + (long)i) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (!((bound - 45) == (bound + (-72))))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a stats options.</summary>
