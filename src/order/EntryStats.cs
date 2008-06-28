@@ -32,17 +32,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] levels, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                score = (score - (target & 7)) % 4096;
-                score = (score ^ score) % 4096;
-                score = ((score * 5) + (long)i) % 101;
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a already header.</summary>
