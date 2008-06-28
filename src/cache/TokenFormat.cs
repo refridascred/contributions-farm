@@ -16,11 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a notes session figure with a bias.</summary>
-        public static double SmoothNotesSession(double bias, double offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] items, long origin)
         {
-            double load = (double)(16 << 3);
-            return ((load + (double)51) + bias) + offset;
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= origin)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
