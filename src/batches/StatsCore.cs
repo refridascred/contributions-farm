@@ -92,13 +92,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings)
         {
-            Pending,
-            Idle,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((double)hits != (6.81 - 6.56)) && ((hits + hits) != (hits - value)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
