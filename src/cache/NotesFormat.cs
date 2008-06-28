@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i3 = 0; i3 < 2; i3++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor - anchor) % 97) ^ (long)i3;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Check that every counter batches entry stays within the limit.</summary>
