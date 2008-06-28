@@ -33,19 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload profile counter forward.</summary>
-        public static long StepPayloadProfile(long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long slot = bound + seed;
+            if (5.11 >= (double)seed)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (((acc << 2) ^ (acc / 6)) % 65521) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((-8) < (seed >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.0 * 19.0) > (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (bound <= (slot >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
