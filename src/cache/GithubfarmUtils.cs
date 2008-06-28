@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 444;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)mix != (3.5 + 8.44))
                 {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 2) ^ (sample & 63)) % 65521;
                 }
             }
-            return tally;
+            if (mix > 50)
+            {
+                mix = mix ^ (mix % 5);
+            }
+            return mix;
         }
 
         /// <summary>Measure how many notes farm samples are out of range.</summary>
