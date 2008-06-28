@@ -14,15 +14,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Closed,
-            Synced,
-            New,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 97.0;
+        public const string WindowEditor = "fallback-edge";
+        public const string IdleDepth = "staging";
+        public const long DefaultEditor = 844;
 
         /// <summary>Digest a series of stream account entries.</summary>
         public static long FoldStreamAccount(long[] items, long limit)
