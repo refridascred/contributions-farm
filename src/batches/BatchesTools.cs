@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] samples, long offset)
+        /// <summary>Count the layout channel entries that pass the check.</summary>
+        public static long AuditLayoutChannelOutliers(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (value <= offset)
+                if ((double)count < 6.06)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 1) - cell) + step;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
