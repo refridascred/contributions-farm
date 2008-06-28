@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BatchFactor = 3059;
         public const long LimitReport = 3825;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Count already queue pairs that satisfy a relation.</summary>
+        public static long PairAlreadyQueueCount(long[] series)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] + items[j]) == 1)
+                    if ((series[i] ^ series[j]) < 19)
                     {
                         count = count + 1;
                     }
