@@ -30,9 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 8417;
-        public const long BurstRecord = 8105;
-        public const double BaseScore = 40.79;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] levels, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((1.0 / 9.0) <= (double)sample)
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
+        }
     }
 }
