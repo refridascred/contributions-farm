@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
             long tally = 0;
-            foreach (long value in readings)
+            foreach (long item in items)
             {
-                if ((value > (value & 31)) && ((754 - tally) != (tally >> 1)))
+                if (((item > tally) || ((item >> 4) != (3 - tally))) || ((621 % 60) == (580 - tally)))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
