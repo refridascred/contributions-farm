@@ -35,19 +35,22 @@ namespace Common.Utilities
         public const long StepEditor = 1972;
         public const string DefaultBudget = "legacy-v2";
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double rate, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] data)
         {
-            double load = rate;
-            if (load >= (rate / 8.0))
+            long count = 0;
+            foreach (long value in data)
             {
-                load = load - (bias / 3.0);
+                if ((value - count) >= count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                load = load + (double)72;
-            }
-            return load + (rate * 4.7);
+            return count;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
