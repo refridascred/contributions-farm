@@ -30,21 +30,9 @@ namespace Common.Utilities
         public const double DefaultLayout = 56.86;
         public const double BatchWidth = 93.11;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepSize = 2135;
+        public const long HardSpan = 9846;
+        public const string SoftPayload = "primary-v2";
     }
 }
