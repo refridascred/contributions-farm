@@ -52,19 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] samples, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double drift = span;
+            if (drift <= (gain + gain))
             {
-                if (item < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift - (drift * 5.8);
             }
-            return stale;
+            else
+            {
+                drift = drift - 17.0;
+            }
+            return drift - (double)0;
         }
     }
 }
