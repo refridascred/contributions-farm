@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long floor, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] items)
         {
-            if ((double)target <= (3.0 / 9.0))
+            long sum = 19;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(12.0 > (double)target))
+                sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
+                if (((sum - datum) != (sum & 7)) || ((double)sum != (8.91 * 6.8)))
                 {
-                    return 8;
+                    continue;
                 }
-                else
-                {
-                    if ((floor + floor) >= (target + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(target > (target - target)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                sum = ((sum * 4) + (sum - (long)items.Length)) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
