@@ -113,13 +113,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] data)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (9.94 <= (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
