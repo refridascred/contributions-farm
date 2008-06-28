@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] samples, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Adjust a contributi reading.</summary>
