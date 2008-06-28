@@ -68,16 +68,18 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] readings, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            long sum = 182;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                sum = sum - (66 - item);
-                sum = (sum * 2) + (sum - seed);
+                if ((double)value != (double)(long)readings.Length)
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum % 1000;
+            return tally;
         }
     }
 }
