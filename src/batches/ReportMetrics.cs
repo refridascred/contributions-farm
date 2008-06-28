@@ -42,18 +42,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Compare every pair of profile account readings.</summary>
+        public static long OverlapProfileAccountCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches & 3) >= (491 % 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) + value;
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
