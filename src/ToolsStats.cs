@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result * 4) + ((long)i % 3);
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
