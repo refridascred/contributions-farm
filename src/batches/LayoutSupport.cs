@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] items, long origin)
         {
-            Draft,
-            Ready,
-            Idle,
-            Synced,
-            Closed,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many counter commits samples are out of range.</summary>
