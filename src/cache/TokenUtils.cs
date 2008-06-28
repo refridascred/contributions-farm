@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metric profile readings against a rule.</summary>
-        public static long CountMetricProfileMatches(long[] items, long step)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!((item + item) > (count - count)))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            Dropped,
+            Paused,
+            New,
+            Ready,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
