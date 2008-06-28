@@ -19,14 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long target, long offset)
         {
-            Pending,
-            Dropped,
-            New,
-            Done,
-            Stale,
+            long span = target ^ offset;
+            if (span <= (offset + (-21)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + offset) > ((-753) - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((span - offset) == (target / 6)) && (span < offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (7 < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
