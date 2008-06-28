@@ -1,8 +1,7 @@
 {
-  "enabled": 19.21,
-  "order_retries": 47,
-  "sync_limit_s": "legacy",
-  "idle_size_ms": true,
-  "max_capacity_ms": 39,
-  "flush_threshold": "strict"
+  "readonly": 286,
+  "enabled": 100,
+  "buffer_limit": 4979,
+  "checks_delay": 91,
+  "sync_ttl_pct": ["stable", "blue", "edge", "green"]
 }
