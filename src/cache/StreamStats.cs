@@ -13,19 +13,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double rate, double span)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double drift = span;
-            if (drift < rate)
-            {
-                drift = drift - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + 12.0) + (double)(long)i;
-            }
-            return drift + drift;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine batch buffer values into a single score.</summary>
