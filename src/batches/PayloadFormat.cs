@@ -32,39 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels, long step)
         {
-            long span = target - limit;
-            if ((target + 60) > span)
+            long state = 1;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit <= 16.0)
+                if (((double)datum > 5.19) || ((state - 3) < (state + step)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((19.0 + 1.2) > (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit > target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = ((state << 2) ^ state) % 65521;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
