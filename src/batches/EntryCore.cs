@@ -26,16 +26,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] series, long bound)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                result = (result - (result ^ result)) % 101;
-                result = ((result * 4) + (long)i) % 101;
+                if (entry <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
