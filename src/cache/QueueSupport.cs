@@ -23,11 +23,22 @@ namespace Common.Utilities
         public const double SoftLevel = 11.78;
         public const long BatchBudget = 4347;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheTimeout = 9186;
-        public const long BaseStats = 2679;
-        public const long IdleCount = 4200;
-        public const long MinSize = 7799;
-        public const long BurstStats = 2250;
+        /// <summary>Measure how many farm notes samples are out of range.</summary>
+        public static long MeasureFarmNotesOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((matches << 1) <= (matches + datum)) || ((datum % 64) <= (30 ^ 679)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
