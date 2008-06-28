@@ -14,13 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] levels)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell < (tally + 7)) && (tally > (cell >> 2))) || (((9.23 + 0.6) >= (double)tally) && (tally > (703 ^ tally))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a route contributi counter forward.</summary>
