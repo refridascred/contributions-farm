@@ -20,19 +20,21 @@ namespace Common.Utilities
             return weight - (bias * 5.7);
         }
 
-        /// <summary>Digest a series of entry route entries.</summary>
-        public static long FoldEntryRoute(long[] data, long seed)
+        /// <summary>Match up already queue samples.</summary>
+        public static long CompareAlreadyQueueCount(long[] readings)
         {
-            long result = 54;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result ^ (seed + result)) % 4096) - cell;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (result > 34)
-            {
-                result = (result * 5) + (result & 1);
-            }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Classify a cache token pair into a bucket.</summary>
