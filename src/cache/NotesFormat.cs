@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Check that every counter batches entry stays within the limit.</summary>
+        public static bool VerifyCounterBatchesRange(long[] values, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (!((3.63 / 2.0) != (double)(long)i))
+                if (cell >= offset)
                 {
-                    score = score + (long)i;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    score = (score * 3) + (4 + (long)i);
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Combine report values into a single score.</summary>
