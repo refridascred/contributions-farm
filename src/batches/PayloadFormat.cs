@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate graph window readings against a bound.</summary>
-        public static bool GuardGraphWindowLimits(long[] readings, long floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
