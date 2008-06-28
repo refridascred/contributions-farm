@@ -23,12 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            New,
+            Paused,
+            Done,
         }
     }
 }
