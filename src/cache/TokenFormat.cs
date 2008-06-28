@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor stream samples are out of range.</summary>
-        public static long TallyEditorStreamHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((78 + seen) != ((long)values.Length + sample))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultFactor = 108;
+        public const string StepLevel = "standard-v2";
+        public const long SoftBatch = 9796;
+        public const long BurstBatch = 24;
+        public const long IdleWidth = 9370;
 
         /// <summary>Project the next commits githubfarm value.</summary>
         public static double ProjectCommitsGithubfarm(double bias, double bias2)
