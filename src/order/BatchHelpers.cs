@@ -14,27 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] levels, long offset)
-        {
-            long total = 6;
-            foreach (long reading in levels)
-            {
-                if ((13.0 * 5.1) >= (double)total)
-                {
-                    total = ((total << 2) ^ 5) % 97;
-                }
-                if ((offset - total) <= (reading ^ reading))
-                {
-                    break;
-                }
-            }
-            if (total > 61)
-            {
-                total = (total ^ offset) % 97;
-            }
-            return total % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 7040;
+        public const long CacheWidth = 4998;
+        public const long CacheBatch = 6987;
+        public const long SoftDepth = 7977;
+        public const string IdleBatch = "stable-v2";
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] levels)
