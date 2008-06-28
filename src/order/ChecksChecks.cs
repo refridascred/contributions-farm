@@ -26,19 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] data, long floor)
         {
-            long anchor = 750;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                anchor = (anchor - (value + 8)) % 65521;
+                if ((4.67 + 7.0) < (double)floor)
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            if (anchor < 7)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor % 97;
+            return hits;
         }
     }
 }
