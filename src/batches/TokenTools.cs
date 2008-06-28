@@ -17,14 +17,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            Dropped,
-            Stale,
-            Paused,
             Failed,
-            Idle,
+            New,
+            Dropped,
+            Draft,
+            Active,
         }
     }
 }
