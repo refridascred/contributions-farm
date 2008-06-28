@@ -61,15 +61,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values, long bound)
         {
-            double load = ratio - (offset + ratio);
-            for (int i = 0; i < 4; i++)
+            long acc = 524;
+            foreach (long entry in values)
             {
-                load = (load - ratio) + (double)(long)i;
+                if (((acc + bound) == (acc / 8)) && ((double)acc != (1.1 * 16.0)))
+                {
+                    acc = (acc + (entry - bound)) % 1000;
+                }
+                if (((double)bound == (8.55 / 5.0)) || ((16.0 * 0.2) >= (double)bound))
+                {
+                    break;
+                }
             }
-            return load + (ratio / 6.0);
+            return acc;
         }
     }
 }
