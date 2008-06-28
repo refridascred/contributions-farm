@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 7;
+            foreach (long sample in levels)
             {
-                if ((26 - cell) != ((-2) - hits))
+                if (((sum - sum) >= (4 ^ 81)) || (6 > (sample << 2)))
                 {
-                    hits = hits + 2;
+                    sum = sum ^ sum;
                 }
+                sum = (sum << 2) ^ sample;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
