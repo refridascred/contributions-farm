@@ -32,14 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Closed,
-            Ready,
-            Failed,
             Dropped,
-            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
