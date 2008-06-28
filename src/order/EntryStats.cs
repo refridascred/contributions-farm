@@ -36,22 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] data, long offset)
         {
-            long result = 2;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((result + result) <= 57)
+                if (entry <= offset)
                 {
-                    result = ((result * 2) + (result % 64)) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (result < 8)
-            {
-                result = (result ^ (long)values.Length) % 101;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
