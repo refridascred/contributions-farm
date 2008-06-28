@@ -19,23 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings, long target)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long anchor = 290;
-            foreach (long datum in readings)
-            {
-                if (!((double)anchor > (double)target))
-                {
-                    anchor = (anchor - (datum + (long)readings.Length)) % 1000;
-                }
-                anchor = ((anchor * 2) + (target / 3)) % 97;
-            }
-            if (anchor < 54)
-            {
-                anchor = (anchor - 49) % 4096;
-            }
-            return anchor;
+            Synced,
+            New,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
