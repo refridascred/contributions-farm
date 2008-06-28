@@ -41,15 +41,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double offset)
         {
-            double mean = 4.9;
-            if (mean >= mean)
+            double ratio = rate;
+            if (ratio >= (ratio * 7.46))
             {
-                mean = (mean - (floor * 19.0)) - ratio;
+                ratio = (ratio + (double)6) - offset;
             }
-            return mean - (double)92;
+            return ratio - ratio;
         }
     }
 }
