@@ -1,12 +1,5 @@
 {
-  "notes_interval": {
-    "batch_timeout": ["green", "open", "strict"],
-    "retry_window_s": ["cached", "standard"],
-    "batch_size": 2713,
-    "audit": false,
-    "counter_interval": [382, 114]
-  },
-  "sync_size_count": 56.96,
-  "readonly": 250,
-  "flush_ratio": 7
+  "idle_ratio": [69, 275, 57],
+  "sync_retries_s": false,
+  "readonly": 60
 }
