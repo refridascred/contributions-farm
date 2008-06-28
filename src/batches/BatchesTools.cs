@@ -19,15 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Locate a record farm reading by value.</summary>
+        public static long LocateRecordFarmIndex(long[] items, long floor)
         {
-            long carry = 39;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (carry / 9)) - item;
+                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
