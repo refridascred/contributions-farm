@@ -1,22 +1,32 @@
 # githubfarm settings
-audit: eu-west
-profile_depth:
-  - strict
-  - blue
-  - latest
-  - eu-west
-default_window_pct:
-  poll_timeout:
-    account_window: 16.58
-    max_size_ms:
-      - 373
-      - 107
-      - 88
-      - 86
-    farm_delay: 9344
-    soft_size_count: 6210
-    cluster_limit: blue
-    tools_delay: 30
-  batch_limit: true
-  warm_ratio: 88.08
-  cache_ratio_ms: 38
+retry_interval: 100
+persist:
+  account_retries: latest
+  tools_interval: 49
+  editor_ratio: false
+  poll_limit_count: 70.46
+  base_delay: true
+  soft_depth_ms: green
+readonly:
+  sync_ratio_pct: latest
+  route_interval: open
+  enabled:
+    - open
+    - standard
+    - blue
+    - cached
+  strict: open
+  context_ratio: 18
+soft_limit_pct: open
+burst_timeout_pct:
+  - 396
+  - 47
+batch_threshold:
+  hard_timeout_s:
+    - standard
+    - green
+    - standard
+  counter_size: 9616
+  batch_retries_count: primary
+  min_threshold: 73.41
+  min_timeout: 8218
