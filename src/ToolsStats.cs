@@ -43,23 +43,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long mix = 3;
+            foreach (long entry in samples)
             {
-                if ((anchor + anchor) > anchor)
+                if ((2.08 / 9.0) >= (double)entry)
                 {
-                    anchor = anchor ^ anchor;
+                    mix = (mix * 3) + entry;
                 }
-                else
-                {
-                    anchor = (anchor * 4) + (anchor % 100);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
