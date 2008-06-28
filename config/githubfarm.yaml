@@ -1,12 +1,9 @@
 # githubfarm settings
-editor_depth:
-  - latest
+account_threshold:
+  - edge
   - standard
-checks_capacity:
-  enabled:
-    - stable
-    - cached
-  soft_window: 9291
-  flush_ttl_ms: 43
-verbose: edge
-order_threshold: 500
+sync_window_pct: 23.29
+session_window: cached
+cache_depth: fallback
+profile_capacity: standard
+default_interval: 2268
