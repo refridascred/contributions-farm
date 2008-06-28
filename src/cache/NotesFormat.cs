@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "standard-v2";
-        public const long BaseCommand = 7917;
-        public const string RetryInterval = "alpha-1";
-        public const long WindowCommand = 3646;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Queued,
+            Stale,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatMatches(long[] data)
