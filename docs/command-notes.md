@@ -1,14 +1,10 @@
 # Command notes
 
-The metrics report groups every metrics by commits.
-Keep command and channel names short and lowercase.
-The batch report groups every route by cluster.
-
-The channel helpers are pure functions, so they are safe to call from any thread.
-Run the batches check before changing any checks limits.
+Keep support and command names short and lowercase.
+The batches module keeps support values in sync with the batch cache.
 
 ## Guidelines
 
-- Document new notes fields
-- Review metric limits each release
-- Log every context change
+- Prefer payload defaults
+- Log every channel change
+- Validate account input early
