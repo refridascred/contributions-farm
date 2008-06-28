@@ -11,16 +11,14 @@ namespace Common.Utilities
         public const long HardBudget = 6350;
         public const long BurstTools = 2597;
 
-        /// <summary>Roll a graph farm counter forward.</summary>
-        public static long DeriveGraphFarm(long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum << 2) ^ ((long)i & 255);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Synced,
+            Failed,
+            Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the stats status values.</summary>
