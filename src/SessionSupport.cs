@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] data, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Failed,
+            Paused,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a contributi summary.</summary>
