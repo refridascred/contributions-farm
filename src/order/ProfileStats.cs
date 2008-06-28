@@ -28,22 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] levels, long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long step)
         {
-            long total = 33;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit >> 2) >= (712 + limit))
+                if (items[i] == step)
                 {
-                    total = (total + (limit + value)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ value) % 65521;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
