@@ -20,18 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] levels, long target)
+        /// <summary>Count commits profile pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsProfileCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((matches % 7) == (sample ^ matches)) && !((target << 3) > (matches + target)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
