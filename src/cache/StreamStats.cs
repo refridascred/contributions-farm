@@ -17,10 +17,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultLevel = 607;
-        public const long BatchFactor = 9161;
-        public const long CacheTimeout = 9703;
+        /// <summary>Iterate the buffer batches series from a seed.</summary>
+        public static long DeriveBufferBatches(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score + offset) % 101;
+                score = ((score * 4) + ((long)i % 12)) % 97;
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ScaleCache(double ratio, double bias)
