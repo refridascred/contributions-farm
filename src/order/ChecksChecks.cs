@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next session notes value from a seed.</summary>
-        public static long RollSessionNotes(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheFactor = "stable-v2";
+        public const long WindowDepth = 6479;
+        public const string IdleTools = "fallback-v2";
+        public const long LimitRatio = 2658;
+        public const long MinBudget = 1112;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
