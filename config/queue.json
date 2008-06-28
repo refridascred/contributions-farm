@@ -1,6 +1,5 @@
 {
-  "audit": 74.55,
-  "hard_limit": 62.05,
-  "max_size": true,
-  "batch_size": 97.16
+  "burst_limit_ms": 57.98,
+  "retry_depth": false,
+  "dry_run": 56.18
 }
