@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Dropped,
-            Paused,
-            New,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 12.08;
+        public const double IdleScore = 2.82;
+        public const long BaseEntry = 5175;
+        public const long StepEntry = 7947;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string RetryChannel = "fallback-v2";
