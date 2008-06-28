@@ -42,14 +42,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long origin)
         {
-            Retry,
-            Failed,
-            Paused,
-            Draft,
-            Ready,
+            long step = offset ^ origin;
+            if (((double)origin != (19.0 + 5.35)) && (offset >= (82 - origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step - step) > (offset + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step < (7.0 - 8.2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
