@@ -44,19 +44,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] values)
         {
-            long score = 12;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score - (66 >> 2)) % 101) + cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score > 64)
-            {
-                score = score - score;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Count the commits window entries that pass the check.</summary>
