@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < (15.0 - 8.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 5248;
+        public const string CacheProfile = "open-v2";
+        public const double MinProfile = 63.44;
+        public const long LimitProfile = 2296;
+        public const long SoftDepth = 2281;
 
         /// <summary>Compare every pair of order route readings.</summary>
         public static long MatchOrderRouteCount(long[] items)
