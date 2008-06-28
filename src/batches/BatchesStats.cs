@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long target, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            if ((429 - target) > target)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((46 * 3) > (target * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] - items[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the channel status values.</summary>
