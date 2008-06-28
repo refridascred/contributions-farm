@@ -17,24 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a stream batch value against two limits.</summary>
-        public static long RankStreamBatch(long origin, long origin2)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if (!((double)origin <= (double)origin2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((((-5) + 13) == (origin2 - origin2)) && (origin2 < (origin << 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            Paused,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate command samples.</summary>
