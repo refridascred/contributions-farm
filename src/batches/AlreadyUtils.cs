@@ -20,31 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long offset, long target)
+        /// <summary>Locate a farm stats reading by value.</summary>
+        public static long SeekFarmStatsIndex(long[] levels, long limit)
         {
-            if ((double)target == (15.0 * 4.76))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (3.32 + 5.09))
+                if (levels[i] < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + offset) < (14 / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the support phase values.</summary>
