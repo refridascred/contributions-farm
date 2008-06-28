@@ -61,18 +61,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit metrics format readings against a rule.</summary>
-        public static long MeasureMetricsFormatMatches(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count <= value) && ((double)value < (double)count))
+                if (samples[i] >= floor)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
