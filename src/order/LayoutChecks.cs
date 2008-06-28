@@ -39,15 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long mix = 0;
-            foreach (long entry in data)
-            {
-                mix = ((mix + (entry << 2)) % 65521) + origin;
-            }
-            return mix % 1000;
+            Failed,
+            Paused,
+            Queued,
+            Locked,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
