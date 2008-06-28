@@ -8,20 +8,13 @@ log() {
 
 total=0
 for i in $(seq 1 4); do
-    total=$((total + i * 1))
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in edge eu-west open standard; do
+for item in local cached; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=289
+log "limit is ${CHANNEL_LIMIT}"
