@@ -38,14 +38,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data)
         {
-            Paused,
-            New,
-            Queued,
-            Done,
-            Draft,
+            long anchor = 16;
+            foreach (long cell in data)
+            {
+                if ((anchor + cell) >= anchor)
+                {
+                    break;
+                }
+                if (cell >= anchor)
+                {
+                    anchor = (anchor - (cell * 4)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (cell << 1)) % 97;
+                }
+                if ((cell + 137) < anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 62)
+            {
+                anchor = (anchor ^ (9 - anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count schema queue pairs that satisfy a relation.</summary>
