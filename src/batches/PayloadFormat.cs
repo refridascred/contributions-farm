@@ -32,13 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long target, long limit)
         {
-            Closed,
-            Stale,
-            Queued,
-            Idle,
+            long span = target - limit;
+            if ((target + 60) > span)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= 16.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((19.0 + 1.2) > (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit > target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
