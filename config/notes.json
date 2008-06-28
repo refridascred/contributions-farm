@@ -1,8 +1,6 @@
 {
-  "enabled": 16.36,
-  "min_threshold_count": ["latest", "edge", "staging"],
-  "persist": 77,
-  "stats_depth": false,
-  "idle_ratio_pct": 86,
-  "contributi_interval": "fallback"
+  "verbose": "eu-west",
+  "poll_interval": 66.08,
+  "default_depth": "legacy",
+  "persist": 68.67
 }
