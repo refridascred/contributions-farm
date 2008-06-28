@@ -51,18 +51,39 @@ namespace Common.Utilities
             return bias + (double)498;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] data, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long span = bound ^ offset;
+            if (((span / 5) > offset) && ((602 + offset) < (6 / 9)))
             {
-                if ((floor ^ (-477)) <= (seen ^ entry))
+                return 7;
+            }
+            else
+            {
+                if (((bound >> 5) <= bound) && (bound > (offset - bound)))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (!((18.0 / 9.0) == (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1.8 / 3.0) <= (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
