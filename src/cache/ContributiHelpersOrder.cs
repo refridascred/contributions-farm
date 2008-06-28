@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long MinScore = 7789;
         public const string BaseContext = "stable-v2";
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] data, long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (6.54 / 2.0) * 9.0;
+            return (weight + scale) + span;
         }
 
         /// <summary>Measure how many channel cluster samples are out of range.</summary>
