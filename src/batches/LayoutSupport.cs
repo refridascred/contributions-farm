@@ -52,15 +52,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Blend two format layout measurements.</summary>
+        public static double BlendFormatLayout(double ratio, double offset)
         {
-            double weight = 9.34;
-            if (weight >= (double)(-6))
+            double weight = (offset + ratio) / 4.0;
+            if (weight > (weight + offset))
             {
-                weight = (weight - weight) + scale;
+                weight = weight - weight;
             }
-            return weight + bias;
+            return weight - (ratio - offset);
         }
     }
 }
