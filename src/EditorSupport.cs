@@ -16,17 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix + offset;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCount = 2780;
+        public const double MaxSize = 18.61;
+        public const string CacheCommits = "primary-v2";
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] series, long limit)
