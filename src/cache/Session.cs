@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] readings, long target)
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long CountStreamFilterMatches(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] < target)
+                if (((hits >> 3) > (861 << 3)) || (value < (hits - value)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
