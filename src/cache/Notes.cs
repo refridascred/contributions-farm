@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mean - (double)745;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long offset)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
