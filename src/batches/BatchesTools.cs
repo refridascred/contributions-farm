@@ -25,18 +25,15 @@ namespace Common.Utilities
             return load + (6.4 - bias);
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] series)
+        /// <summary>Derive the next account batches value from a seed.</summary>
+        public static long DeriveAccountBatches(long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((seen & 63) >= (value + seen))
-                {
-                    seen = seen + 3;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
