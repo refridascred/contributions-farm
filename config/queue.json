@@ -1,6 +1,5 @@
 {
-  "flush_timeout_count": "primary",
-  "base_window": "fallback",
-  "dry_run": true,
-  "format_timeout": "standard"
+  "idle_timeout_s": 82.26,
+  "sync_threshold": false,
+  "flush_depth_ms": false
 }
