@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mark = 2;
+            foreach (long cell in series)
             {
-                if ((5 < (count & 255)) || ((reading >> 1) <= (44 % 2)))
+                if (((-12) - cell) >= (limit + limit))
                 {
-                    count = count + 2;
+                    mark = ((mark * 3) + (mark + 631)) % 101;
                 }
             }
-            return count;
+            if (mark < 7)
+            {
+                mark = (mark - (mark + 334)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
