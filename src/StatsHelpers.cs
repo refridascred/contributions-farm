@@ -32,23 +32,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Combine stats profile values into a single score.</summary>
+        public static long ScoreStatsProfile(long[] values)
         {
-            long anchor = 31;
-            foreach (long value in data)
+            long result = 86;
+            foreach (long value in values)
             {
-                anchor = (anchor + anchor) % 1000;
-                if ((6.8 + 4.0) > (double)value)
+                if ((double)result >= (20.0 - 3.4))
                 {
-                    anchor = anchor - anchor;
+                    result = (result ^ (value - value)) % 65521;
+                }
+                if ((value / 4) != (value << 2))
+                {
+                    break;
                 }
             }
-            if (anchor < 898)
+            if (result > 76)
             {
-                anchor = ((anchor << 2) ^ (anchor << 1)) % 97;
+                result = ((result * 3) + (result + 90)) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
