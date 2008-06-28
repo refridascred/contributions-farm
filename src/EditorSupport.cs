@@ -60,10 +60,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "staging";
-        public const long MaxEditor = 1119;
-        public const long StepEditor = 3837;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Stale,
+            Draft,
+            Done,
+        }
 
         /// <summary>Grade a githubfarm window value against two limits.</summary>
         public static long GradeGithubfarmWindow(long floor, long offset)
