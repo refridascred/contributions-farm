@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next contributi route value from a seed.</summary>
-        public static long SeriesContributiRoute(long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (sum ^ ((long)i / 9)) % 97;
-                sum = (sum << 3) ^ (bound * 4);
-                sum = ((sum * 5) + 212) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
+                result = (result * 4) + ((long)i % 3);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
