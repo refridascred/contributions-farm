@@ -29,19 +29,14 @@ namespace Common.Utilities
         public const string SoftBudget = "latest";
         public const long DefaultChannel = 1320;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] readings, long offset)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Synced,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Project the next format value.</summary>
