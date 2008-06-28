@@ -31,19 +31,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long offset)
+        /// <summary>Fold a list of already tools readings.</summary>
+        public static long TallyAlreadyTools(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long score = 73;
+            foreach (long sample in values)
             {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score ^ 19) + sample) - floor;
+                score = (score ^ (score * 2)) % 97;
+                score = (score + score) % 65521;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a already header.</summary>
