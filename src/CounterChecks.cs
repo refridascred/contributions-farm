@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepRatio = 5379;
-        public const long DefaultCluster = 775;
-        public const string CacheInterval = "fallback-v2";
-        public const string BatchSize = "fallback";
-        public const string CacheRatio = "primary";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowBudget = "standard";
+        public const long IdleTimeout = 8008;
+        public const long MinBudget = 9841;
+        public const string MinSize = "staging-v2";
+        public const double SoftLevel = 67.41;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxEntry = 53.72;
