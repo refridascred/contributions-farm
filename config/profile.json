@@ -1,14 +1,15 @@
 {
-  "metrics_window": {
-    "idle_threshold": 67.26,
-    "warm_size_ms": "stable",
-    "hard_interval": "local",
-    "idle_size_s": 5.16,
-    "base_depth_count": 250,
-    "cluster_timeout": [478, 421, 144, 158]
+  "githubfarm_depth": 30,
+  "batch_threshold_pct": {
+    "checks_interval": {
+      "idle_depth_pct": "legacy",
+      "commits_depth": 48.65,
+      "cache_ttl": 89.49,
+      "cache_retries": false
+    },
+    "graph_threshold": true,
+    "format_delay": 30
   },
-  "persist": false,
-  "min_ttl_count": "fallback",
-  "readonly": true,
-  "support_depth": ["fallback", "green"]
+  "persist": ["local", "legacy", "strict", "cached"],
+  "hard_timeout_count": 88
 }
