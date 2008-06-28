@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] data, long target)
         {
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
