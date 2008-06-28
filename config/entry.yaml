@@ -1,4 +1,6 @@
 # entry settings
-cluster_ttl: edge
-strict: 8196
-cache_window: latest
+enabled:
+  - latest
+  - standard
+profile_window: 6.14
+persist: stable
