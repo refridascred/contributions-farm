@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)target <= (3.0 / 9.0))
             {
-                if (samples[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if (!(12.0 > (double)target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + floor) >= (target + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(target > (target - target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
