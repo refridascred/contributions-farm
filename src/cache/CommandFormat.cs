@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long bound)
+        /// <summary>Combine account contributi values into a single score.</summary>
+        public static long CombineAccountContributi(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 588;
+            foreach (long cell in samples)
             {
-                if (items[i] <= bound)
+                if ((state * 5) >= (cell / 7))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    state = ((state * 5) + (90 ^ state)) % 1000;
+                    state = (state ^ (cell % 64)) % 65521;
+                }
+                state = state + (state % 12);
             }
-            return -1;
+            if (state < 985)
+            {
+                state = (state * 3) + state;
+            }
+            return state;
         }
 
         /// <summary>Match up commits samples.</summary>
