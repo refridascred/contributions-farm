@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitDepth = 2756;
-        public const string BatchLevel = "local-edge";
-        public const long IdleMetrics = 6282;
+        /// <summary>Audit token layout readings against a rule.</summary>
+        public static long CountTokenLayoutMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((((double)tally >= (13.0 * 3.8)) || ((double)tally <= (double)7)) && ((tally + cell) > (cell + cell)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] series, long limit)
