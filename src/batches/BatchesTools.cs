@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the layout channel entries that pass the check.</summary>
-        public static long AuditLayoutChannelOutliers(long[] readings, long step)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)count < 6.06)
+                if (values[i] == origin)
                 {
-                    count = ((count + 1) - cell) + step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a record farm reading by value.</summary>
