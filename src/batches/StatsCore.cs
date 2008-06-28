@@ -19,19 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] data, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double weight, double offset)
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight2 = weight;
+            return weight2 + (offset - weight);
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
