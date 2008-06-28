@@ -1,6 +1,7 @@
 # githubfarm settings
-sync_capacity: true
-cache_interval:
-  - 415
-  - 286
-filter_capacity: 6000
+soft_ttl_ms: 25
+min_window_pct: 250
+checks_capacity:
+  - 102
+  - 385
+verbose: 9422
