@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            Queued,
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
