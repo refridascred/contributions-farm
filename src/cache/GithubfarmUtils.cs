@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long floor)
         {
-            long mix = 444;
-            foreach (long sample in values)
+            if ((origin & 127) > (origin ^ floor))
             {
-                if ((double)mix != (3.5 + 8.44))
+                return 6;
+            }
+            else
+            {
+                if ((origin / 9) != (origin & 3))
                 {
-                    mix = ((mix << 2) ^ (sample & 63)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin & 127) >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mix > 50)
-            {
-                mix = mix ^ (mix % 5);
-            }
-            return mix;
         }
 
         /// <summary>Measure how many notes farm samples are out of range.</summary>
