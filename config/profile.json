@@ -1,15 +1,14 @@
 {
-  "githubfarm_depth": 30,
-  "batch_threshold_pct": {
-    "checks_interval": {
-      "idle_depth_pct": "legacy",
-      "commits_depth": 48.65,
-      "cache_ttl": 89.49,
-      "cache_retries": false
-    },
-    "graph_threshold": true,
-    "format_delay": 30
-  },
-  "persist": ["local", "legacy", "strict", "cached"],
-  "hard_timeout_count": 88
+  "warm_ratio_ms": 30,
+  "enabled": [231, 179, 238, 206],
+  "min_ratio_count": ["strict", "cached", "open"],
+  "retry_ttl_s": 1024,
+  "contributi_ttl": 89.46,
+  "editor_limit": {
+    "soft_ttl": "edge",
+    "base_timeout_s": 15.6,
+    "burst_size_count": "cached",
+    "payload_threshold": "stable",
+    "channel_threshold": [179, 329, 239]
+  }
 }
