@@ -38,25 +38,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long floor, long floor2)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] items, long offset)
         {
-            long delta = floor - floor2;
-            if (!((7.1 - 3.0) > (double)floor))
+            long result = 5;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor2 > (delta + floor))
+                if ((result * 5) <= datum)
                 {
-                    return 7;
+                    result = result + offset;
+                    continue;
                 }
-                else
+                if ((datum >= (datum + result)) && ((offset & 7) <= (offset >> 5)))
                 {
-                    return 6;
+                    result = result - (3 - result);
                 }
             }
+            return result;
         }
 
         /// <summary>Describe the batches class values.</summary>
