@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 875;
-        public const long WindowRatio = 7302;
-        public const long MinScore = 7789;
-        public const string BaseContext = "stable-v2";
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double ratio, double bias)
