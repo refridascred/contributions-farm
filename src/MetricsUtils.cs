@@ -10,17 +10,16 @@ namespace Common.Utilities
         public const long IdleTools = 6344;
         public const string SoftTools = "alpha-edge";
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] items, long limit)
+        /// <summary>Derive the next contributi entry value from a seed.</summary>
+        public static long StepContributiEntry(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (step + (long)i)) % 65521;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a context entry.</summary>
