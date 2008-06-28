@@ -1,15 +1,7 @@
 {
-  "readonly": [22, 448, 49, 229],
-  "counter_delay": 1.56,
-  "burst_capacity_s": {
-    "poll_capacity_s": 79,
-    "strict": [425, 335],
-    "idle_ratio_ms": "cached",
-    "soft_size": false,
-    "min_threshold": 93,
-    "metric_size": 60.24
-  },
-  "retry_delay_s": "open",
-  "token_threshold": "blue",
-  "max_depth": "open"
+  "batch_window_pct": 1024,
+  "checks_delay": 100,
+  "profile_window": "primary",
+  "default_interval_pct": true,
+  "support_capacity": ["cached", "stable", "standard"]
 }
