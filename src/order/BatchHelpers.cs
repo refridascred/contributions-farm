@@ -30,17 +30,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] levels, long limit)
+        /// <summary>Audit window checks readings against a rule.</summary>
+        public static long MeasureWindowChecksHits(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
+                if ((sample + hits) == (hits << 2))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
