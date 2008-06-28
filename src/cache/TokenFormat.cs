@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine window tools values into a single score.</summary>
-        public static long TallyWindowTools(long[] readings)
-        {
-            long sum = 8;
-            foreach (long item in readings)
-            {
-                sum = (((sum * 5) + (sum - sum)) % 4096) + item;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 922;
+        public const double DefaultSize = 88.68;
+        public const long CacheDepth = 7043;
+        public const long BatchWidth = 361;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatMatches(long[] readings, long floor)
