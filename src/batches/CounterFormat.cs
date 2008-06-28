@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
