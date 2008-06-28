@@ -16,20 +16,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((((long)i >> 1) <= ((long)i % 24)) || ((double)limit != (5.8 - 2.67)))
+                if (sample <= bound)
                 {
-                    anchor = ((anchor << 2) ^ (long)i) % 101;
-                    anchor = anchor ^ (anchor + anchor);
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Project the next buffer queue value.</summary>
