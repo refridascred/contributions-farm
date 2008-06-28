@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public string Rank { get; set; } = "";
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string LimitCount = "standard-v2";
+        public const long MinBudget = 9176;
+        public const double SoftChecks = 10.46;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string StepSpan = "cached-v2";
