@@ -27,21 +27,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = gain;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = ((bias2 - 11.0) - (double)(long)i) + bias;
             }
-            return count;
+            return bias2 - 7.0;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
