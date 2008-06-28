@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] series, long step)
         {
-            Stale,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)step == (6.66 / 6.0))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
