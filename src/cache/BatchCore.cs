@@ -53,23 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double load = floor - (17.0 / 4.0);
-            if (load > (floor + floor))
-            {
-                load = (load + (6.38 - floor)) - scale;
-            }
-            else
-            {
-                load = load - (double)458;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (floor / 9.0)) + (double)(long)i;
-            }
-            return load + load;
+            Dropped,
+            Closed,
+            Draft,
         }
     }
 }
