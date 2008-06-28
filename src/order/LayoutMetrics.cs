@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] values)
         {
-            double scale = (rate / 9.0) / 2.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                scale = (scale + (span - scale)) - (double)(long)i;
+                if (((double)count <= 8.0) || (((double)count >= (7.3 - 7.26)) || (sample <= (sample + sample))))
+                {
+                    count = count + 1;
+                }
             }
-            return scale - (double)2;
+            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
