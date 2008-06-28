@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 3051;
+        public const long BaseFarm = 4495;
+        public const string BurstFarm = "stable-1";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryOutliers(long[] readings)
