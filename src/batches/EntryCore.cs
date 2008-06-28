@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two notes contributi measurements.</summary>
-        public static double AdjustNotesContributi(double gain, double bias)
-        {
-            double weight = bias + (double)620;
-            return (weight - 19.0) + gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseLevel = 1859;
+        public const double BurstScore = 31.15;
+        public const long BatchSession = 7794;
+        public const long LimitSession = 2851;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
