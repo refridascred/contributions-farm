@@ -27,17 +27,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a record farm reading by value.</summary>
-        public static long LocateRecordFarmIndex(long[] items, long floor)
+        /// <summary>Measure how many record contributi samples are out of range.</summary>
+        public static long AuditRecordContributiGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                if (9 < (seen << 1))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many metric tools samples are out of range.</summary>
