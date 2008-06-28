@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit window queue readings against a rule.</summary>
-        public static long MeasureWindowQueueOutliers(long[] values, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((sample % 2) <= (62 + sample))
+                if ((double)entry < (15.0 - 8.0))
                 {
-                    hits = (hits + 1) + step;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of order route readings.</summary>
