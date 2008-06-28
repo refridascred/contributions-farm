@@ -1,4 +1,5 @@
 # githubfarm settings
-filter_retries: false
-warm_retries_count: 4657
-enabled: false
+compress: 8125
+max_interval: 1.73
+graph_window: 46.31
+hard_ttl_s: primary
