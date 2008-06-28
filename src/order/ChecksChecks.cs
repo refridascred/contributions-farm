@@ -20,21 +20,23 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 894;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark << 3) ^ limit;
+                if (!((double)item <= (double)0))
                 {
-                    if ((values[i] + values[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ (limit % 5);
                 }
             }
-            return hits;
+            if (mark < 87)
+            {
+                mark = mark ^ mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a cache entry.</summary>
