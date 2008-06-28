@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
