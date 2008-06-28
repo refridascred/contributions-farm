@@ -61,11 +61,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 7379;
-        public const long LimitSpan = 8968;
-        public const string RetryBatch = "standard";
-        public const long SoftBatch = 6819;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "standard-v2";
+        public const long WindowBudget = 919;
+        public const long LimitCount = 704;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] values, long offset)
