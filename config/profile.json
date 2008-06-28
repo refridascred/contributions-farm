@@ -1,11 +1,11 @@
 {
-  "readonly": ["edge", "open"],
-  "dry_run": true,
-  "stream_ratio": {
-    "sync_delay": ["standard", "fallback"],
-    "token_limit": "green",
-    "burst_threshold": true
+  "burst_limit": 2,
+  "persist": {
+    "dry_run": [20, 261],
+    "poll_size_count": "eu-west",
+    "max_threshold": "strict"
   },
-  "schema_ratio": 4428,
-  "sync_timeout_ms": 6.2
+  "max_timeout_s": 30,
+  "graph_ttl": 500,
+  "metrics_threshold": ["eu-west", "open", "strict", "stable"]
 }
