@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits / 9) < (-335))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
