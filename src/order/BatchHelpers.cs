@@ -20,16 +20,13 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = (anchor * 2) + ((long)i % 7);
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit window checks readings against a rule.</summary>
