@@ -22,22 +22,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] levels, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((limit + count) > 7)
-                {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
