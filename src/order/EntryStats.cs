@@ -54,18 +54,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] samples)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((double)hits == (16.0 / 3.0))
+                if (item < origin)
                 {
-                    hits = (hits + 3) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
