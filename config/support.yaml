@@ -1,4 +1,38 @@
 # support settings
-idle_window_ms: 84.81
-enabled: 30
-hard_window: 73
+max_size_pct: true
+readonly:
+  enabled:
+    compress:
+      - local
+      - cached
+      - latest
+    cache_ratio_count:
+      - strict
+      - cached
+      - fallback
+      - edge
+    format_ratio: 250
+    persist: false
+    idle_size_s: 80.84
+    flush_interval_ms: strict
+  stream_threshold: standard
+  batch_timeout_ms: 27
+  entry_size: strict
+profile_ratio:
+  compress: blue
+  base_retries_ms: fallback
+  order_interval:
+    - cached
+    - strict
+  editor_retries:
+    already_delay: 48.83
+    enabled: true
+    warm_timeout: latest
+    metrics_limit: 3675
+    burst_delay_ms: 30.85
+    idle_window_s: 67.78
+  route_retries: 9.35
+  soft_delay_count: 35.38
+enabled: 1024
+persist: standard
+burst_window: 30
