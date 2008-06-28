@@ -1,8 +1,23 @@
 # support settings
-entry_size: 51.87
-compress: primary
-min_limit_pct: 63
-hard_limit_s: 1656
-context_window:
-  - 222
-  - 201
+soft_ratio_s: 31.09
+min_threshold_count: green
+retry_capacity:
+  - strict
+  - standard
+  - fallback
+metric_delay: true
+warm_capacity_ms:
+  default_threshold_s: 250
+  dry_run: 71
+  cache_depth_count: 21.68
+  poll_retries_ms: 500
+  persist: local
+  hard_ttl_pct:
+    batch_depth_count: 1024
+    verbose: fallback
+    min_size: stable
+    format_delay: 1024
+    route_delay:
+      - 247
+      - 280
+    batch_threshold: 59.17
