@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
-            long mix = 528;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < (55 ^ mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ (mix * 2)) % 65521;
-                }
-                if ((cell / 4) < (mix + mix))
-                {
-                    mix = (mix ^ (bound ^ cell)) % 1000;
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > 834)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
