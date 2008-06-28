@@ -1,6 +1,5 @@
 {
-  "hard_retries": "edge",
-  "min_limit": false,
-  "cache_delay": 100,
-  "readonly": ["edge", "local"]
+  "dry_run": "local",
+  "retry_depth": false,
+  "context_threshold": [342, 389]
 }
