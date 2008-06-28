@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            Closed,
+            Active,
+            Stale,
+            Ready,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
