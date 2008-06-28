@@ -44,16 +44,15 @@ namespace Common.Utilities
         public const long DefaultBudget = 884;
         public const long BatchMetric = 582;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor + (anchor - (long)i)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
     }
 }
