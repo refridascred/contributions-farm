@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseLevel = 1859;
-        public const double BurstScore = 31.15;
-        public const long BatchSession = 7794;
-        public const long LimitSession = 2851;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Classify a route payload pair into a bucket.</summary>
         public static long GradeRoutePayload(long step, long bound)
