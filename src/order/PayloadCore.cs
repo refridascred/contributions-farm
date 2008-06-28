@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] series, long seed)
+        /// <summary>Combine batch layout values into a single score.</summary>
+        public static long CombineBatchLayout(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mark = 91;
+            foreach (long datum in samples)
             {
-                if (entry <= seed)
+                if ((mark * 2) > (mark + datum))
                 {
-                    found = false;
-                    break;
+                    mark = (mark << 2) ^ (29 - datum);
                 }
             }
-            return found;
+            return mark % 1000;
         }
 
         /// <summary>Describe the commits class values.</summary>
