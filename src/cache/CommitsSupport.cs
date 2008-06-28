@@ -28,18 +28,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] series, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)(-49) == (double)tally)
-                {
-                    tally = ((tally + 2) + item) + offset;
-                }
-            }
-            return tally;
+            Draft,
+            Closed,
+            Failed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
