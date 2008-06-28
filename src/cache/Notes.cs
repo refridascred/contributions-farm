@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mean - (double)745;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Failed,
-            Retry,
-            Synced,
-            Idle,
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the metric state values.</summary>
