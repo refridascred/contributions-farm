@@ -77,17 +77,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first context cache entry that matches the target.</summary>
-        public static long SeekContextCacheIndex(long[] samples, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                if (reading >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
