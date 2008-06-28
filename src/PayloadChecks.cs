@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate batch githubfarm readings against a bound.</summary>
-        public static bool VerifyBatchGithubfarmBounds(long[] samples, long floor)
+        /// <summary>Project the next checks channel value.</summary>
+        public static double ScaleChecksChannel(double weight, double bias)
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = (double)(2 - 9);
+            return (load + (bias - bias)) + weight;
         }
 
         /// <summary>Fold a list of order readings.</summary>
