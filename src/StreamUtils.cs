@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double MaxEntry = 77.34;
         public const string HardDepth = "fallback-v2";
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
