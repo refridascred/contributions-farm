@@ -1,8 +1,9 @@
-id,count,owner
-1,676,45.92
-2,1.77,stable
-3,959,latest
-4,43.21,29
-5,393,960
-6,559,88.24
-7,26.63,stable
+id,token,region,rank,ratio
+1,local,local,fallback,746
+2,primary,164,33.33,strict
+3,30.04,cached,27.65,933
+4,9.28,36.78,stable,15.12
+5,957,blue,800,latest
+6,4.91,454,891,701
+7,259,19.13,894,green
+8,13.73,147,465,59.79
