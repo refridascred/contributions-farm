@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank schema cluster input into a small class.</summary>
-        public static long GradeSchemaCluster(long target, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long offset)
         {
-            long step2 = target ^ step;
-            if ((285 & 127) <= (target / 9))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (step2 >= (6 & 7))
+                if (readings[i] > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (1.44 > (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
