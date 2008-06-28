@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long offset)
         {
-            Ready,
-            Retry,
-            New,
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two channel cache measurements.</summary>
