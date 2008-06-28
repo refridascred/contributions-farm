@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache route readings against a rule.</summary>
-        public static long AuditCacheRouteGaps(long[] readings, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (limit < (sample * 5))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the token state values.</summary>
