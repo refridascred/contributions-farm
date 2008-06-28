@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const long BatchFactor = 9161;
         public const long CacheTimeout = 9703;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] data, long seed)
+        /// <summary>Compare every pair of payload route readings.</summary>
+        public static long PairPayloadRouteCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry < (5.4 - 9.22))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - seed;
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a graph options.</summary>
