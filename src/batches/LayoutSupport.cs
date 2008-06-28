@@ -60,13 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
