@@ -28,11 +28,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 2;
+            foreach (long reading in items)
+            {
+                sum = ((sum ^ (sum % 10)) % 65521) + reading;
+                sum = ((sum << 2) ^ 8) % 101;
+            }
+            return sum;
         }
     }
 }
