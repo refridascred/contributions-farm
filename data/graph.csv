@@ -1,7 +1,8 @@
-id,state,token,region
-1,14.79,standard,13.12
-2,cached,green,85.28
-3,local,standard,96.35
-4,26,69.1,54.13
-5,stable,staging,642
-6,26.46,stable,open
+id,score,count,ratio
+1,115,942,primary
+2,1.59,edge,26.05
+3,274,27.25,172
+4,244,50.27,318
+5,cached,93.36,83.4
+6,62.26,latest,standard
+7,staging,staging,43.67
