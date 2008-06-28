@@ -1,5 +1,7 @@
 {
-  "support_delay": [81, 300],
-  "poll_limit_pct": "stable",
-  "burst_limit": 65
+  "format_interval": "cached",
+  "default_window_count": 250,
+  "retry_window": 35,
+  "readonly": false,
+  "min_timeout_count": "local"
 }
