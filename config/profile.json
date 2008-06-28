@@ -1,8 +1,5 @@
 {
-  "stats_size": 60,
-  "context_delay": "primary",
-  "idle_timeout_pct": false,
-  "idle_retries_s": true,
-  "cache_timeout_pct": false,
-  "dry_run": 500
+  "stats_depth": "stable",
+  "entry_capacity": 41.18,
+  "githubfarm_window": ["stable", "legacy"]
 }
