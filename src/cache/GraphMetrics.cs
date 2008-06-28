@@ -20,11 +20,20 @@ namespace Common.Utilities
             return load + (double)2;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftRatio = 5656;
-        public const long BatchRatio = 680;
-        public const long IdleSpan = 6427;
-        public const string StepCount = "alpha-edge";
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowEntry = 7489;
