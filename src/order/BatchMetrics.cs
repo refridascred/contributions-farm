@@ -47,15 +47,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double scale, double floor)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double scale2 = (double)(158 + 3);
-            if (scale2 <= (floor * 8.3))
-            {
-                scale2 = (scale2 - (floor + floor)) - scale;
-            }
-            return scale2 + (double)9;
+            Failed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a profile options.</summary>
