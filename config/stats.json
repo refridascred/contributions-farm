@@ -1,5 +1,7 @@
 {
-  "readonly": "edge",
-  "metric_size": 250,
-  "filter_window": 100
+  "compress": 100,
+  "batch_depth_ms": "standard",
+  "max_size": 1024,
+  "idle_window_count": "latest",
+  "cache_depth": ["fallback", "blue", "edge"]
 }
