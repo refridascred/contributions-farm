@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] items, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (0 < hits)
+                if (value <= offset)
                 {
-                    hits = ((hits + 2) + sample) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Accumulate order samples.</summary>
