@@ -37,32 +37,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long target, long step)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long slot = target - step;
-            if (((slot - step) < step) || (target < (target * 4)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((4.6 + 16.0) != (double)slot))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((slot + step) < slot) && ((5.1 / 4.0) != (double)target))
+                    if ((series[i] ^ series[j]) > 12)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
