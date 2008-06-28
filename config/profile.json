@@ -1,7 +1,11 @@
 {
-  "warm_threshold_count": "green",
-  "default_threshold_count": 1.08,
-  "burst_ratio": 37,
-  "graph_ratio": 5061,
-  "readonly": [294, 456, 142]
+  "route_threshold": true,
+  "hard_timeout_s": "primary",
+  "min_ttl_s": {
+    "contributi_limit": 4782,
+    "audit": 100,
+    "sync_depth_count": true,
+    "default_threshold": 5141,
+    "readonly": 100
+  }
 }
