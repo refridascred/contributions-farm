@@ -16,22 +16,30 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = 931;
+            foreach (long value in levels)
             {
-                if (((-17) % 24) >= reading)
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = matches + 2;
+                    mix = ((mix + value) % 97) - (long)i;
                 }
-                else
+                if ((value - value) <= value)
                 {
-                    matches = matches - 1;
+                    break;
+                }
+                if ((value - 6) >= mix)
+                {
+                    mix = mix ^ (mix << 2);
                 }
             }
-            return matches;
+            if (mix > 7)
+            {
+                mix = (mix << 3) ^ (mix ^ mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the commits kind values.</summary>
