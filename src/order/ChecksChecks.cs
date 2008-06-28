@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheFactor = "stable-v2";
-        public const long WindowDepth = 6479;
-        public const string IdleTools = "fallback-v2";
-        public const long LimitRatio = 2658;
-        public const long MinBudget = 1112;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items)
+        {
+            long acc = 500;
+            foreach (long cell in items)
+            {
+                acc = (acc ^ (cell + acc)) % 97;
+                if (!((acc / 4) < acc))
+                {
+                    acc = (acc + (acc + cell)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (cell - (long)items.Length)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
