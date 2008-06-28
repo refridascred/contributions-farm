@@ -24,19 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (!((tally + (-972)) > tally))
-                {
-                    tally = ((tally + 3) + value) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 2143;
+        public const string WindowTimeout = "stable";
+        public const long StepContributi = 5977;
+        public const double DefaultBudget = 95.34;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
