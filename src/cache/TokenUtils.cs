@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "alpha-1";
-        public const long BurstRoute = 4021;
-        public const long WindowRoute = 560;
-        public const long MinLevel = 3008;
-        public const double DefaultInterval = 0.83;
+        /// <summary>Audit metric profile readings against a rule.</summary>
+        public static long CountMetricProfileMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!((item + item) > (count - count)))
+                {
+                    count = (count + 1) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long target)
