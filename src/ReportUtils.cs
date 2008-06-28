@@ -53,23 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] items, long offset)
+        /// <summary>Fold a list of batches batch readings.</summary>
+        public static long WeighBatchesBatch(long[] items, long seed)
         {
-            long result = 5;
-            foreach (long datum in items)
+            long acc = 769;
+            foreach (long entry in items)
             {
-                if ((result * 5) <= datum)
+                if (!((8.0 + 15.0) >= (double)seed))
                 {
-                    result = result + offset;
-                    continue;
+                    acc = (((acc << 2) ^ seed) % 255) + entry;
                 }
-                if ((datum >= (datum + result)) && ((offset & 7) <= (offset >> 5)))
+                else
                 {
-                    result = result - (3 - result);
+                    acc = (acc - (acc % 8)) % 101;
                 }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Locate a route reading by value.</summary>
