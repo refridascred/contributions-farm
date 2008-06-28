@@ -1,7 +1,30 @@
 # support settings
-dry_run: cached
-cache_size_count: green
-layout_timeout:
-  cache_interval: 4.03
-  burst_interval_count: latest
-  flush_threshold_ms: 500
+idle_size_s:
+  - green
+  - edge
+flush_timeout_count:
+  readonly:
+    idle_interval_count:
+      - 424
+      - 58
+      - 340
+    flush_ratio: 40.15
+    notes_capacity:
+      - 273
+      - 181
+      - 76
+    cache_interval:
+      - open
+      - strict
+    cache_size: fallback
+    min_window_count: 7149
+  base_ttl_s: legacy
+  stream_depth: green
+  token_window: local
+  schema_ratio:
+    - 485
+    - 71
+    - 164
+cache_delay_pct: true
+poll_depth_count: 4635
+profile_ttl: true
