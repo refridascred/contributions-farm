@@ -33,11 +33,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 1335;
-        public const long MaxCount = 3486;
-        public const long CacheNotes = 4562;
-        public const long CacheRatio = 6709;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values, long floor)
+        {
+            long anchor = 502;
+            foreach (long cell in values)
+            {
+                anchor = (anchor + floor) - cell;
+            }
+            if (anchor > (-12))
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] samples)
