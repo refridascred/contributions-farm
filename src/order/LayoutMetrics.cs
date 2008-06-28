@@ -10,13 +10,32 @@ namespace Common.Utilities
         public const long WindowWidth = 9272;
         public const long BurstNotes = 7862;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long step, long limit)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
+            long delta = step ^ limit;
+            if ((limit + limit) > (delta + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((78 & 255) != (limit & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit % 64) < delta)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
