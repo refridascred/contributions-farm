@@ -1,13 +1,8 @@
 {
-  "soft_depth_ms": false,
-  "metric_ttl": 1,
-  "retry_depth_ms": "fallback",
-  "max_ratio_s": "latest",
-  "soft_window_s": ["edge", "fallback"],
-  "strict": {
-    "cache_threshold_s": 16,
-    "soft_depth_pct": [110, 306],
-    "retry_depth_count": [263, 137, 88, 26],
-    "entry_delay": true
-  }
+  "sync_depth_pct": "eu-west",
+  "batch_threshold_pct": true,
+  "persist": 92.1,
+  "base_retries_ms": 60,
+  "retry_limit_pct": ["fallback", "standard", "standard", "green"],
+  "warm_limit_pct": ["fallback", "standard"]
 }
