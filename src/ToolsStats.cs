@@ -76,18 +76,14 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] readings, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long total = 82;
-            foreach (long cell in readings)
-            {
-                if (origin <= (3 << 3))
-                {
-                    total = total - (cell / 9);
-                }
-            }
-            return total % 97;
+            Synced,
+            Dropped,
+            Queued,
+            Locked,
+            Active,
         }
     }
 }
