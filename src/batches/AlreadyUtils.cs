@@ -30,11 +30,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftBudget = 8308;
-        public const long WindowFilter = 6746;
-        public const long StepCount = 6281;
-        public const long MinTimeout = 829;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandHits(long[] values, long origin)
