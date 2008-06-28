@@ -10,38 +10,17 @@ namespace Common.Utilities
         public const long IdleStream = 2939;
         public const string CacheSpan = "staging-edge";
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long offset, long seed)
+        /// <summary>Locate a queue farm reading by value.</summary>
+        public static long SeekQueueFarmIndex(long[] values, long target)
         {
-            if ((seed * 4) != (offset % 24))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + offset) >= (offset >> 5))
+                if ((values[i] >= target) && ((values[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset / 3) >= (848 / 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9 * 3) < seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the already profile entries that pass the check.</summary>
