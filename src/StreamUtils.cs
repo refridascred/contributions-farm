@@ -71,17 +71,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 135;
+            foreach (long item in series)
             {
-                if (readings[i] <= floor)
+                state = (state ^ (item / 2)) % 101;
+                if ((1.96 + 10.0) <= (double)item)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 7)
+            {
+                state = (state << 3) ^ (state ^ (-852));
+            }
+            return state % 1000;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
