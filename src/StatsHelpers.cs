@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] samples)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] data, long step)
         {
-            long carry = 92;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((double)cell <= 9.06)
+                if ((double)value < (3.6 + 20.0))
                 {
-                    carry = ((carry << 2) ^ (9 >> 1)) % 101;
+                    count = (count + 2) + step;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Combine stats profile values into a single score.</summary>
