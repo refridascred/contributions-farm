@@ -1,5 +1,20 @@
 {
-  "strict": ["green", "fallback"],
-  "burst_delay_count": 7265,
-  "metrics_interval": 73.51
+  "burst_size_s": false,
+  "dry_run": 2,
+  "flush_threshold_s": 26,
+  "batch_capacity": true,
+  "burst_timeout_count": true,
+  "hard_limit_count": {
+    "batch_retries_s": "staging",
+    "sync_timeout_count": {
+      "min_size": "staging",
+      "max_capacity_s": 41,
+      "default_ttl_pct": "latest",
+      "flush_size": ["staging", "legacy", "strict"],
+      "sync_retries_s": 2937,
+      "enabled": "standard"
+    },
+    "warm_depth_pct": 22,
+    "min_delay": false
+  }
 }
