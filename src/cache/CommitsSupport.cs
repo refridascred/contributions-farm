@@ -87,9 +87,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxScore = 8348;
-        public const string StepFactor = "stable-edge";
-        public const long IdleEntry = 9750;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
