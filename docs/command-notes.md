@@ -1,15 +1,13 @@
 # Command notes
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Run the already check before changing any already limits.
-When a commits fails, the token handler retries a few times before giving up.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any cache limits.
 
-The cache report groups every queue by contributi.
-When a queue fails, the tools handler retries a few times before giving up.
+A queue that stays idle for too long is moved to the tools list.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate support input early
-- Keep record values small
-- Prefer payload defaults
-- Log every context change
+- Validate entry input early
+- Keep metric values small
+- Review context limits each release
