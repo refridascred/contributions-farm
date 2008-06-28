@@ -22,18 +22,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] items)
         {
-            long total = 97;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (((-220) ^ (long)samples.Length) < (total & 3))
+                if ((value * 2) > (value / 7))
                 {
-                    total = (((total << 3) ^ (total & 3)) % 97) - value;
+                    seen = seen + 3;
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
