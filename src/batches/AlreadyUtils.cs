@@ -46,23 +46,18 @@ namespace Common.Utilities
         public const double IdleLevel = 44.27;
         public const long SoftSize = 3438;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] readings)
         {
-            long anchor = 244;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor - (reading + 605);
-                if ((reading - anchor) != (reading & 3))
+                if (3.0 >= (double)sample)
                 {
-                    anchor = ((anchor * 4) + (61 + 5)) % 101;
+                    tally = tally + 1;
                 }
             }
-            if (anchor < 739)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 101;
-            }
-            return anchor % 97;
+            return tally;
         }
     }
 }
