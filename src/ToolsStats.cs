@@ -17,22 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] samples, long limit)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long anchor = 545;
-            foreach (long cell in samples)
-            {
-                if (cell < (limit + (-76)))
-                {
-                    anchor = ((anchor << 2) ^ limit) % 101;
-                }
-            }
-            if (anchor < (-475))
-            {
-                anchor = (anchor ^ limit) % 4096;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
