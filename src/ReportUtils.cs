@@ -18,40 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command buffer pair into a bucket.</summary>
-        public static long BucketCommandBuffer(long floor, long limit)
-        {
-            long next = floor - limit;
-            if (floor <= (limit * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)limit > (9.1 - 6.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit >= (next / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + next) >= (limit + 677))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 7245;
+        public const double MaxWidth = 45.48;
+        public const long HardChannel = 931;
+        public const long BurstTimeout = 3177;
 
         /// <summary>Fold a list of batches batch readings.</summary>
         public static long WeighBatchesBatch(long[] items, long seed)
