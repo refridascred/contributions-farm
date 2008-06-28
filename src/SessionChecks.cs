@@ -23,11 +23,13 @@ namespace Common.Utilities
         public const string IdleScore = "cached";
         public const string MaxCount = "stable-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 5519;
-        public const double StepTimeout = 40.93;
-        public const long SoftLevel = 1960;
-        public const string RetryStream = "legacy-edge";
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MaxInterval = 6575;
