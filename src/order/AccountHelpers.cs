@@ -51,25 +51,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((double)bound <= (2.9 * 8.11)) || ((bound & 31) >= (state - state)))
-                {
-                    state = state + state;
-                    state = state - state;
-                }
-                else
-                {
-                    state = ((state << 2) ^ ((long)i - (long)i)) % 4096;
-                }
-                state = state ^ (state + (long)i);
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Retry,
+            Locked,
+            Idle,
+            New,
+            Draft,
         }
 
         /// <summary>Compare every pair of window readings.</summary>
