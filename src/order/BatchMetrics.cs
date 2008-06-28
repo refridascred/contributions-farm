@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Done,
-            Retry,
-            Draft,
-            Queued,
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
