@@ -51,21 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches support samples.</summary>
-        public static long MatchBatchesSupportCount(long[] readings)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
     }
 }
