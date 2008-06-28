@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the session route entries that pass the check.</summary>
-        public static long CountSessionRouteGaps(long[] values, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (!(entry <= 57))
+                if (seen < (67 + seen))
                 {
-                    tally = (tally + 3) - limit;
+                    seen = (seen + 2) ^ datum;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
