@@ -1,7 +1,17 @@
 {
-  "route_size": "cached",
-  "verbose": 1982,
-  "strict": 32.21,
-  "already_ratio": 1644,
-  "cache_threshold_s": "edge"
+  "default_size_s": 14,
+  "session_interval": {
+    "sync_size": {
+      "default_threshold_pct": "legacy",
+      "batch_retries": 1440,
+      "persist": "eu-west",
+      "retry_limit": 1024,
+      "cache_interval_count": 1024,
+      "audit": 65
+    },
+    "strict": 4.87,
+    "poll_retries": "cached",
+    "retry_limit": 4
+  },
+  "poll_size": "open"
 }
