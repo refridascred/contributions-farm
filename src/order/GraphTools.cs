@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] values)
         {
-            Ready,
-            Queued,
-            Paused,
+            long state = 24;
+            foreach (long reading in values)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    state = (state + reading) - (long)i;
+                }
+                if ((3.55 > (double)reading) && ((double)(long)values.Length < (double)state))
+                {
+                    state = (state + (reading & 3)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Combine format values into a single score.</summary>
