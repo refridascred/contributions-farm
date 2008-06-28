@@ -26,11 +26,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 7059;
-        public const long DefaultSchema = 8798;
-        public const string StepSchema = "cached-edge";
-        public const double BatchWidth = 4.61;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepScore = 51.08;
+        public const long LimitCount = 7568;
+        public const long MinDepth = 7649;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
