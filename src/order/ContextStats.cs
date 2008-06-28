@@ -39,19 +39,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double ratio, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] samples, long limit)
         {
-            double gain = ratio * 6.83;
-            if (gain >= ratio)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                gain = gain - offset;
+                if (item < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            return gain - gain;
+            return stale;
         }
     }
 }
