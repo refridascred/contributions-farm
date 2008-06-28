@@ -1,10 +1,10 @@
 # Command notes
 
-The window report groups every layout by format.
-When a checks fails, the window handler retries a few times before giving up.
+A command that stays idle for too long is moved to the stream list.
+Run the counter check before changing any commits limits.
 
 ## Guidelines
 
-- Log every notes change
-- Review account limits each release
-- Validate filter input early
+- Log every token change
+- Keep notes values small
+- Document new format fields
