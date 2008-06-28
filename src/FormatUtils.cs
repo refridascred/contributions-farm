@@ -82,18 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((((reading - reading) == (61 / 4)) && ((tally >> 2) < (reading + tally))) && (reading > (reading ^ reading)))
+                if (sample <= floor)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first graph cluster entry that matches the target.</summary>
