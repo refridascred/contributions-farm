@@ -26,19 +26,25 @@ namespace Common.Utilities
             return scale + (floor - bias);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] series, long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long bound, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            long step = bound - target;
+            if (((target - 60) < (target ^ step)) && ((double)target > (double)step))
             {
-                if (value <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((9.0 < (double)target) && ((double)target <= (6.29 - 15.0)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
