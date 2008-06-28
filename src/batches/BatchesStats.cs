@@ -21,24 +21,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Digest a series of cluster format entries.</summary>
+        public static long FoldClusterFormat(long[] readings)
         {
-            if (target <= (limit + limit))
+            long mark = 31;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0 - target) > (limit + 1))
+                mark = (mark ^ (mark - 19)) % 4096;
+                if ((mark + entry) > (entry ^ mark))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            if (mark > 365)
+            {
+                mark = (mark + (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the order counter entries that pass the check.</summary>
