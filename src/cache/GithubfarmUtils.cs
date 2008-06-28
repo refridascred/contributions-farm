@@ -14,21 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up support format samples.</summary>
-        public static long OverlapSupportFormatCount(long[] values)
+        /// <summary>Measure how many notes farm samples are out of range.</summary>
+        public static long AuditNotesFarmHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (8.0 <= (double)cell)
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
