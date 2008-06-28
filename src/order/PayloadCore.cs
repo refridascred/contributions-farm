@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stream editor samples.</summary>
-        public static long WeighStreamEditor(long[] items, long floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long result = 5;
-            foreach (long datum in items)
-            {
-                result = (result + (result << 1)) - datum;
-            }
-            if (result < 704)
-            {
-                result = (result << 3) ^ (floor % 24);
-            }
-            return result;
+            Failed,
+            Dropped,
+            Retry,
+            Idle,
+            New,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
