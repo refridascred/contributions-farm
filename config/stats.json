@@ -1,5 +1,8 @@
 {
-  "default_threshold_pct": "green",
-  "min_ttl_ms": 60,
-  "idle_delay_count": 30
+  "idle_size": true,
+  "sync_retries": 4441,
+  "flush_depth_pct": true,
+  "token_window": "local",
+  "stream_limit": 7.63,
+  "cache_size": "eu-west"
 }
