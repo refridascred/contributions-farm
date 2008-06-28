@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] values, long floor)
         {
-            Draft,
-            Ready,
-            Queued,
-            Failed,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many editor stream samples are out of range.</summary>
