@@ -35,12 +35,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 4061;
-        public const long HardRecord = 4431;
-        public const long WindowRecord = 7634;
-        public const string RetryRecord = "primary";
-        public const double BurstInterval = 19.59;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardTimeout = 1848;
+        public const long IdleLevel = 1488;
+        public const string BurstScore = "stable";
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
