@@ -48,24 +48,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long origin, long target)
-        {
-            if (origin >= 269)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((89 > (target + target)) && ((3.1 / 7.0) > (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BaseStream = "alpha-1";
+        public const string WindowStream = "standard-1";
+        public const long SoftStream = 4594;
+        public const long CacheSpan = 7837;
+        public const double MaxScore = 1.41;
     }
 }
