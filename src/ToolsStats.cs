@@ -37,18 +37,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] values, long target)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((target ^ matches) != (target >> 5))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
