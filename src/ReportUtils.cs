@@ -41,17 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] values, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = (double)((-98) << 1);
+            if (rate2 > rate2)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - offset) + rate;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 + (6.3 - offset)) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
