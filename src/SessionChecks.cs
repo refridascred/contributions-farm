@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token layout readings against a rule.</summary>
-        public static long CountTokenLayoutMatches(long[] samples)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((((double)tally >= (13.0 * 3.8)) || ((double)tally <= (double)7)) && ((tally + cell) > (cell + cell)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
