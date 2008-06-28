@@ -60,15 +60,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many report metric samples are out of range.</summary>
-        public static long MeasureReportMetricMatches(long[] data, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long target)
         {
             long tally = 0;
-            foreach (long entry in data)
+            foreach (long item in series)
             {
-                if (!((entry + 46) < (entry % 100)))
+                if ((item + item) < 8)
                 {
-                    tally = (tally + 2) + origin;
+                    tally = (tally + 3) - target;
                 }
             }
             return tally;
