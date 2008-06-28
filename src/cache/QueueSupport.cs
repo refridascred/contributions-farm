@@ -23,21 +23,17 @@ namespace Common.Utilities
         public const double SoftLevel = 11.78;
         public const long BatchBudget = 4347;
 
-        /// <summary>Count editor farm pairs that satisfy a relation.</summary>
-        public static long PairEditorFarmCount(long[] data)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] <= bound)
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
