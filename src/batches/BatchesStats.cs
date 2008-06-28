@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] series, long limit)
         {
-            Retry,
-            Active,
-            Locked,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (4 > entry)
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
     }
 }
