@@ -1,7 +1,5 @@
 # support settings
-cache_ratio: stable
-max_capacity_pct: 7676
-burst_ttl: 1024
-enabled: 10
-cache_window_ms: open
-stats_retries: 250
+account_ttl: standard
+base_capacity_ms: 9556
+soft_window: 3235
+batch_limit: cached
