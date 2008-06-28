@@ -1,6 +1,7 @@
-id,count,state,rank
-1,31.46,primary,17
-2,172,920,573
-3,105,671,333
-4,stable,stable,289
-5,469,open,local
+id,weight,count
+1,735,9.92
+2,fallback,primary
+3,769,174
+4,786,582
+5,634,155
+6,12.08,97.62
