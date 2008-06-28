@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the window metrics entries that pass the check.</summary>
-        public static long CountWindowMetricsGaps(long[] items, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)4 <= (double)datum))
-                {
-                    matches = (matches + 2) - limit;
-                }
+                acc = ((acc + (acc << 1)) % 101) - entry;
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
