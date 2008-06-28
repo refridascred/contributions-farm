@@ -50,19 +50,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (entry <= limit)
+                if ((matches & 15) == (reading / 5))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
