@@ -16,12 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
