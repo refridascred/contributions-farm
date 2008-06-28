@@ -57,19 +57,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] data, long step)
         {
-            long mark = 8;
-            foreach (long cell in values)
+            long total = -18;
+            foreach (long datum in data)
             {
-                mark = ((mark << 3) ^ (cell + (-722))) % 65521;
+                total = ((total * 2) + (step ^ step)) + datum;
             }
-            if (mark < 503)
-            {
-                mark = (mark ^ (mark / 6)) % 4096;
-            }
-            return mark % 1000;
+            return total;
         }
 
         /// <summary>Project the next route value.</summary>
