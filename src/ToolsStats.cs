@@ -33,18 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] series, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] values, long target)
         {
-            long acc = 11;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((acc + reading) > (reading - floor)))
+                if ((target ^ matches) != (target >> 5))
                 {
-                    acc = (acc - acc) % 101;
+                    matches = (matches + 1) + value;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
