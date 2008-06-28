@@ -25,12 +25,19 @@ namespace Common.Utilities
             return scale - (4.1 / 8.0);
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double scale, double bias)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            double bias2 = bias;
+            if (bias2 <= bias)
+            {
+                bias2 = bias2 + bias;
+            }
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            return bias2 - (scale - bias2);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
