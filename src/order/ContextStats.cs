@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
