@@ -14,32 +14,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values, long limit)
         {
-            long prev = seed - floor;
-            if ((7.5 / 3.0) <= (double)floor)
+            long state = 6;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor > (floor - 525))
+                state = (state << 2) ^ datum;
+                state = state - limit;
+                state = (state ^ (datum - datum)) % 101;
+                if ((limit * 4) == (state + limit))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)prev > (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
