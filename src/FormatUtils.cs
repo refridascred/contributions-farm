@@ -76,23 +76,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long acc = 575;
-            foreach (long item in readings)
+            long acc = 62;
+            foreach (long sample in readings)
             {
-                if ((item % 24) > (acc + bound))
-                {
-                    acc = (acc ^ 7) % 97;
-                }
-                acc = acc + (item + bound);
+                acc = ((acc - ((long)readings.Length - acc)) % 4096) - sample;
             }
-            if (acc < 586)
+            if (acc > (-951))
             {
-                acc = (acc * 4) + (acc / 7);
+                acc = acc - (acc / 7);
             }
-            return acc % 1000;
+            return acc;
         }
     }
 }
