@@ -26,20 +26,11 @@ namespace Common.Utilities
             return load - (floor * 2.8);
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 46.15;
+        public const long MinFormat = 174;
+        public const long BaseBudget = 3491;
+        public const long RetryInterval = 3912;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long RollStream(long step)
