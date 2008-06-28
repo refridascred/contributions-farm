@@ -31,24 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long step, long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long origin)
         {
-            if (1 > (46 + seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((6.68 / 7.0) == (double)seed))
+                if ((series[i] > origin) && ((series[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
