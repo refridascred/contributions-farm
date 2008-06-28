@@ -32,11 +32,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value % 24) == (seen >> 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the context kind values.</summary>
