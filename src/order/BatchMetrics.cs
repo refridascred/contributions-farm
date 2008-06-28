@@ -20,11 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 9126;
-        public const long RetryFilter = 2167;
-        public const long WindowRatio = 8570;
-        public const double HardFilter = 58.74;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = (((acc * 4) + 7) % 65521) + (long)i2;
+                }
+                acc = ((acc << 3) ^ (bound ^ bound)) % 65521;
+                if (!!((double)acc >= (9.0 / 2.0)))
+                {
+                    acc = (acc * 3) + ((long)i << 1);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] readings, long seed)
