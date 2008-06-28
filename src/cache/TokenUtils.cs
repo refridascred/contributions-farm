@@ -16,18 +16,19 @@ namespace Common.Utilities
         public const string MinLevel = "cached-1";
         public const long IdleProfile = 3491;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] values, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if ((seen + origin) == (origin + 62))
+                if (cell < limit)
                 {
-                    seen = (seen + 2) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
