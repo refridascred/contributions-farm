@@ -62,15 +62,11 @@ namespace Common.Utilities
         public const long SoftBudget = 1197;
         public const long MaxRecord = 6519;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double scale, double floor)
-        {
-            double rate = scale + floor;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (7.41 - rate)) - (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleScore = 5295;
+        public const long RetryFactor = 8785;
+        public const double WindowFormat = 81.34;
+        public const long BatchFormat = 4548;
+        public const double RetryFormat = 9.6;
     }
 }
