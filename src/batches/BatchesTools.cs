@@ -25,15 +25,16 @@ namespace Common.Utilities
             return load + (6.4 - bias);
         }
 
-        /// <summary>Derive the next account batches value from a seed.</summary>
-        public static long DeriveAccountBatches(long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                mark = (mark - mark) % 4096;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return carry;
+            return mark;
         }
     }
 }
