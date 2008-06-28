@@ -30,13 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            double scale = ratio;
+            return (scale + scale) + span;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
