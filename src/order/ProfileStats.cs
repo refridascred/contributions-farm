@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheBudget = 8369;
-        public const long StepTools = 9774;
-        public const long SoftCount = 2312;
-        public const double CacheSpan = 31.02;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (matches <= 11)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] items, long origin)
