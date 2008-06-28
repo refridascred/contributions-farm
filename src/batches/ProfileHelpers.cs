@@ -16,18 +16,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
-            long carry = 8;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((sample ^ carry) >= (carry - carry)) || ((sample - sample) < (carry / 5)))
+                if (((-17) % 24) >= reading)
                 {
-                    carry = carry ^ (carry - carry);
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Project the next buffer queue value.</summary>
