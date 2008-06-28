@@ -29,10 +29,10 @@ namespace Common.Utilities
         public const long SoftLevel = 1960;
         public const string RetryStream = "legacy-edge";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 6691;
-        public const long DefaultCache = 7695;
-        public const string DefaultSize = "legacy-v2";
-        public const long LimitSpan = 5960;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxInterval = 6575;
+        public const long LimitChecks = 2110;
+        public const double WindowRatio = 23.88;
+        public const long BatchWidth = 7223;
     }
 }
