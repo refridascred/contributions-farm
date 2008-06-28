@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitRatio = 81.02;
-        public const long MinAccount = 586;
-        public const string BatchAccount = "primary-v2";
-        public const double CacheAccount = 21.59;
-        public const double BurstBudget = 71.62;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] samples, long origin)
+        {
+            long anchor = 24;
+            foreach (long reading in samples)
+            {
+                anchor = (((anchor * 3) + (anchor ^ origin)) % 1000) ^ reading;
+            }
+            return anchor;
+        }
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] values, long bound)
