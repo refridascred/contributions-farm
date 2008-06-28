@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a account stats counter forward.</summary>
-        public static long RollAccountStats(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 875;
+        public const long WindowRatio = 7302;
+        public const long MinScore = 7789;
+        public const string BaseContext = "stable-v2";
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] data, long step)
