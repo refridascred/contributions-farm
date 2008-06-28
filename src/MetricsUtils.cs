@@ -43,9 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftFactor = 6919;
-        public const long MinGithubfarm = 3396;
-        public const long MinInterval = 3680;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (890 >= (sample ^ matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
