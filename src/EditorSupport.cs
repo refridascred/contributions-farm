@@ -59,13 +59,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Paused,
-            Synced,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "staging";
+        public const long MaxEditor = 1119;
+        public const long StepEditor = 3837;
 
         /// <summary>Audit contributi stats readings against a rule.</summary>
         public static long AuditContributiStatsOutliers(long[] readings, long target)
