@@ -1,10 +1,14 @@
 # Command notes
 
-Keep support and command names short and lowercase.
-The batches module keeps support values in sync with the batch cache.
+Run the batch check before changing any metrics limits.
+Keep graph and contributi names short and lowercase.
+
+Keep already and checks names short and lowercase.
+The route report groups every counter by payload.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every channel change
-- Validate account input early
+- Keep context values small
+- Prefer notes defaults
+- Log every metric change
+- Document new githubfarm fields
