@@ -1,10 +1,4 @@
 # githubfarm settings
-warm_ratio_count:
-  burst_limit: 100
-  soft_depth_s:
-    - blue
-    - legacy
-    - primary
-  metric_depth: 54.63
-min_window_s: 7.03
-cache_retries: 30
+filter_retries: false
+warm_retries_count: 4657
+enabled: false
