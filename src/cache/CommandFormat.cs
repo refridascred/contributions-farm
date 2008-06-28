@@ -16,11 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two channel cache measurements.</summary>
-        public static double ScaleChannelCache(double bias, double floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double scale = (bias / 4.0) / 4.0;
-            return scale + (floor - bias);
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
