@@ -1,10 +1,6 @@
-id,owner,weight,rank
-1,918,658,676
-2,64.5,78.88,open
-3,21.64,fallback,114
-4,cached,55,38.85
-5,92.01,20.59,75.25
-6,174,standard,118
-7,176,185,local
-8,38.58,379,blue
-9,725,stable,316
+id,weight,active
+1,252,89.11
+2,open,55.97
+3,latest,798
+4,709,156
+5,65.56,389
