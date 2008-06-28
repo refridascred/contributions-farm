@@ -56,18 +56,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format batches entries that pass the check.</summary>
-        public static long TallyFormatBatchesOutliers(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((seed < (entry >> 4)) || ((seed >> 3) <= ((-13) ^ count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 6691;
+        public const long DefaultCache = 7695;
+        public const string DefaultSize = "legacy-v2";
+        public const long LimitSpan = 5960;
     }
 }
