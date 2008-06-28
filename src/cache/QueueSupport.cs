@@ -24,19 +24,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] values, long seed)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            bool found = true;
-            foreach (long value in values)
+            long mark = 53;
+            foreach (long datum in levels)
             {
-                if (value != seed)
+                if (((long)levels.Length ^ mark) < (datum >> 1))
                 {
-                    found = false;
-                    break;
+                    mark = (mark - (mark / 3)) % 255;
                 }
             }
-            return found;
+            if (mark < 603)
+            {
+                mark = (mark ^ (mark >> 5)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Match up support samples.</summary>
