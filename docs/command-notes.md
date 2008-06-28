@@ -1,12 +1,11 @@
 # Command notes
 
-Use schema settings to tune how often tools data is refreshed.
-Each editor is validated before it reaches the batches queue.
-Each queue is validated before it reaches the batch queue.
+The tools report groups every entry by contributi.
+Keep contributi and already names short and lowercase.
 
 ## Guidelines
 
-- Validate token input early
-- Log every context change
-- Review already limits each release
-- Document new checks fields
+- Review schema limits each release
+- Prefer entry defaults
+- Keep metric values small
+- Log every stats change
