@@ -51,11 +51,18 @@ namespace Common.Utilities
             return bias + (double)498;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data, long floor)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((floor ^ (-477)) <= (seen ^ entry))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
