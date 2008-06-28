@@ -22,39 +22,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long limit, long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] series)
         {
-            long span = limit - seed;
-            if ((limit - 59) < (2 / 8))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (13.0 >= (double)seed)
+                if ((((2.69 / 8.0) >= (double)cell) || ((hits / 6) < hits)) && ((hits >= (cell * 4)) && ((double)cell <= (double)hits)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed ^ 52) > (918 % 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - span) > seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
