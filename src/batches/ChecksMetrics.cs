@@ -32,13 +32,15 @@ namespace Common.Utilities
         public const double BatchTimeout = 78.15;
         public const long BatchCommand = 9466;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Project the next filter layout value.</summary>
+        public static double BlendFilterLayout(double scale, double offset)
         {
-            Stale,
-            Locked,
-            Retry,
-            Ready,
+            double scale2 = (double)(265 + 811);
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = ((scale2 + (double)51) - (double)(long)i) - offset;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
