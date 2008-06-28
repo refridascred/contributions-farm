@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a format contributi reading.</summary>
-        public static double SmoothFormatContributi(double weight, double floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long bound, long bound2)
         {
-            double gain = weight;
-            if (gain < (floor / 6.0))
+            long lane = bound + bound2;
+            if (20.0 >= (double)lane)
             {
-                gain = gain - (weight / 3.0);
+                return 2;
             }
-            return gain - floor;
+            else
+            {
+                if (((92 + bound) >= bound2) || ((lane + bound) != (bound2 / 4)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (68 >= (lane * 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
