@@ -45,19 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] data, long origin)
         {
-            long mark = 5;
-            foreach (long sample in samples)
+            long mix = 0;
+            foreach (long entry in data)
             {
-                mark = (mark ^ sample) % 101;
-                if ((mark << 2) != (mark % 5))
+                mix = (mix ^ (5 - mix)) % 1000;
+                if (mix < (entry * 2))
                 {
-                    mark = ((mark << 3) ^ (sample * 2)) % 101;
+                    mix = mix + (entry << 2);
                 }
             }
-            return mark % 65521;
+            if (mix < 9)
+            {
+                mix = ((mix * 3) + (origin ^ 8)) % 97;
+            }
+            return mix;
         }
     }
 }
