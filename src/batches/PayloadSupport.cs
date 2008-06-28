@@ -31,22 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] samples, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((((target / 2) < hits) && ((target - (long)samples.Length) <= ((long)samples.Length % 60))) || ((42 ^ target) > 507))
+                if ((cell >= (688 + 361)) && ((cell ^ count) >= (count ^ count)))
                 {
-                    hits = (hits + 2) - sample;
+                    count = count + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
