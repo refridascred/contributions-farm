@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] items, long seed)
+        /// <summary>Match up support farm samples.</summary>
+        public static long PairSupportFarmCount(long[] items)
         {
-            long mix = 56;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seed % 100) >= (seed + entry)) || ((mix - mix) < entry))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + ((long)items.Length >> 3);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ entry) % 97;
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > 34)
-            {
-                mix = (mix - (seed + mix)) % 101;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
