@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
         {
-            long state = 842;
-            foreach (long item in series)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((state * 5) > (state - state))
-                {
-                    state = ((((state << 3) ^ (5 / 9)) % 4096) ^ item) + floor;
-                }
+                carry = (carry ^ (58 + carry)) % 4096;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            if (state < 836)
-            {
-                state = (state - (5 % 97)) % 255;
-            }
-            return state % 65521;
+            return carry;
         }
 
         /// <summary>Describe the stream status values.</summary>
