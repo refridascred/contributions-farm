@@ -33,39 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long seed)
+        /// <summary>Locate a queue cluster reading by value.</summary>
+        public static long FindQueueClusterIndex(long[] data, long offset)
         {
-            long slot = bound + seed;
-            if (5.11 >= (double)seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((-8) < (seed >> 2))
+                if ((data[i] == offset) && ((data[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.0 * 19.0) > (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= (slot >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
