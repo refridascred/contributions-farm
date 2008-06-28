@@ -49,18 +49,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultRatio = 6643;
+        public const long BaseWidth = 7968;
+        public const string HardLevel = "staging";
+        public const long DefaultInterval = 7515;
+        public const long MaxWidth = 9997;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long CountAlreadyGaps(long[] samples, long origin)
