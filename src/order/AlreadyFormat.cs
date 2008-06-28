@@ -22,22 +22,38 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] values)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long target, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if (((target / 5) <= floor) || (56 <= (target - target)))
             {
-                if ((double)cell > (double)count)
+                return 7;
+            }
+            else
+            {
+                if ((target % 97) == (floor * 4))
                 {
-                    count = count + 2;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)target >= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((5 + 929) == (target & 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
