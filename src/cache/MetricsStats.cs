@@ -20,12 +20,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Failed,
-            Locked,
-            Queued,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the profile level values.</summary>
