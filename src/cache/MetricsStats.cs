@@ -63,18 +63,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count < (415 << 3))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            double load = bias2 + (bias + bias2);
+            return load + (double)213;
         }
     }
 }
