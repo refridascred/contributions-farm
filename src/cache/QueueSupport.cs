@@ -33,18 +33,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] data)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (hits <= (reading >> 1))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
