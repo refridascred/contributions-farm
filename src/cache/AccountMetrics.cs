@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const string BaseInterval = "open-edge";
         public const long StepContext = 6703;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] data, long origin)
         {
-            long result = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long reading in data)
             {
-                result = result - (cell ^ cell);
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Fold a list of route readings.</summary>
