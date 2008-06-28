@@ -49,12 +49,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinRatio = 8888;
+        public const double IdleWidth = 41.03;
+        public const long CacheDepth = 8659;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
