@@ -26,19 +26,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (datum > bound)
+                if (tally < 921)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) - item;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a command entry.</summary>
