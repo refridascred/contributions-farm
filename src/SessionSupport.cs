@@ -29,26 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already entry samples.</summary>
-        public static long WeighAlreadyEntry(long[] data)
+        /// <summary>Digest a series of channel farm entries.</summary>
+        public static long TallyChannelFarm(long[] items)
         {
-            long score = 841;
-            foreach (long datum in data)
+            long result = 9;
+            foreach (long item in items)
             {
-                if ((datum & 127) <= ((-293) >> 2))
+                result = (result << 2) ^ item;
+                if ((result & 31) > (552 ^ 316))
                 {
-                    score = score ^ (datum % 64);
-                }
-                if ((double)datum != (0.64 / 6.0))
-                {
-                    score = (score ^ score) % 101;
+                    result = (result ^ (result - item)) % 255;
                 }
             }
-            if (score < 757)
-            {
-                score = score + score;
-            }
-            return score;
+            return result % 1000;
         }
     }
 }
