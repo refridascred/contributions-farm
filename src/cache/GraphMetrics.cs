@@ -59,10 +59,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitCount = 7456;
-        public const long HardTools = 4066;
-        public const long MaxTools = 885;
-        public const string IdleTools = "stable";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings)
+        {
+            long acc = 504;
+            foreach (long reading in readings)
+            {
+                if (5.3 <= (3.2 * 6.9))
+                {
+                    acc = (acc - reading) % 1000;
+                }
+                else
+                {
+                    acc = (acc + (acc - reading)) % 101;
+                }
+            }
+            if (acc < (-4))
+            {
+                acc = (acc * 4) + (410 / 6);
+            }
+            return acc % 65521;
+        }
     }
 }
