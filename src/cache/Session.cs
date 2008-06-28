@@ -38,13 +38,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long limit, long origin)
         {
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            if ((double)origin > 2.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if (limit >= (origin * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)limit > (14.0 + 9.8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
