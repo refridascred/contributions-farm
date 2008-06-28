@@ -1,11 +1,23 @@
 # entry settings
-verbose:
-  - 283
-  - 493
-  - 204
-persist:
-  min_window_pct: 54.05
-  verbose: true
-  soft_depth_count: 100
-  retry_interval_s: 86.5
-enabled: primary
+readonly: 23.3
+base_timeout:
+  route_interval: false
+  compress: 95
+  payload_window: open
+  sync_ttl_ms: 250
+  poll_depth: stable
+  burst_limit: stable
+strict: staging
+max_timeout:
+  compress:
+    - stable
+    - eu-west
+    - strict
+  commits_timeout: 6.41
+  max_window:
+    - open
+    - eu-west
+    - strict
+    - staging
+  checks_delay: local
+  min_ttl_pct: legacy
