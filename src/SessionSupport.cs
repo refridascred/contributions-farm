@@ -36,22 +36,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double rate, double offset)
         {
-            long state = 407;
-            foreach (long item in samples)
+            double load = rate * 7.0;
+            if (load <= (rate / 7.0))
             {
-                if ((state + item) != (state + state))
-                {
-                    state = state + (item % 16);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state >> 3)) % 255;
-                }
+                load = (load + (rate + load)) - offset;
             }
-            return state;
+            else
+            {
+                load = load - load;
+            }
+            return load + (double)7;
         }
     }
 }
