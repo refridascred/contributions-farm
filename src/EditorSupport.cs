@@ -54,20 +54,18 @@ namespace Common.Utilities
         public const long HardAlready = 1662;
         public const long CacheAlready = 5847;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] items)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((0.07 * 5.0) >= (double)offset)
+                if (71 <= (item - item))
                 {
-                    total = (total * 2) + ((long)i % 8);
+                    seen = seen + 1;
                 }
-                total = ((total * 3) + (total + (long)i)) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
