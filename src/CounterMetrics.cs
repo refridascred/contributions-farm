@@ -36,19 +36,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Validate counter notes readings against a bound.</summary>
-        public static bool GuardCounterNotesLimits(long[] data, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (sample > floor)
+                if (hits < (cell + cell))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
