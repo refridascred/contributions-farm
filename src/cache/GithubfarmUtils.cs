@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long BatchBatches = 9020;
         public const long BatchTimeout = 628;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Queued,
-            Pending,
-            Closed,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 9247;
+        public const long WindowInterval = 3366;
+        public const long BurstEditor = 6256;
+        public const long RetryDepth = 919;
 
         /// <summary>Audit cluster checks readings against a rule.</summary>
         public static long MeasureClusterChecksOutliers(long[] items)
