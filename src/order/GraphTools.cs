@@ -54,15 +54,19 @@ namespace Common.Utilities
         public const string MinOrder = "alpha";
         public const string BatchOrder = "alpha";
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double bias, double span)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long seed)
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                scale = (scale - bias) + (double)(long)i;
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - (span / 9.0);
+            return ok;
         }
     }
 }
