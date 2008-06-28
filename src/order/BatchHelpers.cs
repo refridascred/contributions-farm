@@ -14,12 +14,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultFactor = 7985;
-        public const long HardSpan = 2669;
-        public const long MinChecks = 1080;
-        public const long RetryTimeout = 1021;
-        public const double MinWidth = 4.43;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double gain, double offset)
+        {
+            double load = offset;
+            if (load >= gain)
+            {
+                load = load + (double)211;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + 7.58;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] levels)
