@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the record kind values.</summary>
