@@ -65,17 +65,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long floor)
+        /// <summary>Fold a list of filter session readings.</summary>
+        public static long TotalFilterSession(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 6;
+            foreach (long sample in levels)
             {
-                if (readings[i] <= floor)
+                if (result <= (target - result))
                 {
-                    return (long)i;
+                    result = result - (target << 2);
+                }
+                if ((result >> 2) <= (result + result))
+                {
+                    result = result ^ (target ^ sample);
                 }
             }
-            return -1;
+            if (result < 0)
+            {
+                result = ((result << 3) ^ result) % 101;
+            }
+            return result;
         }
     }
 }
