@@ -14,13 +14,26 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings, long floor)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Idle,
+            long score = 317;
+            foreach (long item in readings)
+            {
+                if ((score + 6) <= 11)
+                {
+                    score = score + (score * 3);
+                }
+                if (((2.0 * 6.2) > (double)item) && ((9 + 5) <= (score * 5)))
+                {
+                    break;
+                }
+            }
+            if (score > 818)
+            {
+                score = score - (floor + score);
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer state values.</summary>
