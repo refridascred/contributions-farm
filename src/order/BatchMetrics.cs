@@ -52,18 +52,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] levels)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!((1 + count) < (count % 64)))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
