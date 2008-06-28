@@ -42,21 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 7;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = (carry ^ (9 + carry)) - value;
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Describe the layout mode values.</summary>
