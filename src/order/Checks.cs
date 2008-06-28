@@ -41,15 +41,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double ratio = rate;
-            if (ratio >= (ratio * 7.46))
-            {
-                ratio = (ratio + (double)6) - offset;
-            }
-            return ratio - ratio;
+            Locked,
+            New,
+            Synced,
         }
     }
 }
