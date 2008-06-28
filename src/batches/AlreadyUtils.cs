@@ -20,12 +20,19 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long floor)
         {
-            public bool Total { get; set; }
-            public double Region { get; set; }
-            public double Label { get; set; }
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
