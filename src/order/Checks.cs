@@ -39,24 +39,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            if ((double)limit != (6.81 - 6.07))
+            long state = 693;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit - 88) == (limit + limit))
+                if (((double)state != (3.0 + 4.0)) && ((entry + state) <= (entry % 100)))
                 {
-                    return 3;
+                    state = (state + (83 + (long)readings.Length)) % 255;
+                    state = (state << 2) ^ entry;
                 }
-                else
-                {
-                    return 0;
-                }
+                state = (state * 4) + (entry ^ state);
             }
+            return state % 4096;
         }
 
         /// <summary>Describe the command mode values.</summary>
