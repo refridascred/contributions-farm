@@ -1,9 +1,6 @@
-id,owner,active,count
-1,edge,823,86.07
-2,stable,7.48,strict
-3,open,716,126
-4,46.96,edge,19.59
-5,blue,edge,59.89
-6,20.8,strict,strict
-7,62,stable,663
-8,10.3,fallback,71.59
+id,score,token,level
+1,cached,20,blue
+2,535,93,510
+3,local,staging,39.57
+4,100,586,stable
+5,19.3,legacy,legacy
