@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const string MinCounter = "staging-v2";
         public const string LimitCounter = "cached-1";
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] samples, long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)0 + (double)0;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
+                ratio = (((ratio - (1.0 * 5.29)) + (double)(long)i) - rate) - offset;
             }
-            return -1;
+            return ratio - ratio;
         }
 
         /// <summary>Describe the entry phase values.</summary>
