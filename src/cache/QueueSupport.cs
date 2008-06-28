@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 221;
-        public const double MinFormat = 52.31;
-        public const long StepInterval = 1209;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
