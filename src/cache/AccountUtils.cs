@@ -12,15 +12,12 @@ namespace Common.Utilities
             return (rate + (4.0 - bias)) + floor;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double weight, double floor)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double rate = weight;
-            if (rate > (floor / 4.0))
-            {
-                rate = rate + 2.89;
-            }
-            return rate - weight;
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
