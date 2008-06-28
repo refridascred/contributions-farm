@@ -1,8 +1,10 @@
 {
-  "poll_window_ms": ["edge", "stable", "staging", "edge"],
-  "enabled": 5331,
-  "idle_limit_ms": "fallback",
-  "githubfarm_ttl": 88.63,
-  "burst_timeout_s": ["cached", "stable", "latest"],
-  "strict": "strict"
+  "command_timeout": 7930,
+  "hard_threshold": {
+    "retry_threshold": true,
+    "checks_ttl": 250,
+    "idle_threshold_pct": 19,
+    "warm_limit_pct": true
+  },
+  "batch_limit": "latest"
 }
