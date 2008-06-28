@@ -1,23 +1,6 @@
 {
-  "enabled": 59,
-  "notes_delay": 7.8,
-  "batch_threshold_pct": {
-    "stats_retries": 30,
-    "compress": ["primary", "open", "blue"],
-    "persist": 1156,
-    "command_ttl": "cached"
-  },
-  "compress": {
-    "poll_capacity_pct": false,
-    "poll_window": 4166,
-    "cache_ratio_ms": "fallback",
-    "idle_limit": 762,
-    "route_ratio": "strict"
-  },
-  "default_retries": 500,
-  "retry_ttl_count": {
-    "burst_threshold_count": 83.61,
-    "default_interval_ms": 48,
-    "verbose": false
-  }
+  "queue_timeout": false,
+  "base_ttl": true,
+  "strict": 70.36,
+  "hard_capacity": 30
 }
