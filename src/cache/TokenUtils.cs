@@ -12,10 +12,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 5880;
-        public const string MinLevel = "cached-1";
-        public const long IdleProfile = 3491;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state ^ (state % 16);
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool GuardTokenRange(long[] values, long limit)
