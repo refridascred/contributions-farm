@@ -13,13 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] values)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)hits != (double)entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
