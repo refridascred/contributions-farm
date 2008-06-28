@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long MinLevel = 3008;
         public const double DefaultInterval = 0.83;
 
-        /// <summary>Compare every pair of schema command readings.</summary>
-        public static long OverlapSchemaCommandCount(long[] readings)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = 9.85;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + (double)(long)i) - ratio;
             }
-            return count;
+            return rate - bias;
         }
 
         /// <summary>Define report limits and defaults.</summary>
