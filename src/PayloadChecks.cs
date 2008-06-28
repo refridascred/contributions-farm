@@ -54,19 +54,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long bound)
         {
-            double bias = offset;
-            if (bias > (3.0 - 3.08))
+            long tally = 0;
+            foreach (long item in data)
             {
-                bias = (bias - (double)37) - rate;
+                if (8.0 > (double)bound)
+                {
+                    tally = (tally + 1) - item;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (2.0 * 7.5)) - (double)(long)i;
-            }
-            return bias + offset;
+            return tally;
         }
     }
 }
