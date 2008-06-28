@@ -34,21 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of profile account readings.</summary>
-        public static long OverlapProfileAccountCount(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -811;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = ((acc << 3) ^ (acc << 1)) % 4096;
+                if ((cell <= target) && ((target * 3) <= target))
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
     }
 }
