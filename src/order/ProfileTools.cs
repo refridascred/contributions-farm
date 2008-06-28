@@ -24,20 +24,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double bias, double offset)
-        {
-            double ratio = offset;
-            if (ratio > ratio)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio + (double)2;
-            }
-            return ratio + (ratio - bias);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 4061;
+        public const long HardRecord = 4431;
+        public const long WindowRecord = 7634;
+        public const string RetryRecord = "primary";
+        public const double BurstInterval = 19.59;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] values, long origin)
