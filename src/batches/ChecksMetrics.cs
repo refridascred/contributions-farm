@@ -67,22 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data, long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long mark = 934;
-            foreach (long value in data)
-            {
-                if ((double)value > (13.0 - 18.0))
-                {
-                    break;
-                }
-                if ((6.09 - 6.6) != (double)mark)
-                {
-                    mark = ((mark - mark) % 65521) + bound;
-                }
-            }
-            return mark;
+            Done,
+            Pending,
+            Failed,
         }
     }
 }
