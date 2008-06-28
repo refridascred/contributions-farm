@@ -47,24 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long step2)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long offset)
         {
-            if ((step2 + step) != (step2 - step2))
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                mark = (mark * 2) + offset;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!((step2 << 1) > step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mark;
         }
     }
 }
