@@ -1,7 +1,7 @@
 {
-  "default_limit": 86,
-  "warm_depth": true,
-  "compress": ["fallback", "green"],
-  "account_interval": "staging",
-  "default_depth": "legacy"
+  "idle_depth": 73.35,
+  "sync_interval_pct": 8395,
+  "warm_ttl_count": "legacy",
+  "base_retries_ms": 63.67,
+  "audit": 480
 }
