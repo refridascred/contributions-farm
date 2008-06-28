@@ -45,15 +45,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a tools order reading.</summary>
-        public static double ScaleToolsOrder(double weight, double bias)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            double load = bias;
-            if (load <= (0.8 * 1.3))
-            {
-                load = (load + bias) + weight;
-            }
-            return load + (7.7 * 15.0);
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
