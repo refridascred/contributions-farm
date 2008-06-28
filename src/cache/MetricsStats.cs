@@ -61,21 +61,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count schema queue pairs that satisfy a relation.</summary>
-        public static long CompareSchemaQueueCount(long[] data)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
