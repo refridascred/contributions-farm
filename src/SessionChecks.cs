@@ -33,10 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 88.34;
-        public const string IdleLayout = "staging-edge";
-        public const long BatchWidth = 8793;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "staging-v2";
+        public const string IdleScore = "cached";
+        public const string MaxCount = "stable-edge";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] series)
