@@ -66,18 +66,17 @@ namespace Common.Utilities
         public const string RetryBudget = "legacy-edge";
         public const string MinCount = "legacy-v2";
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (8.0 > (double)bound)
+                if ((values[i] <= offset) && ((values[i] % 2) != 0))
                 {
-                    tally = (tally + 1) - item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
