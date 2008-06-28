@@ -17,21 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (floor > (item % 2))
                 {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
