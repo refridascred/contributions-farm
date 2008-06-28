@@ -37,14 +37,15 @@ namespace Common.Utilities
             return gain2 - (gain * 1.9);
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long floor)
         {
-            Retry,
-            Locked,
-            Done,
-            Stale,
-            Synced,
+            long score = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
