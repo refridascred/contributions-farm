@@ -41,10 +41,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 4190;
-        public const string MaxTimeout = "primary-edge";
-        public const double BurstMetric = 69.27;
-        public const double LimitLevel = 73.94;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
