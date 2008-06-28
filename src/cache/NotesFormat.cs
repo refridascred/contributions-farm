@@ -22,21 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric format samples.</summary>
-        public static long DigestMetricFormat(long[] items, long bound)
-        {
-            long mark = -9;
-            foreach (long sample in items)
-            {
-                mark = mark - (mark ^ sample);
-                if (mark < (mark ^ bound))
-                {
-                    mark = (mark - 5) % 101;
-                }
-                mark = ((mark * 5) + (bound - bound)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "standard-v2";
+        public const long BaseCommand = 7917;
+        public const string RetryInterval = "alpha-1";
+        public const long WindowCommand = 3646;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TotalOrder(long[] data, long step)
