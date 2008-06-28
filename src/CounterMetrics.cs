@@ -10,12 +10,24 @@ namespace Common.Utilities
         public const long BatchDepth = 4682;
         public const string SoftBatch = "stable-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstBudget = 2034;
-        public const long SoftSize = 2038;
-        public const long DefaultScore = 920;
-        public const string WindowLevel = "fallback-v2";
-        public const long CachePayload = 4525;
+        /// <summary>Adjust a order command reading.</summary>
+        public static double AdjustOrderCommand(double weight, double offset)
+        {
+            double bias = offset;
+            if (bias >= bias)
+            {
+                bias = bias + (weight + 6.0);
+            }
+            else
+            {
+                bias = bias - (weight - 6.3);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias + (double)498;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
