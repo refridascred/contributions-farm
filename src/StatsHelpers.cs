@@ -29,12 +29,14 @@ namespace Common.Utilities
         public const long BaseBudget = 3491;
         public const long RetryInterval = 3912;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryWidth = "strict-v2";
-        public const long BurstScore = 7803;
-        public const long LimitNotes = 8037;
-        public const long DefaultLevel = 2903;
-        public const long RetryNotes = 5280;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Ready,
+            Failed,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] values)
