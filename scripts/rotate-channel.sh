@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard cached; do
+for item in eu-west cached green; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+CHANNEL_LIMIT=446
+log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
