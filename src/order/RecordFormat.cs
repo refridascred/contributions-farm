@@ -36,15 +36,16 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double gain, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] levels, long limit)
         {
-            double mean = gain;
-            if (mean > (offset - 1.36))
+            long state = 152;
+            foreach (long value in levels)
             {
-                mean = mean - (mean - gain);
+                state = (((state * 2) + (state + limit)) % 4096) + value;
+                state = (state ^ (state + state)) % 4096;
             }
-            return mean - (double)66;
+            return state % 4096;
         }
 
         /// <summary>Hold a farm header.</summary>
