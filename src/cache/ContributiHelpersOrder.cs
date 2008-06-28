@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a batch window pair into a bucket.</summary>
-        public static long SortBatchWindow(long floor, long floor2)
+        /// <summary>Audit window queue readings against a rule.</summary>
+        public static long MeasureWindowQueueOutliers(long[] values, long step)
         {
-            long span = floor + floor2;
-            if ((double)floor2 <= (7.7 + 9.0))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 * 2) >= floor2)
+                if ((sample % 2) <= (62 + sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor2 ^ 937) <= (floor2 - span)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor ^ span) <= (floor2 / 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 1) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of order route readings.</summary>
