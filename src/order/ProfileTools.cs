@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Adjust a commits channel reading.</summary>
+        public static double ScaleCommitsChannel(double scale, double span)
         {
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            double bias = scale;
+            if (bias > 5.5)
+            {
+                bias = (bias - 19.0) + span;
+            }
+            else
+            {
+                bias = bias + (double)10;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)1) - (double)(long)i;
+            }
+            return bias - (scale * 9.31);
         }
 
         /// <summary>Iterate the batches session series from a seed.</summary>
