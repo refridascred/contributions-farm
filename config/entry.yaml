@@ -1,7 +1,4 @@
 # entry settings
-route_capacity: edge
-support_threshold: 500
-poll_capacity: 1024
-soft_limit_pct:
-  - local
-  - legacy
+min_size: false
+sync_capacity_pct: 7126
+stats_retries: 13
