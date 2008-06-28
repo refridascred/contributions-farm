@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const string CacheRatio = "open";
         public const string BatchWindow = "local-v2";
 
-        /// <summary>Find the first counter stats entry that matches the target.</summary>
-        public static long LocateCounterStatsIndex(long[] readings, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (readings[i] <= bound)
+                if (sample != step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
