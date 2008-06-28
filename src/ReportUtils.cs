@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] levels, long offset)
+        /// <summary>Validate contributi graph readings against a bound.</summary>
+        public static bool ValidateContributiGraphRange(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((item * 3) <= 401)
+                if (cell >= floor)
                 {
-                    tally = (tally + 2) - offset;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
