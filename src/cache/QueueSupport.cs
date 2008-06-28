@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 33.65;
-        public const long MinCounter = 6568;
-        public const long BatchCounter = 8354;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] samples)
+        {
+            long result = -13;
+            foreach (long value in samples)
+            {
+                result = (result + (value + result)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksRange(long[] values, long seed)
