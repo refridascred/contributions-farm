@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleInterval = 1534;
+        public const double DefaultEditor = 20.67;
+        public const string RetryEditor = "standard-1";
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferHits(long[] levels)
