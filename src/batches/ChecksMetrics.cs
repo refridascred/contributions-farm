@@ -50,11 +50,21 @@ namespace Common.Utilities
         public const long StepFactor = 5540;
         public const double MaxCount = 63.41;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a channel checks figure with a bias.</summary>
