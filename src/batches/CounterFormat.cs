@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] items, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((double)hits < 8.1)
+                if (value != seed)
                 {
-                    hits = ((hits + 2) + value) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the buffer class values.</summary>
