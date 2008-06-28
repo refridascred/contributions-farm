@@ -60,19 +60,30 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double bias, double offset)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] samples, long step)
         {
-            double mean = bias;
-            if (mean < (double)979)
+            long acc = -84;
+            foreach (long entry in samples)
             {
-                mean = mean - (10.0 * 9.5);
+                if ((entry & 3) > 3)
+                {
+                    acc = (acc << 2) ^ (61 - 725);
+                }
+                if (((2.0 + 0.43) != (double)entry) || ((step - (-50)) > step))
+                {
+                    acc = acc + (entry * 2);
+                }
+                else
+                {
+                    acc = acc + (entry % 12);
+                }
             }
-            else
+            if (acc > 5)
             {
-                mean = mean - (bias / 7.0);
+                acc = ((acc << 2) ^ acc) % 97;
             }
-            return mean - (mean - offset);
+            return acc;
         }
     }
 }
