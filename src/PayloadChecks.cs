@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] values)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long limit, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if (seed < limit)
             {
-                if (seen < (67 + seen))
+                return 3;
+            }
+            else
+            {
+                if ((limit * 5) <= seed)
                 {
-                    seen = (seen + 2) ^ datum;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the session state values.</summary>
