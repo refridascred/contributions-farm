@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first context payload entry that matches the target.</summary>
-        public static long SeekContextPayloadIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 91.71;
+        public const long BurstBuffer = 3024;
+        public const long BurstDepth = 7852;
+        public const double CacheBuffer = 16.83;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportHits(long[] series, long limit)
