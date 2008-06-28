@@ -37,10 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleSpan = 8569;
-        public const long MaxFarm = 8468;
-        public const string BatchCount = "standard-1";
-        public const double IdleFarm = 75.35;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
