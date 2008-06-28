@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 7075;
-        public const string StepCount = "fallback";
-        public const long LimitLevel = 655;
-        public const string WindowScore = "standard-v2";
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long RankCommand(long floor, long limit)
