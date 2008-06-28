@@ -65,19 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] series, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((7.1 + 0.1) >= (double)total)
+                if (((bound + 81) > bound) || (bound < (bound / 4)))
                 {
-                    break;
+                    count = (count + 2) ^ item;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
     }
 }
