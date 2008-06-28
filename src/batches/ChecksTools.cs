@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Blend two token support measurements.</summary>
+        public static double ProjectTokenSupport(double ratio, double span)
         {
-            Ready,
-            Active,
-            Closed,
-            Locked,
+            double drift = span;
+            if (drift < (6.69 / 4.0))
+            {
+                drift = drift - (ratio / 6.0);
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - span;
         }
 
         /// <summary>Adjust a tools reading.</summary>
