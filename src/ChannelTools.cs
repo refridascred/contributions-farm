@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 584;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = score - sample;
+                score = ((score * 5) + (step * 3)) % 65521;
+                if (score >= (score + score))
                 {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = score + ((-23) / 2);
                 }
             }
-            return hits;
+            if (score > 141)
+            {
+                score = (score ^ (852 + 847)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate editor samples.</summary>
