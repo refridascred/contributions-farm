@@ -1,6 +1,11 @@
-id,owner,state
-1,cached,439
-2,blue,351
-3,45.0,5
-4,64.14,46.95
-5,legacy,green
+id,score,token,weight
+1,stable,778,edge
+2,43.13,813,37.47
+3,92.96,latest,26.17
+4,latest,stable,blue
+5,229,open,stable
+6,595,305,7.56
+7,97.56,249,600
+8,latest,148,41.07
+9,310,219,191
+10,53.32,944,949
