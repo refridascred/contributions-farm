@@ -73,15 +73,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values, long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] values, long limit)
         {
-            long state = 716;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state * 2) + datum) % 4096) - limit;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
