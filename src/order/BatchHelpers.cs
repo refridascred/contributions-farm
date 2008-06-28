@@ -14,19 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] items, long target)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = offset * 6.0;
+            return (scale + (double)8) + gain;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
