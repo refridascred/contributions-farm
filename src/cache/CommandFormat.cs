@@ -38,15 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] values, long step)
+        /// <summary>Match up batches support samples.</summary>
+        public static long MatchBatchesSupportCount(long[] readings)
         {
             long count = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)step <= (6.0 / 4.0)) && (((-5) >= (cell - count)) && ((cell - count) >= (6 / 7))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
