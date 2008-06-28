@@ -42,12 +42,17 @@ namespace Common.Utilities
         public const string CacheRatio = "open";
         public const string BatchWindow = "local-v2";
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Find the first counter stats entry that matches the target.</summary>
+        public static long LocateCounterStatsIndex(long[] readings, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
