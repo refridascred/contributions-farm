@@ -70,18 +70,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] values, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long total = 65;
+            foreach (long sample in levels)
             {
-                if ((cell + seed) <= (690 - seed))
+                if ((total ^ total) <= total)
                 {
-                    seen = seen + 1;
+                    total = (total ^ (sample - total)) % 255;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total * 4);
                 }
             }
-            return seen;
+            if (total > 9)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
