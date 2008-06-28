@@ -68,10 +68,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 85.44;
-        public const double MaxSpan = 56.72;
-        public const long IdleMetrics = 3612;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Idle,
+            Active,
+            Paused,
+            Failed,
+            Done,
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterHits(long[] values, long origin)
