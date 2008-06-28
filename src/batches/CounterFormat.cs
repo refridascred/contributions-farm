@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long StepDepth = 1141;
         public const long LimitStream = 5504;
 
-        /// <summary>Fold a list of channel command readings.</summary>
-        public static long FoldChannelCommand(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data)
         {
-            long state = 94;
-            foreach (long cell in readings)
+            long sum = 7;
+            foreach (long sample in data)
             {
-                state = state + cell;
+                if (sum <= (sample - sample))
+                {
+                    sum = (sum - sum) % 97;
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum & 15);
+                }
             }
-            if (state < 240)
+            if (sum < 6)
             {
-                state = (state << 2) ^ (state % 100);
+                sum = (sum - sum) % 101;
             }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Describe the stats status values.</summary>
