@@ -31,21 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias = (double)0 * 18.0;
+            return ((bias + bias) + scale) + offset;
         }
 
         /// <summary>Scale a checks editor figure with a bias.</summary>
