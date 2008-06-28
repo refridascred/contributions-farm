@@ -10,16 +10,24 @@ namespace Common.Utilities
         public const long IdleTools = 6344;
         public const string SoftTools = "alpha-edge";
 
-        /// <summary>Derive the next contributi entry value from a seed.</summary>
-        public static long StepContributiEntry(long step)
+        /// <summary>Roll a githubfarm batch counter forward.</summary>
+        public static long DeriveGithubfarmBatch(long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long total = origin;
+            for (int i = 0; i < 12; i++)
             {
-                carry = (carry + (step + (long)i)) % 65521;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (((long)i ^ total) != (37 + total))
+                {
+                    total = total + 506;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total & 15);
+                    total = (total << 3) ^ (origin + origin);
+                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a context entry.</summary>
