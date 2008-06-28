@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double rate, double floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] data)
         {
-            double bias = floor;
-            return (bias - floor) + rate;
+            long carry = 35;
+            foreach (long datum in data)
+            {
+                if ((12.0 + 7.0) < (double)carry)
+                {
+                    carry = carry - (datum % 64);
+                }
+                else
+                {
+                    carry = carry + (datum + carry);
+                }
+                if (((10.0 + 3.2) != (double)carry) || (carry < 88))
+                {
+                    carry = (carry + ((long)data.Length % 100)) % 101;
+                }
+                if ((double)523 == (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up order samples.</summary>
