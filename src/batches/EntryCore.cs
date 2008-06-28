@@ -46,30 +46,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] readings, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                anchor = anchor ^ (anchor + (-6));
-                if ((727 - anchor) == (long)i)
+                if (item < floor)
                 {
-                    anchor = ((anchor * 2) + (limit - (long)i)) % 4096;
-                    anchor = (anchor - limit) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + limit;
-                }
-                if ((limit + 516) <= (long)i)
-                {
-                    anchor = ((anchor << 2) ^ limit) % 97;
+                    ok = false;
                     break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
