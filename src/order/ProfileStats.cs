@@ -22,17 +22,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] items, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (items[i] == step)
+                if ((limit + count) > 7)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
