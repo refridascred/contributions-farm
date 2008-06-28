@@ -53,18 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] series, long limit)
+        /// <summary>Combine editor githubfarm values into a single score.</summary>
+        public static long WeighEditorGithubfarm(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = 393;
+            foreach (long sample in items)
             {
-                if (4 > entry)
+                if (((sample + mix) != (sample + sample)) && ((mix % 16) != (sample + 3)))
                 {
-                    seen = (seen + 1) + limit;
+                    mix = (mix - (long)items.Length) % 255;
                 }
             }
-            return seen;
+            if (mix < 972)
+            {
+                mix = mix - (mix << 3);
+            }
+            return mix;
         }
     }
 }
