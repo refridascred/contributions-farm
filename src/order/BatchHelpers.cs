@@ -14,12 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double gain, double offset)
-        {
-            double scale = offset * 6.0;
-            return (scale + (double)8) + gain;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultFactor = 7985;
+        public const long HardSpan = 2669;
+        public const long MinChecks = 1080;
+        public const long RetryTimeout = 1021;
+        public const double MinWidth = 4.43;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] levels)
