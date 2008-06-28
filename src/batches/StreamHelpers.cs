@@ -14,22 +14,32 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long offset, long limit)
         {
-            long anchor = 725;
-            foreach (long sample in samples)
+            long cur = offset ^ limit;
+            if (((cur + limit) < 26) && (cur >= (cur - 620)))
             {
-                if (sample < (sample + sample))
+                return 1;
+            }
+            else
+            {
+                if (((limit & 7) <= offset) && ((limit - limit) > (limit + offset)))
                 {
-                    anchor = ((anchor << 2) ^ (sample ^ anchor)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit << 1) < cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (anchor < (-65))
-            {
-                anchor = (anchor - ((long)samples.Length / 3)) % 1000;
-            }
-            return anchor;
         }
 
         /// <summary>Describe the buffer state values.</summary>
