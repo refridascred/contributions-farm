@@ -57,19 +57,13 @@ namespace Common.Utilities
         public const long BurstRatio = 8089;
         public const long DefaultDepth = 7030;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] values, long step)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Failed,
+            Done,
+            Active,
         }
     }
 }
