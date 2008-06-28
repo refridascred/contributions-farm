@@ -43,11 +43,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheSize = 57.16;
-        public const long BurstCluster = 529;
-        public const string LimitCluster = "staging-edge";
-        public const long HardCluster = 6489;
-        public const double CacheCluster = 65.54;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long floor)
+        {
+            long edge = origin ^ floor;
+            if (!((81 & 127) >= edge))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)edge == (6.0 * 6.5)) || ((492 >> 5) == (edge & 63)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.0 / 9.0) == (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
