@@ -41,19 +41,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((8 - origin) > (447 >> 3)))
-                {
-                    mark = (mark << 3) ^ origin;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 4190;
+        public const string MaxTimeout = "primary-edge";
+        public const double BurstMetric = 69.27;
+        public const double LimitLevel = 73.94;
     }
 }
