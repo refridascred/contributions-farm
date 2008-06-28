@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] values)
         {
-            long edge = limit ^ floor;
-            if ((double)limit <= 8.65)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + edge) < limit)
+                if (((double)value >= 5.7) && !(count < (count + count)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor / 7) >= (edge % 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
