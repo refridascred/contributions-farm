@@ -68,21 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of queue graph readings.</summary>
-        public static long OverlapQueueGraphCount(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (count < (415 << 3))
                 {
-                    if ((series[i] - series[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) + value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
