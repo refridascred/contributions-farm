@@ -66,18 +66,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length >> 4) >= datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
