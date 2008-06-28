@@ -1,6 +1,4 @@
 # githubfarm settings
-warm_threshold_count: blue
-burst_timeout_ms: 52.39
-queue_size: 35.47
-poll_delay_ms: eu-west
-flush_size_count: local
+stream_timeout: primary
+min_depth_pct: 52.25
+max_size_ms: primary
