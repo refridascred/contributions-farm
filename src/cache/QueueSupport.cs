@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] values, long offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long sum = 75;
+            foreach (long sample in items)
             {
-                if (datum < offset)
+                if ((origin / 8) != (sum + sample))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 3) ^ sum) % 97;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
