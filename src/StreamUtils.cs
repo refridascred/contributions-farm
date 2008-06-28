@@ -33,13 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values)
         {
-            Synced,
-            Pending,
-            Stale,
-            Closed,
+            long result = 28;
+            foreach (long entry in values)
+            {
+                result = (result ^ entry) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of command readings.</summary>
