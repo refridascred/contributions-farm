@@ -22,19 +22,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] values, long limit)
         {
-            double weight = offset;
-            if (weight > offset)
+            long sum = 0;
+            foreach (long cell in values)
             {
-                weight = weight - offset;
+                if (!(sum <= limit))
+                {
+                    sum = ((sum + limit) % 65521) ^ cell;
+                }
+                sum = sum ^ (long)values.Length;
             }
-            else
-            {
-                weight = weight - (double)(-9);
-            }
-            return weight - scale;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate graph buffer samples.</summary>
