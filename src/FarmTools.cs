@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            Active,
-            Draft,
-            New,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (!(tally > (tally + tally)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics record.</summary>
