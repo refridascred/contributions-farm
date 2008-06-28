@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            long state = 428;
-            foreach (long item in series)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state - (state - state)) % 1000) - item;
+                if (((acc + seed) != (7 % 24)) && ((0.72 * 10.0) > (double)seed))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc ^ (seed - acc)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Hold a channel record.</summary>
