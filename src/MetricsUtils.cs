@@ -51,13 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Count the filter window entries that pass the check.</summary>
+        public static long CountFilterWindowHits(long[] values)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((11 >> 5) < (matches - matches))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
