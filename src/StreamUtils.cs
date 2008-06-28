@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] values, long limit)
+        /// <summary>Roll a payload profile counter forward.</summary>
+        public static long StepPayloadProfile(long target)
         {
-            long sum = 0;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(sum <= limit))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    sum = ((sum + limit) % 65521) ^ cell;
+                    acc = (((acc << 2) ^ (acc / 6)) % 65521) - (long)i2;
                 }
-                sum = sum ^ (long)values.Length;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return sum % 1000;
+            return acc;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
