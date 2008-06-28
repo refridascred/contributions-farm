@@ -20,10 +20,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 9408;
-        public const long CacheRoute = 7178;
-        public const long BatchRoute = 7836;
+        /// <summary>Grade a channel stats value against two limits.</summary>
+        public static long BucketChannelStats(long limit, long floor)
+        {
+            if ((-29) < (limit << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((69 & 63) > (floor << 2)) && ((limit & 63) != (limit - 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((84 - floor) < (limit & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (82 < (limit + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutHits(long[] series)
