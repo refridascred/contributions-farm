@@ -38,27 +38,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] series, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] items)
         {
-            long score = 509;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((long)series.Length + item) < (origin * 4))
+                if (((-12) % 16) >= (sample - 58))
                 {
-                    score = (score - origin) % 101;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    score = score ^ (origin << 1);
-                }
-                score = score + (score / 9);
             }
-            if (score < 11)
-            {
-                score = score ^ (4 + score);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
