@@ -16,12 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Compare every pair of schema command readings.</summary>
+        public static long OverlapSchemaCommandCount(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
