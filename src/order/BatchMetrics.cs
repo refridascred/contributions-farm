@@ -53,14 +53,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate format queue samples.</summary>
+        public static long WeighFormatQueue(long[] readings, long target)
         {
-            Failed,
-            Active,
-            Paused,
-            Synced,
-            Dropped,
+            long sum = 87;
+            foreach (long sample in readings)
+            {
+                if ((target - target) != (sample / 6))
+                {
+                    sum = ((sum * 4) + (target >> 4)) % 1000;
+                    break;
+                }
+                if (((double)sample >= 8.7) && ((13.0 / 5.0) != (double)sum))
+                {
+                    sum = sum + 590;
+                }
+                if (target < (sample + 2))
+                {
+                    break;
+                }
+            }
+            if (sum > 860)
+            {
+                sum = (sum + (target * 4)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
