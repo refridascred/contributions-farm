@@ -37,18 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] data, long floor)
+        /// <summary>Scale a record cluster figure with a bias.</summary>
+        public static double SmoothRecordCluster(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double gain = (double)0 + (bias / 8.0);
+            if (gain >= (gain / 4.0))
             {
-                if ((4.67 + 7.0) < (double)floor)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
+                gain = (gain - (gain - bias)) + ratio;
             }
-            return hits;
+            else
+            {
+                gain = gain + (double)2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - bias;
         }
     }
 }
