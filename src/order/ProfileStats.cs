@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Adjust a githubfarm channel reading.</summary>
-        public static double ProjectGithubfarmChannel(double scale, double floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] items)
         {
-            double load = 4.2 - (8.2 + scale);
-            if (load < (6.1 - floor))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (0.18 + scale);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - scale;
-            }
-            return load + floor;
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
