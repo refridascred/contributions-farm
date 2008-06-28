@@ -11,21 +11,25 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = seed + floor;
+            if ((0 - floor) != (lane + floor))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (lane >= (5 / 5))
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
