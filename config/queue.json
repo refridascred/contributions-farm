@@ -1,6 +1,8 @@
 {
-  "idle_timeout": [315, 401, 392],
-  "cache_size_count": "eu-west",
-  "account_window": true,
-  "report_capacity": ["open", "blue", "cached"]
+  "max_retries": 4689,
+  "poll_timeout_ms": false,
+  "compress": [331, 114, 279, 142],
+  "verbose": 79.83,
+  "format_depth": 47,
+  "sync_capacity_ms": 3282
 }
