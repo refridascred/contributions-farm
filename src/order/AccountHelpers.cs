@@ -53,13 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Closed,
             Done,
-            Retry,
-            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit metric checks readings against a rule.</summary>
