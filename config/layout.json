@@ -1,5 +1,18 @@
 {
-  "strict": 4318,
-  "flush_timeout_pct": [220, 308, 83],
-  "warm_depth_s": 250
+  "session_ttl": "staging",
+  "sync_ratio_pct": "fallback",
+  "profile_ttl": "green",
+  "verbose": {
+    "verbose": [195, 183],
+    "max_delay_ms": false,
+    "cache_ttl": ["edge", "eu-west", "cached"],
+    "default_capacity_ms": {
+      "min_limit": 500,
+      "burst_depth_count": "latest",
+      "persist": 1024,
+      "batch_timeout_pct": "stable",
+      "cache_delay_pct": 95.23,
+      "warm_limit_ms": "stable"
+    }
+  }
 }
