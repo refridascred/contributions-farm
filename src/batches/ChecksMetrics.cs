@@ -14,15 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double bias)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double scale = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (gain + gain)) - (double)(long)i;
-            }
-            return scale - (4.1 / 8.0);
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
