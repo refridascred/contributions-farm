@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
