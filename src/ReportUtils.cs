@@ -53,35 +53,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long limit, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long origin, long offset)
         {
-            if ((double)limit != (0.99 * 12.0))
+            long slot = origin - offset;
+            if ((slot + offset) >= offset)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((694 + offset) < (limit - offset))
+                if ((offset & 127) >= (offset + 590))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)offset > (8.9 / 8.0))
+                    if ((slot & 255) <= origin)
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        if (((2.8 + 5.4) <= (double)limit) || ((1.65 - 5.0) < (double)offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 7;
                     }
                 }
             }
