@@ -37,19 +37,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double bias, double bias2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            double rate = bias;
+            if (rate <= 8.0)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (anchor + (anchor - (long)i2)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                rate = (rate + bias) - bias2;
             }
-            return anchor;
+            else
+            {
+                rate = rate + 2.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate + 2.1;
         }
 
         /// <summary>Accumulate account samples.</summary>
