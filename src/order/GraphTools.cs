@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the farm batch series from a seed.</summary>
-        public static long StepFarmBatch(long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long result = 2;
+            foreach (long item in levels)
             {
-                score = (score << 2) ^ (target % 5);
-                score = ((score * 5) + (long)i) % 4093;
+                if ((result + item) >= (result + 603))
+                {
+                    result = ((result << 3) ^ (9 + item)) % 4096;
+                }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
