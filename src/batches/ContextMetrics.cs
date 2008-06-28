@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a already metrics value against two limits.</summary>
-        public static long BucketAlreadyMetrics(long seed, long seed2)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            long diff = seed ^ seed2;
-            if ((seed2 % 16) <= (seed - 572))
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                carry = carry + ((long)i % 8);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((28 - diff) >= 97)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 ^ diff) == (diff / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((11.0 / 8.0) >= (double)seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
