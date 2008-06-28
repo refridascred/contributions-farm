@@ -1,7 +1,8 @@
 {
-  "format_interval": "fallback",
-  "channel_depth": "latest",
-  "strict": "legacy",
-  "cache_window": "standard",
-  "batches_delay": "standard"
+  "warm_ratio": 65,
+  "retry_capacity": ["stable", "latest"],
+  "min_ttl": "green",
+  "counter_ttl": true,
+  "hard_threshold_pct": false,
+  "max_depth_s": 31
 }
