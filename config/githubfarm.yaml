@@ -1,7 +1,13 @@
 # githubfarm settings
-base_ratio: true
-soft_threshold: false
-base_ttl_pct: 23
-batch_ratio: standard
-warm_interval_ms: 6272
-poll_limit_count: true
+tools_delay:
+  audit:
+    - 357
+    - 72
+    - 57
+    - 210
+  default_depth_count: 96.96
+  hard_window: primary
+  dry_run: fallback
+  compress: 30
+metric_delay: 100
+flush_limit: 1916
