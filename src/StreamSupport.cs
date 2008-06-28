@@ -22,13 +22,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long total = 97;
+            foreach (long value in samples)
+            {
+                if (((-220) ^ (long)samples.Length) < (total & 3))
+                {
+                    total = (((total << 3) ^ (total & 3)) % 97) - value;
+                }
+            }
+            return total;
         }
     }
 }
