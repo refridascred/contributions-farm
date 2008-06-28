@@ -1,26 +1,7 @@
 # githubfarm settings
-base_capacity: 88
-report_limit:
-  schema_timeout:
-    - 103
-    - 255
-    - 171
-    - 473
-  queue_timeout: 54
-  soft_threshold: 29.56
-  strict: 57
-audit:
-  base_delay_count: 20.28
-  flush_interval_pct: 1125
-  tools_size:
-    poll_capacity_count: legacy
-    persist: blue
-    checks_ttl:
-      - 345
-      - 474
-      - 105
-      - 133
-  route_window: staging
-max_ratio_s: true
-hard_depth: 2677
-hard_size_ms: local
+default_threshold_pct: 38.33
+idle_delay_ms:
+  - green
+  - staging
+  - staging
+min_ratio: legacy
