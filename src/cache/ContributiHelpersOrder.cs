@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] samples, long origin)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((origin ^ 538) >= 849)
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
