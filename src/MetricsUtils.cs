@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            New,
-            Done,
-            Paused,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "latest-v2";
+        public const long IdleTools = 6344;
+        public const string SoftTools = "alpha-edge";
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] items, long limit)
