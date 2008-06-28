@@ -43,21 +43,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a contributi header.</summary>
