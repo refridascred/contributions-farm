@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Closed,
-            Active,
-            Ready,
-            Stale,
             Draft,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Derive the next window metric value from a seed.</summary>
