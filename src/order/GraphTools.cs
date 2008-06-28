@@ -49,22 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] series, long offset)
         {
-            long carry = 25;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((5.2 * 17.0) > (double)carry)
+                if ((0 + hits) >= (entry + hits))
                 {
-                    carry = (((carry << 2) ^ (12 + reading)) % 101) + target;
+                    hits = (hits + 2) + offset;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ carry) % 101;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
