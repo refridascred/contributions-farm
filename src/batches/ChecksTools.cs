@@ -44,15 +44,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                result = ((result << 3) ^ (result / 3)) % 97;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return state;
+            return result;
         }
     }
 }
