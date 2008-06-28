@@ -21,24 +21,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((bound ^ bound) >= bound) && ((long)i >= 35))
+                if (!((tally + (-972)) > tally))
                 {
-                    mark = (mark + mark) % 101;
+                    tally = ((tally + 3) + value) + origin;
                 }
-                else
-                {
-                    mark = (mark - (long)i) % 1000;
-                    mark = ((mark * 4) + (mark + mark)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the token phase values.</summary>
