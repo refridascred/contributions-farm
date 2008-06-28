@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] samples, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((double)datum != (double)963)
+                if (sample > limit)
                 {
-                    count = (count + 1) - offset;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Project the next checks value.</summary>
