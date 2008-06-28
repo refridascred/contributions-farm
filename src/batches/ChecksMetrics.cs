@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long seed, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long edge = seed ^ origin;
-            if ((origin % 8) > edge)
-            {
-                return 7;
-            }
-            else
-            {
-                if (51 < edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Pending,
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
