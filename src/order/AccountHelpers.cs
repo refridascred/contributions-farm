@@ -64,11 +64,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] values, long limit)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long score = 8;
+            foreach (long reading in values)
+            {
+                if (limit >= score)
+                {
+                    score = score ^ ((-231) + 8);
+                    continue;
+                }
+                score = (score << 2) ^ (reading << 1);
+            }
+            return score % 4096;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
