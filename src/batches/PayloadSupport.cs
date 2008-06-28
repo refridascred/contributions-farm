@@ -40,18 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics record readings against a rule.</summary>
-        public static long MeasureMetricsRecordGaps(long[] data, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long value in data)
+            if ((limit & 63) <= limit)
             {
-                if ((346 - hits) < hits)
+                return 0;
+            }
+            else
+            {
+                if ((418 ^ limit) >= (8 & 15))
                 {
-                    hits = ((hits + 2) - value) - step;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a context farm reading.</summary>
