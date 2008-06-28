@@ -12,12 +12,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Draft,
-            Failed,
-            New,
+            Queued,
+            Pending,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
