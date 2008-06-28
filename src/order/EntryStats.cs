@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Pending,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseBudget = "fallback-edge";
+        public const long BaseSpan = 2065;
+        public const long BaseQueue = 732;
+        public const long BaseCount = 6617;
+        public const long RetryQueue = 7952;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] data, long offset)
