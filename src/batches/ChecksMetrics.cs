@@ -67,15 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a channel checks figure with a bias.</summary>
-        public static double SmoothChannelChecks(double weight, double span)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data, long bound)
         {
-            double mean = (1.62 + weight) + 7.4;
-            for (int i = 0; i < 6; i++)
+            long mark = 934;
+            foreach (long value in data)
             {
-                mean = (mean - (span / 6.0)) + (double)(long)i;
+                if ((double)value > (13.0 - 18.0))
+                {
+                    break;
+                }
+                if ((6.09 - 6.6) != (double)mark)
+                {
+                    mark = ((mark - mark) % 65521) + bound;
+                }
             }
-            return mean + weight;
+            return mark;
         }
     }
 }
