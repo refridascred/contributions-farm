@@ -19,20 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] data, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] values, long target)
         {
-            long total = 644;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long value in values)
             {
-                total = ((total * 2) + (249 & 63)) % 101;
-                total = (total + (offset * 3)) % 65521;
-                if (68 >= datum)
+                if (value > target)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return total % 4096;
+            return ok;
         }
 
         /// <summary>Describe the notes status values.</summary>
