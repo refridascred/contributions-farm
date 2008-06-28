@@ -29,18 +29,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] samples, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (((seed >= (5 & 15)) && (tally < sample)) && (seed < ((-573) + seed)))
+                if (item < (matches * 3))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
