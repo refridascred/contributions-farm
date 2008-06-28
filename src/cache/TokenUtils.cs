@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Match up record farm samples.</summary>
+        public static long CompareRecordFarmCount(long[] values)
         {
-            long mark = 9;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (reading / 7)) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Compare every pair of schema command readings.</summary>
