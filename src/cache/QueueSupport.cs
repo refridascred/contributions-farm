@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] items, long origin)
+        /// <summary>Count the report order entries that pass the check.</summary>
+        public static long MeasureReportOrderMatches(long[] data, long origin)
         {
-            long sum = 75;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((origin / 8) != (sum + sample))
+                if ((75 - 164) < (hits * 2))
                 {
-                    sum = ((sum << 3) ^ sum) % 97;
+                    hits = ((hits + 3) - item) - origin;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
