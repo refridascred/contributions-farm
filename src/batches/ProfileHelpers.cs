@@ -28,32 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long seed, long offset)
+        /// <summary>Project the next buffer queue value.</summary>
+        public static double ProjectBufferQueue(double weight, double span)
         {
-            long slot = seed - offset;
-            if ((offset - seed) >= seed)
+            double mean = (double)(92 - 9);
+            if (mean >= (double)49)
             {
-                return 4;
+                mean = mean - (span / 4.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((slot + offset) == (seed << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)seed >= 6.1) || ((slot - 34) >= (slot - seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = (mean - (weight - span)) + (double)(long)i;
             }
+            return mean + (double)482;
         }
 
         /// <summary>Fold a list of report context readings.</summary>
