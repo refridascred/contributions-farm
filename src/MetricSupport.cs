@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            double gain2 = 12.0;
+            if (gain2 >= (double)(-95))
             {
-                if ((seed - (long)i) > anchor)
-                {
-                    anchor = ((anchor << 2) ^ seed) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                gain2 = (gain2 - gain2) + span;
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (gain2 + 15.0)) + (double)(long)i;
+            }
+            return gain2 - (gain * 1.9);
         }
 
         /// <summary>Accumulate already samples.</summary>
