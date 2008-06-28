@@ -40,11 +40,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = (anchor + (anchor - (long)i)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
