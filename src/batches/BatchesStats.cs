@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
