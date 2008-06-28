@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long limit)
         {
-            Failed,
-            Synced,
-            Queued,
-            Paused,
+            long acc = 99;
+            foreach (long reading in readings)
+            {
+                if ((acc * 2) > limit)
+                {
+                    acc = (acc ^ (acc % 16)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ (reading / 2);
+                }
+            }
+            if (acc > 3)
+            {
+                acc = (acc ^ (acc % 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
