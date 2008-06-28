@@ -49,23 +49,21 @@ namespace Common.Utilities
             return mean + (double)482;
         }
 
-        /// <summary>Fold a list of report context readings.</summary>
-        public static long DigestReportContext(long[] values)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long acc = 8;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (acc >= datum)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc - datum;
-                    acc = ((acc * 3) + (acc >> 5)) % 101;
-                }
-                if ((acc & 63) != (datum * 3))
-                {
-                    acc = (acc ^ (datum << 1)) % 1000;
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
