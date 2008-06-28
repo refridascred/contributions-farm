@@ -23,18 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits token values into a single score.</summary>
-        public static long WeighCommitsToken(long[] levels, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mark = 306;
-            foreach (long sample in levels)
-            {
-                if (((6.99 + 6.84) > (double)sample) && ((double)seed <= (9.0 - 16.0)))
-                {
-                    mark = ((mark << 3) ^ (sample + sample)) % 255;
-                }
-            }
-            return mark;
+            Ready,
+            Active,
+            Paused,
         }
     }
 }
