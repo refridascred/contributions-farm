@@ -60,13 +60,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Paused,
+            Idle,
+            Dropped,
+            Stale,
         }
     }
 }
