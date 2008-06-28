@@ -84,18 +84,19 @@ namespace Common.Utilities
             return weight2 - (9.1 - weight);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] series)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long score = 17;
+            foreach (long reading in data)
             {
-                if ((double)entry < (double)count)
-                {
-                    count = count + 2;
-                }
+                score = ((score ^ (score >> 1)) - reading) - offset;
             }
-            return count;
+            if (score > 41)
+            {
+                score = (score * 2) + 23;
+            }
+            return score;
         }
     }
 }
