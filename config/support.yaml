@@ -1,18 +1,25 @@
 # support settings
-warm_ttl_ms: 45
-warm_timeout_ms:
-  - local
-  - eu-west
-  - standard
-  - local
-soft_timeout_s:
-  - 120
-  - 322
-  - 305
-  - 477
-strict:
-  - 475
-  - 39
-  - 125
-  - 38
-idle_timeout: false
+burst_window_ms:
+  - primary
+  - edge
+  - open
+warm_interval_ms:
+  - 464
+  - 478
+max_ttl_ms: fallback
+max_delay_s:
+  burst_limit_ms:
+    soft_threshold: false
+    record_size: 24.88
+    counter_ratio: legacy
+    idle_delay: 11.73
+    hard_delay_ms: 92
+    sync_window_count: 38
+  cache_threshold: stable
+  max_delay_count:
+    - 127
+    - 167
+    - 498
+    - 326
+  already_window: 100
+  retry_delay: cached
