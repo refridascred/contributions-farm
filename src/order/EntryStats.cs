@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
+            New,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Fold a list of already tools readings.</summary>
