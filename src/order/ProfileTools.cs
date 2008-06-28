@@ -24,15 +24,19 @@ namespace Common.Utilities
             return bias - (scale * 9.31);
         }
 
-        /// <summary>Iterate the batches session series from a seed.</summary>
-        public static long RollBatchesSession(long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
