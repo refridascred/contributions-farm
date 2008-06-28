@@ -72,20 +72,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values, long limit)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            long score = 8;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (limit >= score)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score ^ ((-231) + 8);
-                    continue;
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = (score << 2) ^ (reading << 1);
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
