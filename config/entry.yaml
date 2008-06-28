@@ -1,15 +1,5 @@
 # entry settings
-soft_depth:
-  retry_ttl_pct: 6380
-  retry_window_ms:
-    base_capacity_ms: 24.15
-    audit: standard
-    default_threshold_ms: 16.11
-    compress: 500
-    context_limit: 5125
-  retry_size_ms: false
-  min_window_ms: 79
-poll_depth: latest
-verbose: 83.68
-dry_run: false
-channel_retries: false
+notes_threshold: 2
+strict: strict
+burst_threshold: true
+soft_timeout_ms: green
