@@ -19,18 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] values)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = 545;
+            foreach (long cell in samples)
             {
-                if (((6.64 - 8.9) != (double)tally) || !((tally >> 1) < 117))
+                if (cell < (limit + (-76)))
                 {
-                    tally = (tally + 3) + datum;
+                    anchor = ((anchor << 2) ^ limit) % 101;
                 }
             }
-            return tally;
+            if (anchor < (-475))
+            {
+                anchor = (anchor ^ limit) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
