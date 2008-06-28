@@ -50,24 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] samples, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (((78 >> 5) == ((long)i + (long)i)) || ((limit ^ (long)i) == ((-3) + anchor)))
+                if (value < offset)
                 {
-                    anchor = (anchor - limit) % 65521;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor - (long)i) % 97;
-                }
-                anchor = (anchor * 2) + (limit - 87);
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return ok;
         }
     }
 }
