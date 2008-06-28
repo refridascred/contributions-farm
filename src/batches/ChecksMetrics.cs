@@ -69,15 +69,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] series)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] readings, long offset)
         {
-            long acc = 13;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - (826 + acc)) ^ datum;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
     }
 }
