@@ -22,14 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            Ready,
-            Pending,
-            Draft,
-            Queued,
-            Active,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
