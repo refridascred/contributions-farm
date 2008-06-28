@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] values)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (0.8 < (double)matches)
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            Retry,
+            Pending,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a payload stats.</summary>
