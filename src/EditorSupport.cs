@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const string LimitMetric = "legacy";
         public const long SoftMetric = 1644;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long limit)
-        {
-            long anchor = 7;
-            foreach (long sample in series)
-            {
-                if (((-828) & 255) <= (sample / 7))
-                {
-                    anchor = ((anchor << 2) ^ (anchor * 2)) - limit;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinSpan = 49.88;
+        public const double StepCommits = 25.35;
+        public const long HardCommits = 4733;
+        public const string DefaultCommits = "legacy-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchAlready = 4.85;
