@@ -47,20 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "local-edge";
+        public const double WindowSpan = 88.71;
+        public const string MaxLevel = "stable";
+        public const string HardCluster = "stable";
+        public const long MaxCluster = 5478;
 
         /// <summary>Count the format batches entries that pass the check.</summary>
         public static long TallyFormatBatchesOutliers(long[] items, long seed)
