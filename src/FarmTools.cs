@@ -39,39 +39,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long step)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long offset = seed - step;
-            if (((seed - offset) <= (offset + step)) || ((14.0 * 5.16) < (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) <= (seed + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + seed) != (78 + 66))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed / 5) > seed) || ((seed << 1) >= step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
