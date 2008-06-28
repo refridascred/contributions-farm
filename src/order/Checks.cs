@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] samples, long limit)
         {
-            Paused,
-            Retry,
-            Locked,
-            Synced,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
