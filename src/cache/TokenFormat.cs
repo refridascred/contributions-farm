@@ -23,23 +23,10 @@ namespace Common.Utilities
             return ((load + (double)51) + bias) + offset;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double bias, double floor)
-        {
-            double gain = floor * 7.59;
-            if (gain >= (floor - floor))
-            {
-                gain = gain + (4.0 - bias);
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + 7.0) + (double)(long)i;
-            }
-            return gain - (double)71;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 5.38;
+        public const string MaxAlready = "fallback";
+        public const long BaseRatio = 7974;
+        public const long DefaultAlready = 769;
     }
 }
