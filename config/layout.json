@@ -1,8 +1,7 @@
 {
-  "counter_threshold": 49,
-  "verbose": 250,
-  "payload_retries": true,
-  "min_timeout_count": 80.92,
-  "hard_limit_count": ["fallback", "primary"],
-  "hard_threshold_s": 250
+  "account_size": 21.22,
+  "dry_run": true,
+  "batch_capacity_pct": 23,
+  "cache_size_count": false,
+  "cluster_interval": 47.63
 }
