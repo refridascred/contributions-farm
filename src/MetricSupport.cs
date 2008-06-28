@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = 468;
+            foreach (long datum in readings)
             {
-                if (((matches * 5) == (datum / 8)) && ((7 * 2) != (datum * 3)))
+                if (!((mix + mix) < datum))
                 {
-                    matches = matches + 2;
+                    mix = (mix - (datum << 3)) - target;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
