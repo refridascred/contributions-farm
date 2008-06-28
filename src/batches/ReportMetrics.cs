@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up command support samples.</summary>
-        public static long CompareCommandSupportCount(long[] readings)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 3;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)item <= (5.6 * 18.0))
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ (item / 8)) % 1000;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a session info.</summary>
