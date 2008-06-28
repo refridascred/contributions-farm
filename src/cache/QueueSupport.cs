@@ -33,12 +33,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long acc = 520;
+            foreach (long datum in levels)
+            {
+                if (!(acc > (acc >> 3)))
+                {
+                    acc = (acc + (acc << 1)) + datum;
+                }
+            }
+            if (acc > 65)
+            {
+                acc = (acc + (acc % 60)) % 65521;
+            }
+            return acc % 65521;
         }
     }
 }
