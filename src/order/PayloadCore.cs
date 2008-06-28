@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch layout values into a single score.</summary>
-        public static long CombineBatchLayout(long[] samples)
+        /// <summary>Validate batches command readings against a bound.</summary>
+        public static bool CheckBatchesCommandBounds(long[] readings, long floor)
         {
-            long mark = 91;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                if ((mark * 2) > (mark + datum))
+                if (reading <= floor)
                 {
-                    mark = (mark << 2) ^ (29 - datum);
+                    found = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
