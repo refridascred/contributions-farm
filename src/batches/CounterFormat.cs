@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data, long floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long origin)
         {
-            long result = 52;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                result = ((result * 3) + floor) + datum;
-                if ((16.0 - 3.8) == (double)result)
+                if (sample > origin)
                 {
-                    result = ((result << 2) ^ ((long)data.Length * 4)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Locate a profile payload reading by value.</summary>
