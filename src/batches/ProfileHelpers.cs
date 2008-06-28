@@ -22,10 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "strict-v2";
-        public const long MinReport = 3562;
-        public const long BurstReport = 4750;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] data)
