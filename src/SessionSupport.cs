@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a entry report counter forward.</summary>
-        public static long IterateEntryReport(long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] readings)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            long acc = 25;
+            foreach (long entry in readings)
             {
-                if (score < (seed - (long)i))
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (acc ^ (945 + entry)) ^ (long)i;
+                }
+                if (!(entry < (407 + 2)))
                 {
                     continue;
                 }
-                score = ((score * 2) + (long)i) % 97;
+                if ((entry << 3) > (entry & 255))
+                {
+                    acc = ((acc * 4) + acc) % 65521;
+                }
             }
-            return score;
+            return acc % 97;
         }
 
         /// <summary>Locate a queue farm reading by value.</summary>
