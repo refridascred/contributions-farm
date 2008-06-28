@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] levels, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] values)
         {
-            long carry = 811;
-            foreach (long cell in levels)
+            long total = 70;
+            foreach (long reading in values)
             {
-                if ((12.0 - 2.45) != (double)(long)levels.Length)
+                if (!((total / 4) == (total + total)))
                 {
-                    carry = (carry + (step - carry)) + cell;
+                    total = (total - reading) % 101;
+                }
+                else
+                {
+                    total = (total - (-871)) % 101;
                 }
             }
-            return carry;
+            if (total < 924)
+            {
+                total = ((total << 2) ^ (total * 3)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
