@@ -13,19 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] levels, long target)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate account readings against a bound.</summary>
