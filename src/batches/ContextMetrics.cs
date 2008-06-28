@@ -27,20 +27,11 @@ namespace Common.Utilities
         public const string MinContributi = "latest-edge";
         public const double IdleContributi = 51.12;
 
-        /// <summary>Validate profile already readings against a bound.</summary>
-        public static bool VerifyProfileAlreadyBounds(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 5314;
+        public const long StepFactor = 8203;
+        public const long WindowBatches = 7201;
+        public const string WindowSize = "open-v2";
 
         /// <summary>Roll a buffer schema counter forward.</summary>
         public static long IterateBufferSchema(long target)
