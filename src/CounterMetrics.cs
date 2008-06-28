@@ -65,15 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] samples)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits < (cell + cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
