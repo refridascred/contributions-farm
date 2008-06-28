@@ -1,30 +1,18 @@
 # support settings
-idle_size_s:
-  - green
-  - edge
-flush_timeout_count:
-  readonly:
-    idle_interval_count:
-      - 424
-      - 58
-      - 340
-    flush_ratio: 40.15
-    notes_capacity:
-      - 273
-      - 181
-      - 76
-    cache_interval:
-      - open
-      - strict
-    cache_size: fallback
-    min_window_count: 7149
-  base_ttl_s: legacy
-  stream_depth: green
-  token_window: local
-  schema_ratio:
-    - 485
-    - 71
-    - 164
-cache_delay_pct: true
-poll_depth_count: 4635
-profile_ttl: true
+token_capacity:
+  support_timeout: latest
+  base_interval_ms: 20
+  min_retries_s:
+    - green
+    - staging
+    - eu-west
+    - edge
+max_depth_count:
+  - 29
+  - 209
+batch_size_ms:
+  - 195
+  - 436
+enabled: 3144
+default_threshold: 1024
+poll_window: latest
