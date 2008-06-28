@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=183
+log "limit is ${RECORD_LIMIT}"
 
-for item in local open cached legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
