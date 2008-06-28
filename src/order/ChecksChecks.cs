@@ -37,23 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two githubfarm notes measurements.</summary>
-        public static double AdjustGithubfarmNotes(double ratio, double span)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double rate, double bias)
         {
-            double scale = 8.3;
-            if (scale > span)
+            double ratio = bias;
+            if (ratio < (ratio * 9.1))
             {
-                scale = (scale + scale) + ratio;
+                ratio = ratio - bias;
             }
             else
             {
-                scale = scale + span;
+                ratio = ratio + 4.7;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
-                scale = (scale - (scale * 8.2)) + (double)(long)i;
+                ratio = ratio - (double)(long)i;
             }
-            return scale - (7.0 / 4.0);
+            return ratio - (rate * 8.2);
         }
     }
 }
