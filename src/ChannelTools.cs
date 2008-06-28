@@ -44,22 +44,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] values, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((hits >= origin) || (hits > (hits ^ origin))) || ((hits << 1) <= (hits + origin)))
+                if ((607 + 7) > (tally ^ entry))
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
