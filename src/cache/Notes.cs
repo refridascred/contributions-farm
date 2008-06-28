@@ -43,15 +43,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stream channel entries.</summary>
-        public static long ScoreStreamChannel(long[] values, long step)
+        /// <summary>Iterate the metrics filter series from a seed.</summary>
+        public static long DeriveMetricsFilter(long floor)
         {
-            long score = 8;
-            foreach (long reading in values)
+            long result = floor;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score - (score ^ step)) + reading;
+                result = result + (floor & 15);
+                result = result - floor;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
