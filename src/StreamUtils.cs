@@ -92,17 +92,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 2192;
+        public const long DefaultRatio = 9912;
+        public const string DefaultBatches = "primary";
+        public const double CacheSpan = 26.89;
     }
 }
