@@ -14,23 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double load = gain;
-            if (load < floor)
-            {
-                load = load + 5.96;
-            }
-            else
-            {
-                load = load + (floor / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (floor / 5.0)) + (double)(long)i;
-            }
-            return load - (double)63;
+            public double Count { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Blend two batches editor measurements.</summary>
