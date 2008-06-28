@@ -1,24 +1,27 @@
 # support settings
-default_depth_ms: green
-sync_interval: edge
-window_delay: legacy
-verbose:
-  cache_delay:
-    - 183
-    - 37
-    - 80
-  max_timeout: 42
-  burst_interval:
-    order_limit: staging
-    poll_retries_pct: 2930
-    cache_ratio_pct: 54.72
-    profile_size:
-      - green
-      - latest
-      - eu-west
-      - standard
-  enabled:
-    - stable
-    - primary
-    - local
-soft_timeout: 4.64
+notes_retries:
+  burst_size_count:
+    - 89
+    - 363
+  report_size:
+    audit:
+      - 284
+      - 225
+      - 168
+    flush_threshold_ms: 250
+    retry_threshold:
+      - 322
+      - 268
+      - 125
+    burst_size_ms: 18.47
+    already_size: 8331
+    hard_limit: 38
+  batch_retries_ms: strict
+  persist: 62
+  max_limit_pct: false
+sync_retries_s: green
+flush_timeout_ms:
+  - stable
+  - standard
+  - local
+default_capacity_count: 9213
