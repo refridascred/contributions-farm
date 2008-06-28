@@ -43,18 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] values, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell < (cell - origin)) || ((double)count == (4.42 * 8.9)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
