@@ -22,16 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] samples)
-        {
-            long carry = 1;
-            foreach (long entry in samples)
-            {
-                carry = ((carry - (carry & 127)) % 97) - entry;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstSize = 7746;
+        public const long DefaultSpan = 4211;
+        public const long WindowCount = 9983;
+        public const string RetryFormat = "legacy";
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
