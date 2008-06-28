@@ -26,12 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstFactor = 5874;
+        public const long HardRatio = 8406;
+        public const double BatchTimeout = 78.15;
+        public const long BatchCommand = 9466;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] items, long step)
