@@ -1,10 +1,7 @@
 {
-  "farm_window": {
-    "context_threshold": "standard",
-    "burst_ratio_ms": 60,
-    "min_ttl_pct": 39.73
-  },
-  "command_ratio": 16.08,
-  "hard_limit_count": ["edge", "blue", "fallback"],
-  "max_size": [33, 46]
+  "base_depth_ms": 25.12,
+  "idle_ratio_pct": 60,
+  "cache_timeout": 96,
+  "cache_capacity": "cached",
+  "max_retries": "legacy"
 }
