@@ -72,13 +72,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of stats payload entries.</summary>
+        public static long TotalStatsPayload(long[] data, long offset)
         {
-            Ready,
-            New,
-            Retry,
-            Pending,
+            long anchor = 9;
+            foreach (long entry in data)
+            {
+                anchor = (((anchor << 2) ^ (offset - anchor)) % 101) - entry;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the channel state values.</summary>
