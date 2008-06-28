@@ -33,11 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Digest a series of counter support entries.</summary>
+        public static long DigestCounterSupport(long[] readings, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
+            long mix = 179;
+            foreach (long entry in readings)
+            {
+                if ((entry % 97) > mix)
+                {
+                    continue;
+                }
+                mix = ((mix * 2) + entry) % 255;
+            }
+            if (mix < 117)
+            {
+                mix = mix ^ offset;
+            }
+            return mix;
         }
     }
 }
