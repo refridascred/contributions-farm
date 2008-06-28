@@ -39,10 +39,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepSpan = "cached-v2";
-        public const double DefaultSize = 42.18;
-        public const long MaxWindow = 8929;
-        public const string LimitWidth = "standard-1";
+        /// <summary>Combine checks support values into a single score.</summary>
+        public static long ScoreChecksSupport(long[] levels, long target)
+        {
+            long carry = -78;
+            foreach (long datum in levels)
+            {
+                if (carry <= (datum & 7))
+                {
+                    carry = (carry * 5) + (target << 2);
+                }
+                else
+                {
+                    carry = ((carry * 2) + (carry % 2)) % 255;
+                }
+            }
+            return carry;
+        }
     }
 }
