@@ -31,15 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mark = 76;
-            foreach (long datum in values)
-            {
-                mark = ((mark + 84) % 65521) - datum;
-            }
-            return mark;
+            Queued,
+            Ready,
+            Closed,
         }
     }
 }
