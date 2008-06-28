@@ -34,18 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] series, long bound)
+        /// <summary>Audit buffer metric readings against a rule.</summary>
+        public static long AuditBufferMetricMatches(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((bound % 64) == (hits + hits))
+                if (cell < (73 / 3))
                 {
-                    hits = (hits + 3) ^ sample;
+                    seen = (seen + 3) - step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
