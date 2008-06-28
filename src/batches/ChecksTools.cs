@@ -31,21 +31,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Combine route command values into a single score.</summary>
+        public static long FoldRouteCommand(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc + (limit + 3)) % 4096) ^ cell;
             }
-            return count;
+            if (acc < 7)
+            {
+                acc = acc ^ limit;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
