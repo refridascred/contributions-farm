@@ -1,5 +1,19 @@
 {
-  "soft_interval_count": "stable",
-  "default_capacity_pct": "stable",
-  "farm_limit": "strict"
+  "sync_window_pct": {
+    "verbose": true,
+    "soft_limit": 2574,
+    "min_timeout_ms": false,
+    "burst_size_pct": {
+      "support_depth": true,
+      "retry_retries": 83.71,
+      "audit": "local",
+      "sync_size_ms": 45.47
+    },
+    "default_size_pct": ["eu-west", "legacy"],
+    "readonly": true
+  },
+  "verbose": [222, 32, 15, 119],
+  "poll_ttl_pct": "latest",
+  "route_threshold": [160, 136, 176, 211],
+  "batch_window_s": "edge"
 }
