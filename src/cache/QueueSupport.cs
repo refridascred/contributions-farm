@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] values, long seed)
         {
-            Pending,
-            New,
-            Draft,
-            Closed,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a command header.</summary>
