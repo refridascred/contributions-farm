@@ -1,6 +1,9 @@
-id,score,token,level
-1,cached,20,blue
-2,535,93,510
-3,local,staging,39.57
-4,100,586,stable
-5,19.3,legacy,legacy
+id,region,ratio,count,token
+1,901,stable,5.03,18.47
+2,731,344,fallback,blue
+3,88.38,cached,232,local
+4,675,legacy,318,22.81
+5,598,482,79.22,cached
+6,731,667,183,94.7
+7,1.69,440,398,600
+8,920,895,248,34.58
