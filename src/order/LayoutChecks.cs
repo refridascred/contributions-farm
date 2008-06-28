@@ -43,19 +43,13 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate stream samples.</summary>
