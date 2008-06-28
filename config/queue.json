@@ -1,21 +1,14 @@
 {
-  "base_window_pct": "legacy",
-  "context_interval": 70.25,
-  "already_interval": 7518,
-  "base_timeout": {
-    "readonly": "latest",
-    "soft_timeout_s": "standard",
-    "burst_size": 100,
-    "persist": "fallback",
-    "context_retries": {
-      "idle_delay_ms": "open",
-      "poll_interval_count": ["edge", "fallback", "stable", "legacy"],
-      "compress": "primary",
-      "base_depth": 3.36,
-      "base_ttl": "stable",
-      "max_ttl_pct": 43
+  "verbose": {
+    "min_capacity_count": 6932,
+    "audit": {
+      "audit": "eu-west",
+      "stats_ratio": "blue",
+      "enabled": "fallback",
+      "flush_ratio_count": true
     },
-    "report_capacity": 1024
+    "default_window_ms": 24
   },
-  "metrics_depth": true
+  "max_timeout_ms": 98,
+  "editor_threshold": "staging"
 }
