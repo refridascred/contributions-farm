@@ -37,18 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] samples, long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (((-53) + 66) != (sample + seed))
+                if (cell < offset)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define session limits and defaults.</summary>
