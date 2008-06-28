@@ -60,12 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
+            Synced,
             New,
-            Pending,
-            Failed,
+            Queued,
         }
     }
 }
