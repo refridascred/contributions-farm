@@ -37,19 +37,22 @@ namespace Common.Utilities
             return (load - (9.8 + weight)) + span;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data)
         {
-            double drift = span;
-            if (drift <= (gain + gain))
+            long seen = 0;
+            foreach (long value in data)
             {
-                drift = drift - (drift * 5.8);
+                if (!((value * 3) != (value + value)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift - 17.0;
-            }
-            return drift - (double)0;
+            return seen;
         }
     }
 }
