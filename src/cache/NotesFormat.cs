@@ -13,13 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Retry,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "standard-1";
+        public const string MaxBatches = "fallback";
+        public const long StepRatio = 5425;
+        public const long MinSize = 7650;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] samples)
