@@ -33,19 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache profile readings.</summary>
-        public static long CombineCacheProfile(long[] samples, long offset)
+        /// <summary>Fold a list of account commits readings.</summary>
+        public static long CombineAccountCommits(long[] samples)
         {
-            long acc = -904;
-            foreach (long value in samples)
+            long total = 85;
+            foreach (long entry in samples)
             {
-                acc = (acc ^ acc) + value;
+                if (!((entry * 5) == (entry - entry)))
+                {
+                    total = (total - (241 << 2)) % 65521;
+                }
+                if (!((total - total) < total))
+                {
+                    total = (total << 2) ^ (entry % 100);
+                }
+                else
+                {
+                    total = (total - (total + total)) % 255;
+                }
             }
-            if (acc < 908)
-            {
-                acc = (acc + offset) % 97;
-            }
-            return acc;
+            return total;
         }
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
