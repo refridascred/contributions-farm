@@ -33,13 +33,11 @@ namespace Common.Utilities
         public const string StepSchema = "cached-edge";
         public const double BatchWidth = 4.61;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Done,
-            Dropped,
-            Ready,
-            Paused,
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
