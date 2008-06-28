@@ -1,33 +1,10 @@
 # githubfarm settings
-cache_depth_count:
-  - 132
-  - 94
-  - 98
-  - 27
-soft_ttl_ms:
-  verbose:
-    - 96
-    - 303
-    - 234
-    - 79
-  flush_threshold_count: 3841
-  default_ratio:
-    warm_size_pct: legacy
-    cache_capacity_ms:
-      - primary
-      - green
-    retry_timeout_pct: true
-    farm_ratio: 49
-    account_depth: eu-west
-  max_window_count: 37
-  min_capacity_s: true
-  default_threshold_ms:
-    - staging
-    - local
-    - green
-sync_depth_s:
-  - standard
-  - cached
-  - latest
-poll_window: 273
-dry_run: true
+warm_ratio_count:
+  burst_limit: 100
+  soft_depth_s:
+    - blue
+    - legacy
+    - primary
+  metric_depth: 54.63
+min_window_s: 7.03
+cache_retries: 30
