@@ -20,16 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double offset)
-        {
-            double drift = (offset + offset) / 6.0;
-            if (drift > (7.94 + 7.5))
-            {
-                drift = drift - (offset - scale);
-            }
-            return drift + drift;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 9126;
+        public const long RetryFilter = 2167;
+        public const long WindowRatio = 8570;
+        public const double HardFilter = 58.74;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] readings, long seed)
