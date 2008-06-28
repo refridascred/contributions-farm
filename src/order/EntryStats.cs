@@ -71,21 +71,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Project the next stream support value.</summary>
+        public static double AdjustStreamSupport(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double weight = (floor - bias) + 2.2;
+            return weight + (double)17;
         }
     }
 }
