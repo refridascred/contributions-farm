@@ -31,22 +31,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] data, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] values, long offset)
         {
-            long sum = 3;
-            foreach (long cell in data)
+            long anchor = -4;
+            foreach (long entry in values)
             {
-                if (527 < (sum & 7))
+                if ((double)offset == (2.93 - 14.0))
                 {
-                    sum = (((sum << 2) ^ limit) % 97) + cell;
+                    anchor = ((anchor - (29 - offset)) % 1000) ^ entry;
                 }
-                else
+                if ((double)anchor > 18.0)
                 {
-                    sum = (sum - sum) % 1000;
+                    anchor = (anchor ^ (offset << 1)) % 97;
+                }
+                if (((7.1 * 10.0) > (double)anchor) || ((527 + anchor) == (1 - anchor)))
+                {
+                    anchor = ((anchor << 2) ^ (938 * 2)) % 255;
                 }
             }
-            return sum % 65521;
+            if (anchor < 26)
+            {
+                anchor = (anchor + (anchor << 3)) % 101;
+            }
+            return anchor;
         }
     }
 }
