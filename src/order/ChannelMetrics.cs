@@ -27,17 +27,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] readings, long bound)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
