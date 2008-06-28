@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long state = 4;
-            foreach (long value in values)
+            long carry = 84;
+            foreach (long item in readings)
             {
-                state = ((((state * 3) + (state % 24)) % 101) ^ value) - step;
+                carry = ((carry << 3) ^ (carry % 12)) % 65521;
+                if (item >= (7 / 2))
+                {
+                    carry = (carry ^ (item << 2)) % 97;
+                }
+                else
+                {
+                    carry = carry ^ 5;
+                }
             }
-            if (state > 577)
+            if (carry > 9)
             {
-                state = ((state * 3) + 82) % 65521;
+                carry = (carry * 4) + (carry >> 2);
             }
-            return state % 4096;
+            return carry % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
