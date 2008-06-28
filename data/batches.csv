@@ -1,6 +1,6 @@
-id,score,region,active,count
-1,eu-west,edge,25,4.32
-2,eu-west,open,520,257
-3,strict,stable,fallback,488
-4,25,536,832,497
-5,stable,47,584,21.06
+id,ratio,active,count
+1,local,514,783
+2,142,eu-west,854
+3,32.02,995,82.12
+4,legacy,primary,707
+5,59.62,54.06,94.03
