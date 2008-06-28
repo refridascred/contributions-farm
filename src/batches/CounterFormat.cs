@@ -54,14 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
             Ready,
-            New,
-            Done,
-            Stale,
-            Draft,
+            Synced,
+            Locked,
         }
     }
 }
