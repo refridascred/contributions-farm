@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Queued,
-            Done,
-            Ready,
-            Failed,
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
