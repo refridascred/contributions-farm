@@ -1,11 +1,11 @@
 {
-  "burst_ttl_pct": {
-    "commits_interval": true,
-    "persist": true,
-    "command_interval": "legacy",
-    "soft_retries_pct": "fallback"
+  "readonly": ["edge", "open"],
+  "dry_run": true,
+  "stream_ratio": {
+    "sync_delay": ["standard", "fallback"],
+    "token_limit": "green",
+    "burst_threshold": true
   },
-  "dry_run": 51.46,
-  "audit": 250,
-  "warm_ratio": "cached"
+  "schema_ratio": 4428,
+  "sync_timeout_ms": 6.2
 }
