@@ -58,10 +58,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepRatio = 8418;
-        public const string BatchDepth = "cached-edge";
-        public const string IdleWidth = "cached";
-        public const long BatchInterval = 5765;
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
+        {
+            New,
+            Pending,
+            Failed,
+        }
     }
 }
