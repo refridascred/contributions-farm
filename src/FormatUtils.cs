@@ -30,22 +30,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long offset)
         {
-            long acc = 851;
-            foreach (long entry in data)
+            long prev = seed - offset;
+            if ((double)offset == (2.0 * 4.0))
             {
-                if ((double)acc < (4.2 / 9.0))
+                return 8;
+            }
+            else
+            {
+                if (prev > 99)
                 {
-                    acc = ((acc << 3) ^ (acc & 1)) + entry;
+                    return 6;
+                }
+                else
+                {
+                    if (((offset - 603) <= (seed % 97)) && ((prev & 1) != (prev % 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + prev) > prev)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (acc < 840)
-            {
-                acc = (acc + (acc - acc)) % 97;
-            }
-            return acc;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
