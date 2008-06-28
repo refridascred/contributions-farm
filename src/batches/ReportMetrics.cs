@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long result = 3;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (5.6 * 18.0))
-                {
-                    result = (result ^ (item / 8)) % 1000;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a session info.</summary>
