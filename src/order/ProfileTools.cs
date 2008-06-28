@@ -13,18 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = 0;
+            foreach (long datum in values)
             {
-                if (((hits & 3) != (97 + 501)) && ((item <= (item >> 1)) || ((item % 16) != (hits << 2))))
-                {
-                    hits = hits + 3;
-                }
+                result = ((result ^ result) + datum) + offset;
             }
-            return hits;
+            return result % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
