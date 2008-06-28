@@ -20,27 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] items, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] samples, long bound)
         {
-            long score = 198;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                score = ((score * 4) + (score & 7)) ^ item;
-                if (((score - floor) < floor) && ((score + score) < (long)items.Length))
+                if ((double)entry <= (6.7 / 3.0))
                 {
-                    score = score ^ (score - score);
-                }
-                else
-                {
-                    score = (score << 2) ^ (floor & 1);
+                    count = (count + 3) + bound;
                 }
             }
-            if (score > (-3))
-            {
-                score = ((score << 3) ^ (floor - score)) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
