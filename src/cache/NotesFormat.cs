@@ -13,22 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Audit metrics entry readings against a rule.</summary>
+        public static long CountMetricsEntryGaps(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (2.58 > (double)tally)
+                if ((seen < (origin + origin)) || ((double)cell <= (double)36))
                 {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
