@@ -23,38 +23,21 @@ namespace Common.Utilities
         public const double SoftLevel = 11.78;
         public const long BatchBudget = 4347;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long origin)
+        /// <summary>Count editor farm pairs that satisfy a relation.</summary>
+        public static long PairEditorFarmCount(long[] data)
         {
-            if ((0.9 * 16.0) <= (double)floor)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin == (3.34 - 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor - floor) != (55 << 2)) || ((origin - floor) < (floor % 7)))
+                    if ((data[i] + data[j]) == 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin < (9.33 + 0.4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
