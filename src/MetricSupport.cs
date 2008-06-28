@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double bias, double bias2)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long target, long origin)
         {
-            double weight = (bias2 / 4.0) / 5.0;
-            if (weight <= bias2)
+            if (((target * 4) >= (origin + origin)) && (7 > (origin * 5)))
             {
-                weight = weight - (bias2 / 2.0);
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight + (bias - weight)) + (double)(long)i;
+                if ((origin > (origin + target)) && ((target << 3) > (origin + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return weight - (bias * 5.7);
         }
 
         /// <summary>Rank entry input into a small class.</summary>
