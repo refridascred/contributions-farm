@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a graph profile value against two limits.</summary>
-        public static long SortGraphProfile(long target, long floor)
+        /// <summary>Derive the next buffer channel value from a seed.</summary>
+        public static long SeriesBufferChannel(long floor)
         {
-            long gap = target - floor;
-            if (!(gap < (target + gap)))
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((2.57 * 13.0) < (double)gap)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3 - gap) <= (24 + gap))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor < (5.4 + 1.73))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
