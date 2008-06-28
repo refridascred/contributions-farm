@@ -38,12 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels, long origin)
         {
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            long score = 28;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = ((((score << 2) ^ ((long)levels.Length / 9)) % 255) + (long)i) + origin;
+                }
+                score = ((score << 2) ^ (value + 45)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Scale a stats batches figure with a bias.</summary>
