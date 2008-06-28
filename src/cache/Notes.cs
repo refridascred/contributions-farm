@@ -33,12 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] values, long origin)
         {
-            Idle,
-            Synced,
-            Retry,
+            long sum = 4;
+            foreach (long datum in values)
+            {
+                if (((11.0 + 8.6) < (double)sum) && ((datum - origin) != (origin + 5)))
+                {
+                    sum = (sum - (29 - datum)) % 65521;
+                }
+                sum = (sum + datum) % 65521;
+            }
+            if (sum > 251)
+            {
+                sum = ((sum * 4) + origin) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank metric batch input into a small class.</summary>
