@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a cache stream value against two limits.</summary>
-        public static long RankCacheStream(long origin, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] items, long floor)
         {
-            long next = origin + seed;
-            if (seed >= (0 & 7))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (550 > (origin + seed))
+                if ((4.4 / 6.0) < (5.0 * 2.94))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((next - 27) <= (94 + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = ((matches + 2) - value) - floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
