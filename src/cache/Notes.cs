@@ -29,24 +29,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a metric route pair into a bucket.</summary>
-        public static long SortMetricRoute(long floor, long origin)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            if (!(floor >= (origin + floor)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 16) > (floor / 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Match up batch samples.</summary>
