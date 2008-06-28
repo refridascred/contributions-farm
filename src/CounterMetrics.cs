@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every filter farm entry stays within the limit.</summary>
-        public static bool VerifyFilterFarmRange(long[] items, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
