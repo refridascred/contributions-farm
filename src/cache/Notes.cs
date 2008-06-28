@@ -49,11 +49,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Rank contributi editor input into a small class.</summary>
+        public static long GradeContributiEditor(long step, long limit)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long step2 = step ^ limit;
+            if ((limit + limit) < (step & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 & 1) < step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > 4.9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
