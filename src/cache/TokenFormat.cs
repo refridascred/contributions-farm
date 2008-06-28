@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 922;
-        public const double DefaultSize = 88.68;
-        public const long CacheDepth = 7043;
-        public const long BatchWidth = 361;
+        /// <summary>Grade a graph profile value against two limits.</summary>
+        public static long SortGraphProfile(long target, long floor)
+        {
+            long gap = target - floor;
+            if (!(gap < (target + gap)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.57 * 13.0) < (double)gap)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3 - gap) <= (24 + gap))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor < (5.4 + 1.73))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatMatches(long[] readings, long floor)
