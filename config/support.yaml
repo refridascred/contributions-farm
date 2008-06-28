@@ -1,6 +1,4 @@
 # support settings
-account_threshold: green
-sync_depth_ms: false
-idle_ttl: 34
-verbose: 30
-batch_depth_pct: 41
+batch_window_count: true
+report_delay: 72
+buffer_capacity: standard
