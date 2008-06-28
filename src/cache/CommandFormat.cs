@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long bound)
         {
-            double mean = (bias2 * 0.9) / 2.0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - bias) + (double)(long)i;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (bias2 + bias);
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
