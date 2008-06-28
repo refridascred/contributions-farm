@@ -20,22 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] levels, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] series)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((hits - bound) != (bound % 16))
+                if ((tally % 10) <= (tally & 63))
                 {
-                    hits = (hits + 3) + item;
+                    tally = (tally + 1) + cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a buffer summary.</summary>
