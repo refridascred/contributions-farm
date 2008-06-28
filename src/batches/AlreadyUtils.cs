@@ -54,14 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] items)
         {
-            Closed,
-            Queued,
-            Pending,
-            Done,
-            Retry,
+            long anchor = 244;
+            foreach (long reading in items)
+            {
+                anchor = anchor - (reading + 605);
+                if ((reading - anchor) != (reading & 3))
+                {
+                    anchor = ((anchor * 4) + (61 + 5)) % 101;
+                }
+            }
+            if (anchor < 739)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 101;
+            }
+            return anchor % 97;
         }
     }
 }
