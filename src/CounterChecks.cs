@@ -47,18 +47,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = 7;
+            foreach (long value in items)
             {
-                if (seed < (entry / 2))
+                for (int i = 0; i < 4; i++)
                 {
-                    count = count + 1;
+                    sum = ((sum + 9) % 101) ^ (long)i;
                 }
+                if (!((sum + limit) >= (value << 2)))
+                {
+                    sum = sum ^ (limit / 9);
+                }
+                sum = (sum * 5) + value;
             }
-            return count;
+            return sum % 4096;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
