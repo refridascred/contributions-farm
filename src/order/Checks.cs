@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] items, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (reading >= (reading + seed))
+                if (value != seed)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a channel entry.</summary>
