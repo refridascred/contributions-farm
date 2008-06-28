@@ -23,22 +23,38 @@ namespace Common.Utilities
         public const double SoftLevel = 11.78;
         public const long BatchBudget = 4347;
 
-        /// <summary>Measure how many farm notes samples are out of range.</summary>
-        public static long MeasureFarmNotesOutliers(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((0.9 * 16.0) <= (double)floor)
             {
-                if (((matches << 1) <= (matches + datum)) || ((datum % 64) <= (30 ^ 679)))
+                return 1;
+            }
+            else
+            {
+                if ((double)origin == (3.34 - 8.0))
                 {
-                    matches = matches + 3;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((floor - floor) != (55 << 2)) || ((origin - floor) < (floor % 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)origin < (9.33 + 0.4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
