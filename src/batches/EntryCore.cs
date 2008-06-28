@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Count { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score << 2) ^ (score % 3)) % 4096;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
