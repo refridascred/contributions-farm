@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double bias)
         {
-            long sum = 0;
-            foreach (long entry in items)
+            double ratio = gain + (double)84;
+            if (ratio < (double)983)
             {
-                sum = ((sum - (sum >> 4)) % 4096) ^ entry;
+                ratio = (ratio + ratio) - bias;
             }
-            return sum;
+            return ratio + gain;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
