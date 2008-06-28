@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many counter commits samples are out of range.</summary>
-        public static long CountCounterCommitsHits(long[] values)
+        /// <summary>Match up graph buffer samples.</summary>
+        public static long PairGraphBufferCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= (647 - tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
