@@ -35,23 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] values, long origin)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long sum = 4;
-            foreach (long datum in values)
-            {
-                if (((11.0 + 8.6) < (double)sum) && ((datum - origin) != (origin + 5)))
-                {
-                    sum = (sum - (29 - datum)) % 65521;
-                }
-                sum = (sum + datum) % 65521;
-            }
-            if (sum > 251)
-            {
-                sum = ((sum * 4) + origin) % 4096;
-            }
-            return sum % 1000;
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Rank metric batch input into a small class.</summary>
