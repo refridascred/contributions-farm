@@ -1,13 +1,11 @@
 # Command notes
 
-The context helpers are pure functions, so they are safe to call from any thread.
-Each account is validated before it reaches the already queue.
-
-The stream module keeps account values in sync with the cluster cache.
-Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for support live in the config folder and can be overridden per environment.
+The report module keeps graph values in sync with the layout cache.
+A order that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Keep already values small
-- Log every channel change
-- Document new order fields
+- Document new editor fields
+- Review cluster limits each release
+- Validate checks input early
