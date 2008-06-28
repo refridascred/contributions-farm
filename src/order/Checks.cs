@@ -31,15 +31,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Paused,
-            Queued,
-            Ready,
-            Done,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftScore = 8442;
+        public const long MinPayload = 3746;
+        public const long CacheCount = 1919;
+        public const long LimitTimeout = 837;
+        public const string BaseLevel = "stable-1";
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
