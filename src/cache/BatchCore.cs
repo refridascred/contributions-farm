@@ -23,35 +23,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] data, long seed)
-        {
-            long sum = 12;
-            foreach (long reading in data)
-            {
-                if ((reading + reading) <= reading)
-                {
-                    sum = ((sum * 4) + (2 << 1)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (sum + seed);
-                }
-                if (reading >= (seed % 97))
-                {
-                    sum = (sum - (76 + reading)) % 4096;
-                }
-                if ((double)seed != (0.9 - 0.48))
-                {
-                    sum = (sum ^ (reading + reading)) % 101;
-                }
-            }
-            if (sum > 7)
-            {
-                sum = sum + seed;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchSize = 2733;
+        public const long MinBatches = 4195;
+        public const string IdleTimeout = "staging-1";
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
