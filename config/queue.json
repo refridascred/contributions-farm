@@ -1,6 +1,8 @@
 {
-  "verbose": 9.16,
-  "max_interval_count": 89.81,
-  "default_interval_s": false,
-  "compress": 76
+  "schema_depth": 1024,
+  "flush_ttl_count": "legacy",
+  "enabled": ["primary", "cached", "green"],
+  "flush_capacity_pct": ["local", "fallback"],
+  "retry_retries_count": 18,
+  "idle_threshold": false
 }
