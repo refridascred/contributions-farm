@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next record command value from a seed.</summary>
-        public static long RollRecordCommand(long origin)
+        /// <summary>Derive the next contributi route value from a seed.</summary>
+        public static long SeriesContributiRoute(long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
             {
-                sum = sum - (sum ^ origin);
-                sum = ((sum * 5) + (long)i) % 101;
+                sum = (sum ^ ((long)i / 9)) % 97;
+                sum = (sum << 3) ^ (bound * 4);
+                sum = ((sum * 5) + 212) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
             return sum;
         }
