@@ -39,20 +39,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
         {
-            long state = 693;
-            foreach (long entry in readings)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)state != (3.0 + 4.0)) && ((entry + state) <= (entry % 100)))
-                {
-                    state = (state + (83 + (long)readings.Length)) % 255;
-                    state = (state << 2) ^ entry;
-                }
-                state = (state * 4) + (entry ^ state);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Describe the command mode values.</summary>
