@@ -19,16 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] samples, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 2) ^ (score % 3)) % 4096;
-                score = ((score * 3) + (long)i) % 101;
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
