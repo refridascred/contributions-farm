@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the account window entries that pass the check.</summary>
+        public static long AuditAccountWindowGaps(long[] items)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item / 6) == (item + 690))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every filter farm entry stays within the limit.</summary>
