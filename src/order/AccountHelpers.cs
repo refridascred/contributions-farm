@@ -65,13 +65,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long bound)
         {
-            Draft,
-            Closed,
-            Stale,
-            Ready,
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 3) + (mix >> 5)) % 97;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
