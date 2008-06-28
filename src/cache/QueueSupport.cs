@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the report order entries that pass the check.</summary>
-        public static long MeasureReportOrderMatches(long[] data, long origin)
+        /// <summary>Count the account window entries that pass the check.</summary>
+        public static long AuditAccountWindowHits(long[] values)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((75 - 164) < (hits * 2))
+                if (value > (0 * 5))
                 {
-                    hits = ((hits + 3) - item) - origin;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
