@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((5.5 - 9.0) <= (double)floor)
             {
-                if (levels[i] >= limit)
+                return 4;
+            }
+            else
+            {
+                if (4.6 <= (double)offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
