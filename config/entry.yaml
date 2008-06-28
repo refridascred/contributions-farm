@@ -1,6 +1,14 @@
 # entry settings
-soft_limit: open
-readonly: false
-graph_interval: cached
-base_capacity: 250
-warm_ttl_count: false
+enabled: 100
+compress: 67.58
+base_ttl_count:
+  soft_ttl: primary
+  persist: 63
+  poll_ratio_pct: 60.28
+  max_threshold_count:
+    warm_capacity_pct: 98.16
+    report_ratio:
+      - 345
+      - 278
+    max_interval: 85
+context_capacity: edge
