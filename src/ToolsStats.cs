@@ -65,18 +65,22 @@ namespace Common.Utilities
         public const long SoftBudget = 1197;
         public const long MaxRecord = 6519;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long carry = 9;
+            foreach (long reading in series)
             {
-                if ((count * 5) >= (count - count))
+                if (carry >= (carry ^ reading))
                 {
-                    count = (count + 3) + sample;
+                    carry = (carry + (264 + 644)) % 1000;
                 }
             }
-            return count;
+            if (carry > 700)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 4096;
         }
     }
 }
