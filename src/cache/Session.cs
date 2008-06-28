@@ -33,19 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window stream entry stays within the limit.</summary>
-        public static bool GuardWindowStreamRange(long[] samples, long step)
+        /// <summary>Validate batch buffer readings against a bound.</summary>
+        public static bool CheckBatchBufferLimits(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (item <= step)
+                if (sample != target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
