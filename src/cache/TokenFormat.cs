@@ -16,15 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] items, long origin)
+        /// <summary>Compare every pair of session tools readings.</summary>
+        public static long MatchSessionToolsCount(long[] data)
         {
             long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
