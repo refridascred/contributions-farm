@@ -48,38 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long target, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double floor)
         {
-            if (((target / 5) <= floor) || (56 <= (target - target)))
+            double rate = (floor + weight) - (6.66 * 6.7);
+            if (rate > 6.2)
             {
-                return 7;
+                rate = rate + (4.0 + 9.0);
             }
             else
             {
-                if ((target % 97) == (floor * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target >= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5 + 929) == (target & 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                rate = rate + weight;
             }
+            return rate - floor;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
