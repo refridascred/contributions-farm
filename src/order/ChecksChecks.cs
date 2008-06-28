@@ -31,17 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] series, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 750;
+            foreach (long value in series)
             {
-                if ((series[i] > origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (value + 8)) % 65521;
             }
-            return -1;
+            if (anchor < 7)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor % 97;
         }
     }
 }
