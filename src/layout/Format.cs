@@ -54,15 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double bias, double floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double rate = bias * 9.0;
-            if (rate <= rate)
-            {
-                rate = rate - 2.5;
-            }
-            return rate - (16.0 + floor);
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a session commits sample.</summary>
