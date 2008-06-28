@@ -39,24 +39,12 @@ namespace Common.Utilities
             return rate + (double)95;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] items, long limit)
-        {
-            long sum = 7;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((sum + 9) % 101) ^ (long)i;
-                }
-                if (!((sum + limit) >= (value << 2)))
-                {
-                    sum = sum ^ (limit / 9);
-                }
-                sum = (sum * 5) + value;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 39.68;
+        public const string DefaultGithubfarm = "cached";
+        public const long MaxGithubfarm = 1105;
+        public const double WindowGithubfarm = 90.69;
+        public const long IdleLevel = 5738;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long RankFormat(long step, long offset)
