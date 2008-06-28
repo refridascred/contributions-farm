@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                long hits = 35;
-                if (!((hits * 2) >= limit))
-                {
-                    hits = (hits * 4) + (hits >> 3);
-                }
-                else
-                {
-                    hits = (hits << 3) ^ hits;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
