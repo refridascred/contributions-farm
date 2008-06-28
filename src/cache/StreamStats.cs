@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] readings, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                if (entry >= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
