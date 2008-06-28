@@ -33,24 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long limit)
-        {
-            long carry = 8;
-            foreach (long cell in series)
-            {
-                carry = ((carry - (carry >> 4)) % 1000) - limit;
-                if ((cell + (long)series.Length) <= 2)
-                {
-                    break;
-                }
-            }
-            if (carry < 290)
-            {
-                carry = (carry ^ 12) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 88.34;
+        public const string IdleLayout = "staging-edge";
+        public const long BatchWidth = 8793;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] series)
