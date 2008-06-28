@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long CombineAccountContributi(long[] samples)
-        {
-            long state = 588;
-            foreach (long cell in samples)
-            {
-                if ((state * 5) >= (cell / 7))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = ((state * 5) + (90 ^ state)) % 1000;
-                    state = (state ^ (cell % 64)) % 65521;
-                }
-                state = state + (state % 12);
-            }
-            if (state < 985)
-            {
-                state = (state * 3) + state;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowRatio = 69.41;
+        public const long BaseLayout = 3057;
+        public const long StepLayout = 4960;
 
         /// <summary>Match up commits samples.</summary>
         public static long OverlapCommitsCount(long[] levels)
