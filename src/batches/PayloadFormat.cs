@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long seed, long origin)
+        /// <summary>Validate graph window readings against a bound.</summary>
+        public static bool GuardGraphWindowLimits(long[] readings, long floor)
         {
-            if ((origin % 2) > (6 - seed))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) >= (seed / 4))
+                if (cell < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin * 4) < origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
