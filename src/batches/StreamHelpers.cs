@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route buffer entry that matches the target.</summary>
-        public static long LookupRouteBufferIndex(long[] items, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] items, long limit)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > step)
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
