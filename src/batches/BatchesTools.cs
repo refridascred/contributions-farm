@@ -30,19 +30,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] items, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long target, long limit)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            if ((target + target) >= target)
             {
-                if (datum <= origin)
+                return 0;
+            }
+            else
+            {
+                if ((double)target >= 9.58)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) > limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
