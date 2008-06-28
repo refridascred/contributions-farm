@@ -24,13 +24,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] values, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((4.69 / 7.0) != (double)count)
+                {
+                    count = ((count + 2) - value) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
