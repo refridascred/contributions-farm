@@ -20,19 +20,18 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (sample <= floor)
+                if (!((hits + (-4)) >= value))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
