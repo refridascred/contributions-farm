@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const string SoftBudget = "latest";
         public const long DefaultChannel = 1320;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Failed,
-            Synced,
-            Ready,
-            Done,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "staging-1";
+        public const long SoftInterval = 7188;
+        public const long StepEditor = 1972;
+        public const string DefaultBudget = "legacy-v2";
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double rate, double bias)
