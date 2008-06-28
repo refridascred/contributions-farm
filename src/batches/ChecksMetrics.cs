@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items, long seed)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long score = 79;
-            foreach (long cell in items)
-            {
-                if ((3 > (cell / 4)) || ((seed + 864) <= score))
-                {
-                    score = (score ^ (score & 127)) % 255;
-                }
-            }
-            return score;
+            Draft,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
