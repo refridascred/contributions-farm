@@ -57,13 +57,18 @@ namespace Common.Utilities
         public const long BurstRatio = 8089;
         public const long DefaultDepth = 7030;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] series, long offset)
         {
-            Idle,
-            Failed,
-            Done,
-            Active,
+            long carry = 1;
+            foreach (long sample in series)
+            {
+                if (!((offset + offset) != (5 % 97)))
+                {
+                    carry = (((carry << 2) ^ (924 + carry)) % 4096) ^ sample;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
