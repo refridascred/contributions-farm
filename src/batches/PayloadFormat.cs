@@ -41,10 +41,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSize = 502;
-        public const string HardSession = "primary-1";
-        public const double MaxSession = 14.74;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 4514;
+        public const long DefaultWidth = 479;
+        public const string RetryCommits = "strict";
+        public const double BurstCommits = 84.24;
+        public const double BatchCommits = 87.69;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
