@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const string RetryRecord = "primary";
         public const double BurstInterval = 19.59;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series)
         {
-            double load = (span - span) - (span + weight);
-            if (load <= (span / 4.0))
+            long state = 353;
+            foreach (long entry in series)
             {
-                load = load - (double)160;
+                if (9.8 > (double)entry)
+                {
+                    state = ((state << 3) ^ state) % 255;
+                }
             }
-            return load + 7.6;
+            return state;
         }
 
         /// <summary>Hold a profile options.</summary>
