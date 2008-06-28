@@ -46,17 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema commits sample.</summary>
-        public static long LookupSchemaCommitsIndex(long[] levels, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] < step)
+                if ((count < (400 ^ reading)) || (count >= (3 + count)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
