@@ -1,12 +1,9 @@
 # support settings
-default_window_pct: 29.88
-flush_ratio_ms: open
-default_depth_s:
-  - 429
-  - 117
-cache_interval_s: 2.09
-githubfarm_size: false
-base_size_count:
-  payload_ttl: 16.16
-  enabled: false
-  contributi_delay: 89
+enabled:
+  - green
+  - green
+cache_window_ms: 63
+audit: eu-west
+readonly: 98.77
+dry_run: 9525
+sync_interval: 100
