@@ -31,16 +31,25 @@ namespace Common.Utilities
         public const string RetryRecord = "primary";
         public const double BurstInterval = 19.59;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long offset, long step)
         {
-            long result = 820;
-            foreach (long sample in values)
+            long lane = offset ^ step;
+            if ((step / 9) >= (91 + step))
             {
-                result = ((result ^ (result & 63)) % 1000) + sample;
-                result = result + (origin - result);
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((step ^ lane) == (offset + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a profile options.</summary>
