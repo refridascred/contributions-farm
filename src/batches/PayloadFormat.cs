@@ -30,13 +30,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            Dropped,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Rank support input into a small class.</summary>
