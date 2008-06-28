@@ -43,14 +43,11 @@ namespace Common.Utilities
             return load + (7.7 * 15.0);
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 3517;
+        public const long WindowSpan = 8339;
+        public const long WindowReport = 9972;
+        public const long BaseTimeout = 1417;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
