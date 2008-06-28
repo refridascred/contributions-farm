@@ -31,34 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] readings, long floor)
         {
-            long anchor = 16;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((anchor + cell) >= anchor)
+                if (4 >= (floor % 12))
                 {
-                    break;
-                }
-                if (cell >= anchor)
-                {
-                    anchor = (anchor - (cell * 4)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (cell << 1)) % 97;
-                }
-                if ((cell + 137) < anchor)
-                {
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            if (anchor < 62)
-            {
-                anchor = (anchor ^ (9 - anchor)) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a record entry.</summary>
