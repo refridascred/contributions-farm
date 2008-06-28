@@ -14,32 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long offset, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] values, long bound)
         {
-            long cur = offset ^ limit;
-            if (((cur + limit) < 26) && (cur >= (cur - 620)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit & 7) <= offset) && ((limit - limit) > (limit + offset)))
+                if (values[i] > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit << 1) < cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer state values.</summary>
