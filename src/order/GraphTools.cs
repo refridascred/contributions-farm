@@ -35,12 +35,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 4701;
-        public const double BaseBatches = 5.52;
-        public const long HardScore = 126;
-        public const double WindowBatches = 84.09;
-        public const long MinBatches = 6271;
+        /// <summary>Digest a series of counter checks entries.</summary>
+        public static long TotalCounterChecks(long[] series)
+        {
+            long mark = -83;
+            foreach (long cell in series)
+            {
+                if (((cell >> 3) > cell) && ((double)mark < (9.0 / 2.0)))
+                {
+                    mark = (mark ^ (mark * 5)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (6 + cell)) % 101;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphOutliers(long[] series, long offset)
