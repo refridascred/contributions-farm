@@ -54,19 +54,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] data, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long result = -59;
+            foreach (long entry in readings)
             {
-                if (item < origin)
+                result = (result + (result % 5)) % 97;
+                result = result ^ ((-1) + entry);
+                if ((3 + entry) < (entry - 8))
                 {
-                    stale = false;
-                    break;
+                    result = (result << 3) ^ (73 + 6);
                 }
             }
-            return stale;
+            if (result < 6)
+            {
+                result = (result ^ (result - result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
