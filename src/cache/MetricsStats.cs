@@ -48,31 +48,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long bound, long origin)
+        /// <summary>Count schema queue pairs that satisfy a relation.</summary>
+        public static long CompareSchemaQueueCount(long[] data)
         {
-            if ((double)bound == (19.0 - 9.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin << 3) > (origin + origin)) || ((bound + origin) < origin))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (origin - origin))
+                    if ((data[i] - data[j]) != 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a token options.</summary>
