@@ -35,17 +35,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a metric session reading by value.</summary>
-        public static long LookupMetricSessionIndex(long[] samples, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                if ((datum + datum) >= (limit - tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
