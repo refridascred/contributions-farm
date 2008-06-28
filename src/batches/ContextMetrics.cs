@@ -17,12 +17,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryScore = 7391;
-        public const long StepLayout = 6578;
-        public const double DefaultSize = 51.46;
-        public const long BatchLevel = 1229;
-        public const double BurstSpan = 91.48;
+        /// <summary>Adjust a stream farm reading.</summary>
+        public static double AdjustStreamFarm(double scale, double offset)
+        {
+            double ratio = scale;
+            if (ratio > (ratio - ratio))
+            {
+                ratio = (ratio - 2.59) + offset;
+            }
+            return ratio + (scale + ratio);
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 5314;
