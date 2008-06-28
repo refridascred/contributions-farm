@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const string MinCounter = "staging-v2";
         public const string LimitCounter = "cached-1";
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double rate, double offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double ratio = (double)0 + (double)0;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (((ratio - (1.0 * 5.29)) + (double)(long)i) - rate) - offset;
-            }
-            return ratio - ratio;
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
