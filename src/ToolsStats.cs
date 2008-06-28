@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next record contributi value from a seed.</summary>
-        public static long DeriveRecordContributi(long bound)
+        /// <summary>Derive the next record command value from a seed.</summary>
+        public static long RollRecordCommand(long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                sum = sum - (sum ^ origin);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
