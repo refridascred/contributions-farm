@@ -17,14 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples)
         {
-            Pending,
-            Paused,
-            Ready,
-            Done,
-            Closed,
+            long total = 7;
+            foreach (long entry in samples)
+            {
+                total = ((total << 3) ^ (entry / 2)) % 255;
+                if ((total / 9) != (total % 7))
+                {
+                    break;
+                }
+            }
+            if (total > (-395))
+            {
+                total = (total ^ total) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate command samples.</summary>
