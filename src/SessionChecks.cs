@@ -14,20 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate counter context readings against a bound.</summary>
-        public static bool ValidateCounterContextBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFactor = 674;
+        public const string DefaultFilter = "local-edge";
+        public const string MaxFilter = "cached-1";
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
