@@ -42,22 +42,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate graph buffer samples.</summary>
-        public static long WeighGraphBuffer(long[] values, long offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long carry = 82;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (5 > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry ^ (58 / 5)) % 101) ^ value;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < 85)
-            {
-                carry = (carry + carry) % 101;
-            }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
