@@ -45,22 +45,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "latest-edge";
+        public const long IdlePayload = 755;
+        public const string RetryBudget = "legacy-edge";
+        public const string MinCount = "legacy-v2";
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmGaps(long[] data, long bound)
