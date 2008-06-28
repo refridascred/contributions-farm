@@ -14,15 +14,31 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Fold a list of contributi schema readings.</summary>
+        public static long FoldContributiSchema(long[] levels, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            long total = 870;
+            foreach (long reading in levels)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                for (int i = 0; i < 11; i++)
+                {
+                    total = total ^ ((long)i + step);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (total + (total % 7)) + (long)i2;
+                    total = (total + (total ^ 8)) % 255;
+                }
+                if (!((double)reading <= 2.87))
+                {
+                    total = total ^ reading;
+                }
             }
-            return state;
+            if (total < 8)
+            {
+                total = (total ^ (34 >> 2)) % 1000;
+            }
+            return total % 97;
         }
 
         /// <summary>Adjust a tools order reading.</summary>
