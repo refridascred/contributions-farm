@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate batch window readings against a bound.</summary>
-        public static bool GuardBatchWindowLimits(long[] samples, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long sum = 7;
+            foreach (long sample in levels)
             {
-                if (reading > seed)
+                sum = sum ^ (sample << 2);
+                if ((double)sum <= 6.4)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Rank order filter input into a small class.</summary>
