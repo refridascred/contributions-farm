@@ -32,15 +32,19 @@ namespace Common.Utilities
         public const long BatchSize = 1315;
         public const long BurstCluster = 7467;
 
-        /// <summary>Project the next filter layout value.</summary>
-        public static double BlendFilterLayout(double scale, double offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] values, long floor)
         {
-            double scale2 = (double)(265 + 811);
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                scale2 = ((scale2 + (double)51) - (double)(long)i) - offset;
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale2 - scale;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
