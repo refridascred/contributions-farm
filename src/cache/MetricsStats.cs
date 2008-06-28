@@ -63,11 +63,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double bias, double bias2)
+        /// <summary>Audit commits entry readings against a rule.</summary>
+        public static long TallyCommitsEntryHits(long[] readings)
         {
-            double load = bias2 + (bias + bias2);
-            return load + (double)213;
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally + tally) == (entry & 63))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
