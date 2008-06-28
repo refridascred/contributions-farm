@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many order token samples are out of range.</summary>
+        public static long MeasureOrderTokenMatches(long[] items, long bound)
         {
-            Synced,
-            Ready,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!(bound < (bound << 1)))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
