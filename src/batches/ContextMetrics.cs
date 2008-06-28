@@ -48,17 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes profile sample.</summary>
-        public static long SeekNotesProfileIndex(long[] items, long limit)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Combine window values into a single score.</summary>
