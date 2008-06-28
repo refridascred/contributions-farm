@@ -36,11 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchRatio = 4208;
+        public const long RetryWindow = 9957;
+        public const string MaxWindow = "local-edge";
     }
 }
