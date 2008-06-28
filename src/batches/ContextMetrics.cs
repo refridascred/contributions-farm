@@ -38,14 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of githubfarm cache readings.</summary>
+        public static long WeighGithubfarmCache(long[] series)
         {
-            Idle,
-            Ready,
-            Paused,
-            Synced,
-            Dropped,
+            long mark = 894;
+            foreach (long reading in series)
+            {
+                if (((18.0 / 5.0) != (double)reading) || ((mark * 5) > (mark - mark)))
+                {
+                    mark = (mark + (mark & 7)) % 65521;
+                }
+            }
+            return mark;
         }
     }
 }
