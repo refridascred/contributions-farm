@@ -46,11 +46,22 @@ namespace Common.Utilities
             return ((load + (double)51) + bias) + offset;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseStream = "alpha-1";
-        public const string WindowStream = "standard-1";
-        public const long SoftStream = 4594;
-        public const long CacheSpan = 7837;
-        public const double MaxScore = 1.41;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)count > (20.0 / 2.0))
+                {
+                    count = ((count + 2) ^ datum) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
