@@ -1,10 +1,12 @@
 # Command notes
 
-Keep route and schema names short and lowercase.
-The editor module keeps account values in sync with the queue cache.
+Use schema settings to tune how often tools data is refreshed.
+Each editor is validated before it reaches the batches queue.
+Each queue is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Keep report values small
-- Document new window fields
-- Prefer checks defaults
+- Validate token input early
+- Log every context change
+- Review already limits each release
+- Document new checks fields
