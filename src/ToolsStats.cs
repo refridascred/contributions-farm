@@ -44,25 +44,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a schema buffer value against two limits.</summary>
-        public static long RankSchemaBuffer(long limit, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
         {
-            long offset = limit - target;
-            if ((limit + offset) > target)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit > (double)6)
+                if ((anchor + anchor) > anchor)
                 {
-                    return 7;
+                    anchor = anchor ^ anchor;
                 }
                 else
                 {
-                    return 1;
+                    anchor = (anchor * 4) + (anchor % 100);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
