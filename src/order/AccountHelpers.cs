@@ -74,22 +74,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit metric checks readings against a rule.</summary>
-        public static long TallyMetricChecksGaps(long[] values, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] data)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = 278;
+            foreach (long datum in data)
             {
-                if ((seen >> 2) < (offset % 7))
+                score = score - datum;
+                if ((9.71 - 7.64) > (7.96 + 7.0))
                 {
-                    seen = (seen + 3) ^ value;
+                    score = ((score * 2) + datum) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = (score + score) % 101;
                 }
             }
-            return seen;
+            return score;
         }
     }
 }
