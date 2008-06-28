@@ -22,20 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long origin, long step)
         {
-            long acc = 425;
-            foreach (long sample in data)
+            if (((step & 3) != (origin % 8)) && ((step & 1) >= (origin + step)))
             {
-                if ((acc * 5) <= (acc + sample))
-                {
-                    acc = (acc ^ (sample & 127)) % 255;
-                    acc = (acc + 0) % 255;
-                }
-                acc = ((acc << 3) ^ acc) % 101;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (origin < (step * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
