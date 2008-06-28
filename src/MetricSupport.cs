@@ -16,30 +16,32 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long target, long step)
         {
-            long total = 72;
-            foreach (long sample in samples)
+            long span = target - step;
+            if (((8.0 - 5.0) > (double)target) && (9.0 > (double)span))
             {
-                if (((sample / 3) > (sample / 5)) && ((double)total != (0.1 + 8.1)))
+                return 1;
+            }
+            else
+            {
+                if (((target - step) < target) || ((double)target <= 3.0))
                 {
-                    total = ((total * 2) + (total - sample)) % 4096;
+                    return 7;
                 }
-                if (((sample + sample) > (total + 967)) || (total > sample))
+                else
                 {
-                    total = (total * 5) + (sample + 3);
-                }
-                if ((double)sample > (5.8 + 8.0))
-                {
-                    break;
+                    if ((4.68 > (double)step) && ((double)14 >= (double)span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (total < 91)
-            {
-                total = total - total;
-            }
-            return total % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
