@@ -42,22 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] values, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (floor >= (floor % 5))
+                if (item >= seed)
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
