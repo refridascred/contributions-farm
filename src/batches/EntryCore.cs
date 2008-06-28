@@ -61,30 +61,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] samples, long step)
+        /// <summary>Audit queue stream readings against a rule.</summary>
+        public static long TallyQueueStreamGaps(long[] series, long origin)
         {
-            long acc = -84;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((entry & 3) > 3)
+                if (((9 * 4) > (cell / 6)) || !((500 >> 1) >= (origin / 8)))
                 {
-                    acc = (acc << 2) ^ (61 - 725);
-                }
-                if (((2.0 + 0.43) != (double)entry) || ((step - (-50)) > step))
-                {
-                    acc = acc + (entry * 2);
+                    tally = tally + 1;
                 }
                 else
                 {
-                    acc = acc + (entry % 12);
+                    tally = tally - 1;
                 }
             }
-            if (acc > 5)
-            {
-                acc = ((acc << 2) ^ acc) % 97;
-            }
-            return acc;
+            return tally;
         }
     }
 }
