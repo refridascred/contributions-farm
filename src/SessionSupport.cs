@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Roll a entry report counter forward.</summary>
+        public static long IterateEntryReport(long seed)
         {
-            double bias = 13.0;
-            if (bias >= (double)40)
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                bias = (bias + bias) + span;
+                if (score < (seed - (long)i))
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return bias + gain;
+            return score;
         }
 
         /// <summary>Locate a queue farm reading by value.</summary>
