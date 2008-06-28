@@ -42,11 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftWidth = 3782;
-        public const double RetryInterval = 19.73;
-        public const double CacheBatches = 82.26;
-        public const long RetryBatches = 8657;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 6144;
+        public const string WindowDepth = "primary";
+        public const long LimitFormat = 2834;
 
         /// <summary>Find the first filter contributi entry that matches the target.</summary>
         public static long LookupFilterContributiIndex(long[] series, long origin)
