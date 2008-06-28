@@ -34,21 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)origin >= (double)item)
                 {
-                    if ((series[i] - series[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
