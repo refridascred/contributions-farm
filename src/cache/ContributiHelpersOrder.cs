@@ -36,19 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a buffer already reading.</summary>
-        public static double AdjustBufferAlready(double weight, double floor)
-        {
-            double load = floor;
-            if (load < floor)
-            {
-                load = (load - (load - load)) + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (floor * 6.0)) + (double)(long)i;
-            }
-            return load - 7.49;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 2940;
+        public const double MinCommits = 63.21;
+        public const long BatchCommits = 491;
     }
 }
