@@ -1,5 +1,16 @@
 {
-  "burst_limit_ms": 57.98,
-  "retry_depth": false,
-  "dry_run": 56.18
+  "window_ratio": "primary",
+  "hard_limit_pct": "strict",
+  "warm_interval_pct": {
+    "readonly": false,
+    "hard_window": 90,
+    "default_depth_s": "primary"
+  },
+  "base_ratio": {
+    "hard_threshold_ms": ["eu-west", "cached", "local", "standard"],
+    "burst_interval_s": false,
+    "dry_run": ["primary", "latest", "legacy", "green"]
+  },
+  "sync_retries": 250,
+  "verbose": "green"
 }
