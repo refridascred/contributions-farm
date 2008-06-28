@@ -32,18 +32,13 @@ namespace Common.Utilities
         public const double BatchTimeout = 78.15;
         public const long BatchCommand = 9466;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] items, long step)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long total = 14;
-            foreach (long datum in items)
-            {
-                if ((datum + 518) <= ((long)items.Length + step))
-                {
-                    total = (total ^ (datum % 16)) % 1000;
-                }
-            }
-            return total % 1000;
+            Stale,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
