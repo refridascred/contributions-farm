@@ -41,12 +41,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 4514;
-        public const long DefaultWidth = 479;
-        public const string RetryCommits = "strict";
-        public const double BurstCommits = 84.24;
-        public const double BatchCommits = 87.69;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
