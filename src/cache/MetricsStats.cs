@@ -46,18 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] readings, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (4 >= (floor % 12))
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
