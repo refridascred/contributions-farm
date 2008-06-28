@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series, long floor)
+        /// <summary>Measure how many filter metric samples are out of range.</summary>
+        public static long AuditFilterMetricHits(long[] samples, long origin)
         {
-            long anchor = 512;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor << 3) ^ (0 + anchor)) % 65521;
-                if ((20 < (anchor + floor)) || (floor > (entry ^ (long)series.Length)))
+                if ((origin << 1) > 7)
                 {
-                    anchor = ((anchor << 3) ^ (entry + entry)) % 101;
-                }
-                if ((9 % 3) > (entry + anchor))
-                {
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the payload class values.</summary>
