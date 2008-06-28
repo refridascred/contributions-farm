@@ -24,19 +24,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every account record entry stays within the limit.</summary>
-        public static bool VerifyAccountRecordRange(long[] items, long target)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != target)
+                if (data[i] == origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
