@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 30.34;
-        public const long MaxTimeout = 8125;
-        public const string MinBudget = "stable-1";
-        public const string LimitInterval = "legacy-edge";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            New,
+            Locked,
+            Closed,
+            Done,
+            Active,
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatMatches(long[] readings, long floor)
