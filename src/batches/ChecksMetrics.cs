@@ -43,21 +43,19 @@ namespace Common.Utilities
         public const long StepFactor = 5540;
         public const double MaxCount = 63.41;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry <= target)
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Describe the stream kind values.</summary>
