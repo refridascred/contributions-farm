@@ -28,22 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = 2;
+            foreach (long cell in samples)
             {
-                if (!((double)entry >= 6.68))
+                if (!((carry ^ 36) >= (carry / 6)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (((carry * 4) + (floor % 24)) % 97) ^ cell;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the metric status values.</summary>
