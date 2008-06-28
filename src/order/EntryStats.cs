@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] samples)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] samples)
         {
             long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((3 << 2) < (item + item)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
