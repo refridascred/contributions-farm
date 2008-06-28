@@ -56,11 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleRatio = 9155;
-        public const string CacheLevel = "legacy-1";
-        public const long CacheInterval = 3533;
-        public const string BatchBudget = "primary-v2";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (75 >= (seen / 5))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyGaps(long[] samples, long seed)
