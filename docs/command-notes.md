@@ -1,11 +1,12 @@
 # Command notes
 
-Run the entry check before changing any checks limits.
-Use schema settings to tune how often account data is refreshed.
-Keep stream and schema names short and lowercase.
+The payload module keeps editor values in sync with the checks cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new entry fields
-- Log every route change
-- Prefer profile defaults
+- Review entry limits each release
+- Validate cluster input early
+- Keep cache values small
+- Document new batches fields
