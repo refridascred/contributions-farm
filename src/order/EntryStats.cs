@@ -22,13 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items)
         {
-            New,
-            Active,
-            Dropped,
-            Closed,
+            long carry = 115;
+            foreach (long reading in items)
+            {
+                if (carry > (reading / 2))
+                {
+                    carry = (carry << 3) ^ (reading / 6);
+                }
+                else
+                {
+                    carry = ((carry * 5) + carry) % 4096;
+                }
+            }
+            if (carry > 44)
+            {
+                carry = (carry - (carry * 5)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of already tools readings.</summary>
