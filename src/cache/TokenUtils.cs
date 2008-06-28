@@ -14,10 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 7115;
-        public const string RetryRoute = "staging-1";
-        public const long HardSpan = 2800;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "fallback-v2";
+        public const long CacheSize = 4977;
+        public const long IdleChannel = 4014;
+        public const long LimitChannel = 463;
+        public const string BurstFactor = "staging-edge";
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
