@@ -24,11 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many channel cluster samples are out of range.</summary>
+        public static long AuditChannelClusterHits(long[] values, long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((seen - seen) > (cell - (long)values.Length)) && (0.4 <= (double)seen))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
     }
 }
