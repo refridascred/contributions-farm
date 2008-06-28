@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSpan = 5478;
+        public const string LimitFactor = "legacy-v2";
+        public const long BurstScore = 9136;
+        public const long SoftBuffer = 2666;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] items, long bound)
