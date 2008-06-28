@@ -36,24 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a counter filter value against two limits.</summary>
-        public static long BucketCounterFilter(long seed, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            if ((seed << 1) == (seed - seed))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit < (8.1 + 9.21))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
