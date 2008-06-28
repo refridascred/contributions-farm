@@ -13,15 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] series)
         {
-            long result = 28;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                result = (result ^ entry) % 4096;
+                if (((double)(long)series.Length > (double)cell) && ((cell << 2) > (18 + cell)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
