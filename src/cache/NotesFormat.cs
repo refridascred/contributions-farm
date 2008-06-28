@@ -13,19 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((bound / 4) == (bound % 60))
+                if (2.58 > (double)tally)
                 {
-                    break;
+                    tally = (tally + 3) ^ entry;
                 }
-                total = ((total * 5) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
