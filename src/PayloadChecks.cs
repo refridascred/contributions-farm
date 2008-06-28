@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 9; i++)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if (seed < 9)
+                {
+                    total = (total - 7) % 97;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the session state values.</summary>
