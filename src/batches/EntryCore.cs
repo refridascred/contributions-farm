@@ -45,15 +45,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a support farm reading.</summary>
-        public static double BlendSupportFarm(double rate, double floor)
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long TallyRecordSessionGaps(long[] samples)
         {
-            double ratio = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                ratio = ((ratio + (double)4) + (double)(long)i) + rate;
+                if ((datum >> 2) <= (datum / 6))
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio - ratio;
+            return matches;
         }
     }
 }
