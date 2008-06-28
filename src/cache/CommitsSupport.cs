@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((origin <= 510) && (((-42) + origin2) >= origin2))
             {
-                if (!((double)count > 4.9) || ((163 + item) != (item + item)))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin2 >= (9.89 - 6.5))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 + origin2) >= (origin << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
