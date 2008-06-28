@@ -65,18 +65,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits % 97) >= (datum & 15))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Stale,
+            Ready,
         }
     }
 }
