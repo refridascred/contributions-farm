@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double scale, double span)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            double load = 5.71;
-            return (load + span) + scale;
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many filter metric samples are out of range.</summary>
