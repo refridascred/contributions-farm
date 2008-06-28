@@ -34,38 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long target, long limit)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            if (limit < (limit ^ limit))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target - limit) == (limit * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)target < 9.0))
+                    if ((series[i] - series[j]) < 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((3.13 / 6.0) <= (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
