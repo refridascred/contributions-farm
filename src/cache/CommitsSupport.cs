@@ -96,18 +96,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] items)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches - 92) <= (sample - sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
