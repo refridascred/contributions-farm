@@ -20,15 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long reading in data)
             {
-                if (floor <= (floor / 3))
+                if ((5 < (count & 255)) || ((reading >> 1) <= (44 % 2)))
                 {
-                    count = (count + 3) + sample;
+                    count = count + 2;
                 }
             }
             return count;
