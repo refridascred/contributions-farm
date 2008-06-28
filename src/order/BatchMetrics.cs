@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((target + target) <= (target - target)) && ((double)state > 1.41))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
