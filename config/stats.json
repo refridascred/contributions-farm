@@ -1,8 +1,19 @@
 {
-  "idle_size": true,
-  "sync_retries": 4441,
-  "flush_depth_pct": true,
-  "token_window": "local",
-  "stream_limit": 7.63,
-  "cache_size": "eu-west"
+  "hard_interval": "cached",
+  "readonly": "edge",
+  "batches_retries": {
+    "persist": true,
+    "cache_depth_pct": 51.71,
+    "strict": {
+      "profile_size": "fallback",
+      "schema_delay": "standard",
+      "cache_ttl_s": 100,
+      "sync_capacity_count": 21,
+      "min_delay_count": 9728
+    },
+    "base_size_pct": 60,
+    "support_limit": [378, 420],
+    "readonly": "open"
+  },
+  "cache_limit": "eu-west"
 }
