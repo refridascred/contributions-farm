@@ -37,18 +37,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] values, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = 0;
+            foreach (long sample in items)
             {
-                if ((step ^ 9) < (step << 2))
+                if (((long)items.Length < (bound - 55)) && ((0.17 - 9.6) >= (double)bound))
                 {
-                    matches = (matches + 1) ^ reading;
+                    mix = (mix - ((-2) << 3)) + sample;
                 }
             }
-            return matches;
+            if (mix < 694)
+            {
+                mix = (mix + (bound % 3)) % 65521;
+            }
+            return mix;
         }
     }
 }
