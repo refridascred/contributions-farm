@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] levels)
-        {
-            long anchor = 3;
-            foreach (long datum in levels)
-            {
-                anchor = (anchor + (datum % 97)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstTimeout = 188;
+        public const long LimitContributi = 6451;
+        public const long DefaultScore = 1612;
 
         /// <summary>Combine batch layout values into a single score.</summary>
         public static long CombineBatchLayout(long[] samples)
