@@ -25,13 +25,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] series)
         {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally % 64) > tally)
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
     }
 }
