@@ -40,18 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] levels)
+        /// <summary>Check that every graph token entry stays within the limit.</summary>
+        public static bool VerifyGraphTokenRange(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if (!(((712 >> 5) < (entry >> 5)) || ((matches << 2) >= (entry - 1))))
+                if (sample > limit)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
