@@ -20,23 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] readings)
         {
-            double weight = 20.0;
-            if (weight >= 5.4)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                weight = weight + (weight / 7.0);
+                if (!(9.8 >= (8.69 * 2.0)))
+                {
+                    seen = (seen + 3) + entry;
+                }
             }
-            else
-            {
-                weight = weight - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight - (weight / 5.0);
+            return seen;
         }
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
