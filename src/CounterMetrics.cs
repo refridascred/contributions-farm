@@ -20,18 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] samples, long bound)
+        /// <summary>Check that every filter farm entry stays within the limit.</summary>
+        public static bool VerifyFilterFarmRange(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((double)entry <= (6.7 / 3.0))
+                if (reading >= floor)
                 {
-                    count = (count + 3) + bound;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
