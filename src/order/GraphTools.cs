@@ -60,18 +60,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + ((long)i - (long)i)) % 101;
-                sum = ((sum * 4) + (sum / 3)) % 101;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 242;
+        public const string MinOrder = "alpha";
+        public const string BatchOrder = "alpha";
 
         /// <summary>Blend two record measurements.</summary>
         public static double BlendRecord(double bias, double span)
