@@ -33,13 +33,16 @@ namespace Common.Utilities
         public const long CacheProfile = 1689;
         public const long IdleProfile = 7508;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] values, long origin)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            long result = 820;
+            foreach (long sample in values)
+            {
+                result = ((result ^ (result & 63)) % 1000) + sample;
+                result = result + (origin - result);
+            }
+            return result;
         }
 
         /// <summary>Hold a profile options.</summary>
