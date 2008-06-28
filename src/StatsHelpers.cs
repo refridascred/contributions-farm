@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Synced,
-            Queued,
-            Failed,
             Closed,
+            New,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
