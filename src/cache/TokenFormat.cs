@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double gain, double offset)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            double ratio = (double)(6 / 9);
+            if (ratio < gain)
+            {
+                ratio = (ratio - (gain * 3.6)) + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
