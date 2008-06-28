@@ -72,15 +72,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of stats payload entries.</summary>
-        public static long TotalStatsPayload(long[] data, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] readings, long target)
         {
-            long anchor = 9;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (((anchor << 2) ^ (offset - anchor)) % 101) - entry;
+                if ((readings[i] < target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Describe the channel state values.</summary>
