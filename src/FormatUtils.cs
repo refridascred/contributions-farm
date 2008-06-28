@@ -63,17 +63,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first graph cluster entry that matches the target.</summary>
-        public static long FindGraphClusterIndex(long[] values, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (values[i] >= offset)
+                if (((5.1 + 2.31) < (double)matches) && ((datum - seed) < (matches + (long)data.Length)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a cluster tools reading.</summary>
