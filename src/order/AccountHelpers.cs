@@ -65,19 +65,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] values, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] series)
         {
-            bool found = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (item > bound)
+                if ((double)entry < (double)count)
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
