@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            long mix = 443;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 3) ^ mix) % 1000;
-                if (11.0 > (double)datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - (datum / 3);
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Project the next graph value.</summary>
