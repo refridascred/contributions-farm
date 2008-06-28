@@ -30,18 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = 3;
+            foreach (long cell in data)
             {
-                if ((datum + datum) >= (limit - tally))
+                if (527 < (sum & 7))
                 {
-                    tally = tally + 1;
+                    sum = (((sum << 2) ^ limit) % 97) + cell;
+                }
+                else
+                {
+                    sum = (sum - sum) % 1000;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
     }
 }
