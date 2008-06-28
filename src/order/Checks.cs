@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long bound)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            if (((step - step) != (step & 127)) && ((step & 1) == (bound / 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 2) > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - step) < (9 * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
