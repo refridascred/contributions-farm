@@ -41,13 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
