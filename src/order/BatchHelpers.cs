@@ -14,19 +14,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double gain, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items, long step)
         {
-            double load = offset;
-            if (load >= gain)
+            long total = 36;
+            foreach (long sample in items)
             {
-                load = load + (double)211;
+                if ((total - total) > (75 * 4))
+                {
+                    total = ((total - 730) - sample) - step;
+                }
+                else
+                {
+                    total = (total + total) % 4096;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (total < (-63))
             {
-                load = load - (double)(long)i;
+                total = (total * 5) + total;
             }
-            return load + 7.58;
+            return total;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
