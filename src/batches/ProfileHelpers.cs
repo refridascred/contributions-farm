@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] data, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long carry = 8;
+            foreach (long sample in values)
             {
-                if (sample <= bound)
+                if (((sample ^ carry) >= (carry - carry)) || ((sample - sample) < (carry / 5)))
                 {
-                    valid = false;
-                    break;
+                    carry = carry ^ (carry - carry);
                 }
             }
-            return valid;
+            return carry % 97;
         }
 
         /// <summary>Project the next buffer queue value.</summary>
