@@ -77,11 +77,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepSpan = "stable-v2";
-        public const long BaseFactor = 4682;
-        public const long IdleProfile = 9129;
-        public const double HardProfile = 65.14;
-        public const long StepFactor = 4541;
+        /// <summary>Find the first context cache entry that matches the target.</summary>
+        public static long SeekContextCacheIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
