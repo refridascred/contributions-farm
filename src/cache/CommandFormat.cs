@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] levels, long offset)
         {
-            Dropped,
-            Failed,
-            Pending,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up commits samples.</summary>
