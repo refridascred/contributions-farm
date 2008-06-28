@@ -1,12 +1,10 @@
 {
-  "compress": 58.38,
-  "soft_ttl_ms": {
-    "base_capacity_pct": 0.47,
-    "base_size_pct": 2150,
-    "soft_capacity": 60.2
+  "farm_window": {
+    "context_threshold": "standard",
+    "burst_ratio_ms": 60,
+    "min_ttl_pct": 39.73
   },
-  "buffer_threshold": 5,
-  "tools_ratio": 7863,
-  "sync_delay": 51,
-  "schema_size": 89.27
+  "command_ratio": 16.08,
+  "hard_limit_count": ["edge", "blue", "fallback"],
+  "max_size": [33, 46]
 }
