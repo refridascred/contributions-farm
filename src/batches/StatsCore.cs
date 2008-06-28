@@ -26,11 +26,11 @@ namespace Common.Utilities
             return weight2 + (offset - weight);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "legacy-1";
-        public const double SoftSpan = 32.81;
-        public const long SoftFormat = 6742;
-        public const string HardWidth = "cached-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstBudget = 1744;
+        public const long RetryQueue = 8278;
+        public const string MinCount = "alpha";
+        public const double WindowQueue = 78.61;
 
         /// <summary>Check that every graph token entry stays within the limit.</summary>
         public static bool VerifyGraphTokenRange(long[] series, long limit)
