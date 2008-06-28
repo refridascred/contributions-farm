@@ -58,22 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch schema samples are out of range.</summary>
-        public static long AuditBatchSchemaOutliers(long[] series, long step)
+        /// <summary>Find the first graph cluster entry that matches the target.</summary>
+        public static long FindGraphClusterIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((2.0 / 6.0) > (double)count) && ((step % 5) > count))
+                if (values[i] >= offset)
                 {
-                    count = (count + 3) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a channel entry.</summary>
