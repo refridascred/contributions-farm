@@ -22,18 +22,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] values)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double bias2 = (double)(8 + (-95));
+            if (bias2 > (11.0 / 5.0))
             {
-                if (tally < 921)
-                {
-                    tally = (tally + 2) - item;
-                }
+                bias2 = (bias2 - gain) - bias;
             }
-            return tally;
+            return bias2 + (gain * 9.39);
         }
 
         /// <summary>Hold a command entry.</summary>
