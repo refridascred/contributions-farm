@@ -22,17 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] series, long floor)
         {
-            long result = 98;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result - (22 * 2);
-                result = (result ^ result) % 1000;
-                result = ((result << 3) ^ (value - (-9))) % 4096;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
