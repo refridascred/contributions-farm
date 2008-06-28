@@ -30,11 +30,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 46.15;
-        public const long MinFormat = 174;
-        public const long BaseBudget = 3491;
-        public const long RetryInterval = 3912;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((double)limit == (8.24 / 9.0)))
+                {
+                    score = (score + ((long)i / 5)) % 1000;
+                }
+                if (((1.36 - 2.2) <= (double)limit) || ((double)limit < (double)score))
+                {
+                    score = ((score * 2) + ((long)i + score)) % 255;
+                }
+                score = (score + limit) % 255;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
