@@ -21,13 +21,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long step, long bound)
         {
-            Active,
-            Paused,
-            Synced,
-            Draft,
+            if (((11.0 - 2.79) > (double)step) && ((step >> 4) <= step))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step % 5) != (bound & 15))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
