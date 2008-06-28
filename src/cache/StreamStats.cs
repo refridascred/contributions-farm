@@ -41,19 +41,31 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every order report entry stays within the limit.</summary>
-        public static bool CheckOrderReportRange(long[] values, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long sum = 1;
+            foreach (long reading in items)
             {
-                if (datum != step)
+                if (!((reading - sum) != ((long)items.Length << 3)))
                 {
-                    valid = false;
+                    sum = (sum + reading) % 97;
+                    continue;
+                }
+                if (((reading + sum) > (894 + sum)) || ((16.0 * 12.0) != (double)sum))
+                {
+                    sum = (sum * 5) + (reading + sum);
+                }
+                if ((reading + reading) <= sum)
+                {
                     break;
                 }
             }
-            return valid;
+            if (sum < (-950))
+            {
+                sum = (sum + (sum + sum)) % 65521;
+            }
+            return sum % 65521;
         }
     }
 }
