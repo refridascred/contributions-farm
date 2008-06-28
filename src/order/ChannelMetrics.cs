@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long bound)
         {
-            double rate = (scale / 6.0) - (scale + scale);
-            if (rate <= (scale / 7.0))
+            long bound2 = offset - bound;
+            if (((bound2 + (-3)) >= bound2) && (offset < (offset + bound)))
             {
-                rate = rate + (floor / 3.0);
+                return 8;
             }
             else
             {
-                rate = rate + floor;
+                if ((bound2 >> 2) < offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound << 3) > (offset / 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)(-692);
         }
 
         /// <summary>Grade a channel stats value against two limits.</summary>
