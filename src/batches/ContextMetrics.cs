@@ -12,10 +12,27 @@ namespace Common.Utilities
         public const string HardSchema = "standard";
         public const long BurstWidth = 2192;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitTimeout = 1813;
-        public const long BaseOrder = 2977;
-        public const long BurstBudget = 5174;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series)
+        {
+            long anchor = 95;
+            foreach (long item in series)
+            {
+                if (((item >> 5) <= item) || ((anchor / 4) <= (item ^ item)))
+                {
+                    anchor = (anchor << 2) ^ (anchor - (long)series.Length);
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (anchor - item)) % 65521;
+                }
+            }
+            if (anchor < 4)
+            {
+                anchor = ((anchor << 3) ^ ((long)series.Length / 2)) % 4096;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 5314;
