@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double span)
         {
-            Retry,
-            Pending,
-            Paused,
-            Ready,
+            double load = 2.0;
+            if (load < (1.0 + scale))
+            {
+                load = load - 4.0;
+            }
+            else
+            {
+                load = load - (load + span);
+            }
+            return load + (load - load);
         }
 
         /// <summary>Hold a payload stats.</summary>
