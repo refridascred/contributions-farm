@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "alpha-1";
+        public const long WindowMetrics = 6951;
+        public const long BatchSpan = 9657;
+        public const long BaseDepth = 150;
+        public const string BaseTimeout = "cached";
 
         /// <summary>Fold a list of contributi schema readings.</summary>
         public static long FoldContributiSchema(long[] levels, long step)
