@@ -32,13 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Locked,
-            Retry,
-            Paused,
+            Closed,
             Stale,
+            Queued,
+            Idle,
         }
 
         /// <summary>Derive the next githubfarm payload value from a seed.</summary>
