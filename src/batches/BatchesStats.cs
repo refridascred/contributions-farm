@@ -40,15 +40,14 @@ namespace Common.Utilities
             return load + (span + load);
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Locked,
+            Draft,
+            Failed,
+            Closed,
         }
     }
 }
