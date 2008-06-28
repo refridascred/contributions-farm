@@ -19,24 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order notes value against two limits.</summary>
-        public static long GradeOrderNotes(long floor, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double rate, double offset)
         {
-            if ((floor > (origin << 3)) && ((floor + floor) < (60 + origin)))
+            double mean = rate;
+            if (mean < 4.7)
             {
-                return 7;
+                mean = (mean + mean) - offset;
             }
             else
             {
-                if ((origin << 3) != (origin % 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
+                mean = mean + rate;
             }
+            return mean - (double)0;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
