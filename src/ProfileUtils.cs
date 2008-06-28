@@ -47,23 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster report samples are out of range.</summary>
-        public static long AuditClusterReportMatches(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)bound <= (double)tally)
-                {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 8323;
+        public const string LimitLevel = "latest";
+        public const long MaxContributi = 4979;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] samples, long seed)
