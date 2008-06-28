@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseBudget = "fallback-edge";
-        public const long BaseSpan = 2065;
-        public const long BaseQueue = 732;
-        public const long BaseCount = 6617;
-        public const long RetryQueue = 7952;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool ValidateFarmBounds(long[] data, long offset)
