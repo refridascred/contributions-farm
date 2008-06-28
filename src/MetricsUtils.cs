@@ -65,17 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (readings[i] <= step)
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
