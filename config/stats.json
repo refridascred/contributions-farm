@@ -1,31 +1,5 @@
 {
-  "sync_size": 250,
-  "min_ratio_ms": "blue",
-  "verbose": {
-    "compress": {
-      "base_retries": 500,
-      "cluster_ratio": false,
-      "dry_run": 9,
-      "session_interval": "edge",
-      "audit": 52,
-      "token_threshold": 2720
-    },
-    "tools_size": 98,
-    "poll_size_ms": 60,
-    "default_window_s": "blue",
-    "audit": 27.65
-  },
-  "idle_delay": true,
-  "min_depth": 1853,
-  "min_capacity_count": {
-    "idle_threshold_pct": 60,
-    "metrics_capacity": true,
-    "audit": {
-      "dry_run": ["primary", "local", "open", "blue"],
-      "cluster_timeout": ["edge", "eu-west", "legacy", "primary"],
-      "schema_ratio": "legacy"
-    },
-    "default_retries": 66,
-    "account_window": false
-  }
+  "enabled": [148, 221, 17],
+  "hard_capacity_ms": "stable",
+  "warm_depth_s": [145, 174, 386, 67]
 }
