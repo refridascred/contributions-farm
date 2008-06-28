@@ -1,10 +1,12 @@
 {
-  "command_timeout": 7930,
-  "hard_threshold": {
-    "retry_threshold": true,
-    "checks_ttl": 250,
-    "idle_threshold_pct": 19,
-    "warm_limit_pct": true
-  },
-  "batch_limit": "latest"
+  "hard_delay": 8651,
+  "cache_window": 46.46,
+  "audit": 5032,
+  "stats_size": {
+    "verbose": 82,
+    "cache_interval": true,
+    "flush_limit_s": 67,
+    "cache_window_pct": 250,
+    "counter_size": 17.61
+  }
 }
