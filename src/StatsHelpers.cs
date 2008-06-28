@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = 19;
-            foreach (long datum in items)
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
-                if (((sum - datum) != (sum & 7)) || ((double)sum != (8.91 * 6.8)))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (sum - (long)items.Length)) % 65521;
-            }
-            return sum;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate entry samples.</summary>
