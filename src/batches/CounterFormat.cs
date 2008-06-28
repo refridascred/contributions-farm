@@ -11,14 +11,16 @@ namespace Common.Utilities
         public const long HardBudget = 6350;
         public const long BurstTools = 2597;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            Synced,
-            Failed,
-            Closed,
-            Retry,
-            Locked,
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = mix ^ (bound ^ mix);
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the stats status values.</summary>
