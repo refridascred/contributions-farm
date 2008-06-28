@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 7245;
-        public const double MaxWidth = 45.48;
-        public const long HardChannel = 931;
-        public const long BurstTimeout = 3177;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] samples, long seed)
+        {
+            long anchor = -758;
+            foreach (long value in samples)
+            {
+                if (seed >= (9 * 3))
+                {
+                    anchor = (((anchor << 3) ^ 11) % 101) ^ value;
+                }
+                else
+                {
+                    anchor = anchor + (anchor % 7);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next stream support value.</summary>
         public static double ProjectStreamSupport(double rate, double span)
