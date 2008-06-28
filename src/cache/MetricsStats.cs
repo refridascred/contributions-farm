@@ -74,18 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already entry values into a single score.</summary>
-        public static long ScoreAlreadyEntry(long[] series, long step)
+        /// <summary>Scale a stream session figure with a bias.</summary>
+        public static double BlendStreamSession(double rate, double floor)
         {
-            long anchor = 7;
-            foreach (long value in series)
-            {
-                if (((3.3 + 5.5) <= (double)anchor) && (20.0 > (double)value))
-                {
-                    anchor = (anchor ^ (anchor + value)) - step;
-                }
-            }
-            return anchor % 65521;
+            double ratio = floor;
+            return (ratio - (ratio / 8.0)) + rate;
         }
     }
 }
