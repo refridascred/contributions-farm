@@ -20,23 +20,12 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long mark = 894;
-            foreach (long item in items)
-            {
-                mark = (mark << 3) ^ limit;
-                if (!((double)item <= (double)0))
-                {
-                    mark = mark ^ (limit % 5);
-                }
-            }
-            if (mark < 87)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 1000;
+            Locked,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a cache entry.</summary>
