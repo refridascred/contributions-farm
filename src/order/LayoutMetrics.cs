@@ -16,15 +16,32 @@ namespace Common.Utilities
             return scale - (double)2;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double offset)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long floor)
         {
-            double gain = (offset / 4.0) / 7.0;
-            if (gain < (double)738)
+            long edge = limit ^ floor;
+            if ((double)limit <= 8.65)
             {
-                gain = (gain - (gain * 12.0)) + ratio;
+                return 7;
             }
-            return gain + (17.0 * 20.0);
+            else
+            {
+                if ((floor + edge) < limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 7) >= (edge % 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
