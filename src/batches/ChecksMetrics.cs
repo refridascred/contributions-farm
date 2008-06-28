@@ -57,19 +57,11 @@ namespace Common.Utilities
         public const long CacheScore = 4310;
         public const double CacheFilter = 23.81;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = 76;
-            foreach (long value in levels)
-            {
-                total = (total + (total - total)) % 4096;
-                if (total <= (value + total))
-                {
-                    total = total - value;
-                }
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
