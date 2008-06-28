@@ -25,11 +25,9 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Score { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 7971;
+        public const double SoftCommand = 17.11;
+        public const string HardCount = "legacy-v2";
     }
 }
