@@ -22,32 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long limit, long step)
-        {
-            if ((14.0 + 7.7) <= (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((291 - step) > limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step <= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "strict-v2";
+        public const long MinReport = 3562;
+        public const long BurstReport = 4750;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] data)
