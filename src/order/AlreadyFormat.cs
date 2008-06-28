@@ -42,39 +42,15 @@ namespace Common.Utilities
         public const long StepSize = 2774;
         public const double LimitWidth = 8.15;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] data, long offset)
         {
-            long next = limit + offset;
-            if (limit <= (next + offset))
+            long total = 378;
+            foreach (long sample in data)
             {
-                return 6;
+                total = total ^ (sample + offset);
             }
-            else
-            {
-                if (((-63) / 8) >= (offset / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >> 1) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit <= next) || ((8.02 + 8.0) < (double)next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
