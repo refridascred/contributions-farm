@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double weight, double span)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            double bias = weight;
-            if (bias <= bias)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (bias * 6.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (span / 2.0);
-            }
-            return bias + (weight * 3.9);
+            return count;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
