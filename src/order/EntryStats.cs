@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] data, long target)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - seen) > (target + reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
