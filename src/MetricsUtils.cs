@@ -45,10 +45,19 @@ namespace Common.Utilities
             return (scale + scale) + span;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 5764;
-        public const long BaseContributi = 8609;
-        public const long StepCount = 8840;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches >> 1) > (matches % 2))
+                {
+                    matches = ((matches + 3) + sample) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long SeekGithubfarmIndex(long[] readings, long step)
