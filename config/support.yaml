@@ -1,34 +1,12 @@
 # support settings
-sync_delay:
-  retry_ttl_count: 100
-  tools_window: latest
-  strict: open
-  session_depth: 87.14
-idle_size_ms:
-  poll_window_s: false
-  editor_limit:
-    - blue
-    - stable
-    - eu-west
-  strict: legacy
-  context_timeout:
-    - strict
-    - edge
-    - blue
-  batch_retries:
-    batch_size_s:
-      - 389
-      - 487
-    hard_ttl: standard
-    strict: 37.99
-retry_window_pct: cached
-max_ttl_ms: cached
-poll_threshold_ms:
-  audit: 500
-  burst_size_count: 14.69
-  poll_capacity_ms:
-    compress: 60
-    strict: true
-    sync_ttl_ms: 69
-    tools_limit: true
-  session_ratio: true
+default_window_pct: 29.88
+flush_ratio_ms: open
+default_depth_s:
+  - 429
+  - 117
+cache_interval_s: 2.09
+githubfarm_size: false
+base_size_count:
+  payload_ttl: 16.16
+  enabled: false
+  contributi_delay: 89
