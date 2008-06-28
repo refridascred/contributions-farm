@@ -39,19 +39,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate account token samples.</summary>
-        public static long WeighAccountToken(long[] items)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long state = 10;
-            foreach (long entry in items)
-            {
-                state = (state - (191 + entry)) % 97;
-            }
-            if (state < 2)
-            {
-                state = (state + (state % 16)) % 1000;
-            }
-            return state;
+            Queued,
+            Failed,
+            Ready,
         }
     }
 }
