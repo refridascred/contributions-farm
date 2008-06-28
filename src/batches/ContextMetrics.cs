@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterOutliers(long[] items, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((double)hits > 13.0)
+                if ((double)tally > (3.0 + 16.0))
                 {
-                    hits = ((hits + 1) ^ reading) - bound;
+                    tally = ((tally + 2) + reading) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Roll a buffer schema counter forward.</summary>
