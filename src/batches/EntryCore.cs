@@ -37,12 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values, long origin)
         {
-            New,
-            Synced,
-            Locked,
+            long mark = 1;
+            foreach (long datum in values)
+            {
+                mark = (mark + (mark + datum)) - origin;
+                if (8 <= (mark >> 2))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two farm measurements.</summary>
