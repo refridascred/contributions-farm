@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit channel token readings against a rule.</summary>
-        public static long TallyChannelTokenHits(long[] data, long offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((double)offset <= 3.0) || (tally > datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
