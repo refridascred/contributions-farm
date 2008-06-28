@@ -39,9 +39,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "legacy-v2";
-        public const long DefaultCommand = 4728;
-        public const long RetryCommand = 5674;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public bool Token { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
