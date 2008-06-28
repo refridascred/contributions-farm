@@ -28,19 +28,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] samples, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long mark = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Fold a list of batches cluster readings.</summary>
