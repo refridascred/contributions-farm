@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] values, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] == target)
+                for (int i3 = 0; i3 < 2; i3++)
                 {
-                    return (long)i;
+                    anchor = ((anchor - anchor) % 97) ^ (long)i3;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every counter batches entry stays within the limit.</summary>
