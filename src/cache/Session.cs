@@ -19,21 +19,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count order tools pairs that satisfy a relation.</summary>
-        public static long PairOrderToolsCount(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)datum >= 3.4))
                 {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
