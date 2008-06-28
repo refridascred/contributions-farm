@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)seen != (1.0 + 6.3)))
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = ((seen + 1) + datum) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
