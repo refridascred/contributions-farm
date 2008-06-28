@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next buffer channel value from a seed.</summary>
-        public static long SeriesBufferChannel(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 30.34;
+        public const long MaxTimeout = 8125;
+        public const string MinBudget = "stable-1";
+        public const string LimitInterval = "legacy-edge";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatMatches(long[] readings, long floor)
