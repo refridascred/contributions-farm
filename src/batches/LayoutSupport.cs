@@ -38,18 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] values)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((((664 - datum) <= (tally * 3)) || (datum > (datum % 24))) || (tally >= datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up cluster samples.</summary>
