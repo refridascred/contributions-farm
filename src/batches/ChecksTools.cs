@@ -40,16 +40,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result << 3) ^ (result / 3)) % 97;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheSize = 57.16;
+        public const long BurstCluster = 529;
+        public const string LimitCluster = "staging-edge";
+        public const long HardCluster = 6489;
+        public const double CacheCluster = 65.54;
     }
 }
