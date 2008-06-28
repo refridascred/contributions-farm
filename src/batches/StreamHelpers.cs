@@ -32,18 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] data)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally >= (tally / 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - datum;
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
