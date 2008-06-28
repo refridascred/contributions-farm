@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] data, long target)
         {
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits % 24) < (2 << 1))
+                {
+                    hits = ((hits + 2) + value) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the counter class values.</summary>
