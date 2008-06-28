@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] levels, long seed)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((count ^ 34) >= (datum % 97)) && (datum >= seed))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a route payload pair into a bucket.</summary>
