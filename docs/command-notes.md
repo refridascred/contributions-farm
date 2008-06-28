@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-The report module keeps graph values in sync with the layout cache.
-A order that stays idle for too long is moved to the record list.
+Use tools settings to tune how often stream data is refreshed.
+Each session is validated before it reaches the format queue.
+
+The schema module keeps buffer values in sync with the notes cache.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new editor fields
-- Review cluster limits each release
-- Validate checks input early
+- Prefer channel defaults
+- Document new record fields
+- Review tools limits each release
