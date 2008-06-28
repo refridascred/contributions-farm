@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine stream commits values into a single score.</summary>
-        public static long DigestStreamCommits(long[] levels, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            long mix = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix << 2) ^ reading) % 4096) + origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Blend two filter measurements.</summary>
