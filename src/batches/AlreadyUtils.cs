@@ -54,18 +54,15 @@ namespace Common.Utilities
         public const double IdleLevel = 44.27;
         public const long SoftSize = 3438;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] readings)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double scale = weight;
+            if (scale < weight)
             {
-                if (3.0 >= (double)sample)
-                {
-                    tally = tally + 1;
-                }
+                scale = scale + weight;
             }
-            return tally;
+            return scale - offset;
         }
     }
 }
