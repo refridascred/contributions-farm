@@ -20,24 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank order filter input into a small class.</summary>
-        public static long SortOrderFilter(long step, long origin)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            if (12.0 < (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((146 + step) <= (origin - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
