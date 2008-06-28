@@ -39,32 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long delta = target + origin;
-            if (origin >= (8 / 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)origin == (14.0 / 2.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(origin < delta))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
