@@ -46,26 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] values)
         {
-            long acc = 504;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (5.3 <= (3.2 * 6.9))
+                if (89 >= (datum + 528))
                 {
-                    acc = (acc - reading) % 1000;
-                }
-                else
-                {
-                    acc = (acc + (acc - reading)) % 101;
+                    tally = tally + 2;
                 }
             }
-            if (acc < (-4))
-            {
-                acc = (acc * 4) + (410 / 6);
-            }
-            return acc % 65521;
+            return tally;
         }
     }
 }
