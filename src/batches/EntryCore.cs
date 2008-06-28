@@ -31,19 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] series, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long carry = 74;
+            foreach (long item in samples)
             {
-                if (entry <= bound)
+                if ((item * 5) >= (item ^ (-29)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + item) % 65521;
                 }
             }
-            return found;
+            if (carry < 29)
+            {
+                carry = (carry - 224) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
