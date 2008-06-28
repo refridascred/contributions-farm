@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Draft,
-            Active,
-            Queued,
-            Stale,
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a context summary.</summary>
