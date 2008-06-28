@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long offset, long step)
+        /// <summary>Compare every pair of account queue readings.</summary>
+        public static long PairAccountQueueCount(long[] series)
         {
-            if ((4 & 15) > offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1.4 < (double)step) && ((0.8 * 5.14) >= (double)offset))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((series[i] ^ series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
