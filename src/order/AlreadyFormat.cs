@@ -70,18 +70,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many stream already samples are out of range.</summary>
-        public static long AuditStreamAlreadyMatches(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((hits & 3) != (entry & 7)) && !((double)(long)samples.Length >= (5.8 + 2.0)))
+                if (values[i] >= offset)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
