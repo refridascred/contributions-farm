@@ -37,22 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            long mark = 3;
-            foreach (long reading in series)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading <= (8.1 - 18.0))
-                {
-                    mark = ((mark << 2) ^ reading) % 65521;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            if (mark > 66)
-            {
-                mark = ((mark << 2) ^ (mark * 2)) % 101;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
