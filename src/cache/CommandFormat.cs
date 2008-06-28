@@ -54,18 +54,17 @@ namespace Common.Utilities
         public const long BurstRatio = 8089;
         public const long DefaultDepth = 7030;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series, long offset)
+        /// <summary>Locate a batch batches reading by value.</summary>
+        public static long FindBatchBatchesIndex(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > (seen - 5))
+                if ((series[i] < target) && ((series[i] % 5) == 0))
                 {
-                    seen = (seen + 1) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
