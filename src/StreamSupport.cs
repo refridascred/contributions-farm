@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
+            public long Level { get; set; }
             public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
             public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the queue class values.</summary>
