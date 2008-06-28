@@ -1,7 +1,7 @@
 {
-  "format_interval": "cached",
-  "default_window_count": 250,
-  "retry_window": 35,
-  "readonly": false,
-  "min_timeout_count": "local"
+  "format_interval": "fallback",
+  "channel_depth": "latest",
+  "strict": "legacy",
+  "cache_window": "standard",
+  "batches_delay": "standard"
 }
