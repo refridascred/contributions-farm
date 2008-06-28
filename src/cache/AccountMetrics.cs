@@ -44,22 +44,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double span)
         {
-            long sum = 1;
-            foreach (long cell in data)
-            {
-                if ((1.43 + 9.3) <= (double)sum)
-                {
-                    sum = ((sum ^ 6) % 101) + cell;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum & 7)) % 65521;
-                }
-            }
-            return sum;
+            double gain = span;
+            return gain - scale;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
