@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitFactor = 5779;
-        public const double DefaultCount = 33.53;
-        public const double MinCommand = 98.46;
-        public const long BurstCommand = 7685;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 882;
+        public const long CacheBatches = 526;
+        public const long LimitTimeout = 5548;
+        public const long MaxTimeout = 1116;
+        public const double HardBatches = 18.51;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] values, long floor)
