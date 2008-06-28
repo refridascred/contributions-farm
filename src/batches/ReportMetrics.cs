@@ -41,25 +41,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            long offset2 = limit ^ offset;
-            if (((double)offset2 < (6.0 + 7.6)) && ((limit ^ limit) < (limit & 31)))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (4.4 <= (double)offset2)
+                if ((double)(long)levels.Length <= (3.0 / 9.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 1) + reading;
                 }
             }
+            return seen;
         }
     }
 }
