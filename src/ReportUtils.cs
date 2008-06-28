@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the session route entries that pass the check.</summary>
-        public static long MeasureSessionRouteHits(long[] readings, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (8 < (tally & 255))
+                if (readings[i] == limit)
                 {
-                    tally = ((tally + 3) ^ entry) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
