@@ -60,19 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long anchor = 22;
-            foreach (long entry in values)
-            {
-                anchor = ((anchor << 3) ^ (478 ^ entry)) % 97;
-                if ((anchor / 9) > (13 + entry))
-                {
-                    anchor = (anchor - (90 << 3)) % 65521;
-                }
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
