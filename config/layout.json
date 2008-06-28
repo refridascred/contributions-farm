@@ -1,7 +1,8 @@
 {
-  "audit": 66.8,
-  "enabled": false,
-  "entry_interval": "staging",
-  "persist": [24, 500],
-  "session_ttl": "strict"
+  "counter_threshold": 49,
+  "verbose": 250,
+  "payload_retries": true,
+  "min_timeout_count": 80.92,
+  "hard_limit_count": ["fallback", "primary"],
+  "hard_threshold_s": 250
 }
