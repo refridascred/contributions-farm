@@ -38,22 +38,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long target, long bound)
         {
-            long acc = 520;
-            foreach (long datum in levels)
+            long span = target + bound;
+            if (((-479) - span) == (344 - 844))
             {
-                if (!(acc > (acc >> 3)))
+                return 7;
+            }
+            else
+            {
+                if (((1.0 * 8.49) < (double)span) || (span >= (span % 10)))
                 {
-                    acc = (acc + (acc << 1)) + datum;
+                    return 2;
+                }
+                else
+                {
+                    if ((616 + 43) > (bound ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((span + bound) < (target / 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc > 65)
-            {
-                acc = (acc + (acc % 60)) % 65521;
-            }
-            return acc % 65521;
         }
     }
 }
