@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] values)
         {
-            Paused,
-            Pending,
-            Ready,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry * 4) < (entry << 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
