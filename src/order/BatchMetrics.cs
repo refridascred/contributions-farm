@@ -24,18 +24,13 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Accumulate githubfarm order samples.</summary>
-        public static long CombineGithubfarmOrder(long[] samples)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long state = -800;
-            foreach (long cell in samples)
-            {
-                if ((cell >> 4) < (state ^ state))
-                {
-                    state = (state + (state ^ state)) % 1000;
-                }
-            }
-            return state % 1000;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
