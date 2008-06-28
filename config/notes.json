@@ -1,7 +1,12 @@
 {
-  "token_ratio": "staging",
-  "warm_window": true,
-  "queue_ttl": "open",
-  "burst_window": 24,
-  "base_timeout_ms": "edge"
+  "buffer_interval": 75,
+  "context_depth": "edge",
+  "enabled": false,
+  "default_capacity_pct": {
+    "retry_ratio_ms": 45,
+    "warm_window_count": [383, 237, 224],
+    "payload_timeout": 250
+  },
+  "base_delay_s": false,
+  "poll_limit": "open"
 }
