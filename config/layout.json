@@ -1,6 +1,6 @@
 {
-  "warm_threshold_ms": true,
-  "dry_run": "green",
-  "cache_depth_s": "standard",
-  "stream_ttl": 2993
+  "warm_ratio": 30,
+  "strict": false,
+  "burst_window": 30,
+  "flush_ttl_pct": 16.26
 }
