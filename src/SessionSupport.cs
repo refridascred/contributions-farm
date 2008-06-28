@@ -27,17 +27,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Locate a queue farm reading by value.</summary>
-        public static long SeekQueueFarmIndex(long[] values, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of channel farm entries.</summary>
