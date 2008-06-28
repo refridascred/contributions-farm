@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const string MinCount = "alpha";
         public const double WindowQueue = 78.61;
 
-        /// <summary>Check that every graph token entry stays within the limit.</summary>
-        public static bool VerifyGraphTokenRange(long[] series, long limit)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            double gain = (double)(949 + 13);
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = (gain + (rate - bias)) + (double)(long)i;
             }
-            return stale;
+            return gain - (double)66;
         }
 
         /// <summary>Define record limits and defaults.</summary>
