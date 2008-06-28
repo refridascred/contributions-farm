@@ -1,25 +1,7 @@
 {
-  "strict": "standard",
-  "token_interval": {
-    "compress": ["green", "legacy", "local"],
-    "burst_retries_pct": "stable",
-    "account_capacity": "open",
-    "layout_retries": 26.58,
-    "counter_capacity": false,
-    "default_delay_pct": ["strict", "blue", "stable", "green"]
-  },
-  "warm_timeout_s": {
-    "hard_delay_count": 74,
-    "hard_threshold": "edge",
-    "enabled": "staging",
-    "route_interval": {
-      "min_ratio": "stable",
-      "retry_timeout_pct": 87,
-      "hard_size": 66,
-      "max_depth_count": "edge",
-      "batches_ttl": 68,
-      "enabled": true
-    },
-    "max_interval": [266, 150, 348]
-  }
+  "warm_threshold_count": "green",
+  "default_threshold_count": 1.08,
+  "burst_ratio": 37,
+  "graph_ratio": 5061,
+  "readonly": [294, 456, 142]
 }
