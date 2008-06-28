@@ -1,6 +1,10 @@
-id,owner,count
-1,green,standard
-2,39.43,87.97
-3,79.91,750
-4,primary,open
-5,eu-west,eu-west
+id,count,active
+1,primary,local
+2,local,blue
+3,78,358
+4,59.9,202
+5,strict,standard
+6,40.35,standard
+7,71.18,976
+8,edge,stable
+9,edge,419
