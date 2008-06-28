@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const string BaseRoute = "latest-edge";
         public const long RetryCount = 9063;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
