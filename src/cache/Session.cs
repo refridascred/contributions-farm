@@ -19,18 +19,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] series)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double weight2 = (span / 4.0) - (weight + span);
+            if (weight2 >= (double)1)
             {
-                if (!((double)datum >= 3.4))
-                {
-                    seen = seen + 2;
-                }
+                weight2 = weight2 + weight;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + (span + weight)) + (double)(long)i;
+            }
+            return weight2 - (weight * 3.0);
         }
 
         /// <summary>Fold a list of support readings.</summary>
