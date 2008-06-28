@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many buffer filter samples are out of range.</summary>
-        public static long AuditBufferFilterGaps(long[] values)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((item * 4) >= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
