@@ -1,4 +1,10 @@
 # support settings
-warm_delay_ms: 17
-hard_ratio: 1024
-min_depth_s: true
+flush_window_ms: 7495
+layout_limit: primary
+sync_retries_count: 29.65
+session_capacity: legacy
+dry_run: strict
+editor_depth:
+  - 69
+  - 7
+  - 382
