@@ -22,19 +22,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
     }
 }
