@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
