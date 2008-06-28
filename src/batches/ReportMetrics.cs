@@ -39,18 +39,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count the already batches entries that pass the check.</summary>
-        public static long AuditAlreadyBatchesGaps(long[] values)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (676 < (datum - tally))
+                if (item < seed)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
