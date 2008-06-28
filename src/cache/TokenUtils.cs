@@ -34,11 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public double Score { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultDepth = 8014;
+        public const long BaseReport = 9903;
+        public const long DefaultSize = 3998;
     }
 }
