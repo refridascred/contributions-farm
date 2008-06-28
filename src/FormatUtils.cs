@@ -48,15 +48,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double span)
+        /// <summary>Audit command filter readings against a rule.</summary>
+        public static long TallyCommandFilterMatches(long[] values, long limit)
         {
-            double rate = scale + scale;
-            if (rate < rate)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                rate = (rate - (double)932) - span;
+                if ((double)reading > (5.2 * 3.02))
+                {
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate + (double)53;
+            return matches;
         }
 
         /// <summary>Roll a window counter forward.</summary>
