@@ -50,11 +50,19 @@ namespace Common.Utilities
             return load + (rate * 4.7);
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long target)
         {
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate stream samples.</summary>
