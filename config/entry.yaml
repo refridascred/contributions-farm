@@ -1,23 +1,24 @@
 # entry settings
-readonly: 23.3
-base_timeout:
-  route_interval: false
-  compress: 95
-  payload_window: open
-  sync_ttl_ms: 250
-  poll_depth: stable
-  burst_limit: stable
-strict: staging
-max_timeout:
-  compress:
-    - stable
-    - eu-west
-    - strict
-  commits_timeout: 6.41
-  max_window:
-    - open
-    - eu-west
-    - strict
-    - staging
-  checks_delay: local
-  min_ttl_pct: legacy
+sync_ttl_count:
+  verbose:
+    enabled:
+      - local
+      - legacy
+      - open
+    readonly: 1450
+    farm_ttl: 100
+  strict:
+    - cached
+    - standard
+    - blue
+    - latest
+  enabled: stable
+readonly: 80.0
+min_limit_count: 51
+profile_ttl:
+  - local
+  - primary
+  - eu-west
+  - eu-west
+flush_window_ms: 3860
+soft_window_ms: 44.34
