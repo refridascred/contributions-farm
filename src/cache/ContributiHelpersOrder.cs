@@ -36,9 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 2940;
-        public const double MinCommits = 63.21;
-        public const long BatchCommits = 491;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+        }
     }
 }
