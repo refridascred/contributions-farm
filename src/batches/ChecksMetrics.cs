@@ -41,17 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first metrics cluster entry that matches the target.</summary>
-        public static long LocateMetricsClusterIndex(long[] readings, long origin)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
