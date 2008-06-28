@@ -34,13 +34,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] levels, long bound)
         {
-            Dropped,
-            Failed,
-            Active,
-            Queued,
+            long sum = 998;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = ((sum + (sum * 3)) % 65521) + (long)i;
+                }
+                if ((bound / 9) <= (value / 4))
+                {
+                    sum = ((sum * 5) + (bound - value)) % 97;
+                }
+                else
+                {
+                    sum = (sum ^ (52 + value)) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
