@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const double DefaultEditor = 20.67;
         public const string RetryEditor = "standard-1";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] series)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long item in series)
             {
-                if (((cell < (tally + 7)) && (tally > (cell >> 2))) || (((9.23 + 0.6) >= (double)tally) && (tally > (703 ^ tally))))
+                if ((15.0 - 9.6) == (double)tally)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) + item;
                 }
             }
             return tally;
