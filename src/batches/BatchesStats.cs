@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of window entry readings.</summary>
-        public static long DigestWindowEntry(long[] data)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long acc = 38;
-            foreach (long value in data)
-            {
-                acc = (acc + (value ^ acc)) % 1000;
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (acc - acc) - (long)i;
-                }
-                acc = (acc << 2) ^ (value >> 5);
-            }
-            return acc;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the graph state values.</summary>
