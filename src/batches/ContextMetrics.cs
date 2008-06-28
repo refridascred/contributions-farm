@@ -20,12 +20,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepScore = 4711;
-        public const long BurstFactor = 5569;
-        public const long RetryLevel = 6861;
-        public const string MinContributi = "latest-edge";
-        public const double IdleContributi = 51.12;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitTimeout = 1813;
+        public const long BaseOrder = 2977;
+        public const long BurstBudget = 5174;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long LimitRatio = 5314;
