@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] samples, long seed)
+        /// <summary>Locate a metric report reading by value.</summary>
+        public static long LookupMetricReportIndex(long[] samples, long bound)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if ((samples[i] < bound) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
