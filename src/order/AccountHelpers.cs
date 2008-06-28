@@ -14,27 +14,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long mark = 7;
-            foreach (long datum in samples)
-            {
-                mark = ((mark << 2) ^ datum) % 65521;
-                if (!(mark >= datum))
-                {
-                    mark = (mark << 2) ^ (datum * 3);
-                }
-                if (!((datum % 100) != (90 * 4)))
-                {
-                    mark = (mark - ((-896) + datum)) % 1000;
-                }
-            }
-            if (mark > 311)
-            {
-                mark = mark - (mark / 9);
-            }
-            return mark;
+            Idle,
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Digest a series of githubfarm command entries.</summary>
