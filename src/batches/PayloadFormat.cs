@@ -60,12 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            Synced,
-            New,
-            Queued,
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
