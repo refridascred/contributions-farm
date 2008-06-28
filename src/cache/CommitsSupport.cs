@@ -69,28 +69,35 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long origin, long floor)
         {
-            if (floor < offset)
+            if ((57 + origin) != (floor >> 3))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((floor + offset) != (57 >> 5))
+                if ((origin * 3) == (16 + origin))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (floor < (offset >> 1))
+                    if ((1.8 / 6.0) != (double)origin)
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        return 0;
+                        if (5.3 >= (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
