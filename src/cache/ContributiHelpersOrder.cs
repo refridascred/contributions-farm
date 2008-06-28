@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long MinScore = 7789;
         public const string BaseContext = "stable-v2";
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double ratio, double bias)
         {
-            double weight = (6.54 / 2.0) * 9.0;
-            return (weight + scale) + span;
+            double load = (ratio * 9.3) * 6.2;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)(long)i) - bias;
+            }
+            return load + ratio;
         }
 
         /// <summary>Hold a order snapshot.</summary>
