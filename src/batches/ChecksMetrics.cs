@@ -47,20 +47,11 @@ namespace Common.Utilities
         public const long StepFactor = 5540;
         public const double MaxCount = 63.41;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 7965;
+        public const double BatchLevel = 43.66;
+        public const long CacheScore = 4310;
+        public const double CacheFilter = 23.81;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
