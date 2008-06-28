@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] data, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] items)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = -34;
+            foreach (long datum in items)
             {
-                if ((hits % 24) < (2 << 1))
+                if (datum <= (total >> 2))
                 {
-                    hits = ((hits + 2) + value) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = total + (datum & 7);
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
