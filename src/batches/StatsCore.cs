@@ -92,19 +92,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
