@@ -43,21 +43,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Digest a series of stream channel entries.</summary>
+        public static long ScoreStreamChannel(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 8;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score - (score ^ step)) + reading;
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
