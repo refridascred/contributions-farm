@@ -20,18 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long gap = limit ^ seed;
+            if ((limit % 60) >= limit)
             {
-                if (((double)value >= 5.7) && !(count < (count + count)))
+                return 6;
+            }
+            else
+            {
+                if (!((limit - gap) > (limit - seed)))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
