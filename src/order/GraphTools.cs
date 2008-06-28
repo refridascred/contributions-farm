@@ -73,23 +73,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next editor channel value.</summary>
-        public static double BlendEditorChannel(double scale, double span)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double bias, double span)
         {
-            double rate = span - (span / 2.0);
-            if (rate > (span - scale))
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate - (scale * 8.43);
+                scale = (scale - bias) + (double)(long)i;
             }
-            else
-            {
-                rate = rate - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + 9.0;
+            return scale - (span / 9.0);
         }
     }
 }
