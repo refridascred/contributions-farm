@@ -24,18 +24,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] values, long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            double bias = offset * 7.6;
+            if (bias > (offset - bias))
             {
-                if ((4.69 / 7.0) != (double)count)
-                {
-                    count = ((count + 2) - value) + seed;
-                }
+                bias = (bias - 20.0) - gain;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Hold a cluster stats.</summary>
