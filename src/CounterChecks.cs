@@ -15,27 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] data, long floor)
-        {
-            long mix = 73;
-            foreach (long datum in data)
-            {
-                if (((datum + 23) <= floor) && (4.61 >= (double)mix))
-                {
-                    mix = ((mix * 3) + (floor + floor)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ datum;
-                }
-                if ((datum >> 4) == (mix * 3))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MaxEntry = 53.72;
+        public const double LimitInterval = 31.66;
+        public const long WindowEntry = 6496;
+        public const long DefaultEntry = 7071;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] values, long offset)
