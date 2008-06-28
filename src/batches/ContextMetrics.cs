@@ -33,16 +33,19 @@ namespace Common.Utilities
         public const long WindowBatches = 7201;
         public const string WindowSize = "open-v2";
 
-        /// <summary>Roll a buffer schema counter forward.</summary>
-        public static long IterateBufferSchema(long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] items, long offset)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                acc = (acc + 31) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
