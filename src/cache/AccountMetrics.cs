@@ -75,12 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            Closed,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!(tally <= (tally >> 2)) || !(tally > (tally + 7)))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
     }
 }
