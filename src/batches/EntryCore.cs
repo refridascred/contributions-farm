@@ -28,26 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] values)
         {
-            long carry = 8;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((reading - carry) == (carry * 4))
+                if (((count / 8) <= (count - 104)) || ((16.0 - 8.0) > (double)entry))
                 {
-                    carry = (carry * 5) + (reading - (long)values.Length);
-                }
-                else
-                {
-                    carry = carry - 951;
-                }
-                if ((reading ^ carry) == (carry << 3))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
