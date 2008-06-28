@@ -68,17 +68,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = 5.03;
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
+                scale2 = (((scale2 + (double)5) + (double)(long)i) - scale) - offset;
             }
-            return -1;
+            return scale2 + 7.0;
         }
 
         /// <summary>Describe the farm level values.</summary>
