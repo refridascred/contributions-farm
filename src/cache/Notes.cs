@@ -56,24 +56,30 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long target)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values)
         {
-            if (origin >= (287 + origin))
+            long anchor = 50;
+            foreach (long sample in values)
             {
-                return 4;
+                if (!((6.3 * 2.0) != (double)anchor))
+                {
+                    continue;
+                }
+                if ((double)2 >= (double)sample)
+                {
+                    anchor = anchor - (anchor + anchor);
+                }
+                if (((sample >> 2) < (sample * 5)) || ((-553) < (anchor + 71)))
+                {
+                    anchor = ((anchor * 5) + ((-2) ^ anchor)) % 65521;
+                }
             }
-            else
+            if (anchor > 5)
             {
-                if ((33 - origin) >= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
+                anchor = ((anchor << 3) ^ (anchor / 3)) % 4096;
             }
+            return anchor;
         }
     }
 }
