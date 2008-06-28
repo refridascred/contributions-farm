@@ -48,13 +48,18 @@ namespace Common.Utilities
         public const long StepCount = 6281;
         public const long MinTimeout = 829;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] values, long origin)
         {
-            Done,
-            Pending,
-            Closed,
-            Locked,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell < (cell - origin)) || ((double)count == (4.42 * 8.9)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
