@@ -18,31 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry command input into a small class.</summary>
-        public static long ClassifyEntryCommand(long floor, long bound)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] readings, long limit)
         {
-            if (38 >= (bound - 96))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + 62) < bound)
+                if (readings[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((581 >> 4) <= (floor & 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine report values into a single score.</summary>
