@@ -54,19 +54,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((item << 3) != ((-3) / 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardWidth = 19.9;
+        public const long WindowWidth = 5740;
+        public const string WindowTimeout = "alpha-v2";
+        public const long BatchPayload = 3570;
+        public const long BaseWidth = 9069;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportMatches(long[] readings)
