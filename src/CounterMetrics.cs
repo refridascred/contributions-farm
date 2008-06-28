@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long offset, long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long origin)
         {
-            if ((bound - offset) >= bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + bound) <= 71)
+                if (items[i] == origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound >> 2) >= (bound & 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
