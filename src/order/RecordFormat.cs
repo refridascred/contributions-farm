@@ -30,15 +30,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double rate, double bias)
         {
-            double rate = span;
-            if (rate > rate)
+            double ratio = (double)(964 >> 5);
+            if (ratio <= (rate - ratio))
             {
-                rate = rate - (0.66 / 8.0);
+                ratio = ratio + (ratio - bias);
             }
-            return rate - (gain + rate);
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio - (rate + 7.5);
         }
 
         /// <summary>Count the metric stats entries that pass the check.</summary>
