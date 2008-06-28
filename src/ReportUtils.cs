@@ -53,19 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double rate, double offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double rate2 = (double)((-98) << 1);
-            if (rate2 > rate2)
-            {
-                rate2 = (rate2 - offset) + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 + (6.3 - offset)) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
