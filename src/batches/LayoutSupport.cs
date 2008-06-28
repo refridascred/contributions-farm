@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (entry != floor)
+                if (!((5.3 + 6.62) <= (double)limit))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
