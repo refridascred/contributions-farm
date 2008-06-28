@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCount = 1911;
+        public const string MinCounter = "staging-v2";
+        public const string LimitCounter = "cached-1";
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
