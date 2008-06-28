@@ -1,8 +1,5 @@
 {
-  "profile_capacity": 98,
-  "hard_capacity": "fallback",
-  "base_window_ms": "strict",
-  "idle_ratio_pct": 17.01,
-  "sync_timeout_count": "edge",
-  "stats_ratio": 118
+  "route_ratio": "edge",
+  "commits_threshold": "primary",
+  "idle_capacity_s": 9.18
 }
