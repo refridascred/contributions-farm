@@ -42,10 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 6144;
-        public const string WindowDepth = "primary";
-        public const long LimitFormat = 2834;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((89 + cell) <= 76)
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
