@@ -32,18 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels, long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long state = 1;
-            foreach (long datum in levels)
-            {
-                if (((double)datum > 5.19) || ((state - 3) < (state + step)))
-                {
-                    state = ((state << 2) ^ state) % 65521;
-                }
-            }
-            return state % 4096;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
