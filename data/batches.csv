@@ -1,6 +1,7 @@
-id,label,ratio,rank
-1,14.92,primary,73.18
-2,675,latest,eu-west
-3,586,edge,598
-4,446,cached,987
-5,3.44,479,42.66
+id,active,label
+1,stable,523
+2,386,edge
+3,91.52,36.41
+4,cached,613
+5,87.13,green
+6,309,447
