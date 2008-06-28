@@ -22,18 +22,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] values, long bound)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long acc = 359;
-            foreach (long datum in values)
-            {
-                if ((12.0 * 13.0) < (double)1)
-                {
-                    acc = ((acc + (datum + 533)) % 255) - bound;
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
