@@ -14,24 +14,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long bound, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            if ((double)bound == (double)532)
             {
-                if ((364 <= acc) && (96 <= step))
-                {
-                    break;
-                }
-                acc = (acc - (step * 5)) % 65521;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    acc = ((acc ^ (acc + (long)i)) % 97) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((bound > limit) || (bound <= (4 ^ 21)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.3 / 5.0) < (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound + limit) > (bound + bound)) || ((bound ^ 152) < (limit % 100)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
