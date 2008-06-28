@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((((matches & 63) != (item + 25)) && ((324 - matches) <= (item % 2))) && ((item ^ (-47)) <= (matches >> 3)))
+                if ((double)target > (4.76 * 10.0))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a farm record reading by value.</summary>
