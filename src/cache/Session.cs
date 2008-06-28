@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long floor2)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            if ((89 << 1) >= (floor2 % 12))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((656 << 1) <= (floor ^ floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit stream filter readings against a rule.</summary>
