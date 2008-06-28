@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm batch counter forward.</summary>
-        public static long DeriveGithubfarmBatch(long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] readings, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i ^ total) != (37 + total))
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
                 {
-                    total = total + 506;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total << 2) ^ (total & 15);
-                    total = (total << 3) ^ (origin + origin);
-                }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two metric measurements.</summary>
