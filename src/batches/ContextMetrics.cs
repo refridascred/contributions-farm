@@ -28,11 +28,10 @@ namespace Common.Utilities
             return ratio + (scale + ratio);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 5314;
-        public const long StepFactor = 8203;
-        public const long WindowBatches = 7201;
-        public const string WindowSize = "open-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 4272;
+        public const long HardDepth = 4688;
+        public const long HardSize = 6001;
 
         /// <summary>Look up the position of a notes profile sample.</summary>
         public static long SeekNotesProfileIndex(long[] items, long limit)
