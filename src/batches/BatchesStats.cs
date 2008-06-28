@@ -45,13 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
