@@ -30,26 +30,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings, long seed)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double weight, double span)
         {
-            long total = -474;
-            foreach (long item in readings)
-            {
-                if ((total << 3) <= total)
-                {
-                    total = ((total ^ (seed << 1)) % 65521) ^ item;
-                }
-                else
-                {
-                    total = (total * 5) + (total >> 4);
-                }
-            }
-            if (total < 2)
-            {
-                total = total + (seed + seed);
-            }
-            return total;
+            double load = weight;
+            return (load - (9.8 + weight)) + span;
         }
 
         /// <summary>Project the next filter value.</summary>
