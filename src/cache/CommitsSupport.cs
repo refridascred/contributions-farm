@@ -89,12 +89,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
+            double drift = scale;
+            return (drift - scale) + floor;
         }
     }
 }
