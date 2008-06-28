@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate buffer route samples.</summary>
-        public static long TallyBufferRoute(long[] series)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long limit)
         {
-            long score = 56;
-            foreach (long entry in series)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (((-1) + entry) <= score)
-                {
-                    score = ((score * 4) + (entry - entry)) % 97;
-                }
-                score = (score ^ (entry + entry)) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Hold a notes record.</summary>
