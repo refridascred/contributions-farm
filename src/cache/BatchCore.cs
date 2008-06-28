@@ -34,12 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Compare every pair of context commits readings.</summary>
+        public static long CompareContextCommitsCount(long[] samples)
         {
-            Dropped,
-            Closed,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
