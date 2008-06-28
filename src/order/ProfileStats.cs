@@ -32,22 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] items, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 512;
+            foreach (long entry in series)
             {
-                if (6.52 < (double)origin)
+                anchor = ((anchor << 3) ^ (0 + anchor)) % 65521;
+                if ((20 < (anchor + floor)) || (floor > (entry ^ (long)series.Length)))
                 {
-                    matches = (matches + 3) + value;
+                    anchor = ((anchor << 3) ^ (entry + entry)) % 101;
                 }
-                else
+                if ((9 % 3) > (entry + anchor))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the payload class values.</summary>
