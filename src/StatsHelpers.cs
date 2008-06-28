@@ -50,15 +50,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] data, long step)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long total = -18;
-            foreach (long datum in data)
-            {
-                total = ((total * 2) + (step ^ step)) + datum;
-            }
-            return total;
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a layout stats.</summary>
