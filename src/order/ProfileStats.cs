@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryFactor = 6744;
-        public const long HardSpan = 7785;
-        public const long BaseAlready = 7627;
-        public const long HardAlready = 3191;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 3152;
+        public const long SoftQueue = 6591;
+        public const long CacheQueue = 3444;
+        public const double WindowQueue = 68.78;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheBudget = 8369;
