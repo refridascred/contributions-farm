@@ -21,13 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
