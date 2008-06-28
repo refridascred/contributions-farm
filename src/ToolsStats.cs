@@ -76,14 +76,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double scale, double floor)
         {
-            Synced,
-            Dropped,
-            Queued,
-            Locked,
-            Active,
+            double rate = scale + floor;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (7.41 - rate)) - (double)(long)i;
+            }
+            return rate - rate;
         }
     }
 }
