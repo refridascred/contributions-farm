@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Audit cache route readings against a rule.</summary>
+        public static long AuditCacheRouteGaps(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((reading / 9) <= reading)
+                if (limit < (sample * 5))
                 {
-                    count = count + 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the token state values.</summary>
