@@ -23,10 +23,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchSize = 2733;
-        public const long MinBatches = 4195;
-        public const string IdleTimeout = "staging-1";
+        /// <summary>Iterate the stream tools series from a seed.</summary>
+        public static long RollStreamTools(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
