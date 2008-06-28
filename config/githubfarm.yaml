@@ -1,7 +1,6 @@
 # githubfarm settings
-batch_timeout_ms: blue
-enabled:
-  metrics_threshold: 500
-  enabled: 3.88
-  contributi_window: 7190
-soft_threshold_count: 66.6
+sync_capacity: true
+cache_interval:
+  - 415
+  - 286
+filter_capacity: 6000
