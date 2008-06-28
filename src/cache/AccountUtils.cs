@@ -34,14 +34,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long target, long limit)
         {
-            Active,
-            Retry,
-            Ready,
-            Dropped,
-            Pending,
+            if (limit < (limit ^ limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target - limit) == (limit * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)target < 9.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((3.13 / 6.0) <= (double)target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
