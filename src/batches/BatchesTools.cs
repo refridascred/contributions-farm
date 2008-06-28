@@ -30,19 +30,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            long carry = 7;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry * 3) + (carry - 6)) % 1000) - item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry > (-68))
-            {
-                carry = (carry * 5) + (carry * 5);
-            }
-            return carry;
+            return matches;
         }
     }
 }
