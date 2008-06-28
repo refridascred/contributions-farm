@@ -35,18 +35,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!((535 - datum) <= tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 5222;
+        public const long LimitSize = 269;
+        public const string HardScore = "standard-edge";
+        public const double MaxBatch = 46.8;
     }
 }
