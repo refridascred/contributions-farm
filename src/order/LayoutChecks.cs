@@ -50,11 +50,20 @@ namespace Common.Utilities
             return load + (rate * 4.7);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "staging-1";
-        public const string BaseFormat = "fallback-1";
-        public const double RetryDepth = 26.8;
-        public const double BatchFormat = 72.5;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double weight, double floor)
+        {
+            double drift = weight * 10.0;
+            if (drift < floor)
+            {
+                drift = drift + (floor * 0.1);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift + (double)10;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] values)
