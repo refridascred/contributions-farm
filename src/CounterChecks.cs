@@ -61,16 +61,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long step, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            if (256 < (offset - step))
             {
-                acc = (acc - (floor + 9)) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((step - step) <= (offset - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
