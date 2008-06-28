@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long seed, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            if ((origin % 2) > (6 - seed))
             {
-                if (!!((bound & 7) < anchor))
-                {
-                    anchor = (anchor - (7 + (-3))) % 1000;
-                    anchor = anchor ^ (bound * 3);
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((seed - seed) >= (seed / 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin * 4) < origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry kind values.</summary>
