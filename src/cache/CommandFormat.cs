@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Match up commits samples.</summary>
