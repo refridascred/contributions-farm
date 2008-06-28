@@ -50,19 +50,11 @@ namespace Common.Utilities
             return load + (rate * 4.7);
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            double drift = weight * 10.0;
-            if (drift < floor)
-            {
-                drift = drift + (floor * 0.1);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - weight) + (double)(long)i;
-            }
-            return drift + (double)10;
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate stream samples.</summary>
