@@ -28,22 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] levels, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] series, long offset)
         {
-            long state = 5;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (!((origin / 7) != (3 * 5)))
+                if ((double)(-49) == (double)tally)
                 {
-                    state = (state + origin) - item;
+                    tally = ((tally + 2) + item) + offset;
                 }
             }
-            if (state < 22)
-            {
-                state = state + (2 - 591);
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
