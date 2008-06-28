@@ -59,13 +59,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            New,
+            Closed,
             Queued,
-            Ready,
-            Stale,
+            Pending,
+            Done,
+            Retry,
         }
     }
 }
