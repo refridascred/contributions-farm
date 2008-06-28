@@ -36,24 +36,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long bound, long origin)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            if (((3.2 - 11.0) != (double)origin) || ((origin << 3) < (73 + bound)))
+            double scale = offset;
+            if (scale >= scale)
             {
-                return 7;
+                scale = scale + gain;
             }
-            else
-            {
-                if ((origin + bound) > origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return scale - 15.0;
         }
 
         /// <summary>Fold a list of filter session readings.</summary>
