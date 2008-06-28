@@ -27,19 +27,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long state = 48;
-            foreach (long value in data)
-            {
-                state = (state + (263 & 1)) + value;
-            }
-            if (state > 744)
-            {
-                state = ((state * 4) + (state + state)) % 65521;
-            }
-            return state % 97;
+            Draft,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a counter options.</summary>
