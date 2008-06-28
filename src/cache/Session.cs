@@ -19,11 +19,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count order tools pairs that satisfy a relation.</summary>
+        public static long PairOrderToolsCount(long[] readings)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
