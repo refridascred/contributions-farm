@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] data)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double weight = (double)680 + (double)65;
+            if (weight >= (6.6 + offset))
             {
-                if ((9.8 * 1.7) == (double)tally)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
+                weight = (weight + (weight - 3.41)) - scale;
             }
-            return tally;
+            return weight + (3.43 * 6.9);
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
