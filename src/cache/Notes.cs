@@ -46,32 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long target, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] data, long limit)
         {
-            long diff = target ^ origin;
-            if ((diff + diff) <= diff)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.1 / 2.0) != (double)target)
+                if (data[i] >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin == (5.38 + 0.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
