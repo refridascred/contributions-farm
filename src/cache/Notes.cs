@@ -29,21 +29,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Classify a metric route pair into a bucket.</summary>
+        public static long SortMetricRoute(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(floor >= (origin + floor)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor % 16) > (floor / 4))
                 {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
