@@ -50,19 +50,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 3042;
+        public const double BurstProfile = 65.72;
+        public const long IdleDepth = 2759;
     }
 }
