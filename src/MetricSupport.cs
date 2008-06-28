@@ -16,18 +16,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long mix = 468;
-            foreach (long datum in readings)
+            long acc = 846;
+            foreach (long cell in readings)
             {
-                if (!((mix + mix) < datum))
+                if ((acc + cell) > cell)
                 {
-                    mix = (mix - (datum << 3)) - target;
+                    acc = ((acc * 3) + (781 * 5)) % 4096;
                 }
             }
-            return mix % 1000;
+            if (acc < 148)
+            {
+                acc = (acc ^ (acc / 6)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
