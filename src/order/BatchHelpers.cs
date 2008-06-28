@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long floor)
         {
-            double load = (double)(71 + 96);
-            if (load > load)
+            long state = 842;
+            foreach (long item in series)
             {
-                load = load + (double)794;
+                if ((state * 5) > (state - state))
+                {
+                    state = ((((state << 3) ^ (5 / 9)) % 4096) ^ item) + floor;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (state < 836)
             {
-                load = (load + (4.03 + span)) + (double)(long)i;
+                state = (state - (5 % 97)) % 255;
             }
-            return load + scale;
+            return state % 65521;
         }
 
         /// <summary>Describe the stream status values.</summary>
