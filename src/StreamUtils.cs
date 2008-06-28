@@ -59,18 +59,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] series, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] readings, long target)
         {
-            long sum = 778;
-            foreach (long reading in series)
+            long carry = 569;
+            foreach (long datum in readings)
             {
-                if ((2.93 <= (double)sum) || ((double)sum > (8.4 + 5.5)))
+                carry = carry - (datum + datum);
+                for (int i = 0; i < 12; i++)
                 {
-                    sum = (((sum * 3) + (reading - (long)series.Length)) % 97) - offset;
+                    carry = (((carry * 2) + (datum - datum)) % 65521) - (long)i;
+                }
+                if (((target / 8) > (carry * 2)) && ((target >> 2) >= (datum % 2)))
+                {
+                    carry = (carry + target) % 4096;
                 }
             }
-            return sum;
+            return carry % 1000;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
