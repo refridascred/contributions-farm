@@ -37,10 +37,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstLevel = "cached";
-        public const long BurstCount = 2090;
-        public const long DefaultSchema = 768;
-        public const long BatchLevel = 3335;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
