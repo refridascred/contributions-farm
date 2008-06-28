@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] samples, long offset)
         {
-            Failed,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum != (double)963)
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next checks value.</summary>
