@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long origin, long origin2)
-        {
-            if ((origin <= 510) && (((-42) + origin2) >= origin2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin2 >= (9.89 - 6.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 + origin2) >= (origin << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 9313;
+        public const long BatchFactor = 9109;
+        public const long MaxSession = 4233;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportOutliers(long[] samples, long origin)
