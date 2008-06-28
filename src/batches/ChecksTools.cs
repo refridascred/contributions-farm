@@ -20,18 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the schema cache entries that pass the check.</summary>
-        public static long AuditSchemaCacheGaps(long[] readings)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double scale, double span)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double load = scale;
+            if (load < load)
             {
-                if ((double)datum >= (double)hits)
-                {
-                    hits = hits + 3;
-                }
+                load = (load - scale) - span;
             }
-            return hits;
+            return load + load;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
