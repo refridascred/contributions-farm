@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphOutliers(long[] samples)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (6.02 <= (double)hits)
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Closed,
+            Idle,
         }
     }
 }
