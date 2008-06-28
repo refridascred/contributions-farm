@@ -59,10 +59,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitSize = 1807;
-        public const long IdleCommand = 4118;
-        public const string HardCommand = "stable";
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long offset)
+        {
+            if (floor < offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + offset) != (57 >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (floor < (offset >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count farm context pairs that satisfy a relation.</summary>
         public static long OverlapFarmContextCount(long[] levels)
