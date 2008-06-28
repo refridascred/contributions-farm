@@ -16,18 +16,21 @@ namespace Common.Utilities
             return weight + (3.43 * 6.9);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.9 - 3.2) == (double)item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 2) - floor;
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of counter support entries.</summary>
