@@ -39,18 +39,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the commits window entries that pass the check.</summary>
-        public static long CountCommitsWindowOutliers(long[] items, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((double)limit > (5.9 - 11.0))
+                if (datum >= offset)
                 {
-                    count = (count + 2) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
