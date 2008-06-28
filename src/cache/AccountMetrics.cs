@@ -61,27 +61,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats counter samples.</summary>
-        public static long ScoreStatsCounter(long[] readings, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            long anchor = 2;
-            foreach (long sample in readings)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = (anchor + step) % 1000;
-                if (1.13 >= (double)sample)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    anchor = (anchor ^ (long)readings.Length) % 97;
+                    result = (((result << 3) ^ (result + result)) % 4096) ^ (long)i2;
                 }
-                else
+                if ((double)target < (6.62 * 4.19))
                 {
-                    anchor = ((anchor * 2) + (6 + step)) % 97;
+                    result = result - ((long)i / 8);
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor * 2) + (step + anchor);
-            }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the entry phase values.</summary>
