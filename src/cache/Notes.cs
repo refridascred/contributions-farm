@@ -49,19 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] values, long target)
         {
-            double gain = (double)7 * 1.8;
-            if (gain <= (double)0)
+            long tally = 0;
+            foreach (long item in values)
             {
-                gain = (gain + gain) - bias;
+                if ((double)item <= 7.0)
+                {
+                    tally = (tally + 2) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + 8.1) + (double)(long)i;
-            }
-            return gain - ratio;
+            return tally;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
