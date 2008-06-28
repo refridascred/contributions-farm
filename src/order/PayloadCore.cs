@@ -65,12 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] samples, long bound)
         {
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
