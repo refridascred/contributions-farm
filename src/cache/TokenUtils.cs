@@ -12,16 +12,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long target)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state ^ (state % 16);
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
