@@ -64,15 +64,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] levels, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long result = 101;
-            foreach (long reading in levels)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                result = ((result - (reading * 3)) % 4096) + bound;
+                acc = (acc - (floor + 9)) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
     }
 }
