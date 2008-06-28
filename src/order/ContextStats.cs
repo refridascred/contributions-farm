@@ -23,11 +23,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double weight, double span)
+        /// <summary>Roll a route contributi counter forward.</summary>
+        public static long StepRouteContributi(long step)
         {
-            double load = weight;
-            return (load - (9.8 + weight)) + span;
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate stats samples.</summary>
