@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm tools counter forward.</summary>
-        public static long IterateFarmTools(long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor << 3) ^ (seed * 5);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
