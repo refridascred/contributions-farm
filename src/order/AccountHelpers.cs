@@ -37,15 +37,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Retry,
-            Locked,
-            Idle,
-            New,
-            Draft,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchBudget = 9911;
+        public const long BurstOrder = 6837;
+        public const long BurstRatio = 373;
+        public const long StepWidth = 6309;
+        public const long MinOrder = 8316;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long CombineCommits(long[] levels, long offset)
