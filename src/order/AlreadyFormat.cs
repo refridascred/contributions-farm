@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] items, long offset)
-        {
-            long sum = 186;
-            foreach (long cell in items)
-            {
-                sum = ((sum + (7 + sum)) % 65521) + cell;
-            }
-            if (sum < 3)
-            {
-                sum = (sum << 2) ^ (offset / 6);
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryInterval = 42.87;
+        public const double MinSpan = 74.21;
+        public const long BurstFilter = 3721;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] data)
