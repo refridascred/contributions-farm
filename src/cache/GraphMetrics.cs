@@ -20,10 +20,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 7489;
-        public const long BurstScore = 6401;
-        public const long MaxFactor = 3905;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Stale,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] values)
