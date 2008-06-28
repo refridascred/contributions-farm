@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many order stream samples are out of range.</summary>
-        public static long MeasureOrderStreamMatches(long[] series)
+        /// <summary>Fold a list of editor schema readings.</summary>
+        public static long TallyEditorSchema(long[] readings)
         {
-            long count = 0;
-            foreach (long item in series)
+            long carry = 264;
+            foreach (long item in readings)
             {
-                if ((5 + item) <= (item + count))
-                {
-                    count = count + 2;
-                }
+                carry = (((carry << 3) ^ carry) % 65521) + item;
             }
-            return count;
+            if (carry > 32)
+            {
+                carry = ((carry * 4) + (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
