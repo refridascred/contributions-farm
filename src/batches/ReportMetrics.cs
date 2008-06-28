@@ -39,22 +39,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Combine checks support values into a single score.</summary>
-        public static long ScoreChecksSupport(long[] levels, long target)
+        /// <summary>Count the already batches entries that pass the check.</summary>
+        public static long AuditAlreadyBatchesGaps(long[] values)
         {
-            long carry = -78;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (carry <= (datum & 7))
+                if (676 < (datum - tally))
                 {
-                    carry = (carry * 5) + (target << 2);
-                }
-                else
-                {
-                    carry = ((carry * 2) + (carry % 2)) % 255;
+                    tally = tally + 3;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
