@@ -42,19 +42,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxBudget = 6934;
+        public const long MinMetrics = 6490;
+        public const double BurstMetrics = 11.7;
+        public const long LimitMetrics = 395;
     }
 }
