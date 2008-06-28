@@ -44,15 +44,11 @@ namespace Common.Utilities
         public const long DefaultBudget = 884;
         public const long BatchMetric = 582;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetrySpan = 4720;
+        public const string IdleLevel = "local-v2";
+        public const long IdlePayload = 5399;
+        public const double StepWidth = 79.64;
+        public const double DefaultDepth = 13.82;
     }
 }
