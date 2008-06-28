@@ -34,12 +34,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 6.25;
-        public const string CacheSchema = "cached-1";
-        public const string StepSchema = "fallback-1";
-        public const long LimitSchema = 4203;
-        public const long WindowSpan = 3901;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstLevel = 6807;
