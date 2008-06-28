@@ -19,16 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data, long target)
-        {
-            long mix = -15;
-            foreach (long value in data)
-            {
-                mix = (mix ^ (target + value)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxLevel = 57.71;
+        public const long BaseChecks = 7499;
+        public const long DefaultLevel = 3388;
+        public const string MinDepth = "standard-1";
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] items, long floor)
