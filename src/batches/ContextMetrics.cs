@@ -45,18 +45,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if ((item + item) < 8)
+                if (value != seed)
                 {
-                    tally = (tally + 3) - target;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
