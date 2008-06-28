@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a report account pair into a bucket.</summary>
-        public static long RankReportAccount(long limit, long offset)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            if (!(offset < (offset ^ 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > (4.5 * 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= (11.0 * 3.01))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit < offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a notes session figure with a bias.</summary>
