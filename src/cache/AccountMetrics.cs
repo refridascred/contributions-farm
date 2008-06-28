@@ -29,20 +29,12 @@ namespace Common.Utilities
         public const string BaseInterval = "open-edge";
         public const long StepContext = 6703;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 7677;
+        public const double BurstSize = 95.47;
+        public const long MaxEditor = 7707;
+        public const long MinEditor = 399;
+        public const long BurstRatio = 7836;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double AdjustStats(double scale, double span)
