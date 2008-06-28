@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] samples, long origin)
         {
-            Draft,
-            Active,
-            Done,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((origin + origin) < (matches + origin))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
