@@ -79,15 +79,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit buffer editor readings against a rule.</summary>
-        public static long TallyBufferEditorGaps(long[] readings, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] series, long floor)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long item in series)
             {
-                if ((double)8 <= (double)count)
+                if (count > (item - count))
                 {
-                    count = ((count + 3) ^ item) - limit;
+                    count = (count + 3) - floor;
                 }
             }
             return count;
