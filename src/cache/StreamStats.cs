@@ -41,19 +41,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] values, long seed)
+        /// <summary>Check that every order report entry stays within the limit.</summary>
+        public static bool CheckOrderReportRange(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (entry < seed)
+                if (datum != step)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
