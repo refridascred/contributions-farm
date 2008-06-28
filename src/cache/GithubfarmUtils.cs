@@ -26,21 +26,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (27 >= mix)
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (datum / 8)) % 101;
+                }
+                else
+                {
+                    mix = mix ^ datum;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a command entry.</summary>
