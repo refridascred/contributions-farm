@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double gain, double offset)
+        /// <summary>Scale a notes session figure with a bias.</summary>
+        public static double SmoothNotesSession(double bias, double offset)
         {
-            double ratio = (double)(6 / 9);
-            if (ratio < gain)
-            {
-                ratio = (ratio - (gain * 3.6)) + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            double load = (double)(16 << 3);
+            return ((load + (double)51) + bias) + offset;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
