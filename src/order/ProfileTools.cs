@@ -24,11 +24,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 5293;
-        public const string WindowProfile = "cached-1";
-        public const long CacheProfile = 1689;
-        public const long IdleProfile = 7508;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double bias, double offset)
+        {
+            double ratio = offset;
+            if (ratio > ratio)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio + (double)2;
+            }
+            return ratio + (ratio - bias);
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] values, long origin)
