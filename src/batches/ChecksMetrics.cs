@@ -69,12 +69,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Done,
-            Pending,
-            Failed,
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
