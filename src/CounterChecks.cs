@@ -33,18 +33,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double rate = span;
+            if (rate <= (double)23)
             {
-                if (75 >= (seen / 5))
-                {
-                    seen = (seen + 1) + reading;
-                }
+                rate = (rate - rate) - weight;
             }
-            return seen;
+            else
+            {
+                rate = rate - (double)85;
+            }
+            return rate + (double)95;
         }
 
         /// <summary>Combine order values into a single score.</summary>
