@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long acc = 562;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ 57) ^ value;
-                if ((acc * 2) > (acc * 3))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
