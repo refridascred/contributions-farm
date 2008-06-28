@@ -34,40 +34,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long floor, long bound)
-        {
-            long span = floor + bound;
-            if (((3.0 * 0.2) > (double)bound) && (bound <= (floor & 127)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((floor + span) >= (span - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((940 / 7) > bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound * 5) > (floor - span))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleRatio = 4974;
+        public const string MinCluster = "local";
+        public const long BaseRatio = 5360;
 
         /// <summary>Fold a list of context support readings.</summary>
         public static long TallyContextSupport(long[] readings)
