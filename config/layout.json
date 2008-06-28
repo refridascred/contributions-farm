@@ -1,15 +1,8 @@
 {
-  "audit": {
-    "token_threshold": 6673,
-    "min_window_count": 66.71,
-    "batches_retries": ["staging", "open", "local"],
-    "flush_window_count": "strict",
-    "max_ttl": ["blue", "strict", "edge"],
-    "metrics_retries": false
-  },
-  "report_window": 8718,
-  "base_size": 35.83,
-  "batch_delay_s": 30,
-  "min_interval_pct": "standard",
-  "warm_ttl_pct": "open"
+  "githubfarm_ratio": 24,
+  "batch_ttl_pct": "local",
+  "persist": 90,
+  "token_capacity": false,
+  "soft_timeout": 1747,
+  "max_timeout_count": "staging"
 }
