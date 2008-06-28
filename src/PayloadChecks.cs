@@ -29,10 +29,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseBudget = "primary-v2";
-        public const long CacheSize = 9130;
-        public const double MinTimeout = 21.16;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data)
+        {
+            long acc = -498;
+            foreach (long value in data)
+            {
+                if (((double)value < (0.8 / 5.0)) && ((acc * 3) <= (value + value)))
+                {
+                    acc = ((acc << 2) ^ (value + value)) % 1000;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] samples)
