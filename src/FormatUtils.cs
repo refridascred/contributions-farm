@@ -54,17 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long limit)
+        /// <summary>Measure how many batch schema samples are out of range.</summary>
+        public static long AuditBatchSchemaOutliers(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) == 0))
+                if (((2.0 / 6.0) > (double)count) && ((step % 5) > count))
                 {
-                    return (long)i;
+                    count = (count + 3) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
