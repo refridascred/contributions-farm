@@ -31,20 +31,14 @@ namespace Common.Utilities
             return gain2 - (gain * 1.9);
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long anchor = 9;
-            foreach (long item in items)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ item)) % 4096;
-                anchor = (anchor + item) % 65521;
-            }
-            if (anchor > 0)
-            {
-                anchor = (anchor + (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Done,
+            Stale,
+            Synced,
         }
     }
 }
