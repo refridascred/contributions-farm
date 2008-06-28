@@ -61,15 +61,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] readings, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values, long origin)
         {
-            long state = 634;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                state = (((state ^ ((-67) * 3)) % 4096) - sample) - limit;
+                if ((double)origin < (double)seen)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
