@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 6542;
-        public const long LimitFormat = 5887;
-        public const long DefaultDepth = 1604;
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double span)
+        {
+            double bias = 13.0;
+            if (bias >= (double)40)
+            {
+                bias = (bias + bias) + span;
+            }
+            return bias + gain;
+        }
 
         /// <summary>Locate a queue farm reading by value.</summary>
         public static long SeekQueueFarmIndex(long[] values, long target)
