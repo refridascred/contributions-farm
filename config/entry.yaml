@@ -1,6 +1,7 @@
 # entry settings
-enabled:
-  - latest
-  - standard
-profile_window: 6.14
-persist: stable
+route_capacity: edge
+support_threshold: 500
+poll_capacity: 1024
+soft_limit_pct:
+  - local
+  - legacy
