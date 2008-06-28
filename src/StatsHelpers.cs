@@ -31,24 +31,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long anchor = 31;
+            foreach (long value in data)
             {
-                if (!((double)limit == (8.24 / 9.0)))
+                anchor = (anchor + anchor) % 1000;
+                if ((6.8 + 4.0) > (double)value)
                 {
-                    score = (score + ((long)i / 5)) % 1000;
+                    anchor = anchor - anchor;
                 }
-                if (((1.36 - 2.2) <= (double)limit) || ((double)limit < (double)score))
-                {
-                    score = ((score * 2) + ((long)i + score)) % 255;
-                }
-                score = (score + limit) % 255;
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            if (anchor < 898)
+            {
+                anchor = ((anchor << 2) ^ (anchor << 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
