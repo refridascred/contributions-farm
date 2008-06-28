@@ -24,11 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 2143;
-        public const string WindowTimeout = "stable";
-        public const long StepContributi = 5977;
-        public const double DefaultBudget = 95.34;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
