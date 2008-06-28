@@ -37,12 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] values, long offset)
         {
-            Draft,
-            Failed,
-            Stale,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
