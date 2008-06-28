@@ -23,14 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Fold a list of already filter readings.</summary>
+        public static long TotalAlreadyFilter(long[] values)
         {
-            Retry,
-            Done,
-            Active,
-            Failed,
-            Stale,
+            long state = 43;
+            foreach (long cell in values)
+            {
+                if ((state * 2) >= cell)
+                {
+                    state = (state ^ (state ^ cell)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ ((long)values.Length - state)) % 65521;
+                }
+            }
+            if (state < 9)
+            {
+                state = (state + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
