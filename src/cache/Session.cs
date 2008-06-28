@@ -39,32 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long limit, long origin)
-        {
-            if ((double)origin > 2.0)
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (origin * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)limit > (14.0 + 9.8)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 3.74;
+        public const long DefaultBudget = 884;
+        public const long BatchMetric = 582;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long IterateCounter(long seed)
