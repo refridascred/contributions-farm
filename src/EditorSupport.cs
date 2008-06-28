@@ -57,15 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload contributi series from a seed.</summary>
-        public static long SeriesPayloadContributi(long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] data, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (item != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
     }
 }
