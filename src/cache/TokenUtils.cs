@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long floor, long seed)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            if (((double)floor < (double)seed) && ((seed ^ seed) > (48 - 25)))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)seed < (12.0 + 4.91)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.4 / 6.0) == (double)seed)
+                    if ((levels[i] ^ levels[j]) < 17)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
