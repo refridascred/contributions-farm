@@ -61,22 +61,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit queue stream readings against a rule.</summary>
-        public static long TallyQueueStreamGaps(long[] series, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long state = 634;
+            foreach (long sample in readings)
             {
-                if (((9 * 4) > (cell / 6)) || !((500 >> 1) >= (origin / 8)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (((state ^ ((-67) * 3)) % 4096) - sample) - limit;
             }
-            return tally;
+            return state;
         }
     }
 }
