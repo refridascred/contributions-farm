@@ -23,17 +23,23 @@ namespace Common.Utilities
             return ((load + (double)51) + bias) + offset;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] values, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor * 7.59;
+            if (gain >= (floor - floor))
             {
-                if ((values[i] < seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (4.0 - bias);
             }
-            return -1;
+            else
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + 7.0) + (double)(long)i;
+            }
+            return gain - (double)71;
         }
     }
 }
