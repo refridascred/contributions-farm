@@ -37,17 +37,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstLevel = "cached";
+        public const long BurstCount = 2090;
+        public const long DefaultSchema = 768;
+        public const long BatchLevel = 3335;
     }
 }
