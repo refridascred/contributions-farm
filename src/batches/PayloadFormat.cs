@@ -39,13 +39,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            New,
-            Locked,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleCount = 30.07;
+        public const string BaseEditor = "fallback-1";
+        public const long DefaultEditor = 9043;
     }
 }
