@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] items, long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((4.4 / 6.0) < (5.0 * 2.94))
-                {
-                    matches = ((matches + 2) - value) - floor;
-                }
-            }
-            return matches;
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Accumulate batch samples.</summary>
