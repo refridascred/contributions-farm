@@ -24,20 +24,10 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double ratio, double floor)
-        {
-            double weight = (double)((-5) + 8);
-            if (weight >= 3.0)
-            {
-                weight = (weight - weight) - floor;
-            }
-            else
-            {
-                weight = weight - (double)24;
-            }
-            return weight - (ratio - ratio);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 9408;
+        public const long CacheRoute = 7178;
+        public const long BatchRoute = 7836;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long TallyLayoutHits(long[] series)
