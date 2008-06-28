@@ -44,17 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] samples, long offset)
+        /// <summary>Adjust a already entry reading.</summary>
+        public static double SmoothAlreadyEntry(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = offset;
+            if (load <= offset)
             {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
+                load = (load - (double)(-31)) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (7.98 + 4.26)) - (double)(long)i;
+            }
+            return load - offset;
         }
     }
 }
