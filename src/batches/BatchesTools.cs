@@ -25,12 +25,11 @@ namespace Common.Utilities
             return load + (6.4 - bias);
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
