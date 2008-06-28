@@ -19,17 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long limit)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 3;
+            foreach (long sample in levels)
             {
-                if (samples[i] >= limit)
+                if ((double)1 == (double)carry)
                 {
-                    return (long)i;
+                    carry = (carry ^ sample) % 4096;
                 }
             }
-            return -1;
+            if (carry > 56)
+            {
+                carry = carry + 6;
+            }
+            return carry;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
