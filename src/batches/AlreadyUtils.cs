@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every payload queue entry stays within the limit.</summary>
-        public static bool ValidatePayloadQueueBounds(long[] items, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] values)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (cell != target)
+                if (0.8 < (double)matches)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
