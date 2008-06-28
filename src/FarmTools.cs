@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] values, long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double rate, double floor)
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias = floor;
+            return (bias - floor) + rate;
         }
 
         /// <summary>Match up order samples.</summary>
