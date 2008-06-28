@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "standard-1";
-        public const string MaxBatches = "fallback";
-        public const long StepRatio = 5425;
-        public const long MinSize = 7650;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstWidth = 1383;
+        public const double MaxRatio = 22.41;
+        public const long CacheToken = 1580;
+        public const long RetryCount = 2804;
+        public const long BaseToken = 4664;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] samples)
