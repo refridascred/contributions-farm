@@ -65,23 +65,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] data)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] values)
         {
-            long score = 278;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score - datum;
-                if ((9.71 - 7.64) > (7.96 + 7.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score * 2) + datum) % 4096;
-                }
-                else
-                {
-                    score = (score + score) % 101;
+                    if ((values[i] + values[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
     }
 }
