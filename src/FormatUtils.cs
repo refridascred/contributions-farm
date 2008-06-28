@@ -50,11 +50,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double gain, double floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long limit)
         {
-            double bias = floor + gain;
-            return bias + (bias + gain);
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
