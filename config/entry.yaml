@@ -1,7 +1,43 @@
 # entry settings
-compress: false
-soft_capacity_count: 29
-burst_limit_s: 92
-persist: 51.94
-burst_ratio_ms: 2440
-verbose: 33
+idle_window: 3
+verbose:
+  format_depth: 83.7
+  base_retries_ms: stable
+  default_capacity_s:
+    - 393
+    - 463
+  audit: eu-west
+  channel_interval: 19.27
+strict: 7
+readonly:
+  profile_depth:
+    soft_window_pct: false
+    flush_limit_ms: 30
+    audit: 20.46
+  entry_window:
+    - 158
+    - 45
+    - 55
+  session_limit: true
+  hard_threshold: 1024
+  profile_ratio:
+    support_retries: fallback
+    idle_ttl_count: 39
+    editor_ratio: staging
+    compress: false
+    burst_interval_s: 4634
+    max_threshold:
+      - 114
+      - 480
+      - 239
+      - 305
+  persist:
+    - 296
+    - 70
+    - 162
+retry_retries_s: 44
+order_threshold:
+  - 427
+  - 495
+  - 126
+  - 471
