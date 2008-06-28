@@ -40,31 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long seed, long target)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
         {
-            if ((double)target < (3.0 * 8.1))
+            double scale = bias;
+            if (scale > (scale * 4.0))
             {
-                return 8;
+                scale = (scale - (bias - bias)) + ratio;
             }
             else
             {
-                if ((56 * 2) <= (seed % 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 < seed) && ((seed >> 3) >= seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = scale - 1.61;
             }
+            return scale - (double)741;
         }
     }
 }
