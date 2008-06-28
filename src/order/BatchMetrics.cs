@@ -24,13 +24,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] readings, long seed)
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
