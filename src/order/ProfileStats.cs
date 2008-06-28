@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheQueue = 3444;
         public const double WindowQueue = 68.78;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] values)
+        /// <summary>Adjust a githubfarm channel reading.</summary>
+        public static double ProjectGithubfarmChannel(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double load = 4.2 - (8.2 + scale);
+            if (load < (6.1 - floor))
             {
-                if (matches <= 11)
-                {
-                    matches = (matches + 1) ^ item;
-                }
+                load = load - (0.18 + scale);
             }
-            return matches;
+            else
+            {
+                load = load - scale;
+            }
+            return load + floor;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
