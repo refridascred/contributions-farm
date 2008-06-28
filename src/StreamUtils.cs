@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the support layout entries that pass the check.</summary>
-        public static long CountSupportLayoutOutliers(long[] levels, long step)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long score = -7;
+            foreach (long item in samples)
             {
-                if (step <= (step / 2))
-                {
-                    matches = (matches + 3) - datum;
-                }
+                score = (score - (966 + item)) % 4096;
             }
-            return matches;
+            if (score < 76)
+            {
+                score = (score + 6) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
