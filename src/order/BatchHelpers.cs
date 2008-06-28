@@ -39,22 +39,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Accumulate account token samples.</summary>
+        public static long WeighAccountToken(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long state = 10;
+            foreach (long entry in items)
             {
-                if ((entry % 100) != (800 * 2))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = (state - (191 + entry)) % 97;
             }
-            return hits;
+            if (state < 2)
+            {
+                state = (state + (state % 16)) % 1000;
+            }
+            return state;
         }
     }
 }
