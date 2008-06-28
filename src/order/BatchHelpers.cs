@@ -25,13 +25,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long bound)
         {
-            Pending,
-            Retry,
-            Synced,
-            Dropped,
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = (anchor * 2) + ((long)i % 7);
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
