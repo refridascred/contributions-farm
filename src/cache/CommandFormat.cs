@@ -20,25 +20,22 @@ namespace Common.Utilities
             return scale + (floor - bias);
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long bound, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] samples)
         {
-            long step = bound - target;
-            if (((target - 60) < (target ^ step)) && ((double)target > (double)step))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.0 < (double)target) && ((double)target <= (6.29 - 15.0)))
+                if (!(((double)hits > (double)reading) && ((double)hits <= 17.0)))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
