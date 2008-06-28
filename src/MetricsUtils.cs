@@ -61,19 +61,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] data, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell <= limit)
+                if ((7.1 + 0.1) >= (double)total)
                 {
-                    flag = false;
                     break;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return flag;
+            return total;
         }
     }
 }
