@@ -1,7 +1,7 @@
 # githubfarm settings
-soft_ttl_ms: 25
-min_window_pct: 250
-checks_capacity:
-  - 102
-  - 385
-verbose: 9422
+base_ratio: true
+soft_threshold: false
+base_ttl_pct: 23
+batch_ratio: standard
+warm_interval_ms: 6272
+poll_limit_count: true
