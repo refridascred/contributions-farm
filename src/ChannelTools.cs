@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mix = 528;
+            foreach (long cell in values)
             {
-                if ((7.6 * 5.4) > (double)matches)
+                if (cell < (55 ^ mix))
                 {
-                    matches = (matches + 1) + sample;
+                    mix = (mix ^ (mix * 2)) % 65521;
+                }
+                if ((cell / 4) < (mix + mix))
+                {
+                    mix = (mix ^ (bound ^ cell)) % 1000;
                 }
             }
-            return matches;
+            if (mix > 834)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate tools samples.</summary>
