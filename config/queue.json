@@ -1,8 +1,6 @@
 {
-  "editor_ttl": [474, 382],
-  "cache_depth": 7868,
-  "command_threshold": 50,
-  "cache_limit_count": "blue",
-  "retry_window": 89.83,
-  "poll_window": "local"
+  "flush_timeout_count": "primary",
+  "base_window": "fallback",
+  "dry_run": true,
+  "format_timeout": "standard"
 }
