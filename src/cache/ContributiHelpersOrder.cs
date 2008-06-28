@@ -18,18 +18,11 @@ namespace Common.Utilities
             return (weight + scale) + span;
         }
 
-        /// <summary>Measure how many channel cluster samples are out of range.</summary>
-        public static long AuditChannelClusterHits(long[] values, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((seen - seen) > (cell - (long)values.Length)) && (0.4 <= (double)seen))
-                {
-                    seen = (seen + 3) + target;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
