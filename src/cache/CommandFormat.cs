@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long BaseLayout = 3057;
         public const long StepLayout = 4960;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Done,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
