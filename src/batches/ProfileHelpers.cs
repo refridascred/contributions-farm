@@ -34,19 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer queue value.</summary>
-        public static double ProjectBufferQueue(double weight, double span)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double mean = (double)(92 - 9);
-            if (mean >= (double)49)
-            {
-                mean = mean - (span / 4.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (weight - span)) + (double)(long)i;
-            }
-            return mean + (double)482;
+            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
