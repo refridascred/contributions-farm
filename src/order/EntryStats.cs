@@ -51,24 +51,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long result = -59;
-            foreach (long entry in readings)
-            {
-                result = (result + (result % 5)) % 97;
-                result = result ^ ((-1) + entry);
-                if ((3 + entry) < (entry - 8))
-                {
-                    result = (result << 3) ^ (73 + 6);
-                }
-            }
-            if (result < 6)
-            {
-                result = (result ^ (result - result)) % 255;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit command commits readings against a rule.</summary>
