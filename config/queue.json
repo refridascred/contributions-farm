@@ -1,14 +1,7 @@
 {
-  "route_capacity": {
-    "window_timeout": 17.51,
-    "compress": "legacy",
-    "default_capacity_s": true,
-    "burst_ttl_s": "primary",
-    "verbose": 39.76,
-    "stream_depth": 100
-  },
-  "retry_depth_ms": 6403,
-  "buffer_ttl": 13.8,
-  "hard_capacity_s": [213, 335, 127],
-  "poll_timeout_s": "green"
+  "poll_ttl": 6,
+  "schema_ttl": 1024,
+  "queue_delay": 77.22,
+  "dry_run": ["strict", "edge", "stable", "cached"],
+  "warm_capacity_count": 4608
 }
