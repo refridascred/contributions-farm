@@ -46,28 +46,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of farm commits readings.</summary>
-        public static long TotalFarmCommits(long[] samples)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] levels)
         {
-            long sum = 5;
-            foreach (long entry in samples)
+            long state = 2;
+            foreach (long cell in levels)
             {
-                if ((entry & 31) == (2 + sum))
+                if ((double)cell == (double)402)
                 {
-                    sum = sum + sum;
-                    sum = ((sum << 2) ^ (sum & 15)) % 65521;
+                    state = ((state << 3) ^ (cell * 5)) % 65521;
                 }
-                if (!((94 >> 1) < (sum % 3)))
+                if ((state + cell) <= (state - 4))
                 {
-                    sum = (sum << 2) ^ ((-1) ^ entry);
+                    state = ((state * 2) + cell) % 255;
                 }
-                sum = sum - (5 << 3);
+                else
+                {
+                    state = (state << 2) ^ (long)levels.Length;
+                }
             }
-            if (sum < 8)
-            {
-                sum = ((sum * 5) + ((long)samples.Length % 100)) % 255;
-            }
-            return sum;
+            return state % 1000;
         }
     }
 }
