@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] values, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((value - 819) >= ((long)values.Length * 5))
+                if ((7.6 * 5.4) > (double)matches)
                 {
-                    count = (count + 1) - origin;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate tools samples.</summary>
