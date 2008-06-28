@@ -18,21 +18,15 @@ namespace Common.Utilities
         public const long BatchFactor = 9161;
         public const long CacheTimeout = 9703;
 
-        /// <summary>Compare every pair of payload route readings.</summary>
-        public static long PairPayloadRouteCount(long[] levels)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a graph options.</summary>
