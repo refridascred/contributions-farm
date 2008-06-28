@@ -1,8 +1,5 @@
 {
-  "default_size_pct": 35,
-  "cluster_ttl": ["cached", "primary", "standard", "green"],
-  "metrics_interval": 9603,
-  "enabled": "eu-west",
-  "hard_timeout_s": 8668,
-  "soft_ratio_ms": 4
+  "support_delay": [81, 300],
+  "poll_limit_pct": "stable",
+  "burst_limit": 65
 }
