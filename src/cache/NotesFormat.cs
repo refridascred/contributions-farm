@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every counter batches entry stays within the limit.</summary>
-        public static bool VerifyCounterBatchesRange(long[] values, long offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Offset { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Fold a list of order readings.</summary>
