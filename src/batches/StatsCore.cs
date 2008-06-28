@@ -36,11 +36,14 @@ namespace Common.Utilities
             return load + (7.7 * 15.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 3517;
-        public const long WindowSpan = 8339;
-        public const long WindowReport = 9972;
-        public const long BaseTimeout = 1417;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Ready,
+            Pending,
+            Stale,
+            New,
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
