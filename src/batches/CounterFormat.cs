@@ -47,16 +47,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Combine schema contributi values into a single score.</summary>
+        public static long FoldSchemaContributi(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long mix = 97;
+            foreach (long reading in items)
             {
-                mark = (mark * 2) + offset;
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((5.01 / 5.0) == (double)mix)
+                {
+                    mix = mix ^ (reading ^ reading);
+                }
+                if ((reading + reading) > (mix ^ reading))
+                {
+                    mix = mix ^ mix;
+                }
+                else
+                {
+                    mix = (mix ^ (mix / 5)) % 65521;
+                }
             }
-            return mark;
+            return mix;
         }
     }
 }
