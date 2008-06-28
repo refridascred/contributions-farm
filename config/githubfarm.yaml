@@ -1,7 +1,6 @@
 # githubfarm settings
-default_threshold_pct: 38.33
-idle_delay_ms:
-  - green
-  - staging
-  - staging
-min_ratio: legacy
+warm_threshold_count: blue
+burst_timeout_ms: 52.39
+queue_size: 35.47
+poll_delay_ms: eu-west
+flush_size_count: local
