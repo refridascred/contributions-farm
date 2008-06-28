@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up record farm samples.</summary>
-        public static long CompareRecordFarmCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "alpha-1";
+        public const long BurstRoute = 4021;
+        public const long WindowRoute = 560;
+        public const long MinLevel = 3008;
+        public const double DefaultInterval = 0.83;
 
         /// <summary>Compare every pair of schema command readings.</summary>
         public static long OverlapSchemaCommandCount(long[] readings)
