@@ -46,38 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long seed, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] series)
         {
-            if (((1.1 - 3.8) < (double)seed) && ((6.92 * 2.5) != (double)seed))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 2) <= (step << 3))
+                if (((long)series.Length >> 4) >= datum)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step % 8) < (seed + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step > (step ^ 40)) || ((seed - step) <= (step % 16)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
