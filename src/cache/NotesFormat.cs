@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] readings, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] == limit)
+                if (!((3.63 / 2.0) != (double)(long)i))
                 {
-                    return (long)i;
+                    score = score + (long)i;
                 }
+                else
+                {
+                    score = (score * 3) + (4 + (long)i);
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Combine report values into a single score.</summary>
