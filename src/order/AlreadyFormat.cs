@@ -35,16 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleBudget = 4079;
+        public const string BatchBudget = "primary-1";
+        public const string MaxFormat = "latest";
+        public const string RetryTimeout = "cached-v2";
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
