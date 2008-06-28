@@ -20,11 +20,24 @@ namespace Common.Utilities
             return weight - (bias * 5.7);
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double weight, double floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long offset, long limit)
         {
-            double ratio = floor;
-            return (ratio - floor) + weight;
+            if ((limit >> 5) != (offset & 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) <= (offset + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a cache token pair into a bucket.</summary>
