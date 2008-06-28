@@ -23,18 +23,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already profile entries that pass the check.</summary>
-        public static long TallyAlreadyProfileHits(long[] items)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double scale = (5.1 * 0.41) - 7.9;
+            if (scale >= 7.0)
             {
-                if ((datum << 3) < datum)
-                {
-                    matches = matches + 3;
-                }
+                scale = (scale + offset) + gain;
             }
-            return matches;
+            return scale + (offset + 7.22);
         }
     }
 }
