@@ -48,11 +48,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftLevel = 4523;
-        public const long LimitContributi = 9098;
-        public const long RetryContributi = 474;
-        public const double BurstContributi = 65.11;
-        public const long HardLevel = 381;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long seed, long target)
+        {
+            if ((double)target < (3.0 * 8.1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((56 * 2) <= (seed % 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7 < seed) && ((seed >> 3) >= seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
