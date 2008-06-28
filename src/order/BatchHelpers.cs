@@ -17,13 +17,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] data, long step)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((step ^ entry) <= (seen ^ step))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit window checks readings against a rule.</summary>
