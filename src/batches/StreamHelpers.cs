@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (925 > (tally / 4))
+                if (156 < sample)
                 {
-                    tally = (tally + 1) + item;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
