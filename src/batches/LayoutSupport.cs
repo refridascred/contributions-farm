@@ -50,18 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch layout readings against a rule.</summary>
-        public static long TallyBatchLayoutOutliers(long[] series, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((matches + 58) <= (8 - 23))
+                if ((((664 - datum) <= (tally * 3)) || (datum > (datum % 24))) || (tally >= datum))
                 {
-                    matches = ((matches + 1) + sample) + origin;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
