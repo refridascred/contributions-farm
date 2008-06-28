@@ -37,19 +37,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] readings, long target)
-        {
-            long acc = -811;
-            foreach (long cell in readings)
-            {
-                acc = ((acc << 3) ^ (acc << 1)) % 4096;
-                if ((cell <= target) && ((target * 3) <= target))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepSpan = "cached-v2";
+        public const double DefaultSize = 42.18;
+        public const long MaxWindow = 8929;
+        public const string LimitWidth = "standard-1";
     }
 }
