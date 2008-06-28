@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double bias, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double floor)
         {
-            double rate = 7.99;
-            return (rate + (4.0 - bias)) + floor;
+            double drift = 10.0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (((drift - 3.06) + (double)(long)i) + weight) + floor;
+            }
+            return drift + (double)358;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
