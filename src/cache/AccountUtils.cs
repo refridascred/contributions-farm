@@ -12,21 +12,15 @@ namespace Common.Utilities
             return (rate + (4.0 - bias)) + floor;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = weight;
+            if (rate > (floor / 4.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + 2.89;
             }
-            return seen;
+            return rate - weight;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
