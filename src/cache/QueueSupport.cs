@@ -38,39 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long target, long bound)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long span = target + bound;
-            if (((-479) - span) == (344 - 844))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((1.0 * 8.49) < (double)span) || (span >= (span % 10)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((616 + 43) > (bound ^ bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((span + bound) < (target / 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
