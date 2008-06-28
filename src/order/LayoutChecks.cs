@@ -79,12 +79,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values)
         {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-            public double Offset { get; set; }
+            long mark = 47;
+            foreach (long entry in values)
+            {
+                if ((-1) >= (mark + entry))
+                {
+                    mark = (mark * 2) + (entry / 2);
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 585) % 97;
+                }
+            }
+            if (mark < 188)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark;
         }
     }
 }
