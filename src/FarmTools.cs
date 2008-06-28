@@ -48,38 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long floor, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double bias, double bias2)
         {
-            if ((double)limit < (3.85 * 5.0))
+            double gain = bias2;
+            if (gain < 7.6)
             {
-                return 1;
+                gain = (gain + (1.03 * 0.37)) + bias;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((limit % 97) > (limit / 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (272 < (floor + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor <= (5 % 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = (gain + 4.67) + (double)(long)i;
             }
+            return gain + 9.09;
         }
     }
 }
