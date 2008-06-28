@@ -42,13 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Synced,
-            Done,
-            Ready,
-            New,
+            Closed,
+            Active,
+            Dropped,
         }
     }
 }
