@@ -25,12 +25,18 @@ namespace Common.Utilities
             return ratio - (double)733;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] items)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((datum & 3) < datum) || ((datum % 7) >= (datum + datum)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
