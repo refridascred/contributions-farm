@@ -59,9 +59,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 3042;
-        public const double BurstProfile = 65.72;
-        public const long IdleDepth = 2759;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitCount = 7456;
+        public const long HardTools = 4066;
+        public const long MaxTools = 885;
+        public const string IdleTools = "stable";
     }
 }
