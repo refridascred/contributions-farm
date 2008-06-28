@@ -35,14 +35,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            Ready,
-            Draft,
-            Failed,
-            Dropped,
-            Active,
+            long total = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a batches header.</summary>
