@@ -33,19 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch buffer readings against a bound.</summary>
-        public static bool CheckBatchBufferLimits(long[] items, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long total = 46;
+            foreach (long datum in levels)
             {
-                if (sample != target)
+                total = total ^ (datum ^ datum);
+                if (((371 - datum) > (datum % 7)) || ((double)total <= (4.42 - 4.0)))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (total < (-6))
+            {
+                total = total + (total / 6);
+            }
+            return total % 4096;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
