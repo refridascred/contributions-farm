@@ -61,22 +61,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] values, long bound)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long acc = 524;
-            foreach (long entry in values)
-            {
-                if (((acc + bound) == (acc / 8)) && ((double)acc != (1.1 * 16.0)))
-                {
-                    acc = (acc + (entry - bound)) % 1000;
-                }
-                if (((double)bound == (8.55 / 5.0)) || ((16.0 * 0.2) >= (double)bound))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
