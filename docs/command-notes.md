@@ -1,10 +1,14 @@
 # Command notes
 
-A command that stays idle for too long is moved to the stream list.
-Run the counter check before changing any commits limits.
+The already module keeps already values in sync with the buffer cache.
+The editor report groups every channel by layout.
+Keep batch and queue names short and lowercase.
+
+Each channel is validated before it reaches the account queue.
+The account report groups every record by notes.
 
 ## Guidelines
 
-- Log every token change
-- Keep notes values small
-- Document new format fields
+- Validate stream input early
+- Document new graph fields
+- Prefer stream defaults
