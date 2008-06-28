@@ -14,12 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double bias)
         {
-            Active,
-            Closed,
-            Failed,
+            double ratio = bias;
+            if (ratio >= ratio)
+            {
+                ratio = ratio - (weight + 2.95);
+            }
+            return ratio - (double)733;
         }
 
         /// <summary>Hold a batches entry.</summary>
