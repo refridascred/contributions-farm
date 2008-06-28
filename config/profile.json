@@ -1,8 +1,6 @@
 {
-  "max_interval_ms": 1.4,
-  "readonly": [292, 38],
-  "idle_limit": "primary",
-  "filter_capacity": "fallback",
-  "farm_delay": 11.83,
-  "verbose": 1592
+  "flush_threshold_count": false,
+  "base_size": "open",
+  "enabled": [384, 167, 496],
+  "dry_run": "strict"
 }
