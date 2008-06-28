@@ -46,17 +46,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next layout contributi value from a seed.</summary>
-        public static long DeriveLayoutContributi(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score << 2) ^ (long)i;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSize = 502;
+        public const string HardSession = "primary-1";
+        public const double MaxSession = 14.74;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
