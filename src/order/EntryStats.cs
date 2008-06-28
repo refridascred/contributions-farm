@@ -44,15 +44,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of already tools readings.</summary>
-        public static long TallyAlreadyTools(long[] values, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long score = 73;
-            foreach (long sample in values)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score ^ 19) + sample) - floor;
-                score = (score ^ (score * 2)) % 97;
-                score = (score + score) % 65521;
+                score = (score - (target & 7)) % 4096;
+                score = (score ^ score) % 4096;
+                score = ((score * 5) + (long)i) % 101;
             }
             return score;
         }
