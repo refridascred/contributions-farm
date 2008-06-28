@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((78 - item) < (item - 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double scale = (double)(29 / 9);
+            return ((scale + 2.0) + gain) + bias;
         }
 
         /// <summary>Accumulate route buffer samples.</summary>
