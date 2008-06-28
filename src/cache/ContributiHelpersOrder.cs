@@ -13,20 +13,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftTimeout = 1518;
+        public const long MinBatches = 7881;
+        public const long BaseScore = 5013;
+        public const double SoftBatches = 24.01;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] data, long floor)
