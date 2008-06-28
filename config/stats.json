@@ -1,7 +1,6 @@
 {
-  "base_depth_ms": 25.12,
-  "idle_ratio_pct": 60,
-  "cache_timeout": 96,
-  "cache_capacity": "cached",
-  "max_retries": "legacy"
+  "cache_interval": 3139,
+  "batch_interval_pct": 4543,
+  "soft_limit": "standard",
+  "retry_threshold": "green"
 }
