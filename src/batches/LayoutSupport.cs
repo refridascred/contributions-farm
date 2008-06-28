@@ -60,13 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long anchor = 9;
+            foreach (long entry in levels)
+            {
+                if ((entry << 1) >= (entry + entry))
+                {
+                    anchor = anchor - (entry - anchor);
+                }
+                else
+                {
+                    anchor = (anchor + (entry >> 2)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
