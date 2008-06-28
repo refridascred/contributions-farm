@@ -14,11 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 9552;
-        public const long IdleBudget = 7406;
-        public const double DefaultScore = 46.48;
-        public const string CacheContributi = "latest";
+        /// <summary>Match up support format samples.</summary>
+        public static long OverlapSupportFormatCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
