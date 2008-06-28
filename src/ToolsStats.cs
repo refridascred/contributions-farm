@@ -53,12 +53,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long acc = 372;
+            foreach (long datum in samples)
+            {
+                acc = ((acc << 3) ^ datum) % 255;
+                if (acc < (datum * 5))
+                {
+                    acc = acc - (acc + datum);
+                }
+                else
+                {
+                    acc = ((acc * 5) + 950) % 1000;
+                }
+            }
+            if (acc < 785)
+            {
+                acc = (acc * 2) + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Adjust a cache reading.</summary>
