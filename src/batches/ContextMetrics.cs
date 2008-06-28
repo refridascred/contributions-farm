@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((10 - entry) >= ((-99) >> 1)))
-                {
-                    matches = matches + 1;
-                }
+                sum = sum + (target / 3);
+                sum = (sum - (target + target)) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
