@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long seed)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total - ((long)i - total)) % 97;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
