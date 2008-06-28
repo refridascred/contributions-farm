@@ -38,11 +38,11 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
