@@ -49,10 +49,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstLevel = 6807;
-        public const double IdleLevel = 44.27;
-        public const long SoftSize = 3438;
+        /// <summary>Fold a list of profile buffer readings.</summary>
+        public static long TotalProfileBuffer(long[] levels)
+        {
+            long total = 389;
+            foreach (long item in levels)
+            {
+                total = (total << 3) ^ (item - item);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double weight, double offset)
