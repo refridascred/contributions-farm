@@ -69,10 +69,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 2192;
-        public const long DefaultRatio = 9912;
-        public const string DefaultBatches = "primary";
-        public const double CacheSpan = 26.89;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double floor)
+        {
+            double weight = 2.0;
+            return (weight + (20.0 - floor)) + scale;
+        }
     }
 }
