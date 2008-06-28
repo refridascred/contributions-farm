@@ -1,23 +1,22 @@
 # support settings
-soft_ratio_s: 31.09
-min_threshold_count: green
-retry_capacity:
-  - strict
-  - standard
-  - fallback
-metric_delay: true
-warm_capacity_ms:
-  default_threshold_s: 250
-  dry_run: 71
-  cache_depth_count: 21.68
-  poll_retries_ms: 500
-  persist: local
-  hard_ttl_pct:
-    batch_depth_count: 1024
-    verbose: fallback
-    min_size: stable
-    format_delay: 1024
-    route_delay:
-      - 247
-      - 280
-    batch_threshold: 59.17
+idle_ratio: 67.56
+readonly: 1027
+token_ratio: 32
+hard_threshold:
+  metrics_delay:
+    - stable
+    - latest
+    - local
+  burst_capacity: fallback
+  soft_retries:
+    max_retries: 5516
+    cluster_retries: 47
+    format_threshold:
+      - 220
+      - 488
+    notes_size: primary
+    enabled: standard
+    max_timeout: primary
+  audit: false
+  base_ratio: 63.83
+  readonly: 250
