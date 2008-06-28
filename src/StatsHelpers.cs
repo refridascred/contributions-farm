@@ -68,16 +68,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double offset)
-        {
-            double scale2 = 5.03;
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (((scale2 + (double)5) + (double)(long)i) - scale) - offset;
-            }
-            return scale2 + 7.0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTimeout = 59.2;
+        public const double LimitInterval = 50.82;
+        public const long IdleTools = 4158;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
