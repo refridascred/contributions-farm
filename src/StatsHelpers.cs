@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((double)value != (8.0 / 5.0)) || ((long)items.Length < (value + matches))) && !(((long)items.Length ^ 68) != (95 + 97)))
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Project the next graph value.</summary>
