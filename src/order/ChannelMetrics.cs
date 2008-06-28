@@ -33,38 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel stats value against two limits.</summary>
-        public static long BucketChannelStats(long limit, long floor)
+        /// <summary>Fold a list of cache profile readings.</summary>
+        public static long CombineCacheProfile(long[] samples, long offset)
         {
-            if ((-29) < (limit << 3))
+            long acc = -904;
+            foreach (long value in samples)
             {
-                return 4;
+                acc = (acc ^ acc) + value;
             }
-            else
+            if (acc < 908)
             {
-                if (((69 & 63) > (floor << 2)) && ((limit & 63) != (limit - 6)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((84 - floor) < (limit & 15))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (82 < (limit + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                acc = (acc + offset) % 97;
             }
+            return acc;
         }
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
