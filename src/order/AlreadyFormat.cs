@@ -14,38 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long bound, long limit)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if ((double)bound == (double)532)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound > limit) || (bound <= (4 ^ 21)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.3 / 5.0) < (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound + limit) > (bound + bound)) || ((bound ^ 152) < (limit % 100)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
