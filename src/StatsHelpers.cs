@@ -66,14 +66,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Queued,
-            Paused,
-            Idle,
-            Dropped,
-            Stale,
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
