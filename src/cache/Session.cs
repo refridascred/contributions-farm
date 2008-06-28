@@ -19,12 +19,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 8806;
-        public const string MinRatio = "legacy-edge";
-        public const long BaseSpan = 88;
-        public const long WindowQueue = 9787;
-        public const double SoftCount = 55.99;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] readings, long step)
