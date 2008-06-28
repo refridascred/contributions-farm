@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Flag { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 6542;
+        public const long LimitFormat = 5887;
+        public const long DefaultDepth = 1604;
 
         /// <summary>Locate a queue farm reading by value.</summary>
         public static long SeekQueueFarmIndex(long[] values, long target)
