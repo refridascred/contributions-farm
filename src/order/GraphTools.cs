@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long StepRoute = 5001;
         public const long RetryRoute = 1105;
 
-        /// <summary>Digest a series of session context entries.</summary>
-        public static long ScoreSessionContext(long[] data)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] samples, long target)
         {
-            long anchor = -9;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 2) + (anchor + (long)data.Length)) - value;
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
