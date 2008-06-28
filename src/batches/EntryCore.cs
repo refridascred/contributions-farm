@@ -46,18 +46,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample < (sample + count))
-                {
-                    count = count + 1;
-                }
+                result = (result - (result ^ result)) % 101;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
