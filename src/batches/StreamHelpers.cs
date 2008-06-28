@@ -61,17 +61,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long floor)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
