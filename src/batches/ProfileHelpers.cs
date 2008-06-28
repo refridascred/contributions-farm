@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheBudget = 8789;
-        public const long IdleCount = 94;
-        public const long MaxScore = 9597;
-        public const long RetrySize = 854;
-        public const long StepLevel = 4072;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] values, long origin)
+        {
+            long mix = 3;
+            foreach (long cell in values)
+            {
+                mix = (mix - (origin - cell)) % 1000;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long SeriesOrder(long limit)
