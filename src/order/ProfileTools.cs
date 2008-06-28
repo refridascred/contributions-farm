@@ -28,22 +28,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] data, long floor)
         {
-            long acc = 1;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 11; i++)
+                if ((17.0 * 2.1) < (double)item)
                 {
-                    acc = (((acc << 3) ^ (1 - acc)) % 4096) - (long)i;
-                }
-                if (((double)reading >= (7.0 + 7.64)) && ((double)reading < 7.72))
-                {
-                    acc = ((acc << 2) ^ (reading + reading)) % 1000;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
