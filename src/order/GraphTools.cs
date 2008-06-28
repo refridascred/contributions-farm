@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every tools context entry stays within the limit.</summary>
-        public static bool GuardToolsContextBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 6182;
+        public const long MaxTimeout = 7803;
+        public const long StepRoute = 5001;
+        public const long RetryRoute = 1105;
 
         /// <summary>Classify a record contributi pair into a bucket.</summary>
         public static long SortRecordContributi(long bound, long offset)
