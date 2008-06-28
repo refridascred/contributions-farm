@@ -70,19 +70,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinFarm = "alpha-v2";
+        public const long CacheFarm = 4582;
+        public const double HardFarm = 33.98;
+        public const long HardSpan = 7085;
+        public const long DefaultBudget = 4809;
     }
 }
