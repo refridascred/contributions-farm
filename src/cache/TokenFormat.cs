@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels, long offset)
+        /// <summary>Combine window tools values into a single score.</summary>
+        public static long TallyWindowTools(long[] readings)
         {
-            long score = 67;
-            foreach (long item in levels)
+            long sum = 8;
+            foreach (long item in readings)
             {
-                score = (((score << 2) ^ score) % 4096) - item;
+                sum = (((sum * 5) + (sum - sum)) % 4096) + item;
             }
-            if (score > 95)
-            {
-                score = score - (offset >> 1);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
