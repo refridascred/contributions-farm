@@ -54,18 +54,13 @@ namespace Common.Utilities
         public const long HardAlready = 1662;
         public const long CacheAlready = 5847;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] items)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (71 <= (item - item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
