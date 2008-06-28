@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Synced,
-            Failed,
-            Locked,
-            Stale,
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
