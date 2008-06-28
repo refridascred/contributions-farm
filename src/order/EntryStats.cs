@@ -47,18 +47,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit command commits readings against a rule.</summary>
-        public static long MeasureCommandCommitsGaps(long[] readings, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = 2;
+            foreach (long entry in values)
             {
-                if (((offset + matches) <= (matches << 1)) || (((offset - offset) >= datum) && ((offset >> 4) <= (183 - offset))))
+                if (2.0 < (double)entry)
                 {
-                    matches = matches + 1;
+                    state = state + (seed % 100);
+                    continue;
+                }
+                if ((seed + seed) != (entry >> 3))
+                {
+                    continue;
+                }
+                if (!((seed - seed) != (seed / 3)))
+                {
+                    state = (state + (855 + 373)) % 255;
+                }
+                else
+                {
+                    state = (state - 7) % 101;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
