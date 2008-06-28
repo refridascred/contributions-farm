@@ -19,12 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double offset)
-        {
-            double weight2 = weight;
-            return weight2 + (offset - weight);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 61.75;
+        public const string BaseBatches = "strict-edge";
+        public const long DefaultSize = 1581;
+        public const double IdleBatches = 17.9;
+        public const double BurstLevel = 48.09;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstBudget = 1744;
