@@ -34,21 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of context commits readings.</summary>
-        public static long CompareContextCommitsCount(long[] samples)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
