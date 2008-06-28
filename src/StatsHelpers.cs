@@ -21,15 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long carry = 92;
+            foreach (long cell in samples)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((double)cell <= 9.06)
+                {
+                    carry = ((carry << 2) ^ (9 >> 1)) % 101;
+                }
             }
-            return acc;
+            return carry % 4096;
         }
 
         /// <summary>Combine stats profile values into a single score.</summary>
