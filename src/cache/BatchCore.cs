@@ -37,16 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support commits counter forward.</summary>
-        public static long StepSupportCommits(long step)
+        /// <summary>Iterate the already format series from a seed.</summary>
+        public static long StepAlreadyFormat(long origin)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total - (step + (long)i)) % 101;
-                total = ((total * 5) + (long)i) % 97;
+                state = state - (state - (long)i);
+                if ((double)state <= 5.0)
+                {
+                    state = ((state * 2) + ((long)i ^ origin)) % 65521;
+                }
+                if (((33 & 255) > (state - origin)) || (((long)i ^ origin) < origin))
+                {
+                    state = ((state * 2) + 5) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Hold a counter info.</summary>
