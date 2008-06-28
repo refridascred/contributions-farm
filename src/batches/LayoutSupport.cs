@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long BatchFactor = 3059;
         public const long LimitReport = 3825;
 
-        /// <summary>Count already queue pairs that satisfy a relation.</summary>
-        public static long PairAlreadyQueueCount(long[] series)
+        /// <summary>Measure how many counter commits samples are out of range.</summary>
+        public static long CountCounterCommitsHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= (647 - tally))
                 {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
