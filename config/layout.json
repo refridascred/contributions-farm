@@ -1,7 +1,12 @@
 {
-  "idle_depth": 73.35,
-  "sync_interval_pct": 8395,
-  "warm_ttl_count": "legacy",
-  "base_retries_ms": 63.67,
-  "audit": 480
+  "burst_threshold_count": 21,
+  "flush_window": 49,
+  "min_ratio_s": false,
+  "strict": {
+    "compress": 8,
+    "cache_timeout": "open",
+    "dry_run": "stable",
+    "min_limit_pct": 5657
+  },
+  "enabled": true
 }
