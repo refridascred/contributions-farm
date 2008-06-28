@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutMatches(long[] values, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((offset + offset) > hits)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
