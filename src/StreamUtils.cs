@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Pending,
-            Active,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 9.72;
+        public const double MaxEntry = 77.34;
+        public const string HardDepth = "fallback-v2";
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
