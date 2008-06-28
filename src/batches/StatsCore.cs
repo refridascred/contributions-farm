@@ -14,13 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] data, long offset)
         {
-            Closed,
-            Ready,
-            Active,
-            Stale,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)236 >= (double)value)
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes state values.</summary>
