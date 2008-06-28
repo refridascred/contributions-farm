@@ -11,13 +11,31 @@ namespace Common.Utilities
         public const long BatchSession = 7794;
         public const long LimitSession = 2851;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Classify a route payload pair into a bucket.</summary>
+        public static long GradeRoutePayload(long step, long bound)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            if ((step << 2) <= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((3 / 4) > (step ^ 518)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + step) <= step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
