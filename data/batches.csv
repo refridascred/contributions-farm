@@ -1,6 +1,6 @@
-id,rank,score,owner
-1,557,latest,783
-2,85.29,210,487
-3,320,475,158
-4,30.16,14.4,242
-5,32,58.95,10.5
+id,score,region,active,count
+1,eu-west,edge,25,4.32
+2,eu-west,open,520,257
+3,strict,stable,fallback,488
+4,25,536,832,497
+5,stable,47,584,21.06
