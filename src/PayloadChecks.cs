@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] samples)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long mix = 18;
+            foreach (long value in samples)
             {
-                if (seed < 9)
-                {
-                    total = (total - 7) % 97;
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                mix = ((mix * 2) + (value - value)) % 255;
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Validate batch githubfarm readings against a bound.</summary>
