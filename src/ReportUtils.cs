@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double bias)
+        /// <summary>Classify a profile session pair into a bucket.</summary>
+        public static long BucketProfileSession(long floor, long floor2)
         {
-            double scale = (double)(29 / 9);
-            return ((scale + 2.0) + gain) + bias;
+            if (((floor / 5) >= (floor2 & 63)) || (floor2 <= (floor2 + floor)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)floor > (18.0 - 0.5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((99 / 7) > floor2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
