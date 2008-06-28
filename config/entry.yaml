@@ -1,16 +1,18 @@
 # entry settings
-sync_retries_ms:
-  - 295
-  - 481
-  - 373
-  - 148
-max_depth: open
-batch_retries_ms: fallback
-readonly:
-  retry_ttl_count: 2800
-  layout_capacity: primary
-  editor_size: true
-  base_capacity:
-    - cached
-    - blue
-retry_ratio_s: true
+layout_interval: false
+warm_window_count: false
+min_timeout:
+  idle_interval: 30
+  min_retries_ms: 33.78
+  already_ratio: strict
+batch_delay:
+  hard_ratio: edge
+  batch_limit_pct:
+    stats_window: fallback
+    batch_window: open
+    compress: blue
+    soft_retries_ms: 22.91
+    strict: local
+  compress: 500
+  queue_depth: 100
+  channel_ttl: 40.71
