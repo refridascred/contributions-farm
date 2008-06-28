@@ -43,21 +43,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed < (seed2 % 10))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed2 * 4) > (seed2 + 277))
                 {
-                    if ((values[i] ^ values[j]) > 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((seed + seed) >= seed2)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry info.</summary>
