@@ -18,39 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long bound, long bound2)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            long gap = bound ^ bound2;
-            if ((bound & 3) > (924 % 8))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)gap != (20.0 + 5.92)) && ((double)gap != (double)bound2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.8 / 5.0) > (double)bound2)
+                    if ((series[i] + series[j]) != 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound & 15) <= (bound2 >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a metrics checks pair into a bucket.</summary>
