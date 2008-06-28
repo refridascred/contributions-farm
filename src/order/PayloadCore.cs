@@ -50,12 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] samples, long bound)
+        /// <summary>Look up the position of a schema commits sample.</summary>
+        public static long LookupSchemaCommitsIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == bound)
+                if (levels[i] < step)
                 {
                     return (long)i;
                 }
