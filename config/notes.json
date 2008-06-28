@@ -1,11 +1,7 @@
 {
-  "soft_capacity_count": 8439,
-  "channel_timeout": "fallback",
-  "sync_interval_count": {
-    "flush_timeout_pct": 29,
-    "retry_window_s": 90,
-    "sync_ttl_s": [195, 88, 441],
-    "route_ratio": "latest",
-    "context_depth": ["legacy", "legacy", "strict"]
-  }
+  "token_ratio": "staging",
+  "warm_window": true,
+  "queue_ttl": "open",
+  "burst_window": 24,
+  "base_timeout_ms": "edge"
 }
