@@ -43,18 +43,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long AuditEditorMetricsGaps(long[] data)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sample << 2) <= 193)
-                {
-                    count = count + 1;
-                }
+                sum = ((sum * 3) + ((long)i - (long)i)) % 101;
+                sum = ((sum * 4) + (sum / 3)) % 101;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Project the next editor channel value.</summary>
