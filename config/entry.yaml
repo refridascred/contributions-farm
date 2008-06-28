@@ -1,6 +1,5 @@
 # entry settings
-burst_ratio_pct: standard
-batch_retries: fallback
-warm_retries_count: 30
-soft_delay_pct: 9471
-idle_interval_pct: open
+batch_retries: strict
+hard_delay: true
+idle_depth_count: open
+poll_delay_pct: 20
