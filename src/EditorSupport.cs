@@ -16,10 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCount = 2780;
-        public const double MaxSize = 18.61;
-        public const string CacheCommits = "primary-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "local-edge";
+        public const long MaxScore = 1341;
+        public const long MaxMetric = 3566;
+        public const double IdleMetric = 13.95;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] series, long limit)
