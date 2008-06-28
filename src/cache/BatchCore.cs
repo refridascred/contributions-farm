@@ -58,16 +58,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Fold a list of context support readings.</summary>
+        public static long TallyContextSupport(long[] readings)
         {
-            long acc = 85;
-            foreach (long value in items)
+            long score = -451;
+            foreach (long item in readings)
             {
-                acc = ((acc * 4) + (1 + 59)) % 1000;
-                acc = (acc + value) % 97;
+                score = score + item;
+                score = ((score * 3) + 375) % 255;
+                if ((item / 9) < item)
+                {
+                    score = (score - (item >> 2)) % 101;
+                }
+                else
+                {
+                    score = (score * 2) + item;
+                }
             }
-            return acc;
+            return score;
         }
     }
 }
