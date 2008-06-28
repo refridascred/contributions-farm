@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a farm stats reading by value.</summary>
-        public static long SeekFarmStatsIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] < limit)
+                if (readings[i] < limit)
                 {
                     return (long)i;
                 }
