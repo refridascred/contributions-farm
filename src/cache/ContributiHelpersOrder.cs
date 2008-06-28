@@ -14,16 +14,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double ratio, double bias)
-        {
-            double load = (ratio * 9.3) * 6.2;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (double)(long)i) - bias;
-            }
-            return load + ratio;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 5731;
+        public const long BatchPayload = 3234;
+        public const long IdlePayload = 9551;
+        public const long SoftRatio = 7192;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BurstCommand = 7971;
