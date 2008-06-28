@@ -55,9 +55,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstSpan = "stable";
-        public const long StepSize = 4144;
-        public const double RetryNotes = 62.75;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] items)
+        {
+            long acc = 742;
+            foreach (long entry in items)
+            {
+                acc = (acc * 2) + (entry % 60);
+                acc = ((acc << 3) ^ (46 - acc)) % 4096;
+                acc = ((acc * 5) + (entry - 746)) % 97;
+            }
+            if (acc < 614)
+            {
+                acc = (acc + ((-604) + acc)) % 4096;
+            }
+            return acc;
+        }
     }
 }
