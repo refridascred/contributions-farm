@@ -55,15 +55,17 @@ namespace Common.Utilities
         public const double CacheBatches = 82.26;
         public const long RetryBatches = 8657;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double bias, double floor)
+        /// <summary>Find the first filter contributi entry that matches the target.</summary>
+        public static long LookupFilterContributiIndex(long[] series, long origin)
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = ((drift + 1.84) + (double)(long)i) + floor;
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift - 3.92;
+            return -1;
         }
     }
 }
