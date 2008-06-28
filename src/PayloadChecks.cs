@@ -62,9 +62,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleRatio = 41.11;
-        public const double WindowBudget = 43.3;
-        public const long WindowInterval = 4862;
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double offset)
+        {
+            double bias = offset;
+            if (bias > (3.0 - 3.08))
+            {
+                bias = (bias - (double)37) - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (2.0 * 7.5)) - (double)(long)i;
+            }
+            return bias + offset;
+        }
     }
 }
