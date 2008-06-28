@@ -40,27 +40,17 @@ namespace Common.Utilities
         public const long WindowBatches = 7201;
         public const string WindowSize = "open-v2";
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Look up the position of a notes profile sample.</summary>
+        public static long SeekNotesProfileIndex(long[] items, long limit)
         {
-            long state = 6;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state - datum) < (state >> 2))
+                if ((items[i] == limit) && ((items[i] % 3) != 0))
                 {
-                    state = ((state << 3) ^ (datum + state)) % 65521;
-                    state = (state ^ (datum / 5)) % 255;
-                }
-                if ((double)state >= (double)datum)
-                {
-                    state = state - (state % 60);
-                }
-                if (!((9.1 * 4.0) <= (double)state))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
