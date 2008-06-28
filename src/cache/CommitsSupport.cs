@@ -31,14 +31,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long limit)
         {
-            Draft,
-            Closed,
-            Failed,
-            Pending,
-            Stale,
+            if (((11.0 - 10.0) == (double)origin) || ((origin / 9) < (origin / 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.1 - 17.0) >= (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
