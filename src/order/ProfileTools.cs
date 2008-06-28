@@ -65,11 +65,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstSpan = "stable";
+        public const long StepSize = 4144;
+        public const double RetryNotes = 62.75;
     }
 }
