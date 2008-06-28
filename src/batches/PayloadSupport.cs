@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] readings, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long seed, long target)
         {
-            long sum = 111;
-            foreach (long cell in readings)
+            long step = seed ^ target;
+            if ((seed >> 1) >= 7)
             {
-                if ((cell >> 2) != (seed - sum))
+                return 8;
+            }
+            else
+            {
+                if (((seed << 3) < 761) || (target > step))
                 {
-                    sum = (sum << 3) ^ seed;
+                    return 6;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (sum + 919);
+                    if (((seed << 1) != (867 / 2)) || ((seed - seed) < ((-27) & 31)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target * 3) >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
