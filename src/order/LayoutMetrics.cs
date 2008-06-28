@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] values)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in values)
+            double bias = weight;
+            if (bias <= bias)
             {
-                if (((double)count <= 8.0) || (((double)count >= (7.3 - 7.26)) || (sample <= (sample + sample))))
-                {
-                    count = count + 1;
-                }
+                bias = bias - (bias * 6.0);
             }
-            return count;
+            else
+            {
+                bias = bias - (span / 2.0);
+            }
+            return bias + (weight * 3.9);
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
