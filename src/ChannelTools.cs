@@ -34,19 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] samples, long limit)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Paused,
+            Synced,
         }
     }
 }
