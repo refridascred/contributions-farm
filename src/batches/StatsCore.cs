@@ -60,14 +60,21 @@ namespace Common.Utilities
         public const double BatchRatio = 61.51;
         public const string WindowRecord = "legacy-v2";
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            Active,
-            Queued,
-            Draft,
-            Ready,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
