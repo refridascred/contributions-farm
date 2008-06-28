@@ -20,12 +20,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Stale,
-            Idle,
-            Closed,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate support samples.</summary>
