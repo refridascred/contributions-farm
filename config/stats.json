@@ -1,19 +1,13 @@
 {
-  "batch_ratio_s": 1024,
-  "retry_interval": "fallback",
-  "idle_timeout_ms": 22.65,
-  "order_delay": "stable",
-  "retry_ttl": 1024,
-  "command_interval": {
-    "verbose": "edge",
-    "token_interval": [360, 169, 476, 208],
-    "flush_capacity_ms": true,
-    "metrics_depth": [20, 277, 163],
-    "retry_capacity_s": {
-      "base_interval_count": "open",
-      "order_depth": false,
-      "base_size": 89,
-      "poll_ratio_pct": "green"
-    }
-  }
+  "min_retries": "stable",
+  "readonly": {
+    "warm_ratio": false,
+    "default_interval": [391, 491, 86, 235],
+    "idle_capacity": 25.53,
+    "idle_ttl": [129, 208],
+    "audit": 311,
+    "metric_limit": ["green", "cached"]
+  },
+  "batch_interval": false,
+  "idle_window_s": ["eu-west", "blue"]
 }
