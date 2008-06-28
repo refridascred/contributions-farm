@@ -36,18 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsHits(long[] values, long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((floor * 4) == (10 + matches)) || ((cell >= (floor + matches)) && (floor > (floor + matches))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
