@@ -62,18 +62,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "staging-1";
+        public const string BaseFormat = "fallback-1";
+        public const double RetryDepth = 26.8;
+        public const double BatchFormat = 72.5;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] values)
