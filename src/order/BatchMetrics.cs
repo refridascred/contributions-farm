@@ -69,17 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] levels, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a editor snapshot.</summary>
