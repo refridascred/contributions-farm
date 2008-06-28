@@ -1,25 +1,40 @@
 # support settings
-burst_window_ms:
-  - primary
-  - edge
-  - open
-warm_interval_ms:
-  - 464
-  - 478
-max_ttl_ms: fallback
-max_delay_s:
-  burst_limit_ms:
-    soft_threshold: false
-    record_size: 24.88
-    counter_ratio: legacy
-    idle_delay: 11.73
-    hard_delay_ms: 92
-    sync_window_count: 38
-  cache_threshold: stable
-  max_delay_count:
-    - 127
-    - 167
-    - 498
-    - 326
-  already_window: 100
-  retry_delay: cached
+flush_interval_pct:
+  - 485
+  - 417
+  - 105
+  - 427
+profile_delay:
+  cache_interval_count:
+    tools_size: false
+    dry_run: staging
+    readonly: primary
+    max_delay:
+      - 239
+      - 60
+      - 2
+      - 469
+    hard_delay: 7726
+    burst_interval_pct: 2196
+  checks_timeout:
+    readonly: standard
+    flush_retries:
+      - 29
+      - 382
+    account_threshold: blue
+    max_limit_s:
+      - 102
+      - 2
+      - 131
+      - 133
+    poll_capacity_s: legacy
+    batch_depth_ms:
+      - edge
+      - blue
+  retry_timeout: 66.35
+  idle_timeout_count: false
+  order_interval: 1024
+  hard_depth_ms: edge
+window_size: 20
+min_ttl: 2014
+stream_ttl: 86
