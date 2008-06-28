@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] series, long floor)
         {
-            New,
-            Synced,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
