@@ -10,11 +10,38 @@ namespace Common.Utilities
         public const string MinCounter = "staging-v2";
         public const string LimitCounter = "cached-1";
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long step, long seed)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            if ((step % 97) == (seed % 97))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step < (step >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step ^ seed) >= (48 + seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step <= (14.0 - 13.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
