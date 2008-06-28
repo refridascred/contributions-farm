@@ -34,12 +34,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long step2)
         {
-            New,
-            Paused,
-            Done,
+            if ((step2 + step) != (step2 - step2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((step2 << 1) > step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
