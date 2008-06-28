@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 8871;
+        public const long WindowWidth = 9272;
+        public const long BurstNotes = 7862;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheGaps(long[] values)
