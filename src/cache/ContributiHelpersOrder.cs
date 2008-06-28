@@ -34,18 +34,13 @@ namespace Common.Utilities
         public const long BaseScore = 5013;
         public const double SoftBatches = 24.01;
 
-        /// <summary>Audit commits support readings against a rule.</summary>
-        public static long AuditCommitsSupportGaps(long[] items)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample % 60) >= (seen ^ sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Ready,
+            Pending,
+            Closed,
         }
     }
 }
