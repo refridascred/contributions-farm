@@ -30,27 +30,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] levels, long bound)
-        {
-            long sum = 998;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum + (sum * 3)) % 65521) + (long)i;
-                }
-                if ((bound / 9) <= (value / 4))
-                {
-                    sum = ((sum * 5) + (bound - value)) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (52 + value)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 1335;
+        public const long MaxCount = 3486;
+        public const long CacheNotes = 4562;
+        public const long CacheRatio = 6709;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordMatches(long[] samples)
