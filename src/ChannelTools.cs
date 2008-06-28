@@ -25,21 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cluster window samples.</summary>
-        public static long OverlapClusterWindowCount(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally < (tally / 9))
                 {
-                    if ((values[i] + values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the notes status values.</summary>
