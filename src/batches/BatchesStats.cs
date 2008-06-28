@@ -32,16 +32,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long bound)
         {
-            long total = -258;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ (55 ^ total)) % 101;
-                total = (total << 2) ^ datum;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metric kind values.</summary>
