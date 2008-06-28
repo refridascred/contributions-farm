@@ -26,21 +26,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Validate record commits readings against a bound.</summary>
+        public static bool VerifyRecordCommitsRange(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item >= target)
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Compare every pair of support metric readings.</summary>
