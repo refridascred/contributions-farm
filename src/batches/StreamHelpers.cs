@@ -32,12 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Dropped,
             Draft,
-            Stale,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
