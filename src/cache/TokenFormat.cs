@@ -36,11 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 6111;
-        public const long StepRatio = 4272;
-        public const long BurstCounter = 247;
-        public const double BatchSize = 46.53;
-        public const string BaseCounter = "open-1";
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (6.02 <= (double)hits)
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
