@@ -37,13 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
+            Dropped,
+            Failed,
+            Active,
             Queued,
-            Locked,
-            Draft,
-            Stale,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
