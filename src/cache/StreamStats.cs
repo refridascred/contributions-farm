@@ -20,10 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftRatio = 4105;
-        public const long HardBudget = 2263;
-        public const double HardMetric = 43.53;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 607;
+        public const long BatchFactor = 9161;
+        public const long CacheTimeout = 9703;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long DigestToken(long[] samples)
