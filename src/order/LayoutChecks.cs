@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the buffer contributi entries that pass the check.</summary>
-        public static long CountBufferContributiOutliers(long[] samples, long step)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)matches < (3.9 / 7.0))
-                {
-                    matches = ((matches + 2) + entry) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
