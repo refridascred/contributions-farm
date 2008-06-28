@@ -1,5 +1,5 @@
 {
-  "burst_delay": ["local", "primary"],
-  "enabled": true,
-  "flush_interval_ms": "primary"
+  "default_threshold_pct": "green",
+  "min_ttl_ms": 60,
+  "idle_delay_count": 30
 }
