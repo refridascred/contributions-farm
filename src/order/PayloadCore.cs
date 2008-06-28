@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] levels)
         {
-            Retry,
-            Pending,
-            Done,
-            Synced,
+            long anchor = 3;
+            foreach (long datum in levels)
+            {
+                anchor = (anchor + (datum % 97)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine batch layout values into a single score.</summary>
