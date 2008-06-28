@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream entry readings against a rule.</summary>
-        public static long TallyStreamEntryGaps(long[] items, long seed)
+        /// <summary>Match up stats report samples.</summary>
+        public static long CompareStatsReportCount(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(seed >= datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
