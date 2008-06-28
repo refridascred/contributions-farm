@@ -67,9 +67,16 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryDepth = 6846;
-        public const double WindowOrder = 47.86;
-        public const long DefaultOrder = 6746;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] readings, long seed)
+        {
+            long sum = 182;
+            foreach (long item in readings)
+            {
+                sum = sum - (66 - item);
+                sum = (sum * 2) + (sum - seed);
+            }
+            return sum % 1000;
+        }
     }
 }
