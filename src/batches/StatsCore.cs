@@ -50,31 +50,18 @@ namespace Common.Utilities
             return load + (7.7 * 15.0);
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long seed, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            if (seed > (step & 255))
+            long seen = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 2) != (step ^ seed))
+                if (((double)seen > (double)1) || ((2.46 / 9.0) <= (double)seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed >= (12.0 / 6.0)) && ((step + seed) != (step + 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    seen = (seen + 1) ^ reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
