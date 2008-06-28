@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 9362;
-        public const long WindowProfile = 4222;
-        public const long RetryProfile = 1902;
-        public const double MinProfile = 52.43;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long IterateCounter(long step)
