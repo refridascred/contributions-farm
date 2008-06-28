@@ -37,19 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long target)
+        /// <summary>Fold a list of token cache readings.</summary>
+        public static long ScoreTokenCache(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            long carry = 970;
+            foreach (long value in values)
             {
-                if (item <= target)
+                if (!((85 << 1) == (carry >> 1)))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry + limit) % 4096) ^ value;
                 }
             }
-            return found;
+            if (carry > 903)
+            {
+                carry = ((carry * 3) + (carry % 12)) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
