@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] readings)
         {
-            if (((step - step) != (step & 127)) && ((step & 1) == (bound / 5)))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 2) > step)
+                if ((10.0 / 8.0) > (double)reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - step) < (9 * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
