@@ -18,12 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstWidth = 1383;
-        public const double MaxRatio = 22.41;
-        public const long CacheToken = 1580;
-        public const long RetryCount = 2804;
-        public const long BaseToken = 4664;
+        /// <summary>Rank entry command input into a small class.</summary>
+        public static long ClassifyEntryCommand(long floor, long bound)
+        {
+            if (38 >= (bound - 96))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + 62) < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((581 >> 4) <= (floor & 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long ScoreEntry(long[] samples)
