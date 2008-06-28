@@ -48,13 +48,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Draft,
-            Idle,
+            Paused,
+            Queued,
+            Ready,
+            Done,
             Retry,
-            Stale,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
