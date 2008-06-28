@@ -37,24 +37,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools schema value against two limits.</summary>
-        public static long GradeToolsSchema(long limit, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long origin)
         {
-            if ((double)floor < (8.7 * 1.77))
+            long score = 779;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit > 6.9) || (floor > (limit * 2)))
+                score = (score - (origin & 7)) % 101;
+                if ((origin >> 4) > origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    score = (score - (entry + origin)) % 97;
                 }
             }
+            if (score < 80)
+            {
+                score = (score - 741) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the window level values.</summary>
