@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a notes queue figure with a bias.</summary>
-        public static double SmoothNotesQueue(double ratio, double span)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            double mean = span;
-            if (mean <= span)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean + (double)1) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - 10.0) - (double)(long)i;
-            }
-            return mean - (double)745;
+            return hits;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
