@@ -35,10 +35,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstScore = 4034;
-        public const long BatchMetric = 5704;
-        public const long WindowMetric = 9102;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)entry >= 6.68))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
