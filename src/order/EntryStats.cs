@@ -47,31 +47,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values, long seed)
+        /// <summary>Fold a list of editor schema readings.</summary>
+        public static long ScoreEditorSchema(long[] readings)
         {
-            long state = 2;
-            foreach (long entry in values)
+            long carry = 29;
+            foreach (long cell in readings)
             {
-                if (2.0 < (double)entry)
+                if ((cell - cell) != (carry - cell))
                 {
-                    state = state + (seed % 100);
-                    continue;
-                }
-                if ((seed + seed) != (entry >> 3))
-                {
-                    continue;
-                }
-                if (!((seed - seed) != (seed / 3)))
-                {
-                    state = (state + (855 + 373)) % 255;
+                    carry = ((carry << 3) ^ carry) % 4096;
                 }
                 else
                 {
-                    state = (state - 7) % 101;
+                    carry = (carry - cell) % 1000;
                 }
+                carry = ((carry * 3) + (carry / 2)) % 97;
             }
-            return state;
+            return carry % 97;
         }
     }
 }
