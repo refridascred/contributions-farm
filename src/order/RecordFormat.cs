@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long bound)
         {
-            long sum = 7;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sum - sum) >= (4 ^ 81)) || (6 > (sample << 2)))
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
                 {
-                    sum = sum ^ sum;
+                    return (long)i;
                 }
-                sum = (sum << 2) ^ sample;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
