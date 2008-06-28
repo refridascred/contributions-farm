@@ -41,13 +41,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Compare every pair of support metric readings.</summary>
+        public static long CompareSupportMetricCount(long[] series)
         {
-            Pending,
-            Retry,
-            Dropped,
-            New,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
