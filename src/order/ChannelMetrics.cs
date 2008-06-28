@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two batch report measurements.</summary>
-        public static double AdjustBatchReport(double weight, double offset)
-        {
-            double load = (double)69 - weight;
-            if (load > (weight * 7.0))
-            {
-                load = load - (17.0 + offset);
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load + (load + load);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepCount = 64.28;
+        public const string RetryCount = "stable-1";
+        public const long BaseSpan = 4852;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinRoute = 9408;
