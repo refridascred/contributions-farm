@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] data)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            double weight = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                if ((value - count) >= count)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = ((weight - weight) + (double)(long)i) - floor;
             }
-            return count;
+            return weight - ratio;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
