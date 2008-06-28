@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] readings, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double weight = 4.7;
+            for (int i = 0; i < 3; i++)
             {
-                if ((entry % 10) <= (hits - entry))
-                {
-                    hits = (hits + 1) - bound;
-                }
+                weight = (weight - (span * 3.24)) + (double)(long)i;
             }
-            return hits;
+            return weight - bias;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
