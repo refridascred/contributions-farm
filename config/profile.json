@@ -1,7 +1,12 @@
 {
-  "stats_capacity": 54,
-  "checks_depth": "eu-west",
-  "strict": 56.57,
-  "command_ratio": true,
-  "layout_ttl": 3829
+  "idle_depth": "primary",
+  "persist": {
+    "readonly": "stable",
+    "min_size_ms": 6823,
+    "persist": 43.77
+  },
+  "dry_run": ["primary", "fallback"],
+  "entry_ratio": 2594,
+  "burst_ttl_count": "local",
+  "warm_timeout_s": 63.43
 }
