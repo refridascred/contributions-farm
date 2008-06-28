@@ -36,13 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next commits githubfarm value.</summary>
+        public static double ProjectCommitsGithubfarm(double bias, double bias2)
         {
-            Done,
-            Pending,
-            Closed,
-            Idle,
+            double weight = (double)(2 & 127);
+            if (weight < (bias2 + bias))
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + 19.0) + (double)(long)i;
+            }
+            return weight + (weight + weight);
         }
     }
 }
