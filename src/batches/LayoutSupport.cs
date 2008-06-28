@@ -60,15 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format layout measurements.</summary>
-        public static double BlendFormatLayout(double ratio, double offset)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double weight = (offset + ratio) / 4.0;
-            if (weight > (weight + offset))
-            {
-                weight = weight - weight;
-            }
-            return weight - (ratio - offset);
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
