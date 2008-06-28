@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long total = -252;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading >= (total << 1)) || (601 >= total))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total + (reading * 2)) % 1000;
-                }
-                else
-                {
-                    total = (total - (total * 5)) % 255;
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
