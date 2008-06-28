@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+RECORD_LIMIT=155
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,12 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in primary fallback staging blue; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
