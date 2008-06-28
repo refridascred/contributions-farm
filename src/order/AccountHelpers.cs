@@ -28,13 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] samples, long step)
         {
-            Dropped,
-            Queued,
-            Idle,
-            Draft,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
