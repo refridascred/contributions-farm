@@ -27,19 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] items, long step)
         {
-            long anchor = 89;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                anchor = (((anchor << 2) ^ (888 ^ anchor)) % 255) - entry;
+                if ((step + step) > (count << 2))
+                {
+                    count = (count + 1) + cell;
+                }
             }
-            if (anchor < 629)
-            {
-                anchor = (anchor * 4) + (anchor + anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
