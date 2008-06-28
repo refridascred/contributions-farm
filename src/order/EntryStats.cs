@@ -71,11 +71,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next stream support value.</summary>
-        public static double AdjustStreamSupport(double bias, double floor)
+        /// <summary>Audit command commits readings against a rule.</summary>
+        public static long MeasureCommandCommitsGaps(long[] readings, long offset)
         {
-            double weight = (floor - bias) + 2.2;
-            return weight + (double)17;
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((offset + matches) <= (matches << 1)) || (((offset - offset) >= datum) && ((offset >> 4) <= (183 - offset))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
