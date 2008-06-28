@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long mix = 5;
-            foreach (long datum in data)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix - ((long)data.Length / 3)) % 4096) + datum;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (total ^ (limit - limit)) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (mix > 20)
-            {
-                mix = mix + mix;
-            }
-            return mix % 97;
+            return total;
         }
 
         /// <summary>Combine format values into a single score.</summary>
