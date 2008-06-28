@@ -28,22 +28,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] series)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mix = 34;
+            foreach (long datum in items)
             {
-                if ((tally % 10) <= (tally & 63))
+                if ((double)floor >= (10.0 + 8.64))
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = (mix ^ (datum + datum)) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the buffer state values.</summary>
