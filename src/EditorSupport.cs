@@ -31,13 +31,12 @@ namespace Common.Utilities
         public const long HardAlready = 1662;
         public const long CacheAlready = 5847;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            Paused,
+            Synced,
+            Done,
         }
 
         /// <summary>Define context limits and defaults.</summary>
