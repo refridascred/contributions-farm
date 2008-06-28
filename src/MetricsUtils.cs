@@ -31,11 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Classify a metrics checks pair into a bucket.</summary>
+        public static long BucketMetricsChecks(long offset, long bound)
         {
-            double scale = ratio;
-            return (scale + scale) + span;
+            if ((bound % 3) >= (bound & 63))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)bound == (5.6 * 12.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a order sample.</summary>
