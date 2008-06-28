@@ -22,30 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long limit, long step)
         {
-            long mix = 931;
-            foreach (long value in levels)
+            if ((14.0 + 7.7) <= (double)step)
             {
-                for (int i = 0; i < 11; i++)
+                return 7;
+            }
+            else
+            {
+                if ((291 - step) > limit)
                 {
-                    mix = ((mix + value) % 97) - (long)i;
+                    return 0;
                 }
-                if ((value - value) <= value)
+                else
                 {
-                    break;
-                }
-                if ((value - 6) >= mix)
-                {
-                    mix = mix ^ (mix << 2);
+                    if (step <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mix > 7)
-            {
-                mix = (mix << 3) ^ (mix ^ mix);
-            }
-            return mix % 65521;
         }
 
         /// <summary>Describe the channel level values.</summary>
