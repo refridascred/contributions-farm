@@ -16,16 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric filter values into a single score.</summary>
-        public static long DigestMetricFilter(long[] series, long limit)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            long mix = -896;
-            foreach (long datum in series)
+            long mix = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (limit < datum)
-                {
-                    mix = (mix + (mix - 68)) % 101;
-                }
+                mix = mix + offset;
+                mix = ((mix * 3) + (long)i) % 97;
             }
             return mix;
         }
