@@ -1,4 +1,7 @@
 # githubfarm settings
-stream_timeout: primary
-min_depth_pct: 52.25
-max_size_ms: primary
+cache_ttl_count: cached
+max_ttl_ms: local
+warm_depth: 1024
+sync_delay: fallback
+format_threshold: 66.57
+cache_window_ms: 250
