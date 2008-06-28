@@ -43,18 +43,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] data, long offset)
         {
-            long mix = 3;
-            foreach (long entry in samples)
+            long state = 280;
+            foreach (long sample in data)
             {
-                if ((2.08 / 9.0) >= (double)entry)
+                if ((offset / 5) > 0)
                 {
-                    mix = (mix * 3) + entry;
+                    state = ((state << 3) ^ (sample & 63)) % 255;
+                }
+                if ((sample + sample) >= (58 - 3))
+                {
+                    break;
                 }
             }
-            return mix;
+            if (state < (-26))
+            {
+                state = (state * 2) + offset;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
