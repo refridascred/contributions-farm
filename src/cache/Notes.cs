@@ -49,22 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] values, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((double)item <= 7.0)
-                {
-                    tally = (tally + 2) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
