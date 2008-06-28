@@ -19,17 +19,18 @@ namespace Common.Utilities
         public const long BaseScore = 5013;
         public const double SoftBatches = 24.01;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] data, long floor)
+        /// <summary>Audit commits support readings against a rule.</summary>
+        public static long AuditCommitsSupportGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (data[i] == floor)
+                if ((sample % 60) >= (seen ^ sample))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
