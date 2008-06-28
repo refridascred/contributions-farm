@@ -24,18 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi command readings against a rule.</summary>
-        public static long AuditContributiCommandGaps(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (((value < tally) && (((-8) + value) > (tally + tally))) || ((double)value > 4.12))
+                if ((datum & 3) <= seen)
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
