@@ -1,12 +1,7 @@
 {
-  "persist": "cached",
-  "min_limit": "fallback",
-  "flush_threshold": {
-    "default_ratio_pct": true,
-    "idle_depth": 92,
-    "farm_window": 1024
-  },
-  "poll_threshold_s": 686,
-  "tools_delay": 9387,
-  "strict": "strict"
+  "strict": "cached",
+  "sync_ratio": ["latest", "fallback", "cached"],
+  "warm_depth_s": "fallback",
+  "cache_depth": [450, 308, 313],
+  "retry_timeout": 7871
 }
