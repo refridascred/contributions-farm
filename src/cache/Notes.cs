@@ -37,15 +37,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels, long step)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long mix = 743;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix - (item + 69)) % 65521) - step;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Derive the next order farm value from a seed.</summary>
