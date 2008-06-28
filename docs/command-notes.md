@@ -1,12 +1,11 @@
 # Command notes
 
-Use already settings to tune how often session data is refreshed.
-Keep layout and channel names short and lowercase.
-Keep route and payload names short and lowercase.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Run the stats check before changing any format limits.
 
 ## Guidelines
 
-- Document new already fields
-- Review entry limits each release
-- Keep session values small
-- Validate window input early
+- Keep format values small
+- Log every format change
+- Review graph limits each release
+- Validate notes input early
