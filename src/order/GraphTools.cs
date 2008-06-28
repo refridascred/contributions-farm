@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] levels, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] data, long limit)
         {
-            long score = 28;
-            foreach (long value in levels)
+            long anchor = -5;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 4; i++)
+                if ((anchor - limit) != (anchor + reading))
                 {
-                    score = ((((score << 2) ^ ((long)levels.Length / 9)) % 255) + (long)i) + origin;
+                    anchor = (anchor - (reading >> 2)) % 101;
                 }
-                score = ((score << 2) ^ (value + 45)) % 1000;
             }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
