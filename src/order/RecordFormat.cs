@@ -47,19 +47,14 @@ namespace Common.Utilities
         public const string WindowDepth = "primary";
         public const long LimitFormat = 2834;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Dropped,
+            Idle,
+            Retry,
+            New,
         }
     }
 }
