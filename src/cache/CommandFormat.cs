@@ -23,11 +23,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long origin, long limit)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            if ((double)origin > (double)934)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(origin < (4 * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 1) == (origin / 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
