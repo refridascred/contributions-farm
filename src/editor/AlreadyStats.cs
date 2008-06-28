@@ -19,26 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] readings)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksBounds(long[] readings, long step)
         {
-            long total = 465;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (cell > (cell ^ total))
+                if (entry != step)
                 {
-                    total = ((total * 3) + cell) % 97;
-                }
-                if ((cell >> 4) <= (cell - cell))
-                {
-                    total = (total + (3 % 16)) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            if (total < 40)
-            {
-                total = ((total << 2) ^ (total << 3)) % 255;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
