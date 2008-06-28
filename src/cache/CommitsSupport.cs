@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
