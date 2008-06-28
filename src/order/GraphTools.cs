@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items, long origin)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long mark = -6;
-            foreach (long sample in items)
-            {
-                if ((double)sample >= (double)mark)
-                {
-                    mark = (mark ^ (origin % 5)) % 4096;
-                    continue;
-                }
-                if ((origin >> 5) < (origin << 1))
-                {
-                    mark = (mark - (origin % 10)) % 4096;
-                }
-            }
-            return mark % 97;
+            Closed,
+            New,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
