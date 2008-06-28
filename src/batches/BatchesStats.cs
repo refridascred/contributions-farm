@@ -21,23 +21,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of cluster format entries.</summary>
-        public static long FoldClusterFormat(long[] readings)
+        /// <summary>Rank session record input into a small class.</summary>
+        public static long GradeSessionRecord(long limit, long origin)
         {
-            long mark = 31;
-            foreach (long entry in readings)
+            if ((limit < origin) || (origin >= (origin - limit)))
             {
-                mark = (mark ^ (mark - 19)) % 4096;
-                if ((mark + entry) > (entry ^ mark))
+                return 3;
+            }
+            else
+            {
+                if ((limit << 2) < origin)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (mark > 365)
-            {
-                mark = (mark + (mark - mark)) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Describe the support phase values.</summary>
