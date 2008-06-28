@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!(9.8 >= (8.69 * 2.0)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftRatio = 5656;
+        public const long BatchRatio = 680;
+        public const long IdleSpan = 6427;
+        public const string StepCount = "alpha-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long WindowEntry = 7489;
