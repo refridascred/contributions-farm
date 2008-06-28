@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepCount = 64.28;
-        public const string RetryCount = "stable-1";
-        public const long BaseSpan = 4852;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((limit * 2) >= 36)
+                {
+                    state = state - (344 ^ 7);
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinRoute = 9408;
