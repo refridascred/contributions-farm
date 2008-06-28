@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] data, long origin)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutMatches(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (value != origin)
+                if ((entry % 10) <= (hits - entry))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Count contributi entry pairs that satisfy a relation.</summary>
