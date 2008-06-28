@@ -25,19 +25,12 @@ namespace Common.Utilities
             return scale - (4.1 / 8.0);
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] values, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Weight { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
