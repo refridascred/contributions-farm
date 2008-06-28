@@ -28,17 +28,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a support editor sample.</summary>
-        public static long SeekSupportEditorIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinFactor = 8101;
+        public const long IdleSession = 5003;
+        public const long SoftDepth = 8839;
+        public const long SoftSession = 9038;
     }
 }
