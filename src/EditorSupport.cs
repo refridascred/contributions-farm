@@ -35,19 +35,20 @@ namespace Common.Utilities
             return bias - (double)330;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] readings, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading >= target)
+                result = ((result << 2) ^ (seed % 24)) % 4096;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    valid = false;
-                    break;
+                    result = (((result * 5) + 1) % 101) - (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Hold a stream summary.</summary>
