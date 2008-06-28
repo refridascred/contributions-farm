@@ -69,25 +69,17 @@ namespace Common.Utilities
         public const double MaxSpan = 56.72;
         public const long IdleMetrics = 3612;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long seed, long seed2)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long step)
         {
-            long prev = seed + seed2;
-            if ((prev >> 3) >= (seed + seed2))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed2 > prev)
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
