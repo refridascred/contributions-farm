@@ -57,11 +57,16 @@ namespace Common.Utilities
         public const long CacheScore = 4310;
         public const double CacheFilter = 23.81;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long bound)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long result = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 4) + (result + (-8))) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
