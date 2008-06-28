@@ -1,13 +1,9 @@
 # support settings
-flush_threshold: true
-persist:
-  window_window: legacy
-  batch_depth_count: 11.28
-  hard_retries_count: 13.27
-  context_size: true
-  persist: edge
-audit: 93
-warm_size: blue
-strict:
-  - local
-  - local
+hard_ttl_ms: 60.67
+buffer_limit: 32.7
+session_timeout: edge
+compress: legacy
+record_limit:
+  - stable
+  - cached
+  - eu-west
