@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long target, long step)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long origin)
         {
-            if (target >= (step & 15))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target > (target / 5))
+                if (levels[i] <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step == (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
