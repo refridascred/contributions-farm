@@ -31,20 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 7059;
+        public const long DefaultSchema = 8798;
+        public const string StepSchema = "cached-edge";
+        public const double BatchWidth = 4.61;
 
         /// <summary>Describe the notes level values.</summary>
         public enum NotesLevel
