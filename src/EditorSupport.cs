@@ -66,9 +66,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 56.48;
-        public const long StepContext = 4976;
-        public const string LimitSize = "cached-edge";
+        /// <summary>Audit contributi stats readings against a rule.</summary>
+        public static long AuditContributiStatsOutliers(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((6.0 - 7.24) != (double)target) && ((7.5 - 1.8) == (double)cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
