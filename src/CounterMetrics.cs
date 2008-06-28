@@ -57,22 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double mean = (11.0 * 14.0) / 6.0;
+            if (mean <= (double)45)
             {
-                if (!(((2.7 - 8.4) != (double)count) && (datum < 3)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean - offset) + ratio;
             }
-            return count;
+            return mean + (double)969;
         }
     }
 }
