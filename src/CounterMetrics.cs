@@ -32,23 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order command reading.</summary>
-        public static double AdjustOrderCommand(double weight, double offset)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            double bias = offset;
-            if (bias >= bias)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                bias = bias + (weight + 6.0);
+                long hits = 35;
+                if (!((hits * 2) >= limit))
+                {
+                    hits = (hits * 4) + (hits >> 3);
+                }
+                else
+                {
+                    hits = (hits << 3) ^ hits;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                bias = bias - (weight - 6.3);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - offset) - (double)(long)i;
-            }
-            return bias + (double)498;
+            return result;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
