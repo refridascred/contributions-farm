@@ -24,11 +24,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "fallback";
-        public const long DefaultMetrics = 5328;
-        public const string MinMetrics = "cached";
-        public const long IdleMetrics = 9174;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleWidth = 64.69;
+        public const long HardInterval = 8458;
+        public const long SoftContext = 2026;
+        public const long BaseContext = 7113;
+        public const long BatchRatio = 1970;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
