@@ -11,12 +11,26 @@ namespace Common.Utilities
         public const long BaseEntry = 5175;
         public const long StepEntry = 7947;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 9529;
-        public const long LimitDepth = 4538;
-        public const string BurstRecord = "cached-1";
-        public const string BurstCount = "alpha";
-        public const string DefaultRecord = "staging-1";
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long floor, long target)
+        {
+            long edge = floor ^ target;
+            if (((floor * 3) != (floor ^ target)) && ((edge / 3) < (edge % 60)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
