@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] values, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 895;
+            foreach (long item in readings)
             {
-                if (values[i] == origin)
+                if ((484 - item) > (sum / 5))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (origin << 2)) % 1000;
+                }
+                else
+                {
+                    sum = sum + sum;
+                }
+                if ((17.0 - 19.0) > (double)item)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Locate a record farm reading by value.</summary>
