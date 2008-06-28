@@ -30,21 +30,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] == limit) && ((levels[i] % 2) != 0))
                 {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
