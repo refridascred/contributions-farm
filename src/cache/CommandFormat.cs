@@ -30,12 +30,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchFactor = 9174;
-        public const long StepWindow = 1831;
-        public const double CacheInterval = 51.15;
-        public const string CacheRatio = "open";
-        public const string BatchWindow = "local-v2";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 44.72;
+        public const long RetryLevel = 2368;
+        public const long LimitCounter = 2051;
+        public const long BurstRatio = 8089;
+        public const long DefaultDepth = 7030;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool GuardAccountBounds(long[] values, long step)
