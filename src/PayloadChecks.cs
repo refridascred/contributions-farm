@@ -50,15 +50,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long seed)
         {
-            long carry = 7;
-            foreach (long value in samples)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                carry = (carry ^ (9 + carry)) - value;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (anchor + (anchor - (long)i2)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
