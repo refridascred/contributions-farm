@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double offset)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            double drift = (offset + offset) / 6.0;
+            if (drift > (7.94 + 7.5))
+            {
+                drift = drift - (offset - scale);
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a notes record.</summary>
