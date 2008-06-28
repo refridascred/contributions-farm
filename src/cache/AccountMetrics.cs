@@ -38,11 +38,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 806;
-        public const long LimitOrder = 8081;
-        public const double MinOrder = 9.34;
-        public const long LimitDepth = 3448;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] levels, long seed)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate stats counter samples.</summary>
         public static long ScoreStatsCounter(long[] readings, long step)
