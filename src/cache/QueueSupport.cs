@@ -16,12 +16,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 7429;
-        public const double BurstFactor = 68.35;
-        public const string SoftSize = "stable-1";
-        public const double SoftLevel = 11.78;
-        public const long BatchBudget = 4347;
+        /// <summary>Iterate the batches window series from a seed.</summary>
+        public static long RollBatchesWindow(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] values, long bound)
