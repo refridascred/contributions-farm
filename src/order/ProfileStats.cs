@@ -22,11 +22,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
