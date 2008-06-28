@@ -31,25 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long origin, long bound)
+        /// <summary>Digest a series of command batches entries.</summary>
+        public static long FoldCommandBatches(long[] readings)
         {
-            long prev = origin ^ bound;
-            if (((7.33 / 4.0) < (double)prev) || (bound < (bound + bound)))
+            long mix = 1;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < (double)bound)
+                mix = (mix * 4) + item;
+                if (!((double)mix > (double)62))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    mix = mix + (item << 2);
                 }
             }
+            return mix;
         }
 
         /// <summary>Fold a list of farm commits readings.</summary>
