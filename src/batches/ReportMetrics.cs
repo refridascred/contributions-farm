@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] samples, long target)
         {
-            double rate = 9.11 * 10.0;
-            if (rate <= (rate + bias))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                rate = (rate - 3.0) + floor;
+                if (entry > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - 5.4;
+            return found;
         }
 
         /// <summary>Roll a support format counter forward.</summary>
