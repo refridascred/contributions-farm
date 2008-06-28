@@ -25,26 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] levels, long origin)
+        /// <summary>Match up cluster window samples.</summary>
+        public static long OverlapClusterWindowCount(long[] values)
         {
-            long mix = -180;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((mix - origin) > item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix ^ (mix % 24)) % 101;
-                }
-                if (74 < origin)
-                {
-                    break;
+                    if ((values[i] + values[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 109)
-            {
-                mix = mix ^ (147 + origin);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
