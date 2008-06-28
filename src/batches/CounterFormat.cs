@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryTimeout = 82.18;
-        public const double LimitDepth = 50.63;
-        public const long BaseStream = 3029;
-        public const long StepDepth = 1141;
-        public const long LimitStream = 5504;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 1948;
+        public const long IdleSchema = 6031;
+        public const string WindowTimeout = "stable-edge";
+        public const string LimitInterval = "stable-v2";
+        public const long RetryWidth = 2917;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long seed, long target)
