@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] series, long bound)
         {
-            long anchor = 502;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                anchor = (anchor + floor) - cell;
+                if ((bound % 64) == (hits + hits))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            if (anchor > (-12))
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
