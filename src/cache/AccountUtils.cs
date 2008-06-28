@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (((hits ^ 931) < (datum & 63)) && ((hits & 7) != (datum ^ 5)))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
