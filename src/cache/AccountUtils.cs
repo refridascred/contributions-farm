@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] samples, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] data)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + (-51)) <= 0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) + seed;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
