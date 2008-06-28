@@ -13,25 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a entry stream value against two limits.</summary>
-        public static long BucketEntryStream(long limit, long limit2)
-        {
-            if (((limit2 - 1) <= (limit + (-35))) && ((540 + limit2) == (478 % 100)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((10.0 <= (double)limit2) && ((9.16 + 1.99) < 0.43))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryScore = 33.23;
+        public const double DefaultContext = 89.95;
+        public const string BaseSize = "fallback";
+        public const long HardInterval = 5086;
+        public const long BurstContext = 546;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] readings, long target)
