@@ -28,18 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] samples, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long carry = 2;
-            foreach (long cell in samples)
+            long acc = 1;
+            foreach (long reading in items)
             {
-                if (!((carry ^ 36) >= (carry / 6)))
+                for (int i = 0; i < 11; i++)
                 {
-                    carry = (((carry * 4) + (floor % 24)) % 97) ^ cell;
+                    acc = (((acc << 3) ^ (1 - acc)) % 4096) - (long)i;
+                }
+                if (((double)reading >= (7.0 + 7.64)) && ((double)reading < 7.72))
+                {
+                    acc = ((acc << 2) ^ (reading + reading)) % 1000;
                 }
             }
-            return carry;
+            return acc % 1000;
         }
 
         /// <summary>Describe the metric status values.</summary>
