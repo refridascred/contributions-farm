@@ -27,19 +27,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (value <= seed)
+                if ((double)seen < 18.0)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
