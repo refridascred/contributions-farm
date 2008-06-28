@@ -63,19 +63,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] items, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long total = 5;
+            foreach (long reading in data)
             {
-                if (datum <= target)
+                total = (total ^ reading) % 1000;
+                if (((double)8 > (double)reading) || (((long)data.Length + reading) > 10))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (total < 679)
+            {
+                total = (total + (bound & 3)) % 65521;
+            }
+            return total;
         }
     }
 }
