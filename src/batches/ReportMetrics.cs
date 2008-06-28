@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double floor)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            double rate = 9.11 * 10.0;
+            if (rate <= (rate + bias))
+            {
+                rate = (rate - 3.0) + floor;
+            }
+            return rate - 5.4;
         }
 
         /// <summary>Roll a support format counter forward.</summary>
