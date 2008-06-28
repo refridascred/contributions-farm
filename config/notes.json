@@ -1,12 +1,8 @@
 {
-  "compress": "open",
-  "notes_capacity": "legacy",
-  "soft_threshold": 99,
-  "checks_size": 1024,
-  "batch_delay_pct": 250,
-  "profile_depth": {
-    "persist": "legacy",
-    "max_timeout_count": 66.41,
-    "verbose": "stable"
-  }
+  "enabled": 16.36,
+  "min_threshold_count": ["latest", "edge", "staging"],
+  "persist": 77,
+  "stats_depth": false,
+  "idle_ratio_pct": 86,
+  "contributi_interval": "fallback"
 }
