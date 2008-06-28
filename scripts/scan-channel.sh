@@ -7,14 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-for item in legacy eu-west; do
+for item in strict blue cached; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=10
-log "limit is ${CHANNEL_LIMIT}"
