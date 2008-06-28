@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] levels, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (levels[i] == origin)
+                if ((((matches & 63) != (item + 25)) && ((324 - matches) <= (item % 2))) && ((item ^ (-47)) <= (matches >> 3)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a farm record reading by value.</summary>
