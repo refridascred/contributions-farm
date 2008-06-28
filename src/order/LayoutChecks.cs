@@ -50,13 +50,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
-            public bool Total { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
