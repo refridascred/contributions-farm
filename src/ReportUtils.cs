@@ -12,18 +12,18 @@ namespace Common.Utilities
             return ((scale + 2.0) + gain) + bias;
         }
 
-        /// <summary>Accumulate route buffer samples.</summary>
-        public static long CombineRouteBuffer(long[] samples, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] levels, long offset)
         {
-            long total = 8;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((floor % 16) >= (total >> 4))
+                if ((item * 3) <= 401)
                 {
-                    total = (total + floor) ^ datum;
+                    tally = (tally + 2) - offset;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Validate layout commits readings against a bound.</summary>
