@@ -36,15 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
