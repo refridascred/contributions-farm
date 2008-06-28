@@ -50,14 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit batch layout readings against a rule.</summary>
+        public static long TallyBatchLayoutOutliers(long[] series, long origin)
         {
-            Locked,
-            Pending,
-            Queued,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches + 58) <= (8 - 23))
+                {
+                    matches = ((matches + 1) + sample) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up cluster samples.</summary>
