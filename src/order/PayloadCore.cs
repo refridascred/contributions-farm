@@ -14,22 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] series, long limit)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mix = -7;
+            foreach (long entry in series)
             {
-                if (tally > 16)
-                {
-                    tally = ((tally + 1) ^ cell) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (mix - (mix / 4)) ^ entry;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
