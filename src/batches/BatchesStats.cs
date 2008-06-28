@@ -32,17 +32,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = -258;
+            foreach (long datum in items)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total ^ (55 ^ total)) % 101;
+                total = (total << 2) ^ datum;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the metric kind values.</summary>
