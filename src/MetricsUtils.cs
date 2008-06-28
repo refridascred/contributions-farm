@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "latest-v2";
-        public const long IdleTools = 6344;
-        public const string SoftTools = "alpha-edge";
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a githubfarm batch counter forward.</summary>
         public static long DeriveGithubfarmBatch(long origin)
