@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the support phase values.</summary>
