@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Classify a batch window pair into a bucket.</summary>
+        public static long SortBatchWindow(long floor, long floor2)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            long span = floor + floor2;
+            if ((double)floor2 <= (7.7 + 9.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor2 * 2) >= floor2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor2 ^ 937) <= (floor2 - span)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor ^ span) <= (floor2 / 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of order route readings.</summary>
