@@ -1,7 +1,24 @@
 {
-  "dry_run": 3968,
-  "audit": 60,
-  "metrics_size": 3604,
-  "stats_capacity": "latest",
-  "idle_threshold_ms": 5
+  "batch_threshold_count": {
+    "default_interval_ms": true,
+    "base_threshold_count": "local",
+    "poll_limit": "primary",
+    "burst_limit_count": {
+      "cache_limit_ms": 250,
+      "warm_retries": [60, 464, 180, 434],
+      "persist": "primary",
+      "account_timeout": "eu-west"
+    },
+    "readonly": false,
+    "strict": [83, 20]
+  },
+  "audit": 2.5,
+  "retry_threshold_ms": {
+    "tools_retries": "standard",
+    "session_size": false,
+    "batch_retries_count": "strict",
+    "compress": "open",
+    "persist": [28, 316]
+  },
+  "sync_retries_s": "staging"
 }
