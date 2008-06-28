@@ -38,18 +38,17 @@ namespace Common.Utilities
             return (scale + scale) + span;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] readings, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches >> 1) > (matches % 2))
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    matches = ((matches + 3) + sample) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
