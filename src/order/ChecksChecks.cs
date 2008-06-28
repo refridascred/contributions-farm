@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long seed)
         {
-            public double Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total - ((long)i - total)) % 97;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the cluster level values.</summary>
