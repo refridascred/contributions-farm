@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (66 > tally)
+                if ((long)samples.Length < (item >> 1))
                 {
-                    tally = (tally + 1) ^ cell;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate schema samples.</summary>
