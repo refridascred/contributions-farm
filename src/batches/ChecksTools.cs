@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] series, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!((bound >= (value & 63)) || ((value / 5) <= value)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Hold a batches header.</summary>
