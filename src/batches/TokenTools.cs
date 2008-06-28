@@ -17,14 +17,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long seed)
         {
-            Failed,
-            New,
-            Dropped,
-            Draft,
-            Active,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
