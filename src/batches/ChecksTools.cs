@@ -35,13 +35,15 @@ namespace Common.Utilities
         public const long BaseContext = 7113;
         public const long BatchRatio = 1970;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long floor)
         {
-            Failed,
-            Closed,
-            Draft,
-            Done,
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
