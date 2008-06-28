@@ -1,7 +1,6 @@
 {
-  "warm_delay": false,
-  "poll_window_s": 3760,
-  "default_delay_ms": 24,
-  "schema_size": "primary",
-  "enabled": false
+  "burst_limit_s": [315, 8, 265, 427],
+  "retry_limit_ms": true,
+  "channel_capacity": false,
+  "persist": [436, 317, 279, 226]
 }
