@@ -22,18 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] items, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = -180;
+            foreach (long item in levels)
             {
-                if ((step + step) > (count << 2))
+                if (!((mix - origin) > item))
                 {
-                    count = (count + 1) + cell;
+                    mix = (mix ^ (mix % 24)) % 101;
+                }
+                if (74 < origin)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > 109)
+            {
+                mix = mix ^ (147 + origin);
+            }
+            return mix;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
