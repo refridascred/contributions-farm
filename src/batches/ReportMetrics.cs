@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of editor schema readings.</summary>
-        public static long TallyEditorSchema(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] items, long seed)
         {
-            long carry = 264;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                carry = (((carry << 3) ^ carry) % 65521) + item;
+                if ((double)hits < 5.8)
+                {
+                    hits = ((hits + 1) ^ entry) + seed;
+                }
             }
-            if (carry > 32)
-            {
-                carry = ((carry * 4) + (carry + carry)) % 1000;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
