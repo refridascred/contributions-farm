@@ -31,11 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowCount = "legacy";
-        public const long DefaultFarm = 8620;
-        public const long BatchCount = 8592;
-        public const long IdleFarm = 9979;
-        public const long CacheCount = 3218;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+        }
     }
 }
