@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadBounds(long[] readings, long seed)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (entry >= seed)
+                if (66 > tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 1) ^ cell;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
