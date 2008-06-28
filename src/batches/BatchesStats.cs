@@ -30,19 +30,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double span)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long target)
         {
-            double load = ratio;
-            if (load <= span)
+            if (target <= (limit + limit))
             {
-                load = load - (span * 7.05);
+                return 0;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load - ratio) + (double)(long)i;
+                if ((0 - target) > (limit + 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return load + (span + load);
         }
 
         /// <summary>Describe the already state values.</summary>
