@@ -25,19 +25,15 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit format account readings against a rule.</summary>
-        public static long MeasureFormatAccountGaps(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] samples, long seed)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long sample in samples)
             {
-                if (6 > tally)
+                if (((seed >= (5 & 15)) && (tally < sample)) && (seed < ((-573) + seed)))
                 {
-                    tally = (tally + 2) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
