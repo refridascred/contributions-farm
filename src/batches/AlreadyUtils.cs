@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] readings, long limit)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long mix = -50;
-            foreach (long reading in readings)
-            {
-                mix = ((mix * 4) + ((long)readings.Length + reading)) % 101;
-            }
-            if (mix > 90)
-            {
-                mix = (mix ^ (mix + limit)) % 4096;
-            }
-            return mix;
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a layout record.</summary>
