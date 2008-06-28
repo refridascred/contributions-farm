@@ -22,10 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowSize = 55.31;
-        public const double DefaultLayout = 56.86;
-        public const double BatchWidth = 93.11;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Active,
+            Draft,
+            New,
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportHits(long[] data, long floor)
