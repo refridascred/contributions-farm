@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const string IdleScore = "cached";
         public const string MaxCount = "stable-edge";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches + entry) <= (33 << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 5519;
+        public const double StepTimeout = 40.93;
+        public const long SoftLevel = 1960;
+        public const string RetryStream = "legacy-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long HardCache = 6691;
