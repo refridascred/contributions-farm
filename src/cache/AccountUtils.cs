@@ -38,18 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] data, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)origin >= (double)item)
+                if ((datum + (-51)) <= 0)
                 {
-                    count = count + 3;
+                    tally = (tally + 3) + seed;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
