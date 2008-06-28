@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double ratio, double span)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double scale = span;
-            if (scale > (double)64)
-            {
-                scale = scale + (ratio * 1.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (8.45 + span)) + (double)(long)i;
-            }
-            return scale - ratio;
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
