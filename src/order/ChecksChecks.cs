@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double drift = (3.0 + scale) + (offset - scale);
-            if (drift <= (double)0)
-            {
-                drift = drift - (double)0;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            return drift - scale;
+            public double Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
