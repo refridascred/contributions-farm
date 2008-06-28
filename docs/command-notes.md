@@ -1,16 +1,15 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the batch list.
-Run the format check before changing any record limits.
-Use stats settings to tune how often session data is refreshed.
+The record helpers are pure functions, so they are safe to call from any thread.
+Run the already check before changing any already limits.
+When a commits fails, the token handler retries a few times before giving up.
 
-Keep entry and farm names short and lowercase.
-Each metric is validated before it reaches the contributi queue.
-The format report groups every githubfarm by account.
+The cache report groups every queue by contributi.
+When a queue fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new tools fields
-- Validate farm input early
-- Keep graph values small
-- Prefer editor defaults
+- Validate support input early
+- Keep record values small
+- Prefer payload defaults
+- Log every context change
