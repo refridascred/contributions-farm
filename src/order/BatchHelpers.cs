@@ -17,18 +17,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] data, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long total = 6;
+            foreach (long reading in levels)
             {
-                if ((step ^ entry) <= (seen ^ step))
+                if ((13.0 * 5.1) >= (double)total)
                 {
-                    seen = seen + 2;
+                    total = ((total << 2) ^ 5) % 97;
+                }
+                if ((offset - total) <= (reading ^ reading))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total > 61)
+            {
+                total = (total ^ offset) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
