@@ -31,12 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] samples, long target)
         {
-            Queued,
-            Ready,
-            Closed,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((((target / 2) < hits) && ((target - (long)samples.Length) <= ((long)samples.Length % 60))) || ((42 ^ target) > 507))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
