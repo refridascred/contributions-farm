@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseCount = "open-edge";
-        public const string LimitWidth = "open-v2";
-        public const double MinContributi = 64.84;
-        public const long LimitContributi = 3788;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long target, long offset)
+        {
+            if ((429 - target) > target)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((46 * 3) > (target * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
