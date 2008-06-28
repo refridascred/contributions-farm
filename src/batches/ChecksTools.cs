@@ -24,19 +24,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value % 24) == (seen >> 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "fallback";
+        public const long DefaultMetrics = 5328;
+        public const string MinMetrics = "cached";
+        public const long IdleMetrics = 9174;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
