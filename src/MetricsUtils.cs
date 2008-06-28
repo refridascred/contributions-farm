@@ -42,18 +42,17 @@ namespace Common.Utilities
         public const long BaseContributi = 8609;
         public const long StepCount = 8840;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] levels)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (890 >= (sample ^ matches))
+                if (readings[i] <= step)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
