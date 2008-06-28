@@ -1,11 +1,19 @@
 {
-  "editor_window": 1155,
-  "tools_depth": {
-    "enabled": ["latest", "staging", "cached", "local"],
-    "default_retries_ms": 3116,
-    "readonly": true
+  "min_capacity_s": {
+    "min_threshold_pct": "legacy",
+    "hard_window": 75,
+    "verbose": "cached",
+    "metric_timeout": 3957,
+    "burst_ttl_ms": {
+      "audit": "legacy",
+      "hard_delay": 75,
+      "session_size": 60,
+      "sync_retries_s": "edge",
+      "readonly": 96.19,
+      "strict": 69
+    }
   },
-  "warm_interval": false,
-  "stream_ratio": 44.64,
-  "min_retries_pct": "edge"
+  "hard_size_ms": true,
+  "persist": true,
+  "base_size": 13.77
 }
