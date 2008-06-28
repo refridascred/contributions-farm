@@ -45,22 +45,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long total = 263;
-            foreach (long sample in readings)
-            {
-                if ((double)total == (6.13 - 9.8))
-                {
-                    total = total - sample;
-                }
-            }
-            if (total < 90)
-            {
-                total = (total * 3) + ((-12) + (-729));
-            }
-            return total % 4096;
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
