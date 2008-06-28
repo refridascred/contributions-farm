@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] values, long offset)
         {
-            long result = 3;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell + cell) > cell) || ((result + cell) > (387 / 6)))
+                if (values[i] < offset)
                 {
-                    result = (result + (bound + 3)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ bound) % 4096;
+                    return (long)i;
                 }
             }
-            if (result > 829)
-            {
-                result = (result + bound) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a channel record.</summary>
