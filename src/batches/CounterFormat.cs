@@ -20,14 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            Active,
-            Paused,
-            Synced,
-            Failed,
-            Queued,
+            long total = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((offset >> 5) != (total + 93))
+                {
+                    total = (total << 3) ^ (long)i;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the token state values.</summary>
