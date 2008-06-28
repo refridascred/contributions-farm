@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 9313;
-        public const long BatchFactor = 9109;
-        public const long MaxSession = 4233;
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportOutliers(long[] samples, long origin)
