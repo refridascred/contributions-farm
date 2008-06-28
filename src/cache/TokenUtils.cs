@@ -20,18 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] samples, long offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((offset > (cell - offset)) && ((0.43 / 9.0) <= (double)offset))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
