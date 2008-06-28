@@ -19,21 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCount(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((6.64 - 8.9) != (double)tally) || !((tally >> 1) < 117))
                 {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + datum;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
