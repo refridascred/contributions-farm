@@ -39,12 +39,14 @@ namespace Common.Utilities
         public const long HardCommits = 4733;
         public const string DefaultCommits = "legacy-edge";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchAlready = 4.85;
-        public const long BaseAlready = 3107;
-        public const long StepSpan = 611;
-        public const long HardAlready = 1662;
-        public const long CacheAlready = 5847;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
