@@ -1,5 +1,6 @@
 # entry settings
-cache_limit: 98
-report_interval: 49.08
-soft_depth_pct: false
-poll_ttl: 9767
+soft_capacity_ms: 7727
+flush_ttl_s:
+  - 120
+  - 224
+audit: 100
