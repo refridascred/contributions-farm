@@ -64,16 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] values, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                mix = ((mix * 3) + (mix >> 5)) % 97;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
