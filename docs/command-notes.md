@@ -1,13 +1,14 @@
 # Command notes
 
-Run the contributi check before changing any contributi limits.
-Use session settings to tune how often support data is refreshed.
+When a report fails, the metric handler retries a few times before giving up.
+Use window settings to tune how often payload data is refreshed.
+The already report groups every format by order.
 
-The report report groups every queue by channel.
-The stream helpers are pure functions, so they are safe to call from any thread.
+A account that stays idle for too long is moved to the cache list.
+Each stream is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Log every report change
-- Keep command values small
-- Document new graph fields
+- Review filter limits each release
+- Validate metric input early
+- Prefer record defaults
