@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] data)
+        /// <summary>Validate metrics counter readings against a bound.</summary>
+        public static bool VerifyMetricsCounterRange(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (((count / 4) < value) && (value >= 8))
+                if (entry >= bound)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
