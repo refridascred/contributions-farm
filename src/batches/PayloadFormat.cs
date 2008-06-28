@@ -32,13 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
