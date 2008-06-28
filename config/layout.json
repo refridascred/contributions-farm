@@ -1,19 +1,6 @@
 {
-  "min_capacity_s": {
-    "min_threshold_pct": "legacy",
-    "hard_window": 75,
-    "verbose": "cached",
-    "metric_timeout": 3957,
-    "burst_ttl_ms": {
-      "audit": "legacy",
-      "hard_delay": 75,
-      "session_size": 60,
-      "sync_retries_s": "edge",
-      "readonly": 96.19,
-      "strict": 69
-    }
-  },
-  "hard_size_ms": true,
-  "persist": true,
-  "base_size": 13.77
+  "burst_ratio": ["stable", "stable"],
+  "persist": "blue",
+  "idle_threshold_ms": [19, 178, 435, 86],
+  "audit": "eu-west"
 }
