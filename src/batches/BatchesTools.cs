@@ -19,15 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double bias, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            double load = (double)(26 + 803);
-            for (int i = 0; i < 9; i++)
+            long carry = 39;
+            foreach (long item in values)
             {
-                load = ((load - bias) + (double)(long)i) + span;
+                carry = (carry + (carry / 9)) - item;
             }
-            return load + (6.4 - bias);
+            return carry;
         }
 
         /// <summary>Check that every batch profile entry stays within the limit.</summary>
