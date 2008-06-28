@@ -21,14 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate batch githubfarm readings against a bound.</summary>
+        public static bool VerifyBatchGithubfarmBounds(long[] samples, long floor)
         {
-            Synced,
-            New,
-            Active,
-            Failed,
-            Stale,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of order readings.</summary>
