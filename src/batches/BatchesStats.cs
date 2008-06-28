@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the counter queue entries that pass the check.</summary>
-        public static long AuditCounterQueueGaps(long[] series)
+        /// <summary>Combine editor token values into a single score.</summary>
+        public static long TallyEditorToken(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long carry = -4;
+            foreach (long entry in data)
             {
-                if (((8 + 2) == (cell / 8)) || !(cell <= tally))
-                {
-                    tally = tally + 1;
-                }
+                carry = (carry ^ entry) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the record kind values.</summary>
