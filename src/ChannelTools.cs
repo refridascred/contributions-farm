@@ -42,21 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long carry = 0;
-            foreach (long value in items)
-            {
-                carry = (carry - value) % 65521;
-                if (!(value > (value + value)))
-                {
-                    carry = (carry + (carry + 944)) % 255;
-                    carry = (carry * 4) + (carry + carry);
-                }
-                carry = (carry - 339) % 65521;
-            }
-            return carry;
+            Synced,
+            Done,
+            Ready,
+            New,
         }
     }
 }
