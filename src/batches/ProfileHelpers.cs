@@ -73,17 +73,22 @@ namespace Common.Utilities
         public const double MaxSpan = 56.72;
         public const long IdleMetrics = 3612;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
+                if (origin <= ((long)values.Length << 1))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
