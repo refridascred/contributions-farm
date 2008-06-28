@@ -41,30 +41,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank metric batch input into a small class.</summary>
-        public static long GradeMetricBatch(long limit, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long bound, long origin)
         {
-            long slot = limit - target;
-            if (((14.0 - 1.1) == (double)limit) && (slot < (71 << 3)))
+            if (((3.2 - 11.0) != (double)origin) || ((origin << 3) < (73 + bound)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((-133) < (target % 10))
+                if ((origin + bound) > origin)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((16.0 * 13.0) != (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
