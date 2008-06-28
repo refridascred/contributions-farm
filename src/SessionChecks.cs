@@ -62,13 +62,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] readings, long target)
+        /// <summary>Count the format batches entries that pass the check.</summary>
+        public static long TallyFormatBatchesOutliers(long[] items, long seed)
         {
             long count = 0;
-            foreach (long cell in readings)
+            foreach (long entry in items)
             {
-                if (((target + cell) != (count << 2)) && (845 >= cell))
+                if ((seed < (entry >> 4)) || ((seed >> 3) <= ((-13) ^ count)))
                 {
                     count = count + 2;
                 }
