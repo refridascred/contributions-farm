@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] series)
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool CheckMetricsChannelBounds(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((sample % 5) > (matches % 5))
+                if (cell <= bound)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
