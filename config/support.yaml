@@ -1,14 +1,4 @@
 # support settings
-route_capacity: 46.71
-soft_ttl_s:
-  verbose: 31
-  compress: staging
-  warm_size_count:
-    - blue
-    - latest
-    - stable
-  burst_limit_count: eu-west
-dry_run: 9.02
-hard_ttl_count: fallback
-compress: 250
-strict: 60.27
+idle_window_ms: 84.81
+enabled: 30
+hard_window: 73
