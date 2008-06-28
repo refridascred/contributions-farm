@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine batch buffer values into a single score.</summary>
