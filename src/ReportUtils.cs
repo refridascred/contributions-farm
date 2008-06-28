@@ -46,19 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long step)
         {
-            long anchor = 4;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in series)
             {
-                anchor = (anchor ^ (anchor * 3)) % 1000;
-                if ((anchor >= (sample % 10)) && ((anchor & 31) >= (37 / 3)))
+                if (value >= step)
                 {
-                    anchor = ((anchor * 4) + (anchor << 1)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Blend two record measurements.</summary>
