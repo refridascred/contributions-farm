@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
