@@ -1,4 +1,9 @@
 # githubfarm settings
-warm_retries: 96
-dry_run: true
-default_size_ms: false
+default_capacity: 100
+profile_threshold: 60
+base_ratio:
+  - 177
+  - 25
+  - 27
+  - 258
+cache_ttl_s: latest
