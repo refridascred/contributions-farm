@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long target)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = span;
+            if (load >= scale)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                load = load + (load * 6.85);
             }
-            return -1;
+            else
+            {
+                load = load - (span * 1.0);
+            }
+            return load - 11.0;
         }
 
         /// <summary>Measure how many editor stream samples are out of range.</summary>
