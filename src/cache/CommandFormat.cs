@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] samples)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (8.0 < (double)count)
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
+            Ready,
+            Retry,
+            New,
         }
 
         /// <summary>Blend two channel cache measurements.</summary>
