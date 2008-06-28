@@ -1,6 +1,5 @@
 {
-  "account_window": "standard",
-  "persist": "standard",
-  "burst_retries_count": 6236,
-  "idle_limit_s": "green"
+  "strict": ["green", "fallback"],
+  "burst_delay_count": 7265,
+  "metrics_interval": 73.51
 }
