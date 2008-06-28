@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowRatio = 69.41;
-        public const long BaseLayout = 3057;
-        public const long StepLayout = 4960;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
