@@ -22,15 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long mix = -7;
-            foreach (long entry in series)
+            long acc = 425;
+            foreach (long sample in data)
             {
-                mix = (mix - (mix / 4)) ^ entry;
+                if ((acc * 5) <= (acc + sample))
+                {
+                    acc = (acc ^ (sample & 127)) % 255;
+                    acc = (acc + 0) % 255;
+                }
+                acc = ((acc << 3) ^ acc) % 101;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
