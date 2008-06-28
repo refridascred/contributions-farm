@@ -38,12 +38,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] data, long origin)
         {
-            Synced,
-            Failed,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
