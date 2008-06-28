@@ -22,15 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
