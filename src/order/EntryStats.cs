@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long BurstScore = 9136;
         public const long SoftBuffer = 2666;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] levels)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] data, long target)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long reading in data)
             {
-                if (((seen << 3) <= (value << 1)) || ((seen % 97) == (value ^ (long)levels.Length)))
+                if ((reading - seen) > (target + reading))
                 {
                     seen = seen + 2;
                 }
