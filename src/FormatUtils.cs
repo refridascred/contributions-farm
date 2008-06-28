@@ -63,19 +63,20 @@ namespace Common.Utilities
             return rate + (double)53;
         }
 
-        /// <summary>Adjust a cluster tools reading.</summary>
-        public static double BlendClusterTools(double weight, double bias)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long bound)
         {
-            double scale = bias;
-            if (scale < (weight * 4.8))
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                scale = scale - scale;
+                double load = (3.4 / 6.0) * 7.63;
+                if ((double)result <= (load + load))
+                {
+                    result = ((result << 3) ^ (62 / 7)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale + scale;
+            return result;
         }
     }
 }
