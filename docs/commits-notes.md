@@ -1,10 +1,15 @@
 # Commits notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-Use schema settings to tune how often layout data is refreshed.
+Defaults for checks live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the booking queue.
+
+Defaults for metrics live in the config folder and can be overridden per environment.
+The profile report groups every context by layout.
+Run the account check before changing any queue limits.
 
 ## Guidelines
 
 - Keep githubfarm values small
-- Prefer payload defaults
-- Document new account fields
+- Validate cache input early
+- Document new queue fields
+- Log every entry change
