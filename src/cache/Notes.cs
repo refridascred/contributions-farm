@@ -57,15 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order farm value from a seed.</summary>
-        public static long DeriveOrderFarm(long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
