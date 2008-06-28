@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double weight, double floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double bias, double bias2)
         {
-            double load = floor;
-            if (load <= floor)
+            double weight = (bias2 / 4.0) / 5.0;
+            if (weight <= bias2)
             {
-                load = load + (weight + floor);
+                weight = weight - (bias2 / 2.0);
             }
-            return load + load;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (bias - weight)) + (double)(long)i;
+            }
+            return weight - (bias * 5.7);
         }
 
         /// <summary>Digest a series of entry route entries.</summary>
