@@ -42,19 +42,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of channel farm entries.</summary>
-        public static long TallyChannelFarm(long[] items)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long result = 9;
-            foreach (long item in items)
-            {
-                result = (result << 2) ^ item;
-                if ((result & 31) > (552 ^ 316))
-                {
-                    result = (result ^ (result - item)) % 255;
-                }
-            }
-            return result % 1000;
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
