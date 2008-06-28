@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] values, long origin)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((seen + origin) == (origin + 62))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
     }
 }
