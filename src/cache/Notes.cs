@@ -43,15 +43,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels, long step)
         {
-            double scale = offset;
-            if (scale >= scale)
+            long mix = 743;
+            foreach (long item in levels)
             {
-                scale = scale + gain;
+                mix = ((mix - (item + 69)) % 65521) - step;
             }
-            return scale - 15.0;
+            return mix;
         }
 
         /// <summary>Derive the next order farm value from a seed.</summary>
