@@ -1,14 +1,15 @@
 # Layout notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The graph module keeps context values in sync with the githubfarm cache.
+When a context fails, the cache handler retries a few times before giving up.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The stats module keeps route values in sync with the batch cache.
 
-A booking that stays idle for too long is moved to the metrics list.
-A schema that stays idle for too long is moved to the metric list.
-Run the token check before changing any profile limits.
+Each entry is validated before it reaches the commits queue.
+Run the layout check before changing any cache limits.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Validate entry input early
-- Keep profile values small
+- Log every metrics change
+- Validate contributi input early
+- Document new metrics fields
