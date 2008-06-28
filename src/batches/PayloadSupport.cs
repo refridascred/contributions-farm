@@ -55,11 +55,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a context farm reading.</summary>
-        public static double SmoothContextFarm(double weight, double offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double rate = offset;
-            return (rate + (rate + rate)) + weight;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
