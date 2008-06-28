@@ -1,6 +1,11 @@
 {
-  "flush_threshold_count": false,
-  "base_size": "open",
-  "enabled": [384, 167, 496],
-  "dry_run": "strict"
+  "burst_ttl_pct": {
+    "commits_interval": true,
+    "persist": true,
+    "command_interval": "legacy",
+    "soft_retries_pct": "fallback"
+  },
+  "dry_run": 51.46,
+  "audit": 250,
+  "warm_ratio": "cached"
 }
