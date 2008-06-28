@@ -1,7 +1,15 @@
 {
-  "readonly": 286,
-  "enabled": 100,
-  "buffer_limit": 4979,
-  "checks_delay": 91,
-  "sync_ttl_pct": ["stable", "blue", "edge", "green"]
+  "audit": {
+    "token_threshold": 6673,
+    "min_window_count": 66.71,
+    "batches_retries": ["staging", "open", "local"],
+    "flush_window_count": "strict",
+    "max_ttl": ["blue", "strict", "edge"],
+    "metrics_retries": false
+  },
+  "report_window": 8718,
+  "base_size": 35.83,
+  "batch_delay_s": 30,
+  "min_interval_pct": "standard",
+  "warm_ttl_pct": "open"
 }
