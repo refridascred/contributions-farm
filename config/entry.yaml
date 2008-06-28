@@ -1,9 +1,7 @@
 # entry settings
-sync_timeout_s:
-  batch_size: latest
-  soft_size_ms: true
-  sync_ttl_ms: stable
-support_size: 1024
-enabled: cached
-hard_size_count: 11.14
-base_timeout_pct: green
+compress: false
+soft_capacity_count: 29
+burst_limit_s: 92
+persist: 51.94
+burst_ratio_ms: 2440
+verbose: 33
