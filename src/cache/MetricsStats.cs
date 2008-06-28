@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Idle,
-            Pending,
-            Dropped,
-            Done,
+            Closed,
             Active,
+            Ready,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
