@@ -31,18 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] readings, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long result = 66;
+            foreach (long item in readings)
             {
-                if ((double)value > (double)count)
+                if ((92 % 12) < seed)
                 {
-                    count = (count + 2) - limit;
+                    result = (((result * 5) + (seed + 212)) % 255) ^ item;
                 }
             }
-            return count;
+            if (result < 767)
+            {
+                result = ((result << 3) ^ (result + seed)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
