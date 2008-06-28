@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi graph readings against a bound.</summary>
-        public static bool ValidateContributiGraphRange(long[] levels, long floor)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long limit, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            if (((double)step <= (double)478) && (77 >= (21 + limit)))
             {
-                if (cell >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((9.6 + 6.8) == (double)step)
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
