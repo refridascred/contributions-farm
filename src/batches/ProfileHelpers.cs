@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultRatio = 2458;
-        public const double IdleReport = 41.43;
-        public const long DefaultFactor = 5923;
-        public const long RetryReport = 4853;
-        public const string LimitFactor = "local-v2";
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TotalChecks(long[] levels)
