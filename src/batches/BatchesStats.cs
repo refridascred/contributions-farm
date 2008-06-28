@@ -36,21 +36,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 73;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = state - (state ^ state);
+                state = (state + value) % 255;
+                if (state > (state * 5))
                 {
-                    if ((levels[i] ^ levels[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state << 3) ^ state;
+                }
+                if ((double)(long)samples.Length <= (3.4 / 8.0))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state > 784)
+            {
+                state = (state - (46 + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine editor githubfarm values into a single score.</summary>
