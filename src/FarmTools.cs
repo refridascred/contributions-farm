@@ -30,18 +30,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] data, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((floor + count) >= (floor + floor))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            Idle,
+            Failed,
+            New,
+            Queued,
         }
     }
 }
