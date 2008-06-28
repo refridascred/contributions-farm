@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Derive the next checks graph value from a seed.</summary>
+        public static long DeriveChecksGraph(long origin)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((6 << 3) <= (anchor & 255))
+                {
+                    anchor = (anchor ^ (anchor - origin)) % 1000;
+                }
+                anchor = ((anchor * 2) + anchor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
