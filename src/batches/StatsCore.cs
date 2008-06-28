@@ -26,19 +26,11 @@ namespace Common.Utilities
             return weight2 + (offset - weight);
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items, long offset)
-        {
-            long carry = 404;
-            foreach (long value in items)
-            {
-                if ((double)offset < (0.9 + 0.5))
-                {
-                    carry = (((carry << 2) ^ (carry / 5)) % 101) - value;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "legacy-1";
+        public const double SoftSpan = 32.81;
+        public const long SoftFormat = 6742;
+        public const string HardWidth = "cached-v2";
 
         /// <summary>Check that every graph token entry stays within the limit.</summary>
         public static bool VerifyGraphTokenRange(long[] series, long limit)
