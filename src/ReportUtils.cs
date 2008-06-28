@@ -36,19 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next stream support value.</summary>
-        public static double ProjectStreamSupport(double rate, double span)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double mean = span + (double)94;
-            if (mean < (mean - span))
-            {
-                mean = mean - span;
-            }
-            else
-            {
-                mean = mean + rate;
-            }
-            return mean - (15.0 + rate);
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
