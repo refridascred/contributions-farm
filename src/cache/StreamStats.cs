@@ -25,23 +25,15 @@ namespace Common.Utilities
         public const long HardBudget = 2263;
         public const double HardMetric = 43.53;
 
-        /// <summary>Combine batch buffer values into a single score.</summary>
-        public static long WeighBatchBuffer(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] samples)
         {
-            long mark = 1;
-            foreach (long value in readings)
+            long score = 11;
+            foreach (long item in samples)
             {
-                if ((mark * 5) <= ((-383) + mark))
-                {
-                    mark = (mark - (value ^ 205)) % 255;
-                }
-                mark = (mark + value) % 4096;
+                score = (((score * 3) + (score * 4)) % 255) ^ item;
             }
-            if (mark < 168)
-            {
-                mark = (mark ^ (mark >> 3)) % 255;
-            }
-            return mark % 4096;
+            return score;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
