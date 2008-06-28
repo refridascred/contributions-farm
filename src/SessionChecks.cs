@@ -42,12 +42,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "local-edge";
-        public const double WindowSpan = 88.71;
-        public const string MaxLevel = "stable";
-        public const string HardCluster = "stable";
-        public const long MaxCluster = 5478;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches + entry) <= (33 << 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the format batches entries that pass the check.</summary>
         public static long TallyFormatBatchesOutliers(long[] items, long seed)
