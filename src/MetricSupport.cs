@@ -16,32 +16,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long target, long step)
+        /// <summary>Digest a series of entry route entries.</summary>
+        public static long FoldEntryRoute(long[] data, long seed)
         {
-            long span = target - step;
-            if (((8.0 - 5.0) > (double)target) && (9.0 > (double)span))
+            long result = 54;
+            foreach (long cell in data)
             {
-                return 1;
+                result = ((result ^ (seed + result)) % 4096) - cell;
             }
-            else
+            if (result > 34)
             {
-                if (((target - step) < target) || ((double)target <= 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((4.68 > (double)step) && ((double)14 >= (double)span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = (result * 5) + (result & 1);
             }
+            return result % 97;
         }
 
         /// <summary>Classify a cache token pair into a bucket.</summary>
