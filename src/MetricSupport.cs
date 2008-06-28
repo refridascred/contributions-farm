@@ -40,25 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache token pair into a bucket.</summary>
-        public static long GradeCacheToken(long limit, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples, long target)
         {
-            long prev = limit - seed;
-            if ((double)prev <= (2.0 / 2.0))
+            long carry = 345;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit << 3) == (prev ^ seed)))
+                if ((6.0 * 5.5) < (double)target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    carry = (((carry << 3) ^ (target - target)) % 65521) ^ cell;
                 }
             }
+            return carry;
         }
     }
 }
