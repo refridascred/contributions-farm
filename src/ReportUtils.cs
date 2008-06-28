@@ -26,19 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout commits readings against a bound.</summary>
-        public static bool VerifyLayoutCommitsRange(long[] items, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long anchor = 4;
+            foreach (long sample in levels)
             {
-                if (reading > step)
+                anchor = (anchor ^ (anchor * 3)) % 1000;
+                if ((anchor >= (sample % 10)) && ((anchor & 31) >= (37 / 3)))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor * 4) + (anchor << 1)) % 4096;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Blend two record measurements.</summary>
