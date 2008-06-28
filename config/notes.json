@@ -1,8 +1,11 @@
 {
-  "cache_ratio": "local",
-  "max_capacity_pct": "stable",
-  "profile_ratio": 500,
-  "dry_run": "fallback",
-  "cache_size": true,
-  "account_ttl": "standard"
+  "retry_ttl_count": false,
+  "sync_depth_s": {
+    "dry_run": "green",
+    "support_retries": "blue",
+    "hard_ratio_ms": ["eu-west", "green"]
+  },
+  "cache_ttl": 94,
+  "strict": 78.83,
+  "idle_interval_count": "legacy"
 }
