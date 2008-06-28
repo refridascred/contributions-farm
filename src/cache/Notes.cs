@@ -19,11 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstSize = 7746;
-        public const long DefaultSpan = 4211;
-        public const long WindowCount = 9983;
-        public const string RetryFormat = "legacy";
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountRange(long[] values, long offset)
