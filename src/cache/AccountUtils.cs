@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (rate + (4.0 - bias)) + floor;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            Closed,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((hits ^ 931) < (datum & 63)) && ((hits & 7) != (datum ^ 5)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
