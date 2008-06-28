@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstScore = 415;
+        public const long SoftContext = 1214;
+        public const long CacheContext = 3231;
+        public const string BaseInterval = "open-edge";
+        public const long StepContext = 6703;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
