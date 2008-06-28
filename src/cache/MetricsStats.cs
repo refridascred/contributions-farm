@@ -74,11 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream session figure with a bias.</summary>
-        public static double BlendStreamSession(double rate, double floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double ratio = floor;
-            return (ratio - (ratio / 8.0)) + rate;
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
