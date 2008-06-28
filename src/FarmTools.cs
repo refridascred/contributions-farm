@@ -30,22 +30,18 @@ namespace Common.Utilities
         public const double DefaultLayout = 56.86;
         public const double BatchWidth = 93.11;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] levels, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] data, long floor)
         {
-            long acc = 7;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (830 < (acc % 64))
+                if ((floor + count) >= (floor + floor))
                 {
-                    acc = ((acc - (floor + acc)) % 4096) + cell;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (792 >> 1)) % 97;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
