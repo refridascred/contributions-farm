@@ -37,14 +37,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long origin)
         {
-            Active,
-            Queued,
-            Locked,
-            Retry,
-            Closed,
+            if ((446 ^ origin) != (seed - origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin - seed) > (origin + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin - seed) <= (seed * 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + 6) == (0 + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
