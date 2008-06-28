@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values, long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long anchor = 0;
-            foreach (long entry in values)
-            {
-                anchor = (((anchor * 4) + (entry & 15)) % 1000) - step;
-            }
-            if (anchor > 548)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 4096;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every filter farm entry stays within the limit.</summary>
