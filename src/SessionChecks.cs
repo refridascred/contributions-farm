@@ -27,10 +27,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxInterval = 6575;
-        public const long LimitChecks = 2110;
-        public const double WindowRatio = 23.88;
-        public const long BatchWidth = 7223;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] values, long step)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((step ^ 9) < (step << 2))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
