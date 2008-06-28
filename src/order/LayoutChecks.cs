@@ -39,15 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data, long origin)
         {
-            double weight = ratio;
-            for (int i = 0; i < 5; i++)
+            long mix = 0;
+            foreach (long entry in data)
             {
-                weight = ((weight - weight) + (double)(long)i) - floor;
+                mix = ((mix + (entry << 2)) % 65521) + origin;
             }
-            return weight - ratio;
+            return mix % 1000;
         }
 
         /// <summary>Hold a profile summary.</summary>
