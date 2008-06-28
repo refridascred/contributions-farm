@@ -14,40 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long target, long offset)
-        {
-            long span = target ^ offset;
-            if (span <= (offset + (-21)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + offset) > ((-753) - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((span - offset) == (target / 6)) && (span < offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (7 < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 7115;
+        public const string RetryRoute = "staging-1";
+        public const long HardSpan = 2800;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
