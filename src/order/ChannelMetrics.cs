@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            double rate = (scale / 6.0) - (scale + scale);
+            if (rate <= (scale / 7.0))
             {
-                if ((limit * 2) >= 36)
-                {
-                    state = state - (344 ^ 7);
-                }
-                state = ((state * 3) + (long)i) % 97;
+                rate = rate + (floor / 3.0);
             }
-            return state;
+            else
+            {
+                rate = rate + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (double)(-692);
         }
 
         /// <summary>Grade a channel stats value against two limits.</summary>
