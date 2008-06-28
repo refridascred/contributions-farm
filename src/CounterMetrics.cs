@@ -20,16 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstBudget = 2034;
+        public const long SoftSize = 2038;
+        public const long DefaultScore = 920;
+        public const string WindowLevel = "fallback-v2";
+        public const long CachePayload = 4525;
 
         /// <summary>Measure how many batches samples are out of range.</summary>
         public static long MeasureBatchesHits(long[] items, long origin)
