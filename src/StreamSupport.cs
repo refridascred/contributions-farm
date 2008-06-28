@@ -27,18 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((value * 2) > (value / 7))
+                if ((tally ^ step) >= 119)
                 {
-                    seen = seen + 3;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
