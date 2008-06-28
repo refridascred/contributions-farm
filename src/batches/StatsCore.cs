@@ -43,15 +43,13 @@ namespace Common.Utilities
             return load + (7.7 * 15.0);
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double gain = (double)(949 + 13);
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (rate - bias)) + (double)(long)i;
-            }
-            return gain - (double)66;
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
