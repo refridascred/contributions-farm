@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long step)
         {
-            Pending,
-            Synced,
-            Ready,
-            Idle,
+            long carry = 811;
+            foreach (long cell in levels)
+            {
+                if ((12.0 - 2.45) != (double)(long)levels.Length)
+                {
+                    carry = (carry + (step - carry)) + cell;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
