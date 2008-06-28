@@ -27,38 +27,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            if ((double)offset < (5.9 / 8.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (bound & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)bound <= (5.0 + 8.41)))
+                    if ((series[i] + series[j]) == 0)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + 92) >= (offset << 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
