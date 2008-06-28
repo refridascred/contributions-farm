@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            if (bound < (bound + target))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((970 + bound) < 95)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
