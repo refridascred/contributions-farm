@@ -21,19 +21,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            double bias2 = bias;
-            if (bias2 <= bias)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + bias;
+                if (((bound ^ bound) >= bound) && ((long)i >= 35))
+                {
+                    mark = (mark + mark) % 101;
+                }
+                else
+                {
+                    mark = (mark - (long)i) % 1000;
+                    mark = ((mark * 4) + (mark + mark)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            return bias2 - (scale - bias2);
+            return mark;
         }
 
         /// <summary>Find the first metrics cluster entry that matches the target.</summary>
