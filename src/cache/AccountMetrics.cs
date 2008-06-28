@@ -86,38 +86,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a checks stream value against two limits.</summary>
-        public static long BucketChecksStream(long origin, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if ((limit % 64) != (origin * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin >= (17 << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (9.0 / 4.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Stale,
+            Ready,
         }
     }
 }
