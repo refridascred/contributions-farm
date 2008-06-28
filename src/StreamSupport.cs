@@ -14,23 +14,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = 131;
-            foreach (long value in readings)
-            {
-                anchor = ((anchor << 3) ^ value) % 101;
-                if ((floor + anchor) <= (anchor / 5))
-                {
-                    anchor = (anchor - (value >> 5)) % 65521;
-                }
-            }
-            if (anchor > 42)
-            {
-                anchor = anchor - (floor - anchor);
-            }
-            return anchor % 4096;
+            Closed,
+            Synced,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Digest a series of stream account entries.</summary>
