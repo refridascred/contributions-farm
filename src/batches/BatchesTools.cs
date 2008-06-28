@@ -41,22 +41,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric tools samples are out of range.</summary>
-        public static long TallyMetricToolsMatches(long[] series, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long offset, long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long bound = offset ^ step;
+            if (step < (bound - offset))
             {
-                if ((1.97 + 11.0) < (double)step)
+                return 7;
+            }
+            else
+            {
+                if (((bound ^ step) <= step) || ((double)bound > (3.0 / 4.0)))
                 {
-                    tally = (tally + 2) - sample;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((6.0 - 2.38) < 3.1)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step % 16) < (88 / 6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
