@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long offset, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound - offset) >= bound)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset + bound) <= 71)
                 {
-                    if ((items[i] + items[j]) != 17)
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound >> 2) >= (bound & 1)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Adjust a order command reading.</summary>
