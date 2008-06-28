@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] samples, long origin)
+        /// <summary>Rank channel batch input into a small class.</summary>
+        public static long ClassifyChannelBatch(long origin, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            if ((double)step < (2.87 * 9.2))
             {
-                if ((origin ^ 538) >= 849)
+                return 7;
+            }
+            else
+            {
+                if (((origin % 64) > (step % 60)) || ((step + origin) < (step / 5)))
                 {
-                    seen = (seen + 1) - reading;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
