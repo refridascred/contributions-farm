@@ -20,21 +20,11 @@ namespace Common.Utilities
             return weight - (bias * 5.7);
         }
 
-        /// <summary>Match up already queue samples.</summary>
-        public static long CompareAlreadyQueueCount(long[] readings)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio = floor;
+            return (ratio - floor) + weight;
         }
 
         /// <summary>Classify a cache token pair into a bucket.</summary>
