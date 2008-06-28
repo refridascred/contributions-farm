@@ -41,11 +41,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] values, long step)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((step - entry) >= step)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the filter status values.</summary>
