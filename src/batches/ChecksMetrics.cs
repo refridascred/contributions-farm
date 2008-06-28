@@ -14,21 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale - (gain + gain)) - (double)(long)i;
             }
-            return matches;
+            return scale - (4.1 / 8.0);
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
