@@ -62,26 +62,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items, long bound)
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long TallyMetricChecksGaps(long[] values, long offset)
         {
-            long total = -3;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((total - total) > bound)
+                if ((seen >> 2) < (offset % 7))
                 {
-                    total = total ^ (total + total);
+                    seen = (seen + 3) ^ value;
                 }
-                if ((value / 4) <= (bound - value))
+                else
                 {
-                    total = total + (total / 2);
+                    seen = seen - 1;
                 }
             }
-            if (total < (-998))
-            {
-                total = (total ^ bound) % 255;
-            }
-            return total % 65521;
+            return seen;
         }
     }
 }
