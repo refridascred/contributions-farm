@@ -1,5 +1,19 @@
 {
-  "enabled": [148, 221, 17],
-  "hard_capacity_ms": "stable",
-  "warm_depth_s": [145, 174, 386, 67]
+  "stream_limit": {
+    "soft_interval_ms": 2217,
+    "batches_timeout": 13.38,
+    "queue_retries": 24.62,
+    "enabled": "staging",
+    "burst_threshold_count": true
+  },
+  "soft_threshold_pct": [453, 368],
+  "readonly": "local",
+  "filter_threshold": {
+    "batch_ttl": 2785,
+    "cache_depth": 250,
+    "cluster_retries": 30.18,
+    "idle_timeout_pct": [207, 69, 306],
+    "persist": ["strict", "standard", "fallback"],
+    "batch_capacity": false
+  }
 }
