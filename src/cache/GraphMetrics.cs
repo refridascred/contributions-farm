@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const double IdleCache = 16.48;
         public const long MinDepth = 7738;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Draft,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
