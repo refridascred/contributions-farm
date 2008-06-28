@@ -50,22 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] levels, long bound)
+        /// <summary>Measure how many graph already samples are out of range.</summary>
+        public static long AuditGraphAlreadyGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((matches & 15) == (reading / 5))
+                if ((item + hits) >= (item - hits))
                 {
-                    matches = (matches + 3) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
