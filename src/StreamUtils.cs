@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 9.72;
-        public const double MaxEntry = 77.34;
-        public const string HardDepth = "fallback-v2";
+        /// <summary>Count the support layout entries that pass the check.</summary>
+        public static long CountSupportLayoutOutliers(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (step <= (step / 2))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
