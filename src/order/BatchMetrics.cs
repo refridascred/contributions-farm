@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate already checks readings against a bound.</summary>
-        public static bool VerifyAlreadyChecksBounds(long[] values, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (sample > target)
+                if (sample < step)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Roll a window counter forward.</summary>
