@@ -23,16 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state << 2) ^ (state << 3);
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
