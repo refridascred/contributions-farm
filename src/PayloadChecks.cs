@@ -69,22 +69,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long anchor = 23;
-            foreach (long datum in values)
-            {
-                if ((7.0 + 9.63) >= (double)offset)
-                {
-                    anchor = ((anchor - (offset % 2)) % 1000) - datum;
-                }
-            }
-            if (anchor > 22)
-            {
-                anchor = ((anchor * 3) + (anchor + offset)) % 255;
-            }
-            return anchor % 65521;
+            Synced,
+            Pending,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit buffer editor readings against a rule.</summary>
