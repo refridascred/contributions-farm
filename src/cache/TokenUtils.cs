@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long TallyTokenCommitsOutliers(long[] data)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long mark = 9;
+            foreach (long reading in values)
             {
-                if ((double)cell > 3.9)
-                {
-                    seen = seen + 3;
-                }
+                mark = ((mark * 2) + (reading / 7)) % 255;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a commits entry.</summary>
