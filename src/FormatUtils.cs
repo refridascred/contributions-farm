@@ -76,18 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] data)
+        /// <summary>Adjust a cluster tools reading.</summary>
+        public static double BlendClusterTools(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double scale = bias;
+            if (scale < (weight * 4.8))
             {
-                if (9.94 <= (double)tally)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
+                scale = scale - scale;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - bias) - (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
