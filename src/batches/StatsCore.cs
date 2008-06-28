@@ -14,22 +14,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] data, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)236 >= (double)value)
-                {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Adjust a tools order reading.</summary>
