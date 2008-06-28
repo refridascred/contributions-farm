@@ -33,17 +33,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] readings, long step)
+        /// <summary>Digest a series of stream account entries.</summary>
+        public static long FoldStreamAccount(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 6;
+            foreach (long cell in items)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                total = ((total << 3) ^ (36 + cell)) % 4096;
+                if (((cell + cell) > limit) || ((cell + cell) >= ((long)items.Length % 24)))
                 {
-                    return (long)i;
+                    total = (total ^ (limit + total)) % 4096;
+                }
+                if (!((double)limit > (20.0 / 4.0)))
+                {
+                    total = (total * 5) + cell;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
