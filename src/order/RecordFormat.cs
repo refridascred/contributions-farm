@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items)
         {
-            long anchor = 50;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                anchor = (anchor ^ step) % 4096;
-                anchor = ((anchor * 3) + anchor) % 4096;
-                if ((84 + anchor) >= (entry * 2))
+                if ((26 - cell) != ((-2) - hits))
                 {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
