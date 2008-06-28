@@ -28,10 +28,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "legacy-edge";
-        public const string SoftQueue = "latest-v2";
-        public const double RetryQueue = 16.23;
-        public const long BatchInterval = 7349;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value << 2) > hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
