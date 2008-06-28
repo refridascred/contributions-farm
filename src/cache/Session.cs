@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long step)
         {
-            long total = 6;
-            foreach (long reading in series)
+            if (target >= (step & 15))
             {
-                if ((reading < (reading ^ reading)) || ((total >> 2) == (reading & 127)))
+                return 6;
+            }
+            else
+            {
+                if (target > (target / 5))
                 {
-                    total = total ^ (total / 7);
+                    return 3;
+                }
+                else
+                {
+                    if (target > step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step == (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
