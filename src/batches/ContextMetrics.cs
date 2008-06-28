@@ -39,21 +39,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((seed % 7) >= seed)
-                {
-                    anchor = (anchor - (anchor + (long)i)) % 101;
-                }
-                anchor = ((anchor << 3) ^ seed) % 97;
-                anchor = (anchor * 5) + (anchor << 1);
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Idle,
+            Ready,
+            Paused,
+            Synced,
+            Dropped,
         }
     }
 }
