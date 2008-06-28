@@ -54,25 +54,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long origin, long step)
+        /// <summary>Accumulate contributi payload samples.</summary>
+        public static long ScoreContributiPayload(long[] samples)
         {
-            long gap = origin ^ step;
-            if ((double)gap > (double)47)
+            long total = 43;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3 - gap) != (gap % 10))
+                if ((total / 7) > cell)
                 {
-                    return 7;
+                    total = (total - (45 + total)) % 4096;
                 }
                 else
                 {
-                    return 2;
+                    total = ((total << 2) ^ cell) % 1000;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
