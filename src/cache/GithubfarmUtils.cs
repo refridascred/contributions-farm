@@ -36,11 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            Active,
+            Ready,
+            Locked,
+            Closed,
         }
     }
 }
