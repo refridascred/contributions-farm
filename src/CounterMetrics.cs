@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const string WindowLevel = "fallback-v2";
         public const long CachePayload = 4525;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] items, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((origin / 4) == (matches + origin))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate counter notes readings against a bound.</summary>
