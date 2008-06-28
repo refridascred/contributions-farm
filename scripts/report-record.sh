@@ -6,7 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+for item in stable green; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -15,6 +19,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=47
-log "limit is ${RECORD_LIMIT}"
