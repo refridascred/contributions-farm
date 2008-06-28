@@ -11,31 +11,15 @@ namespace Common.Utilities
         public const long StepRoute = 5001;
         public const long RetryRoute = 1105;
 
-        /// <summary>Classify a record contributi pair into a bucket.</summary>
-        public static long SortRecordContributi(long bound, long offset)
+        /// <summary>Digest a series of session context entries.</summary>
+        public static long ScoreSessionContext(long[] data)
         {
-            if ((9.0 + 14.0) <= (double)(-618))
+            long anchor = -9;
+            foreach (long value in data)
             {
-                return 2;
+                anchor = ((anchor * 2) + (anchor + (long)data.Length)) - value;
             }
-            else
-            {
-                if ((offset & 31) > bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (3.5 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
