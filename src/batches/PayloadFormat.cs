@@ -46,15 +46,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next githubfarm payload value from a seed.</summary>
-        public static long IterateGithubfarmPayload(long target)
+        /// <summary>Derive the next layout contributi value from a seed.</summary>
+        public static long DeriveLayoutContributi(long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                score = (score << 2) ^ (long)i;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
