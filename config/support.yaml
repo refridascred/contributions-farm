@@ -1,18 +1,8 @@
 # support settings
-token_capacity:
-  support_timeout: latest
-  base_interval_ms: 20
-  min_retries_s:
-    - green
-    - staging
-    - eu-west
-    - edge
-max_depth_count:
-  - 29
-  - 209
-batch_size_ms:
-  - 195
-  - 436
-enabled: 3144
-default_threshold: 1024
-poll_window: latest
+entry_size: 51.87
+compress: primary
+min_limit_pct: 63
+hard_limit_s: 1656
+context_window:
+  - 222
+  - 201
