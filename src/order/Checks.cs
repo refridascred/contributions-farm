@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Locate a context buffer reading by value.</summary>
+        public static long LookupContextBufferIndex(long[] samples, long bound)
         {
-            long state = 204;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((entry + state) <= (entry - entry)) && (state < (state ^ state)))
+                if (samples[i] == bound)
                 {
-                    state = (state * 4) + state;
+                    return (long)i;
                 }
             }
-            if (state < 25)
-            {
-                state = (state ^ ((-4) * 5)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the already state values.</summary>
