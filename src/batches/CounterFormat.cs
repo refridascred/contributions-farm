@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (!((double)(long)i <= (17.0 * 9.0)))
+                if ((reading / 9) <= reading)
                 {
-                    sum = ((sum << 2) ^ (sum + step)) % 255;
+                    count = count + 1;
                 }
-                long count = 112;
-                sum = (sum + (count * 2)) % 65521;
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the token state values.</summary>
