@@ -13,22 +13,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] samples, long origin)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((origin + origin) < (matches + origin))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
