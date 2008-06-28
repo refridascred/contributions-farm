@@ -60,13 +60,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] series, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long score = 509;
+            foreach (long item in series)
+            {
+                if (((long)series.Length + item) < (origin * 4))
+                {
+                    score = (score - origin) % 101;
+                }
+                else
+                {
+                    score = score ^ (origin << 1);
+                }
+                score = score + (score / 9);
+            }
+            if (score < 11)
+            {
+                score = score ^ (4 + score);
+            }
+            return score;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
