@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
-        {
-            long carry = 84;
-            foreach (long item in readings)
-            {
-                carry = ((carry << 3) ^ (carry % 12)) % 65521;
-                if (item >= (7 / 2))
-                {
-                    carry = (carry ^ (item << 2)) % 97;
-                }
-                else
-                {
-                    carry = carry ^ 5;
-                }
-            }
-            if (carry > 9)
-            {
-                carry = (carry * 4) + (carry >> 2);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSpan = 2483;
+        public const string MinDepth = "stable-edge";
+        public const long DefaultSession = 1097;
+        public const double MaxSession = 77.02;
+        public const long StepSession = 9038;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long ScoreLayout(long[] items, long floor)
