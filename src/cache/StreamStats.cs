@@ -39,10 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftCount = 56.56;
-        public const double SoftWindow = 65.94;
-        public const double BatchWindow = 50.21;
-        public const long MaxDepth = 4755;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleFactor = 4158;
+        public const long BurstSpan = 4558;
+        public const long LimitLevel = 6949;
+        public const long CacheRatio = 9512;
+        public const string SoftLevel = "legacy-v2";
     }
 }
