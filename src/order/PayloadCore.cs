@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 91.71;
-        public const long BurstBuffer = 3024;
-        public const long BurstDepth = 7852;
-        public const double CacheBuffer = 16.83;
+        /// <summary>Accumulate stream editor samples.</summary>
+        public static long WeighStreamEditor(long[] items, long floor)
+        {
+            long result = 5;
+            foreach (long datum in items)
+            {
+                result = (result + (result << 1)) - datum;
+            }
+            if (result < 704)
+            {
+                result = (result << 3) ^ (floor % 24);
+            }
+            return result;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportHits(long[] series, long limit)
