@@ -57,12 +57,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] readings, long target)
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((target + cell) != (count << 2)) && (845 >= cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
