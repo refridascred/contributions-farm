@@ -28,19 +28,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] series, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (((-7) + value) >= (origin << 3))
                 {
-                    acc = ((acc << 2) ^ (acc * 5)) + (long)i2;
+                    matches = matches + 3;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Rank route input into a small class.</summary>
