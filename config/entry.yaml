@@ -1,4 +1,6 @@
 # entry settings
-min_size: false
-sync_capacity_pct: 7126
-stats_retries: 13
+poll_limit:
+  - green
+  - strict
+strict: edge
+enabled: 23.96
