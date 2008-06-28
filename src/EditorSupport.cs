@@ -16,22 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitBudget = 46.75;
+        public const string LimitMetric = "legacy";
+        public const long SoftMetric = 1644;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long ScoreOrder(long[] series, long limit)
