@@ -11,26 +11,10 @@ namespace Common.Utilities
         public const long BaseEntry = 5175;
         public const long StepEntry = 7947;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long floor, long target)
-        {
-            long edge = floor ^ target;
-            if (((floor * 3) != (floor ^ target)) && ((edge / 3) < (edge % 60)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 5880;
+        public const string MinLevel = "cached-1";
+        public const long IdleProfile = 3491;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorMatches(long[] values, long origin)
