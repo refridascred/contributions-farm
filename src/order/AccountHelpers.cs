@@ -28,38 +28,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a batch session pair into a bucket.</summary>
-        public static long SortBatchSession(long origin, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            if ((1 >> 1) > (origin >> 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (15.0 * 12.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound + (-523)) < bound) || ((bound - origin) <= bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin <= (origin - bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define order limits and defaults.</summary>
