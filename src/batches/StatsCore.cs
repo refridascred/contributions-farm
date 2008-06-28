@@ -48,15 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (!(((712 >> 5) < (entry >> 5)) || ((matches << 2) >= (entry - 1))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
