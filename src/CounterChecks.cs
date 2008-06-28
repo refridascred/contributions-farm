@@ -62,15 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
