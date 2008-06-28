@@ -31,19 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] readings, long limit)
         {
             long count = 0;
-            foreach (long cell in levels)
+            foreach (long value in readings)
             {
-                if ((cell >= (688 + 361)) && ((cell ^ count) >= (count ^ count)))
+                if ((double)value > (double)count)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) - limit;
                 }
             }
             return count;
