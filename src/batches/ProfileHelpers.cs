@@ -22,13 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Look up the position of a queue batch sample.</summary>
+        public static long FindQueueBatchIndex(long[] samples, long limit)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
