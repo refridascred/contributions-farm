@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the schema cache entries that pass the check.</summary>
+        public static long AuditSchemaCacheGaps(long[] readings)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (double)hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
