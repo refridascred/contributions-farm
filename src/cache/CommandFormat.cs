@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Blend two channel metrics measurements.</summary>
+        public static double SmoothChannelMetrics(double bias, double offset)
         {
-            long total = -34;
-            foreach (long datum in items)
+            double mean = (offset + bias) * 5.1;
+            if (mean > (bias * 0.8))
             {
-                if (datum <= (total >> 2))
-                {
-                    total = total + (datum & 7);
-                }
+                mean = mean + (double)9;
             }
-            return total % 65521;
+            else
+            {
+                mean = mean + (double)3;
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
