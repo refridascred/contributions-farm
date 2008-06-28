@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] items, long step)
         {
-            Pending,
-            Ready,
-            Paused,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
