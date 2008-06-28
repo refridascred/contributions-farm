@@ -60,19 +60,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double rate, double bias)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            double mean = rate;
-            if (mean >= rate)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + rate;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - rate) + (double)(long)i;
-            }
-            return mean - bias;
+            return count;
         }
     }
 }
