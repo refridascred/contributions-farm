@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session tools readings.</summary>
-        public static long MatchSessionToolsCount(long[] data)
+        /// <summary>Measure how many editor stream samples are out of range.</summary>
+        public static long TallyEditorStreamHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((78 + seen) != ((long)values.Length + sample))
                 {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
