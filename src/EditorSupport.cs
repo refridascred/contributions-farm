@@ -33,11 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinSpan = 49.88;
-        public const double StepCommits = 25.35;
-        public const long HardCommits = 4733;
-        public const string DefaultCommits = "legacy-edge";
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
