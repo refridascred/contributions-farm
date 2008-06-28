@@ -49,17 +49,22 @@ namespace Common.Utilities
         public const long HardAlready = 1662;
         public const long CacheAlready = 5847;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (data[i] >= bound)
+                if (matches > (531 + datum))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
