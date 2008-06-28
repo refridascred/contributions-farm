@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long sum = 7;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum ^ (sample << 2);
-                if ((double)sum <= 6.4)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a tools entry.</summary>
