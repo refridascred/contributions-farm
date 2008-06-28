@@ -1,5 +1,5 @@
 {
-  "dry_run": "local",
-  "retry_depth": false,
-  "context_threshold": [342, 389]
+  "max_timeout_s": 94.73,
+  "min_threshold_count": 42.37,
+  "max_retries_pct": "edge"
 }
