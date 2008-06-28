@@ -47,18 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] values, long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)matches <= (2.0 - 1.4))
-                {
-                    matches = ((matches + 1) - reading) - floor;
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
