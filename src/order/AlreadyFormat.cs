@@ -68,10 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 4040;
-        public const long StepSize = 2774;
-        public const double LimitWidth = 8.15;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long DigestBatch(long[] data, long offset)
