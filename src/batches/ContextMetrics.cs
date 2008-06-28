@@ -38,18 +38,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of githubfarm cache readings.</summary>
-        public static long WeighGithubfarmCache(long[] series)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long mark = 894;
-            foreach (long reading in series)
+            long anchor = 409;
+            foreach (long item in samples)
             {
-                if (((18.0 / 5.0) != (double)reading) || ((mark * 5) > (mark - mark)))
-                {
-                    mark = (mark + (mark & 7)) % 65521;
-                }
+                anchor = (((anchor << 2) ^ 9) % 1000) - item;
             }
-            return mark;
+            if (anchor > 2)
+            {
+                anchor = (anchor ^ (60 - anchor)) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
