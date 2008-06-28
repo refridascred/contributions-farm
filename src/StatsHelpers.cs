@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc - (acc - step);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Synced,
+            Queued,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
