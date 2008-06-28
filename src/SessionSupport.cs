@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] readings)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] data, long floor)
         {
-            long acc = 25;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 6; i++)
+                if (datum >= floor)
                 {
-                    acc = (acc ^ (945 + entry)) ^ (long)i;
-                }
-                if (!(entry < (407 + 2)))
-                {
-                    continue;
-                }
-                if ((entry << 3) > (entry & 255))
-                {
-                    acc = ((acc * 4) + acc) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
