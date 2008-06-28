@@ -25,22 +25,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long carry = 13;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry ^ carry) > carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry + carry) % 97) - item;
-                }
-                if (7.2 <= (double)carry)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return matches;
         }
     }
 }
