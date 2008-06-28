@@ -29,11 +29,18 @@ namespace Common.Utilities
         public const string SoftBudget = "latest";
         public const long DefaultChannel = 1320;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "staging-1";
-        public const long SoftInterval = 7188;
-        public const long StepEditor = 1972;
-        public const string DefaultBudget = "legacy-v2";
+        /// <summary>Locate a farm record reading by value.</summary>
+        public static long LookupFarmRecordIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileGaps(long[] data)
