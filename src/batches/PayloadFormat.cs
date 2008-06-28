@@ -54,13 +54,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] values, long floor)
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (floor >= (floor % 5))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
