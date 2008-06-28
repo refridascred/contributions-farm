@@ -18,20 +18,11 @@ namespace Common.Utilities
         public const long WindowEntry = 6496;
         public const long DefaultEntry = 7071;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] values, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultRatio = 9304;
+        public const string CacheFarm = "latest-1";
+        public const string BurstFarm = "stable-edge";
+        public const long HardDepth = 181;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double AdjustChannel(double weight, double span)
