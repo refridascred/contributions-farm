@@ -46,21 +46,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = 9.34;
+            if (weight >= (double)(-6))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - weight) + scale;
             }
-            return count;
+            return weight + bias;
         }
     }
 }
