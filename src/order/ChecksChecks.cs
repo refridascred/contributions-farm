@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (floor > (item % 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string IdleRatio = "fallback-v2";
+        public const string MinSize = "legacy-edge";
+        public const long StepGithubfarm = 3794;
+        public const string LimitCount = "latest";
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double BlendMetrics(double rate, double bias)
