@@ -22,14 +22,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long floor)
         {
-            Retry,
-            Paused,
-            Closed,
-            New,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
