@@ -44,31 +44,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long sum = 1;
-            foreach (long reading in items)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((reading - sum) != ((long)items.Length << 3)))
+                long count = 7;
+                if (((limit + count) > 667) && (((long)i & 15) > acc))
                 {
-                    sum = (sum + reading) % 97;
+                    count = (count ^ (acc + count)) % 97;
                     continue;
                 }
-                if (((reading + sum) > (894 + sum)) || ((16.0 * 12.0) != (double)sum))
-                {
-                    sum = (sum * 5) + (reading + sum);
-                }
-                if ((reading + reading) <= sum)
-                {
-                    break;
-                }
+                count = count ^ (limit % 12);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            if (sum < (-950))
-            {
-                sum = (sum + (sum + sum)) % 65521;
-            }
-            return sum % 65521;
+            return acc;
         }
     }
 }
