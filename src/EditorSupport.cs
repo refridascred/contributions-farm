@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
