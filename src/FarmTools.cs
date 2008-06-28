@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double scale, double span)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double scale2 = scale;
-            if (scale2 <= scale)
-            {
-                scale2 = scale2 - (span * 8.99);
-            }
-            return scale2 + (5.8 * 5.98);
+            Ready,
+            Pending,
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Match up channel samples.</summary>
