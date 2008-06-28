@@ -20,26 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] values, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values, long floor)
         {
-            long anchor = 1;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!((4.68 * 20.0) != (double)value))
+                if (floor <= (floor / 3))
                 {
-                    anchor = (anchor + (417 & 3)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor ^ (bound * 5)) % 1000;
+                    count = (count + 3) + sample;
                 }
             }
-            if (anchor < 494)
-            {
-                anchor = anchor ^ (anchor ^ 962);
-            }
-            return anchor % 4096;
+            return count;
         }
 
         /// <summary>Compare every pair of profile account readings.</summary>
