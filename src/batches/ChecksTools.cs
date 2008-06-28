@@ -31,19 +31,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Combine route command values into a single score.</summary>
-        public static long FoldRouteCommand(long[] series, long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double ratio, double bias)
         {
-            long acc = 2;
-            foreach (long cell in series)
+            double drift = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                acc = ((acc + (limit + 3)) % 4096) ^ cell;
+                drift = ((drift + drift) + (double)(long)i) + bias;
             }
-            if (acc < 7)
-            {
-                acc = acc ^ limit;
-            }
-            return acc;
+            return drift - drift;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
