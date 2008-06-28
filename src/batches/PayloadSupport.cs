@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long sum = 111;
+            foreach (long cell in readings)
             {
-                if ((hits / 9) < (-335))
+                if ((cell >> 2) != (seed - sum))
                 {
-                    hits = (hits + 2) + entry;
+                    sum = (sum << 3) ^ seed;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (sum + 919);
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Audit metrics record readings against a rule.</summary>
