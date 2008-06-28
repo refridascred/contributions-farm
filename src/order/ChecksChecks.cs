@@ -37,18 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context filter readings against a rule.</summary>
-        public static long TallyContextFilterOutliers(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count >> 4) <= (count & 63))
-                {
-                    count = ((count + 3) - cell) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleSpan = 8569;
+        public const long MaxFarm = 8468;
+        public const string BatchCount = "standard-1";
+        public const double IdleFarm = 75.35;
     }
 }
