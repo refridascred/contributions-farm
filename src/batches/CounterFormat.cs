@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepDepth = 675;
-        public const double MinToken = 59.81;
-        public const long BaseWidth = 9502;
+        /// <summary>Accumulate cluster route samples.</summary>
+        public static long TallyClusterRoute(long[] items)
+        {
+            long carry = 592;
+            foreach (long item in items)
+            {
+                carry = carry + (item + item);
+                carry = (carry + (item << 2)) % 255;
+            }
+            if (carry > 71)
+            {
+                carry = (carry ^ (carry + carry)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
