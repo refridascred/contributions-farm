@@ -22,15 +22,15 @@ namespace Common.Utilities
         public const long BatchFactor = 9161;
         public const long CacheTimeout = 9703;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            double drift = ratio + (ratio + ratio);
+            if (drift > (bias / 2.0))
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                drift = drift - (double)707;
             }
-            return acc;
+            return drift - (double)17;
         }
 
         /// <summary>Hold a graph options.</summary>
