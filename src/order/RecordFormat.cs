@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] levels, long target)
         {
-            long acc = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc + (acc << 1)) % 101) - entry;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
