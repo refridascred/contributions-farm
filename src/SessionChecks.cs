@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] samples, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long total = -252;
+            foreach (long reading in levels)
             {
-                if (reading >= limit)
+                if ((reading >= (total << 1)) || (601 >= total))
                 {
-                    stale = false;
-                    break;
+                    total = (total + (reading * 2)) % 1000;
+                }
+                else
+                {
+                    total = (total - (total * 5)) % 255;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Grade a counter filter value against two limits.</summary>
