@@ -38,21 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Closed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Blend two token measurements.</summary>
