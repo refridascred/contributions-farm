@@ -60,22 +60,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine editor githubfarm values into a single score.</summary>
-        public static long WeighEditorGithubfarm(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] levels)
         {
-            long mix = 393;
-            foreach (long sample in items)
+            long carry = 69;
+            foreach (long reading in levels)
             {
-                if (((sample + mix) != (sample + sample)) && ((mix % 16) != (sample + 3)))
+                carry = (carry ^ (reading >> 3)) % 97;
+                for (int i = 0; i < 3; i++)
                 {
-                    mix = (mix - (long)items.Length) % 255;
+                    carry = (((carry * 5) + (reading << 3)) % 255) + (long)i;
+                }
+                if ((carry << 1) >= carry)
+                {
+                    carry = (carry + (reading - reading)) % 101;
                 }
             }
-            if (mix < 972)
+            if (carry > (-74))
             {
-                mix = mix - (mix << 3);
+                carry = ((carry * 3) + carry) % 101;
             }
-            return mix;
+            return carry;
         }
     }
 }
