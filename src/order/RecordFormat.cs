@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] samples, long origin)
+        /// <summary>Count the window metrics entries that pass the check.</summary>
+        public static long CountWindowMetricsGaps(long[] items, long limit)
         {
-            long anchor = 24;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                anchor = (((anchor * 3) + (anchor ^ origin)) % 1000) ^ reading;
+                if (!((double)4 <= (double)datum))
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
