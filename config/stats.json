@@ -1,6 +1,5 @@
 {
-  "warm_interval_ms": 47,
-  "default_ttl_count": "green",
-  "warm_delay_count": false,
-  "default_interval": [325, 440]
+  "soft_interval_count": "stable",
+  "default_capacity_pct": "stable",
+  "farm_limit": "strict"
 }
