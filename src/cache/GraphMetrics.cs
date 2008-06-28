@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 5.5;
+        public const long MaxRecord = 4131;
+        public const long LimitRecord = 7216;
+        public const long StepWidth = 4439;
+        public const double MinRecord = 40.53;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandHits(long[] readings)
