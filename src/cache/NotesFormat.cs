@@ -13,19 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] data, long origin)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
