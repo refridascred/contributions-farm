@@ -1,13 +1,13 @@
 # Command notes
 
-Use tools settings to tune how often stream data is refreshed.
-Each session is validated before it reaches the format queue.
+Keep support and stats names short and lowercase.
+Defaults for batches live in the config folder and can be overridden per environment.
 
-The schema module keeps buffer values in sync with the notes cache.
-Defaults for stream live in the config folder and can be overridden per environment.
+Use filter settings to tune how often notes data is refreshed.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Document new record fields
-- Review tools limits each release
+- Prefer context defaults
+- Validate commits input early
+- Document new metrics fields
