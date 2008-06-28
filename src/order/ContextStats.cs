@@ -28,19 +28,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of command batches entries.</summary>
-        public static long FoldCommandBatches(long[] readings)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long mix = 1;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix * 4) + item;
-                if (!((double)mix > (double)62))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix + (item << 2);
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
