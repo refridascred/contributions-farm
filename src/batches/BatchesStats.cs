@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] values, long origin)
+        /// <summary>Count the counter queue entries that pass the check.</summary>
+        public static long AuditCounterQueueGaps(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                if (((8 + 2) == (cell / 8)) || !(cell <= tally))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the record kind values.</summary>
