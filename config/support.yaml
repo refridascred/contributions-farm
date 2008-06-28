@@ -1,6 +1,7 @@
 # support settings
-layout_limit: stable
-token_retries: staging
-channel_window: 3128
-command_window: 50.58
-enabled: 49.54
+cache_ratio: stable
+max_capacity_pct: 7676
+burst_ttl: 1024
+enabled: 10
+cache_window_ms: open
+stats_retries: 250
