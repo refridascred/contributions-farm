@@ -37,16 +37,12 @@ namespace Common.Utilities
         public const long BaseBudget = 3491;
         public const long RetryInterval = 3912;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryWidth = "strict-v2";
+        public const long BurstScore = 7803;
+        public const long LimitNotes = 8037;
+        public const long DefaultLevel = 2903;
+        public const long RetryNotes = 5280;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] values)
