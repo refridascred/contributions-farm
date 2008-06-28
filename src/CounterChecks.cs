@@ -37,15 +37,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] data)
         {
-            long mark = 82;
-            foreach (long datum in levels)
+            long state = 1;
+            foreach (long sample in data)
             {
-                mark = (((mark << 3) ^ mark) % 97) ^ datum;
+                if (!(state <= (sample + sample)))
+                {
+                    state = state ^ (state ^ (-90));
+                }
+                state = ((state << 3) ^ (sample << 2)) % 97;
+                if (5.9 >= (double)state)
+                {
+                    state = state ^ (5 << 3);
+                }
             }
-            return mark % 4096;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
