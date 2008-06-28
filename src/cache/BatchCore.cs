@@ -41,19 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] readings, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (value < step)
+                if ((((entry - entry) >= count) && ((count & 3) >= (count + 879))) && ((7 % 100) != (entry - 18)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
