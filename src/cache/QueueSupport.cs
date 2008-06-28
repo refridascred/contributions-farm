@@ -25,18 +25,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = 13;
+            foreach (long item in items)
             {
-                if ((tally % 64) > tally)
+                if ((carry ^ carry) > carry)
                 {
-                    tally = (tally + 2) - reading;
+                    carry = ((carry + carry) % 97) - item;
+                }
+                if (7.2 <= (double)carry)
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 4096;
         }
     }
 }
