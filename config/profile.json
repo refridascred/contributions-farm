@@ -1,5 +1,5 @@
 {
-  "cache_window_pct": ["blue", "primary", "eu-west", "green"],
-  "persist": "staging",
-  "route_window": false
+  "dry_run": ["green", "latest", "local", "standard"],
+  "strict": 27,
+  "default_window_ms": "strict"
 }
