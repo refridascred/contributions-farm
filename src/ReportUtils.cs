@@ -18,22 +18,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long limit, long step)
+        /// <summary>Classify a command buffer pair into a bucket.</summary>
+        public static long BucketCommandBuffer(long floor, long limit)
         {
-            if (((double)step <= (double)478) && (77 >= (21 + limit)))
+            long next = floor - limit;
+            if (floor <= (limit * 3))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((9.6 + 6.8) == (double)step)
+                if (!((double)limit > (9.1 - 6.0)))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if (limit >= (next / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + next) >= (limit + 677))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
