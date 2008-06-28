@@ -21,15 +21,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            long prev = seed - floor;
+            if ((7.5 / 3.0) <= (double)floor)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (floor > (floor - 525))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)prev > (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
