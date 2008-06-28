@@ -16,21 +16,18 @@ namespace Common.Utilities
             return weight + (3.43 * 6.9);
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed >> 1) >= seed)
                 {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Digest a series of counter support entries.</summary>
