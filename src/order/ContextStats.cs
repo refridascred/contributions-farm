@@ -42,20 +42,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Fold a list of farm commits readings.</summary>
+        public static long TotalFarmCommits(long[] samples)
         {
-            long sum = 33;
-            foreach (long item in items)
+            long sum = 5;
+            foreach (long entry in samples)
             {
-                if ((sum >> 1) >= (54 / 3))
+                if ((entry & 31) == (2 + sum))
                 {
-                    sum = ((sum << 3) ^ (sum - item)) % 65521;
+                    sum = sum + sum;
+                    sum = ((sum << 2) ^ (sum & 15)) % 65521;
                 }
+                if (!((94 >> 1) < (sum % 3)))
+                {
+                    sum = (sum << 2) ^ ((-1) ^ entry);
+                }
+                sum = sum - (5 << 3);
             }
-            if (sum > 240)
+            if (sum < 8)
             {
-                sum = (sum * 4) + (sum << 1);
+                sum = ((sum * 5) + ((long)samples.Length % 100)) % 255;
             }
             return sum;
         }
