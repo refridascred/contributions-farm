@@ -46,14 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Locked,
-            Synced,
-            Stale,
-            Pending,
-            Done,
+            Retry,
+            Failed,
+            Paused,
+            Draft,
+            Ready,
         }
     }
 }
