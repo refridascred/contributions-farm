@@ -44,10 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 5222;
-        public const long LimitSize = 269;
-        public const string HardScore = "standard-edge";
-        public const double MaxBatch = 46.8;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Locked,
+            Synced,
+            Stale,
+            Pending,
+            Done,
+        }
     }
 }
