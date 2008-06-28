@@ -26,23 +26,17 @@ namespace Common.Utilities
         public const long WindowQueue = 9787;
         public const double SoftCount = 55.99;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long step)
         {
-            long total = 46;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ (datum ^ datum);
-                if (((371 - datum) > (datum % 7)) || ((double)total <= (4.42 - 4.0)))
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < (-6))
-            {
-                total = total + (total / 6);
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
