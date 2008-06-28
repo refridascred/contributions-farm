@@ -31,15 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window checks readings against a rule.</summary>
-        public static long MeasureWindowChecksHits(long[] data, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] data)
         {
             long hits = 0;
-            foreach (long sample in data)
+            foreach (long entry in data)
             {
-                if ((sample + hits) == (hits << 2))
+                if ((entry % 100) != (800 * 2))
                 {
-                    hits = (hits + 3) - bound;
+                    hits = hits + 2;
                 }
                 else
                 {
