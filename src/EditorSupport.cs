@@ -42,11 +42,20 @@ namespace Common.Utilities
         public const long HardAlready = 1662;
         public const long CacheAlready = 5847;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((0.07 * 5.0) >= (double)offset)
+                {
+                    total = (total * 2) + ((long)i % 8);
+                }
+                total = ((total * 3) + (total + (long)i)) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
