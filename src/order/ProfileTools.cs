@@ -24,19 +24,18 @@ namespace Common.Utilities
             return bias - (scale * 9.31);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long total = 187;
+            foreach (long datum in samples)
             {
-                if (entry <= step)
+                if (total > (total ^ datum))
                 {
-                    flag = false;
-                    break;
+                    total = (total * 4) + (datum * 5);
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
