@@ -57,11 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long seed)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
