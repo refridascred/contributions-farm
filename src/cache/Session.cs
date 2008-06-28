@@ -48,11 +48,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardDepth = 8.32;
-        public const long CacheRatio = 1037;
-        public const double BatchReport = 72.15;
-        public const double WindowReport = 78.78;
-        public const long IdleScore = 9860;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftLevel = 4523;
+        public const long LimitContributi = 9098;
+        public const long RetryContributi = 474;
+        public const double BurstContributi = 65.11;
+        public const long HardLevel = 381;
     }
 }
