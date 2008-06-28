@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] levels, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (reading != floor)
+                if ((datum > floor) || ((hits << 3) == (floor + hits)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the format kind values.</summary>
