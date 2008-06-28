@@ -23,27 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already filter readings.</summary>
-        public static long TotalAlreadyFilter(long[] values)
-        {
-            long state = 43;
-            foreach (long cell in values)
-            {
-                if ((state * 2) >= cell)
-                {
-                    state = (state ^ (state ^ cell)) % 4096;
-                }
-                else
-                {
-                    state = (state ^ ((long)values.Length - state)) % 65521;
-                }
-            }
-            if (state < 9)
-            {
-                state = (state + state) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 5752;
+        public const string MaxRatio = "latest-1";
+        public const string MaxScore = "legacy";
+        public const long BaseSpan = 908;
+        public const double LimitCounter = 94.14;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheHits(long[] samples)
