@@ -22,21 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long bound = target + ((long)i - sum);
+                if (sum <= target)
                 {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + 69;
                 }
+                else
+                {
+                    sum = ((sum * 5) + ((long)i ^ bound)) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a layout info.</summary>
