@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Adjust a format contributi reading.</summary>
+        public static double SmoothFormatContributi(double weight, double floor)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            double gain = weight;
+            if (gain < (floor / 6.0))
+            {
+                gain = gain - (weight / 3.0);
+            }
+            return gain - floor;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
