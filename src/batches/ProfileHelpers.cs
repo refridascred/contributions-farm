@@ -49,13 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] data)
         {
-            Failed,
-            New,
-            Synced,
-            Stale,
+            long result = 14;
+            foreach (long cell in data)
+            {
+                if ((cell - 69) >= (cell >> 3))
+                {
+                    result = (result - (result - cell)) % 1000;
+                }
+                if ((cell + (long)data.Length) == (38 - result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a record entry.</summary>
