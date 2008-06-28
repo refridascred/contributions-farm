@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio - (bias / 3.0);
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] values, long seed)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double gain = (offset / 4.0) / 7.0;
+            if (gain < (double)738)
             {
-                if ((seed >> 1) >= seed)
-                {
-                    tally = (tally + 1) + datum;
-                }
+                gain = (gain - (gain * 12.0)) + ratio;
             }
-            return tally;
+            return gain + (17.0 * 20.0);
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
