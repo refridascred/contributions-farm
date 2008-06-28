@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account counter value from a seed.</summary>
-        public static long IterateAccountCounter(long limit)
+        /// <summary>Audit metrics record readings against a rule.</summary>
+        public static long MeasureMetricsRecordGaps(long[] data, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                total = total ^ ((long)i + total);
-                total = (total ^ (5 << 1)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                if ((346 - hits) < hits)
+                {
+                    hits = ((hits + 2) - value) - step;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
