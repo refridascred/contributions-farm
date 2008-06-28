@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double mean = (bias2 * 0.9) / 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean - bias) + (double)(long)i;
             }
-            return stale;
+            return mean + (bias2 + bias);
         }
 
         /// <summary>Match up commits samples.</summary>
