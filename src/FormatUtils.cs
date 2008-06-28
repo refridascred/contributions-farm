@@ -55,19 +55,23 @@ namespace Common.Utilities
             return bias + (bias + gain);
         }
 
-        /// <summary>Check that every window profile entry stays within the limit.</summary>
-        public static bool CheckWindowProfileBounds(long[] series, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long acc = 575;
+            foreach (long item in readings)
             {
-                if (sample >= target)
+                if ((item % 24) > (acc + bound))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc ^ 7) % 97;
                 }
+                acc = acc + (item + bound);
             }
-            return ok;
+            if (acc < 586)
+            {
+                acc = (acc * 4) + (acc / 7);
+            }
+            return acc % 1000;
         }
     }
 }
