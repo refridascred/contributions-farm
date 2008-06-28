@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate contributi token samples.</summary>
-        public static long FoldContributiToken(long[] series, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] samples, long step)
         {
-            long score = 1;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if ((step << 2) == (step / 8))
                 {
-                    score = score + (long)i;
-                }
-                if ((59 + target) < (reading + reading))
-                {
-                    score = score ^ (target & 1);
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 255;
+                    matches = (matches + 3) + value;
                 }
             }
-            if (score > 8)
-            {
-                score = score - 366;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
