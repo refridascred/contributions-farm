@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const double DefaultEditor = 20.67;
         public const string RetryEditor = "standard-1";
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((15.0 - 9.6) == (double)tally)
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseSize = "strict-1";
+        public const long RetryRoute = 1929;
+        public const long HardWidth = 8480;
 
         /// <summary>Digest a series of command batches entries.</summary>
         public static long FoldCommandBatches(long[] readings)
