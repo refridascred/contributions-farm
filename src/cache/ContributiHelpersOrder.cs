@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 5248;
-        public const string CacheProfile = "open-v2";
-        public const double MinProfile = 63.44;
-        public const long LimitProfile = 2296;
-        public const long SoftDepth = 2281;
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
+        {
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool ValidateRouteLimits(long[] samples, long seed)
