@@ -14,10 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "staging-v2";
-        public const string IdleScore = "cached";
-        public const string MaxCount = "stable-edge";
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool ValidateCounterContextBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
