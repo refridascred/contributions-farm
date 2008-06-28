@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of already channel readings.</summary>
-        public static long TotalAlreadyChannel(long[] samples, long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long carry = -51;
-            foreach (long datum in samples)
-            {
-                carry = ((carry * 2) + (bound >> 2)) + datum;
-            }
-            return carry % 1000;
+            Synced,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
