@@ -48,18 +48,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] data, long target)
         {
-            long seen = 0;
+            bool found = true;
             foreach (long item in data)
             {
-                if (!((seen - seen) == (bound << 1)))
+                if (item <= target)
                 {
-                    seen = (seen + 2) + item;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
