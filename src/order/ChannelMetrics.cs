@@ -33,39 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long offset, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] samples, long limit)
         {
-            long slot = offset ^ origin;
-            if (((offset - 31) > (offset % 10)) && ((origin >> 2) > (slot / 9)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot * 5) >= (75 - slot))
+                if (samples[i] >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - slot) > origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((0.9 + 9.3) != (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
