@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((5.3 + 6.62) <= (double)limit))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultLevel = 1618;
+        public const long BatchFactor = 3059;
+        public const long LimitReport = 3825;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] items)
