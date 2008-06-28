@@ -58,23 +58,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (((result << 3) ^ (result + result)) % 4096) ^ (long)i2;
+                    if ((values[i] - values[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((double)target < (6.62 * 4.19))
-                {
-                    result = result - ((long)i / 8);
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the entry phase values.</summary>
