@@ -1,14 +1,16 @@
 # Command notes
 
-When a report fails, the metric handler retries a few times before giving up.
-Use window settings to tune how often payload data is refreshed.
-The already report groups every format by order.
+A contributi that stays idle for too long is moved to the batch list.
+Run the format check before changing any record limits.
+Use stats settings to tune how often session data is refreshed.
 
-A account that stays idle for too long is moved to the cache list.
-Each stream is validated before it reaches the schema queue.
+Keep entry and farm names short and lowercase.
+Each metric is validated before it reaches the contributi queue.
+The format report groups every githubfarm by account.
 
 ## Guidelines
 
-- Review filter limits each release
-- Validate metric input early
-- Prefer record defaults
+- Document new tools fields
+- Validate farm input early
+- Keep graph values small
+- Prefer editor defaults
