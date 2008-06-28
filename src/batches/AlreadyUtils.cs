@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
