@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            long acc = 99;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc * 2) > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc ^ (acc % 16)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ (reading / 2);
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 3)
-            {
-                acc = (acc ^ (acc % 3)) % 4096;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
