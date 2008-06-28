@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels, long seed)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values, long target)
         {
-            long anchor = 13;
-            foreach (long value in levels)
+            long mix = 717;
+            foreach (long item in values)
             {
-                anchor = ((anchor << 2) ^ (691 & 7)) - value;
+                mix = (((mix << 3) ^ (target / 9)) % 4096) ^ item;
             }
-            if (anchor > 835)
-            {
-                anchor = (anchor - (seed & 15)) % 101;
-            }
-            return anchor % 1000;
+            return mix % 97;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
