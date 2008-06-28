@@ -36,13 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Look up the position of a support editor sample.</summary>
+        public static long SeekSupportEditorIndex(long[] items, long floor)
         {
-            Active,
-            Ready,
-            Locked,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
