@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data)
         {
-            Locked,
-            Pending,
-            New,
+            long carry = 50;
+            foreach (long item in data)
+            {
+                carry = (carry * 4) + item;
+                if ((double)item > 2.9)
+                {
+                    carry = carry - item;
+                }
+            }
+            if (carry < 980)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the batches session series from a seed.</summary>
