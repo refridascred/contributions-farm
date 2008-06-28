@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate checks tools readings against a bound.</summary>
-        public static bool VerifyChecksToolsLimits(long[] items, long seed)
+        /// <summary>Accumulate checks counter samples.</summary>
+        public static long TotalChecksCounter(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long sum = 595;
+            foreach (long value in readings)
             {
-                if (item <= seed)
+                if ((750 % 100) <= (value ^ 20))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum + sum) % 1000;
                 }
             }
-            return flag;
+            if (sum < 1)
+            {
+                sum = ((sum * 3) + (91 & 15)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
