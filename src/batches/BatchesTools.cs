@@ -30,31 +30,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long target, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            if ((target + target) >= target)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target >= 9.58)
+                if (!((mix << 1) == (mix ^ (long)i)))
                 {
-                    return 6;
+                    mix = (mix - (mix / 8)) % 1000;
+                    mix = ((mix << 2) ^ (mix ^ (long)i)) % 65521;
                 }
-                else
-                {
-                    if ((target + target) > limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
     }
 }
