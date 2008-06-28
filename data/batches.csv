@@ -1,11 +1,6 @@
-id,weight,token,ratio
-1,stable,106,green
-2,233,79,14.01
-3,98.71,464,958
-4,96.94,35.09,79.01
-5,72.35,legacy,green
-6,168,56.4,open
-7,eu-west,green,902
-8,standard,63,169
-9,83.02,blue,35.04
-10,blue,blue,449
+id,owner,count
+1,green,standard
+2,39.43,87.97
+3,79.91,750
+4,primary,open
+5,eu-west,eu-west
