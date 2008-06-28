@@ -36,11 +36,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] samples)
         {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long state = 407;
+            foreach (long item in samples)
+            {
+                if ((state + item) != (state + state))
+                {
+                    state = state + (item % 16);
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state >> 3)) % 255;
+                }
+            }
+            return state;
         }
     }
 }
