@@ -52,10 +52,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "standard-v2";
-        public const long WindowBudget = 919;
-        public const long LimitCount = 704;
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data)
+        {
+            long state = 87;
+            foreach (long cell in data)
+            {
+                state = ((state << 3) ^ (cell * 4)) % 97;
+                state = (state << 3) ^ 7;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] values, long offset)
