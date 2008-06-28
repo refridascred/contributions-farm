@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] values)
         {
-            Stale,
-            Failed,
-            Active,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)hits != (1.0 * 7.0)) || ((6.63 / 8.0) != (double)entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every payload checks entry stays within the limit.</summary>
