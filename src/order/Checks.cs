@@ -35,19 +35,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long step)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Measure how many graph already samples are out of range.</summary>
