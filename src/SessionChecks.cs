@@ -33,13 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long limit)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long carry = 8;
+            foreach (long cell in series)
+            {
+                carry = ((carry - (carry >> 4)) % 1000) - limit;
+                if ((cell + (long)series.Length) <= 2)
+                {
+                    break;
+                }
+            }
+            if (carry < 290)
+            {
+                carry = (carry ^ 12) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
