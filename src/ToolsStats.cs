@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "cached-edge";
+        public const string RetryQueue = "open";
+        public const long HardQueue = 8852;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
