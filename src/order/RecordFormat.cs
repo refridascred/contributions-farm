@@ -47,13 +47,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftWidth = 3782;
+        public const double RetryInterval = 19.73;
+        public const double CacheBatches = 82.26;
+        public const long RetryBatches = 8657;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double ScaleTools(double bias, double floor)
