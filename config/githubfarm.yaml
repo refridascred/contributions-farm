@@ -1,28 +1,7 @@
 # githubfarm settings
-hard_threshold_s: 66
-batch_retries_count:
-  - legacy
-  - blue
-window_timeout: 500
-persist:
-  flush_limit_count: 88.0
-  retry_window:
-    max_window_s:
-      - 493
-      - 169
-      - 186
-      - 123
-    batch_window: green
-    sync_threshold_s: standard
-  batches_threshold:
-    - cached
-    - staging
-    - legacy
-  profile_depth:
-    flush_limit:
-      - open
-      - standard
-      - strict
-    poll_ttl_ms: standard
-    burst_threshold_count: 100
-flush_limit_count: 45
+payload_interval: 28.51
+flush_depth_s: 97.38
+poll_ttl_pct: local
+min_depth_ms: true
+sync_size_count: false
+strict: false
