@@ -48,19 +48,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (5 <= (item / 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleRatio = 9155;
+        public const string CacheLevel = "legacy-1";
+        public const long CacheInterval = 3533;
+        public const string BatchBudget = "primary-v2";
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long offset)
