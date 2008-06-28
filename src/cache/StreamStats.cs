@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long BatchFactor = 9161;
         public const long CacheTimeout = 9703;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] data, long seed)
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry < (5.4 - 9.22))
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
