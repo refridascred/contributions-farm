@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((6 + entry) <= (entry / 6)))
+                if (!((3 << 2) < (item + item)))
                 {
-                    seen = (seen + 3) + seed;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
