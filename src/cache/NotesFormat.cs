@@ -19,13 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Accumulate metric format samples.</summary>
+        public static long DigestMetricFormat(long[] items, long bound)
         {
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = -9;
+            foreach (long sample in items)
+            {
+                mark = mark - (mark ^ sample);
+                if (mark < (mark ^ bound))
+                {
+                    mark = (mark - 5) % 101;
+                }
+                mark = ((mark * 5) + (bound - bound)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of order readings.</summary>
