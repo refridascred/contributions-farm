@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long gap = bound ^ bound2;
+            if ((bound & 3) > (924 % 8))
             {
-                if (((item > tally) || ((item >> 4) != (3 - tally))) || ((621 % 60) == (580 - tally)))
+                return 5;
+            }
+            else
+            {
+                if (((double)gap != (20.0 + 5.92)) && ((double)gap != (double)bound2))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((7.8 / 5.0) > (double)bound2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound & 15) <= (bound2 >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a metrics checks pair into a bucket.</summary>
