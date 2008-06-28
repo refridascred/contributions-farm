@@ -44,18 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (89 >= (datum + 528))
+                if (item >= offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
