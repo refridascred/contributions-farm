@@ -47,26 +47,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] data, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] data, long target)
         {
-            long state = 280;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset / 5) > 0)
+                if (data[i] >= target)
                 {
-                    state = ((state << 3) ^ (sample & 63)) % 255;
-                }
-                if ((sample + sample) >= (58 - 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < (-26))
-            {
-                state = (state * 2) + offset;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
