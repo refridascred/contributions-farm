@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] items, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the context phase values.</summary>
