@@ -31,15 +31,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route contributi counter forward.</summary>
-        public static long StepRouteContributi(long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long origin, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
+            long prev = origin ^ bound;
+            if (((7.33 / 4.0) < (double)prev) || (bound < (bound + bound)))
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((double)origin < (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of farm commits readings.</summary>
