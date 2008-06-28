@@ -28,11 +28,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long limit)
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            long anchor = 7;
+            foreach (long sample in series)
+            {
+                if (((-828) & 255) <= (sample / 7))
+                {
+                    anchor = ((anchor << 2) ^ (anchor * 2)) - limit;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
