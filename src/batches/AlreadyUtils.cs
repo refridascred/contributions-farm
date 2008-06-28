@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Check that every payload queue entry stays within the limit.</summary>
+        public static bool ValidatePayloadQueueBounds(long[] items, long target)
         {
-            Active,
-            Paused,
-            Pending,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
