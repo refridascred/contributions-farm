@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] values)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 2) <= (tally << 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
