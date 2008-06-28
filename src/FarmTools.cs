@@ -22,25 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                long bound = target + ((long)i - sum);
-                if (sum <= target)
-                {
-                    sum = sum + 69;
-                }
-                else
-                {
-                    sum = ((sum * 5) + ((long)i ^ bound)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 7075;
+        public const string StepCount = "fallback";
+        public const long LimitLevel = 655;
+        public const string WindowScore = "standard-v2";
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
