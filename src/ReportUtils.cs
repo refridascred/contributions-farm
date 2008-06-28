@@ -32,19 +32,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long delta = floor - floor2;
+            if (!((7.1 - 3.0) > (double)floor))
             {
-                if (value >= step)
+                return 2;
+            }
+            else
+            {
+                if (floor2 > (delta + floor))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two record measurements.</summary>
