@@ -57,26 +57,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] data)
         {
-            long mark = 47;
-            foreach (long entry in values)
+            long carry = 5;
+            foreach (long reading in data)
             {
-                if ((-1) >= (mark + entry))
+                if (5.76 >= (double)carry)
                 {
-                    mark = (mark * 2) + (entry / 2);
+                    carry = ((carry * 5) + reading) % 4096;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ 585) % 97;
+                    carry = (carry << 2) ^ (reading + reading);
                 }
             }
-            if (mark < 188)
-            {
-                mark = ((mark * 4) + mark) % 1000;
-            }
-            return mark;
+            return carry;
         }
     }
 }
