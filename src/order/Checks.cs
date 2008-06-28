@@ -33,12 +33,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] values, long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the support kind values.</summary>
