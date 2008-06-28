@@ -89,15 +89,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] data, long offset)
+        /// <summary>Measure how many stream already samples are out of range.</summary>
+        public static long AuditStreamAlreadyMatches(long[] samples)
         {
-            long total = 378;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                total = total ^ (sample + offset);
+                if (((hits & 3) != (entry & 7)) && !((double)(long)samples.Length >= (5.8 + 2.0)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
