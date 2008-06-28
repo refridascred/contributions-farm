@@ -1,11 +1,7 @@
 # support settings
-sync_threshold_ms: 2455
-graph_interval: false
-flush_threshold_count:
-  - 15
-  - 479
-  - 302
-  - 1
-readonly: 5234
-max_depth: 30
-enabled: green
+graph_interval: 68.88
+compress: 250
+persist: staging
+command_window: open
+soft_ratio: 3
+record_size: 93.17
