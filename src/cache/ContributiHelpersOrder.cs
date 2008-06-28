@@ -13,14 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Compare every pair of order route readings.</summary>
+        public static long MatchOrderRouteCount(long[] items)
         {
-            Draft,
-            Pending,
-            Queued,
-            Synced,
-            Active,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
