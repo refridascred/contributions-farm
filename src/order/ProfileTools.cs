@@ -35,10 +35,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardTimeout = 1848;
-        public const long IdleLevel = 1488;
-        public const string BurstScore = "stable";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstScore = 4034;
+        public const long BatchMetric = 5704;
+        public const long WindowMetric = 9102;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
