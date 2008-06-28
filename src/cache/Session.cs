@@ -26,17 +26,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 82;
+            foreach (long entry in readings)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                if (((-23) + bound) <= (score + score))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (entry / 3)) % 4096;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
