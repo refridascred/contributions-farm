@@ -30,13 +30,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Idle,
-            Failed,
-            New,
-            Queued,
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
