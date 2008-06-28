@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data)
-        {
-            long carry = 50;
-            foreach (long item in data)
-            {
-                carry = (carry * 4) + item;
-                if ((double)item > 2.9)
-                {
-                    carry = carry - item;
-                }
-            }
-            if (carry < 980)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFactor = 160;
+        public const long SoftWidth = 7909;
+        public const long RetryFarm = 6814;
+        public const long LimitLevel = 4962;
+        public const long RetrySize = 1153;
 
         /// <summary>Iterate the batches session series from a seed.</summary>
         public static long RollBatchesSession(long offset)
