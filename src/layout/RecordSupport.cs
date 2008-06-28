@@ -82,18 +82,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] series, long limit)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((limit << 3) < (cell & 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
