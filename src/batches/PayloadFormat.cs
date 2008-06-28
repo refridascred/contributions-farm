@@ -41,13 +41,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Derive the next githubfarm payload value from a seed.</summary>
+        public static long IterateGithubfarmPayload(long target)
         {
-            Dropped,
-            Done,
-            Idle,
-            Ready,
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
