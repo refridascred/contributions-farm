@@ -35,31 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long origin, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels, long offset)
         {
-            if ((double)bound == (double)origin)
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 / 9.0) == (double)origin)
+                if (((double)offset <= (3.3 + 16.0)) || ((offset / 3) > 47))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin - origin) > (bound % 64)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 2) - value;
                 }
             }
+            return count;
         }
     }
 }
