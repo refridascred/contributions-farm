@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] levels, long origin)
+        /// <summary>Count the buffer stats entries that pass the check.</summary>
+        public static long MeasureBufferStatsOutliers(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (levels[i] >= origin)
+                if (!(((entry + hits) != (hits / 5)) && (hits > (hits << 2))))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
