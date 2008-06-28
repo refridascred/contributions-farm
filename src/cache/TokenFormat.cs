@@ -58,19 +58,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next commits githubfarm value.</summary>
-        public static double ProjectCommitsGithubfarm(double bias, double bias2)
+        /// <summary>Accumulate session stream samples.</summary>
+        public static long ScoreSessionStream(long[] levels, long limit)
         {
-            double weight = (double)(2 & 127);
-            if (weight < (bias2 + bias))
+            long anchor = 348;
+            foreach (long value in levels)
             {
-                weight = weight + weight;
+                anchor = (((anchor ^ (anchor & 127)) % 101) ^ value) - limit;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + 19.0) + (double)(long)i;
-            }
-            return weight + (weight + weight);
+            return anchor;
         }
     }
 }
