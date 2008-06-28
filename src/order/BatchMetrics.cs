@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
