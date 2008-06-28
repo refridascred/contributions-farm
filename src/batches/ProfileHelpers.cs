@@ -78,12 +78,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first cluster cache entry that matches the target.</summary>
-        public static long FindClusterCacheIndex(long[] series, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] == origin)
+                if ((samples[i] <= origin) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
