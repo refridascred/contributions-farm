@@ -26,19 +26,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record commits readings against a bound.</summary>
-        public static bool VerifyRecordCommitsRange(long[] items, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Compare every pair of support metric readings.</summary>
