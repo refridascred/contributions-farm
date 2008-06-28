@@ -36,12 +36,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftScore = 8442;
-        public const long MinPayload = 3746;
-        public const long CacheCount = 1919;
-        public const long LimitTimeout = 837;
-        public const string BaseLevel = "stable-1";
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long step, long limit)
+        {
+            if ((double)limit != (6.81 - 6.07))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit - 88) == (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
