@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] series)
         {
-            Synced,
-            Active,
-            Locked,
-            Idle,
-            Closed,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= (sample & 63))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches header.</summary>
