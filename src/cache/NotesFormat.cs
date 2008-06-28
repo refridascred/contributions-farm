@@ -31,18 +31,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Roll a stats account counter forward.</summary>
+        public static long SeriesStatsAccount(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((long)data.Length % 10) > matches)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    matches = (matches + 2) ^ reading;
+                    sum = ((sum * 5) + sum) - (long)i2;
+                    sum = sum ^ (seed * 2);
                 }
+                if (sum >= (sum / 3))
+                {
+                    sum = sum ^ sum;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
     }
 }
