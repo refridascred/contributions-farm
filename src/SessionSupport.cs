@@ -24,19 +24,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a already entry reading.</summary>
-        public static double SmoothAlreadyEntry(double ratio, double offset)
+        /// <summary>Measure how many filter route samples are out of range.</summary>
+        public static long AuditFilterRouteOutliers(long[] series)
         {
-            double load = offset;
-            if (load <= offset)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                load = (load - (double)(-31)) - ratio;
+                if (reading >= 6)
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (7.98 + 4.26)) - (double)(long)i;
-            }
-            return load - offset;
+            return hits;
         }
     }
 }
