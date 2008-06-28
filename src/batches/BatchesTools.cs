@@ -43,16 +43,22 @@ namespace Common.Utilities
             return load + (6.4 - bias);
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long sum = 26;
+            foreach (long sample in values)
             {
-                mark = (mark - mark) % 4096;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((sum + 5) > sample)
+                {
+                    sum = ((sum * 5) + seed) % 4096;
+                }
             }
-            return mark;
+            if (sum < 808)
+            {
+                sum = (sum * 2) + seed;
+            }
+            return sum;
         }
     }
 }
