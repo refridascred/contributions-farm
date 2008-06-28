@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] items, long seed)
+        /// <summary>Match up command support samples.</summary>
+        public static long CompareCommandSupportCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits < 5.8)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 1) ^ entry) + seed;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a session info.</summary>
