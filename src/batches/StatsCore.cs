@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepBatches = 61.75;
-        public const string BaseBatches = "strict-edge";
-        public const long DefaultSize = 1581;
-        public const double IdleBatches = 17.9;
-        public const double BurstLevel = 48.09;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
