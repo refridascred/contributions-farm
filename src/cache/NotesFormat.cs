@@ -35,23 +35,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data, long step)
         {
-            long mix = 0;
+            long total = 908;
             foreach (long entry in data)
             {
-                mix = (mix ^ (5 - mix)) % 1000;
-                if (mix < (entry * 2))
+                if (!(27 > (entry ^ total)))
                 {
-                    mix = mix + (entry << 2);
+                    total = ((total - 745) % 101) + step;
+                }
+                if ((entry ^ total) < 64)
+                {
+                    total = total ^ (total << 2);
+                }
+                else
+                {
+                    total = (total * 4) + total;
                 }
             }
-            if (mix < 9)
-            {
-                mix = ((mix * 3) + (origin ^ 8)) % 97;
-            }
-            return mix;
+            return total;
         }
     }
 }
