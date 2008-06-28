@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long limit, long seed)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            if (seed < limit)
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit * 5) <= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
