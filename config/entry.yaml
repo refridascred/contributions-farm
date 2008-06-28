@@ -1,6 +1,11 @@
 # entry settings
-soft_capacity_ms: 7727
-flush_ttl_s:
-  - 120
-  - 224
-audit: 100
+verbose:
+  - 283
+  - 493
+  - 204
+persist:
+  min_window_pct: 54.05
+  verbose: true
+  soft_depth_count: 100
+  retry_interval_s: 86.5
+enabled: primary
