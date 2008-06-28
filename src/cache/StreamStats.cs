@@ -33,22 +33,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                long count = 7;
-                if (((limit + count) > 667) && (((long)i & 15) > acc))
-                {
-                    count = (count ^ (acc + count)) % 97;
-                    continue;
-                }
-                count = count ^ (limit % 12);
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftCount = 56.56;
+        public const double SoftWindow = 65.94;
+        public const double BatchWindow = 50.21;
+        public const long MaxDepth = 4755;
     }
 }
