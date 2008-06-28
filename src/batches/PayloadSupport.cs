@@ -26,22 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long seed)
-        {
-            long result = 66;
-            foreach (long item in readings)
-            {
-                if ((92 % 12) < seed)
-                {
-                    result = (((result * 5) + (seed + 212)) % 255) ^ item;
-                }
-            }
-            if (result < 767)
-            {
-                result = ((result << 3) ^ (result + seed)) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultInterval = "primary-edge";
+        public const string MaxCount = "alpha-1";
+        public const long IdleCommand = 4851;
+        public const string CacheSpan = "open-v2";
     }
 }
