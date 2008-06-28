@@ -27,20 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheCount = "primary";
+        public const long MinQueue = 7282;
+        public const long BaseQueue = 4092;
 
         /// <summary>Accumulate graph buffer samples.</summary>
         public static long WeighGraphBuffer(long[] values, long offset)
