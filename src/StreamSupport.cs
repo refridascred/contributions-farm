@@ -27,22 +27,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] readings, long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long anchor = 23;
-            foreach (long entry in readings)
-            {
-                if (9.0 <= (double)entry)
-                {
-                    anchor = (anchor - (target ^ entry)) % 97;
-                }
-                if ((double)anchor < 9.0)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Ready,
+            Retry,
+            Done,
         }
     }
 }
