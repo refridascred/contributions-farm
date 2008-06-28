@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the account window entries that pass the check.</summary>
-        public static long AuditAccountWindowHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (value > (0 * 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 33.65;
+        public const long MinCounter = 6568;
+        public const long BatchCounter = 8354;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksRange(long[] values, long seed)
