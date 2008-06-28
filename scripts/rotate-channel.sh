@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 4); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=281
-log "limit is ${CHANNEL_LIMIT}"
+for item in primary cached legacy; do
+    log "checking ${item}"
+done
