@@ -38,12 +38,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Pending,
-            Dropped,
             Active,
+            Retry,
+            Ready,
+            Dropped,
+            Pending,
         }
     }
 }
