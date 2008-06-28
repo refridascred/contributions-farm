@@ -14,22 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] series)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double weight = (double)((-5) + 8);
+            if (weight >= 3.0)
             {
-                if ((hits + entry) > (-563))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight - weight) - floor;
             }
-            return hits;
+            else
+            {
+                weight = weight - (double)24;
+            }
+            return weight - (ratio - ratio);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
