@@ -1,19 +1,12 @@
 {
-  "hard_interval": "cached",
-  "readonly": "edge",
-  "batches_retries": {
-    "persist": true,
-    "cache_depth_pct": 51.71,
-    "strict": {
-      "profile_size": "fallback",
-      "schema_delay": "standard",
-      "cache_ttl_s": 100,
-      "sync_capacity_count": 21,
-      "min_delay_count": 9728
-    },
-    "base_size_pct": 60,
-    "support_limit": [378, 420],
-    "readonly": "open"
+  "compress": 58.38,
+  "soft_ttl_ms": {
+    "base_capacity_pct": 0.47,
+    "base_size_pct": 2150,
+    "soft_capacity": 60.2
   },
-  "cache_limit": "eu-west"
+  "buffer_threshold": 5,
+  "tools_ratio": 7863,
+  "sync_delay": 51,
+  "schema_size": 89.27
 }
