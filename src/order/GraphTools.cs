@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] readings, long target)
         {
-            long result = 2;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((result + item) >= (result + 603))
+                if (value != target)
                 {
-                    result = ((result << 3) ^ (9 + item)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
