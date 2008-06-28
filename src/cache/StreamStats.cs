@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long BatchFactor = 9161;
         public const long CacheTimeout = 9703;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long score = 11;
-            foreach (long item in samples)
-            {
-                score = (((score * 3) + (score * 4)) % 255) ^ item;
-            }
-            return score;
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
