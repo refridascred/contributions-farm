@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 5854;
+        public const double BatchBudget = 98.16;
+        public const long BurstBatch = 2231;
 
         /// <summary>Roll a githubfarm batch counter forward.</summary>
         public static long DeriveGithubfarmBatch(long origin)
