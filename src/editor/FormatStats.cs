@@ -48,19 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] readings, long origin)
         {
-            long mix = 37;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                mix = (mix << 2) ^ datum;
-                if (((double)mix > (2.9 * 14.0)) && ((7.7 + 18.0) <= (double)datum))
+                if (value <= origin)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
