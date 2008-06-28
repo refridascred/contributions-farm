@@ -30,22 +30,22 @@ namespace Common.Utilities
             return (load - (9.8 + weight)) + span;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long sum = 33;
+            foreach (long item in items)
             {
-                if (!((value * 3) != (value + value)))
+                if ((sum >> 1) >= (54 / 3))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = ((sum << 3) ^ (sum - item)) % 65521;
                 }
             }
-            return seen;
+            if (sum > 240)
+            {
+                sum = (sum * 4) + (sum << 1);
+            }
+            return sum;
         }
     }
 }
