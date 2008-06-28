@@ -13,11 +13,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheChannel = "fallback-edge";
-        public const long StepChannel = 8689;
-        public const string SoftBudget = "latest";
-        public const long DefaultChannel = 1320;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a farm record reading by value.</summary>
         public static long LookupFarmRecordIndex(long[] readings, long target)
