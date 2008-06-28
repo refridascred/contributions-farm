@@ -1,9 +1,12 @@
 # entry settings
-account_interval: 26.97
-sync_window: true
-idle_capacity: false
-idle_capacity_ms: 3693
-cache_retries:
-  - 94
-  - 146
-  - 59
+readonly:
+  base_retries: primary
+  metric_interval: true
+  min_threshold_pct:
+    - 379
+    - 90
+  filter_interval:
+    - 372
+    - 114
+max_capacity_s: 30
+strict: 202
