@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank channel batch input into a small class.</summary>
-        public static long ClassifyChannelBatch(long origin, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if ((double)step < (2.87 * 9.2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin % 64) > (step % 60)) || ((step + origin) < (step / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the already mode values.</summary>
