@@ -34,13 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] values, long origin)
         {
-            Locked,
-            Failed,
-            Paused,
-            Synced,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (((hits >= origin) || (hits > (hits ^ origin))) || ((hits << 1) <= (hits + origin)))
+                {
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
