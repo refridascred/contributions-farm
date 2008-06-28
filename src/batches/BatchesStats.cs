@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] items, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the graph state values.</summary>
