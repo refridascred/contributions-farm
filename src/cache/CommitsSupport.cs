@@ -56,38 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long origin, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            if ((57 + origin) != (floor >> 3))
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin * 3) == (16 + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.8 / 6.0) != (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5.3 >= (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
