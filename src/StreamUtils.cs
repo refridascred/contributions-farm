@@ -13,18 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((double)(long)series.Length > (double)cell) && ((cell << 2) > (18 + cell)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two batches measurements.</summary>
