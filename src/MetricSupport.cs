@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] values)
         {
-            double gain2 = 12.0;
-            if (gain2 >= (double)(-95))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                gain2 = (gain2 - gain2) + span;
+                if (((matches * 5) == (datum / 8)) && ((7 * 2) != (datum * 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - (gain2 + 15.0)) + (double)(long)i;
-            }
-            return gain2 - (gain * 1.9);
+            return matches;
         }
 
         /// <summary>Roll a order counter forward.</summary>
