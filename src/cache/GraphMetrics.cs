@@ -26,19 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool ValidateCacheContextRange(long[] values, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] samples)
         {
-            bool found = true;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Compare every pair of support metric readings.</summary>
