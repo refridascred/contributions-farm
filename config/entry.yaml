@@ -1,24 +1,5 @@
 # entry settings
-sync_ttl_count:
-  verbose:
-    enabled:
-      - local
-      - legacy
-      - open
-    readonly: 1450
-    farm_ttl: 100
-  strict:
-    - cached
-    - standard
-    - blue
-    - latest
-  enabled: stable
-readonly: 80.0
-min_limit_count: 51
-profile_ttl:
-  - local
-  - primary
-  - eu-west
-  - eu-west
-flush_window_ms: 3860
-soft_window_ms: 44.34
+sync_timeout: cached
+retry_ttl_s: eu-west
+batch_window_s: 21
+batch_threshold_s: 4280
