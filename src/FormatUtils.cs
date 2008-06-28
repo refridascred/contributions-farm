@@ -33,39 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long floor)
         {
-            long prev = seed - offset;
-            if ((double)offset == (2.0 * 4.0))
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                carry = ((carry * 2) + (carry << 1)) % 4096;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (prev > 99)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset - 603) <= (seed % 97)) && ((prev & 1) != (prev % 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + prev) > prev)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Combine session values into a single score.</summary>
