@@ -42,21 +42,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (hits <= (reading >> 1))
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
