@@ -1,6 +1,6 @@
 {
-  "cache_ttl": 1161,
-  "cache_size": 1024,
-  "account_size": "fallback",
-  "format_size": 30
+  "idle_timeout": [315, 401, 392],
+  "cache_size_count": "eu-west",
+  "account_window": true,
+  "report_capacity": ["open", "blue", "cached"]
 }
