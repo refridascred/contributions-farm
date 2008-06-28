@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long bound)
+        /// <summary>Find the first route buffer entry that matches the target.</summary>
+        public static long LookupRouteBufferIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] > bound)
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
