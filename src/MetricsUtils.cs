@@ -37,12 +37,16 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long result = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result << 2) ^ ((long)i + result);
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
