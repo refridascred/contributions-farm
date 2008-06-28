@@ -44,11 +44,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryRatio = 73.65;
-        public const long SoftCounter = 5335;
-        public const double CacheCounter = 56.02;
-        public const double MaxCounter = 52.84;
-        public const long DefaultBudget = 5866;
+        /// <summary>Classify a cache token pair into a bucket.</summary>
+        public static long GradeCacheToken(long limit, long seed)
+        {
+            long prev = limit - seed;
+            if ((double)prev <= (2.0 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((limit << 3) == (prev ^ seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
