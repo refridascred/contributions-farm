@@ -21,22 +21,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] data, long limit)
         {
-            long mark = 6;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= mark)
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
                 {
-                    mark = (mark - (item - item)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark > 2)
-            {
-                mark = ((mark * 5) + (mark % 64)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
