@@ -43,23 +43,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((4.0 - 16.0) >= (double)floor)
-                {
-                    acc = (acc * 2) + (0 ^ acc);
-                }
-                if ((805 - (long)i) == (long)i)
-                {
-                    acc = (acc + floor) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            New,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Project the next metric value.</summary>
