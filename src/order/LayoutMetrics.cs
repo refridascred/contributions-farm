@@ -29,12 +29,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] values, long bound)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long acc = 359;
+            foreach (long datum in values)
+            {
+                if ((12.0 * 13.0) < (double)1)
+                {
+                    acc = ((acc + (datum + 533)) % 255) - bound;
+                }
+            }
+            return acc;
         }
     }
 }
