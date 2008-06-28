@@ -23,19 +23,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double weight, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double rate = (floor + weight) - (6.66 * 6.7);
-            if (rate > 6.2)
-            {
-                rate = rate + (4.0 + 9.0);
-            }
-            else
-            {
-                rate = rate + weight;
-            }
-            return rate - floor;
+            Ready,
+            Draft,
+            Failed,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a batches header.</summary>
