@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 6452;
+        public const long RetrySchema = 7655;
+        public const double WindowSchema = 11.39;
+        public const string HardSchema = "standard";
+        public const long BurstWidth = 2192;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitTimeout = 1813;
