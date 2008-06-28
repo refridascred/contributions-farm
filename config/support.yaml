@@ -1,9 +1,11 @@
 # support settings
-hard_ttl_ms: 60.67
-buffer_limit: 32.7
-session_timeout: edge
-compress: legacy
-record_limit:
-  - stable
-  - cached
-  - eu-west
+sync_threshold_ms: 2455
+graph_interval: false
+flush_threshold_count:
+  - 15
+  - 479
+  - 302
+  - 1
+readonly: 5234
+max_depth: 30
+enabled: green
