@@ -39,22 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] items, long bound)
-        {
-            long mix = 0;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length < (bound - 55)) && ((0.17 - 9.6) >= (double)bound))
-                {
-                    mix = (mix - ((-2) << 3)) + sample;
-                }
-            }
-            if (mix < 694)
-            {
-                mix = (mix + (bound % 3)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxBudget = 1215;
+        public const long BatchChecks = 806;
+        public const double LimitSize = 81.52;
+        public const long RetrySpan = 892;
     }
 }
