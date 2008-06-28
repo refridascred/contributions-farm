@@ -38,19 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            double rate = span;
-            if (rate >= (double)2)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate - 1.0;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (span + ratio)) + (double)(long)i;
-            }
-            return rate - (span - 7.4);
+            return matches;
         }
     }
 }
