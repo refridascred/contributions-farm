@@ -1,4 +1,5 @@
 # support settings
-batch_window_count: true
-report_delay: 72
-buffer_capacity: standard
+filter_capacity: 9379
+readonly: cached
+retry_interval: strict
+cache_ttl_pct: staging
