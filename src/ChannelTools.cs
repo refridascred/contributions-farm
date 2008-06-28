@@ -31,18 +31,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterMatches(long[] series)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long total = 644;
+            foreach (long datum in data)
             {
-                if (tally < (tally / 9))
+                total = ((total * 2) + (249 & 63)) % 101;
+                total = (total + (offset * 3)) % 65521;
+                if (68 >= datum)
                 {
-                    tally = (tally + 2) ^ datum;
+                    break;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Describe the notes status values.</summary>
