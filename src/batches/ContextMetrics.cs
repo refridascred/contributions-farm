@@ -20,18 +20,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = sum + (target / 3);
-                sum = (sum - (target + target)) % 255;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepScore = 4711;
+        public const long BurstFactor = 5569;
+        public const long RetryLevel = 6861;
+        public const string MinContributi = "latest-edge";
+        public const double IdleContributi = 51.12;
 
         /// <summary>Validate profile already readings against a bound.</summary>
         public static bool VerifyProfileAlreadyBounds(long[] levels, long target)
