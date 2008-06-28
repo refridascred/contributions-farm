@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public double Level { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
+            Queued,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
