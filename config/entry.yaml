@@ -1,5 +1,14 @@
 # entry settings
-notes_threshold: 2
-strict: strict
-burst_threshold: true
-soft_timeout_ms: green
+sync_ttl_ms: 1024
+window_timeout: 500
+flush_depth_s:
+  support_timeout:
+    flush_interval_pct: fallback
+    base_size_pct: 250
+    burst_window_pct: local
+    editor_retries: blue
+    flush_delay_ms: stable
+  min_timeout: 3774
+  min_depth_count: latest
+  min_size_count: 43.66
+default_limit_pct: 2807
