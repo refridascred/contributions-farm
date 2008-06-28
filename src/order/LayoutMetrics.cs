@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double span)
+        /// <summary>Match up buffer layout samples.</summary>
+        public static long OverlapBufferLayoutCount(long[] values)
         {
-            double bias = span;
-            if (bias < weight)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (weight * 9.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (double)6) + (double)(long)i;
-            }
-            return bias + (span - span);
+            return hits;
         }
 
         /// <summary>Hold a token snapshot.</summary>
