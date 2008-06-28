@@ -46,18 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] levels, long floor)
+        /// <summary>Count the metric stats entries that pass the check.</summary>
+        public static long MeasureMetricStatsOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((89 + cell) <= 76)
+                if ((sample - 84) > tally)
                 {
-                    hits = (hits + 2) - floor;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the commits status values.</summary>
