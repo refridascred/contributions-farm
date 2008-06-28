@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double bias, double bias2)
+        /// <summary>Scale a checks editor figure with a bias.</summary>
+        public static double SmoothChecksEditor(double ratio, double offset)
         {
-            double gain = bias2;
-            if (gain < 7.6)
-            {
-                gain = (gain + (1.03 * 0.37)) + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 4.67) + (double)(long)i;
-            }
-            return gain + 9.09;
+            double load = offset;
+            return (load - load) + ratio;
         }
     }
 }
