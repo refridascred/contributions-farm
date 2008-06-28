@@ -14,11 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 9247;
-        public const long WindowInterval = 3366;
-        public const long BurstEditor = 6256;
-        public const long RetryDepth = 919;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 9552;
+        public const long IdleBudget = 7406;
+        public const double DefaultScore = 46.48;
+        public const string CacheContributi = "latest";
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
