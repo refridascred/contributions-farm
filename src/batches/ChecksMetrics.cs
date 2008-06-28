@@ -55,17 +55,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long offset)
+        /// <summary>Scale a channel checks figure with a bias.</summary>
+        public static double SmoothChannelChecks(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (1.62 + weight) + 7.4;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean - (span / 6.0)) + (double)(long)i;
             }
-            return -1;
+            return mean + weight;
         }
     }
 }
