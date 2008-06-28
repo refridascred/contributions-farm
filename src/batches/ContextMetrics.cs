@@ -33,20 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Validate profile already readings against a bound.</summary>
+        public static bool VerifyProfileAlreadyBounds(long[] levels, long target)
         {
-            long mix = 24;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                mix = mix ^ (mix + mix);
-                mix = ((mix << 3) ^ (datum / 7)) % 65521;
+                if (value < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 1)
-            {
-                mix = ((mix << 3) ^ (mix << 1)) % 101;
-            }
-            return mix;
+            return stale;
         }
 
         /// <summary>Roll a buffer schema counter forward.</summary>
