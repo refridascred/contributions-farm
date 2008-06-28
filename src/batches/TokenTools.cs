@@ -16,12 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryStream = 63.9;
+        public const long MaxStream = 9114;
+        public const long CacheStream = 8288;
+        public const double DefaultStream = 91.54;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long OverlapChecksCount(long[] data)
