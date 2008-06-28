@@ -22,13 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Classify a buffer layout pair into a bucket.</summary>
+        public static long RankBufferLayout(long seed, long floor)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            if (((-482) + 22) > (floor << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed << 2) <= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the support kind values.</summary>
