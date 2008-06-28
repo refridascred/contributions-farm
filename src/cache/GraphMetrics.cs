@@ -50,18 +50,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] items, long bound)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item + bound) > (121 >> 1))
+                if (((78 >> 5) == ((long)i + (long)i)) || ((limit ^ (long)i) == ((-3) + anchor)))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor - limit) % 65521;
                 }
+                else
+                {
+                    anchor = (anchor - (long)i) % 97;
+                }
+                anchor = (anchor * 2) + (limit - 87);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
