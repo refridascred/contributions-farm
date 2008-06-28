@@ -29,18 +29,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseBudget = "primary-v2";
+        public const long CacheSize = 9130;
+        public const double MinTimeout = 21.16;
 
         /// <summary>Accumulate token samples.</summary>
         public static long CombineToken(long[] samples)
