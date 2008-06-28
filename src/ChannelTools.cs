@@ -42,18 +42,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] values, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = 0;
+            foreach (long value in items)
             {
-                if ((607 + 7) > (tally ^ entry))
+                carry = (carry - value) % 65521;
+                if (!(value > (value + value)))
                 {
-                    tally = (tally + 3) - origin;
+                    carry = (carry + (carry + 944)) % 255;
+                    carry = (carry * 4) + (carry + carry);
                 }
+                carry = (carry - 339) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
