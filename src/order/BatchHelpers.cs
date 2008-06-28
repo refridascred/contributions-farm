@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double span)
         {
-            Queued,
-            Locked,
-            Stale,
-            Draft,
+            double load = (double)(71 + 96);
+            if (load > load)
+            {
+                load = load + (double)794;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (4.03 + span)) + (double)(long)i;
+            }
+            return load + scale;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
