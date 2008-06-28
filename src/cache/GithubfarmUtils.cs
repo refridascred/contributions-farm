@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double scale, double offset)
-        {
-            double ratio = (double)(7 + 2);
-            if (ratio >= ratio)
-            {
-                ratio = ((ratio - (double)608) - scale) + offset;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 88.52;
+        public const long BaseBatches = 8780;
+        public const long IdleLevel = 1563;
+        public const long BatchBatches = 9020;
+        public const long BatchTimeout = 628;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
