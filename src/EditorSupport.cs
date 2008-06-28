@@ -68,19 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] data, long floor)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] items, long target)
         {
-            bool found = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (item != floor)
+                if (datum <= target)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
