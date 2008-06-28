@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (count & 31))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
