@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((((double)value != (8.0 / 5.0)) || ((long)items.Length < (value + matches))) && !(((long)items.Length ^ 68) != (95 + 97)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 9362;
+        public const long WindowProfile = 4222;
+        public const long RetryProfile = 1902;
+        public const double MinProfile = 52.43;
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long IterateCounter(long step)
