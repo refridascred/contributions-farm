@@ -1,16 +1,4 @@
 # support settings
-editor_depth:
-  retry_timeout: cached
-  sync_threshold_count:
-    - green
-    - latest
-  poll_capacity: false
-  max_size_count: 40
-  cache_capacity_s:
-    cache_delay: staging
-    hard_size_s: 55.44
-    enabled: 1
-    default_retries_ms: 36.02
-  flush_interval_ms: 47
-warm_size_pct: primary
-dry_run: 7755
+warm_delay_ms: 17
+hard_ratio: 1024
+min_depth_s: true
