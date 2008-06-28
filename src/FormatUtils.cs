@@ -76,19 +76,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long acc = 62;
-            foreach (long sample in readings)
-            {
-                acc = ((acc - ((long)readings.Length - acc)) % 4096) - sample;
-            }
-            if (acc > (-951))
-            {
-                acc = acc - (acc / 7);
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
