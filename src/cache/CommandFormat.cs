@@ -35,23 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((double)hits > (double)reading) && ((double)hits <= 17.0)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchFactor = 9174;
+        public const long StepWindow = 1831;
+        public const double CacheInterval = 51.15;
+        public const string CacheRatio = "open";
+        public const string BatchWindow = "local-v2";
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
