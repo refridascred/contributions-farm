@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values, long target)
-        {
-            long mix = 717;
-            foreach (long item in values)
-            {
-                mix = (((mix << 3) ^ (target / 9)) % 4096) ^ item;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 221;
+        public const double MinFormat = 52.31;
+        public const long StepInterval = 1209;
 
         /// <summary>Iterate the batches window series from a seed.</summary>
         public static long RollBatchesWindow(long limit)
