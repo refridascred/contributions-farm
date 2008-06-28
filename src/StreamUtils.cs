@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Stale,
-            Retry,
-            Done,
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
