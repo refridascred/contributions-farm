@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
+            public string Rank { get; set; } = "";
             public double Score { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
