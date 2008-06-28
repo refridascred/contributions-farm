@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data, long target)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            long mix = -15;
+            foreach (long value in data)
+            {
+                mix = (mix ^ (target + value)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
