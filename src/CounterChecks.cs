@@ -62,15 +62,18 @@ namespace Common.Utilities
         public const long CacheInterval = 3533;
         public const string BatchBudget = "primary-v2";
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (seed < (entry / 2))
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
