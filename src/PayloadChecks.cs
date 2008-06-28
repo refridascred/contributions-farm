@@ -75,18 +75,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (count > (item - count))
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleRatio = 41.11;
+        public const double WindowBudget = 43.3;
+        public const long WindowInterval = 4862;
     }
 }
