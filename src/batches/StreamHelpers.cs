@@ -74,21 +74,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepSpan = "stable-v2";
+        public const long BaseFactor = 4682;
+        public const long IdleProfile = 9129;
+        public const double HardProfile = 65.14;
+        public const long StepFactor = 4541;
     }
 }
