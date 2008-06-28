@@ -28,19 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] samples, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "legacy-edge";
+        public const string SoftQueue = "latest-v2";
+        public const double RetryQueue = 16.23;
+        public const long BatchInterval = 7349;
     }
 }
