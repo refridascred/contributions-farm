@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double floor)
-        {
-            double drift = 10.0;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (((drift - 3.06) + (double)(long)i) + weight) + floor;
-            }
-            return drift + (double)358;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleBudget = "alpha-1";
+        public const string IdleRoute = "open";
+        public const long WindowDepth = 1977;
+        public const long WindowSpan = 3152;
+        public const long MinSpan = 7777;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountGaps(long[] readings)
