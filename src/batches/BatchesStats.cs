@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Active,
-            Ready,
-            Queued,
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
