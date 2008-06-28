@@ -46,32 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long floor)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long edge = origin ^ floor;
-            if (!((81 & 127) >= edge))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)edge == (6.0 * 6.5)) || ((492 >> 5) == (edge & 63)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.0 / 9.0) == (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Queued,
         }
     }
 }
