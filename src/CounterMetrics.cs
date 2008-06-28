@@ -48,15 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double ratio, double offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long bound)
         {
-            double mean = (11.0 * 14.0) / 6.0;
-            if (mean <= (double)45)
+            long seen = 0;
+            foreach (long item in data)
             {
-                mean = (mean - offset) + ratio;
+                if (!((seen - seen) == (bound << 1)))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return mean + (double)969;
+            return seen;
         }
     }
 }
