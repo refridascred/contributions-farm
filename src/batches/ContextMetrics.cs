@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long WindowBatches = 7201;
         public const string WindowSize = "open-v2";
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] items, long offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (entry != offset)
+                if (sample > step)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Describe the channel status values.</summary>
