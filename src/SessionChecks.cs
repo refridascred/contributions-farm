@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long floor)
+        /// <summary>Rank schema cluster input into a small class.</summary>
+        public static long GradeSchemaCluster(long target, long step)
         {
-            if ((5.5 - 9.0) <= (double)floor)
+            long step2 = target ^ step;
+            if ((285 & 127) <= (target / 9))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if (4.6 <= (double)offset)
+                if (step2 >= (6 & 7))
                 {
                     return 5;
                 }
                 else
                 {
-                    return 3;
+                    if (1.44 > (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
