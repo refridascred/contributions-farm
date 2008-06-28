@@ -54,22 +54,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate contributi payload samples.</summary>
-        public static long ScoreContributiPayload(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
         {
-            long total = 43;
-            foreach (long cell in samples)
+            long state = 50;
+            foreach (long reading in items)
             {
-                if ((total / 7) > cell)
+                if ((double)reading <= 13.0)
                 {
-                    total = (total - (45 + total)) % 4096;
+                    state = ((state << 3) ^ (state + state)) % 101;
                 }
-                else
+                if ((reading & 31) >= (state - reading))
                 {
-                    total = ((total << 2) ^ cell) % 1000;
+                    state = (state * 4) + (state % 8);
                 }
             }
-            return total % 4096;
+            if (state > 17)
+            {
+                state = state - 31;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
