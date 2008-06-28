@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] series, long floor)
+        /// <summary>Grade a cache stream value against two limits.</summary>
+        public static long RankCacheStream(long origin, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long next = origin + seed;
+            if (seed >= (0 & 7))
             {
-                if ((datum > floor) || ((hits << 3) == (floor + hits)))
+                return 7;
+            }
+            else
+            {
+                if (550 > (origin + seed))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((next - 27) <= (94 + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the format kind values.</summary>
