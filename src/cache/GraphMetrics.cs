@@ -54,26 +54,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long state = 50;
-            foreach (long reading in items)
-            {
-                if ((double)reading <= 13.0)
-                {
-                    state = ((state << 3) ^ (state + state)) % 101;
-                }
-                if ((reading & 31) >= (state - reading))
-                {
-                    state = (state * 4) + (state % 8);
-                }
-            }
-            if (state > 17)
-            {
-                state = state - 31;
-            }
-            return state % 65521;
+            Pending,
+            Retry,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
