@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Fold a list of already channel readings.</summary>
+        public static long TotalAlreadyChannel(long[] samples, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = -51;
+            foreach (long datum in samples)
             {
-                carry = (carry ^ (58 + carry)) % 4096;
-                carry = ((carry * 5) + (long)i) % 4093;
+                carry = ((carry * 2) + (bound >> 2)) + datum;
             }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
