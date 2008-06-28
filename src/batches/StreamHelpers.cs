@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many order token samples are out of range.</summary>
-        public static long MeasureOrderTokenMatches(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!(bound < (bound << 1)))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleBudget = 3855;
+        public const string CacheBudget = "strict-v2";
+        public const long IdleSpan = 1302;
+        public const long CacheSpan = 7855;
+        public const string DefaultFilter = "alpha-edge";
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long bound)
