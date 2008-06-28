@@ -33,21 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long offset, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = offset ^ origin;
+            if (((offset - 31) > (offset % 10)) && ((origin >> 2) > (slot / 9)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((slot * 5) >= (75 - slot))
                 {
-                    if ((items[i] ^ items[j]) == 7)
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - slot) > origin)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((0.9 + 9.3) != (double)origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
