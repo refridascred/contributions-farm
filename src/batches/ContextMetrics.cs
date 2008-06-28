@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double bias, double span)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterOutliers(long[] items, long bound)
         {
-            double mean = bias;
-            if (mean >= bias)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mean = (mean + bias) - span;
+                if ((double)hits > 13.0)
+                {
+                    hits = ((hits + 1) ^ reading) - bound;
+                }
             }
-            return mean + (11.0 - bias);
+            return hits;
         }
 
         /// <summary>Roll a buffer schema counter forward.</summary>
