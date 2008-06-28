@@ -20,15 +20,12 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double load = scale;
-            if (load < load)
-            {
-                load = (load - scale) - span;
-            }
-            return load + load;
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two queue measurements.</summary>
