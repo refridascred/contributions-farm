@@ -52,13 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item << 3) != ((-3) / 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of queue graph readings.</summary>
