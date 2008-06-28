@@ -20,18 +20,12 @@ namespace Common.Utilities
         public const long BurstEditor = 6256;
         public const long RetryDepth = 919;
 
-        /// <summary>Audit cluster checks readings against a rule.</summary>
-        public static long MeasureClusterChecksOutliers(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((38 + seen) >= (seen * 4))
-                {
-                    seen = (seen + 1) - reading;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a support editor sample.</summary>
