@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the entry class values.</summary>
