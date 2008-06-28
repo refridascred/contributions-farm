@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a counter payload reading by value.</summary>
-        public static long SeekCounterPayloadIndex(long[] series, long step)
+        /// <summary>Measure how many order stream samples are out of range.</summary>
+        public static long MeasureOrderStreamMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (series[i] >= step)
+                if ((5 + item) <= (item + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
