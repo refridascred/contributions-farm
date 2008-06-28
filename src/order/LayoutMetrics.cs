@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double offset)
+        /// <summary>Blend two record metrics measurements.</summary>
+        public static double AdjustRecordMetrics(double gain, double bias)
         {
-            double weight = (double)680 + (double)65;
-            if (weight >= (6.6 + offset))
+            double ratio = (double)(42 - (-85));
+            if (ratio >= bias)
             {
-                weight = (weight + (weight - 3.41)) - scale;
+                ratio = ratio - gain;
             }
-            return weight + (3.43 * 6.9);
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (bias / 3.0);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
