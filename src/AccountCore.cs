@@ -44,19 +44,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Blend two booking measurements.</summary>
+        public static double AdjustBooking(double gain, double bias)
         {
-            long sum = 92;
-            foreach (long datum in readings)
+            double weight = bias;
+            if (weight < 3.94)
             {
-                sum = (sum * 2) + datum;
+                weight = (weight - (7.0 / 7.0)) - gain;
             }
-            if (sum > 1)
-            {
-                sum = sum - (sum / 3);
-            }
-            return sum % 97;
+            return weight - 11.0;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
