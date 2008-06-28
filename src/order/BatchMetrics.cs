@@ -46,19 +46,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] readings, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long floor, long floor2)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            if ((double)floor2 >= (9.52 + 14.0))
             {
-                if (entry > offset)
+                return 8;
+            }
+            else
+            {
+                if (floor <= (floor % 64))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (!((floor2 % 64) > 142))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)(-99) < (double)floor2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the batch kind values.</summary>
