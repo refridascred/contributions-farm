@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long offset, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((4 & 15) > offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((1.4 < (double)step) && ((0.8 * 5.14) >= (double)offset))
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a tools entry.</summary>
