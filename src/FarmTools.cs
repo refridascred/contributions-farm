@@ -30,32 +30,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a schema commits value against two limits.</summary>
-        public static long ClassifySchemaCommits(long seed, long step)
-        {
-            long prev = seed ^ step;
-            if ((930 % 60) != (step << 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed != (double)prev)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed >> 3) > seed) && ((step & 127) >= prev))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 69.03;
+        public const string CacheFactor = "legacy-1";
+        public const string HardInterval = "latest-1";
+        public const double LimitScore = 45.02;
+        public const double RetryCluster = 83.43;
     }
 }
