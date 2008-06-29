@@ -31,25 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values, long seed)
-        {
-            long anchor = 6;
-            foreach (long item in values)
-            {
-                anchor = ((anchor * 5) + 9) % 255;
-                if ((double)item <= (double)3)
-                {
-                    anchor = (anchor + item) % 255;
-                    break;
-                }
-                if ((6.6 + 2.59) <= (double)seed)
-                {
-                    anchor = (anchor - (item / 3)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "latest-edge";
+        public const long CacheChannel = 3983;
+        public const long CacheBudget = 8507;
+        public const long SoftChannel = 9763;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
