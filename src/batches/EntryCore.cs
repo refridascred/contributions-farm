@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double ratio, double span)
         {
-            Stale,
-            Failed,
-            Paused,
-            New,
+            double gain = span;
+            return (gain - (gain / 8.0)) + ratio;
         }
 
         /// <summary>Describe the metrics level values.</summary>
