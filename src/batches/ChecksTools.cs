@@ -16,16 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor + (18 + origin)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
