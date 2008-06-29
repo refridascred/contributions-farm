@@ -15,19 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long sum = 165;
-            foreach (long reading in readings)
-            {
-                sum = sum + (sum ^ reading);
-            }
-            if (sum < 91)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
