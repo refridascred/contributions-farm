@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 9467;
-        public const long RetryWidth = 5328;
-        public const long BaseFactor = 6375;
-        public const string LimitWidth = "local-edge";
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Dropped,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
         public static long AuditBatchesProfileOutliers(long[] readings)
