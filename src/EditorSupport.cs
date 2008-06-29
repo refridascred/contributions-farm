@@ -39,22 +39,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] data, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(tally < (item + item)))
+                if (series[i] == seed)
                 {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two support counter measurements.</summary>
