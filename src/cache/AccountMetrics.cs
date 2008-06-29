@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] readings, long offset)
+        /// <summary>Check that every context already entry stays within the limit.</summary>
+        public static bool VerifyContextAlreadyBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (!((matches & 1) > (2 + matches)))
+                if (sample < step)
                 {
-                    matches = ((matches + 2) + value) - offset;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
