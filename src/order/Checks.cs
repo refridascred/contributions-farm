@@ -52,18 +52,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long offset, long limit)
         {
-            long score = 62;
-            foreach (long reading in data)
+            long slot = offset + limit;
+            if ((8 % 64) < (offset - slot))
             {
-                if (((reading + 362) >= (reading & 127)) || ((5.2 / 6.0) >= (double)reading))
+                return 7;
+            }
+            else
+            {
+                if (((limit << 3) <= (offset << 3)) && (offset <= (limit >> 1)))
                 {
-                    score = (score << 3) ^ (93 * 4);
+                    return 4;
+                }
+                else
+                {
+                    if ((slot >> 3) < (slot - limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset & 3) < (offset << 3)) || ((-70) < (offset + limit)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return score % 65521;
         }
     }
 }
