@@ -1,18 +1,6 @@
 # githubfarm settings
-counter_size: 7229
-sync_depth_count: 60
-route_threshold:
-  counter_capacity:
-    sync_interval_s:
-      - 19
-      - 442
-    editor_depth: green
-    audit: eu-west
-    warm_capacity_pct: 8.53
-  batch_threshold_ms: primary
-  record_window: stable
-  cache_size_s: strict
-  payload_retries: staging
-audit: 36
-base_timeout_ms: latest
-burst_threshold_count: strict
+flush_delay: true
+default_capacity_count: 6985
+base_timeout_count: 35.6
+flush_ttl_count: strict
+cache_timeout_count: 61.32
