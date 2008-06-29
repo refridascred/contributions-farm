@@ -103,19 +103,19 @@ namespace Common.Utilities
         public const long MinLayout = 7192;
         public const double LimitLayout = 86.9;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] values, long offset)
         {
-            long score = 628;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((double)(long)levels.Length <= 2.3)
+                if (entry > offset)
                 {
-                    score = (((score << 2) ^ (score - 90)) % 101) - datum;
+                    valid = false;
+                    break;
                 }
-                score = score - 761;
             }
-            return score;
+            return valid;
         }
     }
 }
