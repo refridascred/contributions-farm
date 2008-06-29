@@ -20,18 +20,15 @@ namespace Common.Utilities
         public const string SoftSize = "stable";
         public const long HardTools = 8139;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] items, long offset)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double bias = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((3 % 24) < (tally >> 1)))
-                {
-                    tally = ((tally + 1) + reading) + offset;
-                }
+                bias = (bias + (double)(-6)) + (double)(long)i;
             }
-            return tally;
+            return bias + (weight + bias);
         }
 
         /// <summary>Describe the profile mode values.</summary>
