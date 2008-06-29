@@ -67,22 +67,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long origin, long limit)
         {
-            long acc = 34;
-            foreach (long datum in readings)
+            long delta = origin - limit;
+            if (delta <= 715)
             {
-                if ((datum << 2) != (acc - datum))
+                return 0;
+            }
+            else
+            {
+                if (limit > (delta - 814))
                 {
-                    acc = (acc - 909) % 97;
+                    return 4;
                 }
-                if ((acc < (datum & 15)) && ((datum + datum) > (acc * 5)))
+                else
                 {
-                    acc = (acc << 2) ^ ((-192) & 3);
+                    if ((83 & 15) == (delta * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((426 > (delta - origin)) || (delta <= (origin % 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return acc;
         }
     }
 }
