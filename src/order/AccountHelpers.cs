@@ -36,38 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long target, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] data)
         {
-            if (((double)target >= (double)floor) || (floor >= (target & 31)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target > (88 % 3)) && ((target / 3) == (floor >> 3)))
+                if (((entry & 1) > entry) && ((16.0 - 8.64) > (double)tally))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((6.1 - 8.65) != (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((floor + target) > target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the stats status values.</summary>
