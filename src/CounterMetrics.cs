@@ -36,32 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long bound, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series)
         {
-            long bound2 = bound - seed;
-            if ((685 >> 1) == (seed + bound))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + bound2) >= (bound / 5))
+                if ((5.1 + 11.0) <= (double)value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed >= (6.1 / 5.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate route samples.</summary>
