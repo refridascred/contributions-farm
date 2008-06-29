@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next command support value.</summary>
-        public static double AdjustCommandSupport(double weight, double offset)
+        /// <summary>Blend two stream order measurements.</summary>
+        public static double ScaleStreamOrder(double gain, double floor)
         {
-            double rate = (2.8 - weight) + (offset - weight);
-            if (rate < (double)59)
+            double load = 7.1 - (double)55;
+            if (load <= floor)
             {
-                rate = rate + (double)3;
+                load = (load + (double)126) + gain;
             }
             else
             {
-                rate = rate + (double)(-9);
+                load = load + (double)86;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 2; i++)
             {
-                rate = (rate - weight) - (double)(long)i;
+                load = (load + floor) + (double)(long)i;
             }
-            return rate + offset;
+            return load - (double)(-13);
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
