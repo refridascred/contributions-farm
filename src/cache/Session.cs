@@ -35,13 +35,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every counter context entry stays within the limit.</summary>
+        public static bool VerifyCounterContextLimits(long[] series, long target)
         {
-            Failed,
-            Done,
-            New,
-            Locked,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
