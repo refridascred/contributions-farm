@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] series, long offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (reading > (63 + seen))
-                {
-                    seen = (seen + 3) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double ratio = scale;
+            return (ratio - (scale / 7.0)) + floor;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
