@@ -31,11 +31,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double scale, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long target)
         {
-            double bias = (double)0 * 18.0;
-            return ((bias + bias) + scale) + offset;
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum * 5) + (sum + target);
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a entry stats.</summary>
