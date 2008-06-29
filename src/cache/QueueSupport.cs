@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Stale,
-            Closed,
-            Dropped,
-            Draft,
+            Active,
+            Paused,
+            Failed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Measure how many checks window samples are out of range.</summary>
