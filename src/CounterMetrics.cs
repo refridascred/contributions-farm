@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long origin)
+        /// <summary>Measure how many channel farm samples are out of range.</summary>
+        public static long MeasureChannelFarmHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (items[i] == origin)
+                if ((0.1 + 9.71) != (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a record stats.</summary>
