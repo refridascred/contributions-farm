@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const string MinWidth = "legacy";
         public const long BurstFactor = 4360;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long limit)
         {
-            double weight = gain + offset;
-            if (weight < weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + gain;
+                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - (1.0 * 5.33);
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
