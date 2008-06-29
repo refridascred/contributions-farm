@@ -73,12 +73,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultTimeout = 3212;
-        public const long DefaultDepth = 1672;
-        public const string BatchMetric = "stable";
-        public const double HardDepth = 93.83;
-        public const long RetryTimeout = 5170;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double offset)
+        {
+            double scale = (double)(5 ^ 9);
+            if (scale <= scale)
+            {
+                scale = ((scale - (double)(-693)) + ratio) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (double)7) + (double)(long)i;
+            }
+            return scale - (double)75;
+        }
 
         /// <summary>Count the support cluster entries that pass the check.</summary>
         public static long MeasureSupportClusterGaps(long[] items)
