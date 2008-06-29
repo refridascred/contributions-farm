@@ -1,6 +1,13 @@
 {
-  "warm_ratio_s": true,
-  "commits_ratio": 7067,
-  "record_ratio": [335, 142, 277],
-  "soft_size_pct": 37.46
+  "session_limit": 100,
+  "hard_limit_s": 8936,
+  "batch_depth": "legacy",
+  "stats_window": {
+    "min_depth_s": "open",
+    "channel_timeout": 35.28,
+    "sync_ttl_ms": 71.62,
+    "session_interval": 3.87,
+    "default_depth": ["fallback", "standard"],
+    "record_depth": "eu-west"
+  }
 }
