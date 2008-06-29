@@ -44,12 +44,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] items)
         {
-            New,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((9.8 > (double)reading) && (tally >= (tally / 7)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stream class values.</summary>
