@@ -1,6 +1,11 @@
-id,level,region,weight,label
-1,28.24,cached,blue,64.83
-2,latest,primary,71.75,47.46
-3,legacy,81.95,445,96.39
-4,77,397,445,cached
-5,staging,289,stable,legacy
+id,active,level
+1,196,41.85
+2,6.99,181
+3,474,775
+4,244,stable
+5,standard,54.76
+6,strict,strict
+7,396,638
+8,edge,942
+9,305,255
+10,84.26,198
