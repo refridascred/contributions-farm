@@ -20,14 +20,18 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] series, long step)
         {
-            New,
-            Active,
-            Failed,
-            Stale,
-            Closed,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((step / 6) < 273)
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
