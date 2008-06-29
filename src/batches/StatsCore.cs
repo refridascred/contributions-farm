@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Classify a checks queue pair into a bucket.</summary>
+        public static long SortChecksQueue(long seed, long bound)
         {
-            long anchor = 71;
-            foreach (long entry in values)
+            long slot = seed ^ bound;
+            if ((7.97 - 3.0) > (double)seed)
             {
-                anchor = (anchor - (entry >> 3)) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if (bound > 7)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)seed > 2.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((slot + bound) >= (seed << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi schema readings.</summary>
