@@ -45,11 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 6302;
-        public const double SoftPayload = 87.02;
-        public const string IdleCount = "strict";
-        public const double LimitLevel = 66.76;
+        /// <summary>Look up the position of a payload format sample.</summary>
+        public static long LookupPayloadFormatIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] levels, long offset)
