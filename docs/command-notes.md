@@ -1,15 +1,15 @@
 # Command notes
 
-Keep metrics and entry names short and lowercase.
-The session helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often cache data is refreshed.
+Each record is validated before it reaches the context queue.
 
-When a record fails, the layout handler retries a few times before giving up.
-The cluster report groups every support by entry.
-A commits that stays idle for too long is moved to the profile list.
+Each session is validated before it reaches the batch queue.
+The account helpers are pure functions, so they are safe to call from any thread.
+Keep layout and account names short and lowercase.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate order input early
-- Review batch limits each release
-- Log every window change
+- Validate context input early
+- Keep batches values small
+- Review contributi limits each release
+- Document new context fields
