@@ -52,16 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already session counter forward.</summary>
-        public static long DeriveAlreadySession(long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            double mean = (1.3 / 3.0) * 4.5;
+            for (int i = 0; i < 5; i++)
             {
-                total = total - total;
-                total = ((total * 5) + (long)i) % 97;
+                mean = ((mean - floor) + (double)(long)i) - gain;
             }
-            return total;
+            return mean + (mean - mean);
         }
 
         /// <summary>Hold a queue info.</summary>
