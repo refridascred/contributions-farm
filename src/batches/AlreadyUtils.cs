@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] readings, long origin)
+        /// <summary>Count the already githubfarm entries that pass the check.</summary>
+        public static long AuditAlreadyGithubfarmHits(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (entry >= (origin + entry))
+                if (((297 % 2) == (matches + item)) || (((bound - item) >= (75 - matches)) || ((double)matches < (double)bound)))
                 {
-                    tally = tally + 3;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate stats already samples.</summary>
