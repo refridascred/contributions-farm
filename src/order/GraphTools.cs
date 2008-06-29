@@ -25,12 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
