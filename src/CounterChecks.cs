@@ -54,17 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload format sample.</summary>
-        public static long LookupPayloadFormatIndex(long[] samples, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] >= target)
+                if (((tally + tally) != (reading & 31)) && (((long)series.Length + 99) < 8))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
