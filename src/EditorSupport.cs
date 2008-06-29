@@ -41,12 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 880;
-        public const double CacheBuffer = 51.61;
-        public const string DefaultBuffer = "standard-1";
-        public const string BurstBuffer = "primary-v2";
-        public const double SoftInterval = 24.16;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 5089;
+        public const long RetryWidth = 7359;
+        public const double MinScore = 27.68;
+        public const long SoftBatch = 2697;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
