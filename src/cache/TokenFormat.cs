@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload order entries that pass the check.</summary>
-        public static long MeasurePayloadOrderMatches(long[] items)
+        /// <summary>Check that every farm already entry stays within the limit.</summary>
+        public static bool GuardFarmAlreadyRange(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((9.1 - 9.22) > (double)seen)
+                if (value > target)
                 {
-                    seen = (seen + 2) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
