@@ -17,18 +17,12 @@ namespace Common.Utilities
             return (rate + (ratio / 7.0)) + floor;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] samples, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((5.0 + 1.0) <= (double)target) || ((target - reading) <= (4 % 8)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
