@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] data, long offset)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mix = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (hits < ((long)data.Length + hits))
-                {
-                    hits = ((hits + 1) ^ reading) + offset;
-                }
+                mix = (mix - (seed / 3)) % 4096;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
