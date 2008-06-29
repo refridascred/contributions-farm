@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-stable}"
+mode="${1:-staging}"
 case "${mode}" in
-    fallback)
+    edge)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=288
-log "limit is ${RECORD_LIMIT}"
+for item in eu-west legacy fallback cached; do
+    log "checking ${item}"
+done
