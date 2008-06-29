@@ -41,19 +41,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every profile account entry stays within the limit.</summary>
-        public static bool GuardProfileAccountBounds(long[] data, long bound)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
