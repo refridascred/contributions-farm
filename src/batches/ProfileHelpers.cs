@@ -35,22 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            long result = 14;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell - 69) >= (cell >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result - (result - cell)) % 1000;
-                }
-                if ((cell + (long)data.Length) == (38 - result))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a record entry.</summary>
