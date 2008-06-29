@@ -19,22 +19,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks window samples are out of range.</summary>
-        public static long AuditChecksWindowGaps(long[] values)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((tally << 3) < 0))
+                if (series[i] > target)
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the context session entries that pass the check.</summary>
