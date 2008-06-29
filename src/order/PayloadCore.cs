@@ -49,18 +49,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 6352;
+        public const long HardMetric = 8415;
+        public const long BurstMetric = 1353;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string SoftWidth = "cached";
