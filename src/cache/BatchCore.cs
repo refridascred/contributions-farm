@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftWidth = "primary";
-        public const double CacheFactor = 90.76;
-        public const double HardMetrics = 95.17;
-        public const double StepMetrics = 76.26;
-        public const long MinDepth = 6415;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Ready,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Locate a support metric reading by value.</summary>
         public static long LocateSupportMetricIndex(long[] samples, long limit)
