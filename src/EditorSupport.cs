@@ -53,13 +53,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long limit)
         {
-            Paused,
-            Closed,
-            Stale,
-            Retry,
+            if ((origin + limit) <= 969)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit - limit) <= (858 % 64))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
