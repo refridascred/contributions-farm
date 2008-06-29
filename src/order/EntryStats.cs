@@ -62,11 +62,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Audit record layout readings against a rule.</summary>
+        public static long CountRecordLayoutGaps(long[] levels, long bound)
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)hits <= (7.28 + 9.0))
+                {
+                    hits = ((hits + 3) ^ reading) - bound;
+                }
+            }
+            return hits;
         }
     }
 }
