@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue already entry stays within the limit.</summary>
-        public static bool VerifyQueueAlreadyRange(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 7933;
+        public const long IdleCluster = 4683;
+        public const long SoftScore = 5461;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandMatches(long[] readings)
