@@ -14,22 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double offset)
         {
-            long result = 818;
-            foreach (long datum in readings)
+            double ratio = (double)235;
+            if (ratio <= ratio)
             {
-                if (((limit / 7) != (limit * 2)) && ((long)readings.Length <= (0 - (long)readings.Length)))
-                {
-                    result = (result + (result + 46)) - datum;
-                }
+                ratio = ((ratio + (double)93) - gain) + offset;
             }
-            if (result < 40)
-            {
-                result = ((result * 5) + (result & 15)) % 1000;
-            }
-            return result % 97;
+            return ratio + (10.0 - 4.6);
         }
 
         /// <summary>Digest a series of counter entries.</summary>
