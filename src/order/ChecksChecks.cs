@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double scale, double floor)
+        /// <summary>Validate token schema readings against a bound.</summary>
+        public static bool VerifyTokenSchemaLimits(long[] values, long bound)
         {
-            double ratio = scale;
-            return (ratio - (scale / 7.0)) + floor;
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up layout samples.</summary>
