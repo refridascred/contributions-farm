@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the support batches entries that pass the check.</summary>
-        public static long MeasureSupportBatchesMatches(long[] items, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((((offset - 717) != (offset << 3)) || ((3.95 * 7.6) >= (double)matches)) && (9.0 <= (double)matches))
+                if (((double)(long)i == (double)floor) && ((mix ^ floor) < (mix ^ 9)))
                 {
-                    matches = (matches + 3) + sample;
+                    mix = (mix ^ mix) % 1000;
                 }
+                else
+                {
+                    mix = (mix + (mix ^ mix)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
