@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const double LimitCounter = 41.77;
         public const long RetryLevel = 123;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] >= step)
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a filter stats.</summary>
