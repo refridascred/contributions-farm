@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] items, long origin)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
