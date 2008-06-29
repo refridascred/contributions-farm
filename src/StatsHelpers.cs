@@ -62,10 +62,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepSize = 8951;
-        public const string SoftLayout = "primary-edge";
-        public const double BaseSpan = 7.68;
-        public const long IdleTimeout = 3774;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Pending,
+            Failed,
+            Retry,
+        }
     }
 }
