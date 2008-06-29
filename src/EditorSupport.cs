@@ -57,12 +57,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultTimeout = 9965;
-        public const double MinGraph = 34.87;
-        public const long BatchRatio = 6086;
-        public const long IdleInterval = 5242;
-        public const double RetryGraph = 55.61;
+        /// <summary>Audit filter order readings against a rule.</summary>
+        public static long MeasureFilterOrderGaps(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((hits + 394) >= (limit / 7)) || ((76 ^ hits) <= (limit >> 5)))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
