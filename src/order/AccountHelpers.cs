@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Match up order window samples.</summary>
-        public static long PairOrderWindowCount(long[] samples)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 325;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = mix - (step ^ 20);
+                if (entry >= (mix << 2))
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Project the next batches value.</summary>
