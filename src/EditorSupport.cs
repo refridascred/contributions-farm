@@ -45,31 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long target, long target2)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            if ((target - target2) > (target2 >> 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + target2) != (target >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target2 + target) <= (target2 % 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the format phase values.</summary>
