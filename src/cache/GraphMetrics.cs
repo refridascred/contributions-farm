@@ -10,14 +10,39 @@ namespace Common.Utilities
         public const string BaseCounter = "local-v2";
         public const long BatchSize = 8859;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Classify a entry counter pair into a bucket.</summary>
+        public static long GradeEntryCounter(long floor, long bound)
         {
-            New,
-            Draft,
-            Idle,
-            Locked,
-            Failed,
+            long diff = floor - bound;
+            if (((floor >> 5) >= bound) || ((bound + bound) < (968 - 862)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.0 / 9.0) < (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor + diff) >= (floor << 1)) && ((floor % 100) != (170 - 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff - 0) == (diff ^ diff))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
