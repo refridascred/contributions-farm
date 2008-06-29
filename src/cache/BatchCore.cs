@@ -45,12 +45,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
