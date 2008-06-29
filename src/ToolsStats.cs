@@ -63,9 +63,21 @@ namespace Common.Utilities
             return (load - load) + rate;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepSpan = 66.17;
-        public const double StepFarm = 59.39;
-        public const string WindowFarm = "open";
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
