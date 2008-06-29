@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a profile metrics counter forward.</summary>
-        public static long IterateProfileMetrics(long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
+            if ((bound + origin) <= (origin ^ origin))
             {
-                state = state ^ 807;
-                state = ((state * 4) + (long)i) % 97;
+                return 3;
             }
-            return state;
+            else
+            {
+                if (((61 ^ bound) <= (bound % 8)) || ((double)bound >= (double)8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((0 + bound) <= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.0 / 4.0) >= (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
