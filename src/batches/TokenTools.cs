@@ -21,22 +21,30 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long limit, long floor)
+        /// <summary>Grade a tools session value against two limits.</summary>
+        public static long BucketToolsSession(long floor, long bound)
         {
-            if ((double)limit == (1.74 / 2.0))
+            long gap = floor - bound;
+            if ((gap - gap) > ((-445) - bound))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((7.7 * 7.1) > (double)limit)
+                if (floor >= bound)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if ((7.9 / 2.0) >= (double)gap)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
