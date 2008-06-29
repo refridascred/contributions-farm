@@ -47,11 +47,14 @@ namespace Common.Utilities
             return mean - (double)758;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            Idle,
+            Paused,
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a counter info.</summary>
