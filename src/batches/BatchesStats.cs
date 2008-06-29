@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string CacheFormat = "standard-1";
         public const long HardWidth = 2069;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long offset)
         {
-            Failed,
-            Active,
-            Ready,
-            Locked,
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((double)offset <= 8.1))
+                {
+                    state = (state << 2) ^ (state + (long)i);
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
