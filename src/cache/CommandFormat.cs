@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 3483;
-        public const long RetryBuffer = 1504;
-        public const long LimitBuffer = 7026;
-        public const string IdleBuffer = "legacy";
-        public const long DefaultBuffer = 9208;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
