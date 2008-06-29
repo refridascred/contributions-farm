@@ -34,15 +34,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long seed, long limit)
         {
-            long mark = -14;
-            foreach (long datum in readings)
+            long gap = seed - limit;
+            if ((seed >> 3) >= (gap >> 3))
             {
-                mark = ((mark - mark) ^ datum) - bound;
+                return 8;
             }
-            return mark % 97;
+            else
+            {
+                if ((gap - gap) <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
