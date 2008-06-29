@@ -1,7 +1,5 @@
 # support settings
-batch_ratio_ms: open
-flush_ttl: blue
-already_interval: 20
-poll_delay_pct: 100
-payload_retries: false
-idle_window: 95.95
+session_size: 51
+burst_capacity: 60
+sync_timeout: eu-west
+notes_window: 77
