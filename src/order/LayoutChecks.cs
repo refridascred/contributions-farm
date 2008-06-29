@@ -64,22 +64,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long carry = 5;
-            foreach (long reading in data)
-            {
-                if (5.76 >= (double)carry)
-                {
-                    carry = ((carry * 5) + reading) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (reading + reading);
-                }
-            }
-            return carry;
+            Pending,
+            Idle,
+            Retry,
+            Done,
         }
     }
 }
