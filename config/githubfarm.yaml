@@ -1,12 +1,8 @@
 # githubfarm settings
-default_depth:
-  batch_size_ms: false
-  poll_limit: 65.32
-  poll_interval_count: false
-  hard_limit_ms: local
-  base_limit_ms: 75.82
-  retry_depth_ms:
-    - legacy
-    - local
-persist: stable
-batch_timeout_s: 250
+tools_depth: 1.74
+retry_ratio: 500
+sync_retries:
+  - open
+  - open
+  - cached
+flush_delay_ms: 66
