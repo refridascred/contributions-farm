@@ -37,24 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ (limit + limit)) % 65521;
-                if (score <= limit)
+                if (data[i] >= seed)
                 {
-                    score = (score << 3) ^ ((-70) & 3);
+                    return (long)i;
                 }
-                else
-                {
-                    score = ((score * 4) + (limit >> 1)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
