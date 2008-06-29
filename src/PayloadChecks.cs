@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Project the next checks channel value.</summary>
-        public static double ScaleChecksChannel(double weight, double bias)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            double load = (double)(2 - 9);
-            return (load + (bias - bias)) + weight;
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                long delta = 6;
+                if (!((delta / 5) > (offset >> 1)))
+                {
+                    mix = ((mix * 5) + (offset + (long)i)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of order readings.</summary>
