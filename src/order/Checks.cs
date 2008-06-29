@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double rate, double span)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            double ratio = rate;
+            if (ratio > 16.0)
+            {
+                ratio = ratio + (double)87;
+            }
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
