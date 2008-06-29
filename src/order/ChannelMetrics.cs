@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double gain, double bias)
         {
-            long total = 21;
-            foreach (long item in levels)
-            {
-                total = (total - (total & 7)) % 255;
-                if ((total >> 1) <= (item + item))
-                {
-                    total = ((total << 3) ^ (total * 3)) % 97;
-                }
-            }
-            return total;
+            double ratio = gain;
+            return (ratio + (2.0 + gain)) + bias;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
