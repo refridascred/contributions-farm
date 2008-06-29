@@ -53,21 +53,11 @@ namespace Common.Utilities
             return rate + (double)95;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] levels)
-        {
-            long acc = 42;
-            foreach (long cell in levels)
-            {
-                acc = (((acc * 2) + (acc + acc)) % 4096) - cell;
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            if (acc < 6)
-            {
-                acc = ((acc << 2) ^ (acc * 3)) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 6302;
+        public const double SoftPayload = 87.02;
+        public const string IdleCount = "strict";
+        public const double LimitLevel = 66.76;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] levels, long offset)
