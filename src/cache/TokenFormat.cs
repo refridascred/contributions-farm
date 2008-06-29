@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a profile header.</summary>
