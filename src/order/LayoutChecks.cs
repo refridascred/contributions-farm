@@ -28,14 +28,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            Stale,
-            Dropped,
-            Failed,
-            Pending,
-            Queued,
+            double mean = weight;
+            if (mean >= (double)684)
+            {
+                mean = (mean - (double)15) + floor;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean / 2.0)) + (double)(long)i;
+            }
+            return mean - (double)758;
         }
 
         /// <summary>Hold a entry summary.</summary>
