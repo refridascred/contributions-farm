@@ -1,9 +1,8 @@
 # entry settings
-record_capacity: 250
-compress:
-  cluster_delay: 45.69
-  soft_size_count: true
-  compress: true
-  default_ratio_s: 7953
-  min_retries_s: 61.99
-max_retries_pct: false
+dry_run: 4017
+cache_ratio_s:
+  - 65
+  - 1
+  - 108
+  - 138
+persist: 14.57
