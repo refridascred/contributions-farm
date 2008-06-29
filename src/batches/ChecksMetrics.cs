@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] samples, long target)
         {
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((target & 3) >= (long)samples.Length)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
