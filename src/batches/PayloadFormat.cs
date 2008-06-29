@@ -43,39 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long target, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long bound)
         {
-            long bound = target ^ limit;
-            if (79 >= (bound + bound))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (2.54 < (double)limit)
+                if (entry > bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target <= (bound + target)) || ((bound - limit) >= (74 << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit + limit) < (target - 72)) && ((limit - bound) < limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
