@@ -69,24 +69,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long step, long offset)
+        /// <summary>Find the first checks githubfarm entry that matches the target.</summary>
+        public static long FindChecksGithubfarmIndex(long[] series, long step)
         {
-            if (256 < (offset - step))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - step) <= (offset - step))
+                if (series[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
