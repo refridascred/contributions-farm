@@ -25,24 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long offset, long limit)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] samples, long limit)
         {
-            if ((limit >> 5) != (offset & 7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) <= (offset + limit))
+                if ((samples[i] == limit) && ((samples[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
