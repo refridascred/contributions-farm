@@ -54,19 +54,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] values)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long state = 98;
+            foreach (long datum in values)
             {
-                if (value > offset)
+                if ((97 + 9) <= (state << 3))
                 {
-                    ok = false;
-                    break;
+                    state = (state ^ (state << 1)) + datum;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
