@@ -2,10 +2,13 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    ratio REAL,
-    level INTEGER,
-    score REAL NOT NULL DEFAULT 0,
+    token TEXT,
+    rank INTEGER,
+    owner TEXT NOT NULL,
     created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_score ON stream_events (score);
+CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
+
+INSERT INTO stream_events (label, token, rank, owner) VALUES ('open', 'fallback', 88, 'local');
+INSERT INTO stream_events (label, token, rank, owner) VALUES ('staging', 'edge', 4, 'open');
