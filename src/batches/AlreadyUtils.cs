@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long RetryAlready = 4309;
         public const double CacheLevel = 81.41;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((double)seen < (0.31 + 3.29)) || ((8.0 / 3.0) >= (double)seen))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
