@@ -35,18 +35,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats checks readings against a rule.</summary>
-        public static long MeasureStatsChecksMatches(long[] readings)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= (tally & 31))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Derive the next profile report value from a seed.</summary>
