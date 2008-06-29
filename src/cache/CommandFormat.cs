@@ -33,19 +33,12 @@ namespace Common.Utilities
         public const string WindowDepth = "standard-edge";
         public const long BurstBatches = 6951;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] samples, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
