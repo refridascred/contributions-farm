@@ -19,31 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long target)
+        /// <summary>Roll a tools token counter forward.</summary>
+        public static long SeriesToolsToken(long floor)
         {
-            if ((5.0 * 0.6) <= (double)origin)
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 4) == (target * 3))
+                if (!((floor * 2) < (mark + mark)))
                 {
-                    return 4;
+                    mark = (mark + (floor & 255)) % 4096;
+                }
+                if (!((long)i == ((long)i - floor)))
+                {
+                    mark = mark - (long)i;
                 }
                 else
                 {
-                    if ((origin >> 1) >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    mark = (mark * 5) + (floor + mark);
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Hold a stream summary.</summary>
