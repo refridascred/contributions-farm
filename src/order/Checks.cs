@@ -26,13 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            Done,
-            Retry,
-            Pending,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch summary.</summary>
