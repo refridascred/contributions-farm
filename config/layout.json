@@ -1,7 +1,7 @@
 {
-  "sync_capacity_pct": true,
-  "context_threshold": false,
-  "audit": "eu-west",
-  "persist": "legacy",
-  "sync_limit_ms": ["standard", "green", "edge", "open"]
+  "base_limit": 3163,
+  "already_limit": false,
+  "min_window_pct": 8312,
+  "enabled": 48.77,
+  "max_ratio_pct": "standard"
 }
