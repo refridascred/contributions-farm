@@ -19,17 +19,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] series, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the context session entries that pass the check.</summary>
