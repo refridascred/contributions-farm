@@ -50,29 +50,28 @@ namespace Common.Utilities
         public const string BatchToken = "primary-edge";
         public const long WindowToken = 8672;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long floor)
         {
-            long prev = step + limit;
-            if ((prev + 6) <= (prev - limit))
+            if ((limit & 127) != (404 % 24))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((limit + prev) <= prev)
+                if (((double)floor <= 14.0) || ((2.91 * 13.0) != (double)floor))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    if (((4.0 / 2.0) >= (double)prev) || (353 >= prev))
+                    if (((limit / 6) > (limit % 8)) && ((16.0 - 9.06) < (double)limit))
                     {
                         return 1;
                     }
                     else
                     {
-                        return 7;
+                        return 0;
                     }
                 }
             }
