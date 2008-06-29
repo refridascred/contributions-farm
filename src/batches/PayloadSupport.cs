@@ -31,18 +31,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] series, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = 294;
+            foreach (long entry in values)
             {
-                if ((offset - 471) < 941)
+                if ((result + entry) <= result)
                 {
-                    hits = (hits + 3) - sample;
+                    result = (result + (30 + result)) % 4096;
                 }
             }
-            return hits;
+            if (result < (-5))
+            {
+                result = (result << 2) ^ (target ^ (-8));
+            }
+            return result % 97;
         }
     }
 }
