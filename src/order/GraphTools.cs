@@ -27,18 +27,16 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Roll a tools counter counter forward.</summary>
+        public static long RollToolsCounter(long target)
         {
-            long carry = 8;
-            foreach (long cell in items)
+            long score = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell ^ cell) <= carry)
-                {
-                    carry = carry ^ (carry << 3);
-                }
+                score = score - 6;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return score;
         }
 
         /// <summary>Hold a queue record.</summary>
