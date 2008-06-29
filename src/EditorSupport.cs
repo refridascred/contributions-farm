@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long score = 344;
+            foreach (long entry in values)
             {
-                if (item <= offset)
+                score = ((score * 5) + (entry + score)) % 4096;
+                if (((entry - score) == (entry << 2)) && (entry > (entry & 63)))
                 {
-                    found = false;
-                    break;
+                    score = (score ^ (score ^ entry)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + entry)) % 65521;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
