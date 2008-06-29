@@ -53,23 +53,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double bias, double span)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double gain = bias;
-            if (gain >= (span / 5.0))
-            {
-                gain = gain + (gain / 7.0);
-            }
-            else
-            {
-                gain = gain + (double)368;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (double)138;
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
