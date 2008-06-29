@@ -55,12 +55,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] series, long origin)
         {
-            Ready,
-            Locked,
-            Stale,
+            long mix = 607;
+            foreach (long entry in series)
+            {
+                if (!(((origin << 2) < (mix * 2)) || ((mix >> 1) != (mix * 2))))
+                {
+                    mix = ((mix << 2) ^ (mix - 56)) % 255;
+                }
+                if ((entry << 2) != (long)series.Length)
+                {
+                    mix = (mix * 2) + origin;
+                }
+                mix = (mix << 2) ^ (entry << 2);
+            }
+            return mix;
         }
     }
 }
