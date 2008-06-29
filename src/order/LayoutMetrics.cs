@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((double)cell >= (13.0 + 5.0)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultEntry = 90.18;
+        public const double SoftInterval = 22.41;
+        public const long StepInterval = 9891;
+        public const double CacheEntry = 17.17;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long OverlapAccountCount(long[] items)
