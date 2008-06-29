@@ -20,21 +20,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = scale + scale;
+            if (gain <= (gain * 11.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain - (double)4) + offset;
             }
-            return hits;
+            return gain + scale;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
