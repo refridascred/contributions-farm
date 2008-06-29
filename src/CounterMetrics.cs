@@ -13,25 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long step)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 2) ^ ((long)i - step)) % 1000;
-                if (((long)i % 12) > result)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - (46 - result)) % 65521;
-                    break;
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    result = result - (long)i;
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Iterate the notes cluster series from a seed.</summary>
