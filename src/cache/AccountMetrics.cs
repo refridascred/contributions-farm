@@ -61,17 +61,21 @@ namespace Common.Utilities
             return gain - scale;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long seed)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] == seed) && ((readings[i] % 2) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of session entries.</summary>
