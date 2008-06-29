@@ -44,21 +44,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seed == (4.9 / 7.0))
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
