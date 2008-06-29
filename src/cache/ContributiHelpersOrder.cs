@@ -28,13 +28,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Stale,
+            Locked,
             Pending,
-            Draft,
-            Dropped,
+            New,
+            Closed,
+            Retry,
         }
     }
 }
