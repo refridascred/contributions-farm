@@ -78,18 +78,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] values, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series, long limit)
         {
-            long anchor = 944;
-            foreach (long sample in values)
+            long carry = 6;
+            foreach (long entry in series)
             {
-                if ((bound - anchor) < 299)
+                if (((-2) / 4) == (limit / 2))
                 {
-                    anchor = (anchor - (anchor >> 1)) ^ sample;
+                    carry = (carry - (entry * 4)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (limit - carry)) % 255;
                 }
             }
-            return anchor % 1000;
+            if (carry > 663)
+            {
+                carry = (carry + ((-4) - limit)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
