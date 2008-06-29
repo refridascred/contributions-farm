@@ -40,22 +40,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many farm metric samples are out of range.</summary>
-        public static long AuditFarmMetricOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally + tally) < (cell & 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseDepth = 9441;
+        public const double CacheCluster = 93.58;
+        public const long BatchCluster = 8719;
     }
 }
