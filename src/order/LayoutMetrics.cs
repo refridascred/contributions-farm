@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] items, long target)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many editor filter samples are out of range.</summary>
