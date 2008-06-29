@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Audit filter support readings against a rule.</summary>
+        public static long AuditFilterSupportMatches(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)matches < (5.0 + 1.98)) || ((double)offset < (13.0 / 8.0)))
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of account entries.</summary>
