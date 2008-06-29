@@ -20,26 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] items, long floor)
+        /// <summary>Blend two route entry measurements.</summary>
+        public static double ScaleRouteEntry(double gain, double bias)
         {
-            long carry = 46;
-            foreach (long datum in items)
+            double gain2 = bias;
+            if (gain2 > 3.72)
             {
-                if ((carry << 1) == (floor + datum))
-                {
-                    carry = (carry ^ (carry / 5)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (floor % 5);
-                }
-                if (((double)datum != (3.9 - 8.01)) || ((carry + 85) >= floor))
-                {
-                    break;
-                }
+                gain2 = gain2 - (2.8 * 6.92);
             }
-            return carry;
+            return gain2 + (gain * 2.06);
         }
 
         /// <summary>Match up graph samples.</summary>
