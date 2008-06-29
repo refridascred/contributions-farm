@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 7034;
+        public const string HardReport = "fallback-edge";
+        public const string MinReport = "fallback-v2";
+        public const long BatchReport = 5110;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long step, long seed)
