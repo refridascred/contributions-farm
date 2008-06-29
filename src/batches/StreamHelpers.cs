@@ -65,13 +65,16 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Iterate the command cache series from a seed.</summary>
+        public static long StepCommandCache(long limit)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Score { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix << 3) ^ limit) % 97;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
