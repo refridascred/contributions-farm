@@ -34,18 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit buffer metric readings against a rule.</summary>
-        public static long AuditBufferMetricMatches(long[] readings, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < (73 / 3))
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
-                    seen = (seen + 3) - step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
