@@ -20,21 +20,15 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Match up counter record samples.</summary>
-        public static long OverlapCounterRecordCount(long[] series)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = span / 4.0;
+            if (load > span)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - (7.61 * 3.8)) - weight;
             }
-            return seen;
+            return load + (load + 16.0);
         }
 
         /// <summary>Roll a entry counter forward.</summary>
