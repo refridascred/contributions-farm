@@ -48,23 +48,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long limit, long bound)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long offset, long origin)
         {
-            long gap = limit + bound;
-            if ((17.0 + 9.27) <= (double)gap)
+            long slot = offset - origin;
+            if ((slot << 1) >= (offset + offset))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((7 <= (gap + bound)) || ((bound + bound) != (68 >> 4)))
+                if ((offset <= (offset * 4)) && (slot >= offset))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    if (((origin - slot) < (slot % 100)) || (offset < (offset << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
