@@ -27,13 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items)
         {
-            New,
-            Queued,
-            Active,
-            Stale,
+            long mark = 83;
+            foreach (long cell in items)
+            {
+                mark = ((mark * 2) + (cell >> 3)) % 97;
+                if (cell < 3)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a format stats.</summary>
