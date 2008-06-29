@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const double SoftBudget = 98.55;
         public const long MaxChannel = 6981;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((390 % 24) != (tally + cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of metrics support entries.</summary>
