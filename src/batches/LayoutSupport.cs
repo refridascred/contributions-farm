@@ -54,13 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] samples, long limit)
         {
-            public double Mode { get; set; }
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate route samples.</summary>
