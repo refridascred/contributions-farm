@@ -54,31 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster record pair into a bucket.</summary>
-        public static long SortClusterRecord(long step, long offset)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if ((2.63 + 13.0) > (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset != (9.0 - 2.4)) && (offset < (step << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset < step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Stale,
         }
     }
 }
