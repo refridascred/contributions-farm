@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank queue channel input into a small class.</summary>
+        public static long GradeQueueChannel(long target, long origin)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Draft,
+            long lane = target ^ origin;
+            if (!((double)origin >= 2.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin ^ origin) != (8 - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target - 32) > (638 << 2)) && ((origin / 4) > (lane - lane)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((lane / 4) <= (origin >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next queue value.</summary>
