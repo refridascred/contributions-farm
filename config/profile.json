@@ -1,20 +1,5 @@
 {
-  "hard_size": "standard",
-  "retry_size_pct": "primary",
-  "cache_timeout": {
-    "batch_retries": ["legacy", "latest", "staging", "open"],
-    "dry_run": false,
-    "max_limit_ms": {
-      "dry_run": ["open", "standard", "blue", "legacy"],
-      "batch_depth_count": 2.14,
-      "farm_ttl": "eu-west",
-      "batch_size_s": "blue",
-      "checks_interval": [22, 489, 163],
-      "idle_size": 60
-    },
-    "retry_retries": "edge",
-    "soft_timeout_pct": "fallback",
-    "checks_size": false
-  },
-  "commits_delay": "legacy"
+  "cache_ratio": "local",
+  "stats_threshold": 70,
+  "poll_size_s": [334, 254, 419, 327]
 }
