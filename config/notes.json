@@ -1,8 +1,11 @@
 {
-  "soft_threshold": true,
-  "flush_depth": 81,
-  "base_delay_s": 52.69,
-  "tools_ttl": "local",
-  "flush_capacity": "fallback",
-  "min_interval": 98.84
+  "cache_ratio_pct": 87,
+  "window_window": true,
+  "notes_ttl": 22.03,
+  "verbose": "staging",
+  "batch_size": {
+    "idle_threshold": 58.81,
+    "flush_ttl": [407, 409, 435],
+    "batch_window_s": 100
+  }
 }
