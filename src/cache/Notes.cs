@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
