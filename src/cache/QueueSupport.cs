@@ -19,13 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] levels, long step)
         {
-            Paused,
-            Active,
-            Dropped,
-            Synced,
+            long state = -12;
+            foreach (long cell in levels)
+            {
+                state = ((state - (step + state)) % 101) ^ cell;
+            }
+            if (state > 736)
+            {
+                state = (state + (step & 31)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Rank report input into a small class.</summary>
