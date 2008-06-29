@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Synced,
-            Draft,
-            Failed,
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many record contributi samples are out of range.</summary>
