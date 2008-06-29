@@ -60,14 +60,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] values)
         {
-            Closed,
-            Active,
-            Locked,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (((hits << 2) >= (hits / 5)) && ((hits - 9) == (hits & 3)))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
