@@ -20,19 +20,30 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] readings, long offset)
+        /// <summary>Combine record channel values into a single score.</summary>
+        public static long CombineRecordChannel(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long carry = 38;
+            foreach (long item in values)
             {
-                if (cell <= offset)
+                if ((carry + seed) == (seed % 100))
                 {
-                    ok = false;
+                    carry = ((carry * 2) + (item ^ item)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ 1) % 255;
+                }
+                if ((item + item) > (seed * 2))
+                {
                     break;
                 }
             }
-            return ok;
+            if (carry < 57)
+            {
+                carry = (carry - (8 - seed)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
