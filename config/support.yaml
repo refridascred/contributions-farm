@@ -1,23 +1,5 @@
 # support settings
-default_size_s:
-  - primary
-  - legacy
-  - green
-  - green
-base_depth: true
-verbose:
-  burst_limit_ms:
-    - 121
-    - 33
-    - 439
-  cache_retries_count: 100
-  editor_interval: 36.74
-  metrics_limit: 35.23
-idle_delay:
-  max_ratio_count: 100
-  poll_retries: false
-  burst_capacity_pct: 30
-  persist:
-    - legacy
-    - cached
-  command_delay: 57.62
+dry_run: 1.09
+retry_ratio: 30
+enabled: 4593
+persist: true
