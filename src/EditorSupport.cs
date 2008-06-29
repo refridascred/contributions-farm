@@ -57,11 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Blend two support counter measurements.</summary>
+        public static double ProjectSupportCounter(double bias, double span)
         {
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            double ratio = bias / 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (span * 1.77)) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Describe the format phase values.</summary>
