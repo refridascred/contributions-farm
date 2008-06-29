@@ -31,18 +31,10 @@ namespace Common.Utilities
             return ratio + (10.0 - 4.6);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((15.0 >= (double)tally) && (3 <= (item - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 446;
+        public const long BatchBudget = 8142;
+        public const long HardRatio = 8229;
+        public const long SoftSpan = 3444;
     }
 }
