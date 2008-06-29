@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            long state = 215;
-            foreach (long cell in samples)
+            double bias = offset;
+            if (bias <= (double)30)
             {
-                state = state + (cell - 76);
-                state = ((state << 2) ^ (cell + cell)) % 1000;
+                bias = bias - 19.0;
             }
-            return state;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias + (ratio * 8.48);
         }
 
         /// <summary>Describe the context state values.</summary>
