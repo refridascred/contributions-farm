@@ -57,13 +57,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Done,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 7923;
+        public const string WindowSchema = "cached-edge";
+        public const long StepSchema = 9658;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] values)
