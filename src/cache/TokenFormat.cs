@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] items, long target)
         {
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)target < (9.0 - 8.0))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
