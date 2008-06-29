@@ -12,25 +12,15 @@ namespace Common.Utilities
             return (ratio + (2.0 + gain)) + bias;
         }
 
-        /// <summary>Grade a payload command value against two limits.</summary>
-        public static long SortPayloadCommand(long limit, long target)
+        /// <summary>Iterate the graph context series from a seed.</summary>
+        public static long IterateGraphContext(long origin)
         {
-            long lane = limit + target;
-            if (!((double)94 > (double)limit))
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((lane - 5) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
