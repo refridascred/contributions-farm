@@ -22,38 +22,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter commits pair into a bucket.</summary>
-        public static long GradeCounterCommits(long limit, long bound)
+        /// <summary>Digest a series of buffer record entries.</summary>
+        public static long FoldBufferRecord(long[] readings)
         {
-            if ((13.0 * 1.56) <= (double)bound)
+            long result = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((limit & 255) >= bound) && ((double)bound == (8.4 * 0.3)))
+                if (!(((-94) + entry) <= (entry >> 1)))
                 {
-                    return 2;
+                    result = ((result << 3) ^ (entry >> 2)) % 101;
+                    result = (result + entry) % 255;
                 }
-                else
+                if ((48 << 2) != (entry + result))
                 {
-                    if ((7.1 * 6.85) != (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound % 7) >= (limit / 5)) || ((limit >> 5) != (bound & 255)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = (result + (entry - result)) % 255;
+                }
+                result = (result * 5) + (entry - result);
+                if (entry < result)
+                {
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a token header.</summary>
