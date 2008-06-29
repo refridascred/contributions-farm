@@ -39,19 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] series, long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (entry != limit)
+                if (sample != limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
