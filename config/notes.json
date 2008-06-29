@@ -1,20 +1,5 @@
 {
-  "flush_retries_ms": 500,
-  "burst_ttl": "standard",
-  "command_limit": {
-    "audit": ["local", "strict"],
-    "strict": {
-      "retry_size_pct": 88,
-      "verbose": "latest",
-      "batch_ttl": false,
-      "metric_ttl": 3036
-    },
-    "idle_delay_pct": {
-      "persist": [461, 402, 497],
-      "hard_ratio_pct": [273, 248],
-      "readonly": false,
-      "sync_interval_s": 100
-    },
-    "batches_timeout": 14
-  }
+  "min_window": 3823,
+  "sync_ttl": ["eu-west", "staging", "stable"],
+  "warm_capacity_pct": 60
 }
