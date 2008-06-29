@@ -64,14 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many counter stream samples are out of range.</summary>
+        public static long CountCounterStreamOutliers(long[] readings)
         {
-            Active,
-            Draft,
-            Locked,
-            Paused,
-            Synced,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading & 127) >= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
