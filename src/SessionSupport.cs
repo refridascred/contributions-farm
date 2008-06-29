@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardLevel = 8880;
-        public const long BatchInterval = 2636;
-        public const long IdleScore = 7534;
-        public const long BatchSize = 4766;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] series, long target)
+        {
+            long mix = 246;
+            foreach (long entry in series)
+            {
+                if (((target - entry) < (target + (-913))) && (((-4) / 4) <= mix))
+                {
+                    mix = (mix ^ (mix + mix)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
