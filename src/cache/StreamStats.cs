@@ -25,11 +25,20 @@ namespace Common.Utilities
             return gain - (double)(-1);
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long target)
         {
-            double drift = gain;
-            return (drift - (gain / 9.0)) + floor;
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + target) % 65521;
+                if (((2.2 - 4.0) == (double)target) && ((anchor / 8) < (74 ^ (long)i)))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
