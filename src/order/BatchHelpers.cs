@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = (((anchor * 4) + (seed + anchor)) % 1000) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Pending,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Accumulate counter samples.</summary>
