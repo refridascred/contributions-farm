@@ -19,12 +19,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 415;
-        public const long SoftContext = 1214;
-        public const long CacheContext = 3231;
-        public const string BaseInterval = "open-edge";
-        public const long StepContext = 6703;
+        /// <summary>Classify a commits window pair into a bucket.</summary>
+        public static long BucketCommitsWindow(long seed, long step)
+        {
+            long diff = seed + step;
+            if ((step - diff) >= (diff >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - diff) < ((-4) ^ diff))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((14.0 - 2.11) >= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long SoftEditor = 7677;
