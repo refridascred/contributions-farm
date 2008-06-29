@@ -56,12 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
-        {
-            Stale,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultRatio = 5672;
+        public const long CacheQueue = 1806;
+        public const string BatchQueue = "strict";
+        public const long MinBudget = 9768;
     }
 }
