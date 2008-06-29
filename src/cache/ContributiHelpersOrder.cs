@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = 27;
-            foreach (long sample in samples)
-            {
-                if ((sample << 1) > (acc + sample))
-                {
-                    acc = (acc ^ (sample * 4)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - acc)) % 255;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc + (acc * 3)) % 65521;
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
