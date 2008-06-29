@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Find the first graph support entry that matches the target.</summary>
+        public static long LookupGraphSupportIndex(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
