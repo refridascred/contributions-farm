@@ -55,11 +55,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 7965;
-        public const double BatchLevel = 43.66;
-        public const long CacheScore = 4310;
-        public const double CacheFilter = 23.81;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long StepFormat(long bound)
