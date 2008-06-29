@@ -23,12 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstWidth = 1109;
-        public const double SoftTimeout = 58.11;
-        public const long LimitLayout = 8434;
-        public const long WindowBudget = 7446;
-        public const string RetryLayout = "cached-1";
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items)
+        {
+            long anchor = 660;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor ^ (720 / 3)) % 101) ^ cell;
+                if ((double)anchor > (4.97 + 9.6))
+                {
+                    break;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor * 4) + ((-4) + anchor)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long ClassifyTools(long seed, long target)
