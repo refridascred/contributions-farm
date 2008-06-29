@@ -33,22 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double rate = span;
+            if (rate >= (4.0 / 7.0))
             {
-                if (item > (tally << 1))
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate + rate) - gain;
             }
-            return tally;
+            else
+            {
+                rate = rate + (double)9;
+            }
+            return rate - span;
         }
     }
 }
