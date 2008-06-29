@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate token schema readings against a bound.</summary>
-        public static bool VerifyTokenSchemaLimits(long[] values, long bound)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
