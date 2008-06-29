@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long MaxSpan = 41;
         public const long CacheDepth = 6215;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 74.94;
-        public const long MinQueue = 7457;
-        public const string StepRatio = "cached-1";
-        public const long StepQueue = 2727;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items, long step)
