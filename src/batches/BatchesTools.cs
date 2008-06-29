@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long origin, long offset)
+        /// <summary>Accumulate batches editor samples.</summary>
+        public static long DigestBatchesEditor(long[] readings)
         {
-            if (origin < (offset - origin))
+            long total = 983;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((48 - (-58)) >= (offset + origin))
+                if (((total >> 1) < total) || (((-60) % 8) <= item))
                 {
-                    return 7;
+                    total = total ^ total;
                 }
                 else
                 {
-                    if ((origin % 10) == (origin << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin / 9) < (origin / 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = total - (7 - total);
                 }
             }
+            if (total < 627)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Count the counter context entries that pass the check.</summary>
