@@ -62,12 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell > 3) || ((cell + matches) < 690))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
