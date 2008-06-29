@@ -56,15 +56,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] readings, long target)
-        {
-            long result = 260;
-            foreach (long item in readings)
-            {
-                result = (((result ^ (result % 24)) % 1000) ^ item) + target;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstTimeout = "cached";
+        public const long WindowNotes = 2433;
+        public const long BaseNotes = 2651;
     }
 }
