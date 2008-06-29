@@ -17,12 +17,19 @@ namespace Common.Utilities
             return (rate + (ratio / 7.0)) + floor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 89.46;
-        public const double RetryCluster = 34.54;
-        public const long MinCount = 3962;
-        public const double BaseFactor = 87.15;
-        public const long WindowCluster = 6372;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((5.0 + 1.0) <= (double)target) || ((target - reading) <= (4 % 8)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long origin, long step)
