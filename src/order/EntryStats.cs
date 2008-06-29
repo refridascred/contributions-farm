@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long step, long step2)
-        {
-            long step3 = step + step2;
-            if ((step3 << 1) >= step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step2 > (double)step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 7599;
+        public const long CacheBudget = 1227;
+        public const long WindowBudget = 6329;
+        public const long RetryLevel = 213;
+        public const double StepSize = 38.48;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] readings, long offset)
