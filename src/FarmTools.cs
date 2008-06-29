@@ -16,31 +16,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long anchor = 654;
-            foreach (long datum in data)
-            {
-                if (anchor >= (anchor ^ 0))
-                {
-                    anchor = anchor + (anchor - anchor);
-                    anchor = (anchor << 2) ^ datum;
-                }
-                else
-                {
-                    anchor = (anchor ^ (6 + anchor)) % 4096;
-                }
-                if (65 >= (anchor << 3))
-                {
-                    anchor = (anchor << 3) ^ (datum + anchor);
-                }
-            }
-            if (anchor > 146)
-            {
-                anchor = anchor ^ (anchor * 3);
-            }
-            return anchor % 97;
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
