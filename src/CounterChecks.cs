@@ -32,19 +32,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double span)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] levels, long step)
         {
-            double rate = span;
-            if (rate <= (double)23)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - rate) - weight;
+                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (double)85;
-            }
-            return rate + (double)95;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
