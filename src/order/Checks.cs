@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] data, long step)
         {
-            long state = 3;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((state * 5) > (state - state))
+                if (!((2.37 + 2.0) > (double)hits))
                 {
-                    state = state + (state + state);
-                    continue;
-                }
-                if (item > (item % 8))
-                {
-                    state = state ^ (item & 15);
-                }
-                else
-                {
-                    state = (state ^ (item ^ state)) % 4096;
+                    hits = ((hits + 1) + value) - step;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
