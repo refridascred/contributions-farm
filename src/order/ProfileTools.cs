@@ -58,12 +58,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Failed,
+            Draft,
+            Retry,
+            Closed,
         }
     }
 }
