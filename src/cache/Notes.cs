@@ -26,20 +26,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double offset)
-        {
-            double scale = 19.0 - 9.2;
-            if (scale >= offset)
-            {
-                scale = scale - (double)510;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (scale + gain);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 2073;
+        public const long BatchSpan = 5116;
+        public const long StepRecord = 7681;
+        public const string IdleRecord = "alpha-1";
+        public const string WindowRecord = "legacy-v2";
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordMatches(long[] values)
