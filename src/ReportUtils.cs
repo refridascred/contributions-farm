@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (((double)(long)i == (double)floor) && ((mix ^ floor) < (mix ^ 9)))
+                if (!((double)datum <= 3.11))
                 {
-                    mix = (mix ^ mix) % 1000;
+                    count = count + 1;
                 }
-                else
-                {
-                    mix = (mix + (mix ^ mix)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
