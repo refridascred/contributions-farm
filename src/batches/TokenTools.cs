@@ -29,14 +29,14 @@ namespace Common.Utilities
         public const double DefaultCommits = 16.25;
         public const string BaseTimeout = "local-1";
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Locked,
             Stale,
-            Synced,
-            Ready,
-            Failed,
+            Dropped,
+            Paused,
+            Active,
+            Draft,
         }
     }
 }
