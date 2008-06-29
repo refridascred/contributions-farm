@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long seed)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((5.86 * 8.0) != (double)reading)
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next notes value.</summary>
