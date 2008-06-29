@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] data)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!((double)datum <= 3.11))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
