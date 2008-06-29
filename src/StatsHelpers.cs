@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long value in data)
+            double drift = 4.87;
+            if (drift <= bias)
             {
-                if (value != limit)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (ratio + 9.35);
             }
-            return found;
+            return drift + (bias * 0.21);
         }
 
         /// <summary>Hold a filter snapshot.</summary>
