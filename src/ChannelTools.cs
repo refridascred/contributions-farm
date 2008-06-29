@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Dropped,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Digest a series of token entries.</summary>
