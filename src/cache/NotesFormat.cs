@@ -22,38 +22,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a filter support pair into a bucket.</summary>
-        public static long GradeFilterSupport(long offset, long floor)
-        {
-            if (((floor - 7) <= (floor + floor)) || ((floor >> 5) >= (floor ^ floor)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset <= (floor - floor)) || ((floor & 31) >= (floor % 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ 91) <= (offset - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((80 + floor) == (offset ^ offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 7388;
+        public const string DefaultCount = "open-v2";
+        public const long RetryQueue = 2312;
     }
 }
