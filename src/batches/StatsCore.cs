@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a checks queue pair into a bucket.</summary>
-        public static long SortChecksQueue(long seed, long bound)
+        /// <summary>Match up githubfarm cache samples.</summary>
+        public static long PairGithubfarmCacheCount(long[] values)
         {
-            long slot = seed ^ bound;
-            if ((7.97 - 3.0) > (double)seed)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound > 7)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed > 2.0)
+                    if ((values[i] ^ values[j]) > 9)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((slot + bound) >= (seed << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
