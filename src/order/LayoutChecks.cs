@@ -46,18 +46,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] series)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((((423 << 2) == (datum >> 3)) && ((datum - datum) >= (datum - (long)series.Length))) || !(8.0 > (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Active,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Accumulate stats samples.</summary>
