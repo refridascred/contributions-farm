@@ -59,15 +59,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics report counter forward.</summary>
-        public static long SeriesMetricsReport(long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long cur = step ^ origin;
+            if (85 > (origin / 7))
             {
-                total = ((total * 2) + (long)i) % 65521;
+                return 5;
             }
-            return total;
+            else
+            {
+                if ((double)cur < (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
