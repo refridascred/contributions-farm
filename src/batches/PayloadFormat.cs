@@ -38,15 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long score = 114;
+            foreach (long cell in values)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((score + 71) >= seed)
+                {
+                    score = ((score * 5) + score) - cell;
+                }
             }
-            return sum;
+            if (score < (-692))
+            {
+                score = (score << 3) ^ (15 * 2);
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
