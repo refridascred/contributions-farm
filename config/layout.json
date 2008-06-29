@@ -1,7 +1,6 @@
 {
-  "retry_ttl_ms": "standard",
-  "warm_threshold_s": 2332,
-  "commits_delay": 9137,
-  "base_retries": 5348,
-  "cache_delay": 2775
+  "enabled": 70,
+  "command_interval": "local",
+  "compress": [391, 285],
+  "base_ratio": 28
 }
