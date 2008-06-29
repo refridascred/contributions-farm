@@ -29,10 +29,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstSpan = 4058;
-        public const long MinChecks = 6292;
-        public const long LimitInterval = 4443;
-        public const long WindowChecks = 6336;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
