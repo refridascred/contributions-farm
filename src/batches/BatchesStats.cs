@@ -39,28 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Count account window pairs that satisfy a relation.</summary>
+        public static long MatchAccountWindowCount(long[] values)
         {
-            long state = 73;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state - (state ^ state);
-                state = (state + value) % 255;
-                if (state > (state * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state << 3) ^ state;
-                }
-                if ((double)(long)samples.Length <= (3.4 / 8.0))
-                {
-                    break;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 784)
-            {
-                state = (state - (46 + state)) % 1000;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
