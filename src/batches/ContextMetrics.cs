@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = carry + ((long)i % 8);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
