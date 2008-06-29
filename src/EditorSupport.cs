@@ -53,18 +53,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] items, long limit)
+        /// <summary>Derive the next profile report value from a seed.</summary>
+        public static long DeriveProfileReport(long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen * 2) > seen)
-                {
-                    seen = ((seen + 2) + entry) + limit;
-                }
+                mix = (mix * 2) + (mix - seed);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the format phase values.</summary>
