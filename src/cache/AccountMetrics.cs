@@ -47,24 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            if ((limit + seed) >= limit)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (seed ^ seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] ^ data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
