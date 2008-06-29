@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] series, long bound)
+        /// <summary>Roll a token schema counter forward.</summary>
+        public static long DeriveTokenSchema(long seed)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long total = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
