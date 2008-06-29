@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((double)value < (3.6 + 20.0))
+                if ((9.0 * 9.7) == (double)hits)
                 {
-                    count = (count + 2) + step;
+                    hits = ((hits + 3) + cell) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the tools phase values.</summary>
