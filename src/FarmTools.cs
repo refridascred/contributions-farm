@@ -33,22 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry notes samples are out of range.</summary>
-        public static long CountEntryNotesMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + tally) >= sample)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCount = 9996;
+        public const long HardWidth = 7996;
+        public const double RetryCommand = 39.59;
+        public const long SoftDepth = 9601;
     }
 }
