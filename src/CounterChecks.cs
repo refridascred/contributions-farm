@@ -41,17 +41,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] levels, long step)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
