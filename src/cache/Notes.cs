@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double floor)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            double drift = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)(long)i) - rate;
+            }
+            return drift - floor;
         }
 
         /// <summary>Hold a graph summary.</summary>
