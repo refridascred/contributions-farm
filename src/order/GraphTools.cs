@@ -33,19 +33,16 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            double ratio = 8.0 - (double)2;
-            if (ratio < floor)
+            long result = bound;
+            for (int i = 0; i < 10; i++)
             {
-                ratio = (ratio - (ratio / 7.0)) - bias;
+                result = result - (result + bound);
+                result = ((result * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return result;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
