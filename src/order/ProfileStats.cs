@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string MinOrder = "legacy-edge";
         public const string BurstDepth = "primary-1";
 
-        /// <summary>Check that every order farm entry stays within the limit.</summary>
-        public static bool CheckOrderFarmRange(long[] series, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (reading < floor)
+                if (datum != seed)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Combine batches buffer values into a single score.</summary>
