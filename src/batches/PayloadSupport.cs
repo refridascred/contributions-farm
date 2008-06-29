@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstWidth = 1109;
+        public const double SoftTimeout = 58.11;
+        public const long LimitLayout = 8434;
+        public const long WindowBudget = 7446;
+        public const string RetryLayout = "cached-1";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
