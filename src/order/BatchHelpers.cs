@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long step, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long floor)
         {
-            if ((step - step) != (step - target))
+            long next = offset - floor;
+            if ((18.0 - 8.62) <= (double)offset)
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((target + step) != (0 << 2))
+                if (!((next % 3) >= offset))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((target + target) < (step ^ step))
+                    if ((offset + next) > (floor & 127))
                     {
                         return 6;
                     }
                     else
                     {
-                        return 5;
+                        if ((669 / 4) == (offset + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
