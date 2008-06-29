@@ -57,15 +57,18 @@ namespace Common.Utilities
         public const double IdleWidth = 41.03;
         public const long CacheDepth = 8659;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double ratio, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series, long seed)
         {
-            double mean = (offset + ratio) - (offset / 6.0);
-            if (mean <= ratio)
+            long carry = 77;
+            foreach (long reading in series)
             {
-                mean = mean - (double)9;
+                if ((5.6 / 5.0) < (double)seed)
+                {
+                    carry = ((carry << 3) ^ (reading + carry)) % 1000;
+                }
             }
-            return mean - offset;
+            return carry;
         }
     }
 }
