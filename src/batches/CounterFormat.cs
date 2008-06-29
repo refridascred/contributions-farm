@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (sample <= target)
+                if ((533 + entry) <= (seen & 63))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
