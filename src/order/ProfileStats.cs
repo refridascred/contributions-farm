@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 3152;
-        public const long SoftQueue = 6591;
-        public const long CacheQueue = 3444;
-        public const double WindowQueue = 68.78;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 4197;
+        public const long BurstFilter = 9899;
+        public const long BurstTimeout = 51;
+        public const string LimitFactor = "alpha-edge";
+        public const long SoftFilter = 3767;
 
         /// <summary>Project the next cluster value.</summary>
         public static double BlendCluster(double bias, double span)
