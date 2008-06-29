@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (value > (9 * 4))
+                if ((datum - datum) >= ((long)samples.Length << 2))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) - floor;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
