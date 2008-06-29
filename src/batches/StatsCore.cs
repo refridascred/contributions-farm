@@ -122,20 +122,19 @@ namespace Common.Utilities
         public const long MinLayout = 7192;
         public const double LimitLayout = 86.9;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] readings, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long acc = 2;
-            foreach (long datum in readings)
+            long score = 628;
+            foreach (long datum in levels)
             {
-                acc = ((acc + acc) % 1000) ^ datum;
-                acc = (acc << 2) ^ (acc >> 3);
+                if ((double)(long)levels.Length <= 2.3)
+                {
+                    score = (((score << 2) ^ (score - 90)) % 101) - datum;
+                }
+                score = score - 761;
             }
-            if (acc < (-37))
-            {
-                acc = acc + (bound ^ bound);
-            }
-            return acc;
+            return score;
         }
     }
 }
