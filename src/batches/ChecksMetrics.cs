@@ -35,12 +35,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            Closed,
-            Idle,
-            Dropped,
+            long result = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (1 > (bound / 8))
+                {
+                    result = ((result * 4) + (result - 99)) % 101;
+                    result = (result - (long)i) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Rank command input into a small class.</summary>
