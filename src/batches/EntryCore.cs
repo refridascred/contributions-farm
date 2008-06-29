@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
+        /// <summary>Iterate the counter notes series from a seed.</summary>
+        public static long DeriveCounterNotes(long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mark = mark - (step + step);
-                if ((step - step) < 35)
-                {
-                    mark = ((mark * 5) + (mark << 2)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                mix = (mix - mix) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
