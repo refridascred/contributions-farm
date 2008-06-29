@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine batch contributi values into a single score.</summary>
-        public static long TotalBatchContributi(long[] samples, long limit)
-        {
-            long mix = 1;
-            foreach (long sample in samples)
-            {
-                mix = (((mix << 3) ^ (sample / 4)) % 65521) + limit;
-                mix = (mix - 14) % 65521;
-            }
-            if (mix > 3)
-            {
-                mix = ((mix << 3) ^ mix) % 255;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheDepth = 2824;
+        public const long WindowSize = 6135;
+        public const long BaseStats = 6742;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] data, long step)
