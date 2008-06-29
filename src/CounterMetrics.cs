@@ -19,13 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Iterate the batches contributi series from a seed.</summary>
+        public static long SeriesBatchesContributi(long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
