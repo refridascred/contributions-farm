@@ -41,11 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 5089;
-        public const long RetryWidth = 7359;
-        public const double MinScore = 27.68;
-        public const long SoftBatch = 2697;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Locked,
+            Active,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
