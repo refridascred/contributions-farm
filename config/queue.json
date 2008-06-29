@@ -1,13 +1,5 @@
 {
-  "persist": 0.69,
-  "retry_limit_ms": 80.01,
-  "context_retries": {
-    "hard_size": "open",
-    "persist": "legacy",
-    "idle_ratio_pct": {
-      "warm_interval_ms": true,
-      "soft_limit": 21,
-      "idle_depth_pct": false
-    }
-  }
+  "profile_depth": 18.57,
+  "min_window_ms": "local",
+  "compress": 26
 }
