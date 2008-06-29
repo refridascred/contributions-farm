@@ -38,21 +38,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Roll a commits order counter forward.</summary>
+        public static long SeriesCommitsOrder(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
     }
 }
