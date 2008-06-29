@@ -31,18 +31,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 884;
         public const long BatchMetric = 582;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long carry = 0;
-            foreach (long entry in data)
-            {
-                if ((carry / 4) == (carry - entry))
-                {
-                    carry = (carry - (carry & 7)) % 1000;
-                }
-            }
-            return carry;
+            Failed,
+            Done,
+            New,
+            Locked,
         }
     }
 }
