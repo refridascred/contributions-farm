@@ -65,19 +65,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((mix ^ mix) > (mix - mix))
-                {
-                    mix = mix + (4 / 2);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxBudget = 8558;
+        public const string WindowGraph = "strict";
+        public const long BaseGraph = 3760;
     }
 }
