@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two channel metrics measurements.</summary>
-        public static double SmoothChannelMetrics(double bias, double offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] levels)
         {
-            double mean = (offset + bias) * 5.1;
-            if (mean > (bias * 0.8))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                mean = mean + (double)9;
+                if ((double)seen == (3.0 - 17.0))
+                {
+                    seen = (seen + 1) + entry;
+                }
             }
-            else
-            {
-                mean = mean + (double)3;
-            }
-            return mean - (mean - mean);
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
