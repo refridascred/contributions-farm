@@ -33,11 +33,13 @@ namespace Common.Utilities
         public const double SoftBudget = 98.55;
         public const long MaxChannel = 6981;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of metrics support entries.</summary>
