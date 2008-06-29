@@ -1,6 +1,6 @@
 # support settings
-batch_timeout_s: 500
-retry_threshold_s: true
-hard_capacity: 62
-strict: 98.47
-hard_ratio_ms: 97
+command_threshold: 30
+dry_run: primary
+enabled: false
+payload_ttl: staging
+default_threshold_ms: standard
