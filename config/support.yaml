@@ -1,6 +1,4 @@
 # support settings
-max_timeout_pct: 30
-enabled: 65.24
-idle_window_s: true
-min_delay: 91.66
-dry_run: 31.77
+sync_retries_ms: 76.71
+metrics_retries: 1024
+base_ttl_pct: 3775
