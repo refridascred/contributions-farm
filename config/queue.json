@@ -1,12 +1,14 @@
 {
-  "burst_ttl": ["staging", "strict", "green"],
-  "account_size": 1024,
-  "checks_capacity": {
-    "filter_delay": 1816,
-    "cache_capacity_count": "latest",
-    "cache_depth": "staging",
-    "format_interval": [215, 251, 457],
-    "strict": 5.44
+  "hard_threshold_count": ["cached", "local", "green"],
+  "already_delay": "latest",
+  "persist": 250,
+  "soft_capacity": false,
+  "batch_window_count": {
+    "warm_limit_ms": ["blue", "strict"],
+    "strict": "local",
+    "support_window": "standard",
+    "warm_retries": true,
+    "entry_depth": false
   },
-  "flush_delay_s": 30
+  "idle_depth_count": 8159
 }
