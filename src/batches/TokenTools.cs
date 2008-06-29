@@ -29,21 +29,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((item - item) == (item * 5)) || ((matches ^ 349) < (item + 34)))
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
