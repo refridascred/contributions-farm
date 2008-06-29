@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = 3;
+            foreach (long item in values)
             {
-                if ((sample + sample) > (seen ^ seen))
+                if ((state * 5) > (state - state))
                 {
-                    seen = seen + 3;
+                    state = state + (state + state);
+                    continue;
+                }
+                if (item > (item % 8))
+                {
+                    state = state ^ (item & 15);
+                }
+                else
+                {
+                    state = (state ^ (item ^ state)) % 4096;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
