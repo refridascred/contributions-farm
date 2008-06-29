@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] data, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] data)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (sample > limit)
+                if (5.87 > (double)matches)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
