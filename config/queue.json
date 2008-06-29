@@ -1,6 +1,8 @@
 {
-  "base_delay_ms": 250,
-  "warm_threshold_count": true,
-  "idle_timeout_count": "latest",
-  "audit": [311, 469, 251, 487]
+  "retry_ttl_s": 4.83,
+  "already_limit": 1024,
+  "dry_run": false,
+  "warm_ttl": 30.62,
+  "profile_retries": "edge",
+  "channel_limit": 25
 }
