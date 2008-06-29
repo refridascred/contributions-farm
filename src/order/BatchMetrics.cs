@@ -45,21 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((mark + 2) > (long)i) || ((target ^ target) < target))
-                {
-                    mark = (mark + (long)i) % 65521;
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "open-edge";
+        public const long IdleCluster = 1042;
+        public const long HardCluster = 9346;
+        public const double SoftFactor = 32.84;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
