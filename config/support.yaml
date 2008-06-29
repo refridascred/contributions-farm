@@ -1,4 +1,15 @@
 # support settings
-poll_ttl_pct: 500
-min_ttl_ms: cached
-channel_window: open
+cache_threshold_ms:
+  - green
+  - green
+  - latest
+entry_retries:
+  persist: strict
+  retry_threshold_ms: 25.77
+  idle_limit: 100
+  default_capacity_s: 2570
+compress:
+  - 276
+  - 273
+  - 94
+  - 389
