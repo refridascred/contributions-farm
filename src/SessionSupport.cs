@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 9522;
-        public const long SoftContext = 3785;
-        public const double IdleContext = 69.75;
-        public const long BatchContext = 1097;
-        public const string RetryContext = "stable-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardTimeout = 4109;
+        public const double RetryGithubfarm = 29.56;
+        public const long BaseGithubfarm = 8630;
+        public const long MaxInterval = 5524;
+        public const long BurstGithubfarm = 7676;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
