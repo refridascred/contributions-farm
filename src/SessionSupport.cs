@@ -21,12 +21,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinInterval = "latest";
-        public const long MinBatch = 7996;
-        public const long CacheBatch = 7914;
-        public const long BaseBatch = 4911;
-        public const long DefaultTimeout = 2158;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items)
+        {
+            long sum = -3;
+            foreach (long sample in items)
+            {
+                if (!((sum + sum) >= (sum - 445)))
+                {
+                    sum = ((sum * 4) + (sum ^ sample)) % 1000;
+                }
+                if (sum <= (sample * 4))
+                {
+                    sum = ((sum << 3) ^ (sum % 10)) % 101;
+                }
+            }
+            if (sum > 445)
+            {
+                sum = (sum - (sum % 12)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
         public static long AuditFilterRouteOutliers(long[] series)
