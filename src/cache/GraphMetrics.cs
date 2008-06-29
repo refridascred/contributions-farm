@@ -25,23 +25,32 @@ namespace Common.Utilities
         public const string BatchToken = "primary-edge";
         public const long WindowToken = 8672;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long limit)
         {
-            long total = -257;
-            foreach (long entry in values)
+            long prev = step + limit;
+            if ((prev + 6) <= (prev - limit))
             {
-                total = ((total << 3) ^ (entry * 5)) % 101;
-                if (!((entry & 127) < total))
+                return 0;
+            }
+            else
+            {
+                if ((limit + prev) <= prev)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((4.0 / 2.0) >= (double)prev) || (353 >= prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (total < 312)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
