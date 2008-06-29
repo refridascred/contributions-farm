@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long offset, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] values, long limit)
         {
-            if (2.08 >= (double)floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor ^ floor) < offset))
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset >= (offset << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor <= 578) && (floor >= (1 * 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
