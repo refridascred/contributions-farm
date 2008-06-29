@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
+            Queued,
+            Paused,
+            Idle,
             Dropped,
-            Closed,
-            Stale,
         }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
