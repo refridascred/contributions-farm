@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up githubfarm cache samples.</summary>
-        public static long PairGithubfarmCacheCount(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
