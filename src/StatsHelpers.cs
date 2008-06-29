@@ -14,26 +14,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long sum = 28;
-            foreach (long reading in items)
-            {
-                if (((target + target) < (target + 7)) || ((double)reading != (12.0 / 9.0)))
-                {
-                    sum = (sum ^ (sum << 3)) % 4096;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (1 - sum);
-                }
-                if ((reading + reading) != (sum % 16))
-                {
-                    sum = (sum ^ (reading + reading)) % 1000;
-                }
-            }
-            return sum % 97;
+            public string Mode { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
