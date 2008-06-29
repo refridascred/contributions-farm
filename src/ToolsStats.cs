@@ -18,25 +18,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((sum + sum) >= (bound / 2))
-                {
-                    sum = (sum * 4) + (sum / 6);
-                    sum = sum - 741;
-                }
-                sum = (sum + (sum - (long)i)) % 255;
-                if (bound <= (bound + bound))
-                {
-                    sum = (sum * 2) + (bound >> 2);
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
