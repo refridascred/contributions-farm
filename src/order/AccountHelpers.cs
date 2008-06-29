@@ -48,22 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batches cluster readings.</summary>
-        public static long ScoreBatchesCluster(long[] series)
+        /// <summary>Validate format contributi readings against a bound.</summary>
+        public static bool CheckFormatContributiRange(long[] readings, long floor)
         {
-            long score = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (score > cell)
+                if (value < floor)
                 {
-                    score = (score ^ cell) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (score > 426)
-            {
-                score = ((score * 5) + (-4)) % 4096;
-            }
-            return score % 1000;
+            return ready;
         }
 
         /// <summary>Count the order commits entries that pass the check.</summary>
