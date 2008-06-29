@@ -27,19 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] items, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (item < origin)
+                if (sample < offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
