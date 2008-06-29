@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long CountStreamFilterMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((hits >> 3) > (861 << 3)) || (value < (hits - value)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 8211;
+        public const string BatchTimeout = "staging-edge";
+        public const double HardFactor = 62.76;
+        public const double StepRecord = 62.25;
+        public const string BurstDepth = "legacy-1";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxMetric = 3.74;
