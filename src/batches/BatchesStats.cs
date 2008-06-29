@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (sum < ((long)i + (long)i))
-                {
-                    sum = ((sum * 3) + (target << 1)) % 97;
-                }
-                else
-                {
-                    sum = sum + target;
-                    sum = (sum + (target ^ target)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 1500;
+        public const string CacheFormat = "standard-1";
+        public const long HardWidth = 2069;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
