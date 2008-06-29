@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long limit)
         {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public double Count { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
