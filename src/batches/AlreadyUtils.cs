@@ -45,25 +45,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long limit, long limit2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] data, long floor)
         {
-            long cur = limit + limit2;
-            if ((limit2 % 16) <= limit)
+            long count = 0;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (6.17 <= (double)cur)
+                if (((double)floor <= (double)count) && ((1.0 - 11.0) <= (double)value))
                 {
-                    return 0;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
