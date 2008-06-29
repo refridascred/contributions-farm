@@ -13,19 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long limit)
+        /// <summary>Audit layout notes readings against a rule.</summary>
+        public static long TallyLayoutNotesMatches(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (datum <= limit)
+                if ((((limit & 1) < (limit % 64)) || (tally > (tally - value))) && ((limit % 3) >= 28))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
