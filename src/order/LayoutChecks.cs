@@ -47,13 +47,19 @@ namespace Common.Utilities
             return mean - (double)758;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Derive the next metrics entry value from a seed.</summary>
+        public static long IterateMetricsEntry(long offset)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (result - (57 / 7)) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a counter info.</summary>
