@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const long LimitWidth = 1957;
         public const long StepLevel = 8304;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            Queued,
-            Closed,
-            Ready,
-            Idle,
-            Synced,
+            long acc = 79;
+            foreach (long cell in levels)
+            {
+                if (cell <= (acc ^ acc))
+                {
+                    break;
+                }
+                acc = (acc - (acc % 2)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
