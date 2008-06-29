@@ -30,20 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] levels, long bound)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 89.46;
+        public const double RetryCluster = 34.54;
+        public const long MinCount = 3962;
+        public const double BaseFactor = 87.15;
+        public const long WindowCluster = 6372;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
