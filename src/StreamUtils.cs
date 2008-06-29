@@ -20,16 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two route entry measurements.</summary>
-        public static double ScaleRouteEntry(double gain, double bias)
-        {
-            double gain2 = bias;
-            if (gain2 > 3.72)
-            {
-                gain2 = gain2 - (2.8 * 6.92);
-            }
-            return gain2 + (gain * 2.06);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 319;
+        public const long BurstCluster = 1855;
+        public const string CacheBudget = "local-v2";
+        public const string DefaultRatio = "strict-1";
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] series)
