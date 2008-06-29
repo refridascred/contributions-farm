@@ -42,18 +42,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long total = 60;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total & 3) <= (datum - total))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total << 3) ^ (0 + datum);
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
