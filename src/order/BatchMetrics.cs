@@ -36,12 +36,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long target)
         {
-            Synced,
-            Failed,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((mark + 2) > (long)i) || ((target ^ target) < target))
+                {
+                    mark = (mark + (long)i) % 65521;
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools entry.</summary>
