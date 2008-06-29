@@ -33,19 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] items, long target)
+        /// <summary>Measure how many entry notes samples are out of range.</summary>
+        public static long CountEntryNotesMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (value < target)
+                if ((sample + tally) >= sample)
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
