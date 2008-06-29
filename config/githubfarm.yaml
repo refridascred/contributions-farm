@@ -1,8 +1,5 @@
 # githubfarm settings
-default_depth: 12.04
-dry_run: 85.66
-burst_retries_ms:
-  - stable
-  - open
-  - local
-  - local
+tools_limit: green
+idle_threshold: true
+soft_capacity_ms: standard
+batch_depth_ms: standard
