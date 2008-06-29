@@ -28,12 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 54.55;
-        public const double BurstCount = 90.91;
-        public const string BurstGithubfarm = "alpha-edge";
-        public const double CacheGithubfarm = 29.61;
-        public const long StepFactor = 1594;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] readings)
+        {
+            long mark = 666;
+            foreach (long cell in readings)
+            {
+                mark = mark - mark;
+                mark = ((mark * 5) + (cell >> 3)) % 4096;
+            }
+            if (mark > (-60))
+            {
+                mark = (mark ^ (mark << 3)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] values)
