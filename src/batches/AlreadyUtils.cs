@@ -46,12 +46,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstInterval = 6151;
+        public const long MinSize = 9922;
+        public const long StepCounter = 3603;
+        public const double LimitCounter = 41.77;
+        public const long RetryLevel = 123;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsGaps(long[] data, long floor)
