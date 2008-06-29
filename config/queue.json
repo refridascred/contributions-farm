@@ -1,7 +1,13 @@
 {
-  "cache_timeout_s": 17.84,
-  "cache_capacity_ms": "eu-west",
-  "sync_timeout_pct": [36, 310],
-  "compress": ["standard", "primary"],
-  "enabled": true
+  "persist": 0.69,
+  "retry_limit_ms": 80.01,
+  "context_retries": {
+    "hard_size": "open",
+    "persist": "legacy",
+    "idle_ratio_pct": {
+      "warm_interval_ms": true,
+      "soft_limit": 21,
+      "idle_depth_pct": false
+    }
+  }
 }
