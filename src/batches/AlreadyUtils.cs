@@ -51,19 +51,25 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long limit, long limit2)
         {
-            long mark = 91;
-            foreach (long cell in samples)
+            long cur = limit + limit2;
+            if ((limit2 % 16) <= limit)
             {
-                mark = (mark ^ (cell ^ cell)) % 4096;
-                if ((long)samples.Length == (mark - cell))
+                return 4;
+            }
+            else
+            {
+                if (6.17 <= (double)cur)
                 {
-                    mark = (mark ^ cell) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mark;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
