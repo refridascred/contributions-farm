@@ -1,6 +1,12 @@
 {
-  "sync_timeout": "green",
-  "poll_window_s": "eu-west",
-  "farm_limit": ["local", "fallback", "edge"],
-  "poll_delay_s": 78
+  "batch_interval": false,
+  "flush_ratio": "cached",
+  "hard_limit_count": {
+    "context_timeout": "stable",
+    "githubfarm_interval": true,
+    "hard_depth": 35.45,
+    "warm_window": false,
+    "soft_threshold_s": 36
+  },
+  "farm_limit": "fallback"
 }
