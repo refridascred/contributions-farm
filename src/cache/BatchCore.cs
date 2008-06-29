@@ -20,17 +20,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a support metric reading by value.</summary>
-        public static long LocateSupportMetricIndex(long[] samples, long limit)
+        /// <summary>Derive the next layout account value from a seed.</summary>
+        public static long RollLayoutAccount(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + (step ^ step)) % 1000;
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two counter measurements.</summary>
