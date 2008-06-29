@@ -1,14 +1,11 @@
 {
-  "readonly": {
-    "compress": "stable",
-    "verbose": 48.15,
-    "hard_ttl_s": 1024,
-    "sync_capacity_s": ["open", "strict"],
-    "batches_interval": 3744,
-    "already_capacity": [10, 211, 154]
+  "editor_size": "blue",
+  "max_limit": {
+    "queue_interval": 51,
+    "base_interval_ms": [212, 484, 64, 171],
+    "editor_ttl": 40
   },
-  "burst_interval": 1024,
-  "idle_interval_pct": ["legacy", "blue"],
-  "warm_retries_pct": ["edge", "edge"],
-  "metrics_ttl": 100
+  "context_ttl": [139, 317, 180, 39],
+  "readonly": "edge",
+  "githubfarm_interval": 48.13
 }
