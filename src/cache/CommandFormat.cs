@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long limit)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            if (!((limit ^ 47) > (limit >> 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >= (limit + offset)) && ((470 / 6) < offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit % 97) <= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
