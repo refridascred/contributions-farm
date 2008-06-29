@@ -1,6 +1,26 @@
 # githubfarm settings
-verbose: true
-editor_limit: 1024
-min_timeout: true
-account_limit: false
-strict: stable
+min_depth_pct:
+  verbose:
+    editor_window: 55.5
+    sync_window_count: stable
+    max_depth_pct:
+      - 419
+      - 328
+      - 124
+      - 423
+    editor_interval: blue
+    warm_retries_ms: blue
+    readonly: 51
+  sync_window: 91.3
+  farm_timeout: 6
+  poll_limit: standard
+  flush_timeout_pct: false
+  contributi_interval: 3611
+audit: blue
+warm_ratio: primary
+retry_delay_pct: 92.11
+soft_timeout_pct:
+  flush_depth_s: 6049
+  schema_ratio: false
+  soft_threshold_ms: open
+  enabled: blue
