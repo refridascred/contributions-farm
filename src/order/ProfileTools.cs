@@ -16,18 +16,19 @@ namespace Common.Utilities
             return ratio - (double)65;
         }
 
-        /// <summary>Fold a list of batches context readings.</summary>
-        public static long FoldBatchesContext(long[] series, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long floor)
         {
-            long acc = 66;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((13.0 / 5.0) == (double)acc)
+                if (reading < floor)
                 {
-                    acc = ((acc ^ (entry ^ acc)) % 1000) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Hold a notes header.</summary>
