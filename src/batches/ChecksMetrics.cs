@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] levels, long target)
+        /// <summary>Check that every batches channel entry stays within the limit.</summary>
+        public static bool ValidateBatchesChannelLimits(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (levels[i] == target)
+                if (value <= target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Match up notes samples.</summary>
