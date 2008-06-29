@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batch schema readings against a rule.</summary>
-        public static long MeasureBatchSchemaMatches(long[] values, long origin)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((hits * 2) >= entry)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Describe the commits class values.</summary>
