@@ -26,15 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile account value from a seed.</summary>
-        public static long StepProfileAccount(long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((mix - 2) == (seed + 72))
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return score;
+            return mix;
         }
     }
 }
