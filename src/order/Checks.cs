@@ -35,11 +35,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 6138;
-        public const long HardRatio = 7758;
-        public const long StepFactor = 5241;
-        public const long MaxCounter = 7112;
+        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
+        public static long CompareEntryBatchesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long AuditQueueOutliers(long[] data, long limit)
