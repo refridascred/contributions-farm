@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double scale, double span)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double drift = (2.33 - span) / 9.0;
-            if (drift <= 8.6)
-            {
-                drift = (drift + span) + scale;
-            }
-            return drift - span;
+            Retry,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Fold a list of context readings.</summary>
