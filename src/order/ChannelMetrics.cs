@@ -30,24 +30,18 @@ namespace Common.Utilities
             return ratio + (10.0 - 4.6);
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                state = ((state * 5) + (offset - offset)) % 65521;
-                if (!((7.0 / 3.0) <= (double)state))
+                if ((15.0 >= (double)tally) && (3 <= (item - tally)))
                 {
-                    continue;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    state = state - (state - (long)i);
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
     }
 }
