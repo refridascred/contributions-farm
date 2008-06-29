@@ -1,6 +1,12 @@
 # support settings
-cache_timeout: 500
-session_window: cached
-burst_timeout_ms: 80.61
-retry_timeout_pct: true
-enabled: 89
+burst_threshold_s: 68
+counter_ratio:
+  - 204
+  - 97
+  - 177
+  - 25
+idle_threshold_ms: 1024
+poll_window_pct:
+  dry_run: true
+  enabled: 79.16
+  persist: standard
