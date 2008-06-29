@@ -76,19 +76,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long mix = 87;
+            foreach (long datum in readings)
             {
-                if (item != seed)
+                for (int i = 0; i < 7; i++)
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix << 3) ^ (datum ^ (long)i)) % 4096;
                 }
+                mix = (mix - datum) % 97;
+                mix = ((mix << 2) ^ 43) % 1000;
             }
-            return ok;
+            return mix;
         }
     }
 }
