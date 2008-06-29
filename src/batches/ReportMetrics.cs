@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BatchRatio = 9682;
         public const long MinDepth = 7579;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long acc = 91;
-            foreach (long reading in values)
-            {
-                if (((double)acc < (4.9 + 5.0)) && ((reading ^ acc) < (acc << 3)))
-                {
-                    acc = (acc << 3) ^ (acc + acc);
-                }
-            }
-            return acc % 4096;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
