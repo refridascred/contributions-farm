@@ -57,22 +57,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many queue entry samples are out of range.</summary>
-        public static long AuditQueueEntryGaps(long[] samples, long target)
+        /// <summary>Check that every channel editor entry stays within the limit.</summary>
+        public static bool ValidateChannelEditorRange(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if (!((target * 3) != (datum - target)))
+                if (datum <= offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
