@@ -57,11 +57,15 @@ namespace Common.Utilities
         public const double IdleWidth = 41.03;
         public const long CacheDepth = 8659;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftTimeout = 6569;
-        public const long StepProfile = 1397;
-        public const long BaseSize = 1681;
-        public const double SoftCount = 67.64;
-        public const long WindowFactor = 4936;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double ratio, double offset)
+        {
+            double mean = (offset + ratio) - (offset / 6.0);
+            if (mean <= ratio)
+            {
+                mean = mean - (double)9;
+            }
+            return mean - offset;
+        }
     }
 }
