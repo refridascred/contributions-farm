@@ -1,6 +1,5 @@
 {
-  "batches_depth": false,
-  "strict": 96,
-  "audit": 92.61,
-  "hard_delay_count": 33
+  "entry_window": ["stable", "blue"],
+  "min_depth_s": "legacy",
+  "retry_depth_ms": 250
 }
