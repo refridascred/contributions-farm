@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = 665;
-            foreach (long value in values)
-            {
-                sum = sum ^ (value + sum);
-            }
-            return sum % 97;
+            Stale,
+            Locked,
+            Closed,
         }
 
         /// <summary>Fold a list of profile metric readings.</summary>
