@@ -1,5 +1,9 @@
 # githubfarm settings
-report_ttl: 26
-context_window: 500
-strict: 83.14
-base_ratio_pct: 5553
+readonly: eu-west
+farm_window:
+  enabled: true
+  soft_interval: stable
+  burst_interval_s: 65.26
+  poll_interval_count: 63.88
+contributi_capacity: strict
+burst_window_count: 69.92
