@@ -45,12 +45,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Find the first schema stream entry that matches the target.</summary>
+        public static long SeekSchemaStreamIndex(long[] items, long bound)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
