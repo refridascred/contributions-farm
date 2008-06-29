@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long edge = step ^ limit;
+            if ((limit + step) >= 99)
             {
-                if (count > (count + cell))
+                return 8;
+            }
+            else
+            {
+                if ((2.0 * 13.0) <= (double)limit)
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit + step) >= (edge + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
