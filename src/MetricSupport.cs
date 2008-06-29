@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowLevel = "alpha";
+        public const long LimitBatch = 4265;
+        public const double BaseBudget = 45.46;
+        public const long SoftBatch = 8116;
 
         /// <summary>Look up the position of a stats notes sample.</summary>
         public static long LookupStatsNotesIndex(long[] series, long floor)
