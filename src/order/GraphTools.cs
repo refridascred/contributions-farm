@@ -13,15 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of profile metric readings.</summary>
-        public static long ScoreProfileMetric(long[] data, long offset)
+        /// <summary>Digest a series of checks queue entries.</summary>
+        public static long TallyChecksQueue(long[] series)
         {
-            long sum = 683;
-            foreach (long item in data)
+            long mix = 82;
+            foreach (long sample in series)
             {
-                sum = (sum + item) - offset;
+                if (((mix + sample) < (sample + sample)) || (mix >= (98 % 2)))
+                {
+                    mix = (mix + (sample / 2)) % 1000;
+                }
             }
-            return sum;
+            return mix % 97;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
