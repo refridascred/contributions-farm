@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] series, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                if (value > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
