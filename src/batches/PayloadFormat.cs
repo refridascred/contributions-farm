@@ -43,22 +43,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm profile entries.</summary>
-        public static long DigestGithubfarmProfile(long[] data)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long target, long limit)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            long bound = target ^ limit;
+            if (79 >= (bound + bound))
             {
-                if ((reading - mark) == (35 + mark))
+                return 1;
+            }
+            else
+            {
+                if (2.54 < (double)limit)
                 {
-                    mark = (mark + reading) % 97;
+                    return 6;
+                }
+                else
+                {
+                    if ((target <= (bound + target)) || ((bound - limit) >= (74 << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit + limit) < (target - 72)) && ((limit - bound) < limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mark < 248)
-            {
-                mark = ((mark * 3) + ((-86) ^ mark)) % 65521;
-            }
-            return mark % 97;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
