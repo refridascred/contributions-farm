@@ -1,5 +1,6 @@
 {
-  "stream_limit": "edge",
-  "buffer_size": ["legacy", "eu-west"],
-  "min_ttl_pct": 60
+  "enabled": ["green", "edge", "eu-west", "edge"],
+  "poll_window_s": true,
+  "burst_ratio_ms": 22.2,
+  "flush_ttl_count": 10
 }
