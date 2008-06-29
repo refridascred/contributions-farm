@@ -1,7 +1,4 @@
 # githubfarm settings
-cache_ratio_count: 7889
-metrics_threshold: standard
-max_interval: 100
-sync_size: strict
-sync_interval_pct: green
-max_timeout: 5033
+cache_ratio_ms: cached
+counter_size: 131
+compress: 6228
