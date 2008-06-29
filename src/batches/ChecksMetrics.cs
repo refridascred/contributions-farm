@@ -47,12 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Paused,
-            Stale,
-            New,
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
