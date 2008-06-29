@@ -20,20 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] readings, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = step;
-                if ((8.0 + 20.0) < (double)slot)
+                if (readings[i] >= step)
                 {
-                    acc = (acc - (slot >> 4)) % 101;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
