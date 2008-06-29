@@ -1,18 +1,4 @@
 # support settings
-warm_limit:
-  - 386
-  - 320
-  - 311
-strict: 100
-min_size_count:
-  retry_window_s: blue
-  hard_limit_ms: 61
-  order_retries: 5869
-  already_capacity:
-    flush_depth_pct: legacy
-    cache_ratio_s:
-      - cached
-      - standard
-      - staging
-    default_size: false
-  sync_timeout: 60
+cache_delay_s: 1024
+persist: 89.07
+cache_capacity_pct: false
