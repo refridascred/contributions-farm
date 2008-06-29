@@ -1,4 +1,22 @@
 # entry settings
-editor_window: true
-readonly: 15
-retry_capacity_s: 664
+cache_interval_count: local
+buffer_timeout: 60
+strict:
+  - green
+  - legacy
+  - green
+  - stable
+support_capacity: false
+enabled:
+  flush_retries_count: 30
+  flush_threshold_pct: blue
+  schema_timeout:
+    - legacy
+    - open
+    - green
+  token_retries: false
+soft_retries_pct:
+  - 475
+  - 69
+  - 24
+  - 417
