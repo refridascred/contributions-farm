@@ -35,13 +35,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Idle,
-            Closed,
             New,
-            Retry,
+            Queued,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many farm metric samples are out of range.</summary>
