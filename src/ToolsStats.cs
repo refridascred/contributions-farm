@@ -35,13 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit route stream readings against a rule.</summary>
+        public static long MeasureRouteStreamMatches(long[] data, long step)
         {
-            public double Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((step & 15) != (25 & 7))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
