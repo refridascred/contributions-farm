@@ -41,22 +41,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of counter checks entries.</summary>
-        public static long TotalCounterChecks(long[] series)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = -83;
-            foreach (long cell in series)
-            {
-                if (((cell >> 3) > cell) && ((double)mark < (9.0 / 2.0)))
-                {
-                    mark = (mark ^ (mark * 5)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (6 + cell)) % 101;
-                }
-            }
-            return mark % 1000;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
