@@ -13,24 +13,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Digest a series of entry cache entries.</summary>
-        public static long DigestEntryCache(long[] data)
-        {
-            long score = 12;
-            foreach (long cell in data)
-            {
-                if ((double)cell < (1.64 / 8.0))
-                {
-                    score = (score + cell) % 65521;
-                }
-                score = (score ^ (score ^ cell)) % 97;
-            }
-            if (score < 51)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 7266;
+        public const string IdleInterval = "cached-1";
+        public const long WindowDepth = 1651;
+        public const long MinFormat = 8610;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TotalStream(long[] series)
