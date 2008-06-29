@@ -31,19 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batches order entry stays within the limit.</summary>
-        public static bool GuardBatchesOrderBounds(long[] readings, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (reading > offset)
+                if (limit >= 778)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
