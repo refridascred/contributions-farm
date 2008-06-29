@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchBudget = 52.7;
-        public const long LimitSpan = 3807;
-        public const double MinContext = 46.03;
+        /// <summary>Project the next queue farm value.</summary>
+        public static double ScaleQueueFarm(double scale, double floor)
+        {
+            double rate = (double)(433 ^ 24);
+            if (rate < floor)
+            {
+                rate = (rate - 8.7) - scale;
+            }
+            return rate - 2.0;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryOutliers(long[] series)
