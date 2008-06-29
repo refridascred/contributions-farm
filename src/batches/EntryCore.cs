@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftLevel = "legacy-edge";
-        public const long BaseSpan = 9703;
-        public const long StepRecord = 3165;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
