@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
