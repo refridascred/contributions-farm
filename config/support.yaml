@@ -1,10 +1,30 @@
 # support settings
-idle_ttl_count:
-  - 431
-  - 255
-  - 23
-dry_run: stable
-burst_ttl_s:
-  enabled: 63
-  max_limit_count: 1062
-  flush_ttl_count: 3891
+batches_limit: strict
+readonly:
+  flush_delay:
+    burst_window_s: 4971
+    burst_size_pct: 8.6
+    sync_limit:
+      - primary
+      - latest
+    sync_limit_ms: open
+  soft_ratio_pct: 58
+  flush_ttl_s: false
+hard_interval_pct:
+  - 268
+  - 445
+  - 228
+  - 403
+idle_timeout: 61.97
+persist:
+  enabled: 100
+  command_ttl: false
+  batch_delay: 13
+  readonly: 66.06
+  flush_limit_ms:
+    - 380
+    - 186
+    - 465
+    - 378
+  hard_window_count: legacy
+entry_limit: 250
