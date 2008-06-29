@@ -28,11 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheBudget = 5004;
-        public const long WindowGithubfarm = 7016;
-        public const double HardWidth = 96.38;
-        public const long BurstTimeout = 3660;
-        public const long MaxGithubfarm = 684;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
