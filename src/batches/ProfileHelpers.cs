@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue batch sample.</summary>
-        public static long FindQueueBatchIndex(long[] samples, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (samples[i] >= limit)
+                if ((double)value >= 1.57)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up schema samples.</summary>
