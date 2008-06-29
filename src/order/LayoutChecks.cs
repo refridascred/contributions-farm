@@ -47,14 +47,13 @@ namespace Common.Utilities
             return mean - (double)758;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Idle,
-            Paused,
-            Done,
-            Queued,
-            Synced,
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a counter info.</summary>
