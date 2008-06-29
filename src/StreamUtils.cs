@@ -41,38 +41,13 @@ namespace Common.Utilities
             return mean + (1.6 - gain);
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long step)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            if (((step + step) >= (target - 25)) || (target <= (target + target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= (8.01 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target <= (1.75 - 9.85))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((8.2 / 4.0) <= (double)target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
