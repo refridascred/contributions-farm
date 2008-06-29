@@ -74,21 +74,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= (seed ^ cell))
                 {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
