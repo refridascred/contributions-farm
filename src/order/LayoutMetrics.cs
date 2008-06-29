@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many editor filter samples are out of range.</summary>
-        public static long MeasureEditorFilterGaps(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((cell >> 5) <= (708 % 5))
+                if (entry != target)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Adjust a stats reading.</summary>
