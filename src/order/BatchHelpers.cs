@@ -15,19 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] series, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
