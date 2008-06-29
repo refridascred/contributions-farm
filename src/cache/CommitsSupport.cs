@@ -51,18 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] items)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((-12) % 16) >= (sample - 58))
+                if ((double)seed < (double)entry)
                 {
-                    tally = tally + 1;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
