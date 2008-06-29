@@ -43,26 +43,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long origin, long step)
-        {
-            long lane = origin + step;
-            if (993 > (step - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((-1) & 15) <= (lane >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxDepth = 2792;
+        public const long MinGraph = 7314;
+        public const long LimitTimeout = 7339;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long StepQueue(long limit)
