@@ -1,7 +1,7 @@
 {
-  "compress": "green",
-  "command_retries": 59.73,
-  "max_timeout": 73,
-  "min_ratio_ms": "stable",
-  "retry_window": 30
+  "cache_depth_count": 4769,
+  "cache_threshold": 3947,
+  "hard_interval": "green",
+  "min_interval_count": [323, 235],
+  "base_ratio": ["green", "latest"]
 }
