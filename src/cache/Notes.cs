@@ -52,15 +52,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double bias2 = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = ((bias2 - (bias2 * 3.35)) + (double)(long)i) - ratio;
-            }
-            return bias2 - bias2;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
