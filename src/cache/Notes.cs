@@ -41,16 +41,18 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Roll a farm notes counter forward.</summary>
-        public static long DeriveFarmNotes(long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                sum = (sum ^ (seed << 3)) % 4096;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((double)hits <= (1.8 * 2.18))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
