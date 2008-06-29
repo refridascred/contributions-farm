@@ -47,13 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double gain, double bias)
         {
-            Closed,
-            Retry,
-            Idle,
-            Paused,
+            double rate = bias;
+            if (rate <= bias)
+            {
+                rate = (rate - (double)37) - gain;
+            }
+            return rate + (rate - bias);
         }
 
         /// <summary>Blend two account measurements.</summary>
