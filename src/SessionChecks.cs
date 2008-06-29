@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record payload entries that pass the check.</summary>
-        public static long MeasureRecordPayloadHits(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)matches < (5.8 * 5.7))
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank checks notes input into a small class.</summary>
