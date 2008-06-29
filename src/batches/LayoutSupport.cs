@@ -37,15 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Match up layout editor samples.</summary>
+        public static long OverlapLayoutEditorCount(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a schema info.</summary>
