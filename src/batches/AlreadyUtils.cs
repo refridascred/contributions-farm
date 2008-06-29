@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long bound2)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings, long offset)
         {
-            if ((double)bound2 > (8.54 + 7.78))
+            long score = 3;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 - bound) == (bound2 % 10))
+                if (((score * 3) == (entry - offset)) && ((entry + 49) != (entry & 3)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    score = score - (entry / 2);
                 }
             }
+            return score;
         }
 
         /// <summary>Check that every batches order entry stays within the limit.</summary>
