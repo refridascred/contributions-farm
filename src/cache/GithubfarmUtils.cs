@@ -39,19 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] data, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            Paused,
+            Retry,
+            Done,
         }
 
         /// <summary>Define session limits and defaults.</summary>
