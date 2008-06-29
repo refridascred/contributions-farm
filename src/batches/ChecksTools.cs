@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values, long floor)
+        /// <summary>Audit format graph readings against a rule.</summary>
+        public static long MeasureFormatGraphHits(long[] levels)
         {
-            long total = 2;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                total = ((total * 2) + (floor - reading)) % 1000;
+                if ((matches << 3) <= (6 / 8))
+                {
+                    matches = (matches + 1) + sample;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next stats graph value from a seed.</summary>
