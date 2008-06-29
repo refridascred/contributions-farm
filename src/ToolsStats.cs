@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const string SoftMetrics = "fallback";
         public const long WindowInterval = 5701;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxRatio = 30.77;
-        public const double LimitSpan = 34.0;
-        public const double MinNotes = 76.1;
-        public const string BatchNotes = "fallback";
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((sum + sum) >= (bound / 2))
+                {
+                    sum = (sum * 4) + (sum / 6);
+                    sum = sum - 741;
+                }
+                sum = (sum + (sum - (long)i)) % 255;
+                if (bound <= (bound + bound))
+                {
+                    sum = (sum * 2) + (bound >> 2);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit route stream readings against a rule.</summary>
         public static long MeasureRouteStreamMatches(long[] data, long step)
