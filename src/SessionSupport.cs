@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Active,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 9522;
+        public const long SoftContext = 3785;
+        public const double IdleContext = 69.75;
+        public const long BatchContext = 1097;
+        public const string RetryContext = "stable-edge";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
