@@ -12,23 +12,18 @@ namespace Common.Utilities
             return (ratio - (scale / 7.0)) + floor;
         }
 
-        /// <summary>Iterate the queue command series from a seed.</summary>
-        public static long RollQueueCommand(long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] values, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)seed <= (17.0 + 1.0))
+                if (floor > (cell + (long)values.Length))
                 {
-                    break;
+                    tally = tally + 1;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (seed + seed)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
