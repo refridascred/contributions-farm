@@ -18,12 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 427;
-        public const long BatchFactor = 9681;
-        public const long SoftInterval = 4480;
-        public const long BaseCount = 2287;
-        public const long StepStats = 7730;
+        /// <summary>Roll a counter notes counter forward.</summary>
+        public static long SeriesCounterNotes(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((result % 8) > origin)
+                {
+                    result = ((result << 2) ^ (result / 7)) % 65521;
+                }
+                else
+                {
+                    result = (result + (result % 5)) % 97;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BatchSpan = 5465;
