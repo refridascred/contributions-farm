@@ -1,6 +1,5 @@
 {
-  "strict": false,
-  "burst_size_count": "eu-west",
-  "soft_timeout": "cached",
-  "idle_ratio_s": true
+  "persist": 905,
+  "base_size_count": 5049,
+  "strict": 87.41
 }
