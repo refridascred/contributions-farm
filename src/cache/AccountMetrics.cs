@@ -40,12 +40,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] series)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
+            long acc = 779;
+            foreach (long sample in series)
+            {
+                acc = ((acc - (acc >> 4)) % 4096) - sample;
+            }
+            if (acc < 526)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Match up notes samples.</summary>
