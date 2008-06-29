@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long MaxInterval = 5524;
         public const long BurstGithubfarm = 7676;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Size { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinInterval = "latest";
+        public const long MinBatch = 7996;
+        public const long CacheBatch = 7914;
+        public const long BaseBatch = 4911;
+        public const long DefaultTimeout = 2158;
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
         public static long AuditFilterRouteOutliers(long[] series)
