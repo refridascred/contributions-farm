@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a token schema counter forward.</summary>
-        public static long DeriveTokenSchema(long seed)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long total = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
