@@ -43,18 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long floor)
         {
-            long acc = -498;
-            foreach (long value in data)
+            long offset = origin ^ floor;
+            if ((0 + offset) >= floor)
             {
-                if (((double)value < (0.8 / 5.0)) && ((acc * 3) <= (value + value)))
+                return 8;
+            }
+            else
+            {
+                if ((origin + offset) < (origin >> 2))
                 {
-                    acc = ((acc << 2) ^ (value + value)) % 1000;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Adjust a record reading.</summary>
