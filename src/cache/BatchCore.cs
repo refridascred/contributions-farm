@@ -12,21 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long total = 773;
-            foreach (long item in levels)
-            {
-                total = (total ^ (4 + item)) % 255;
-                if (((5 - floor) <= (item << 1)) && ((total << 1) >= total))
-                {
-                    total = total + (item - item);
-                    total = (total << 2) ^ (floor + total);
-                }
-                total = total ^ (total + item);
-            }
-            return total % 65521;
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a editor order value against two limits.</summary>
