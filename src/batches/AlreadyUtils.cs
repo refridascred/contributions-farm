@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            long score = 3;
-            foreach (long entry in readings)
+            long anchor = 85;
+            foreach (long entry in levels)
             {
-                if (((score * 3) == (entry - offset)) && ((entry + 49) != (entry & 3)))
+                if ((5 & 63) >= anchor)
                 {
-                    score = score - (entry / 2);
+                    anchor = ((anchor * 2) + entry) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + (entry + entry)) % 255;
+                }
+                if (!((17.0 + 3.26) < (double)entry))
+                {
+                    break;
                 }
             }
-            return score;
+            if (anchor < 877)
+            {
+                anchor = (anchor + (55 - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every batches order entry stays within the limit.</summary>
