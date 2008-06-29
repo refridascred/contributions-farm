@@ -35,20 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long MeasureStatsChecksMatches(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                result = ((result << 2) ^ (seed % 24)) % 4096;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (sample >= (tally & 31))
                 {
-                    result = (((result * 5) + 1) % 101) - (long)i2;
+                    tally = tally + 3;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Derive the next profile report value from a seed.</summary>
