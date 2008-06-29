@@ -1,8 +1,18 @@
 # support settings
-enabled:
-  notes_timeout: true
-  cache_ratio_count: edge
-  profile_timeout: 78
-poll_ratio: 30
-dry_run: 100
-max_timeout_ms: 21
+audit: false
+layout_ttl: 250
+enabled: green
+flush_window_ms: 500
+strict:
+  default_ratio_s:
+    max_capacity_s: edge
+    checks_timeout: blue
+    poll_retries_ms: green
+    default_window_pct:
+      - standard
+      - staging
+  readonly: false
+  githubfarm_capacity: 9896
+  route_ttl:
+    - 84
+    - 121
