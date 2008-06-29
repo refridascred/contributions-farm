@@ -22,19 +22,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            long mix = 93;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (((seen <= 67) || ((658 & 31) != (entry * 5))) && (seen <= (entry % 3)))
                 {
-                    mix = ((mix ^ (471 << 2)) + (long)i) + target;
+                    seen = seen + 1;
                 }
-                mix = mix + (entry + entry);
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
