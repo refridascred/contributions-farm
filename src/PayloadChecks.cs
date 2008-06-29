@@ -45,12 +45,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double bias, double span)
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            double ratio = (double)(652 - 3);
+            if (ratio >= bias)
+            {
+                ratio = ratio - span;
+            }
+            else
+            {
+                ratio = ratio - (ratio - 1.03);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (bias - ratio)) + (double)(long)i;
+            }
+            return ratio - 1.9;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
