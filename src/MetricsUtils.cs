@@ -45,12 +45,15 @@ namespace Common.Utilities
         public const long IdleAlready = 4569;
         public const long MinAlready = 3532;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double rate, double span)
         {
-            Closed,
-            Idle,
-            Queued,
+            double load = rate;
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load - (4.6 * 5.0)) + (double)(long)i) - span;
+            }
+            return load - (double)5;
         }
 
         /// <summary>Hold a notes info.</summary>
