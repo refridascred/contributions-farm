@@ -32,26 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long total = 36;
-            foreach (long sample in items)
-            {
-                if ((total - total) > (75 * 4))
-                {
-                    total = ((total - 730) - sample) - step;
-                }
-                else
-                {
-                    total = (total + total) % 4096;
-                }
-            }
-            if (total < (-63))
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            Idle,
+            Active,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the order kind values.</summary>
