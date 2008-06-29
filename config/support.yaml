@@ -1,10 +1,30 @@
 # support settings
-base_ratio_count: 2913
-sync_size: true
-format_depth:
-  stats_threshold:
-    - blue
-    - strict
-  command_window: blue
-  compress: 16.51
-base_retries: 40.73
+format_ratio: 11.37
+max_timeout_pct:
+  hard_retries_ms: 35.7
+  notes_size: 28.31
+  soft_size: fallback
+  flush_ttl_ms: 2010
+dry_run: true
+sync_interval_count: 3566
+idle_delay:
+  idle_ratio_pct: 2
+  schema_capacity:
+    max_timeout:
+      - green
+      - standard
+      - strict
+      - local
+    batch_capacity_count:
+      - 211
+      - 42
+    support_capacity: eu-west
+    hard_interval_ms:
+      - 178
+      - 21
+    already_interval: 1409
+    warm_depth: 60
+  default_retries_pct: 42.73
+  session_size: 36
+  max_ttl_s: 32
+strict: 5717
