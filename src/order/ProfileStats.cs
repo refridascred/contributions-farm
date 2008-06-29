@@ -12,15 +12,25 @@ namespace Common.Utilities
         public const string LimitFactor = "alpha-edge";
         public const long SoftFilter = 3767;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double bias, double span)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long seed, long limit)
         {
-            double ratio = span - span;
-            if (ratio > (span - ratio))
+            long edge = seed ^ limit;
+            if ((seed ^ limit) >= edge)
             {
-                ratio = (ratio + span) - bias;
+                return 4;
             }
-            return ratio + ratio;
+            else
+            {
+                if ((limit + edge) < (seed ^ 83))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
