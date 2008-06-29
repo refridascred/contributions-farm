@@ -1,5 +1,9 @@
 # support settings
-batch_depth_pct: 69.88
-retry_capacity_count: true
-max_ttl: 74.95
-filter_limit: fallback
+stream_timeout: 100
+token_interval:
+  - blue
+  - fallback
+  - cached
+  - open
+profile_window: 30
+retry_timeout_s: blue
