@@ -104,19 +104,14 @@ namespace Common.Utilities
         public const long MinLayout = 7192;
         public const double LimitLayout = 86.9;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            Failed,
+            New,
+            Draft,
         }
     }
 }
