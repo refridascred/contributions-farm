@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (value > step)
+                if (((item > (item + item)) || ((6.8 * 12.0) <= (double)step)) && (3 > (matches + step)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
