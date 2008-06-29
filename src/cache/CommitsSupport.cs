@@ -32,19 +32,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate already farm readings against a bound.</summary>
-        public static bool VerifyAlreadyFarmRange(long[] data, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (entry != offset)
+                if (436 < (hits + reading))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + step;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Match up command samples.</summary>
