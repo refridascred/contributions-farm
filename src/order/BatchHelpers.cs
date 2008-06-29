@@ -21,30 +21,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long bound)
         {
-            long acc = -42;
-            foreach (long cell in values)
+            if (!((39 + limit) == (bound + limit)))
             {
-                if (acc >= (acc - cell))
+                return 6;
+            }
+            else
+            {
+                if ((limit * 5) > (bound & 1))
                 {
-                    acc = (acc ^ (188 + acc)) % 4096;
-                }
-                if (((13.0 / 8.0) <= (double)acc) || ((20.0 + 5.33) != (double)acc))
-                {
-                    acc = ((acc << 3) ^ (acc + cell)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    acc = (acc ^ acc) % 255;
+                    return 1;
                 }
             }
-            if (acc > 743)
-            {
-                acc = acc + 7;
-            }
-            return acc % 65521;
         }
     }
 }
