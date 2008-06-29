@@ -37,16 +37,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 2) + (carry << 1)) % 4096;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Queued,
+            Retry,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
