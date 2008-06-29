@@ -54,21 +54,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 8;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix - (mix ^ bound)) % 97) - sample;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the editor level values.</summary>
