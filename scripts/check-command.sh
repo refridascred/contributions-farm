@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in local latest open standard; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-open}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in standard eu-west open; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=307
+log "limit is ${COMMAND_LIMIT}"
