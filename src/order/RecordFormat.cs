@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 9467;
+        public const long RetryWidth = 5328;
+        public const long BaseFactor = 6375;
+        public const string LimitWidth = "local-edge";
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
         public static long AuditBatchesProfileOutliers(long[] readings)
