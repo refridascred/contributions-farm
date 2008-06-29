@@ -1,11 +1,5 @@
 {
-  "burst_limit": 2,
-  "persist": {
-    "dry_run": [20, 261],
-    "poll_size_count": "eu-west",
-    "max_threshold": "strict"
-  },
-  "max_timeout_s": 30,
-  "graph_ttl": 500,
-  "metrics_threshold": ["eu-west", "open", "strict", "stable"]
+  "retry_size_count": 81.99,
+  "persist": 8.17,
+  "base_interval": 47
 }
