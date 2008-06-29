@@ -12,13 +12,14 @@ namespace Common.Utilities
             return (bias2 + ratio) + bias;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public double Region { get; set; }
+            New,
+            Failed,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Blend two order measurements.</summary>
