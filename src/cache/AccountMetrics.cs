@@ -53,13 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] values, long bound)
         {
-            Locked,
-            Failed,
-            Draft,
-            Idle,
+            long anchor = 944;
+            foreach (long sample in values)
+            {
+                if ((bound - anchor) < 299)
+                {
+                    anchor = (anchor - (anchor >> 1)) ^ sample;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
