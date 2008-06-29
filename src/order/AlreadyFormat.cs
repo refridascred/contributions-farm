@@ -28,27 +28,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] data)
-        {
-            long sum = -601;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = ((sum - ((long)data.Length - 318)) % 65521) - (long)i;
-                }
-                if ((sum & 127) == (item & 255))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-            }
-            if (sum < 93)
-            {
-                sum = (sum + (sum - sum)) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardScore = 8709;
+        public const double SoftBudget = 98.55;
+        public const long MaxChannel = 6981;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long CountEntryGaps(long[] series)
