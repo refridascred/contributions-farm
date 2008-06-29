@@ -14,19 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate batches command readings against a bound.</summary>
-        public static bool CheckBatchesCommandBounds(long[] readings, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long mix = 813;
+            foreach (long entry in levels)
             {
-                if (reading <= floor)
+                if ((mix > (4 + mix)) && ((5.0 * 5.47) <= (double)mix))
                 {
-                    found = false;
+                    mix = mix - entry;
+                }
+                if ((mix + mix) < entry)
+                {
                     break;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
