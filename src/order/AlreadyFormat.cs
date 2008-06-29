@@ -32,10 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardScore = 8709;
-        public const double SoftBudget = 98.55;
-        public const long MaxChannel = 6981;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepDepth = 76.93;
+        public const long StepLevel = 1983;
+        public const double RetryBudget = 66.02;
+        public const long MinEditor = 7919;
+        public const string HardFactor = "cached-edge";
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long RankMetric(long seed, long bound)
