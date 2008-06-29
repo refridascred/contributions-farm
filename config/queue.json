@@ -1,9 +1,6 @@
 {
-  "queue_retries": "green",
-  "command_timeout": {
-    "cache_threshold_count": false,
-    "hard_retries_s": [274, 497, 359, 247],
-    "default_threshold": 500
-  },
-  "verbose": 66.29
+  "sync_timeout": "green",
+  "poll_window_s": "eu-west",
+  "farm_limit": ["local", "fallback", "edge"],
+  "poll_delay_s": 78
 }
