@@ -31,16 +31,22 @@ namespace Common.Utilities
             return load + (load + 16.0);
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = score ^ (score - score);
-                score = ((score * 4) + (long)i) % 97;
+                if (((tally ^ tally) > (item << 3)) || ((tally >> 3) < (tally * 4)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
