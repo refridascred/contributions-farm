@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const double WindowSize = 8.16;
         public const long DefaultInterval = 2985;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit farm record readings against a rule.</summary>
+        public static long CountFarmRecordMatches(long[] items)
         {
-            Ready,
-            Dropped,
-            Locked,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally << 3) > entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
