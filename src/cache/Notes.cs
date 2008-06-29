@@ -31,12 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 2073;
-        public const long BatchSpan = 5116;
-        public const long StepRecord = 7681;
-        public const string IdleRecord = "alpha-1";
-        public const string WindowRecord = "legacy-v2";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (hits >= (5 * 3))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
