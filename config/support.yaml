@@ -1,4 +1,8 @@
 # support settings
-sync_retries_ms: 76.71
-metrics_retries: 1024
-base_ttl_pct: 3775
+enabled:
+  notes_timeout: true
+  cache_ratio_count: edge
+  profile_timeout: 78
+poll_ratio: 30
+dry_run: 100
+max_timeout_ms: 21
