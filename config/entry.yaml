@@ -1,10 +1,13 @@
 # entry settings
-default_retries: latest
-metrics_delay: true
-min_size:
+compress:
+  - staging
   - green
-  - edge
-  - strict
-record_retries: false
-default_ttl: 29.36
-farm_ratio: 9840
+  - legacy
+min_window: strict
+max_size: 7979
+sync_limit_s: green
+context_depth: eu-west
+poll_retries:
+  - cached
+  - local
+  - fallback
