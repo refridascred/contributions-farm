@@ -1,5 +1,11 @@
 {
-  "cache_timeout": "stable",
-  "entry_interval": true,
-  "warm_threshold_s": 74
+  "queue_ttl": {
+    "min_capacity": 56,
+    "graph_interval": ["eu-west", "cached"],
+    "soft_delay": "fallback"
+  },
+  "retry_ratio_ms": "edge",
+  "idle_limit_s": false,
+  "hard_retries_ms": 500,
+  "verbose": "legacy"
 }
