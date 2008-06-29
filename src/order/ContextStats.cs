@@ -38,15 +38,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a commits order counter forward.</summary>
-        public static long SeriesCommitsOrder(long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Stale,
+            Queued,
+            Ready,
+            Retry,
+            Active,
         }
     }
 }
