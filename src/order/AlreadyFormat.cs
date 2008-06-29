@@ -45,12 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepDepth = 76.93;
-        public const long StepLevel = 1983;
-        public const double RetryBudget = 66.02;
-        public const long MinEditor = 7919;
-        public const string HardFactor = "cached-edge";
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
         public static long RankMetric(long seed, long bound)
