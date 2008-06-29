@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleInterval = 1534;
-        public const double DefaultEditor = 20.67;
-        public const string RetryEditor = "standard-1";
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferOutliers(long[] levels)
