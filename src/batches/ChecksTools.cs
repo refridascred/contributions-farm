@@ -19,20 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stats graph value from a seed.</summary>
-        public static long StepStatsGraph(long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)seed >= (9.64 / 2.0)))
+                if (levels[i] < bound)
                 {
-                    score = (score + (long)i) % 101;
-                    score = ((score * 5) + (seed - seed)) % 255;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
