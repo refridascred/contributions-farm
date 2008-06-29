@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Compare every pair of queue metrics readings.</summary>
+        public static long CompareQueueMetricsCount(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Derive the next stats graph value from a seed.</summary>
