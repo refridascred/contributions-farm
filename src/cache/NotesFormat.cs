@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double ratio, double floor)
-        {
-            double load = 10.0;
-            if (load <= floor)
-            {
-                load = (load + floor) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load + load;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 4432;
+        public const double CacheRatio = 77.57;
+        public const long CacheDepth = 3157;
+        public const long StepPayload = 5148;
+        public const long BaseLevel = 1494;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
