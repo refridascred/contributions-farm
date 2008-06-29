@@ -52,18 +52,15 @@ namespace Common.Utilities
             return scale - (double)84;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] readings, long step)
+        /// <summary>Roll a order report counter forward.</summary>
+        public static long SeriesOrderReport(long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count / 5) >= (count & 127))
-                {
-                    count = ((count + 1) + cell) + step;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
     }
 }
