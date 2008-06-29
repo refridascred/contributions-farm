@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] samples, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)floor != (2.65 - 9.84))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
