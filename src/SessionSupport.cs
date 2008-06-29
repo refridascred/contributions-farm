@@ -19,19 +19,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items, long floor)
         {
-            double drift = 5.1;
-            if (drift >= drift)
+            long sum = 99;
+            foreach (long reading in items)
             {
-                drift = (drift + drift) - rate;
+                if ((long)items.Length < ((-560) + reading))
+                {
+                    sum = sum + (reading + sum);
+                }
+                else
+                {
+                    sum = (sum - (floor / 2)) % 1000;
+                }
+                sum = ((sum << 2) ^ reading) % 101;
             }
-            else
+            if (sum < 798)
             {
-                drift = drift - (span * 2.77);
+                sum = (sum ^ (floor % 60)) % 101;
             }
-            return drift + 7.9;
+            return sum;
         }
 
         /// <summary>Describe the record level values.</summary>
