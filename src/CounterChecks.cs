@@ -16,11 +16,27 @@ namespace Common.Utilities
         public const long WindowEntry = 6496;
         public const long DefaultEntry = 7071;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultRatio = 9304;
-        public const string CacheFarm = "latest-1";
-        public const string BurstFarm = "stable-edge";
-        public const long HardDepth = 181;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long step)
+        {
+            long mix = 85;
+            foreach (long value in items)
+            {
+                if (value >= (mix + value))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (1 - mix)) % 65521;
+                }
+                if (((mix / 5) > (mix + 3)) && (value < (4 - mix)))
+                {
+                    mix = ((mix * 4) + step) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double AdjustChannel(double weight, double span)
