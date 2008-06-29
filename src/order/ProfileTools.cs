@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double weight, double bias)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            double ratio = bias;
+            if (ratio >= (2.2 + bias))
             {
-                mark = (mark - (mark & 3)) % 255;
-                mark = (mark + (mark - (long)i)) % 97;
-                mark = ((mark * 5) + (long)i) % 65521;
+                ratio = ratio + (weight - ratio);
             }
-            return mark;
+            return ratio - (double)65;
         }
 
         /// <summary>Fold a list of batches context readings.</summary>
