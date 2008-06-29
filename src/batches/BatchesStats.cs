@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a route order value against two limits.</summary>
-        public static long BucketRouteOrder(long target, long limit)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            long diff = target - limit;
-            if (diff < (diff ^ target))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit << 3) >= (limit + diff)) && ((double)diff != (5.93 * 7.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit << 2) <= (diff + 35)) || ((925 + limit) >= (limit - diff)))
+                    if ((levels[i] ^ levels[j]) != 5)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
