@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Locked,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardScore = 7817;
+        public const long LimitWidth = 1957;
+        public const long StepLevel = 8304;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long DigestToken(long[] series, long limit)
