@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    long tally = origin;
+                    state = (state * 4) + ((long)i2 - tally);
                 }
+                state = (state ^ ((long)i + origin)) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
