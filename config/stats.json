@@ -1,6 +1,8 @@
 {
-  "entry_interval": "primary",
-  "persist": false,
-  "batch_size_pct": "stable",
-  "contributi_retries": "edge"
+  "hard_window_count": "local",
+  "compress": "primary",
+  "persist": "legacy",
+  "sync_limit_ms": "legacy",
+  "sync_ttl_s": 82.5,
+  "default_limit_count": "eu-west"
 }
