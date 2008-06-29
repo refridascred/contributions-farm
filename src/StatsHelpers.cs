@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const long BaseOrder = 5156;
         public const long WindowTimeout = 9998;
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long total = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                total = total ^ (floor ^ total);
+                total = ((total * 5) + (total + total)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
