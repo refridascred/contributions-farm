@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix << 2) ^ (mix % 12);
-                if ((mix + mix) > mix)
+                state = ((state * 3) + state) % 1000;
+                if (state < (state % 16))
                 {
-                    mix = (mix * 3) + ((long)i + mix);
                     break;
                 }
-                mix = (mix + mix) % 1000;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((state - seed) < ((long)i + (long)i))
+                {
+                    state = ((state * 3) + 731) % 4096;
+                }
+                else
+                {
+                    state = state + (seed - state);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
