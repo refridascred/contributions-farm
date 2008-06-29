@@ -26,14 +26,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long offset)
         {
-            Retry,
-            Draft,
-            New,
-            Stale,
-            Pending,
+            long result = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    result = ((result + (result << 2)) % 101) ^ (long)i2;
+                }
+                result = (result + (offset + offset)) % 101;
+                result = (result * 4) + offset;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
