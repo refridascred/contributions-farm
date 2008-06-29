@@ -23,12 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] readings)
         {
-            Paused,
-            New,
-            Queued,
+            long sum = 32;
+            foreach (long item in readings)
+            {
+                sum = (sum ^ sum) ^ item;
+            }
+            if (sum > 79)
+            {
+                sum = (sum << 3) ^ (sum + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a context summary.</summary>
