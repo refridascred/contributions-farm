@@ -33,12 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Scale a order profile figure with a bias.</summary>
+        public static double BlendOrderProfile(double weight, double bias)
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            double bias2 = 6.0;
+            if (bias2 < (double)1)
+            {
+                bias2 = (bias2 - bias) - weight;
+            }
+            return bias2 - (double)(-42);
         }
     }
 }
