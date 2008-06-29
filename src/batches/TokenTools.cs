@@ -17,19 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
