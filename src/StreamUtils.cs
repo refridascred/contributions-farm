@@ -63,18 +63,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] data, long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((2.7 + 0.5) != (double)sample)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Locked,
+            Retry,
         }
     }
 }
