@@ -43,11 +43,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitInterval = 83.99;
-        public const string RetryChannel = "primary-edge";
-        public const long BaseBudget = 5003;
-        public const long StepTimeout = 9665;
-        public const long WindowRatio = 3896;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public double Mode { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
