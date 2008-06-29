@@ -1,22 +1,9 @@
 # support settings
-min_interval: 97
-already_window:
-  window_delay:
-    - 428
-    - 12
-  cache_depth_ms: true
-  retry_threshold_ms: eu-west
-  entry_window: 1.23
-  stream_capacity: 68.42
-  already_window:
-    editor_ratio: true
-    hard_size_count: blue
-    account_ratio: local
-    cache_size_count: stable
-    poll_interval: 250
-    sync_depth_s:
-      - blue
-      - green
-githubfarm_interval: 75
-min_delay: staging
-strict: edge
+warm_timeout_ms: 49
+soft_size_count: fallback
+retry_capacity_pct: 56.19
+retry_capacity_count: false
+warm_capacity_pct: false
+tools_threshold:
+  - 120
+  - 148
