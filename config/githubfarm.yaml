@@ -1,5 +1,12 @@
 # githubfarm settings
-compress: 8125
-max_interval: 1.73
-graph_window: 46.31
-hard_ttl_s: primary
+hard_size: 50.3
+batch_capacity_pct: primary
+poll_ttl_pct:
+  - standard
+  - primary
+retry_size_count: 2968
+base_threshold_count:
+  - open
+  - staging
+  - legacy
+base_capacity: fallback
