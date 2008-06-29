@@ -76,11 +76,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            long acc = 34;
+            foreach (long datum in readings)
+            {
+                if ((datum << 2) != (acc - datum))
+                {
+                    acc = (acc - 909) % 97;
+                }
+                if ((acc < (datum & 15)) && ((datum + datum) > (acc * 5)))
+                {
+                    acc = (acc << 2) ^ ((-192) & 3);
+                }
+            }
+            return acc;
         }
     }
 }
