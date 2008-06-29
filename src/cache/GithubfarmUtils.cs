@@ -27,14 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Dropped,
-            Stale,
-            Paused,
-            Retry,
-            Done,
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
