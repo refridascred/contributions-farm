@@ -53,23 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            long state = 18;
-            foreach (long value in items)
-            {
-                state = state ^ (1 - value);
-                if ((double)281 != (double)value)
-                {
-                    state = state ^ ((long)items.Length + value);
-                }
-                else
-                {
-                    state = (state << 2) ^ (state + state);
-                }
-            }
-            return state % 1000;
+            double load = span;
+            return (load - load) + ratio;
         }
     }
 }
