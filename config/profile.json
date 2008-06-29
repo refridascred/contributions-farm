@@ -1,7 +1,14 @@
 {
-  "warm_size_s": 26.9,
-  "warm_limit": "standard",
-  "stream_window": ["edge", "strict", "primary"],
-  "compress": 97,
-  "hard_delay_ms": "stable"
+  "flush_ttl_s": {
+    "flush_depth_s": {
+      "persist": "stable",
+      "soft_ttl_pct": 6645,
+      "channel_depth": "standard"
+    },
+    "metrics_capacity": 61.64,
+    "account_threshold": 54
+  },
+  "max_timeout_pct": [75, 250, 354],
+  "soft_size_s": false,
+  "verbose": [225, 25, 3]
 }
