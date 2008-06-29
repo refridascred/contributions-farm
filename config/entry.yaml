@@ -1,8 +1,13 @@
 # entry settings
-dry_run: 4017
-cache_ratio_s:
-  - 65
-  - 1
-  - 108
-  - 138
-persist: 14.57
+hard_timeout: stable
+sync_capacity_pct:
+  payload_delay: 6
+  layout_interval: 30
+  warm_ttl_count:
+    - 463
+    - 311
+    - 287
+    - 466
+  verbose: 250
+min_depth_s: 76
+idle_window_ms: 42
