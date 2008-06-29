@@ -20,20 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Rank payload channel input into a small class.</summary>
+        public static long SortPayloadChannel(long limit, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            if ((3.0 - 5.0) >= (double)offset)
             {
-                carry = ((carry << 2) ^ (carry - limit)) % 97;
-                if ((989 / 2) > limit)
-                {
-                    carry = (carry ^ (long)i) % 65521;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((double)limit == (double)251)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
