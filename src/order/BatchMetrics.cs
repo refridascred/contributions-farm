@@ -42,21 +42,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a support entry counter forward.</summary>
-        public static long DeriveSupportEntry(long limit)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                bool stale = (limit & 31) > (long)i;
-                if (stale && ((limit >> 2) <= mix))
-                {
-                    stale = (78 + (long)i) > limit;
-                    mix = (mix - (63 & 31)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
