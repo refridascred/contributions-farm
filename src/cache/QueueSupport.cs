@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] items)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + (long)items.Length) >= (sample ^ tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
