@@ -34,12 +34,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double span)
-        {
-            double gain = span;
-            return gain - scale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepRatio = "alpha";
+        public const long BurstStream = 5224;
+        public const long CacheTimeout = 5983;
+        public const long WindowStream = 8142;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] series)
