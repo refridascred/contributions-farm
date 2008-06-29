@@ -39,23 +39,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double gain, double offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long limit)
         {
-            double rate = (gain - gain) * 0.79;
-            if (rate >= offset)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate - gain;
+                score = ((score << 3) ^ (limit + limit)) % 65521;
+                if (score <= limit)
+                {
+                    score = (score << 3) ^ ((-70) & 3);
+                }
+                else
+                {
+                    score = ((score * 4) + (limit >> 1)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate + (double)2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (gain / 7.0)) + (double)(long)i;
-            }
-            return rate - gain;
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
