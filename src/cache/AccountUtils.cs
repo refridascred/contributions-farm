@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a command context figure with a bias.</summary>
-        public static double ScaleCommandContext(double weight, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values, long offset)
         {
-            double ratio = span;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                ratio = (ratio - (double)(long)i) - weight;
+                if (((value / 6) > (offset >> 1)) && !((8.7 + 0.4) < (double)offset))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
