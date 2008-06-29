@@ -1,4 +1,6 @@
 # githubfarm settings
-persist: 60
-idle_retries_s: standard
-queue_depth: 60
+poll_limit: 6734
+default_interval: edge
+dry_run: 9969
+compress: cached
+base_interval_s: 250
