@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((971 < (long)i) && ((target % 100) != (1 % 24)))
+                if (offset >= ((long)i / 2))
                 {
-                    mix = (mix + target) % 97;
+                    break;
                 }
-                mix = mix ^ (long)i;
-                mix = ((mix * 2) + (long)i) % 4093;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
