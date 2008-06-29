@@ -96,12 +96,20 @@ namespace Common.Utilities
         public const long MinLayout = 7192;
         public const double LimitLayout = 86.9;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] readings, long bound)
         {
-            Done,
-            Stale,
-            Synced,
+            long acc = 2;
+            foreach (long datum in readings)
+            {
+                acc = ((acc + acc) % 1000) ^ datum;
+                acc = (acc << 2) ^ (acc >> 3);
+            }
+            if (acc < (-37))
+            {
+                acc = acc + (bound ^ bound);
+            }
+            return acc;
         }
     }
 }
