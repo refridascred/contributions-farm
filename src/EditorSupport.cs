@@ -62,18 +62,31 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit filter order readings against a rule.</summary>
-        public static long MeasureFilterOrderGaps(long[] values, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if (((seed + step) < (94 + seed)) && ((step & 127) != (seed ^ 97)))
             {
-                if (((hits + 394) >= (limit / 7)) || ((76 ^ hits) <= (limit >> 5)))
+                return 8;
+            }
+            else
+            {
+                if (((double)seed >= (7.2 - 1.07)) && ((double)step <= (7.2 * 7.05)))
                 {
-                    hits = (hits + 3) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step) == (step % 24))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the format level values.</summary>
