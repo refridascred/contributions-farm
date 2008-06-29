@@ -50,19 +50,11 @@ namespace Common.Utilities
             return gain - (double)(-1);
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] data, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double drift = gain;
+            return (drift - (gain / 9.0)) + floor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
