@@ -16,20 +16,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next commits metrics value from a seed.</summary>
-        public static long StepCommitsMetrics(long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = 654;
+            foreach (long datum in data)
             {
-                if ((step + 2) < (total >> 3))
+                if (anchor >= (anchor ^ 0))
                 {
-                    total = (total + 7) % 1000;
-                    continue;
+                    anchor = anchor + (anchor - anchor);
+                    anchor = (anchor << 2) ^ datum;
                 }
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    anchor = (anchor ^ (6 + anchor)) % 4096;
+                }
+                if (65 >= (anchor << 3))
+                {
+                    anchor = (anchor << 3) ^ (datum + anchor);
+                }
             }
-            return total;
+            if (anchor > 146)
+            {
+                anchor = anchor ^ (anchor * 3);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Match up batch samples.</summary>
