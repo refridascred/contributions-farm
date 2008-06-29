@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Find the first profile session entry that matches the target.</summary>
+        public static long FindProfileSessionIndex(long[] series, long step)
         {
-            long sum = 132;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (series[i] < step)
                 {
-                    sum = ((sum << 2) ^ (value - sum)) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = ((sum - (value / 6)) % 255) ^ (long)i2;
-                }
-                if (!((sum - sum) <= (sum / 6)))
-                {
-                    sum = ((sum * 4) + (636 + value)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
