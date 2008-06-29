@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Grade a route order value against two limits.</summary>
+        public static long BucketRouteOrder(long target, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = target - limit;
+            if (diff < (diff ^ target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((limit << 3) >= (limit + diff)) && ((double)diff != (5.93 * 7.0)))
                 {
-                    if ((items[i] + items[j]) < 9)
+                    return 2;
+                }
+                else
+                {
+                    if (((limit << 2) <= (diff + 35)) || ((925 + limit) >= (limit - diff)))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the farm status values.</summary>
