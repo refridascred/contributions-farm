@@ -1,12 +1,27 @@
 # support settings
-burst_threshold_s: 68
-counter_ratio:
-  - 204
-  - 97
-  - 177
-  - 25
-idle_threshold_ms: 1024
-poll_window_pct:
-  dry_run: true
-  enabled: 79.16
-  persist: standard
+sync_ttl_pct: 74
+retry_retries_count: green
+session_size: false
+compress: standard
+format_delay: 26.04
+soft_threshold_s:
+  soft_ttl_ms:
+    - open
+    - cached
+  buffer_depth:
+    idle_retries: staging
+    retry_interval_count: false
+    enabled: edge
+  compress:
+    dry_run: 250
+    layout_interval: latest
+    account_delay: cached
+    poll_ttl_s: 69
+    profile_size: 100
+    soft_threshold: false
+  retry_threshold:
+    - 477
+    - 73
+  min_threshold:
+    - 323
+    - 41
