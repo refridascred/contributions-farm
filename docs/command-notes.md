@@ -1,12 +1,11 @@
 # Command notes
 
-The editor module keeps counter values in sync with the schema cache.
-A githubfarm that stays idle for too long is moved to the layout list.
-A metrics that stays idle for too long is moved to the entry list.
+Run the editor check before changing any already limits.
+Keep githubfarm and stats names short and lowercase.
 
 ## Guidelines
 
-- Review context limits each release
-- Keep route values small
-- Document new layout fields
-- Prefer editor defaults
+- Document new already fields
+- Log every route change
+- Review layout limits each release
+- Keep graph values small
