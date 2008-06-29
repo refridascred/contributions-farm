@@ -61,18 +61,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] data, long target)
+        /// <summary>Fold a list of window checks readings.</summary>
+        public static long TallyWindowChecks(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = 236;
+            foreach (long cell in data)
             {
-                if ((target - target) >= tally)
-                {
-                    tally = (tally + 1) - sample;
-                }
+                mark = ((mark << 2) ^ (mark * 5)) + cell;
             }
-            return tally;
+            if (mark < 33)
+            {
+                mark = (mark * 2) + (target & 15);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Validate token buffer readings against a bound.</summary>
