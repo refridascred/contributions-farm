@@ -25,18 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardWidth = "legacy-edge";
+        public const long MinLayout = 8103;
+        public const long BaseSize = 4737;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] readings)
