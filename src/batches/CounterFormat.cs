@@ -31,24 +31,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if ((offset << 2) <= (offset + 65))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((origin + offset) <= offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
