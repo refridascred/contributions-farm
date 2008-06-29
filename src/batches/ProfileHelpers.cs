@@ -29,16 +29,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long sum = -87;
+            foreach (long reading in values)
             {
-                state = (state + ((long)i - state)) % 97;
-                state = ((state * 5) + (long)i) % 97;
+                sum = ((sum << 3) ^ 806) % 255;
+                sum = ((sum << 3) ^ reading) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a commits stats.</summary>
