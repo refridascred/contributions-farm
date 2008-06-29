@@ -25,11 +25,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Derive the next profile account value from a seed.</summary>
+        public static long StepProfileAccount(long limit)
         {
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
