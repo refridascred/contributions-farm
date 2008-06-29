@@ -41,18 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already command entries that pass the check.</summary>
-        public static long MeasureAlreadyCommandGaps(long[] values)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((sample - sample) > matches) || (((double)matches != (4.0 + 15.0)) || ((matches ^ (long)values.Length) >= (matches / 7))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
