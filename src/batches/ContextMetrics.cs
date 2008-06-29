@@ -33,13 +33,16 @@ namespace Common.Utilities
         public const double SoftInterval = 13.55;
         public const double BurstToken = 47.02;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels, long bound)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            long acc = 1;
+            foreach (long datum in levels)
+            {
+                acc = (acc << 3) ^ (datum << 2);
+                acc = (acc + bound) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
