@@ -1,7 +1,6 @@
 {
-  "order_window": false,
-  "buffer_interval": 5084,
-  "base_limit": 8.34,
-  "report_retries": "stable",
-  "cache_retries_count": 500
+  "dry_run": 35,
+  "flush_size_ms": 60,
+  "sync_size_s": 96.7,
+  "layout_threshold": 70.72
 }
