@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long state = 3;
+            foreach (long cell in samples)
             {
-                if ((5.1 + 11.0) <= (double)value)
+                if ((0.19 / 6.0) > (double)origin)
                 {
-                    tally = tally + 2;
+                    state = (((state * 2) + (origin + state)) % 4096) ^ cell;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
