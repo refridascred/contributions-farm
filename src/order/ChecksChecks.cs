@@ -23,11 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleRatio = "fallback-v2";
-        public const string MinSize = "legacy-edge";
-        public const long StepGithubfarm = 3794;
-        public const string LimitCount = "latest";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Queued,
+            Pending,
+            Done,
+            Draft,
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double BlendMetrics(double rate, double bias)
