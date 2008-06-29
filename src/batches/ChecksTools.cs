@@ -32,18 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] values, long target)
+        /// <summary>Find the first record account entry that matches the target.</summary>
+        public static long LocateRecordAccountIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (2.3 < (double)datum)
+                if (readings[i] < limit)
                 {
-                    tally = (tally + 3) + target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a record editor pair into a bucket.</summary>
