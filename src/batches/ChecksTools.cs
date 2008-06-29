@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two token support measurements.</summary>
-        public static double ProjectTokenSupport(double ratio, double span)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] levels, long origin)
         {
-            double drift = span;
-            if (drift < (6.69 / 4.0))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                drift = drift - (ratio / 6.0);
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - span;
+            return found;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
