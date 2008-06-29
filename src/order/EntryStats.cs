@@ -22,26 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long carry = 115;
-            foreach (long reading in items)
-            {
-                if (carry > (reading / 2))
-                {
-                    carry = (carry << 3) ^ (reading / 6);
-                }
-                else
-                {
-                    carry = ((carry * 5) + carry) % 4096;
-                }
-            }
-            if (carry > 44)
-            {
-                carry = (carry - (carry * 5)) % 4096;
-            }
-            return carry % 97;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
