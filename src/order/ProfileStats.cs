@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const string MinOrder = "legacy-edge";
         public const string BurstDepth = "primary-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 82.54;
-        public const long BatchStats = 3100;
-        public const string HardStats = "cached-edge";
-        public const long BurstStats = 3257;
-        public const long CacheStats = 7999;
+        /// <summary>Check that every order farm entry stays within the limit.</summary>
+        public static bool CheckOrderFarmRange(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long WeighTools(long[] values, long floor)
