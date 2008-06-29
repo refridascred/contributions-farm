@@ -24,18 +24,12 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] readings)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((((reading & 7) <= tally) && (((long)readings.Length + 46) < reading)) || ((tally + 96) >= (tally * 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
