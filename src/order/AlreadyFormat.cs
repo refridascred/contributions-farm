@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (sample < step)
+                if (hits > (4 - hits))
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 3) ^ cell) - floor;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
