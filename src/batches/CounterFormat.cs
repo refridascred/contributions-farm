@@ -19,24 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] samples, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long acc = 1;
-            foreach (long sample in samples)
+            long acc = 90;
+            foreach (long cell in values)
             {
-                if ((sample - 7) >= (acc + sample))
-                {
-                    acc = (acc << 2) ^ (sample - seed);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (4 * 5)) % 65521;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = (acc + (acc << 1)) % 65521;
+                acc = ((acc + (87 * 3)) % 1000) - cell;
+                acc = acc ^ (acc + acc);
             }
             return acc;
         }
