@@ -47,12 +47,14 @@ namespace Common.Utilities
         public const string CacheTimeout = "local-1";
         public const double BatchSchema = 44.25;
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Draft,
             Idle,
+            Pending,
+            Dropped,
             Done,
+            Locked,
         }
 
         /// <summary>Roll a window counter forward.</summary>
