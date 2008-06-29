@@ -35,18 +35,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc + (acc << 2)) % 4096;
-                acc = acc - limit;
-                acc = acc + (long)i;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Stale,
+            Queued,
         }
 
         /// <summary>Describe the layout state values.</summary>
