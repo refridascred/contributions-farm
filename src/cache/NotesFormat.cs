@@ -22,9 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 7388;
-        public const string DefaultCount = "open-v2";
-        public const long RetryQueue = 2312;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
