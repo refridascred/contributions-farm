@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long MaxDepth = 7501;
         public const string BurstFilter = "stable-1";
 
-        /// <summary>Accumulate cluster entry samples.</summary>
-        public static long FoldClusterEntry(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] readings)
         {
-            long total = 31;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = (total + ((-902) % 2)) - entry;
-                total = ((total << 2) ^ total) % 4096;
-                if (total > (total - 22))
+                if ((((reading & 7) <= tally) && (((long)readings.Length + 46) < reading)) || ((tally + 96) >= (tally * 4)))
                 {
-                    total = total + (97 - (-197));
+                    tally = tally + 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
