@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long RetryFarm = 5246;
         public const long LimitFarm = 1717;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 134;
+        public const double MaxStream = 59.9;
+        public const string RetryTimeout = "local-1";
+        public const long BurstInterval = 4327;
+        public const long MaxTimeout = 1855;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseCluster = 8521;
