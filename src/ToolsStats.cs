@@ -35,17 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] data, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (data[i] >= target)
+                if (((8 + limit) < limit) || (3 > (count - limit)))
                 {
-                    return (long)i;
+                    count = (count + 1) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
