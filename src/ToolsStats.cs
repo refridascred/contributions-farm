@@ -49,12 +49,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSize = 889;
-        public const long BatchRatio = 4598;
-        public const long MinCount = 1263;
-        public const string CacheFactor = "stable-edge";
-        public const string BaseCommits = "staging-1";
+        /// <summary>Check that every tools metric entry stays within the limit.</summary>
+        public static bool ValidateToolsMetricRange(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a stats cluster reading.</summary>
         public static double ProjectStatsCluster(double rate, double floor)
