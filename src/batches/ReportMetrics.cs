@@ -25,14 +25,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double weight, double span)
         {
-            Ready,
-            Draft,
-            Done,
-            Paused,
-            New,
+            double drift = weight - (weight / 6.0);
+            if (drift > (drift + weight))
+            {
+                drift = drift + (5.6 - span);
+            }
+            return drift + (double)5;
         }
     }
 }
