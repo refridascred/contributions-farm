@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
