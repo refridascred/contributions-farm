@@ -24,12 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] samples, long limit)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two stats measurements.</summary>
