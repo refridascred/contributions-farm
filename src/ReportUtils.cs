@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long seed)
-        {
-            long anchor = -758;
-            foreach (long value in samples)
-            {
-                if (seed >= (9 * 3))
-                {
-                    anchor = (((anchor << 3) ^ 11) % 101) ^ value;
-                }
-                else
-                {
-                    anchor = anchor + (anchor % 7);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowScore = 49.29;
+        public const string MinWindow = "fallback-1";
+        public const long IdleWindow = 8859;
+        public const long CacheWindow = 3164;
+        public const string DefaultBudget = "standard-1";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long seed)
