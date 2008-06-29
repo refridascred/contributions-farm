@@ -20,15 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the contributi batches series from a seed.</summary>
-        public static long IterateContributiBatches(long origin)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
