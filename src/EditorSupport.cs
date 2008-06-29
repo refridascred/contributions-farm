@@ -53,24 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] items, long limit)
         {
-            if ((origin + limit) <= 969)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit - limit) <= (858 % 64))
+                if ((seen * 2) > seen)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    seen = ((seen + 2) + entry) + limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the format phase values.</summary>
