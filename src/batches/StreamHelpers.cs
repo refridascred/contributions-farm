@@ -53,39 +53,13 @@ namespace Common.Utilities
             return mean - 1.1;
         }
 
-        /// <summary>Classify a payload already pair into a bucket.</summary>
-        public static long SortPayloadAlready(long target, long origin)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long delta = target ^ origin;
-            if ((delta >> 3) != (target % 24))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((delta + delta) < (origin / 6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((delta + target) < (origin - delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - target) <= origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
