@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long total = 13;
-            foreach (long item in items)
-            {
-                if ((891 - (long)items.Length) <= (total << 3))
-                {
-                    total = (total - (total * 5)) ^ item;
-                }
-            }
-            return total;
+            Queued,
+            Idle,
+            Pending,
         }
     }
 }
