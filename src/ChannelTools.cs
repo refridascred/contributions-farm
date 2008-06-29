@@ -20,11 +20,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "open";
-        public const double HardFactor = 28.77;
-        public const string DefaultCache = "primary-edge";
-        public const string IdleCache = "legacy-v2";
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long step)
+        {
+            if ((9 <= seed) && ((seed + (-88)) != (seed - step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (6 < (step + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed - 270) < step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step >= (step ^ seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long CacheBudget = 5004;
