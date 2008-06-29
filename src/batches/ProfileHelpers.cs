@@ -51,11 +51,19 @@ namespace Common.Utilities
             return gain - (double)652;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] values, long floor)
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the payload kind values.</summary>
