@@ -72,38 +72,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a githubfarm window value against two limits.</summary>
-        public static long GradeGithubfarmWindow(long floor, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long offset)
         {
-            if ((16.0 - 4.81) > (double)floor)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (14.0 * 5.7))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 8;
+                    result = ((result << 3) ^ ((long)i % 10)) ^ (long)i2;
                 }
-                else
-                {
-                    if ((floor <= (52 / 9)) || ((double)floor == (1.41 / 5.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor == (1.8 * 6.8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = ((result * 3) + (result ^ result)) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
+            return result;
         }
     }
 }
