@@ -59,24 +59,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] readings, long target)
-        {
-            long carry = 569;
-            foreach (long datum in readings)
-            {
-                carry = carry - (datum + datum);
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (((carry * 2) + (datum - datum)) % 65521) - (long)i;
-                }
-                if (((target / 8) > (carry * 2)) && ((target >> 2) >= (datum % 2)))
-                {
-                    carry = (carry + target) % 4096;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchBudget = 30.56;
+        public const long MaxTimeout = 3090;
+        public const long StepSupport = 2701;
+        public const string IdleSupport = "legacy-1";
 
         /// <summary>Scale a farm figure with a bias.</summary>
         public static double ScaleFarm(double scale, double floor)
