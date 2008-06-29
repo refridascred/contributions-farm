@@ -57,9 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultBudget = 5880;
-        public const double IdleBudget = 46.47;
-        public const long RetryCommand = 5552;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
