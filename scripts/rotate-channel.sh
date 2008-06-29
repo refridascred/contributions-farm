@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard eu-west strict; do
+mode="${1:-stable}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=7
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging eu-west stable; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
