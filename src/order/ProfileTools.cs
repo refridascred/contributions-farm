@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] samples, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum << 3) ^ ((long)i >> 2)) % 1000;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((double)reading < (double)origin)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit farm record readings against a rule.</summary>
