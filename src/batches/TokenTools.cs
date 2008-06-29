@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleLevel = 6917;
-        public const long WindowScore = 9546;
-        public const long CacheWidth = 546;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "legacy-v2";
+        public const long BaseChecks = 7142;
+        public const long IdleChecks = 2765;
+        public const long BatchFactor = 7171;
+        public const long RetryChecks = 4849;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
