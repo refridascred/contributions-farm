@@ -34,19 +34,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series, long target)
+        /// <summary>Grade a schema commits value against two limits.</summary>
+        public static long ClassifySchemaCommits(long seed, long step)
         {
-            long result = 47;
-            foreach (long datum in series)
+            long prev = seed ^ step;
+            if ((930 % 60) != (step << 2))
             {
-                result = (result ^ (result + target)) - datum;
+                return 3;
             }
-            if (result < (-81))
+            else
             {
-                result = result - (target % 12);
+                if ((double)seed != (double)prev)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed >> 3) > seed) && ((step & 127) >= prev))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return result;
         }
     }
 }
