@@ -13,18 +13,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of counter farm readings.</summary>
-        public static long TallyCounterFarm(long[] items, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long limit)
         {
-            long mark = 692;
-            foreach (long value in items)
+            long result = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((seed % 2) >= (seed - 826))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mark = ((mark << 2) ^ 588) - value;
+                    long span = (result & 1) - result;
+                    result = ((result * 3) + (result + span)) ^ (long)i2;
                 }
+                result = (result ^ (result + result)) % 97;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Digest a series of report entries.</summary>
