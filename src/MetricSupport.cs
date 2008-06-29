@@ -15,14 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Look up the position of a stats notes sample.</summary>
+        public static long LookupStatsNotesIndex(long[] series, long floor)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Paused,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next profile account value from a seed.</summary>
