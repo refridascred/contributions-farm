@@ -18,15 +18,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            long result = 3;
+            foreach (long value in data)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                if ((value >> 3) <= (value + bound))
+                {
+                    result = (result << 3) ^ (bound - result);
+                }
             }
-            return state;
+            if (result < 803)
+            {
+                result = ((result << 3) ^ (result + result)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
