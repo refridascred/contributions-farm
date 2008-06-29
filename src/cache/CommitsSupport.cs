@@ -76,11 +76,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double scale, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] samples)
         {
-            double drift = scale;
-            return (drift - scale) + floor;
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)hits != (2.0 - 9.4))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
