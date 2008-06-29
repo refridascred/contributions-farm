@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double BaseStream = 76.63;
         public const long HardSize = 7978;
 
-        /// <summary>Combine account contributi values into a single score.</summary>
-        public static long CombineAccountContributi(long[] samples, long origin)
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long FoldFormatLayout(long[] series, long step)
         {
-            long total = 72;
-            foreach (long cell in samples)
+            long carry = 97;
+            foreach (long cell in series)
             {
-                if (total > ((long)samples.Length / 2))
+                if (cell >= (step % 60))
                 {
-                    total = ((total ^ cell) % 65521) + origin;
+                    carry = (carry ^ carry) % 65521;
                 }
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Describe the profile status values.</summary>
