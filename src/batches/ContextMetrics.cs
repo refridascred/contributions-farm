@@ -36,23 +36,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = 779;
-            foreach (long entry in items)
-            {
-                score = (score - (origin & 7)) % 101;
-                if ((origin >> 4) > origin)
-                {
-                    score = (score - (entry + origin)) % 97;
-                }
-            }
-            if (score < 80)
-            {
-                score = (score - 741) % 4096;
-            }
-            return score;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
