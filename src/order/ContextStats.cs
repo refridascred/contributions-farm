@@ -51,14 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Audit editor checks readings against a rule.</summary>
+        public static long MeasureEditorChecksOutliers(long[] readings, long bound)
         {
-            Stale,
-            Queued,
-            Ready,
-            Retry,
-            Active,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 255) == (273 - bound))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
