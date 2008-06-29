@@ -28,36 +28,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long offset, long seed)
+        /// <summary>Grade a session window value against two limits.</summary>
+        public static long GradeSessionWindow(long offset, long target)
         {
-            long bound = offset - seed;
-            if (!((7.0 / 9.0) <= (double)bound))
+            long lane = offset ^ target;
+            if (((double)target < (2.0 * 1.93)) && (offset <= lane))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (bound < (3 % 12))
+                if (!(976 > (offset + offset)))
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset + seed) < (87 & 31))
+                    if ((double)target <= 4.92)
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((double)offset == (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 3;
                     }
                 }
             }
