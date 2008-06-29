@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const double LimitCounter = 41.77;
         public const long RetryLevel = 123;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] samples, long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a filter stats.</summary>
