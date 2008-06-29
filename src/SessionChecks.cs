@@ -55,18 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] readings, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (6 > (floor * 5))
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
                 {
-                    tally = (tally + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
