@@ -1,6 +1,6 @@
 # githubfarm settings
-flush_delay: true
-default_capacity_count: 6985
-base_timeout_count: 35.6
-flush_ttl_count: strict
-cache_timeout_count: 61.32
+audit: false
+support_threshold: 25
+cache_window: 5098
+strict: 65
+format_depth: true
