@@ -41,26 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = 475;
-            foreach (long value in readings)
-            {
-                if (((3.5 / 9.0) == (double)value) && (anchor >= 72))
-                {
-                    anchor = (anchor + (value + value)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor * 4)) % 1000;
-                }
-            }
-            if (anchor < (-1))
-            {
-                anchor = anchor ^ (40 + anchor);
-            }
-            return anchor % 1000;
+            Closed,
+            Dropped,
+            Pending,
         }
     }
 }
