@@ -27,21 +27,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] > bound)
                 {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
