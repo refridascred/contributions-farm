@@ -1,14 +1,11 @@
 # Command notes
 
-The already module keeps already values in sync with the buffer cache.
-The editor report groups every channel by layout.
-Keep batch and queue names short and lowercase.
-
-Each channel is validated before it reaches the account queue.
-The account report groups every record by notes.
+Defaults for commits live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the stream queue.
+Run the stream check before changing any editor limits.
 
 ## Guidelines
 
-- Validate stream input early
-- Document new graph fields
-- Prefer stream defaults
+- Document new command fields
+- Review stream limits each release
+- Log every notes change
