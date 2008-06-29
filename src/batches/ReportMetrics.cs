@@ -33,13 +33,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
             Ready,
-            Idle,
-            Synced,
-            Stale,
+            Draft,
+            Done,
+            Paused,
+            New,
         }
     }
 }
