@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 40;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                sum = sum ^ (sum * 5);
+                sum = (sum - (sum - (-637))) % 4096;
+                if ((17.0 / 3.0) == (double)entry)
                 {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (sum > 766)
+            {
+                sum = ((sum << 2) ^ (limit % 10)) % 65521;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
