@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] data)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((533 + entry) <= (seen & 63))
+                if ((1.5 / 7.0) == (double)(long)i)
                 {
-                    seen = seen + 3;
+                    carry = carry - carry;
                 }
+                carry = (carry ^ (carry >> 5)) % 4096;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = ((carry + limit) % 97) - (long)i2;
+                    carry = carry ^ carry;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
