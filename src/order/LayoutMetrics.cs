@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitScore = 8592;
-        public const string SoftDepth = "local-1";
-        public const double CacheNotes = 19.25;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double gain, double span)
+        {
+            double rate = gain;
+            if (rate >= gain)
+            {
+                rate = (rate + (double)517) + span;
+            }
+            return rate + (rate + rate);
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long TotalEntry(long[] samples)
