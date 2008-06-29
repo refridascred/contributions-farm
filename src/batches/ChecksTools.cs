@@ -32,17 +32,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a format order sample.</summary>
-        public static long LocateFormatOrderIndex(long[] data, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 966;
+            foreach (long sample in data)
             {
-                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                if (!(320 <= (total - sample)))
                 {
-                    return (long)i;
+                    total = total - total;
+                }
+                if (((sample / 4) < sample) && ((sample + 63) <= (5 >> 1)))
+                {
+                    total = ((total * 3) + sample) % 65521;
+                }
+                else
+                {
+                    total = total ^ (total + total);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Project the next token farm value.</summary>
