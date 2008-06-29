@@ -36,12 +36,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
