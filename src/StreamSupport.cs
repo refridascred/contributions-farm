@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout stream readings against a bound.</summary>
-        public static bool CheckLayoutStreamLimits(long[] readings, long origin)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < origin)
+                if ((readings[i] == offset) && ((readings[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the contributi state values.</summary>
