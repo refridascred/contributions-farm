@@ -66,26 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long total = 65;
-            foreach (long sample in levels)
-            {
-                if ((total ^ total) <= total)
-                {
-                    total = (total ^ (sample - total)) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total * 4);
-                }
-            }
-            if (total > 9)
-            {
-                total = total ^ total;
-            }
-            return total % 4096;
+            Pending,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
