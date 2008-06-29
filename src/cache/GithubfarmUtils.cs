@@ -65,10 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultRatio = 5672;
-        public const long CacheQueue = 1806;
-        public const string BatchQueue = "strict";
-        public const long MinBudget = 9768;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] series, long floor)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
