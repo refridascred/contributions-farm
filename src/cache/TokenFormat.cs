@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry << 3) ^ floor) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
