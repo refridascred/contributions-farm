@@ -52,18 +52,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] values, long seed)
+        /// <summary>Audit queue report readings against a rule.</summary>
+        public static long MeasureQueueReportOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((double)seed == (4.9 / 7.0))
+                if ((16.0 - 2.3) > (double)datum)
                 {
-                    tally = (tally + 1) ^ item;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
