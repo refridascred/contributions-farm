@@ -16,11 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryStream = 63.9;
-        public const long MaxStream = 9114;
-        public const long CacheStream = 8288;
-        public const double DefaultStream = 91.54;
+        /// <summary>Locate a profile session reading by value.</summary>
+        public static long FindProfileSessionIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
