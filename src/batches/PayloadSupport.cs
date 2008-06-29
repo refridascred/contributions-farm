@@ -26,12 +26,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Fold a list of notes buffer readings.</summary>
+        public static long ScoreNotesBuffer(long[] samples)
         {
-            Queued,
-            Paused,
-            Active,
+            long total = -2;
+            foreach (long entry in samples)
+            {
+                if ((total + entry) < (total + total))
+                {
+                    total = ((total * 3) + entry) % 4096;
+                }
+                total = ((total << 3) ^ 179) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
