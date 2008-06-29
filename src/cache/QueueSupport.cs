@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] series, long floor)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long carry = 4;
-            foreach (long cell in series)
-            {
-                if (!((28 >> 2) > (floor + carry)))
-                {
-                    carry = (carry * 5) + (carry - floor);
-                    carry = ((carry << 2) ^ cell) % 4096;
-                }
-                if ((cell > (cell ^ carry)) || ((double)cell >= (double)floor))
-                {
-                    carry = ((carry * 2) + carry) % 255;
-                }
-            }
-            return carry % 4096;
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
