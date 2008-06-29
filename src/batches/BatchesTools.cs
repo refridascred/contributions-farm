@@ -21,21 +21,14 @@ namespace Common.Utilities
         public const long BaseCount = 2287;
         public const long StepStats = 7730;
 
-        /// <summary>Match up farm account samples.</summary>
-        public static long CompareFarmAccountCount(long[] data)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Synced,
+            Failed,
+            Draft,
+            Pending,
         }
     }
 }
