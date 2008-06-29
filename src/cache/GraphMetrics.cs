@@ -10,39 +10,26 @@ namespace Common.Utilities
         public const string BaseCounter = "local-v2";
         public const long BatchSize = 8859;
 
-        /// <summary>Classify a entry counter pair into a bucket.</summary>
-        public static long GradeEntryCounter(long floor, long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] values)
         {
-            long diff = floor - bound;
-            if (((floor >> 5) >= bound) || ((bound + bound) < (968 - 862)))
+            long anchor = 5;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3.0 / 9.0) < (double)floor)
+                if ((cell % 10) != (anchor >> 4))
                 {
-                    return 0;
+                    anchor = (anchor << 3) ^ (cell >> 2);
                 }
                 else
                 {
-                    if (((floor + diff) >= (floor << 1)) && ((floor % 100) != (170 - 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff - 0) == (diff ^ diff))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = (anchor - (cell ^ cell)) % 101;
                 }
             }
+            if (anchor < 14)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a already session counter forward.</summary>
