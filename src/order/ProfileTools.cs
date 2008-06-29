@@ -30,15 +30,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] data, long floor)
+        /// <summary>Measure how many session context samples are out of range.</summary>
+        public static long CountSessionContextMatches(long[] values)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long cell in values)
             {
-                if ((17.0 * 2.1) < (double)item)
+                if ((cell * 5) < cell)
                 {
-                    seen = (seen + 1) + floor;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
