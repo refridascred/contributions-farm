@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] samples, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (count <= (origin >> 5))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a tools token counter forward.</summary>
