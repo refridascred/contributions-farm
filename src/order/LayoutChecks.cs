@@ -42,13 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Failed,
-            Paused,
-            Queued,
-            Locked,
+            public double Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a counter info.</summary>
