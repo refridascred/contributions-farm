@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Queued,
-            New,
-            Paused,
+            public double Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
