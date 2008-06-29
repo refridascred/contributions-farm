@@ -69,17 +69,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first checks githubfarm entry that matches the target.</summary>
-        public static long FindChecksGithubfarmIndex(long[] series, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 6;
+            foreach (long datum in readings)
             {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (67 + acc)) % 4096) ^ datum;
+                acc = (acc + (bound >> 1)) % 101;
             }
-            return -1;
+            if (acc < 19)
+            {
+                acc = acc ^ (43 >> 5);
+            }
+            return acc % 65521;
         }
     }
 }
