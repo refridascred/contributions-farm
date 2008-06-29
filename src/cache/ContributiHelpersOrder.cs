@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Ready,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 14;
+        public const string LimitToken = "stable-v2";
+        public const long BaseSpan = 5611;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
