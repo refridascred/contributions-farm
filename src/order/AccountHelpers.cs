@@ -20,20 +20,21 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Match up order window samples.</summary>
+        public static long PairOrderWindowCount(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 2) + result) % 65521;
-                if (seed > (result * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result + (result + seed)) % 4096;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Project the next batches value.</summary>
