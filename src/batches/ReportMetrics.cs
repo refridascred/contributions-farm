@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] series)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((reading >= tally) || ((double)7 == (double)tally)) && ((5.5 - 15.0) != (double)reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
