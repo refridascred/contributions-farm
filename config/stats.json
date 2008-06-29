@@ -1,7 +1,22 @@
 {
-  "min_delay_s": 43,
-  "enabled": 25.62,
-  "min_timeout": [23, 132],
-  "audit": false,
-  "checks_limit": false
+  "cache_interval_s": 21,
+  "metric_timeout": "local",
+  "batch_window_ms": {
+    "command_size": {
+      "verbose": 34.37,
+      "default_capacity_count": true,
+      "batch_depth_count": 7703,
+      "persist": 8835,
+      "batch_interval": 75,
+      "schema_limit": "local"
+    },
+    "token_retries": [73, 248],
+    "metric_threshold": "eu-west",
+    "layout_capacity": {
+      "window_ratio": true,
+      "readonly": "latest",
+      "min_depth_pct": 82,
+      "enabled": false
+    }
+  }
 }
