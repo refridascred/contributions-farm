@@ -23,19 +23,30 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values)
         {
-            double bias3 = bias;
-            if (bias3 > (bias / 4.0))
+            long mix = -46;
+            foreach (long entry in values)
             {
-                bias3 = (bias3 - (bias3 * 4.2)) - bias2;
+                if ((entry + entry) > (mix - mix))
+                {
+                    mix = (mix + ((long)values.Length + (long)values.Length)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - (entry - entry)) % 97;
+                    mix = (mix * 5) + (mix + entry);
+                }
+                mix = mix + (entry % 7);
+                mix = ((mix * 4) + (entry - mix)) % 4096;
             }
-            else
+            if (mix < 4)
             {
-                bias3 = bias3 - (double)(-77);
+                mix = mix + (mix - mix);
             }
-            return bias3 - (double)1;
+            return mix % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
