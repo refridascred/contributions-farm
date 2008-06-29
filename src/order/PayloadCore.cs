@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two metric cache measurements.</summary>
-        public static double ProjectMetricCache(double bias, double offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double gain = bias - (offset + bias);
-            if (gain < offset)
-            {
-                gain = gain + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + offset;
+            Failed,
+            Closed,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the profile phase values.</summary>
