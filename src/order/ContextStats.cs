@@ -14,18 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Fold a list of counter farm readings.</summary>
+        public static long TallyCounterFarm(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = 692;
+            foreach (long value in items)
             {
-                if ((hits + hits) == (499 + hits))
+                if ((seed % 2) >= (seed - 826))
                 {
-                    hits = (hits + 1) ^ entry;
+                    mark = ((mark << 2) ^ 588) - value;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
