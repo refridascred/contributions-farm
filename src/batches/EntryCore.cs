@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Audit counter filter readings against a rule.</summary>
+        public static long AuditCounterFilterMatches(long[] samples)
         {
-            long mark = -39;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((long)readings.Length + mark) <= (cell * 4))
+                if (((item <= (5 / 7)) && ((matches - item) >= (831 / 5))) && !(32 <= item))
                 {
-                    mark = mark - (mark ^ cell);
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 664)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
