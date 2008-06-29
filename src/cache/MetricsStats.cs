@@ -18,39 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long offset, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long offset)
         {
-            long next = offset ^ step;
-            if (offset < (796 & 31))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset > (step / 3)) && ((next + step) >= next))
+                if (series[i] < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.19 - 1.0) < (15.0 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step <= (next << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a stream record.</summary>
