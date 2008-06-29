@@ -37,18 +37,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings)
+        /// <summary>Roll a farm notes counter forward.</summary>
+        public static long DeriveFarmNotes(long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((reading << 1) < (tally ^ 0))
-                {
-                    tally = tally + 2;
-                }
+                sum = (sum ^ (seed << 3)) % 4096;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank contributi editor input into a small class.</summary>
