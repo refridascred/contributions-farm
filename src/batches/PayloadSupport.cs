@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double weight = 4.7;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (span * 3.24)) + (double)(long)i;
-            }
-            return weight - bias;
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
