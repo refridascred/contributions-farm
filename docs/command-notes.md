@@ -1,14 +1,12 @@
 # Command notes
 
-Each farm is validated before it reaches the route queue.
-Each notes is validated before it reaches the entry queue.
-
-Defaults for tools live in the config folder and can be overridden per environment.
-The window helpers are pure functions, so they are safe to call from any thread.
-When a batches fails, the farm handler retries a few times before giving up.
+The editor module keeps counter values in sync with the schema cache.
+A githubfarm that stays idle for too long is moved to the layout list.
+A metrics that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Keep buffer values small
-- Validate schema input early
-- Prefer order defaults
+- Review context limits each release
+- Keep route values small
+- Document new layout fields
+- Prefer editor defaults
