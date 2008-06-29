@@ -1,6 +1,6 @@
 {
-  "batch_delay_s": "strict",
-  "soft_depth_ms": 13,
-  "max_retries_ms": 500,
-  "metrics_window": false
+  "batch_depth": [356, 14],
+  "account_interval": 8526,
+  "queue_capacity": 75,
+  "audit": 4547
 }
