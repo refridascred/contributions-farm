@@ -32,11 +32,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                long edge = (floor % 97) << 3;
+                anchor = (anchor << 2) ^ floor;
+                if ((edge <= (floor - (long)i)) && ((anchor + floor) > edge))
+                {
+                    edge = edge + ((long)i >> 4);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up command samples.</summary>
