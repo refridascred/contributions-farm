@@ -1,11 +1,11 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Each tools is validated before it reaches the batches queue.
-Use report settings to tune how often graph data is refreshed.
+The batches module keeps farm values in sync with the batches cache.
+A counter that stays idle for too long is moved to the filter list.
+The farm report groups every editor by metrics.
 
 ## Guidelines
 
-- Document new profile fields
-- Validate entry input early
-- Keep tools values small
+- Log every editor change
+- Review already limits each release
+- Keep githubfarm values small
