@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (offset >= ((long)i / 2))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardLevel = 8880;
+        public const long BatchInterval = 2636;
+        public const long IdleScore = 7534;
+        public const long BatchSize = 4766;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] readings, long step)
