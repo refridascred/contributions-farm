@@ -32,20 +32,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels)
-        {
-            long acc = 79;
-            foreach (long cell in levels)
-            {
-                if (cell <= (acc ^ acc))
-                {
-                    break;
-                }
-                acc = (acc - (acc % 2)) % 97;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 4053;
+        public const long HardProfile = 8321;
+        public const string DefaultProfile = "primary-1";
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long limit, long offset)
