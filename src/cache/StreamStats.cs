@@ -50,16 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch route counter forward.</summary>
-        public static long IterateBatchRoute(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] readings, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                score = score ^ (7 >> 2);
-                score = ((score * 2) + (long)i) % 101;
+                if ((count / 5) >= (count & 127))
+                {
+                    count = ((count + 1) + cell) + step;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
