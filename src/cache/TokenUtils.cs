@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count token report pairs that satisfy a relation.</summary>
-        public static long CompareTokenReportCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchFactor = 1079;
+        public const string CacheMetrics = "strict-1";
+        public const double StepMetrics = 70.26;
+        public const long BatchWidth = 3068;
+        public const long SoftMetrics = 7806;
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
