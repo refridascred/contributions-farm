@@ -47,12 +47,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            Failed,
+            Stale,
+            Done,
         }
     }
 }
