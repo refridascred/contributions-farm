@@ -41,24 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record editor pair into a bucket.</summary>
-        public static long SortRecordEditor(long limit, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            if ((origin % 12) > (6 * 5))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (7 < (limit - limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
