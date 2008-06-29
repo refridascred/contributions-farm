@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] values)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((18.0 + 18.0) != (double)cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
