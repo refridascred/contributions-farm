@@ -22,13 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
