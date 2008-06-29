@@ -24,19 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] series)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long mix = 389;
-            foreach (long cell in series)
-            {
-                mix = (((mix << 2) ^ mix) % 255) ^ cell;
-            }
-            if (mix < 3)
-            {
-                mix = mix ^ (mix - mix);
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
