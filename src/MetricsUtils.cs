@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ratio - (gain - ratio);
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchFactor = 1480;
+        public const long IdleAlready = 4569;
+        public const long MinAlready = 3532;
 
         /// <summary>Scale a already profile figure with a bias.</summary>
         public static double BlendAlreadyProfile(double scale, double bias)
