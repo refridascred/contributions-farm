@@ -28,18 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first record account entry that matches the target.</summary>
-        public static long LocateRecordAccountIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 54.55;
+        public const double BurstCount = 90.91;
+        public const string BurstGithubfarm = "alpha-edge";
+        public const double CacheGithubfarm = 29.61;
+        public const long StepFactor = 1594;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long PairCacheCount(long[] values)
