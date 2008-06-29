@@ -25,22 +25,17 @@ namespace Common.Utilities
             return load + (load + 16.0);
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] series)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally ^ tally) > (item << 3)) || ((tally >> 3) < (tally * 4)))
+                if ((data[i] > step) && ((data[i] % 3) != 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a channel header.</summary>
