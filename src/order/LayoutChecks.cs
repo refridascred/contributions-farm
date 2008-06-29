@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the channel cache entries that pass the check.</summary>
-        public static long MeasureChannelCacheHits(long[] items, long offset)
+        /// <summary>Grade a account buffer value against two limits.</summary>
+        public static long RankAccountBuffer(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long diff = limit ^ origin;
+            if ((diff % 10) >= (limit / 7))
             {
-                if ((double)reading > (double)84)
+                return 7;
+            }
+            else
+            {
+                if (diff >= (origin * 3))
                 {
-                    tally = (tally + 3) - offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit != (6.6 / 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate record samples.</summary>
