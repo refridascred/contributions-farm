@@ -63,38 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long bound, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items)
         {
-            if ((origin ^ origin) > bound)
+            long state = 18;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound <= (1.9 + 6.0))
+                state = state ^ (1 - value);
+                if ((double)281 != (double)value)
                 {
-                    return 5;
+                    state = state ^ ((long)items.Length + value);
                 }
                 else
                 {
-                    if ((bound - origin) <= 888)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin <= (origin - bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state << 2) ^ (state + state);
                 }
             }
+            return state % 1000;
         }
     }
 }
