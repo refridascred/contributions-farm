@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long cur = origin - limit;
+            if ((double)3 <= (double)cur)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.45 - 0.2) < (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin <= (102 * 4)) && (origin > (origin - 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)cur > (6.26 + 4.8)) && ((origin / 8) <= (origin * 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks phase values.</summary>
