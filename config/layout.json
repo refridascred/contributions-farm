@@ -1,6 +1,12 @@
 {
-  "cache_threshold": 43.6,
-  "account_threshold": "blue",
-  "sync_window_pct": [473, 33, 252, 381],
-  "batch_ttl": ["cached", "eu-west", "local", "primary"]
+  "batch_window_s": ["staging", "staging", "green"],
+  "sync_threshold": "fallback",
+  "readonly": "staging",
+  "editor_delay": {
+    "soft_limit": 250,
+    "compress": ["fallback", "cached", "stable", "latest"],
+    "flush_timeout": "staging",
+    "queue_window": 8.57
+  },
+  "default_ratio": "primary"
 }
