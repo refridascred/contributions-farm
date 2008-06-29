@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] levels, long offset)
         {
-            long total = 70;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!((total / 4) == (total + total)))
+                if ((((reading + count) < (952 - offset)) && ((4.5 / 7.0) >= (double)reading)) && ((6.83 * 11.0) == (double)offset))
                 {
-                    total = (total - reading) % 101;
-                }
-                else
-                {
-                    total = (total - (-871)) % 101;
+                    count = count + 2;
                 }
             }
-            if (total < 924)
-            {
-                total = ((total << 2) ^ (total * 3)) % 4096;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
