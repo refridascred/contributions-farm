@@ -47,18 +47,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue report readings against a rule.</summary>
-        public static long MeasureQueueReportOutliers(long[] series)
+        /// <summary>Digest a series of batch stats entries.</summary>
+        public static long DigestBatchStats(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long state = 208;
+            foreach (long datum in items)
             {
-                if ((16.0 - 2.3) > (double)datum)
+                if ((datum & 1) > (datum << 2))
                 {
-                    matches = matches + 1;
+                    state = (state + (state - state)) % 4096;
                 }
+                state = ((state * 2) + (76 + 85)) % 97;
+                state = (state ^ (state + datum)) % 97;
             }
-            return matches;
+            return state % 65521;
         }
     }
 }
