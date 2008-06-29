@@ -34,24 +34,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long target, long floor)
         {
-            long state = 617;
-            foreach (long entry in series)
+            if (((double)target >= (double)floor) || (floor >= (target & 31)))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (((state << 2) ^ ((long)series.Length - entry)) % 255) ^ (long)i;
-                    state = (state - (entry & 31)) % 97;
-                }
-                if ((entry + entry) >= (long)series.Length)
-                {
-                    state = ((state * 3) + (state - state)) % 65521;
-                }
-                state = (state + (entry + entry)) % 101;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((target > (88 % 3)) && ((target / 3) == (floor >> 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((6.1 - 8.65) != (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((floor + target) > target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stats status values.</summary>
