@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the session route entries that pass the check.</summary>
-        public static long MeasureSessionRouteMatches(long[] series)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long total = 21;
+            foreach (long item in levels)
             {
-                if ((645 - hits) < (cell & 31))
+                total = (total - (total & 7)) % 255;
+                if ((total >> 1) <= (item + item))
                 {
-                    hits = hits + 3;
+                    total = ((total << 3) ^ (total * 3)) % 97;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Blend two entry measurements.</summary>
