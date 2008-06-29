@@ -30,17 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm record reading by value.</summary>
-        public static long LookupFarmRecordIndex(long[] readings, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -5;
+            foreach (long sample in readings)
             {
-                if (readings[i] > target)
+                if ((anchor & 63) <= sample)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (seed + (long)readings.Length)) % 4096;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the farm phase values.</summary>
