@@ -72,23 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window payload values into a single score.</summary>
-        public static long TallyWindowPayload(long[] samples, long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = -96;
-            foreach (long datum in samples)
-            {
-                sum = sum - (seed + sum);
-                if ((datum ^ sum) > 65)
-                {
-                    break;
-                }
-            }
-            if (sum > 50)
-            {
-                sum = sum ^ 5;
-            }
-            return sum;
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
