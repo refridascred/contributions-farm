@@ -34,11 +34,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepRatio = "alpha";
-        public const long BurstStream = 5224;
-        public const long CacheTimeout = 5983;
-        public const long WindowStream = 8142;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] series)
