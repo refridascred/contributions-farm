@@ -13,11 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
