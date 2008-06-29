@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long step, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step - step) != (step - target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target + step) != (0 << 2))
                 {
-                    if ((series[i] + series[j]) != 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) < (step ^ step))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate counter samples.</summary>
