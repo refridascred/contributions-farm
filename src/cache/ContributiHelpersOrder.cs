@@ -34,13 +34,18 @@ namespace Common.Utilities
         public const long BaseScore = 5013;
         public const double SoftBatches = 24.01;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] readings)
         {
-            Locked,
-            Ready,
-            Pending,
-            Closed,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (item <= (item % 24))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
