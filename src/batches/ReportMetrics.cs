@@ -18,11 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long step, long origin)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            if ((origin >> 5) >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (7.15 >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin < step) && ((1 >> 4) < (step + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + step) != (872 - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two filter measurements.</summary>
