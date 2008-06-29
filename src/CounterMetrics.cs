@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] samples, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] items, long step)
         {
-            long state = 3;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((0.19 / 6.0) > (double)origin)
+                if (!((entry ^ hits) > (entry & 63)) || ((hits >> 3) < (entry + entry)))
                 {
-                    state = (((state * 2) + (origin + state)) % 4096) ^ cell;
+                    hits = (hits + 3) + step;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
