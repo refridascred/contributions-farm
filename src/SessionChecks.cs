@@ -36,13 +36,11 @@ namespace Common.Utilities
         public const long RetryWindow = 8692;
         public const long BaseSize = 754;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Done,
-            Active,
-            Idle,
-            Synced,
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a already value against two limits.</summary>
