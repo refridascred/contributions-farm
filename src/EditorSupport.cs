@@ -51,14 +51,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftWidth = "primary-1";
+        public const string MaxCount = "fallback-edge";
+        public const double SoftSpan = 95.89;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
