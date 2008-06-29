@@ -34,33 +34,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cache counter pair into a bucket.</summary>
-        public static long SortCacheCounter(long bound, long floor)
-        {
-            long gap = bound - floor;
-            if (17.0 >= (3.2 - 8.6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((14 <= (gap & 31)) && ((gap + gap) >= bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound + 7) < (gap / 4)) || (gap > (floor + 0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "legacy-v2";
+        public const long MinWindow = 5621;
+        public const double IdleSpan = 42.04;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesMatches(long[] levels, long floor)
