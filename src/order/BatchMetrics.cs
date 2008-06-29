@@ -31,18 +31,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] levels, long floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double drift = scale;
+            if (drift < (double)9)
             {
-                if ((double)floor >= 3.0)
-                {
-                    hits = (hits + 3) + cell;
-                }
+                drift = (drift + (drift / 8.0)) + floor;
             }
-            return hits;
+            else
+            {
+                drift = drift - (double)83;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (scale * 12.0);
         }
 
         /// <summary>Digest a series of layout entries.</summary>
