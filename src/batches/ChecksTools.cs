@@ -38,13 +38,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Done,
-            Closed,
-            New,
-            Idle,
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
