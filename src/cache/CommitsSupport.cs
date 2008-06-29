@@ -63,10 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchInterval = 9796;
-        public const long CacheLevel = 7684;
-        public const long BaseInterval = 3136;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Active,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
