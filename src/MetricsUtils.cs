@@ -14,15 +14,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of cache buffer entries.</summary>
-        public static long CombineCacheBuffer(long[] series)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            long total = 54;
-            foreach (long reading in series)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total << 2) ^ 71) + reading;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    result = ((result + (result / 5)) % 101) - (long)i2;
+                    result = (result << 3) ^ (307 + step);
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Hold a cache stats.</summary>
