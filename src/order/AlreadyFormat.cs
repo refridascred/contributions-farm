@@ -38,13 +38,25 @@ namespace Common.Utilities
         public const double SoftBudget = 98.55;
         public const long MaxChannel = 6981;
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long seed, long bound)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            long step = seed + bound;
+            if (((seed + step) >= (bound - step)) || ((seed - 50) == (859 - 47)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound & 255) <= (0 + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a notes entry.</summary>
