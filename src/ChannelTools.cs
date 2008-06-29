@@ -15,19 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] readings)
+        /// <summary>Check that every cluster channel entry stays within the limit.</summary>
+        public static bool GuardClusterChannelLimits(long[] items, long offset)
         {
-            long sum = 32;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                sum = (sum ^ sum) ^ item;
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (sum > 79)
-            {
-                sum = (sum << 3) ^ (sum + sum);
-            }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
