@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long target)
         {
-            long carry = 860;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry + (6 >> 1)) - reading;
-                carry = (carry ^ 150) % 65521;
+                if ((values[i] > target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
