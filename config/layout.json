@@ -1,6 +1,8 @@
 {
-  "enabled": ["green", "edge", "eu-west", "edge"],
-  "poll_window_s": true,
-  "burst_ratio_ms": 22.2,
-  "flush_ttl_count": 10
+  "context_ratio": false,
+  "hard_ttl_ms": 0.66,
+  "poll_delay_pct": 8344,
+  "soft_size": 60,
+  "record_size": 69,
+  "max_timeout_pct": 17.05
 }
