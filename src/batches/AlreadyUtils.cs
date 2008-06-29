@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long anchor = 85;
-            foreach (long entry in levels)
-            {
-                if ((5 & 63) >= anchor)
-                {
-                    anchor = ((anchor * 2) + entry) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + (entry + entry)) % 255;
-                }
-                if (!((17.0 + 3.26) < (double)entry))
-                {
-                    break;
-                }
-            }
-            if (anchor < 877)
-            {
-                anchor = (anchor + (55 - anchor)) % 4096;
-            }
-            return anchor;
+            Done,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
