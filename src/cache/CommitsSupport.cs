@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of buffer channel readings.</summary>
-        public static long MatchBufferChannelCount(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Done,
+            Pending,
+            New,
+            Paused,
         }
 
         /// <summary>Describe the checks level values.</summary>
