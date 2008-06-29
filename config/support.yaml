@@ -1,7 +1,9 @@
 # support settings
-schema_delay: 19.18
-strict: 7278
-dry_run:
-  - blue
-  - open
-cache_capacity_s: 15.65
+route_ratio: primary
+cache_ratio_count: 60
+retry_ratio: 60
+strict:
+  contributi_capacity: local
+  burst_depth_s: eu-west
+  githubfarm_window: blue
+  readonly: 60
