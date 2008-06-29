@@ -88,17 +88,18 @@ namespace Common.Utilities
         public const long MinLayout = 7192;
         public const double LimitLayout = 86.9;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long floor)
+        /// <summary>Count the support cluster entries that pass the check.</summary>
+        public static long MeasureSupportClusterGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (values[i] > floor)
+                if ((double)717 <= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
