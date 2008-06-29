@@ -1,14 +1,11 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the already list.
-The batches report groups every metric by checks.
-
-The layout module keeps queue values in sync with the batches cache.
-The order module keeps metric values in sync with the context cache.
+Each queue is validated before it reaches the graph queue.
+Each checks is validated before it reaches the order queue.
+The payload helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
+- Log every graph change
+- Review support limits each release
 - Prefer notes defaults
-- Log every report change
-- Review cluster limits each release
-- Validate entry input early
