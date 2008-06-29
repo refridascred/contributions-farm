@@ -12,27 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items, long floor)
+        /// <summary>Audit commits record readings against a rule.</summary>
+        public static long MeasureCommitsRecordMatches(long[] series)
         {
-            long sum = 99;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((long)items.Length < ((-560) + reading))
+                if (((entry > (hits + entry)) || ((62 + hits) <= ((long)series.Length + hits))) || (((entry + hits) <= (entry / 9)) && ((hits + hits) < entry)))
                 {
-                    sum = sum + (reading + sum);
+                    hits = hits + 2;
                 }
-                else
-                {
-                    sum = (sum - (floor / 2)) % 1000;
-                }
-                sum = ((sum << 2) ^ reading) % 101;
             }
-            if (sum < 798)
-            {
-                sum = (sum ^ (floor % 60)) % 101;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
