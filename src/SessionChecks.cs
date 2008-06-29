@@ -47,10 +47,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxBudget = 1215;
-        public const long BatchChecks = 806;
-        public const double LimitSize = 81.52;
-        public const long RetrySpan = 892;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long floor, long seed)
+        {
+            if (((seed - seed) == (seed * 2)) || ((7.9 - 15.0) < (double)seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((4 + seed) < 6)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.5 - 3.68) >= (15.0 / 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
