@@ -20,24 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long origin, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            if (!(origin <= 8))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((205 << 3) == (origin >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
