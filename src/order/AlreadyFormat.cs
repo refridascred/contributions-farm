@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Stale,
-            Synced,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)count <= 8.97)
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the queue already entries that pass the check.</summary>
