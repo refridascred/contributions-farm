@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a stats cache reading.</summary>
-        public static double BlendStatsCache(double gain, double floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] items)
         {
-            double ratio = floor;
-            if (ratio > (double)2)
+            long seen = 0;
+            foreach (long item in items)
             {
-                ratio = ratio + (ratio + ratio);
+                if (((394 + item) < (item + 498)) && (((seen - item) == (item % 24)) || ((seen >> 1) >= (item ^ item))))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)6;
-            }
-            return ratio - (gain - ratio);
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
