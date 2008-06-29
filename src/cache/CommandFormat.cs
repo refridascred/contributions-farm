@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinRatio = "latest";
-        public const long RetryGithubfarm = 6683;
-        public const long CacheScore = 1339;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] series)
+        {
+            long carry = 88;
+            foreach (long reading in series)
+            {
+                if (((reading >> 4) > (carry >> 2)) && (carry <= reading))
+                {
+                    carry = ((carry * 2) + (carry + reading)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
