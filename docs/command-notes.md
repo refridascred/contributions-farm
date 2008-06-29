@@ -1,14 +1,15 @@
 # Command notes
 
-Run the batch check before changing any layout limits.
-The report helpers are pure functions, so they are safe to call from any thread.
+Keep metrics and entry names short and lowercase.
+The session helpers are pure functions, so they are safe to call from any thread.
 
-Use record settings to tune how often already data is refreshed.
-When a farm fails, the cache handler retries a few times before giving up.
-A layout that stays idle for too long is moved to the filter list.
+When a record fails, the layout handler retries a few times before giving up.
+The cluster report groups every support by entry.
+A commits that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Review metric limits each release
-- Document new farm fields
-- Log every layout change
+- Prefer route defaults
+- Validate order input early
+- Review batch limits each release
+- Log every window change
