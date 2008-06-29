@@ -52,17 +52,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 8;
+            foreach (long value in items)
             {
-                if (readings[i] < target)
+                if ((value + 448) == (value + state))
                 {
-                    return (long)i;
+                    state = (state ^ 219) % 1000;
                 }
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
