@@ -12,10 +12,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowSize = 9975;
-        public const long BurstSpan = 1918;
-        public const long LimitSize = 3842;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] series)
