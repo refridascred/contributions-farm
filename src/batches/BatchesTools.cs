@@ -5,25 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long next = target - floor;
-            if (((floor << 3) < (floor & 127)) || ((target ^ next) != (target % 3)))
+            long sum = 132;
+            foreach (long value in series)
             {
-                return 1;
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = ((sum << 2) ^ (value - sum)) ^ (long)i;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = ((sum - (value / 6)) % 255) ^ (long)i2;
+                }
+                if (!((sum - sum) <= (sum / 6)))
+                {
+                    sum = ((sum * 4) + (636 + value)) % 101;
+                }
             }
-            else
+            if (sum < 3)
             {
-                if ((94 & 3) <= (next + 6))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
+                sum = (sum ^ (sum + sum)) % 101;
             }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
