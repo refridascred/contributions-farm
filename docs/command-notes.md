@@ -1,14 +1,14 @@
 # Command notes
 
-The stats report groups every metric by route.
-A report that stays idle for too long is moved to the context list.
+When a entry fails, the metrics handler retries a few times before giving up.
+Run the tools check before changing any metrics limits.
+The cache module keeps window values in sync with the batch cache.
 
-The entry module keeps stream values in sync with the report cache.
-Use metric settings to tune how often editor data is refreshed.
-Run the command check before changing any buffer limits.
+The stats report groups every stream by report.
+Each order is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review tools limits each release
-- Log every metric change
-- Document new cache fields
+- Keep metrics values small
+- Review channel limits each release
+- Prefer queue defaults
