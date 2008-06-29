@@ -28,18 +28,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the context session entries that pass the check.</summary>
-        public static long MeasureContextSessionGaps(long[] series)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long offset, long bound)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (!(3 < (42 - bound)))
             {
-                if ((double)count <= (double)sample)
+                return 4;
+            }
+            else
+            {
+                if (!((bound + bound) > (bound ^ offset)))
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
