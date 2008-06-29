@@ -32,11 +32,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 67.61;
-        public const double RetryRatio = 88.34;
-        public const double RetryLevel = 51.61;
-        public const long StepProfile = 7503;
-        public const long LimitFactor = 7809;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepBudget = 7230;
+        public const string MaxChannel = "latest-1";
+        public const long MaxCount = 3432;
+        public const long CacheChannel = 7525;
     }
 }
