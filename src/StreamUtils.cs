@@ -61,12 +61,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "latest-v2";
+        public const long SoftPayload = 6360;
+        public const string CachePayload = "legacy-v2";
+        public const long DefaultSize = 7975;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
