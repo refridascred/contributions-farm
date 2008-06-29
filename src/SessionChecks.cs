@@ -41,18 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] items)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((datum & 3) < datum) || ((datum % 7) >= (datum + datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
