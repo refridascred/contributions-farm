@@ -16,12 +16,25 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long limit)
         {
-            Dropped,
-            Ready,
-            Done,
+            long span = offset - limit;
+            if ((889 / 8) == (span + limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ offset) >= (limit * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stats profile sample.</summary>
