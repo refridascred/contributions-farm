@@ -1,8 +1,5 @@
 {
-  "warm_delay_s": [42, 43, 86],
-  "default_limit": ["eu-west", "fallback"],
-  "verbose": 10,
-  "batch_ttl": false,
-  "route_retries": 100,
-  "cache_ratio": true
+  "idle_delay_count": [384, 496, 247, 19],
+  "retry_interval_pct": "fallback",
+  "retry_depth_count": "local"
 }
