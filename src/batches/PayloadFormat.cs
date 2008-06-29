@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] samples, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = 3;
-            foreach (long datum in samples)
-            {
-                result = (result ^ datum) % 1000;
-                if (((long)samples.Length * 4) < result)
-                {
-                    break;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result * 3) + (bound / 3);
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
