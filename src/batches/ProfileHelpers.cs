@@ -27,19 +27,25 @@ namespace Common.Utilities
         public const long DefaultBuffer = 870;
         public const long WindowSpan = 9455;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long seed, long origin)
         {
-            double gain = (bias / 3.0) - span;
-            if (gain < (double)9)
+            long lane = seed ^ origin;
+            if ((18.0 - 0.32) > (double)lane)
             {
-                gain = gain - (gain - bias);
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                gain = gain - (double)(long)i;
+                if ((double)seed <= (4.35 * 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return gain - (double)652;
         }
 
         /// <summary>Check that every profile account entry stays within the limit.</summary>
