@@ -35,22 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of graph metrics entries.</summary>
-        public static long FoldGraphMetrics(long[] readings)
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long AuditContributiFormatMatches(long[] data, long origin)
         {
-            long acc = -180;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 10; i++)
+                if (857 <= (origin + reading))
                 {
-                    acc = ((acc + (datum >> 1)) % 101) - (long)i;
-                }
-                if ((double)acc <= (double)datum)
-                {
-                    acc = (acc - (acc * 5)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return acc;
+            return hits;
         }
     }
 }
