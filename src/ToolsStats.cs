@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long limit)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] levels, long target)
         {
-            long total = 909;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 2) ^ limit) + item;
-                total = ((total * 4) + (537 + total)) % 97;
-                total = (total * 4) + (limit / 5);
+                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
