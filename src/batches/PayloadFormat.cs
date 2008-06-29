@@ -20,22 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of session filter readings.</summary>
-        public static long DigestSessionFilter(long[] data)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] series, long limit)
         {
-            long score = 5;
-            foreach (long entry in data)
+            long state = 0;
+            foreach (long item in series)
             {
-                if ((score & 7) > entry)
+                state = (state + (limit & 255)) % 4096;
+                if (!((item * 3) <= (limit % 3)))
                 {
-                    score = ((score << 3) ^ (entry / 5)) % 4096;
+                    state = state - (limit + 391);
+                }
+                if (((state + limit) < state) || ((item & 7) != (item + state)))
+                {
+                    break;
                 }
             }
-            if (score > 9)
+            if (state > 7)
             {
-                score = (score - (score << 3)) % 255;
+                state = (state ^ (long)series.Length) % 255;
             }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm profile entries.</summary>
