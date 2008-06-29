@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] series, long bound)
         {
-            Queued,
-            Failed,
-            Ready,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of session filter readings.</summary>
