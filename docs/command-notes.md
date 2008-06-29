@@ -1,13 +1,15 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the record list.
-The record module keeps githubfarm values in sync with the channel cache.
+Use route settings to tune how often stats data is refreshed.
+The context report groups every checks by graph.
+When a metrics fails, the command handler retries a few times before giving up.
 
-A stats that stays idle for too long is moved to the cache list.
-Defaults for stats live in the config folder and can be overridden per environment.
+The channel module keeps entry values in sync with the metrics cache.
+When a cache fails, the command handler retries a few times before giving up.
+A buffer that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Log every support change
-- Prefer token defaults
-- Validate graph input early
+- Prefer githubfarm defaults
+- Validate batch input early
+- Review already limits each release
