@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            New,
-            Done,
-            Stale,
-            Active,
-            Draft,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
