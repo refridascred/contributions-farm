@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Validate stream batches readings against a bound.</summary>
+        public static bool ValidateStreamBatchesRange(long[] values, long step)
         {
-            Stale,
-            Active,
-            Retry,
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
