@@ -35,12 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Synced,
-            Done,
-            Failed,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Find the first schema stream entry that matches the target.</summary>
