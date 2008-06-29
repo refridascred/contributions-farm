@@ -1,5 +1,7 @@
 {
-  "base_timeout": 30,
-  "batch_interval": ["green", "edge", "staging"],
-  "account_retries": "stable"
+  "min_delay_s": 43,
+  "enabled": 25.62,
+  "min_timeout": [23, 132],
+  "audit": false,
+  "checks_limit": false
 }
