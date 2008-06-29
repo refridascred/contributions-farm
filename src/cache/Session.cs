@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank queue channel input into a small class.</summary>
-        public static long GradeQueueChannel(long target, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            long lane = target ^ origin;
-            if (!((double)origin >= 2.5))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin ^ origin) != (8 - origin))
+                if ((double)hits >= 7.09)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target - 32) > (638 << 2)) && ((origin / 4) > (lane - lane)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((lane / 4) <= (origin >> 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 1) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
