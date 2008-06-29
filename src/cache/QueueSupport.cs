@@ -29,19 +29,24 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Validate stream support readings against a bound.</summary>
-        public static bool GuardStreamSupportBounds(long[] items, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long target, long step)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            if (((6.0 * 4.9) <= (0.4 * 0.6)) && ((target / 8) != (step - step)))
             {
-                if (cell >= limit)
+                return 4;
+            }
+            else
+            {
+                if (step < (step + step))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
     }
 }
