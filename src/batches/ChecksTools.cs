@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit format graph readings against a rule.</summary>
-        public static long MeasureFormatGraphHits(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((matches << 3) <= (6 / 8))
+                if ((tally - datum) < (tally % 3))
                 {
-                    matches = (matches + 1) + sample;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
