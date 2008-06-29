@@ -43,12 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series, long target)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 47;
+            foreach (long datum in series)
+            {
+                result = (result ^ (result + target)) - datum;
+            }
+            if (result < (-81))
+            {
+                result = result - (target % 12);
+            }
+            return result;
         }
     }
 }
