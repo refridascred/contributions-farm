@@ -32,17 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheDepth = 9766;
+        public const long BatchContext = 2609;
+        public const long BaseDepth = 734;
     }
 }
