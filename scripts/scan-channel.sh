@@ -6,15 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-local}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
 while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in open standard blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
-
-CHANNEL_LIMIT=127
-log "limit is ${CHANNEL_LIMIT}"
+log "total ${total}"
