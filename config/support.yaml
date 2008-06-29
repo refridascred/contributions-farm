@@ -1,18 +1,4 @@
 # support settings
-idle_depth_count: eu-west
-dry_run:
-  - eu-west
-  - strict
-  - green
-  - stable
-max_limit_pct: 72.61
-burst_timeout: legacy
-min_ratio: 30
-min_ratio_s:
-  max_delay_pct: false
-  base_threshold_count: staging
-  hard_window_ms:
-    - 432
-    - 493
-    - 135
-  editor_threshold: true
+dry_run: false
+poll_timeout: open
+poll_delay_count: 171
