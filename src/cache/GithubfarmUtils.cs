@@ -56,19 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long origin)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Queued,
+            Dropped,
         }
     }
 }
