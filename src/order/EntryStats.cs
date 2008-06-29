@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 7599;
-        public const long CacheBudget = 1227;
-        public const long WindowBudget = 6329;
-        public const long RetryLevel = 213;
-        public const double StepSize = 38.48;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] levels, long seed)
+        {
+            long carry = 6;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (((carry << 2) ^ (carry + item)) % 1000) ^ (long)i;
+                }
+                carry = (carry ^ (seed + carry)) % 1000;
+                if ((seed / 9) > (835 + seed))
+                {
+                    carry = (carry ^ (carry << 3)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] readings, long offset)
