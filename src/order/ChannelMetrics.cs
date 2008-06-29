@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the session route entries that pass the check.</summary>
+        public static long MeasureSessionRouteMatches(long[] series)
         {
-            Paused,
-            Ready,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((645 - hits) < (cell & 31))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two entry measurements.</summary>
