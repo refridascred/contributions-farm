@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] data, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((floor % 100) == (1 - 546))
+                if (reading != floor)
                 {
-                    total = total ^ (total >> 4);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    total = total ^ (floor >> 2);
-                }
-                if (!((floor >> 5) < 76))
-                {
-                    total = (total - (total / 2)) % 101;
-                }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
