@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items, long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long sum = 18;
-            foreach (long datum in items)
-            {
-                if ((2 % 16) >= (sum & 7))
-                {
-                    sum = ((sum << 2) ^ (seed << 2)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + datum)) % 101;
-                }
-            }
-            return sum % 97;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
