@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
             public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
