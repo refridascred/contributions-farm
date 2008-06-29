@@ -1,7 +1,6 @@
 {
-  "max_ttl_s": "fallback",
-  "account_capacity": false,
-  "sync_delay_count": 27.52,
-  "base_ratio_count": [431, 107, 113],
-  "cache_ratio_s": true
+  "hard_ratio": false,
+  "enabled": 5418,
+  "readonly": "strict",
+  "poll_ratio": "eu-west"
 }
