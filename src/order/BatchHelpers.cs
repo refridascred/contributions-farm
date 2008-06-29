@@ -21,16 +21,30 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the batch batches series from a seed.</summary>
-        public static long RollBatchBatches(long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values)
         {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
+            long acc = -42;
+            foreach (long cell in values)
             {
-                score = ((score << 3) ^ (score & 127)) % 97;
-                score = ((score * 5) + (long)i) % 97;
+                if (acc >= (acc - cell))
+                {
+                    acc = (acc ^ (188 + acc)) % 4096;
+                }
+                if (((13.0 / 8.0) <= (double)acc) || ((20.0 + 5.33) != (double)acc))
+                {
+                    acc = ((acc << 3) ^ (acc + cell)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 255;
+                }
             }
-            return score;
+            if (acc > 743)
+            {
+                acc = acc + 7;
+            }
+            return acc % 65521;
         }
     }
 }
