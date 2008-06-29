@@ -46,24 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values, long seed)
         {
-            long total = 335;
-            foreach (long entry in samples)
+            long total = 32;
+            foreach (long reading in values)
             {
-                if (((double)entry < (5.18 * 2.4)) && ((seed + seed) != (0 ^ entry)))
+                if (!((1.72 / 3.0) == (double)seed))
                 {
-                    total = (total ^ (entry % 10)) % 4096;
-                    total = (total - (seed - 675)) % 255;
+                    total = (total - (reading << 3)) % 255;
                 }
-                total = (total << 2) ^ entry;
-                if ((total < (6 - total)) && ((entry + total) >= (80 - 770)))
+                else
                 {
-                    break;
+                    total = total - (reading - seed);
                 }
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
