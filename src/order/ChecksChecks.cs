@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit profile support readings against a rule.</summary>
-        public static long AuditProfileSupportHits(long[] data, long bound)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!(((1.64 - 15.0) != (double)hits) || (5.43 >= (double)cell)))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
