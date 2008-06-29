@@ -46,11 +46,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit command entry readings against a rule.</summary>
+        public static long CountCommandEntryOutliers(long[] series, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - seen) < (datum << 3))
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a batch reading.</summary>
