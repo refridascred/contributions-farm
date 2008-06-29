@@ -21,19 +21,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double bias, double span)
         {
-            long acc = 949;
-            foreach (long datum in values)
+            double weight = (span - bias) / 4.0;
+            if (weight > span)
             {
-                acc = (((acc << 3) ^ (datum % 16)) % 255) + offset;
+                weight = weight + weight;
             }
-            if (acc < 37)
+            for (int i = 0; i < 2; i++)
             {
-                acc = (acc ^ (acc ^ acc)) % 97;
+                weight = (weight + (double)4) + (double)(long)i;
             }
-            return acc % 4096;
+            return weight + (1.69 - bias);
         }
     }
 }
