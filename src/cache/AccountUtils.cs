@@ -26,18 +26,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] series)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally & 31) < (datum << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Stale,
+            Closed,
         }
     }
 }
