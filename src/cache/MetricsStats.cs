@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long acc = -58;
-            foreach (long datum in items)
-            {
-                acc = (acc ^ (datum - datum)) % 97;
-            }
-            return acc % 4096;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
