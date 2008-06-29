@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue already entries that pass the check.</summary>
-        public static long AuditQueueAlreadyOutliers(long[] levels, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] samples)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long sample in samples)
             {
-                if ((6.3 / 3.0) > (double)value)
+                if (seen < ((-189) + seen))
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) - sample;
                 }
             }
             return seen;
