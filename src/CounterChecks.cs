@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long MaxSpan = 41;
         public const long CacheDepth = 6215;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long seed)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of contributi filter readings.</summary>
