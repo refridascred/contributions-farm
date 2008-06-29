@@ -12,15 +12,10 @@ namespace Common.Utilities
             return (gain - (gain / 8.0)) + ratio;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            New,
-            Retry,
-            Synced,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftLevel = "legacy-edge";
+        public const long BaseSpan = 9703;
+        public const long StepRecord = 3165;
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
