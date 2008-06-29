@@ -31,11 +31,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            double drift = span / 9.0;
+            if (drift > ratio)
+            {
+                drift = drift + 9.46;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (drift - span)) + (double)(long)i;
+            }
+            return drift + (double)1;
         }
     }
 }
