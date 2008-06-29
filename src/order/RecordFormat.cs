@@ -31,13 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Retry,
-            Locked,
-            New,
-            Ready,
+            Dropped,
+            Paused,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a format stats.</summary>
