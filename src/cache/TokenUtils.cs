@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BatchWidth = 3068;
         public const long SoftMetrics = 7806;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples, long target)
         {
-            Pending,
-            Ready,
-            Retry,
-            Stale,
+            long carry = 4;
+            foreach (long cell in samples)
+            {
+                carry = ((carry + (cell >> 1)) % 1000) - target;
+            }
+            if (carry < 8)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the buffer route entries that pass the check.</summary>
