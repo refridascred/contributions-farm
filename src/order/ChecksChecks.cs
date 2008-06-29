@@ -12,31 +12,21 @@ namespace Common.Utilities
             return (ratio - (scale / 7.0)) + floor;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long offset)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            if ((43 - 19) >= (seed - seed))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - seed) <= (seed << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-411) * 2) >= (seed % 2))
+                    if ((data[i] + data[j]) == 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
