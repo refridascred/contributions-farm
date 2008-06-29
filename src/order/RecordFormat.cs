@@ -36,22 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] samples, long bound)
         {
-            long anchor = 79;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((anchor ^ anchor) > anchor)
+                if ((item - bound) > (item % 16))
                 {
-                    anchor = (anchor * 5) + (779 - datum);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (4 >> 3)) % 65521;
+                    hits = hits + 2;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
