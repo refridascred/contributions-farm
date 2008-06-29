@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm already entry stays within the limit.</summary>
-        public static bool GuardFarmAlreadyRange(long[] series, long target)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
