@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long bound)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Dropped,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
