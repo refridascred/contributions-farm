@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count batch metrics pairs that satisfy a relation.</summary>
+        public static long MatchBatchMetricsCount(long[] data)
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a counter commits pair into a bucket.</summary>
