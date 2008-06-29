@@ -47,9 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetrySpan = 9432;
-        public const long HardRatio = 2407;
-        public const long BaseTimeout = 1404;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((4.34 / 5.0) < (double)tally)
+                {
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
