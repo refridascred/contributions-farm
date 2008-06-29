@@ -35,14 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] series, long step)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= (hits << 1))
+                {
+                    hits = (hits + 2) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
