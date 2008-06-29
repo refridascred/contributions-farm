@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((971 < (long)i) && ((target % 100) != (1 % 24)))
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + target) % 97;
                 }
+                mix = mix ^ (long)i;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
