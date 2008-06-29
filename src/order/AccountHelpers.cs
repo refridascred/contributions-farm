@@ -67,39 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long origin, long limit)
+        /// <summary>Validate token buffer readings against a bound.</summary>
+        public static bool ValidateTokenBufferLimits(long[] items, long bound)
         {
-            long delta = origin - limit;
-            if (delta <= 715)
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit > (delta - 814))
+                if (sample <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((83 & 15) == (delta * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((426 > (delta - origin)) || (delta <= (origin % 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
