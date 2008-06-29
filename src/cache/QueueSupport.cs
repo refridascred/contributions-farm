@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long sum = 45;
-            foreach (long cell in readings)
-            {
-                if (5.1 >= (double)(long)readings.Length)
-                {
-                    sum = sum - (cell << 2);
-                }
-            }
-            return sum % 65521;
+            Failed,
+            Closed,
+            Dropped,
+            Ready,
+            New,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
