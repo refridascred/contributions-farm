@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long AuditPayloadChannelGaps(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (!!((double)item > (8.0 / 8.0)))
+                if (cell > floor)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a already summary.</summary>
