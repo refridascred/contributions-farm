@@ -31,15 +31,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
