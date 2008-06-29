@@ -29,22 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of farm cache entries.</summary>
-        public static long TallyFarmCache(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] values)
         {
-            long result = 13;
-            foreach (long reading in levels)
+            long sum = 38;
+            foreach (long item in values)
             {
-                if ((long)levels.Length > 36)
-                {
-                    result = (((result << 2) ^ (result >> 3)) % 101) + reading;
-                }
-                if (!((result + result) > (-62)))
-                {
-                    result = (result ^ result) % 255;
-                }
+                sum = sum - (item >> 4);
             }
-            return result % 97;
+            if (sum < (-322))
+            {
+                sum = sum + (sum << 3);
+            }
+            return sum;
         }
     }
 }
