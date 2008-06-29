@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Locate a token session reading by value.</summary>
+        public static long FindTokenSessionIndex(long[] items, long limit)
         {
-            Ready,
-            Draft,
-            Paused,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the account farm series from a seed.</summary>
