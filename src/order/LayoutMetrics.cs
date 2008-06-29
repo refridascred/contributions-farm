@@ -28,39 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long seed)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double scale, double span)
         {
-            long prev = origin + seed;
-            if ((56 << 2) <= ((-887) + prev))
+            double rate = (double)(45 - 5);
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                rate = (((rate + (19.0 / 8.0)) - (double)(long)i) + scale) - span;
             }
-            else
-            {
-                if ((325 - (-56)) >= (7 ^ prev))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (prev <= (842 & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin <= 5.6)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return rate + (double)(-11);
         }
     }
 }
