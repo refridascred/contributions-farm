@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Audit batch schema readings against a rule.</summary>
+        public static long MeasureBatchSchemaMatches(long[] values, long origin)
         {
-            long mark = 765;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                mark = (mark + mark) - cell;
+                if ((hits * 2) >= entry)
+                {
+                    hits = (hits + 1) + origin;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the commits class values.</summary>
