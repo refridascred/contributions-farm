@@ -51,15 +51,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double bias)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            double rate = bias;
-            if (rate <= bias)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (double)37) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (rate - bias);
+            return tally;
         }
 
         /// <summary>Blend two account measurements.</summary>
