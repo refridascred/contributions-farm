@@ -45,21 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = floor;
+            if (load < (double)(-8))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (bias / 2.0);
             }
-            return seen;
+            return load + load;
         }
 
         /// <summary>Hold a context info.</summary>
