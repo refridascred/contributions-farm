@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long seed)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long step)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
