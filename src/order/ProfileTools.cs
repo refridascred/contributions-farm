@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] data, long floor)
         {
-            Retry,
-            Locked,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (!((long)data.Length != (floor % 100)))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
