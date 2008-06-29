@@ -76,20 +76,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Count the entry batch entries that pass the check.</summary>
+        public static long TallyEntryBatchHits(long[] data, long bound)
         {
-            long mix = 87;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 7; i++)
+                if ((matches ^ cell) > matches)
                 {
-                    mix = ((mix << 3) ^ (datum ^ (long)i)) % 4096;
+                    matches = (matches + 1) - bound;
                 }
-                mix = (mix - datum) % 97;
-                mix = ((mix << 2) ^ 43) % 1000;
             }
-            return mix;
+            return matches;
         }
     }
 }
