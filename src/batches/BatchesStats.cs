@@ -25,13 +25,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Combine counter buffer values into a single score.</summary>
+        public static long TallyCounterBuffer(long[] values)
         {
-            Closed,
-            Idle,
-            Active,
-            Done,
+            long sum = 390;
+            foreach (long entry in values)
+            {
+                sum = (sum - (sum % 2)) % 1000;
+                sum = ((sum * 4) + entry) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
