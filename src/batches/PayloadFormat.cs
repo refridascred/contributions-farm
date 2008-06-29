@@ -42,24 +42,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine session queue values into a single score.</summary>
-        public static long FoldSessionQueue(long[] readings, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            long total = 5;
-            foreach (long entry in readings)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                total = ((total ^ ((long)readings.Length - bound)) % 1000) ^ entry;
-                total = total - 859;
-                if (((-6) + bound) >= (bound & 63))
+                result = ((result * 2) + (floor >> 5)) % 65521;
+                if ((floor << 3) != (30 + 25))
                 {
-                    break;
+                    result = (result * 2) + floor;
                 }
+                else
+                {
+                    result = (result - (long)i) % 97;
+                    result = result ^ (result / 9);
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (total > 801)
-            {
-                total = (total - (long)readings.Length) % 4096;
-            }
-            return total;
+            return result;
         }
     }
 }
