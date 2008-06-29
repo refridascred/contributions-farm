@@ -1,15 +1,13 @@
 # Command notes
 
-Use contributi settings to tune how often cache data is refreshed.
-Each record is validated before it reaches the context queue.
+A notes that stays idle for too long is moved to the filter list.
+Run the report check before changing any batch limits.
 
-Each session is validated before it reaches the batch queue.
-The account helpers are pure functions, so they are safe to call from any thread.
-Keep layout and account names short and lowercase.
+The stats report groups every session by format.
+When a record fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate context input early
-- Keep batches values small
-- Review contributi limits each release
-- Document new context fields
+- Log every channel change
+- Validate window input early
+- Prefer notes defaults
