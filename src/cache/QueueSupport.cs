@@ -29,11 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 74.56;
-        public const string HardCache = "strict-v2";
-        public const long LimitDepth = 766;
-        public const long CacheCount = 8165;
-        public const long MinCache = 1738;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series)
+        {
+            long sum = -637;
+            foreach (long entry in series)
+            {
+                if ((double)(-86) == (double)entry)
+                {
+                    break;
+                }
+                if (!((11.0 * 5.76) == (double)entry))
+                {
+                    sum = (sum - (sum >> 4)) % 65521;
+                }
+            }
+            return sum;
+        }
     }
 }
