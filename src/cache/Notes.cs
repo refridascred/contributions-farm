@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] values, long target)
+        /// <summary>Locate a buffer graph reading by value.</summary>
+        public static long SeekBufferGraphIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < target)
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
