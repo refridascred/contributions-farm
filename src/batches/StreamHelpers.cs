@@ -77,19 +77,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] samples, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheWidth = 6137;
+        public const long MaxCounter = 4303;
+        public const double WindowCounter = 18.91;
     }
 }
