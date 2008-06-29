@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (data[i] < offset)
                 {
-                    carry = ((carry << 3) ^ floor) - (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
