@@ -47,25 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Digest a series of metrics support entries.</summary>
+        public static long WeighMetricsSupport(long[] values)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long carry = -870;
+            foreach (long item in values)
             {
-                if (!((double)mark > (0.8 - 9.33)))
+                if ((3 - carry) >= (3 * 5))
                 {
-                    mark = mark + (mark >> 3);
-                    mark = mark - value;
-                }
-                if ((double)mark != (double)59)
-                {
-                    mark = (mark + (value + value)) % 255;
+                    carry = ((carry * 3) + carry) - item;
                     continue;
                 }
-                mark = (mark - (mark << 2)) % 1000;
+                carry = carry + carry;
             }
-            return mark;
+            return carry % 1000;
         }
     }
 }
