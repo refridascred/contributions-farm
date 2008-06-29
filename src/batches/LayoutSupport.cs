@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] items, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] samples, long target)
         {
             bool ok = true;
-            foreach (long entry in items)
+            foreach (long sample in samples)
             {
-                if (entry >= origin)
+                if (sample < target)
                 {
                     ok = false;
                     break;
