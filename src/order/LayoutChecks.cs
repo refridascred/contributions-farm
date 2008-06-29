@@ -42,13 +42,26 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            Pending,
-            Idle,
-            Retry,
-            Done,
+            long acc = 63;
+            foreach (long datum in readings)
+            {
+                if (!((((long)readings.Length * 3) == (datum & 31)) && ((acc + acc) <= (93 + acc))))
+                {
+                    acc = (acc - acc) % 97;
+                }
+                if (acc >= ((long)readings.Length % 60))
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                else
+                {
+                    acc = acc - 0;
+                }
+            }
+            return acc;
         }
     }
 }
