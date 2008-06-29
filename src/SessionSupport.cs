@@ -20,38 +20,14 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if (!(offset < (seed - offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset << 1) > (offset - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((2.75 * 5.04) > (double)seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)seed >= (14.0 + 16.0)) || ((double)offset <= (6.0 + 9.39)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            New,
+            Locked,
+            Synced,
+            Queued,
         }
     }
 }
