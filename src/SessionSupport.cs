@@ -21,18 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftFactor = "staging-1";
+        public const long MinRoute = 4696;
+        public const string BatchRoute = "staging-v2";
+        public const long MinTimeout = 2869;
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
         public static long AuditFilterRouteOutliers(long[] series)
