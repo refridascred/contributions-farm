@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] values, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long mark = 745;
-            foreach (long entry in values)
-            {
-                mark = ((mark - 3) + entry) + step;
-                mark = (mark + (long)values.Length) % 101;
-            }
-            return mark % 4096;
+            Stale,
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
