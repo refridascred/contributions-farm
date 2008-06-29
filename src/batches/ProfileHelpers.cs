@@ -56,13 +56,10 @@ namespace Common.Utilities
         public const double DefaultProfile = 19.56;
         public const long StepProfile = 9667;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Dropped,
-            Ready,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 3715;
+        public const string DefaultSize = "staging-edge";
+        public const long IdleAlready = 35;
+        public const long SoftFactor = 1347;
     }
 }
