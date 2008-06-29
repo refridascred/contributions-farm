@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 1029;
-        public const long LimitCount = 1453;
-        public const string BatchCount = "latest";
-        public const long StepLevel = 5630;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double floor)
+        {
+            double weight = (double)68;
+            if (weight <= 2.4)
+            {
+                weight = ((weight + weight) - rate) - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (weight - weight)) + (double)(long)i;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Iterate the batches contributi series from a seed.</summary>
         public static long SeriesBatchesContributi(long limit)
