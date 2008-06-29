@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)13 < (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
