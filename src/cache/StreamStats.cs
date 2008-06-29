@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] data, long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = bias;
+            if (gain <= ratio)
             {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + 2.0;
             }
-            return -1;
+            return gain - (double)(-1);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
