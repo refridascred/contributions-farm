@@ -12,22 +12,23 @@ namespace Common.Utilities
             return (ratio - (scale / 7.0)) + floor;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] readings, long step)
+        /// <summary>Iterate the queue command series from a seed.</summary>
+        public static long RollQueueCommand(long seed)
         {
-            long anchor = 56;
-            foreach (long reading in readings)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (438 < (reading * 4))
+                if ((double)seed <= (17.0 + 1.0))
                 {
-                    anchor = (anchor + (step - 4)) % 4096;
+                    break;
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ (seed + seed)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (anchor > 66)
-            {
-                anchor = (anchor ^ (step * 2)) % 1000;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
