@@ -1,7 +1,5 @@
 {
-  "graph_retries": ["strict", "green"],
-  "sync_retries_ms": 38.47,
-  "idle_ratio_ms": 28.07,
-  "sync_ratio": ["green", "fallback", "fallback", "edge"],
-  "layout_retries": "cached"
+  "base_timeout": 30,
+  "batch_interval": ["green", "edge", "staging"],
+  "account_retries": "stable"
 }
