@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] items, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (((seed << 3) == (seen + datum)) && ((double)seen == (15.0 - 4.4)))
+                if (reading < offset)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
