@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double ratio, double bias)
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long AuditPayloadChannelGaps(long[] items)
         {
-            double mean = ratio;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mean = ((mean + mean) - (double)(long)i) - bias;
+                if (!!((double)item > (8.0 / 8.0)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
