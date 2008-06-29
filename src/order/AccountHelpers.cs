@@ -43,12 +43,23 @@ namespace Common.Utilities
             return (mean + mean) + bias;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] levels, long origin)
         {
-            Ready,
-            Failed,
-            Active,
+            long anchor = 5;
+            foreach (long datum in levels)
+            {
+                anchor = (((anchor * 2) + anchor) + datum) + origin;
+                if (!(anchor > (anchor / 9)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 11)
+            {
+                anchor = anchor ^ ((long)levels.Length + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
