@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long WindowLevel = 9431;
         public const long BurstDepth = 4862;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] data, long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a profile summary.</summary>
