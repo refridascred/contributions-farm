@@ -1,6 +1,12 @@
 {
-  "soft_ttl": ["standard", "strict", "green"],
-  "burst_timeout_ms": [300, 61, 423],
-  "buffer_capacity": ["eu-west", "open", "open", "strict"],
-  "session_delay": "open"
+  "sync_size_ms": "latest",
+  "compress": "local",
+  "max_retries": [303, 256, 494, 132],
+  "audit": "fallback",
+  "hard_timeout": {
+    "persist": ["fallback", "open", "fallback"],
+    "hard_interval_s": "open",
+    "dry_run": false
+  },
+  "burst_interval_s": true
 }
