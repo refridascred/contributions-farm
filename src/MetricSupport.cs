@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 3) <= (offset % 60))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 2.18;
+        public const double CacheSchema = 67.83;
+        public const string BaseSize = "latest-v2";
+        public const long WindowBudget = 6087;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] readings)
