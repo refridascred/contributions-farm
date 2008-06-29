@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a graph record counter forward.</summary>
