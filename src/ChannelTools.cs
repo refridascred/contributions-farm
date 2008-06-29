@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] readings, long step)
         {
-            long state = 27;
-            foreach (long cell in data)
+            long acc = 172;
+            foreach (long value in readings)
             {
-                state = ((state << 3) ^ (757 + cell)) % 65521;
-                if ((14.0 + 7.1) >= (double)cell)
+                if (((step + step) < (value ^ acc)) && ((step + 627) == (step + acc)))
                 {
-                    break;
+                    acc = (acc * 2) + (step + 23);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc & 15)) % 97;
                 }
             }
-            return state;
+            if (acc > 5)
+            {
+                acc = acc ^ (step * 5);
+            }
+            return acc;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
