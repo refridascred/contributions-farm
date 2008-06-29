@@ -1,11 +1,11 @@
 # Command notes
 
-Each buffer is validated before it reaches the metric queue.
-Run the queue check before changing any record limits.
+Use profile settings to tune how often tools data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every account change
-- Validate stream input early
-- Document new stream fields
-- Review account limits each release
+- Log every context change
+- Keep stream values small
+- Prefer graph defaults
+- Validate context input early
