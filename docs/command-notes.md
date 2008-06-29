@@ -1,11 +1,11 @@
 # Command notes
 
-The commits module keeps window values in sync with the filter cache.
-Defaults for record live in the config folder and can be overridden per environment.
-Use schema settings to tune how often stats data is refreshed.
+The counter report groups every githubfarm by graph.
+A entry that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every payload change
-- Document new metric fields
+- Document new order fields
+- Log every entry change
+- Keep support values small
+- Prefer editor defaults
