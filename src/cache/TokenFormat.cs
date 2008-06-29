@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long offset)
+        /// <summary>Count the payload order entries that pass the check.</summary>
+        public static long MeasurePayloadOrderMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (data[i] < offset)
+                if ((9.1 - 9.22) > (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the report kind values.</summary>
