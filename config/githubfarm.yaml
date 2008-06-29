@@ -1,5 +1,6 @@
 # githubfarm settings
-base_ttl: open
-enabled: edge
-cache_timeout: true
-base_size_pct: 4.58
+verbose: true
+editor_limit: 1024
+min_timeout: true
+account_limit: false
+strict: stable
