@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Pending,
-            Active,
-            Done,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 4759;
+        public const long WindowFactor = 6668;
+        public const long MaxBatch = 8208;
+        public const long CacheLevel = 223;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
