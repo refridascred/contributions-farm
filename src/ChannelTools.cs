@@ -29,22 +29,11 @@ namespace Common.Utilities
         public const string DefaultCache = "primary-edge";
         public const string IdleCache = "legacy-v2";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] series, long offset)
-        {
-            long acc = 51;
-            foreach (long item in series)
-            {
-                if ((7 < (offset + offset)) && (31 >= item))
-                {
-                    acc = (acc - item) % 65521;
-                }
-            }
-            if (acc < (-395))
-            {
-                acc = acc + (602 * 4);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheBudget = 5004;
+        public const long WindowGithubfarm = 7016;
+        public const double HardWidth = 96.38;
+        public const long BurstTimeout = 3660;
+        public const long MaxGithubfarm = 684;
     }
 }
