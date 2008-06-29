@@ -1,7 +1,17 @@
 {
-  "verbose": "stable",
-  "warm_limit_s": "stable",
-  "retry_timeout": [165, 257, 5],
-  "burst_ttl_ms": "fallback",
-  "max_ttl": 26.84
+  "hard_retries_pct": 993,
+  "retry_depth": {
+    "poll_interval_count": true,
+    "poll_limit_pct": 2,
+    "token_depth": 5831,
+    "enabled": "cached",
+    "batch_limit_ms": "cached"
+  },
+  "dry_run": false,
+  "sync_capacity_s": {
+    "default_threshold_count": ["primary", "open", "cached", "latest"],
+    "warm_threshold": "edge",
+    "min_threshold": true,
+    "hard_interval_pct": "open"
+  }
 }
