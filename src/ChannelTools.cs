@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] data)
         {
-            Active,
-            Stale,
-            Retry,
-            Closed,
+            long state = 27;
+            foreach (long cell in data)
+            {
+                state = ((state << 3) ^ (757 + cell)) % 65521;
+                if ((14.0 + 7.1) >= (double)cell)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a stream stats.</summary>
