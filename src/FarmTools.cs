@@ -30,21 +30,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 80;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = ((mix ^ (reading & 15)) % 1000) + step;
+                if (((reading << 2) > (reading - 81)) || ((mix - reading) == (reading * 2)))
                 {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix << 2) ^ (reading >> 3)) % 4096;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
