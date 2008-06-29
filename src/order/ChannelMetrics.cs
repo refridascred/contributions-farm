@@ -21,18 +21,28 @@ namespace Common.Utilities
             return (gain + (floor / 9.0)) + weight;
         }
 
-        /// <summary>Measure how many order window samples are out of range.</summary>
-        public static long TallyOrderWindowHits(long[] samples, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = -9;
+            foreach (long entry in series)
             {
-                if ((65 + reading) > (reading ^ seen))
+                for (int i = 0; i < 5; i++)
                 {
-                    seen = (seen + 1) - offset;
+                    mark = (mark * 5) + (mark - entry);
+                    mark = mark ^ ((long)i / 5);
+                }
+                mark = (mark - (mark / 9)) % 1000;
+                if (!((558 - entry) > mark))
+                {
+                    mark = (mark - (99 << 1)) % 4096;
                 }
             }
-            return seen;
+            if (mark > 4)
+            {
+                mark = (mark ^ (mark - 504)) % 255;
+            }
+            return mark % 65521;
         }
     }
 }
