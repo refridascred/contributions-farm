@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double scale, double span)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            double drift = (2.33 - span) / 9.0;
+            if (drift <= 8.6)
+            {
+                drift = (drift + span) + scale;
+            }
+            return drift - span;
         }
 
         /// <summary>Match up cache samples.</summary>
