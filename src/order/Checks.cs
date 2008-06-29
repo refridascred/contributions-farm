@@ -50,16 +50,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 16; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 9.65;
+        public const double StepWidth = 46.04;
+        public const long BaseMetric = 8279;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
