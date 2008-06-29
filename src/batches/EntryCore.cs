@@ -63,22 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm format readings.</summary>
-        public static long FoldGithubfarmFormat(long[] data, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] samples, long floor)
         {
-            long state = 113;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (state <= bound)
+                if (!((1.9 / 4.0) > (double)floor))
                 {
-                    state = (((state * 2) + (bound % 7)) % 101) + entry;
+                    count = (count + 2) ^ entry;
                 }
-                if (((long)data.Length & 3) < (state / 9))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
