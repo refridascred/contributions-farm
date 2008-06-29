@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double floor)
-        {
-            double weight = (double)68;
-            if (weight <= 2.4)
-            {
-                weight = ((weight + weight) - rate) - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (weight - weight)) + (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "stable-edge";
+        public const string BurstBudget = "latest";
+        public const double IdleBudget = 23.37;
+        public const double IdleAccount = 49.74;
+        public const long SoftRatio = 1405;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultSize = 5264;
