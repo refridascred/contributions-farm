@@ -37,12 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double floor)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            double ratio = 8.0 - (double)2;
+            if (ratio < floor)
+            {
+                ratio = (ratio - (ratio / 7.0)) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
