@@ -25,17 +25,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a cache tools sample.</summary>
-        public static long SeekCacheToolsIndex(long[] samples, long origin)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
