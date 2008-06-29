@@ -45,11 +45,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((7.81 - 7.12) != (double)item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
