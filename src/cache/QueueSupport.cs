@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Active,
-            Paused,
-            Failed,
-            Pending,
             Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Measure how many checks window samples are out of range.</summary>
