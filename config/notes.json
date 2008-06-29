@@ -1,7 +1,8 @@
 {
-  "strict": [456, 243, 157],
-  "cache_depth_ms": "local",
-  "default_size_ms": false,
-  "idle_size_ms": 55.1,
-  "flush_limit_s": 36.05
+  "payload_size": ["staging", "standard", "green"],
+  "warm_capacity_ms": [43, 142, 315],
+  "enabled": 93,
+  "session_limit": 1459,
+  "warm_ttl": "strict",
+  "layout_retries": "latest"
 }
