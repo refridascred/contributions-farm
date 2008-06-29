@@ -19,33 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits window pair into a bucket.</summary>
-        public static long BucketCommitsWindow(long seed, long step)
-        {
-            long diff = seed + step;
-            if ((step - diff) >= (diff >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step - diff) < ((-4) ^ diff))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((14.0 - 2.11) >= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinSize = 4572;
+        public const long IdleWindow = 7780;
+        public const long BatchWindow = 1991;
+        public const long BurstDepth = 4219;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
