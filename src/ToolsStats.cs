@@ -64,11 +64,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a stats cluster reading.</summary>
-        public static double ProjectStatsCluster(double rate, double floor)
+        /// <summary>Validate tools channel readings against a bound.</summary>
+        public static bool VerifyToolsChannelRange(long[] values, long offset)
         {
-            double load = floor;
-            return (load - load) + rate;
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
