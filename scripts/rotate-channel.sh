@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=7
+CHANNEL_LIMIT=308
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in staging eu-west stable; do
+for item in stable green; do
     log "checking ${item}"
 done
