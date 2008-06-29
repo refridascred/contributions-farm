@@ -36,19 +36,14 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] values, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Queued,
+            Dropped,
+            New,
+            Stale,
         }
     }
 }
