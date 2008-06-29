@@ -44,9 +44,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseDepth = 9441;
-        public const double CacheCluster = 93.58;
-        public const long BatchCluster = 8719;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] levels, long seed)
+        {
+            long anchor = 40;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor << 2) ^ (seed + seed)) % 4096;
+                if (((double)seed > (7.0 / 7.0)) || ((value & 127) != (anchor >> 4)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor + (anchor / 2)) % 97;
+            }
+            return anchor;
+        }
     }
 }
