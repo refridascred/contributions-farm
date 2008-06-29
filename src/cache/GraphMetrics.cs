@@ -45,18 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long AuditGraphSchemaMatches(long[] levels)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((8.39 * 7.06) < (double)tally)
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
