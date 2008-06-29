@@ -1,10 +1,10 @@
 # support settings
-soft_retries_count: true
-warm_capacity_pct: 11.4
-idle_ttl: 55.1
-soft_capacity:
-  - 148
-  - 194
-  - 273
-githubfarm_ratio: 20
-flush_limit: 9372
+compress:
+  - 223
+  - 431
+  - 259
+  - 482
+batch_timeout_count: 8071
+retry_capacity: legacy
+hard_timeout: false
+enabled: staging
