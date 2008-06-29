@@ -29,12 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardTimeout = 61.23;
-        public const long DefaultWindow = 2131;
-        public const double BaseSpan = 50.56;
-        public const long RetryWindow = 8692;
-        public const long BaseSize = 754;
+        /// <summary>Count the record payload entries that pass the check.</summary>
+        public static long MeasureRecordPayloadHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches < (5.8 * 5.7))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsLimits(long[] readings, long step)
