@@ -57,19 +57,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            long mark = 329;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ (value + mark);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark < (-612))
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 97;
-            }
-            return mark;
+            return count;
         }
     }
 }
