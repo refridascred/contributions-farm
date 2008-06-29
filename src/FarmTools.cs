@@ -56,12 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Queued,
-            Idle,
-            Pending,
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
