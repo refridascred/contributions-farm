@@ -66,18 +66,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long total = -78;
+            foreach (long cell in levels)
             {
-                if ((tally + cell) <= (cell ^ tally))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total - cell) % 4096) - step;
             }
-            return tally;
+            return total;
         }
     }
 }
