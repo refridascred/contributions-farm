@@ -1,6 +1,10 @@
 {
-  "base_retries_count": "cached",
-  "idle_timeout_ms": 66,
-  "max_timeout_s": "local",
-  "burst_delay_s": ["primary", "local", "open"]
+  "enabled": "stable",
+  "metric_ratio": 43.04,
+  "flush_depth": 5390,
+  "window_capacity": {
+    "default_capacity": ["latest", "open", "blue", "edge"],
+    "max_ratio_pct": "edge",
+    "flush_retries_ms": 90.59
+  }
 }
