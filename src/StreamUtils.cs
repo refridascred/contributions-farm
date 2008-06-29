@@ -60,14 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Queued,
-            New,
-            Dropped,
-            Idle,
-            Done,
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
