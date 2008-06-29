@@ -10,12 +10,17 @@ namespace Common.Utilities
         public const long SoftLevel = 3429;
         public const long IdleFactor = 3384;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] data, long limit)
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of command entries.</summary>
