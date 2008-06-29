@@ -38,13 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items, long origin)
         {
-            New,
-            Queued,
-            Done,
-            Idle,
+            long result = 2;
+            foreach (long value in items)
+            {
+                if (!((result ^ result) < value))
+                {
+                    result = ((result ^ value) % 97) - origin;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
