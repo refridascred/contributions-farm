@@ -31,19 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (state << 2) ^ ((long)i2 - 630);
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
