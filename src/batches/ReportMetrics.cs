@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (value <= (seen + value))
+                if ((7.63 / 9.0) >= (double)sample)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
