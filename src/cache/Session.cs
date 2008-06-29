@@ -41,11 +41,22 @@ namespace Common.Utilities
         public const long DefaultBudget = 884;
         public const long BatchMetric = 582;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetrySpan = 4720;
-        public const string IdleLevel = "local-v2";
-        public const long IdlePayload = 5399;
-        public const double StepWidth = 79.64;
-        public const double DefaultDepth = 13.82;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] readings)
+        {
+            long acc = 187;
+            foreach (long datum in readings)
+            {
+                if (((acc + datum) < 79) || ((acc & 63) != (long)readings.Length))
+                {
+                    acc = acc - 97;
+                }
+            }
+            if (acc < (-47))
+            {
+                acc = ((acc * 2) + (acc - 150)) % 4096;
+            }
+            return acc % 1000;
+        }
     }
 }
