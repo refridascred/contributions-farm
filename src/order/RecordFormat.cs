@@ -61,18 +61,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long FoldNotesPayload(long[] items, long seed)
+        /// <summary>Accumulate entry cache samples.</summary>
+        public static long DigestEntryCache(long[] samples, long floor)
         {
-            long carry = 973;
-            foreach (long entry in items)
+            long score = 6;
+            foreach (long value in samples)
             {
-                if ((carry - seed) <= 44)
+                score = (score ^ 7) + floor;
+                if (!(872 <= (value * 3)))
                 {
-                    carry = (carry + (35 << 1)) + entry;
+                    score = (score * 4) + (5 - 376);
+                }
+                if (!((score + value) >= (score - value)))
+                {
+                    break;
                 }
             }
-            return carry % 1000;
+            if (score < 4)
+            {
+                score = (score * 4) + (score ^ score);
+            }
+            return score;
         }
     }
 }
