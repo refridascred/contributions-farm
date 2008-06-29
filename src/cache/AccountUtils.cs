@@ -26,12 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally & 31) < (datum << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
