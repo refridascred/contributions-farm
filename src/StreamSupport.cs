@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Classify a tools counter pair into a bucket.</summary>
+        public static long ClassifyToolsCounter(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target - target) >= (target + floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target & 127) <= (floor << 3))
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor <= (15.0 * 13.0))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
