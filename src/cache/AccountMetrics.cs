@@ -47,12 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 7677;
-        public const double BurstSize = 95.47;
-        public const long MaxEditor = 7707;
-        public const long MinEditor = 399;
-        public const long BurstRatio = 7836;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double AdjustStats(double scale, double span)
