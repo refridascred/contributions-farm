@@ -42,22 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] levels, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long limit)
         {
-            long score = 30;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((4.8 + 3.0) <= (double)item)
+                if (entry < limit)
                 {
-                    score = (score ^ (item - item)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 5)
-            {
-                score = score - limit;
-            }
-            return score;
+            return flag;
         }
 
         /// <summary>Hold a report options.</summary>
