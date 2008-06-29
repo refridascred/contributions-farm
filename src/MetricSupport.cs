@@ -24,12 +24,14 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            Paused,
+            Stale,
+            Queued,
+            Failed,
+            Locked,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
