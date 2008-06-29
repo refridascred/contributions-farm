@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 6979;
-        public const string IdleLevel = "fallback-1";
-        public const string HardSize = "alpha-edge";
-        public const double BaseSpan = 9.66;
-        public const string WindowDepth = "staging-edge";
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string MinInterval = "latest";
