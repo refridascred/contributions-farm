@@ -1,26 +1,26 @@
 # githubfarm settings
-min_depth_pct:
-  verbose:
-    editor_window: 55.5
-    sync_window_count: stable
-    max_depth_pct:
-      - 419
-      - 328
-      - 124
-      - 423
-    editor_interval: blue
-    warm_retries_ms: blue
-    readonly: 51
-  sync_window: 91.3
-  farm_timeout: 6
-  poll_limit: standard
-  flush_timeout_pct: false
-  contributi_interval: 3611
-audit: blue
-warm_ratio: primary
-retry_delay_pct: 92.11
-soft_timeout_pct:
-  flush_depth_s: 6049
-  schema_ratio: false
-  soft_threshold_ms: open
-  enabled: blue
+retry_limit_pct: open
+default_window: fallback
+order_depth:
+  batch_timeout_count: blue
+  hard_depth:
+    hard_window_count:
+      - 93
+      - 144
+    enabled: 86
+    support_depth: 60
+    soft_threshold_count: eu-west
+  strict: 9
+strict:
+  - eu-west
+  - staging
+  - eu-west
+order_delay:
+  poll_delay_pct: 16
+  retry_ratio: standard
+  default_size_pct: legacy
+  hard_threshold_count: 15.17
+  batch_retries_ms:
+    - latest
+    - edge
+    - open
