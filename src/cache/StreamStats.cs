@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Adjust a token reading.</summary>
