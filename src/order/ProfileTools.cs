@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!((long)data.Length != (floor % 100)))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 7125;
+        public const string MaxMetric = "alpha-edge";
+        public const string LimitBudget = "strict-1";
+        public const double WindowSize = 8.16;
+        public const long DefaultInterval = 2985;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] samples)
