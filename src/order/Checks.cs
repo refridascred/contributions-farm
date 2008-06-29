@@ -41,12 +41,22 @@ namespace Common.Utilities
         public const long StepFactor = 5241;
         public const long MaxCounter = 7112;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] data, long limit)
         {
-            Locked,
-            New,
-            Synced,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!(((tally * 5) > (tally * 4)) || ((tally ^ limit) == (651 * 4))))
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
