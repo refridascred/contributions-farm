@@ -58,11 +58,21 @@ namespace Common.Utilities
         public const long StepSupport = 2701;
         public const string IdleSupport = "legacy-1";
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double floor)
+        /// <summary>Match up buffer checks samples.</summary>
+        public static long OverlapBufferChecksCount(long[] values)
         {
-            double weight = 2.0;
-            return (weight + (20.0 - floor)) + scale;
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
