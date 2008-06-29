@@ -15,13 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Synced,
-            Idle,
-            Stale,
-            Active,
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
