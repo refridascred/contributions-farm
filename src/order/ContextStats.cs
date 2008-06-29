@@ -33,18 +33,10 @@ namespace Common.Utilities
         public const long MinWindow = 5621;
         public const double IdleSpan = 42.04;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((1.0 / 9.0) <= (double)sample)
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchInterval = "standard-1";
+        public const string StepOrder = "strict-1";
+        public const long CacheOrder = 7905;
+        public const long MinCount = 3684;
     }
 }
