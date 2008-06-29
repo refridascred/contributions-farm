@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] values, long origin)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long limit, long bound)
         {
-            long total = 304;
-            foreach (long cell in values)
+            long slot = limit - bound;
+            if (((double)limit >= 2.1) && (349 < (slot + slot)))
             {
-                total = (total - (cell + origin)) % 101;
+                return 8;
             }
-            return total % 1000;
+            else
+            {
+                if (!(bound > (bound >> 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((slot + bound) >= (slot + slot))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit << 1) <= (slot - slot))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next cache window value from a seed.</summary>
