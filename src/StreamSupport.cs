@@ -24,11 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double rate, double floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] items, long bound)
         {
-            double weight = (double)(7 ^ 303);
-            return (weight + (1.6 - rate)) + floor;
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
