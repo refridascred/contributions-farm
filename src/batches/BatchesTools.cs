@@ -28,14 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Stale,
-            Synced,
-            Retry,
-            Failed,
-            Queued,
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
