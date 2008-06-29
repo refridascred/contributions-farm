@@ -44,22 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] levels, long seed)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seed < (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
