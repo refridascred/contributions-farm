@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] items, long target)
+        /// <summary>Look up the position of a cluster window sample.</summary>
+        public static long FindClusterWindowIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)target < (9.0 - 8.0))
+                if (samples[i] <= step)
                 {
-                    count = (count + 3) - item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
