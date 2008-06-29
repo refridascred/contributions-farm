@@ -17,21 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up checks editor samples.</summary>
-        public static long MatchChecksEditorCount(long[] items)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long cur = (long)i;
+                cur = ((cur << 3) ^ 18) % 97;
+                if ((((long)i / 5) >= (limit << 1)) || (limit > cur))
                 {
-                    if ((items[i] - items[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
