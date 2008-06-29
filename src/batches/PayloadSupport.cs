@@ -42,25 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long seed, long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long lane = seed - target;
-            if (((seed + lane) > (lane * 2)) || ((lane & 15) == (target - target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((lane >= seed) && ((8.32 * 4.34) >= (double)lane))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
