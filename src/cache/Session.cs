@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinWidth = 2966;
-        public const double LimitCache = 71.19;
-        public const long MaxCache = 8235;
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double gain, double offset)
+        {
+            double ratio = gain + 6.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (gain + gain)) + (double)(long)i;
+            }
+            return ratio - offset;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardSpan = 7506;
