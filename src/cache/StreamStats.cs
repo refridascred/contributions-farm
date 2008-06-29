@@ -65,11 +65,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "strict";
+        public const long MinLevel = 705;
+        public const long DefaultToken = 3446;
+        public const string SoftToken = "legacy-1";
     }
 }
