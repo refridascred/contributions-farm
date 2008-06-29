@@ -26,10 +26,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySpan = 131;
-        public const long RetryLevel = 968;
-        public const double BatchScore = 30.91;
-        public const long WindowScore = 8344;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Queued,
+            Paused,
+            Active,
+        }
     }
 }
