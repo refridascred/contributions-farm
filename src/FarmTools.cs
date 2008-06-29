@@ -33,10 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCount = 9996;
-        public const long HardWidth = 7996;
-        public const double RetryCommand = 39.59;
-        public const long SoftDepth = 9601;
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
