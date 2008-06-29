@@ -27,12 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 134;
-        public const double MaxStream = 59.9;
-        public const string RetryTimeout = "local-1";
-        public const long BurstInterval = 4327;
-        public const long MaxTimeout = 1855;
+        /// <summary>Compare every pair of githubfarm context readings.</summary>
+        public static long PairGithubfarmContextCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseCluster = 8521;
