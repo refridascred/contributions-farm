@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] items)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!(reading <= ((long)items.Length << 3)))
+                if ((18.0 + 18.0) != (double)cell)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
