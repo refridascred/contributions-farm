@@ -54,13 +54,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
