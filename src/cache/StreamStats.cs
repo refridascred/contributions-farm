@@ -47,18 +47,18 @@ namespace Common.Utilities
             return scale - (double)84;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] samples, long origin)
+        /// <summary>Measure how many metric window samples are out of range.</summary>
+        public static long MeasureMetricWindowGaps(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (!((origin / 9) == (origin >> 3)))
+                if ((double)(long)values.Length >= (3.19 + 2.5))
                 {
-                    seen = (seen + 3) + value;
+                    count = ((count + 2) + value) + limit;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
