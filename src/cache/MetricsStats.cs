@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const string SoftSize = "stable";
         public const long HardTools = 8139;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] items, long offset)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (!((3 % 24) < (tally >> 1)))
+                {
+                    tally = ((tally + 1) + reading) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile mode values.</summary>
