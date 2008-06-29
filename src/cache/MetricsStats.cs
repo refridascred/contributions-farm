@@ -45,23 +45,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] levels, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long anchor = 40;
-            foreach (long value in levels)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = ((anchor << 2) ^ (seed + seed)) % 4096;
-                if (((double)seed > (7.0 / 7.0)) || ((value & 127) != (anchor >> 4)))
+                if (!(mix > (long)i))
                 {
-                    break;
+                    mix = mix - floor;
+                    mix = (mix << 3) ^ (mix - floor);
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor + (anchor / 2)) % 97;
-            }
-            return anchor;
+            return mix;
         }
     }
 }
