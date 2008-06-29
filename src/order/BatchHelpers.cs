@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first window editor entry that matches the target.</summary>
-        public static long LookupWindowEditorIndex(long[] levels, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset2 >= (11.0 * 7.9))
             {
-                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((22 <= offset2) || ((0.8 * 5.6) >= (double)offset2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset >= (double)offset2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset < 2.31)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
