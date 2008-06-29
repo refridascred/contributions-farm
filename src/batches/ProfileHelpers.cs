@@ -66,14 +66,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Queued,
-            Active,
-            Done,
+            Dropped,
+            Ready,
+            Failed,
             Draft,
-            Synced,
         }
     }
 }
