@@ -1,6 +1,7 @@
 {
-  "persist": "primary",
-  "session_size": 250,
-  "dry_run": true,
-  "idle_window_pct": "blue"
+  "sync_capacity_pct": true,
+  "context_threshold": false,
+  "audit": "eu-west",
+  "persist": "legacy",
+  "sync_limit_ms": ["standard", "green", "edge", "open"]
 }
