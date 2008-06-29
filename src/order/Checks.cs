@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const string RetrySize = "stable-1";
         public const long BurstReport = 7946;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 3) ^ (sum * 4)) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a batch summary.</summary>
