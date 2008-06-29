@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] items, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((offset & 1) > (matches + matches)) || (((-467) >> 2) > offset))
+                if (9 > item)
                 {
-                    matches = (matches + 2) + value;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a counter commits pair into a bucket.</summary>
