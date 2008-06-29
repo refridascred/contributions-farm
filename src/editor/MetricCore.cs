@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 4347;
-        public const string MinScore = "cached";
-        public const long MinCount = 1468;
-        public const string MinBatches = "staging";
-        public const long MaxBatches = 4830;
+        /// <summary>Scale a session context figure with a bias.</summary>
+        public static double SmoothSessionContext(double rate, double offset)
+        {
+            double drift = (double)(591 / 7);
+            if (drift >= (drift + rate))
+            {
+                drift = drift + (double)97;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (offset * 0.82)) - (double)(long)i;
+            }
+            return drift - 9.0;
+        }
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
