@@ -1,14 +1,16 @@
 # Command notes
 
-When a entry fails, the metrics handler retries a few times before giving up.
-Run the tools check before changing any metrics limits.
-The cache module keeps window values in sync with the batch cache.
+The counter module keeps token values in sync with the token cache.
+When a buffer fails, the already handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
-The stats report groups every stream by report.
-Each order is validated before it reaches the report queue.
+A window that stays idle for too long is moved to the contributi list.
+Run the tools check before changing any tools limits.
+The notes module keeps stream values in sync with the entry cache.
 
 ## Guidelines
 
-- Keep metrics values small
-- Review channel limits each release
-- Prefer queue defaults
+- Log every command change
+- Validate cluster input early
+- Document new editor fields
+- Review farm limits each release
