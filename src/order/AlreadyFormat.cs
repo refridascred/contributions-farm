@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 7034;
-        public const string HardReport = "fallback-edge";
-        public const string MinReport = "fallback-v2";
-        public const long BatchReport = 5110;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((792 + bound) >= (9 & 255))
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long step, long seed)
