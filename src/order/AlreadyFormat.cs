@@ -15,13 +15,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double weight, double offset)
         {
-            Failed,
-            Pending,
-            Queued,
-            Synced,
+            double drift = (double)(2 / 9);
+            if (drift < (double)(-670))
+            {
+                drift = ((drift - (double)843) + weight) - offset;
+            }
+            else
+            {
+                drift = drift + (double)78;
+            }
+            return drift - (5.2 / 7.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
