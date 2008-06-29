@@ -34,13 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            long mark = 5;
+            foreach (long item in levels)
+            {
+                mark = (((mark * 3) + 0) % 255) + item;
+            }
+            if (mark < 52)
+            {
+                mark = (mark * 4) + mark;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of account readings.</summary>
