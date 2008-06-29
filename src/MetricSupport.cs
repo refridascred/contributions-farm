@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Measure how many tools window samples are out of range.</summary>
+        public static long CountToolsWindowMatches(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)tally < (5.0 - 8.9))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
