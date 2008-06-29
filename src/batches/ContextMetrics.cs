@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long offset)
         {
-            public double Score { get; set; }
-            public string Weight { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
