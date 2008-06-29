@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = scale;
+            if (mean > scale)
             {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
+                mean = mean - (offset / 2.0);
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)72;
+            }
+            return mean - offset;
         }
 
         /// <summary>Describe the notes state values.</summary>
