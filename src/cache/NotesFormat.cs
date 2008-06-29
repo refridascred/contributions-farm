@@ -30,24 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series)
+        /// <summary>Audit account context readings against a rule.</summary>
+        public static long MeasureAccountContextMatches(long[] values)
         {
-            long score = -7;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                score = (score ^ (reading / 8)) % 65521;
-                score = (score - ((-26) - score)) % 65521;
-                if (score <= (reading / 6))
+                if ((tally - sample) <= (-142))
                 {
-                    score = ((score << 2) ^ (score - reading)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            if (score < 5)
-            {
-                score = (score - (score ^ score)) % 65521;
-            }
-            return score;
+            return tally;
         }
     }
 }
