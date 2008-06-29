@@ -19,22 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema batch samples.</summary>
-        public static long CombineSchemaBatch(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] samples, long seed)
         {
-            long result = 9;
-            foreach (long datum in series)
+            long acc = 1;
+            foreach (long sample in samples)
             {
-                if ((result + result) >= (datum & 127))
+                if ((sample - 7) >= (acc + sample))
                 {
-                    result = (result ^ (datum - result)) % 4096;
+                    acc = (acc << 2) ^ (sample - seed);
                 }
-                if ((datum <= (result + 59)) || (result > datum))
+                else
                 {
-                    break;
+                    acc = ((acc * 3) + (4 * 5)) % 65521;
                 }
             }
-            return result;
+            if (acc < 0)
+            {
+                acc = (acc + (acc << 1)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a support summary.</summary>
