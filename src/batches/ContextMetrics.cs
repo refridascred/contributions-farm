@@ -14,22 +14,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] items, long bound)
         {
-            long mix = 474;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((double)(long)samples.Length <= 6.1)
+                if (value <= bound)
                 {
-                    mix = (mix ^ (mix + value)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 128)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix % 65521;
+            return found;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
