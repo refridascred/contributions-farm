@@ -57,18 +57,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine notes editor values into a single score.</summary>
-        public static long TotalNotesEditor(long[] samples)
-        {
-            long anchor = 5;
-            foreach (long item in samples)
-            {
-                if (54 >= (anchor + item))
-                {
-                    anchor = anchor ^ anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultBudget = 5880;
+        public const double IdleBudget = 46.47;
+        public const long RetryCommand = 5552;
     }
 }
