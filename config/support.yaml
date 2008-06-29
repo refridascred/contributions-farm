@@ -1,9 +1,10 @@
 # support settings
-stream_timeout: 100
-token_interval:
-  - blue
-  - fallback
-  - cached
-  - open
-profile_window: 30
-retry_timeout_s: blue
+base_ratio_count: 2913
+sync_size: true
+format_depth:
+  stats_threshold:
+    - blue
+    - strict
+  command_window: blue
+  compress: 16.51
+base_retries: 40.73
