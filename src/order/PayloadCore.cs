@@ -15,14 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            Queued,
-            Dropped,
-            Closed,
-            Done,
-            Idle,
+            long sum = 165;
+            foreach (long reading in readings)
+            {
+                sum = sum + (sum ^ reading);
+            }
+            if (sum < 91)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
