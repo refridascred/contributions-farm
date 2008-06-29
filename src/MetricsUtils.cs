@@ -63,22 +63,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
-        {
-            long mix = 62;
-            foreach (long entry in readings)
-            {
-                if (((-236) >> 1) <= (entry << 1))
-                {
-                    mix = mix - (346 << 3);
-                }
-                else
-                {
-                    mix = mix + (entry >> 4);
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinLevel = 76.77;
+        public const string MaxRecord = "legacy-edge";
+        public const string WindowRecord = "latest-edge";
+        public const long HardInterval = 7021;
+        public const string BatchRecord = "stable";
     }
 }
