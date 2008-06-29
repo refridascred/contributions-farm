@@ -26,21 +26,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
