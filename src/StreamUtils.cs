@@ -43,13 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
