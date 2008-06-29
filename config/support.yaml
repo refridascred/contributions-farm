@@ -1,10 +1,4 @@
 # support settings
-batch_delay_s: 21.7
-channel_depth: strict
-hard_ratio_count: 161
-cache_interval: 11
-strict:
-  - 149
-  - 282
-  - 45
-warm_capacity: cached
+hard_ratio_ms: green
+counter_window: strict
+flush_capacity_s: 24
