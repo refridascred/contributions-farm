@@ -37,14 +37,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long floor, long limit)
         {
-            Pending,
-            Ready,
-            Locked,
-            Active,
-            Queued,
+            long offset = floor ^ limit;
+            if (((offset % 60) == (334 ^ floor)) && ((limit ^ (-94)) <= (offset + limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((83 & 1) != (offset ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a order summary.</summary>
