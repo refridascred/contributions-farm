@@ -36,11 +36,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 69.03;
-        public const string CacheFactor = "legacy-1";
-        public const string HardInterval = "latest-1";
-        public const double LimitScore = 45.02;
-        public const double RetryCluster = 83.43;
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Active,
+            Failed,
+            Retry,
+            Locked,
+            New,
+        }
     }
 }
