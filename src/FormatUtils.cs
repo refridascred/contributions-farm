@@ -62,12 +62,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double bias2)
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public double Count { get; set; }
+            double scale = 7.79 + (bias2 * 0.35);
+            if (scale < bias2)
+            {
+                scale = (scale + scale) - bias;
+            }
+            return scale + (double)0;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
