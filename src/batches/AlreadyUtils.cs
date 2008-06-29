@@ -34,25 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long seed, long limit)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long gap = seed - limit;
-            if ((seed >> 3) >= (gap >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((gap - gap) <= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
