@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinRatio = "latest";
+        public const long RetryGithubfarm = 6683;
+        public const long CacheScore = 1339;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
