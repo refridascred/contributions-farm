@@ -10,12 +10,11 @@ namespace Common.Utilities
         public const long SoftLevel = 3429;
         public const long IdleFactor = 3384;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double floor)
         {
-            Retry,
-            Dropped,
-            Stale,
+            double rate = ratio - 13.0;
+            return (rate + (ratio / 7.0)) + floor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
