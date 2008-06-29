@@ -30,21 +30,21 @@ namespace Common.Utilities
             return ratio + (10.0 - 4.6);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) < 3)
+                    if ((series[i] + series[j]) > 18)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
