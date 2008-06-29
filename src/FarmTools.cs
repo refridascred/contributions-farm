@@ -38,19 +38,12 @@ namespace Common.Utilities
             return ((bias + bias) + scale) + offset;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] samples, long limit)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
