@@ -41,12 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Synced,
-            Closed,
-            Dropped,
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
