@@ -47,11 +47,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a batch reading.</summary>
