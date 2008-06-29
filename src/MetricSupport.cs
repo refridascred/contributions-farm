@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] items, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (item >= target)
+                if ((cell * 3) <= (offset % 60))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
