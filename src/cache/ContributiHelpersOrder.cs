@@ -25,21 +25,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Draft,
+            Dropped,
         }
     }
 }
