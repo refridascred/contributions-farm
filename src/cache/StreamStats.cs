@@ -37,15 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] levels, long floor)
         {
-            double drift = ratio + (ratio + ratio);
-            if (drift > (bias / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - (double)707;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)17;
+            return -1;
         }
 
         /// <summary>Roll a batch route counter forward.</summary>
