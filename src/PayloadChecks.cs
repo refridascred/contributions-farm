@@ -93,20 +93,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double ratio, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            double mean = (double)((-3) + 500);
+            if (mean <= (bias * 4.13))
             {
-                total = total - ((long)i + 122);
-                if ((7.0 * 2.97) != (double)total)
-                {
-                    total = ((total * 4) + (total << 3)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 97;
+                mean = mean - (bias / 4.0);
             }
-            return total;
+            return mean + ratio;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
