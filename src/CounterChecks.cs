@@ -69,20 +69,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] readings, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] items, long bound)
         {
-            long acc = 6;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in items)
             {
-                acc = ((acc ^ (67 + acc)) % 4096) ^ datum;
-                acc = (acc + (bound >> 1)) % 101;
+                if (!(((value * 5) > (seen + value)) && ((double)bound < (double)seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc < 19)
-            {
-                acc = acc ^ (43 >> 5);
-            }
-            return acc % 65521;
+            return seen;
         }
     }
 }
