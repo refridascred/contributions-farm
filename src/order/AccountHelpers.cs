@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)8 / 6.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift - 3.63) + (double)(long)i) + gain;
             }
-            return hits;
+            return drift + span;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
