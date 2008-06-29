@@ -31,19 +31,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Count the buffer route entries that pass the check.</summary>
+        public static long TallyBufferRouteGaps(long[] readings, long target)
         {
-            double drift = span / 9.0;
-            if (drift > ratio)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                drift = drift + 9.46;
+                if ((hits ^ 9) >= (target << 3))
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (drift - span)) + (double)(long)i;
-            }
-            return drift + (double)1;
+            return hits;
         }
     }
 }
