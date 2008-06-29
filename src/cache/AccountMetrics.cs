@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long BatchMetrics = 611;
         public const string DefaultMetrics = "fallback-1";
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double rate, double floor)
+        /// <summary>Combine stream context values into a single score.</summary>
+        public static long DigestStreamContext(long[] values)
         {
-            double gain = rate;
-            return (gain - gain) + floor;
+            long score = 76;
+            foreach (long item in values)
+            {
+                score = ((score << 3) ^ (item << 3)) % 101;
+            }
+            if (score > 9)
+            {
+                score = (score - (long)values.Length) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
