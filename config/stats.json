@@ -1,8 +1,5 @@
 {
-  "poll_ratio_count": true,
-  "strict": "primary",
-  "metrics_delay": 8158,
-  "token_timeout": 8295,
-  "retry_window_pct": "blue",
-  "flush_ratio_pct": "cached"
+  "format_delay": true,
+  "audit": false,
+  "warm_retries_ms": 90.66
 }
