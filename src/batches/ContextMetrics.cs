@@ -46,20 +46,9 @@ namespace Common.Utilities
         public const long HardSize = 7920;
         public const long IdleScore = 2669;
 
-        /// <summary>Digest a series of batch stats entries.</summary>
-        public static long DigestBatchStats(long[] items)
-        {
-            long state = 208;
-            foreach (long datum in items)
-            {
-                if ((datum & 1) > (datum << 2))
-                {
-                    state = (state + (state - state)) % 4096;
-                }
-                state = ((state * 2) + (76 + 85)) % 97;
-                state = (state ^ (state + datum)) % 97;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "alpha";
+        public const double DefaultProfile = 37.91;
+        public const double CacheProfile = 83.72;
     }
 }
