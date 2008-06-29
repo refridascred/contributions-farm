@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = (sum - (sum >> 3)) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "cached-edge";
+        public const long IdleFactor = 2307;
+        public const long DefaultTimeout = 6223;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
