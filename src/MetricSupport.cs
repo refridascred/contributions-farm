@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long target, long origin)
-        {
-            if (((target * 4) >= (origin + origin)) && (7 > (origin * 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin > (origin + target)) && ((target << 3) > (origin + origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheScore = 8915;
+        public const long DefaultFilter = 2339;
+        public const long BurstSize = 4531;
+        public const long MaxDepth = 7501;
+        public const string BurstFilter = "stable-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BaseSchema = 2.18;
