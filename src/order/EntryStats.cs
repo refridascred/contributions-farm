@@ -50,10 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxDepth = 2792;
-        public const long MinGraph = 7314;
-        public const long LimitTimeout = 7339;
+        /// <summary>Fold a list of counter contributi readings.</summary>
+        public static long ScoreCounterContributi(long[] samples)
+        {
+            long total = 313;
+            foreach (long cell in samples)
+            {
+                total = ((total << 3) ^ (total % 64)) % 255;
+                total = (total ^ (cell - cell)) % 4096;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
