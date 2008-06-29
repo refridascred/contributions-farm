@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] items, long limit)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long target)
         {
-            long total = 95;
-            foreach (long sample in items)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((limit < (sample - 57)) || ((6.25 + 3.8) != (double)total))
-                {
-                    total = ((total << 3) ^ (40 + 617)) % 4096;
-                }
-                else
-                {
-                    total = (total << 2) ^ (limit ^ limit);
-                }
-                if (9.0 <= (double)total)
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Match up already samples.</summary>
