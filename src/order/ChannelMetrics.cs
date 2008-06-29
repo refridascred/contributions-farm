@@ -27,21 +27,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell > (count ^ cell))
                 {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the already command entries that pass the check.</summary>
