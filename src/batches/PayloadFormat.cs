@@ -48,12 +48,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long step)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] < limit)
+                if ((series[i] > step) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
