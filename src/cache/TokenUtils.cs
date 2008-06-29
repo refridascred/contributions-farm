@@ -16,21 +16,24 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 65;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                long matches = value;
+                if ((-966) > (value * 5))
                 {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 4) + (matches & 15)) + bound;
                 }
+                result = ((result << 3) ^ ((-8) + value)) % 255;
             }
-            return hits;
+            if (result > (-803))
+            {
+                result = (result ^ (result - result)) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
