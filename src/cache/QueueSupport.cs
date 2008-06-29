@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((items[i] == bound) && ((items[i] % 2) == 0))
+                if (seen < (seen + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cluster stats.</summary>
