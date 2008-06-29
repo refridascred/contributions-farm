@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Stale,
-            Queued,
-            Closed,
-            Failed,
+            public double Count { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
