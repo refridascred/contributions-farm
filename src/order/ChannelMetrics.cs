@@ -21,13 +21,17 @@ namespace Common.Utilities
             return (load + scale) + offset;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] samples, long target)
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
