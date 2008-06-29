@@ -32,23 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels, long origin)
-        {
-            long total = 761;
-            foreach (long sample in levels)
-            {
-                if (((7.38 * 5.0) <= (double)sample) || (sample < (total - origin)))
-                {
-                    total = ((total * 5) + (origin - total)) % 65521;
-                }
-                else
-                {
-                    total = (total << 3) ^ (sample >> 2);
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepFilter = "primary-edge";
+        public const long WindowDepth = 6186;
+        public const string MinRatio = "local-edge";
+        public const double BatchLevel = 3.44;
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
