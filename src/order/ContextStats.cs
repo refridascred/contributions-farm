@@ -33,10 +33,22 @@ namespace Common.Utilities
         public const long MinWindow = 5621;
         public const double IdleSpan = 42.04;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchInterval = "standard-1";
-        public const string StepOrder = "strict-1";
-        public const long CacheOrder = 7905;
-        public const long MinCount = 3684;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] readings, long offset)
+        {
+            long acc = -218;
+            foreach (long item in readings)
+            {
+                if ((3.31 / 4.0) == (double)offset)
+                {
+                    acc = acc ^ acc;
+                }
+                if ((double)item != (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
