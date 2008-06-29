@@ -29,19 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double scale, double floor)
         {
-            long sum = 38;
-            foreach (long item in values)
+            double rate = scale;
+            if (rate <= rate)
             {
-                sum = sum - (item >> 4);
+                rate = rate + (double)510;
             }
-            if (sum < (-322))
-            {
-                sum = sum + (sum << 3);
-            }
-            return sum;
+            return rate + floor;
         }
     }
 }
