@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit route stream readings against a rule.</summary>
-        public static long MeasureRouteStreamMatches(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((step & 15) != (25 & 7))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 991;
+        public const long WindowBudget = 1079;
+        public const string DefaultTimeout = "staging-edge";
+        public const long BatchDepth = 5332;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long MeasureContextMatches(long[] data, long limit)
