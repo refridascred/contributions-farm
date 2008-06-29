@@ -20,18 +20,25 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] readings, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long step)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long lane = bound + step;
+            if (((double)1 < (double)step) || ((bound ^ bound) < (bound - 1)))
             {
-                if (!((hits + (-4)) >= value))
+                return 1;
+            }
+            else
+            {
+                if ((lane / 6) >= (step >> 3))
                 {
-                    hits = (hits + 2) + offset;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
