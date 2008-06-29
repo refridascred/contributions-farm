@@ -31,22 +31,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] readings)
         {
-            long carry = 959;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((carry / 7) > (cell / 4))
+                if ((datum << 3) >= datum)
                 {
-                    carry = (carry ^ (carry << 1)) % 4096;
-                }
-                if (cell < carry)
-                {
-                    carry = ((carry * 2) + (carry >> 3)) % 97;
+                    hits = hits + 3;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the counter stats entries that pass the check.</summary>
