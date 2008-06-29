@@ -75,22 +75,14 @@ namespace Common.Utilities
         public const long MinLayout = 7192;
         public const double LimitLayout = 86.9;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] readings)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (((double)hits != (6.81 - 6.56)) && ((hits + hits) != (hits - value)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Stale,
+            Paused,
+            Idle,
         }
     }
 }
