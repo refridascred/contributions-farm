@@ -1,14 +1,12 @@
 {
-  "commits_timeout": "local",
-  "verbose": {
-    "default_depth": {
-      "default_limit_pct": 23,
-      "account_capacity": ["eu-west", "legacy"],
-      "burst_ttl": "primary"
-    },
-    "metrics_limit": 85.69,
-    "min_delay_pct": "green",
-    "audit": "local"
+  "dry_run": "green",
+  "support_timeout": 79,
+  "retry_window": "staging",
+  "enabled": "eu-west",
+  "soft_ratio_ms": {
+    "min_interval_ms": "local",
+    "dry_run": ["edge", "latest", "open", "stable"],
+    "base_size_pct": true
   },
-  "batch_retries_count": ["stable", "cached", "blue", "green"]
+  "channel_depth": "primary"
 }
