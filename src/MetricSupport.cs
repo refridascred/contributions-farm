@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const double BaseBudget = 45.46;
         public const long SoftBatch = 8116;
 
-        /// <summary>Look up the position of a stats notes sample.</summary>
-        public static long LookupStatsNotesIndex(long[] series, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] == floor) && ((series[i] % 2) == 0))
+                if ((9.76 - 8.94) < (double)(long)series.Length)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
