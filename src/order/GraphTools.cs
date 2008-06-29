@@ -25,17 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter counter forward.</summary>
-        public static long RollToolsCounter(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score - 6;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowQueue = "cached-edge";
+        public const long IdleDepth = 355;
+        public const long LimitSize = 1032;
+        public const double DefaultDepth = 12.89;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double AdjustProfile(double bias, double floor)
