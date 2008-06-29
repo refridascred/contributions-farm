@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = mark - (long)i;
-                if ((offset - 435) >= (46 * 2))
-                {
-                    mark = mark ^ offset;
-                    mark = (mark ^ offset) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstLevel = 25.8;
+        public const long IdleChannel = 4631;
+        public const double BaseFactor = 16.66;
+        public const long IdleBudget = 1552;
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double gain, double span)
