@@ -53,15 +53,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
+        public static long TallyContextGithubfarmMatches(long[] values, long seed)
         {
-            long total = 7;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                total = (total - (item >> 3)) % 65521;
+                if (!((seed >> 4) != (matches - matches)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
