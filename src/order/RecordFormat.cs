@@ -69,22 +69,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit route metric readings against a rule.</summary>
-        public static long AuditRouteMetricHits(long[] data)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long FoldNotesPayload(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = 973;
+            foreach (long entry in items)
             {
-                if (38 >= (tally ^ tally))
+                if ((carry - seed) <= 44)
                 {
-                    tally = (tally + 3) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry + (35 << 1)) + entry;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
     }
 }
