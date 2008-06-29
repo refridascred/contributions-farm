@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value >= 1.57)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxLevel = "legacy";
+        public const long DefaultBuffer = 870;
+        public const long WindowSpan = 9455;
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double bias, double span)
