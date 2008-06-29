@@ -62,18 +62,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the order commits entries that pass the check.</summary>
-        public static long AuditOrderCommitsMatches(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (((double)seed2 != (double)seed) && ((double)seed2 > (6.01 / 4.0)))
             {
-                if (sample >= (tally % 60))
+                return 6;
+            }
+            else
+            {
+                if (!(seed >= (seed2 + 31)))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (seed >= (seed - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine order values into a single score.</summary>
