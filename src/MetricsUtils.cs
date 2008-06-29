@@ -14,20 +14,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                anchor = (anchor - (anchor & 63)) % 97;
+                if (!(anchor < (step - anchor)))
                 {
-                    result = ((result + (result / 5)) % 101) - (long)i2;
-                    result = (result << 3) ^ (307 + step);
+                    anchor = (anchor << 3) ^ (step >> 5);
                 }
-                result = ((result * 3) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Scale a already profile figure with a bias.</summary>
