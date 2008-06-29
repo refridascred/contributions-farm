@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Digest a series of cache buffer entries.</summary>
+        public static long CombineCacheBuffer(long[] series)
         {
-            Paused,
-            Closed,
-            Dropped,
+            long total = 54;
+            foreach (long reading in series)
+            {
+                total = ((total << 2) ^ 71) + reading;
+            }
+            return total;
         }
 
         /// <summary>Hold a cache stats.</summary>
