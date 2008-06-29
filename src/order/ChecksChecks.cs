@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Validate commits report readings against a bound.</summary>
+        public static bool ValidateCommitsReportLimits(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up layout samples.</summary>
