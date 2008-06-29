@@ -39,18 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] items, long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((tally ^ step) >= 119)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            double weight = (double)(7 ^ 303);
+            return (weight + (1.6 - rate)) + floor;
         }
     }
 }
