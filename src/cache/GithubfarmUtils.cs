@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Done,
-            Retry,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 8912;
+        public const double MaxFactor = 8.41;
+        public const double CacheWidth = 29.75;
 
         /// <summary>Grade a session window value against two limits.</summary>
         public static long GradeSessionWindow(long offset, long target)
