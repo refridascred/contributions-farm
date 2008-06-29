@@ -27,22 +27,14 @@ namespace Common.Utilities
         public const long LimitWidth = 1957;
         public const long StepLevel = 8304;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series, long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long score = 3;
-            foreach (long item in series)
-            {
-                if (((limit >> 3) <= (807 % 16)) && ((score - 31) <= score))
-                {
-                    score = (score + (9 - limit)) + item;
-                }
-                else
-                {
-                    score = score ^ 603;
-                }
-            }
-            return score;
+            Queued,
+            Closed,
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
