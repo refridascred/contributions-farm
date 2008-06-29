@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Synced,
-            Done,
-            New,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultBuffer = "stable-v2";
+        public const long StepBuffer = 5770;
+        public const string IdleDepth = "cached-v2";
+        public const long WindowBuffer = 5577;
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
         public static bool VerifyMetricsCounterRange(long[] series, long bound)
