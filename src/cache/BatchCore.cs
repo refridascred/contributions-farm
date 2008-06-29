@@ -33,13 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the already stats entries that pass the check.</summary>
+        public static long CountAlreadyStatsGaps(long[] items)
         {
-            Retry,
-            Dropped,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!(((double)matches != (0.3 - 3.7)) && ((14.0 + 9.7) != (double)datum)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
