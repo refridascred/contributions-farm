@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 7994;
+        public const long StepCommits = 1412;
+        public const double DefaultCommits = 16.25;
+        public const string BaseTimeout = "local-1";
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long TallyCounterOutliers(long[] values)
