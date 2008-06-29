@@ -1,5 +1,7 @@
 {
-  "poll_limit": "green",
-  "burst_capacity_count": 9,
-  "burst_retries_pct": 23
+  "order_window": false,
+  "buffer_interval": 5084,
+  "base_limit": 8.34,
+  "report_retries": "stable",
+  "cache_retries_count": 500
 }
