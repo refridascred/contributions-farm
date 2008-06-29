@@ -19,19 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] levels, long step)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = -12;
-            foreach (long cell in levels)
-            {
-                state = ((state - (step + state)) % 101) ^ cell;
-            }
-            if (state > 736)
-            {
-                state = (state + (step & 31)) % 65521;
-            }
-            return state;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Rank report input into a small class.</summary>
