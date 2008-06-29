@@ -32,13 +32,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Grade a schema payload value against two limits.</summary>
+        public static long RankSchemaPayload(long origin, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
+            long lane = origin - floor;
+            if ((lane / 7) >= lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor < (-5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - origin) < (lane * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
