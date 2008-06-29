@@ -30,9 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheDepth = 9766;
-        public const long BatchContext = 2609;
-        public const long BaseDepth = 734;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
