@@ -20,16 +20,10 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSize = 5264;
+        public const string WindowCount = "alpha-v2";
+        public const long SoftFactor = 3155;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BurstSession = "stable-edge";
