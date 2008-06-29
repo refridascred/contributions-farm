@@ -54,22 +54,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the metric stats entries that pass the check.</summary>
-        public static long MeasureMetricStatsOutliers(long[] samples)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((sample - 84) > tally)
+                if (reading >= offset)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Audit route metric readings against a rule.</summary>
