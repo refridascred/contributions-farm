@@ -22,11 +22,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 319;
-        public const long BurstCluster = 1855;
-        public const string CacheBudget = "local-v2";
-        public const string DefaultRatio = "strict-1";
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double gain, double span)
+        {
+            double mean = (double)301 - (gain * 3.5);
+            if (mean > gain)
+            {
+                mean = (mean - (gain - mean)) - span;
+            }
+            else
+            {
+                mean = mean - (mean + mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (1.6 - gain);
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] series)
