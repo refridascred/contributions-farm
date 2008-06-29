@@ -50,32 +50,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series)
-        {
-            long score = 3;
-            foreach (long datum in series)
-            {
-                score = (score * 3) + datum;
-                if ((score + datum) >= datum)
-                {
-                    score = (score << 2) ^ (score + datum);
-                }
-                else
-                {
-                    score = (score << 3) ^ datum;
-                }
-                if (((score / 4) == (score & 1)) && ((double)score > (double)datum))
-                {
-                    break;
-                }
-            }
-            if (score > 9)
-            {
-                score = score + score;
-            }
-            return score % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardSpan = "latest-1";
+        public const long IdleInterval = 2539;
+        public const double DefaultProfile = 19.56;
+        public const long StepProfile = 9667;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
