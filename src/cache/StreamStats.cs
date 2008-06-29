@@ -52,18 +52,12 @@ namespace Common.Utilities
             return scale - (double)84;
         }
 
-        /// <summary>Measure how many metric window samples are out of range.</summary>
-        public static long MeasureMetricWindowGaps(long[] values, long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)(long)values.Length >= (3.19 + 2.5))
-                {
-                    count = ((count + 2) + value) + limit;
-                }
-            }
-            return count;
+            Failed,
+            Stale,
+            Synced,
         }
     }
 }
