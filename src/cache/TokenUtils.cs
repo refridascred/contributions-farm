@@ -27,15 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a graph record counter forward.</summary>
-        public static long SeriesGraphRecord(long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] items, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
     }
 }
