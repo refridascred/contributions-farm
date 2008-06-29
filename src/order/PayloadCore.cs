@@ -16,22 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of payload githubfarm entries.</summary>
-        public static long CombinePayloadGithubfarm(long[] samples, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] samples, long offset)
         {
-            long state = 63;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((sample % 24) > (state * 4)) || (sample > (step + sample)))
+                if ((double)entry >= (double)(long)samples.Length)
                 {
-                    state = ((state * 3) + (617 & 255)) % 65521;
-                }
-                else
-                {
-                    state = (state + state) % 255;
+                    count = (count + 2) - offset;
                 }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
