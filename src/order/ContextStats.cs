@@ -28,10 +28,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "legacy-v2";
-        public const long MinWindow = 5621;
-        public const double IdleSpan = 42.04;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] levels)
+        {
+            long anchor = 4;
+            foreach (long reading in levels)
+            {
+                anchor = (((anchor << 2) ^ (anchor - 54)) % 255) + reading;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
