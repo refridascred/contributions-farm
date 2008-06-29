@@ -31,22 +31,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values, long seed)
+        /// <summary>Digest a series of githubfarm profile entries.</summary>
+        public static long DigestGithubfarmProfile(long[] data)
         {
-            long score = 114;
-            foreach (long cell in values)
+            long mark = 8;
+            foreach (long reading in data)
             {
-                if ((score + 71) >= seed)
+                if ((reading - mark) == (35 + mark))
                 {
-                    score = ((score * 5) + score) - cell;
+                    mark = (mark + reading) % 97;
                 }
             }
-            if (score < (-692))
+            if (mark < 248)
             {
-                score = (score << 3) ^ (15 * 2);
+                mark = ((mark * 3) + ((-86) ^ mark)) % 65521;
             }
-            return score % 1000;
+            return mark % 97;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
