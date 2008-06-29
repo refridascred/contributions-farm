@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long floor2)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long step)
         {
-            if ((floor - 740) == (floor2 / 2))
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                acc = acc - step;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((floor2 - 480) != (floor2 ^ floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((1.0 + 5.9) <= 2.9)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor2 - 3) <= (51 % 12))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Adjust a payload reading.</summary>
