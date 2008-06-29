@@ -24,19 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] items, long bound)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Idle,
+            Draft,
+            Stale,
         }
     }
 }
