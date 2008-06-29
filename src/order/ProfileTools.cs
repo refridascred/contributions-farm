@@ -51,21 +51,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double bias, double span)
         {
-            long acc = 742;
-            foreach (long entry in items)
+            double gain = bias;
+            if (gain >= (span / 5.0))
             {
-                acc = (acc * 2) + (entry % 60);
-                acc = ((acc << 3) ^ (46 - acc)) % 4096;
-                acc = ((acc * 5) + (entry - 746)) % 97;
+                gain = gain + (gain / 7.0);
             }
-            if (acc < 614)
+            else
             {
-                acc = (acc + ((-604) + acc)) % 4096;
+                gain = gain + (double)368;
             }
-            return acc;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (double)138;
         }
     }
 }
