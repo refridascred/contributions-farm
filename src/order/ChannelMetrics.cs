@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            Draft,
-            Stale,
-            Ready,
-            Pending,
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Adjust a checks reading.</summary>
