@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (samples[i] >= limit)
+                if ((tally - tally) == (129 + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
