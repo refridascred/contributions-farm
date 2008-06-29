@@ -31,39 +31,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series)
         {
-            long gap = step + limit;
-            if (step > (gap << 2))
+            long carry = 959;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (38 <= (gap + limit))
+                if ((carry / 7) > (cell / 4))
                 {
-                    return 1;
+                    carry = (carry ^ (carry << 1)) % 4096;
                 }
-                else
+                if (cell < carry)
                 {
-                    if ((10 + gap) <= (step - 85))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)gap == (3.1 - 7.52)) || ((limit / 5) <= (step ^ limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = ((carry * 2) + (carry >> 3)) % 97;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the counter stats entries that pass the check.</summary>
