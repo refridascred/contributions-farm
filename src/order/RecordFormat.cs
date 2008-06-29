@@ -44,15 +44,12 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Adjust a editor checks reading.</summary>
-        public static double SmoothEditorChecks(double rate, double bias)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double scale = rate;
-            if (scale >= scale)
-            {
-                scale = (scale + rate) + bias;
-            }
-            return scale + rate;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
