@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine window metric values into a single score.</summary>
-        public static long DigestWindowMetric(long[] readings, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
         {
-            long acc = -69;
-            foreach (long datum in readings)
+            long sum = 665;
+            foreach (long value in values)
             {
-                if (((2.4 - 2.13) <= (double)datum) || ((acc << 2) <= offset))
-                {
-                    acc = ((acc * 2) + ((-632) - acc)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 5) + datum) % 4096;
-                    acc = (acc * 3) + datum;
-                }
-                acc = (acc - (offset + offset)) % 255;
-                acc = (acc - offset) % 101;
+                sum = sum ^ (value + sum);
             }
-            if (acc < 9)
-            {
-                acc = ((acc << 2) ^ acc) % 101;
-            }
-            return acc;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of profile metric readings.</summary>
