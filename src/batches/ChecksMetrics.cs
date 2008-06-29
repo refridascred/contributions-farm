@@ -43,17 +43,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first schema stream entry that matches the target.</summary>
-        public static long SeekSchemaStreamIndex(long[] items, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long target, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = target ^ offset;
+            if ((9.3 / 2.0) > (double)offset)
             {
-                if (items[i] <= bound)
+                return 8;
+            }
+            else
+            {
+                if ((offset + edge) <= (274 * 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
