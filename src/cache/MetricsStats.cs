@@ -52,20 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(mix > (long)i))
-                {
-                    mix = mix - floor;
-                    mix = (mix << 3) ^ (mix - floor);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Retry,
+            Failed,
         }
     }
 }
