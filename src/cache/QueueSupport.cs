@@ -36,24 +36,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long offset, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if (!(3 < (42 - bound)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound + bound) > (bound ^ offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Pending,
+            Dropped,
         }
     }
 }
