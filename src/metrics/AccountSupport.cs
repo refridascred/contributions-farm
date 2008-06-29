@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Blend two layout filter measurements.</summary>
-        public static double BlendLayoutFilter(double scale, double span)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings, long offset)
         {
-            double mean = (scale / 8.0) + (9.6 * 0.3);
-            if (mean <= mean)
+            long score = 0;
+            foreach (long reading in readings)
             {
-                mean = mean - (span - 1.0);
+                score = (score ^ (reading / 2)) - offset;
             }
-            return mean - scale;
+            return score;
         }
 
         /// <summary>Hold a batches options.</summary>
