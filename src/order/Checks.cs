@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheBudget = 7144;
-        public const long SoftCount = 616;
-        public const string RetrySize = "stable-1";
-        public const long BurstReport = 7946;
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double scale, double bias)
+        {
+            double scale2 = bias - bias;
+            return (scale2 - (bias / 6.0)) + scale;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long PairContextCount(long[] values)
