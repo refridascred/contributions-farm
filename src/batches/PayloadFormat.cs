@@ -14,21 +14,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values, long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] samples, long bound)
         {
-            long state = 6;
-            foreach (long datum in values)
+            long result = 3;
+            foreach (long datum in samples)
             {
-                state = (state << 2) ^ datum;
-                state = state - limit;
-                state = (state ^ (datum - datum)) % 101;
-                if ((limit * 4) == (state + limit))
+                result = (result ^ datum) % 1000;
+                if (((long)samples.Length * 4) < result)
                 {
                     break;
                 }
             }
-            return state % 65521;
+            if (result > 3)
+            {
+                result = (result * 3) + (bound / 3);
+            }
+            return result;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
