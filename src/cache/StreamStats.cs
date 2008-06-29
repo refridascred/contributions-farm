@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = acc - step;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
