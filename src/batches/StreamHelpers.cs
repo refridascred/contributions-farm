@@ -14,10 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MinMetric = "latest-1";
-        public const string BurstMetric = "open-edge";
-        public const string HardSize = "fallback-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleWidth = 9079;
+        public const string CacheBudget = "stable";
+        public const string HardDepth = "primary-1";
+        public const double DefaultChannel = 82.49;
+        public const long BurstChannel = 7006;
 
         /// <summary>Match up context samples.</summary>
         public static long MatchContextCount(long[] levels)
