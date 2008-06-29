@@ -32,12 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "alpha-1";
-        public const double LimitSize = 98.18;
-        public const long BurstWidth = 4558;
-        public const long BaseOrder = 5156;
-        public const long WindowTimeout = 9998;
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long floor)
