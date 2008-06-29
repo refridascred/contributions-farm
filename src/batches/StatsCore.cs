@@ -54,18 +54,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if (((double)limit > 8.0) && ((limit + offset) > limit))
             {
-                if (((double)seen > (double)1) || ((2.46 / 9.0) <= (double)seen))
+                return 3;
+            }
+            else
+            {
+                if ((offset & 15) != (limit ^ limit))
                 {
-                    seen = (seen + 1) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset < (9.9 - 19.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((offset & 63) != (limit * 3)) && (limit <= (offset + limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
