@@ -38,18 +38,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] items, long origin)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long result = 2;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((result ^ result) < value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result ^ value) % 97) - origin;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
