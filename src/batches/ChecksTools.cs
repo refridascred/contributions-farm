@@ -47,21 +47,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = 8.3 / 7.0;
+            if (drift < gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + gain;
             }
-            return hits;
+            else
+            {
+                drift = drift + (drift + span);
+            }
+            return drift + (double)(-379);
         }
     }
 }
