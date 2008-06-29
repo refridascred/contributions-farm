@@ -1,12 +1,6 @@
 # githubfarm settings
-entry_window:
-  persist: 3227
-  strict: 31
-  batch_limit: true
-  order_ratio: latest
-  dry_run: false
-min_limit: 18
-command_ratio: blue
-sync_ttl_ms: 94
-min_ttl: 49
-retry_capacity: 1024
+max_retries_pct: 41
+context_delay: standard
+token_timeout: edge
+poll_ratio_pct: 83
+command_timeout: 82.46
