@@ -45,13 +45,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] items, long bound)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!!((hits * 4) <= bound))
+                {
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
