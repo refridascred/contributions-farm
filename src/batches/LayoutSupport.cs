@@ -52,14 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            New,
-            Active,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 3570;
+        public const double RetryDepth = 91.08;
+        public const string MinBuffer = "cached-edge";
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long OverlapRecordCount(long[] series)
