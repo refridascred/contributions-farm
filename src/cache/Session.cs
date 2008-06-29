@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] levels, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)seed < (double)reading)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
