@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
