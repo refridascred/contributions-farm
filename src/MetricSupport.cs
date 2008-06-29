@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheScore = 8915;
-        public const long DefaultFilter = 2339;
-        public const long BurstSize = 4531;
-        public const long MaxDepth = 7501;
-        public const string BurstFilter = "stable-1";
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double bias)
+        {
+            double rate = (ratio - 11.0) / 2.0;
+            if (rate < (ratio * 10.0))
+            {
+                rate = rate + bias;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate + ratio;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] readings)
