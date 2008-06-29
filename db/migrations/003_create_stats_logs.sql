@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    region TEXT
+    label TEXT,
+    region TEXT,
+    level INTEGER,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
-
-INSERT INTO stats_logs (count, state, region) VALUES (46, 'latest', 'blue');
-INSERT INTO stats_logs (count, state, region) VALUES (36, 'cached', 'blue');
-INSERT INTO stats_logs (count, state, region) VALUES (6, 'legacy', 'staging');
+CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
