@@ -1,17 +1,13 @@
 {
-  "burst_interval_pct": [376, 13, 287, 107],
-  "channel_limit": {
-    "soft_size": "strict",
-    "retry_timeout_count": false,
-    "idle_window": 71.36,
-    "stats_retries": 83,
-    "burst_interval_pct": "eu-west"
+  "persist": 44.82,
+  "batch_depth": 100,
+  "compress": false,
+  "command_threshold": {
+    "notes_threshold": "local",
+    "layout_retries": "local",
+    "idle_delay_count": 35,
+    "token_timeout": ["staging", "staging"],
+    "audit": false
   },
-  "token_threshold": 61.42,
-  "record_window": {
-    "max_ttl_count": "cached",
-    "compress": "green",
-    "sync_ttl_pct": false
-  },
-  "batch_timeout": 6323
+  "cache_interval": 79.15
 }
