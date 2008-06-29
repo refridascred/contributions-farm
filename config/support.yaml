@@ -1,12 +1,10 @@
 # support settings
-readonly:
-  - blue
-  - strict
-default_capacity: 54
-poll_size_s:
-  - 452
-  - 249
-  - 193
-  - 8
-poll_delay_count: 6758
-max_ttl_s: 86.11
+batch_delay_s: 21.7
+channel_depth: strict
+hard_ratio_count: 161
+cache_interval: 11
+strict:
+  - 149
+  - 282
+  - 45
+warm_capacity: cached
