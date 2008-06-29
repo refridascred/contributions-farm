@@ -15,19 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] values, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
