@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] readings, long step)
         {
-            Failed,
-            Closed,
-            Draft,
-            Synced,
-            Dropped,
+            long mark = 14;
+            foreach (long sample in readings)
+            {
+                if (((double)mark >= (5.43 + 5.7)) || (((long)readings.Length + mark) == (mark - 972)))
+                {
+                    mark = ((mark - sample) % 1000) + step;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (sample + mark)) % 1000;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = mark - (mark / 5);
+            }
+            return mark;
         }
 
         /// <summary>Hold a already options.</summary>
