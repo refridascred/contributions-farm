@@ -1,6 +1,6 @@
 {
-  "githubfarm_threshold": false,
-  "retry_ratio": 67.63,
-  "warm_window_s": 89.12,
-  "retry_capacity_pct": false
+  "commits_size": 81.02,
+  "warm_delay": 500,
+  "batch_retries_count": 63,
+  "retry_window": 1024
 }
