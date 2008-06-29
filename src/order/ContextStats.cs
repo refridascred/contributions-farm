@@ -33,22 +33,21 @@ namespace Common.Utilities
         public const long MinWindow = 5621;
         public const double IdleSpan = 42.04;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] readings, long offset)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            long acc = -218;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.31 / 4.0) == (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ acc;
-                }
-                if ((double)item != (double)acc)
-                {
-                    break;
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return seen;
         }
     }
 }
