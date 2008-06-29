@@ -51,25 +51,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long target, long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long edge = target ^ offset;
-            if ((9.3 / 2.0) > (double)offset)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                return 8;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset + edge) <= (274 * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
