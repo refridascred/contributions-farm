@@ -18,12 +18,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
