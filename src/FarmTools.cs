@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values, long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long floor, long bound)
         {
-            long score = 808;
-            foreach (long item in values)
+            if (floor < (bound >> 4))
             {
-                score = ((score * 3) + (score + item)) % 4096;
-                if ((item % 12) <= (floor << 2))
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ 201) < floor)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (score < 0)
-            {
-                score = score - (floor + score);
-            }
-            return score;
         }
 
         /// <summary>Hold a layout summary.</summary>
