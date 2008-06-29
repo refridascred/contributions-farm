@@ -19,12 +19,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstInterval = 6151;
-        public const long MinSize = 9922;
-        public const long StepCounter = 3603;
-        public const double LimitCounter = 41.77;
-        public const long RetryLevel = 123;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((long)i % 3) >= (mark + limit))
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long target)
