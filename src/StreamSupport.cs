@@ -25,10 +25,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchBudget = 3724;
-        public const long CacheSize = 8341;
-        public const double CacheSupport = 46.04;
-        public const long DefaultSupport = 6240;
+        /// <summary>Iterate the entry token series from a seed.</summary>
+        public static long StepEntryToken(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if (((7.45 * 1.53) < (double)(long)i) || ((result << 1) > 9))
+                {
+                    result = (result * 2) + result;
+                }
+                else
+                {
+                    result = (result + result) % 1000;
+                }
+                if ((offset % 24) != (result ^ (-70)))
+                {
+                    long edge = offset;
+                    result = ((result * 3) + edge) % 65521;
+                }
+                result = result - result;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
