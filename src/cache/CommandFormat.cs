@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const string WindowDepth = "standard-edge";
         public const long BurstBatches = 6951;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Digest a series of farm notes entries.</summary>
+        public static long TallyFarmNotes(long[] values, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            long result = -6;
+            foreach (long item in values)
+            {
+                if ((5.19 + 7.96) < (double)bound)
+                {
+                    result = ((result * 5) + (408 - item)) % 97;
+                }
+            }
+            return result % 4096;
         }
     }
 }
