@@ -59,11 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Roll a metrics report counter forward.</summary>
+        public static long SeriesMetricsReport(long bound)
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
