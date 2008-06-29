@@ -75,19 +75,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate token buffer readings against a bound.</summary>
-        public static bool ValidateTokenBufferLimits(long[] items, long bound)
-        {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 47.43;
+        public const double IdleCount = 35.77;
+        public const long WindowSize = 8880;
+        public const long SoftPayload = 5408;
     }
 }
