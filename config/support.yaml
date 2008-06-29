@@ -1,9 +1,6 @@
 # support settings
-warm_timeout_ms: 49
-soft_size_count: fallback
-retry_capacity_pct: 56.19
-retry_capacity_count: false
-warm_capacity_pct: false
-tools_threshold:
-  - 120
-  - 148
+cache_timeout: 500
+session_window: cached
+burst_timeout_ms: 80.61
+retry_timeout_pct: true
+enabled: 89
