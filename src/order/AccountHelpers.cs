@@ -36,11 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double ratio, double offset)
         {
-            double mean = floor;
-            return (mean + mean) + bias;
+            double weight = (double)(35 ^ 91);
+            if (weight < (2.39 + offset))
+            {
+                weight = weight - (double)90;
+            }
+            else
+            {
+                weight = weight + (offset * 0.5);
+            }
+            return weight - ratio;
         }
 
         /// <summary>Describe the stats level values.</summary>
