@@ -1,27 +1,10 @@
 # entry settings
-report_limit:
-  strict: 1024
-  metric_retries: 100
-  sync_ratio_s: 629
-  warm_size_count:
-    - fallback
-    - staging
-    - fallback
-    - fallback
-  default_retries_s: 31
-  default_capacity_s:
-    soft_timeout_ms: 543
-    batch_limit:
-      - strict
-      - staging
-      - edge
-      - eu-west
-    base_capacity_count: fallback
-commits_ttl: 75.2
-default_ratio: 60
-report_size:
-  - 428
-  - 378
-  - 480
-  - 298
-idle_delay_count: 10
+sync_capacity_s: 7924
+enabled: eu-west
+flush_ttl: 7592
+format_window: blue
+compress:
+  compress: standard
+  warm_capacity_pct: 3.38
+  warm_timeout_pct: false
+verbose: 79.37
