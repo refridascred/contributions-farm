@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Rank farm tools input into a small class.</summary>
+        public static long RankFarmTools(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = seed - floor;
+            if ((5.0 * 6.6) > (double)lane)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((double)lane >= (11.0 / 6.0)))
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
