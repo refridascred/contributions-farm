@@ -1,6 +1,12 @@
 # githubfarm settings
-audit: false
-support_threshold: 25
-cache_window: 5098
-strict: 65
-format_depth: true
+warm_delay: 23
+max_retries_pct:
+  max_capacity:
+    - 100
+    - 254
+  hard_capacity: false
+  filter_threshold:
+    - 451
+    - 320
+  idle_ttl: local
+batches_ttl: open
