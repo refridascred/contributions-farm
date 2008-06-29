@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] data)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long mix = 491;
+            foreach (long cell in data)
+            {
+                mix = (((mix << 3) ^ (mix & 31)) % 255) + cell;
+            }
+            return mix;
         }
 
         /// <summary>Hold a tools header.</summary>
