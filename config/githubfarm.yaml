@@ -1,6 +1,5 @@
 # githubfarm settings
-default_retries_s: 57
-cache_capacity_pct: 47.48
-farm_delay:
-  - standard
-  - strict
+idle_window: 14.11
+sync_size_count: 9200
+soft_size_pct: 27.34
+compress: 2976
