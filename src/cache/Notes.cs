@@ -37,17 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the metrics filter series from a seed.</summary>
-        public static long DeriveMetricsFilter(long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                result = result + (floor & 15);
-                result = result - floor;
-                result = ((result * 5) + (long)i) % 97;
+                if ((reading << 1) < (tally ^ 0))
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Rank contributi editor input into a small class.</summary>
