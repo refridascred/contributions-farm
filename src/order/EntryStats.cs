@@ -10,16 +10,12 @@ namespace Common.Utilities
         public const long SoftLevel = 3429;
         public const long IdleFactor = 3384;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state ^ ((long)i << 1)) % 97;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public bool Count { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
