@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double bias = (gain * 8.7) + (offset / 5.0);
+            if (bias >= (3.07 + 16.0))
             {
-                if ((5.0 + 7.7) < (double)item)
-                {
-                    seen = (seen + 1) + floor;
-                }
+                bias = bias - (double)426;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias + (gain + bias);
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
