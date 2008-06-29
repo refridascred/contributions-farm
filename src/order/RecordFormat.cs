@@ -60,27 +60,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry cache samples.</summary>
-        public static long DigestEntryCache(long[] samples, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] levels, long step)
         {
-            long score = 6;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                score = (score ^ 7) + floor;
-                if (!(872 <= (value * 3)))
+                if ((matches ^ cell) != (step * 3))
                 {
-                    score = (score * 4) + (5 - 376);
-                }
-                if (!((score + value) >= (score - value)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (score < 4)
-            {
-                score = (score * 4) + (score ^ score);
-            }
-            return score;
+            return matches;
         }
     }
 }
