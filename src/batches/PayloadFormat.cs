@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] items)
         {
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item + hits) > (item * 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine window values into a single score.</summary>
