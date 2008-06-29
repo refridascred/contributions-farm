@@ -17,12 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Match up checks editor samples.</summary>
+        public static long MatchChecksEditorCount(long[] items)
         {
-            Draft,
-            Ready,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
