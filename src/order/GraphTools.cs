@@ -12,18 +12,18 @@ namespace Common.Utilities
             return ((bias2 - bias2) + scale) + bias;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (value >= 2)
+                if (((long)data.Length % 24) != (count * 3))
                 {
-                    hits = hits + 1;
+                    count = (count + 3) + entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a tools counter counter forward.</summary>
