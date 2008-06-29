@@ -32,10 +32,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 4053;
-        public const long HardProfile = 8321;
-        public const string DefaultProfile = "primary-1";
+        /// <summary>Audit channel profile readings against a rule.</summary>
+        public static long CountChannelProfileMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)hits <= (14.0 + 11.0)) && ((double)hits > (6.0 - 8.0)))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long RankGithubfarm(long limit, long offset)
