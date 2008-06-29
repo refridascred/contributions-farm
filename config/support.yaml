@@ -1,18 +1,12 @@
 # support settings
-audit: false
-layout_ttl: 250
-enabled: green
-flush_window_ms: 500
-strict:
-  default_ratio_s:
-    max_capacity_s: edge
-    checks_timeout: blue
-    poll_retries_ms: green
-    default_window_pct:
-      - standard
-      - staging
-  readonly: false
-  githubfarm_capacity: 9896
-  route_ttl:
-    - 84
-    - 121
+readonly:
+  - blue
+  - strict
+default_capacity: 54
+poll_size_s:
+  - 452
+  - 249
+  - 193
+  - 8
+poll_delay_count: 6758
+max_ttl_s: 86.11
