@@ -28,40 +28,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long bound, long offset)
-        {
-            long span = bound ^ offset;
-            if (((span / 5) > offset) && ((602 + offset) < (6 / 9)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound >> 5) <= bound) && (bound > (offset - bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((18.0 / 9.0) == (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1.8 / 3.0) <= (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "stable-edge";
+        public const long SoftSession = 6458;
+        public const string BatchSession = "standard-edge";
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] items)
