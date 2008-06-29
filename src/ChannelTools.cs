@@ -20,14 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Stale,
-            Active,
-            Synced,
-            Done,
-            Closed,
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
