@@ -1,6 +1,5 @@
 # entry settings
-batches_size: true
-default_interval_ms: 60
-warm_delay:
-  - 319
-  - 483
+tools_limit: 28
+cache_interval: 5.09
+idle_size_s: 866
+verbose: false
