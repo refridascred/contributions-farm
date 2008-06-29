@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowBudget = "standard";
-        public const long IdleTimeout = 8008;
-        public const long MinBudget = 9841;
-        public const string MinSize = "staging-v2";
-        public const double SoftLevel = 67.41;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxEntry = 53.72;
