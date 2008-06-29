@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
