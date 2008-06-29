@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] items, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (value <= bound)
+                if (((seed << 3) == (seen + datum)) && ((double)seen == (15.0 - 4.4)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
