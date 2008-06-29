@@ -13,38 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long step, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] data, long offset)
         {
-            if ((origin >> 5) >= step)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (7.15 >= (double)origin)
+                if (cell >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin < step) && ((1 >> 4) < (step + origin)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + step) != (872 - step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two filter measurements.</summary>
