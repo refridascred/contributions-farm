@@ -23,19 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] series, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                state = (state ^ (origin * 3)) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Locate a editor tools reading by value.</summary>
