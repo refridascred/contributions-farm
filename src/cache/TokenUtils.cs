@@ -14,24 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series, long bound)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long result = 65;
-            foreach (long value in series)
-            {
-                long matches = value;
-                if ((-966) > (value * 5))
-                {
-                    result = ((result * 4) + (matches & 15)) + bound;
-                }
-                result = ((result << 3) ^ ((-8) + value)) % 255;
-            }
-            if (result > (-803))
-            {
-                result = (result ^ (result - result)) % 101;
-            }
-            return result % 1000;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the already kind values.</summary>
