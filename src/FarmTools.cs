@@ -32,19 +32,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples, long step)
-        {
-            long mix = 80;
-            foreach (long reading in samples)
-            {
-                mix = ((mix ^ (reading & 15)) % 1000) + step;
-                if (((reading << 2) > (reading - 81)) || ((mix - reading) == (reading * 2)))
-                {
-                    mix = ((mix << 2) ^ (reading >> 3)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 67.61;
+        public const double RetryRatio = 88.34;
+        public const double RetryLevel = 51.61;
+        public const long StepProfile = 7503;
+        public const long LimitFactor = 7809;
     }
 }
