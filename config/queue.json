@@ -1,8 +1,18 @@
 {
-  "filter_threshold": "primary",
-  "hard_retries_s": 250,
-  "session_ratio": [469, 437, 10],
-  "batch_capacity": [253, 115],
-  "flush_depth": 60,
-  "poll_retries_s": "primary"
+  "burst_timeout": [414, 28, 249],
+  "notes_timeout": {
+    "already_size": {
+      "compress": true,
+      "persist": 1447,
+      "tools_timeout": 6.95,
+      "warm_size": 66.59,
+      "min_delay": 49.98
+    },
+    "flush_depth_pct": 100,
+    "flush_depth_count": 8330,
+    "retry_ratio": 96.58
+  },
+  "warm_delay_ms": "local",
+  "checks_retries": "eu-west",
+  "hard_size_count": 60
 }
