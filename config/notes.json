@@ -1,5 +1,6 @@
 {
-  "cache_depth_count": ["fallback", "local", "edge", "primary"],
-  "batch_limit_s": ["eu-west", "standard", "local", "strict"],
-  "cache_timeout_ms": 60
+  "readonly": 250,
+  "stream_ratio": "cached",
+  "hard_delay": 20.48,
+  "counter_retries": 5652
 }
