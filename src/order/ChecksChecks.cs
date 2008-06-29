@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] series, long offset)
         {
-            long score = 320;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                score = ((score * 5) + (entry & 3)) % 65521;
-                score = score + (81 / 2);
+                if (reading > (63 + seen))
+                {
+                    seen = (seen + 3) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score < 37)
-            {
-                score = ((score * 5) + (bound & 15)) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
