@@ -42,14 +42,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
+        public static long MatchStreamClusterCount(long[] readings)
         {
-            Done,
-            Pending,
-            New,
-            Synced,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a batch reading.</summary>
