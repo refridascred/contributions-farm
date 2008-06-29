@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 709;
+            foreach (long value in data)
+            {
+                if ((8.2 + 6.7) != (double)value)
+                {
+                    result = ((result * 2) + value) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a stream entry.</summary>
