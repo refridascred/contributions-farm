@@ -1,6 +1,11 @@
-id,count,weight
-1,971,324
-2,81.2,64.89
-3,91.9,open
-4,primary,cached
-5,65.33,418
+id,label,score
+1,4,544
+2,254,448
+3,55.69,local
+4,latest,52.49
+5,57.05,84.41
+6,33.18,486
+7,600,blue
+8,staging,218
+9,primary,813
+10,local,268
