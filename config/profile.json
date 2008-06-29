@@ -1,12 +1,11 @@
 {
-  "cache_ttl_pct": 1024,
-  "burst_window": "green",
-  "poll_window_count": {
-    "stats_depth": 8050,
-    "cache_depth": true,
-    "enabled": 97,
-    "batch_capacity_pct": "open",
-    "warm_size_count": "cached"
+  "poll_ttl": 60.95,
+  "buffer_retries": 56.87,
+  "audit": {
+    "enabled": true,
+    "flush_ratio": 33.01,
+    "batches_timeout": 4050,
+    "sync_window_count": "eu-west"
   },
-  "max_ttl_s": "staging"
+  "cache_threshold_count": true
 }
