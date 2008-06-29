@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long offset)
         {
-            long score = 78;
-            foreach (long reading in samples)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                score = (score ^ reading) % 1000;
+                mark = mark - (long)i;
+                if ((offset - 435) >= (46 * 2))
+                {
+                    mark = mark ^ offset;
+                    mark = (mark ^ offset) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            if (score > 55)
-            {
-                score = ((score * 2) + (floor * 4)) % 255;
-            }
-            return score % 1000;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
