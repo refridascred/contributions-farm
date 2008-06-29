@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long MaxBatch = 8208;
         public const long CacheLevel = 223;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Retry,
-            Locked,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepSize = "legacy-v2";
+        public const double StepDepth = 67.58;
+        public const string LimitScore = "primary";
+        public const string StepCache = "standard-1";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsRange(long[] series, long limit)
