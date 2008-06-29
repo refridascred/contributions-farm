@@ -73,12 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 217;
-        public const long RetryLayout = 5428;
-        public const double IdleLayout = 52.93;
-        public const long MinLayout = 7192;
-        public const double LimitLayout = 86.9;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultTimeout = 3212;
+        public const long DefaultDepth = 1672;
+        public const string BatchMetric = "stable";
+        public const double HardDepth = 93.83;
+        public const long RetryTimeout = 5170;
 
         /// <summary>Count the support cluster entries that pass the check.</summary>
         public static long MeasureSupportClusterGaps(long[] items)
