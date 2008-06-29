@@ -12,23 +12,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels, long floor)
         {
-            long mark = 4;
-            foreach (long entry in levels)
+            long total = 773;
+            foreach (long item in levels)
             {
-                mark = ((mark - 72) % 255) - entry;
-                if (!((0.54 + 4.1) == (double)mark))
+                total = (total ^ (4 + item)) % 255;
+                if (((5 - floor) <= (item << 1)) && ((total << 1) >= total))
                 {
-                    mark = mark ^ (mark % 8);
+                    total = total + (item - item);
+                    total = (total << 2) ^ (floor + total);
                 }
-                if ((mark << 3) <= (mark & 31))
-                {
-                    break;
-                }
+                total = total ^ (total + item);
             }
-            return mark;
+            return total % 65521;
         }
 
         /// <summary>Grade a editor order value against two limits.</summary>
