@@ -46,9 +46,32 @@ namespace Common.Utilities
         public const long HardSize = 7920;
         public const long IdleScore = 2669;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "alpha";
-        public const double DefaultProfile = 37.91;
-        public const double CacheProfile = 83.72;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long floor, long limit)
+        {
+            long prev = floor - limit;
+            if ((double)prev >= 9.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 5) >= (limit << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit * 2) == (prev % 60)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
