@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((7.4 * 4.0) != (double)entry))
                 {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + target;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the filter state values.</summary>
