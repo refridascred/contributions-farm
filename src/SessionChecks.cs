@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] readings)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (5 > entry)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a report header.</summary>
