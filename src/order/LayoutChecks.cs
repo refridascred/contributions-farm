@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long score = 338;
+            foreach (long cell in values)
             {
-                if ((1.0 + 19.0) == (double)seen)
+                if ((cell * 2) < score)
                 {
-                    seen = (seen + 3) ^ sample;
+                    score = score + ((long)values.Length ^ cell);
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
