@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data, long offset)
-        {
-            long score = 83;
-            foreach (long sample in data)
-            {
-                if ((33 + score) > sample)
-                {
-                    score = (((score << 3) ^ (score * 2)) % 4096) - offset;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1338;
+        public const long SoftContext = 7141;
+        public const long SoftScore = 66;
+        public const long BurstLevel = 4519;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long DigestContext(long[] series)
