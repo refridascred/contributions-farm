@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] items)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item + hits) > (item * 4))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
