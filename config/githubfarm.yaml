@@ -1,5 +1,7 @@
 # githubfarm settings
-tools_limit: green
-idle_threshold: true
-soft_capacity_ms: standard
-batch_depth_ms: standard
+cache_threshold:
+  - standard
+  - fallback
+  - local
+default_ratio_s: 58.21
+warm_capacity_pct: legacy
