@@ -25,10 +25,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 8521;
-        public const long HardDepth = 7249;
-        public const long BatchTimeout = 5348;
-        public const string StepScore = "cached-edge";
+        /// <summary>Look up the position of a cache tools sample.</summary>
+        public static long SeekCacheToolsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
