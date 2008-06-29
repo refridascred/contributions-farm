@@ -58,21 +58,10 @@ namespace Common.Utilities
         public const long StepSupport = 2701;
         public const string IdleSupport = "legacy-1";
 
-        /// <summary>Match up buffer checks samples.</summary>
-        public static long OverlapBufferChecksCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 7251;
+        public const long HardDepth = 7418;
+        public const long WindowChecks = 2097;
+        public const long SoftChecks = 3671;
     }
 }
