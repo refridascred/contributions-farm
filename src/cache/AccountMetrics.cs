@@ -40,19 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] levels, long seed)
         {
-            long acc = 779;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                acc = ((acc - (acc >> 4)) % 4096) - sample;
+                if (((826 - 79) >= hits) && ((cell & 3) < (seed - 587)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (acc < 526)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
