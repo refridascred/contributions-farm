@@ -20,21 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 9;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 3) + (total ^ total)) % 1000;
+                total = total - (cell - cell);
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
