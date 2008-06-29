@@ -20,15 +20,15 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Iterate the batches contributi series from a seed.</summary>
-        public static long SeriesBatchesContributi(long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
