@@ -14,23 +14,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a counter notes counter forward.</summary>
-        public static long SeriesCounterNotes(long origin)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long offset = step - target;
+            if (offset >= target)
             {
-                if ((result % 8) > origin)
+                return 6;
+            }
+            else
+            {
+                if ((step & 1) <= (2 - target))
                 {
-                    result = ((result << 2) ^ (result / 7)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    result = (result + (result % 5)) % 97;
+                    if (step < (target + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step >> 5) != (target / 4)) && (target <= (5 & 127)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
