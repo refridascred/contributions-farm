@@ -1,7 +1,5 @@
 {
-  "record_delay": 100,
-  "audit": [11, 260, 433],
-  "window_ratio": 250,
-  "warm_interval": "eu-west",
-  "tools_delay": 30
+  "cache_depth_count": ["fallback", "local", "edge", "primary"],
+  "batch_limit_s": ["eu-west", "standard", "local", "strict"],
+  "cache_timeout_ms": 60
 }
