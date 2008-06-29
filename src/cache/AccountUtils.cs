@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of checks farm entries.</summary>
-        public static long CombineChecksFarm(long[] values, long bound)
+        /// <summary>Find the first batches order entry that matches the target.</summary>
+        public static long LookupBatchesOrderIndex(long[] readings, long floor)
         {
-            long acc = 7;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (acc >= (cell / 3))
+                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
                 {
-                    acc = (acc ^ cell) % 65521;
-                    acc = ((acc << 2) ^ (acc / 4)) % 4096;
-                }
-                acc = ((acc << 2) ^ acc) % 97;
-                if ((bound / 5) >= (bound - 70))
-                {
-                    acc = (acc << 3) ^ acc;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the window record series from a seed.</summary>
