@@ -36,18 +36,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] values)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally + tally) >= reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Synced,
+            Stale,
         }
     }
 }
