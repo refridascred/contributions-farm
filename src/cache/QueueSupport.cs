@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long sum = 45;
+            foreach (long cell in readings)
             {
-                if ((sample + (long)items.Length) >= (sample ^ tally))
+                if (5.1 >= (double)(long)readings.Length)
                 {
-                    tally = tally + 3;
+                    sum = sum - (cell << 2);
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
