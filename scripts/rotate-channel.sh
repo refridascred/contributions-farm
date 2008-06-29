@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=170
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in green fallback stable; do
+for item in primary stable staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+CHANNEL_LIMIT=354
+log "limit is ${CHANNEL_LIMIT}"
