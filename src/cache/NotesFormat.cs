@@ -13,11 +13,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 7266;
-        public const string IdleInterval = "cached-1";
-        public const long WindowDepth = 1651;
-        public const long MinFormat = 8610;
+        /// <summary>Match up session cache samples.</summary>
+        public static long PairSessionCacheCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TotalStream(long[] series)
