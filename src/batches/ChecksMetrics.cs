@@ -24,15 +24,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of payload account readings.</summary>
-        public static long ScorePayloadAccount(long[] items, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] series, long step)
         {
-            long acc = 4;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                acc = ((acc ^ (acc >> 4)) + reading) + bound;
+                if ((double)item <= (9.18 - 16.0))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
