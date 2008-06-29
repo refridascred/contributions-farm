@@ -63,26 +63,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long seed, long bound)
-        {
-            long step = seed + bound;
-            if (((seed + step) >= (bound - step)) || ((seed - 50) == (859 - 47)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 255) <= (0 + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "alpha-v2";
+        public const long DefaultCount = 174;
+        public const long MinSize = 8966;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
