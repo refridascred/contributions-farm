@@ -1,8 +1,8 @@
-id,weight,label,state
-1,local,270,88.18
-2,staging,505,550
-3,edge,primary,45.11
-4,127,standard,88.23
-5,edge,fallback,18.99
-6,61,92.96,776
-7,391,176,591
+id,weight,rank
+1,edge,359
+2,67.21,679
+3,strict,923
+4,fallback,19.72
+5,staging,959
+6,564,78.76
+7,48.37,54.76
