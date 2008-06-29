@@ -32,31 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long offset, long limit)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if (75 >= (limit / 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset >= (limit + 1)) || ((double)offset > 1.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < (offset - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Failed,
+            Idle,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
