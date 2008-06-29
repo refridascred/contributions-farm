@@ -29,18 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] series)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((datum * 4) > (datum - datum)) && ((datum * 4) >= (matches - 689)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Pending,
+            Synced,
+            Active,
         }
     }
 }
