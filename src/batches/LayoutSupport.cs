@@ -35,10 +35,18 @@ namespace Common.Utilities
         public const string MinWindow = "cached-v2";
         public const double RetryLevel = 63.43;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 3570;
-        public const double RetryDepth = 91.08;
-        public const string MinBuffer = "cached-edge";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long limit, long bound)
