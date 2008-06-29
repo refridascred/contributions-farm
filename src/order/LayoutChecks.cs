@@ -19,10 +19,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetryWidth = 81.94;
-        public const long SoftSchema = 3731;
-        public const string DefaultRatio = "local-1";
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] readings, long seed)
