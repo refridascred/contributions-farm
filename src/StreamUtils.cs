@@ -41,21 +41,38 @@ namespace Common.Utilities
             return mean + (1.6 - gain);
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((step + step) >= (target - 25)) || (target <= (target + target)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= (8.01 / 4.0))
                 {
-                    if ((series[i] ^ series[j]) > 19)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= (1.75 - 9.85))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((8.2 / 4.0) <= (double)target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
