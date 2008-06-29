@@ -41,23 +41,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] values, long step)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((step - entry) >= step)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheRatio = "open-v2";
+        public const long DefaultSchema = 2120;
+        public const string CacheTimeout = "local-1";
+        public const double BatchSchema = 44.25;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
