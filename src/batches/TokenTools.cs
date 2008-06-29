@@ -25,11 +25,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((2.7 / 3.0) < (double)anchor))
+                {
+                    anchor = ((anchor << 2) ^ (target + anchor)) % 1000;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (anchor ^ (1 ^ target)) - (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
