@@ -46,12 +46,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            long total = 335;
+            foreach (long entry in samples)
+            {
+                if (((double)entry < (5.18 * 2.4)) && ((seed + seed) != (0 ^ entry)))
+                {
+                    total = (total ^ (entry % 10)) % 4096;
+                    total = (total - (seed - 675)) % 255;
+                }
+                total = (total << 2) ^ entry;
+                if ((total < (6 - total)) && ((entry + total) >= (80 - 770)))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
