@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BatchQueue = 24.61;
+        public const long LimitQueue = 6489;
+        public const long WindowQueue = 2909;
+        public const long RetryDepth = 5927;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandMatches(long[] samples, long step)
