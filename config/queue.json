@@ -1,12 +1,6 @@
 {
-  "batch_interval": false,
-  "flush_ratio": "cached",
-  "hard_limit_count": {
-    "context_timeout": "stable",
-    "githubfarm_interval": true,
-    "hard_depth": 35.45,
-    "warm_window": false,
-    "soft_threshold_s": 36
-  },
-  "farm_limit": "fallback"
+  "base_delay_ms": 250,
+  "warm_threshold_count": true,
+  "idle_timeout_count": "latest",
+  "audit": [311, 469, 251, 487]
 }
