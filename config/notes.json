@@ -1,7 +1,7 @@
 {
-  "dry_run": 61,
-  "compress": "legacy",
-  "retry_delay_ms": false,
-  "editor_window": 55.84,
-  "format_depth": "legacy"
+  "batches_depth": 23,
+  "enabled": ["blue", "eu-west"],
+  "support_limit": 30,
+  "token_retries": [345, 234, 410],
+  "max_depth_pct": 5663
 }
