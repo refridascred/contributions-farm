@@ -24,14 +24,14 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
+            Dropped,
+            Pending,
+            Ready,
             Paused,
-            Stale,
-            Queued,
-            Failed,
-            Locked,
+            Synced,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
