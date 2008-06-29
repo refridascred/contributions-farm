@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Failed,
-            Stale,
+            Queued,
+            New,
             Paused,
-            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
