@@ -41,10 +41,13 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftWidth = "cached";
-        public const double WindowBatch = 48.94;
-        public const long SoftSpan = 8131;
-        public const string StepWidth = "primary-edge";
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
