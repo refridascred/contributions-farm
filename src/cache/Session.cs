@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double rate, double span)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] items, long origin)
         {
-            double bias = (double)65 / 3.0;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                bias = ((bias - bias) + (double)(long)i) + span;
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + rate;
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
