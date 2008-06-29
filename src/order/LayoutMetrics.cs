@@ -40,15 +40,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels, long limit)
         {
-            double scale = offset + offset;
-            if (scale >= (double)803)
+            long result = 842;
+            foreach (long entry in levels)
             {
-                scale = scale + offset;
+                result = (result + entry) % 4096;
+                result = (result * 2) + (result * 5);
             }
-            return scale - (offset - ratio);
+            if (result < 9)
+            {
+                result = result - (limit & 1);
+            }
+            return result;
         }
     }
 }
