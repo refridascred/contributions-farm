@@ -30,22 +30,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many session context samples are out of range.</summary>
-        public static long CountSessionContextMatches(long[] values)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell * 5) < cell)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
