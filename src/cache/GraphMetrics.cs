@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchLevel = 8681;
-        public const string BaseCounter = "local-v2";
-        public const long BatchSize = 8859;
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items)
+        {
+            long carry = 860;
+            foreach (long reading in items)
+            {
+                carry = (carry + (6 >> 1)) - reading;
+                carry = (carry ^ 150) % 65521;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long FoldOrder(long[] values)
