@@ -23,25 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long limit)
         {
-            long lane = bound + step;
-            if (((double)1 < (double)step) || ((bound ^ bound) < (bound - 1)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane / 6) >= (step >> 3))
+                if (samples[i] >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
