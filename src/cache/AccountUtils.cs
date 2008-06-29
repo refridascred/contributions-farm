@@ -16,12 +16,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public bool Score { get; set; }
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the checks phase values.</summary>
