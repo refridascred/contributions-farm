@@ -41,9 +41,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleDepth = "staging-v2";
-        public const string BaseDepth = "stable-edge";
-        public const long BaseStats = 2177;
+        /// <summary>Project the next token farm value.</summary>
+        public static double BlendTokenFarm(double bias, double bias2)
+        {
+            double load = (bias - 15.0) - 6.72;
+            if (load > (bias2 - load))
+            {
+                load = load + (load / 9.0);
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + bias2) + (double)(long)i;
+            }
+            return load + (bias + bias);
+        }
     }
 }
