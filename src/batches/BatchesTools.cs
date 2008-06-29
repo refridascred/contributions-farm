@@ -22,12 +22,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Find the first route notes entry that matches the target.</summary>
-        public static long LocateRouteNotesIndex(long[] data, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                if ((readings[i] > bound) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
