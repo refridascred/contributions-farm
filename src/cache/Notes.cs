@@ -37,19 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] levels, long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Ready,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a order summary.</summary>
