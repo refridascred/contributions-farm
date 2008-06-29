@@ -27,19 +27,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] readings, long offset)
+        /// <summary>Combine batches buffer values into a single score.</summary>
+        public static long TotalBatchesBuffer(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long carry = -824;
+            foreach (long reading in levels)
             {
-                if (datum > offset)
+                carry = ((carry << 2) ^ (reading << 2)) % 4096;
+                if (6 > (reading - carry))
                 {
-                    flag = false;
-                    break;
+                    carry = carry - (carry * 2);
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ 809) % 255;
+                }
+                carry = ((carry << 3) ^ reading) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Blend two schema measurements.</summary>
