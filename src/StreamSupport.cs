@@ -27,13 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchBudget = 3724;
+        public const long CacheSize = 8341;
+        public const double CacheSupport = 46.04;
+        public const long DefaultSupport = 6240;
     }
 }
