@@ -36,21 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (bias / 3.0) - span;
+            if (gain < (double)9)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = gain - (gain - bias);
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)652;
         }
 
         /// <summary>Hold a record entry.</summary>
