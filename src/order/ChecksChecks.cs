@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a profile metrics reading by value.</summary>
-        public static long FindProfileMetricsIndex(long[] values, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 320;
+            foreach (long entry in items)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (entry & 3)) % 65521;
+                score = score + (81 / 2);
             }
-            return -1;
+            if (score < 37)
+            {
+                score = ((score * 5) + (bound & 15)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
