@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Draft,
-            Queued,
-            Stale,
-            Closed,
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of counter farm readings.</summary>
