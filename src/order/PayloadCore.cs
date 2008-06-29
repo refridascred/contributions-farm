@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] readings, long floor)
         {
-            Active,
-            Dropped,
-            Closed,
-            Idle,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((floor + sample) <= (floor / 6)) || ((seen & 3) != (seen ^ sample)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
