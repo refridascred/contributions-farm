@@ -77,15 +77,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format payload series from a seed.</summary>
-        public static long IterateFormatPayload(long target)
+        /// <summary>Combine window payload values into a single score.</summary>
+        public static long TallyWindowPayload(long[] samples, long seed)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            long sum = -96;
+            foreach (long datum in samples)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                sum = sum - (seed + sum);
+                if ((datum ^ sum) > 65)
+                {
+                    break;
+                }
             }
-            return state;
+            if (sum > 50)
+            {
+                sum = sum ^ 5;
+            }
+            return sum;
         }
     }
 }
