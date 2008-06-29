@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many route notes samples are out of range.</summary>
-        public static long AuditRouteNotesOutliers(long[] readings)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell << 3) < (cell & 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of payload account readings.</summary>
