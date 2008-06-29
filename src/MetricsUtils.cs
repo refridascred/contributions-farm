@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] series, long target)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (!((7.4 * 4.0) != (double)entry))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a cache stats.</summary>
