@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Retry,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
