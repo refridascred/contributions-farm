@@ -1,6 +1,7 @@
-id,level,weight
-1,77.06,stable
-2,edge,39.67
-3,59.42,657
-4,17.97,strict
-5,225,blue
+id,active,ratio,weight
+1,40.75,459,281
+2,113,fallback,local
+3,80.99,eu-west,81.35
+4,663,stable,standard
+5,240,755,320
+6,711,66.73,blue
