@@ -29,23 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)tally < (1.0 - 4.4))
-                {
-                    tally = ((tally + 2) + sample) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardTimeout = 61.23;
+        public const long DefaultWindow = 2131;
+        public const double BaseSpan = 50.56;
+        public const long RetryWindow = 8692;
+        public const long BaseSize = 754;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
