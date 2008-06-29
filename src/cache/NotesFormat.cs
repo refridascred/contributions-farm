@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long limit, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long slot = limit - bound;
-            if (((double)limit >= 2.1) && (349 < (slot + slot)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(bound > (bound >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot + bound) >= (slot + slot))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit << 1) <= (slot - slot))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Derive the next cache window value from a seed.</summary>
