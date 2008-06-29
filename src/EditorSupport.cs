@@ -41,13 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Locked,
             Active,
-            Retry,
+            New,
             Closed,
+            Locked,
         }
 
         /// <summary>Describe the command kind values.</summary>
