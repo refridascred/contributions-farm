@@ -15,11 +15,33 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 2744;
-        public const long BaseCounter = 5348;
-        public const long CacheLevel = 5010;
-        public const string BurstTimeout = "stable-v2";
+        /// <summary>Rank entry token input into a small class.</summary>
+        public static long GradeEntryToken(long target, long offset)
+        {
+            long edge = target ^ offset;
+            if ((double)offset >= (3.0 * 6.78))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((-97) < (target ^ edge))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (edge > 29)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] data)
