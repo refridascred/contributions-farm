@@ -63,10 +63,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "alpha-v2";
-        public const long DefaultCount = 174;
-        public const long MinSize = 8966;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
