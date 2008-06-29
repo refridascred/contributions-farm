@@ -29,11 +29,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long bound, long origin)
         {
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
+            long bound2 = bound + origin;
+            if (origin >= (origin & 15))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 >> 5) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin >= (6.7 + 9.19)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound < (bound2 * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
