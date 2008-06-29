@@ -1,12 +1,10 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the route list.
-Use metric settings to tune how often buffer data is refreshed.
-Keep route and stats names short and lowercase.
+Each counter is validated before it reaches the profile queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every checks change
-- Keep format values small
-- Validate support input early
-- Document new checks fields
+- Keep graph values small
+- Validate window input early
+- Prefer graph defaults
