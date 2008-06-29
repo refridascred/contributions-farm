@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] items, long step)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches < (matches + matches)) && ((step - (-671)) != (sample & 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
