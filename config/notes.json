@@ -1,6 +1,7 @@
 {
-  "readonly": 250,
-  "stream_ratio": "cached",
-  "hard_delay": 20.48,
-  "counter_retries": 5652
+  "dry_run": 61,
+  "compress": "legacy",
+  "retry_delay_ms": false,
+  "editor_window": 55.84,
+  "format_depth": "legacy"
 }
