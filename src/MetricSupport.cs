@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftScore = 147;
-        public const long MinBudget = 5797;
-        public const double CacheFarm = 30.95;
-        public const long DefaultSize = 4578;
-        public const long RetryFactor = 7741;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Queued,
+            Ready,
+            Active,
+            Done,
+            Draft,
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
