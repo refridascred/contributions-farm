@@ -1,10 +1,12 @@
 {
-  "min_depth_ms": 4696,
-  "soft_depth_pct": {
-    "support_capacity": "staging",
-    "cache_window": [448, 178, 6, 468],
-    "batch_window_s": ["eu-west", "stable"]
+  "burst_ttl": ["staging", "strict", "green"],
+  "account_size": 1024,
+  "checks_capacity": {
+    "filter_delay": 1816,
+    "cache_capacity_count": "latest",
+    "cache_depth": "staging",
+    "format_interval": [215, 251, 457],
+    "strict": 5.44
   },
-  "burst_size_ms": [403, 494],
-  "audit": 50
+  "flush_delay_s": 30
 }
