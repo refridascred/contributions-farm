@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const string LimitScore = "primary";
         public const string StepCache = "standard-1";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] series, long limit)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
