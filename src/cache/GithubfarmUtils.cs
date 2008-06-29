@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "cached";
-        public const long WindowLevel = 9431;
-        public const long BurstDepth = 4862;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (hits >= (hits << 3))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
