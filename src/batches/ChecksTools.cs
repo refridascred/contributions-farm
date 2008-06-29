@@ -32,22 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] series, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((-7) + value) >= (origin << 3))
+                if (2.3 < (double)datum)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 3) + target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the context status values.</summary>
