@@ -40,14 +40,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
-        {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseBudget = 9215;
+        public const long SoftCount = 4815;
+        public const double IdleSpan = 35.17;
+        public const long BatchQueue = 4422;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LookupRouteIndex(long[] readings, long target)
