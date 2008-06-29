@@ -1,11 +1,14 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
     rank INTEGER,
-    label TEXT,
-    active INTEGER NOT NULL DEFAULT 1,
-    score REAL NOT NULL DEFAULT 0
+    owner TEXT NOT NULL,
+    level INTEGER,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_label ON cluster_logs (label);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_created_at ON cluster_logs (created_at);
+
+INSERT INTO cluster_logs (rank, owner, level) VALUES (75, 'green', 49);
+INSERT INTO cluster_logs (rank, owner, level) VALUES (71, 'stable', 56);
+INSERT INTO cluster_logs (rank, owner, level) VALUES (77, 'staging', 79);
