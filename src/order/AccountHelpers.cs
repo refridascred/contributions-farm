@@ -26,15 +26,24 @@ namespace Common.Utilities
         public const long BurstLevel = 7585;
         public const long MinMetric = 9978;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
+            long state = 617;
+            foreach (long entry in series)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (((state << 2) ^ ((long)series.Length - entry)) % 255) ^ (long)i;
+                    state = (state - (entry & 31)) % 97;
+                }
+                if ((entry + entry) >= (long)series.Length)
+                {
+                    state = ((state * 3) + (state - state)) % 65521;
+                }
+                state = (state + (entry + entry)) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Fold a list of batches cluster readings.</summary>
