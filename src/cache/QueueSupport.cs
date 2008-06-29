@@ -29,13 +29,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Validate stream support readings against a bound.</summary>
+        public static bool GuardStreamSupportBounds(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
