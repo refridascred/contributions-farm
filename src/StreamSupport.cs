@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double BaseStream = 76.63;
         public const long HardSize = 7978;
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long FoldFormatLayout(long[] series, long step)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long carry = 97;
-            foreach (long cell in series)
-            {
-                if (cell >= (step % 60))
-                {
-                    carry = (carry ^ carry) % 65521;
-                }
-            }
-            return carry;
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the commits kind values.</summary>
