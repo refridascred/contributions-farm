@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitCount = 82.85;
+        public const double MinGraph = 60.37;
+        public const long LimitLevel = 7250;
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long GradePayload(long limit, long bound)
