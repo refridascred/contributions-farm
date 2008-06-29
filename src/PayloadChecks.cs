@@ -57,22 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload report samples are out of range.</summary>
-        public static long TallyPayloadReportHits(long[] items, long step)
+        /// <summary>Combine stream payload values into a single score.</summary>
+        public static long TallyStreamPayload(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = -463;
+            foreach (long cell in items)
             {
-                if (!(matches > (step - value)))
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = matches + 1;
+                    result = (((result - ((long)items.Length * 2)) % 97) + (long)i) - cell;
                 }
-                else
+                if ((origin - origin) < (long)items.Length)
                 {
-                    matches = matches - 1;
+                    result = (result - (result << 3)) % 101;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
