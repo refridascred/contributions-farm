@@ -1,10 +1,27 @@
 # entry settings
-persist: 5947
-sync_size_count: 65
-min_ratio_s: 49.6
-notes_depth: 22.28
-command_depth:
-  dry_run: 4239
-  metric_retries: 58
-  soft_timeout: 1808
-  readonly: 250
+report_limit:
+  strict: 1024
+  metric_retries: 100
+  sync_ratio_s: 629
+  warm_size_count:
+    - fallback
+    - staging
+    - fallback
+    - fallback
+  default_retries_s: 31
+  default_capacity_s:
+    soft_timeout_ms: 543
+    batch_limit:
+      - strict
+      - staging
+      - edge
+      - eu-west
+    base_capacity_count: fallback
+commits_ttl: 75.2
+default_ratio: 60
+report_size:
+  - 428
+  - 378
+  - 480
+  - 298
+idle_delay_count: 10
