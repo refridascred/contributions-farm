@@ -28,26 +28,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats profile values into a single score.</summary>
-        public static long ScoreStatsProfile(long[] values)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long result = 86;
-            foreach (long value in values)
-            {
-                if ((double)result >= (20.0 - 3.4))
-                {
-                    result = (result ^ (value - value)) % 65521;
-                }
-                if ((value / 4) != (value << 2))
-                {
-                    break;
-                }
-            }
-            if (result > 76)
-            {
-                result = ((result * 3) + (result + 90)) % 1000;
-            }
-            return result;
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a record stats.</summary>
