@@ -40,13 +40,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long offset)
         {
-            Synced,
-            Dropped,
-            Failed,
-            New,
+            if (!(offset < (seed - offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 1) > (offset - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((2.75 * 5.04) > (double)seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)seed >= (14.0 + 16.0)) || ((double)offset <= (6.0 + 9.39)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
