@@ -49,11 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardInterval = 86.02;
-        public const long MaxAlready = 4637;
-        public const long RetryAlready = 5772;
-        public const double BatchAlready = 34.29;
-        public const long DefaultSize = 4021;
+        /// <summary>Combine notes editor values into a single score.</summary>
+        public static long TotalNotesEditor(long[] samples)
+        {
+            long anchor = 5;
+            foreach (long item in samples)
+            {
+                if (54 >= (anchor + item))
+                {
+                    anchor = anchor ^ anchor;
+                }
+            }
+            return anchor;
+        }
     }
 }
