@@ -49,22 +49,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mark = -41;
+            foreach (long item in data)
             {
-                if ((value / 2) >= (7 ^ 841))
+                mark = mark ^ item;
+                mark = mark ^ (89 - item);
+                if ((double)mark <= (9.88 / 4.0))
                 {
-                    seen = seen + 3;
+                    mark = (mark ^ (5 << 2)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = mark + (mark / 9);
+                }
+                if ((11.0 / 3.0) > (double)origin)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mark > 79)
+            {
+                mark = mark + (long)data.Length;
+            }
+            return mark;
         }
     }
 }
