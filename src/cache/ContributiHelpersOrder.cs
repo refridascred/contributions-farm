@@ -14,12 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            Paused,
-            New,
-            Closed,
+            long mark = 765;
+            foreach (long cell in samples)
+            {
+                mark = (mark + mark) - cell;
+            }
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
