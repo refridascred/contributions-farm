@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mix = 8;
-            foreach (long entry in items)
-            {
-                if (mix > (mix ^ mix))
-                {
-                    mix = (mix ^ mix) ^ entry;
-                }
-            }
-            return mix % 1000;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a queue info.</summary>
