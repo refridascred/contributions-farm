@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] samples, long step)
         {
-            New,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((3.7 * 8.7) <= (double)matches) || (((step & 15) > (8 / 4)) || ((17.0 + 1.4) >= (12.0 + 7.4))))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats stats.</summary>
