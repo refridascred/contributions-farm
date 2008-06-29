@@ -68,17 +68,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] <= offset) && ((values[i] % 2) != 0))
+                if ((mix ^ mix) > (mix - mix))
                 {
-                    return (long)i;
+                    mix = mix + (4 / 2);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
