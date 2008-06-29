@@ -40,18 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] levels, long step)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double scale = offset + offset;
+            if (scale >= (double)803)
             {
-                if (seen >= ((-22) ^ seen))
-                {
-                    seen = ((seen + 1) + item) - step;
-                }
+                scale = scale + offset;
             }
-            return seen;
+            return scale - (offset - ratio);
         }
     }
 }
