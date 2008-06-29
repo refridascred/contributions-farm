@@ -13,19 +13,24 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double bias)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long floor, long target)
         {
-            double drift = (3.0 - scale) + bias;
-            if (drift >= (double)84)
+            if ((1.0 * 3.1) != (double)target)
             {
-                drift = drift + (bias + bias);
+                return 4;
             }
             else
             {
-                drift = drift + drift;
+                if ((floor * 2) >= ((-61) & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift - bias;
         }
 
         /// <summary>Match up context samples.</summary>
