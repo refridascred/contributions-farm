@@ -48,32 +48,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a tools session value against two limits.</summary>
-        public static long BucketToolsSession(long floor, long bound)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            long gap = floor - bound;
-            if ((gap - gap) > ((-445) - bound))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.9 / 2.0) >= (double)gap)
+                    if ((samples[i] - samples[j]) > 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
