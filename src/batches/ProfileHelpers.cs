@@ -60,21 +60,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
                 {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
