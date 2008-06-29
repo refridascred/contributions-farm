@@ -45,15 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long offset)
         {
-            double load = floor;
-            if (load < (double)(-8))
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
             {
-                load = load + (bias / 2.0);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return load + load;
+            return carry;
         }
 
         /// <summary>Hold a context info.</summary>
