@@ -18,12 +18,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the account farm series from a seed.</summary>
+        public static long IterateAccountFarm(long target)
         {
-            Queued,
-            Pending,
-            New,
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
