@@ -67,15 +67,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long limit)
+        /// <summary>Look up the position of a githubfarm layout sample.</summary>
+        public static long LocateGithubfarmLayoutIndex(long[] items, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
