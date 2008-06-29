@@ -50,13 +50,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Failed,
-            Synced,
-            Stale,
-            Done,
+            public bool Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
