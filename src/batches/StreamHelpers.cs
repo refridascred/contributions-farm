@@ -44,18 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric metrics samples are out of range.</summary>
-        public static long TallyMetricMetricsMatches(long[] samples)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double bias = 2.0 - (double)31;
+            if (bias > rate)
             {
-                if ((reading - hits) < (hits + hits))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias - bias;
             }
-            return hits;
+            else
+            {
+                bias = bias - (6.96 - floor);
+            }
+            return bias + floor;
         }
 
         /// <summary>Hold a payload info.</summary>
