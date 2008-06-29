@@ -18,11 +18,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryRatio = 9646;
-        public const double BatchScore = 88.45;
-        public const double MaxCounter = 88.98;
-        public const long StepScore = 9497;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a stats profile sample.</summary>
         public static long FindStatsProfileIndex(long[] items, long floor)
