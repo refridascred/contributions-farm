@@ -54,32 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long offset, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long floor)
         {
-            long slot = offset - origin;
-            if ((slot << 1) >= (offset + offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset <= (offset * 4)) && (slot >= offset))
+                if (samples[i] < floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin - slot) < (slot % 100)) || (offset < (offset << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
