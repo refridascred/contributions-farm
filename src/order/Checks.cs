@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const string RetrySize = "stable-1";
         public const long BurstReport = 7946;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (sum * 4)) ^ (long)i2;
+                    if ((values[i] - values[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of support readings.</summary>
