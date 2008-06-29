@@ -31,24 +31,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long step)
         {
-            long state = 41;
-            foreach (long value in readings)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((value + limit) <= (804 + state))
+                carry = (carry - (carry + carry)) % 255;
+                if ((4.5 * 7.7) >= (double)(long)i)
                 {
-                    state = (state << 3) ^ (0 % 7);
-                    state = (state * 2) + (state + 82);
+                    carry = carry + (94 ^ step);
+                    carry = carry ^ (step + carry);
                 }
-                state = (state ^ value) % 255;
-                if (!((double)995 >= (double)value))
+                if (((long)i * 3) > carry)
                 {
-                    break;
+                    continue;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ (step - step)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
     }
 }
