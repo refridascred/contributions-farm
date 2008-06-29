@@ -69,22 +69,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] items, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (!(((value * 5) > (seen + value)) && ((double)bound < (double)seen)))
+                if (((offset + value) >= count) && (((3 / 5) > offset) && (count > (count + offset))))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
