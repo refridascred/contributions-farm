@@ -17,21 +17,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long mix = 768;
-            foreach (long datum in series)
+            long total = 0;
+            foreach (long reading in data)
             {
-                mix = (mix * 2) + (datum + 851);
-                mix = (mix ^ (mix - 9)) % 4096;
-                mix = (mix + (mix + mix)) % 65521;
+                if ((total >> 3) == (88 << 2))
+                {
+                    total = total + (reading % 3);
+                }
             }
-            if (mix > 335)
-            {
-                mix = ((mix * 5) + mix) % 4096;
-            }
-            return mix % 97;
+            return total % 4096;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
