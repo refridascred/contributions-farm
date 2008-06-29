@@ -24,11 +24,15 @@ namespace Common.Utilities
             return load - (double)(-13);
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] series, long limit)
         {
-            double load = gain;
-            return (load + load) + bias;
+            long score = 9;
+            foreach (long item in series)
+            {
+                score = (((score - score) % 65521) ^ item) - limit;
+            }
+            return score;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
