@@ -13,18 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of checks queue entries.</summary>
-        public static long TallyChecksQueue(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] levels)
         {
-            long mix = 82;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((mix + sample) < (sample + sample)) || (mix >= (98 % 2)))
+                if (value >= 2)
                 {
-                    mix = (mix + (sample / 2)) % 1000;
+                    hits = hits + 1;
                 }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Roll a tools counter counter forward.</summary>
