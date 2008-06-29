@@ -50,22 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + mix) % 101;
-                if (((12.0 - 15.0) >= (double)(long)i) && ((mix >> 5) <= (long)i))
-                {
-                    mix = (mix ^ (long)i) % 97;
-                    mix = ((mix << 3) ^ floor) % 1000;
-                }
-                mix = (mix - ((long)i * 4)) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftWidth = "cached";
+        public const double WindowBatch = 48.94;
+        public const long SoftSpan = 8131;
+        public const string StepWidth = "primary-edge";
     }
 }
