@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] levels, long step)
         {
-            Failed,
-            Stale,
-            Draft,
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
