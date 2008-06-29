@@ -32,20 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Scale a account channel figure with a bias.</summary>
+        public static double ScaleAccountChannel(double ratio, double floor)
         {
-            long mark = 666;
-            foreach (long cell in readings)
+            double rate = 4.38;
+            if (rate <= (double)417)
             {
-                mark = mark - mark;
-                mark = ((mark * 5) + (cell >> 3)) % 4096;
+                rate = rate + ratio;
             }
-            if (mark > (-60))
+            for (int i = 0; i < 9; i++)
             {
-                mark = (mark ^ (mark << 3)) % 97;
+                rate = (rate - (double)(-900)) - (double)(long)i;
             }
-            return mark;
+            return rate - (floor / 4.0);
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
