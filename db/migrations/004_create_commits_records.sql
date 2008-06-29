@@ -2,8 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    weight REAL,
-    count INTEGER NOT NULL DEFAULT 0
+    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0,
+    state TEXT NOT NULL DEFAULT 'new',
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
+
+INSERT INTO commits_records (score, count, state, ratio) VALUES (88.83, 44, 'standard', 36.73);
+INSERT INTO commits_records (score, count, state, ratio) VALUES (31.93, 11, 'staging', 59.74);
