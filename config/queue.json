@@ -1,14 +1,7 @@
 {
-  "hard_threshold_count": ["cached", "local", "green"],
-  "already_delay": "latest",
-  "persist": 250,
-  "soft_capacity": false,
-  "batch_window_count": {
-    "warm_limit_ms": ["blue", "strict"],
-    "strict": "local",
-    "support_window": "standard",
-    "warm_retries": true,
-    "entry_depth": false
-  },
-  "idle_depth_count": 8159
+  "cache_timeout_s": 17.84,
+  "cache_capacity_ms": "eu-west",
+  "sync_timeout_pct": [36, 310],
+  "compress": ["standard", "primary"],
+  "enabled": true
 }
