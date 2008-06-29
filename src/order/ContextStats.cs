@@ -30,15 +30,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] items, long target)
         {
-            long anchor = 4;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor << 2) ^ (anchor - 54)) % 255) + reading;
+                if ((items[i] < target) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
