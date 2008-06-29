@@ -25,12 +25,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowLevel = 7619;
-        public const long MinMetric = 699;
-        public const long MaxInterval = 1439;
-        public const long LimitLevel = 6160;
-        public const long MaxMetric = 2178;
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double span)
+        {
+            double load = span;
+            if (load < load)
+            {
+                load = load - (double)602;
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (13.0 + load)) + (double)(long)i;
+            }
+            return load - span;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] samples, long bound)
