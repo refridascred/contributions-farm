@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] series, long floor)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
