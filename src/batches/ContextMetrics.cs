@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((9.8 > (double)reading) && (tally >= (tally / 7)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
