@@ -19,38 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long bound, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            if (((double)offset != (6.1 - 1.4)) || ((1.0 * 5.07) == (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound << 3) > (3 ^ offset)) || ((0.3 * 9.5) >= (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + bound) >= (83 * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound << 3) != (bound + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
