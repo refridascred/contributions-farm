@@ -37,29 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long step)
+        /// <summary>Count the context session entries that pass the check.</summary>
+        public static long MeasureContextSessionGaps(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                carry = (carry - (carry + carry)) % 255;
-                if ((4.5 * 7.7) >= (double)(long)i)
+                if ((double)count <= (double)sample)
                 {
-                    carry = carry + (94 ^ step);
-                    carry = carry ^ (step + carry);
+                    count = count + 1;
                 }
-                if (((long)i * 3) > carry)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (step - step)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
     }
 }
