@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 2) + (bound >> 2)) % 101;
+                acc = acc ^ (59 - bound);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
