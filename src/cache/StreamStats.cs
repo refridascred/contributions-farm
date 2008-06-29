@@ -52,15 +52,18 @@ namespace Common.Utilities
             return scale - (double)84;
         }
 
-        /// <summary>Roll a order report counter forward.</summary>
-        public static long SeriesOrderReport(long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] samples, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (!((origin / 9) == (origin >> 3)))
+                {
+                    seen = (seen + 3) + value;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
