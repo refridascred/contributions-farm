@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 8211;
-        public const string BatchTimeout = "staging-edge";
-        public const double HardFactor = 62.76;
-        public const double StepRecord = 62.25;
-        public const string BurstDepth = "legacy-1";
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxMetric = 3.74;
