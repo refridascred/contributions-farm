@@ -1,5 +1,6 @@
 {
-  "batch_timeout": "blue",
-  "verbose": "latest",
-  "command_depth": false
+  "strict": false,
+  "burst_size_count": "eu-west",
+  "soft_timeout": "cached",
+  "idle_ratio_s": true
 }
