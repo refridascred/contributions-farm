@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double load = (rate + 8.94) / 6.0;
-            if (load < (double)67)
-            {
-                load = (load - (double)871) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (load * 4.99);
+            Failed,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define report limits and defaults.</summary>
