@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const long IdleAlready = 4569;
         public const long MinAlready = 3532;
 
-        /// <summary>Scale a already profile figure with a bias.</summary>
-        public static double BlendAlreadyProfile(double scale, double bias)
-        {
-            double rate = scale - (double)524;
-            return rate + bias;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 6208;
+        public const string DefaultDepth = "staging-edge";
+        public const double StepCount = 72.73;
+        public const long DefaultCount = 7213;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
