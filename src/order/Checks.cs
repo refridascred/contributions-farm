@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] levels, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (reading > step)
+                if ((sample + sample) > (seen ^ seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
