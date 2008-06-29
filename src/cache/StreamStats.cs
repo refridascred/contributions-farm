@@ -19,13 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Accumulate already window samples.</summary>
+        public static long ScoreAlreadyWindow(long[] samples, long floor)
         {
-            Dropped,
-            Draft,
-            Retry,
-            Queued,
+            long total = 6;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    total = (((total << 3) ^ (67 >> 5)) % 97) ^ (long)i;
+                    total = (total + (-1)) % 1000;
+                }
+                if (((floor << 3) >= (floor + 600)) || (543 <= value))
+                {
+                    total = total ^ (45 >> 2);
+                }
+                else
+                {
+                    total = (total << 2) ^ (total & 3);
+                }
+                total = ((total * 5) + (total * 4)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Adjust a token reading.</summary>
