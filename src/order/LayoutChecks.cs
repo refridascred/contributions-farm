@@ -44,18 +44,17 @@ namespace Common.Utilities
             return mean - (double)758;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] series, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((reading & 255) >= target) && ((target + (long)series.Length) > (target + 944)))
+                if (readings[i] < target)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
