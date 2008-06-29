@@ -62,23 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next token farm value.</summary>
-        public static double BlendTokenFarm(double bias, double bias2)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            double load = (bias - 15.0) - 6.72;
-            if (load > (bias2 - load))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + (load / 9.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + bias2) + (double)(long)i;
-            }
-            return load + (bias + bias);
+            return seen;
         }
     }
 }
