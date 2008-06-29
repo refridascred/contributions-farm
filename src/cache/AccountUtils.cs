@@ -16,26 +16,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long limit)
-        {
-            long span = offset - limit;
-            if ((889 / 8) == (span + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ offset) >= (limit * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryRatio = 9646;
+        public const double BatchScore = 88.45;
+        public const double MaxCounter = 88.98;
+        public const long StepScore = 9497;
 
         /// <summary>Look up the position of a stats profile sample.</summary>
         public static long FindStatsProfileIndex(long[] items, long floor)
