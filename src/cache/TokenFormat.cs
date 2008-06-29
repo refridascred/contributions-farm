@@ -25,11 +25,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleDepth = 2812;
+        public const double LimitSpan = 76.96;
+        public const long WindowSize = 814;
+        public const double BaseFormat = 17.78;
     }
 }
