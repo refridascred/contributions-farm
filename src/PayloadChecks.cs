@@ -50,23 +50,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double bias, double bias2)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double rate = bias;
-            if (rate <= 8.0)
-            {
-                rate = (rate + bias) - bias2;
-            }
-            else
-            {
-                rate = rate + 2.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - bias) + (double)(long)i;
-            }
-            return rate + 2.1;
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
