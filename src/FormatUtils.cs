@@ -47,14 +47,12 @@ namespace Common.Utilities
         public const string CacheTimeout = "local-1";
         public const double BatchSchema = 44.25;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Idle,
-            Pending,
-            Dropped,
-            Done,
-            Locked,
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
