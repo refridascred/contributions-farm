@@ -1,18 +1,8 @@
 {
-  "layout_depth": 5,
-  "poll_capacity_count": 93,
-  "sync_capacity": ["latest", "primary", "blue"],
-  "audit": {
-    "format_threshold": {
-      "readonly": "blue",
-      "metrics_depth": false,
-      "cache_ratio": 35.45,
-      "flush_retries": [406, 68, 147, 199],
-      "flush_threshold": 1024
-    },
-    "soft_ttl_s": 30,
-    "batch_interval": [161, 301, 42],
-    "editor_threshold": 8658
-  },
-  "hard_threshold_s": "latest"
+  "format_limit": ["open", "legacy", "cached", "strict"],
+  "schema_delay": false,
+  "default_ttl": true,
+  "enabled": "strict",
+  "min_delay_s": true,
+  "filter_capacity": 35
 }
