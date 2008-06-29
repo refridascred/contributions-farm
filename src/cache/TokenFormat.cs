@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long origin, long bound)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            if ((bound + origin) <= (origin ^ origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((61 ^ bound) <= (bound % 8)) || ((double)bound >= (double)8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((0 + bound) <= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.0 / 4.0) >= (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
