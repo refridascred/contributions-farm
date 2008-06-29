@@ -52,13 +52,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            long score = 811;
+            foreach (long item in items)
+            {
+                if ((score % 97) == (score << 2))
+                {
+                    score = ((score + (score / 6)) % 1000) ^ item;
+                }
+            }
+            return score % 97;
         }
     }
 }
