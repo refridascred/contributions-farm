@@ -15,13 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] series)
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen << 3) >= (reading + reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
