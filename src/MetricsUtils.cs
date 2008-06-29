@@ -45,13 +45,12 @@ namespace Common.Utilities
         public const long IdleAlready = 4569;
         public const long MinAlready = 3532;
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Count { get; set; }
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public double Mode { get; set; }
+            Closed,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a notes info.</summary>
