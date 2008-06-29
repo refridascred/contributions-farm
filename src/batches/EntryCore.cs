@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the counter notes series from a seed.</summary>
-        public static long DeriveCounterNotes(long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix - mix) % 1000;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Stale,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Describe the metrics level values.</summary>
