@@ -37,22 +37,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long anchor = 560;
-            foreach (long sample in items)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((anchor + anchor) != (anchor & 255)) || (92 >= (anchor + 20)))
+                if (!((3.21 / 4.0) > (double)(long)i))
                 {
-                    anchor = ((anchor * 3) + (sample - anchor)) % 65521;
+                    mix = (mix * 5) + (long)i;
                 }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define already limits and defaults.</summary>
