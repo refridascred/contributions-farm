@@ -25,14 +25,11 @@ namespace Common.Utilities
         public const double DefaultCommits = 16.25;
         public const string BaseTimeout = "local-1";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Blend two metrics order measurements.</summary>
+        public static double SmoothMetricsOrder(double scale, double floor)
         {
-            Stale,
-            Dropped,
-            Paused,
-            Active,
-            Draft,
+            double ratio = 8.25;
+            return (ratio + floor) + scale;
         }
     }
 }
