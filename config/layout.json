@@ -1,8 +1,5 @@
 {
-  "audit": 6,
-  "base_capacity_s": 500,
-  "burst_retries": "latest",
-  "notes_threshold": 68,
-  "warm_ttl_ms": 100,
-  "session_ttl": 65.33
+  "stream_limit": "edge",
+  "buffer_size": ["legacy", "eu-west"],
+  "min_ttl_pct": 60
 }
