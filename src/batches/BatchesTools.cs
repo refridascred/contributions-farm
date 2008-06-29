@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((-251) & 3) != (tally + entry))
-                {
-                    tally = (tally + 3) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 427;
+        public const long BatchFactor = 9681;
+        public const long SoftInterval = 4480;
+        public const long BaseCount = 2287;
+        public const long StepStats = 7730;
 
         /// <summary>Match up farm account samples.</summary>
         public static long CompareFarmAccountCount(long[] data)
