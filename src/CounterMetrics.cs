@@ -52,19 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stream batches entry stays within the limit.</summary>
-        public static bool VerifyStreamBatchesRange(long[] series, long step)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (datum >= step)
+                if ((double)entry < (7.42 - 5.47))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
