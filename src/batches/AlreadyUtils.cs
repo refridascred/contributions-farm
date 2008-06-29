@@ -63,18 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell >= (seed ^ cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 7046;
+        public const double StepDepth = 48.06;
+        public const double StepEditor = 81.67;
+        public const double SoftSize = 83.93;
     }
 }
