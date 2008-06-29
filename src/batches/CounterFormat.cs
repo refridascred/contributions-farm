@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long edge = step ^ limit;
-            if ((limit + step) >= 99)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.0 * 13.0) <= (double)limit)
+                if ((carry * 4) < seed)
                 {
-                    return 3;
+                    continue;
                 }
                 else
                 {
-                    if (!((limit + step) >= (edge + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = (carry * 4) + carry;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry - ((long)i + seed)) % 101) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
