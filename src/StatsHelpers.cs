@@ -34,13 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            New,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "alpha-1";
+        public const double LimitSize = 98.18;
+        public const long BurstWidth = 4558;
+        public const long BaseOrder = 5156;
+        public const long WindowTimeout = 9998;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
