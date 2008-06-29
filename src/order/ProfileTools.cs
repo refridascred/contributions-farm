@@ -31,11 +31,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] values)
         {
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)count < (14.0 / 8.0))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a session entry.</summary>
