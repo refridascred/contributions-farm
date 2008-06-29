@@ -28,19 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] values, long offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
