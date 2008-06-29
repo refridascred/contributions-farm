@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] values, long bound)
         {
-            Idle,
-            New,
-            Done,
+            long result = 713;
+            foreach (long datum in values)
+            {
+                if (bound < (datum + result))
+                {
+                    result = result + (datum >> 3);
+                }
+            }
+            return result;
         }
 
         /// <summary>Fold a list of notes buffer readings.</summary>
