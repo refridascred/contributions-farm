@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Derive the next format metrics value from a seed.</summary>
+        public static long IterateFormatMetrics(long floor)
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
