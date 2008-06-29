@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] samples, long target)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((815 + (-27)) < (hits & 3))
+                {
+                    hits = ((hits + 3) ^ sample) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
