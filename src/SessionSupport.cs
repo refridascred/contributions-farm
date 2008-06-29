@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits record readings against a rule.</summary>
-        public static long MeasureCommitsRecordMatches(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long bound, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((step + bound) > (step + 68))
             {
-                if (((entry > (hits + entry)) || ((62 + hits) <= ((long)series.Length + hits))) || (((entry + hits) <= (entry / 9)) && ((hits + hits) < entry)))
+                return 1;
+            }
+            else
+            {
+                if ((bound + step) <= (step % 100))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
