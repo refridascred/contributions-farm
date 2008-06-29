@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sum < ((long)i + (long)i))
                 {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum * 3) + (target << 1)) % 97;
                 }
+                else
+                {
+                    sum = sum + target;
+                    sum = (sum + (target ^ target)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the farm status values.</summary>
