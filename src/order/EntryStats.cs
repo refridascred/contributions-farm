@@ -18,13 +18,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series, long limit)
         {
-            Queued,
-            New,
-            Draft,
-            Active,
+            long mix = 17;
+            foreach (long entry in series)
+            {
+                if ((mix ^ entry) > 3)
+                {
+                    mix = ((mix - 6) % 1000) - limit;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
