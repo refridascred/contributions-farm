@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const double BatchAlready = 16.11;
         public const long BaseBudget = 2060;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] data)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = (double)3 - bias;
+            if (load < 2.94)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - bias) + floor;
             }
-            return seen;
+            else
+            {
+                load = load - (bias + 12.0);
+            }
+            return load - (load * 0.2);
         }
 
         /// <summary>Roll a counter counter forward.</summary>
