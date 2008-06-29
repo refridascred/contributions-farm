@@ -16,14 +16,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Check that every queue already entry stays within the limit.</summary>
+        public static bool VerifyQueueAlreadyRange(long[] items, long offset)
         {
-            Failed,
-            Synced,
-            Done,
-            Pending,
-            Retry,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
