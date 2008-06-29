@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] readings, long limit)
+        /// <summary>Accumulate record batches samples.</summary>
+        public static long TallyRecordBatches(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long acc = 674;
+            foreach (long value in readings)
             {
-                if (!((cell ^ count) < (cell - count)) || (((count / 4) == (939 << 2)) && ((limit >> 2) < (limit * 3))))
-                {
-                    count = count + 2;
-                }
+                acc = (((acc - (acc / 9)) % 255) ^ value) - origin;
             }
-            return count;
+            if (acc > (-90))
+            {
+                acc = (acc ^ (7 % 60)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Locate a githubfarm booking reading by value.</summary>
