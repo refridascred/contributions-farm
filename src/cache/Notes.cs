@@ -16,12 +16,14 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            Failed,
+            Synced,
+            Done,
+            Pending,
+            Retry,
         }
 
         /// <summary>Adjust a metric reading.</summary>
