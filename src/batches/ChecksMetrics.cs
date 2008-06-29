@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > bound)
                 {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Describe the context state values.</summary>
