@@ -15,22 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Accumulate githubfarm metric samples.</summary>
+        public static long TallyGithubfarmMetric(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = 0;
+            foreach (long entry in levels)
             {
-                if (seen < (seen + seen))
+                if ((entry + anchor) > (entry * 3))
                 {
-                    seen = (seen + 2) - entry;
+                    anchor = ((anchor ^ 134) % 4096) - floor;
                 }
-                else
+                if ((entry - anchor) >= entry)
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Scale a order profile figure with a bias.</summary>
