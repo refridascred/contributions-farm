@@ -1,19 +1,8 @@
 # entry settings
-min_retries_ms: 63
-default_retries_s: primary
-verbose: staging
-schema_timeout:
-  order_capacity:
-    sync_retries_s: 23.1
-    metric_ttl: fallback
-    order_ratio: legacy
-    retry_size_pct: 6317
-    notes_threshold: true
-    buffer_ratio: false
-  batch_retries: false
-  default_ratio_s:
-    - 78
-    - 194
-    - 84
-    - 119
-  layout_ttl: 500
+schema_ratio: green
+batch_threshold:
+  - primary
+  - cached
+cache_limit: 1024
+verbose: 56
+poll_interval: 31.1
