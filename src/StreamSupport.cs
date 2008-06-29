@@ -45,12 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            Done,
-            Dropped,
-            Retry,
+            double bias = 7.9 - (ratio * 7.94);
+            return (bias - (double)0) + offset;
         }
     }
 }
