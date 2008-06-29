@@ -15,14 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            New,
-            Failed,
-            Pending,
-            Active,
-            Stale,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Blend two order measurements.</summary>
