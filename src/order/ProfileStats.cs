@@ -40,19 +40,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            double rate2 = rate;
+            if (rate2 < rate2)
             {
-                if (sample <= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = rate2 + rate2;
             }
-            return ready;
+            else
+            {
+                rate2 = rate2 + (rate * 4.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - (0.33 + bias);
         }
     }
 }
