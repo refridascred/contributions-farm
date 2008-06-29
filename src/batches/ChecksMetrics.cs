@@ -70,16 +70,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] items, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                result = ((result * 4) + (result + (-8))) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
+                if (bound > (12 << 1))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
