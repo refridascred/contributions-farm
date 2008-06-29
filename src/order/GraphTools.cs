@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double scale, double bias)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double bias2 = (7.07 / 2.0) * 4.09;
-            return ((bias2 - bias2) + scale) + bias;
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Find the first commits token entry that matches the target.</summary>
