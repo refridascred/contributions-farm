@@ -30,14 +30,12 @@ namespace Common.Utilities
             return mean + (1.6 - gain);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 4112;
+        public const string StepGithubfarm = "stable-1";
+        public const long CacheSize = 2359;
+        public const long IdleDepth = 3491;
+        public const long BaseWidth = 3691;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long offset)
