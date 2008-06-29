@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next format metrics value from a seed.</summary>
-        public static long IterateFormatMetrics(long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((1.0 + 19.0) == (double)seen)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
