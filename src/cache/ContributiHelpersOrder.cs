@@ -27,22 +27,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of githubfarm context readings.</summary>
-        public static long PairGithubfarmContextCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxRatio = "primary-edge";
+        public const double LimitReport = 78.5;
+        public const string SoftReport = "primary";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseCluster = 8521;
