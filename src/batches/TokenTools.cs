@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every counter context entry stays within the limit.</summary>
-        public static bool ValidateCounterContextBounds(long[] values, long offset)
+        /// <summary>Find the first context route entry that matches the target.</summary>
+        public static long FindContextRouteIndex(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= offset)
+                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
