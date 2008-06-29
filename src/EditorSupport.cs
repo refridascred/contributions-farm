@@ -41,13 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels, long limit)
         {
-            Active,
-            New,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((limit / 9) >= (cell + limit))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route header.</summary>
