@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 4759;
-        public const long WindowFactor = 6668;
-        public const long MaxBatch = 8208;
-        public const long CacheLevel = 223;
+        /// <summary>Count the channel cache entries that pass the check.</summary>
+        public static long MeasureChannelCacheHits(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading > (double)84)
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string StepSize = "legacy-v2";
