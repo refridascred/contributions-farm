@@ -35,21 +35,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
-        public static long CompareEntryBatchesCount(long[] samples)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public double Owner { get; set; }
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
