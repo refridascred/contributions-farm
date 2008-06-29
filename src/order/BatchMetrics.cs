@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] series, long limit)
+        /// <summary>Compare every pair of tools batches readings.</summary>
+        public static long CompareToolsBatchesCount(long[] series)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
