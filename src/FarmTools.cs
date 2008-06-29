@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long floor, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] items, long offset)
         {
-            if (floor < (bound >> 4))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ 201) < floor)
+                if (((offset & 1) > (matches + matches)) || (((-467) >> 2) > offset))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 2) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a counter commits pair into a bucket.</summary>
