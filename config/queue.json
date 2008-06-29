@@ -1,8 +1,5 @@
 {
-  "sync_ratio": 8291,
-  "verbose": "strict",
-  "idle_threshold_ms": true,
-  "flush_depth_s": 53,
-  "token_size": false,
-  "support_size": "stable"
+  "batch_timeout": "blue",
+  "verbose": "latest",
+  "command_depth": false
 }
