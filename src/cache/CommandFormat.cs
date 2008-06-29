@@ -20,16 +20,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double scale, double offset)
-        {
-            double gain = scale + scale;
-            if (gain <= (gain * 11.0))
-            {
-                gain = (gain - (double)4) + offset;
-            }
-            return gain + scale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "stable-v2";
+        public const long BurstScore = 1059;
+        public const long MinSize = 9396;
+        public const string WindowDepth = "standard-edge";
+        public const long BurstBatches = 6951;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] samples, long origin)
