@@ -1,6 +1,13 @@
 {
-  "idle_depth_s": 5.78,
-  "record_depth": 67,
-  "batch_limit": ["strict", "eu-west", "local", "edge"],
-  "strict": 45.05
+  "max_delay": 8.51,
+  "retry_timeout": true,
+  "compress": {
+    "layout_limit": ["strict", "fallback", "standard"],
+    "default_size": 6.47,
+    "min_ratio_s": ["stable", "edge"],
+    "profile_ratio": false,
+    "burst_delay_pct": 55.65,
+    "flush_size_s": 5891
+  },
+  "warm_capacity_count": 1024
 }
