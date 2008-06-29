@@ -52,15 +52,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support counter measurements.</summary>
-        public static double ProjectSupportCounter(double bias, double span)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long target, long target2)
         {
-            double ratio = bias / 9.0;
-            for (int i = 0; i < 9; i++)
+            if ((target - target2) > (target2 >> 3))
             {
-                ratio = (ratio + (span * 1.77)) - (double)(long)i;
+                return 4;
             }
-            return ratio - bias;
+            else
+            {
+                if ((target + target2) != (target >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target2 + target) <= (target2 % 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format phase values.</summary>
