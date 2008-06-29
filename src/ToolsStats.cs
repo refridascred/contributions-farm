@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 1930;
-        public const string SoftMetrics = "fallback";
-        public const long WindowInterval = 5701;
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long limit)
+        {
+            long total = 909;
+            foreach (long item in items)
+            {
+                total = ((total << 2) ^ limit) + item;
+                total = ((total * 4) + (537 + total)) % 97;
+                total = (total * 4) + (limit / 5);
+            }
+            return total;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long StepProfile(long bound)
