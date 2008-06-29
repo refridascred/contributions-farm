@@ -69,20 +69,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings, long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mark = 49;
-            foreach (long value in readings)
-            {
-                mark = ((mark ^ (offset + mark)) % 4096) - value;
-                mark = ((mark << 2) ^ (mark / 2)) % 1000;
-                if ((8.92 / 6.0) >= (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Draft,
+            Stale,
+            New,
         }
     }
 }
