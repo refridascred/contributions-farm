@@ -24,14 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] items)
         {
-            Retry,
-            Queued,
-            Failed,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count + item) == (count % 60))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
