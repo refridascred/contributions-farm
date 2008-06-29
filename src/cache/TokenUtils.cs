@@ -31,19 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] items, long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
