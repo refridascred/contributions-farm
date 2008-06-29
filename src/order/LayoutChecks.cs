@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double bias2 = ratio / 9.0;
-            return (bias2 + ratio) + bias;
+            Pending,
+            Active,
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the payload phase values.</summary>
