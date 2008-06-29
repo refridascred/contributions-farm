@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double ratio = (double)(-110) * 19.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ((ratio - ratio) + (double)(long)i) + bias;
             }
-            return found;
+            return ratio + (floor - floor);
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
