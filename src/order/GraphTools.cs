@@ -58,18 +58,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
-        public static long TallyContextGithubfarmMatches(long[] values, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((seed >> 4) != (matches - matches)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
