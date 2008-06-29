@@ -22,10 +22,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchCount = 3378;
-        public const long BatchContext = 5334;
-        public const long SoftContext = 1690;
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels, long target)
+        {
+            long mix = 93;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = ((mix ^ (471 << 2)) + (long)i) + target;
+                }
+                mix = mix + (entry + entry);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] readings, long seed)
