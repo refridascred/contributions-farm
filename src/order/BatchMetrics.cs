@@ -50,16 +50,31 @@ namespace Common.Utilities
             return drift - (scale * 12.0);
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] samples, long origin)
+        /// <summary>Rank metrics cluster input into a small class.</summary>
+        public static long SortMetricsCluster(long limit, long limit2)
         {
-            long sum = 0;
-            foreach (long reading in samples)
+            if (((limit ^ limit) >= 130) || (limit <= (limit + limit)))
             {
-                sum = (sum + (reading - reading)) % 255;
-                sum = (sum << 2) ^ origin;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((limit - limit) >= (limit2 + limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit << 1) <= limit2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools entry.</summary>
