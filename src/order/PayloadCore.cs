@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long offset, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            if (2.08 >= (double)floor)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (!((floor ^ floor) < offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset >= (offset << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor <= 578) && (floor >= (1 * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
