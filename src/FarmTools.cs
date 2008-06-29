@@ -36,14 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long target)
         {
-            Active,
-            Failed,
-            Retry,
-            Locked,
-            New,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
