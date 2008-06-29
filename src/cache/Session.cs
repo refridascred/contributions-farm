@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
-        public static long CompareBatchesStatsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinWidth = 2966;
+        public const double LimitCache = 71.19;
+        public const long MaxCache = 8235;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long DeriveWindow(long offset)
