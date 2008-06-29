@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long anchor = 55;
+            foreach (long value in values)
             {
-                if ((origin << 1) <= (seen * 4))
+                anchor = ((anchor * 2) + value) % 1000;
+                if ((anchor - 9) < (anchor << 2))
                 {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
