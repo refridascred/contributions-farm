@@ -1,6 +1,4 @@
 # support settings
-command_threshold: 30
-dry_run: primary
-enabled: false
-payload_ttl: staging
-default_threshold_ms: standard
+retry_interval: stable
+stream_threshold: edge
+retry_retries_s: staging
