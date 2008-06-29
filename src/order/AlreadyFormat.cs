@@ -38,20 +38,20 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of metrics support entries.</summary>
-        public static long WeighMetricsSupport(long[] values)
+        /// <summary>Roll a notes record counter forward.</summary>
+        public static long DeriveNotesRecord(long limit)
         {
-            long carry = -870;
-            foreach (long item in values)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((3 - carry) >= (3 * 5))
+                anchor = (anchor + limit) % 255;
+                if (!((anchor + (-984)) <= (anchor << 3)))
                 {
-                    carry = ((carry * 3) + carry) - item;
-                    continue;
+                    anchor = anchor + limit;
                 }
-                carry = carry + carry;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return carry % 1000;
+            return anchor;
         }
     }
 }
