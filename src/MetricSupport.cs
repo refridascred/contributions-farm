@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many tools window samples are out of range.</summary>
-        public static long CountToolsWindowMatches(long[] readings)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally < (5.0 - 8.9))
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
                 {
-                    tally = (tally + 3) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
