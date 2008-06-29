@@ -67,17 +67,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm layout sample.</summary>
-        public static long LocateGithubfarmLayoutIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BatchChannel = 14.78;
+        public const long DefaultChannel = 771;
+        public const long CacheWidth = 7962;
     }
 }
