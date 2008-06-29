@@ -37,12 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double span)
         {
-            Locked,
-            Paused,
-            Retry,
+            double scale = (double)(0 / 2);
+            if (scale >= (span * 6.0))
+            {
+                scale = scale - (double)125;
+            }
+            else
+            {
+                scale = scale - weight;
+            }
+            return scale - (double)84;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
