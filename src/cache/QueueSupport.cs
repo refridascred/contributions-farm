@@ -19,21 +19,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                result = (result + (8 & 7)) % 101;
-                result = result + (result % 5);
-                if (((19 % 3) > ((long)i + (long)i)) && ((929 + origin) < (result - origin)))
+                if ((double)datum >= 7.0)
                 {
-                    result = (result << 2) ^ result;
+                    matches = matches + 1;
                 }
-                result = ((result * 5) + (long)i) % 4093;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the profile state values.</summary>
