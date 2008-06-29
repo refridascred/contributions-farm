@@ -17,26 +17,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] values)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long limit)
         {
-            long anchor = 5;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((cell % 10) != (anchor >> 4))
+                if (datum != limit)
                 {
-                    anchor = (anchor << 3) ^ (cell >> 2);
-                }
-                else
-                {
-                    anchor = (anchor - (cell ^ cell)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < 14)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Roll a already session counter forward.</summary>
