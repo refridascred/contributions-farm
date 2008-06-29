@@ -39,19 +39,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values, long limit)
         {
-            long total = 433;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in values)
             {
-                total = total ^ (total ^ total);
-                if ((cell + (long)samples.Length) != (total - cell))
+                if (item > (tally << 1))
                 {
-                    break;
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
     }
 }
