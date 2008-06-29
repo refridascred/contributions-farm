@@ -20,15 +20,19 @@ namespace Common.Utilities
         public const string SoftSize = "stable";
         public const long HardTools = 8139;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] readings, long offset)
         {
-            double bias = floor;
-            for (int i = 0; i < 2; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                bias = (bias + (double)(-6)) + (double)(long)i;
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias + (weight + bias);
+            return ok;
         }
 
         /// <summary>Describe the profile mode values.</summary>
