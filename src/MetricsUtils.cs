@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] items)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long target)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long cur = origin - target;
+            if ((cur << 2) <= 6)
             {
-                if (((394 + item) < (item + 498)) && (((seen - item) == (item % 24)) || ((seen >> 1) >= (item ^ item))))
+                return 8;
+            }
+            else
+            {
+                if (9.85 < (double)origin)
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin & 1) == (target & 255))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (1.9 > (double)cur)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
