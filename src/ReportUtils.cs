@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
