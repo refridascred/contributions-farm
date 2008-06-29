@@ -1,6 +1,7 @@
 {
-  "idle_window_count": ["fallback", "green"],
-  "idle_depth_count": "latest",
-  "batch_interval_count": true,
-  "burst_capacity_ms": 95.84
+  "compress": "green",
+  "command_retries": 59.73,
+  "max_timeout": 73,
+  "min_ratio_ms": "stable",
+  "retry_window": 30
 }
