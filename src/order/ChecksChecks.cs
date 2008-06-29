@@ -33,23 +33,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double rate, double bias)
+        /// <summary>Locate a editor tools reading by value.</summary>
+        public static long SeekEditorToolsIndex(long[] levels, long offset)
         {
-            double ratio = bias;
-            if (ratio < (ratio * 9.1))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - bias;
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + 4.7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (rate * 8.2);
+            return -1;
         }
     }
 }
