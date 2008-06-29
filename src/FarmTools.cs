@@ -19,18 +19,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] values, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = -69;
+            foreach (long cell in series)
             {
-                if (matches <= (233 - value))
+                if (((1.6 - 0.44) != (double)anchor) || ((cell - cell) > (879 / 8)))
                 {
-                    matches = (matches + 2) - target;
+                    anchor = (anchor * 4) + 60;
                 }
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Match up batch samples.</summary>
