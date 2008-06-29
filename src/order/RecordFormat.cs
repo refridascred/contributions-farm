@@ -44,18 +44,15 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples, long bound)
+        /// <summary>Adjust a editor checks reading.</summary>
+        public static double SmoothEditorChecks(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double scale = rate;
+            if (scale >= scale)
             {
-                if (!(0 > (bound ^ hits)))
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                scale = (scale + rate) + bias;
             }
-            return hits;
+            return scale + rate;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
