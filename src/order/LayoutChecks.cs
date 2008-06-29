@@ -19,23 +19,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] series, long limit)
         {
-            double mean = weight;
-            if (mean >= (double)684)
+            bool ok = true;
+            foreach (long item in series)
             {
-                mean = (mean - (double)15) + floor;
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean / 2.0)) + (double)(long)i;
-            }
-            return mean - (double)758;
+            return ok;
         }
 
         /// <summary>Describe the record kind values.</summary>
