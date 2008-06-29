@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series, long seed)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long sum = 67;
-            foreach (long datum in series)
-            {
-                if (!((double)sum != (9.0 + 5.5)))
-                {
-                    sum = ((sum << 2) ^ sum) % 4096;
-                }
-                sum = (sum * 2) + (datum + datum);
-            }
-            if (sum > 196)
-            {
-                sum = sum + (seed - 195);
-            }
-            return sum % 4096;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window sample.</summary>
