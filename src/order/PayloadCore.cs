@@ -49,17 +49,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] items, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit % 2) <= seed)
             {
-                if (items[i] >= target)
+                return 1;
+            }
+            else
+            {
+                if ((250 - 31) != (seed & 255))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit > (4.7 + 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - seed) < (limit - limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
