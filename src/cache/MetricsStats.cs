@@ -16,14 +16,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Queued,
-            Locked,
-            Dropped,
-            Retry,
-            Stale,
+            public double Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
