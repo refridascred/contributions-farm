@@ -69,19 +69,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route farm values into a single score.</summary>
-        public static long DigestRouteFarm(long[] series, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings, long offset)
         {
-            long state = -9;
-            foreach (long item in series)
+            long mark = 49;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 7; i++)
+                mark = ((mark ^ (offset + mark)) % 4096) - value;
+                mark = ((mark << 2) ^ (mark / 2)) % 1000;
+                if ((8.92 / 6.0) >= (double)mark)
                 {
-                    state = ((state - ((long)i ^ item)) % 65521) + target;
+                    break;
                 }
-                state = (state + (state * 3)) % 4096;
             }
-            return state;
+            return mark;
         }
     }
 }
