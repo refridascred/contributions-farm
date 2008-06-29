@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] readings)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            if ((double)bound2 > (8.54 + 7.78))
             {
-                if ((value ^ value) > (64 / 9))
+                return 6;
+            }
+            else
+            {
+                if ((bound2 - bound) == (bound2 % 10))
                 {
-                    hits = hits + 3;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
