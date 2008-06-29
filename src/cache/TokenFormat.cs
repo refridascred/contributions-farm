@@ -25,10 +25,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleDepth = 2812;
-        public const double LimitSpan = 76.96;
-        public const long WindowSize = 814;
-        public const double BaseFormat = 17.78;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((datum * 4) > (datum - datum)) && ((datum * 4) >= (matches - 689)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
