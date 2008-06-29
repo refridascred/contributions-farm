@@ -19,11 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result + (8 & 7)) % 101;
+                result = result + (result % 5);
+                if (((19 % 3) > ((long)i + (long)i)) && ((929 + origin) < (result - origin)))
+                {
+                    result = (result << 2) ^ result;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Rank report input into a small class.</summary>
