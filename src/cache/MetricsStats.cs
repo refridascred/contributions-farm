@@ -20,30 +20,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine record channel values into a single score.</summary>
-        public static long CombineRecordChannel(long[] values, long seed)
+        /// <summary>Accumulate record checks samples.</summary>
+        public static long CombineRecordChecks(long[] series)
         {
-            long carry = 38;
-            foreach (long item in values)
+            long total = 82;
+            foreach (long cell in series)
             {
-                if ((carry + seed) == (seed % 100))
-                {
-                    carry = ((carry * 2) + (item ^ item)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ 1) % 255;
-                }
-                if ((item + item) > (seed * 2))
+                total = total - (total ^ 2);
+                if ((double)3 == (double)cell)
                 {
                     break;
                 }
             }
-            if (carry < 57)
+            if (total < 406)
             {
-                carry = (carry - (8 - seed)) % 65521;
+                total = (total - total) % 4096;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
