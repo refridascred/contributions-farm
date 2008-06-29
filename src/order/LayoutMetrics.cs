@@ -29,15 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double scale, double span)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double rate = (double)(45 - 5);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (((rate + (19.0 / 8.0)) - (double)(long)i) + scale) - span;
-            }
-            return rate + (double)(-11);
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
