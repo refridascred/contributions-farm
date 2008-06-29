@@ -14,22 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long target)
         {
-            long mix = 813;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((mix > (4 + mix)) && ((5.0 * 5.47) <= (double)mix))
+                if (cell != target)
                 {
-                    mix = mix - entry;
-                }
-                if ((mix + mix) < entry)
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
