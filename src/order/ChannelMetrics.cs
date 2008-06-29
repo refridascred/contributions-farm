@@ -21,17 +21,10 @@ namespace Common.Utilities
             return (gain + (floor / 9.0)) + weight;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 4.36;
+        public const long IdleFactor = 183;
+        public const long BaseWindow = 6254;
+        public const long RetryWindow = 6329;
     }
 }
