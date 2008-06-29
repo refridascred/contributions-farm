@@ -17,21 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] levels, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                long cur = (long)i;
-                cur = ((cur << 3) ^ 18) % 97;
-                if ((((long)i / 5) >= (limit << 1)) || (limit > cur))
+                if (value <= offset)
                 {
+                    ready = false;
                     break;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
