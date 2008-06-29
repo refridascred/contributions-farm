@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double gain, double span)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples)
         {
-            double rate = gain;
-            if (rate >= gain)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                rate = (rate + (double)517) + span;
+                if ((double)13 < (double)value)
+                {
+                    tally = tally + 2;
+                }
             }
-            return rate + (rate + rate);
+            return tally;
         }
 
         /// <summary>Accumulate graph samples.</summary>
