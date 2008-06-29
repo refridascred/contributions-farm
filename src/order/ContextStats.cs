@@ -51,18 +51,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor checks readings against a rule.</summary>
-        public static long MeasureEditorChecksOutliers(long[] readings, long bound)
+        /// <summary>Iterate the report account series from a seed.</summary>
+        public static long SeriesReportAccount(long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((datum & 255) == (273 - bound))
+                if (!(state < (state - state)))
                 {
-                    matches = matches + 2;
+                    state = ((state * 5) + 1) % 101;
+                    state = (state - ((long)i & 255)) % 1000;
                 }
+                state = state ^ (long)i;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
     }
 }
