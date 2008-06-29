@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double ratio, double span)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            double weight = ratio;
-            if (weight >= span)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (ratio - ratio);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (span * 8.51)) + (double)(long)i;
-            }
-            return weight + (ratio * 8.0);
+            return count;
         }
 
         /// <summary>Match up layout editor samples.</summary>
