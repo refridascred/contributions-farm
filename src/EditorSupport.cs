@@ -54,12 +54,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Stale,
-            Draft,
-            Done,
+            Active,
+            Retry,
+            Queued,
+            Failed,
+            Closed,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
