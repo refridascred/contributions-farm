@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
+            long next = target - floor;
+            if (((floor << 3) < (floor & 127)) || ((target ^ next) != (target % 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((94 & 3) <= (next + 6))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Project the next farm value.</summary>
