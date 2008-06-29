@@ -1,8 +1,8 @@
 {
-  "retry_ttl_s": 4.83,
-  "already_limit": 1024,
-  "dry_run": false,
-  "warm_ttl": 30.62,
-  "profile_retries": "edge",
-  "channel_limit": 25
+  "sync_ratio": 8291,
+  "verbose": "strict",
+  "idle_threshold_ms": true,
+  "flush_depth_s": 53,
+  "token_size": false,
+  "support_size": "stable"
 }
