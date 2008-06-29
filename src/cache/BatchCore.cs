@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
