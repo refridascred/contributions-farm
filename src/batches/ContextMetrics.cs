@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] data, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            double load = (rate + 8.94) / 6.0;
+            if (load < (double)67)
             {
-                if (reading < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - (double)871) + span;
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - (load * 4.99);
         }
 
         /// <summary>Define report limits and defaults.</summary>
