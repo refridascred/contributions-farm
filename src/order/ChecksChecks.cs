@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleRoute = 51.19;
-        public const double CacheScore = 32.97;
-        public const string DefaultRoute = "fallback-1";
-        public const string BurstLevel = "legacy";
-        public const long HardFactor = 9394;
+        /// <summary>Locate a profile metrics reading by value.</summary>
+        public static long FindProfileMetricsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] values, long origin)
