@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] data, long step)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
