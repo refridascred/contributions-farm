@@ -14,18 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] items)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((3 - count) >= value)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first route notes entry that matches the target.</summary>
