@@ -42,10 +42,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryInterval = 6693;
-        public const string SoftBuffer = "alpha-1";
-        public const long BurstRatio = 1420;
+        /// <summary>Roll a support entry counter forward.</summary>
+        public static long DeriveSupportEntry(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                bool stale = (limit & 31) > (long)i;
+                if (stale && ((limit >> 2) <= mix))
+                {
+                    stale = (78 + (long)i) > limit;
+                    mix = (mix - (63 & 31)) % 97;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MinRatio = 8888;
