@@ -57,18 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] items, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mark = 329;
+            foreach (long value in series)
             {
-                if ((17 + (-6)) != (seed - value))
-                {
-                    matches = matches + 2;
-                }
+                mark = mark ^ (value + mark);
             }
-            return matches;
+            if (mark < (-612))
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
     }
 }
