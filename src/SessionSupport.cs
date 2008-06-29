@@ -19,13 +19,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix << 2) ^ (996 + mix);
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Describe the record level values.</summary>
