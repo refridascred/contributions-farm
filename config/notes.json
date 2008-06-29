@@ -1,8 +1,7 @@
 {
-  "payload_size": ["staging", "standard", "green"],
-  "warm_capacity_ms": [43, 142, 315],
-  "enabled": 93,
-  "session_limit": 1459,
-  "warm_ttl": "strict",
-  "layout_retries": "latest"
+  "record_delay": 100,
+  "audit": [11, 260, 433],
+  "window_ratio": 250,
+  "warm_interval": "eu-west",
+  "tools_delay": 30
 }
