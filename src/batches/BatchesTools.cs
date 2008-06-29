@@ -49,11 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchSpan = 5465;
-        public const string MinTimeout = "primary-edge";
-        public const long MaxContext = 8075;
-        public const long DefaultContext = 3058;
-        public const long BaseLevel = 7442;
+        /// <summary>Find the first route notes entry that matches the target.</summary>
+        public static long LocateRouteNotesIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
