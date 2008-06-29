@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Ready,
-            Paused,
-            Draft,
-            Idle,
-            New,
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
