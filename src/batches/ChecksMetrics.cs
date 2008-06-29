@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxLevel = 57.71;
-        public const long BaseChecks = 7499;
-        public const long DefaultLevel = 3388;
-        public const string MinDepth = "standard-1";
+        /// <summary>Measure how many route notes samples are out of range.</summary>
+        public static long AuditRouteNotesOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell << 3) < (cell & 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] items, long floor)
