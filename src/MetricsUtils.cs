@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Adjust a stats cache reading.</summary>
+        public static double BlendStatsCache(double gain, double floor)
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            double ratio = floor;
+            if (ratio > (double)2)
+            {
+                ratio = ratio + (ratio + ratio);
+            }
+            else
+            {
+                ratio = ratio - (double)6;
+            }
+            return ratio - (gain - ratio);
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
