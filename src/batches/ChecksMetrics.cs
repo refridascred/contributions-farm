@@ -70,18 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] items, long bound)
+        /// <summary>Iterate the format payload series from a seed.</summary>
+        public static long IterateFormatPayload(long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (bound > (12 << 1))
-                {
-                    count = (count + 1) + datum;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
     }
 }
