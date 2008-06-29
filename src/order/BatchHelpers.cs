@@ -21,19 +21,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double bias, double span)
+        /// <summary>Iterate the batch batches series from a seed.</summary>
+        public static long RollBatchBatches(long bound)
         {
-            double weight = (span - bias) / 4.0;
-            if (weight > span)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                weight = weight + weight;
+                score = ((score << 3) ^ (score & 127)) % 97;
+                score = ((score * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (double)4) + (double)(long)i;
-            }
-            return weight + (1.69 - bias);
+            return score;
         }
     }
 }
