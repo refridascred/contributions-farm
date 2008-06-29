@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const double IdleAccount = 49.74;
         public const long SoftRatio = 1405;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultSize = 5264;
-        public const string WindowCount = "alpha-v2";
-        public const long SoftFactor = 3155;
+        /// <summary>Count route editor pairs that satisfy a relation.</summary>
+        public static long OverlapRouteEditorCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long bound, long seed)
