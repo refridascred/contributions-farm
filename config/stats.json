@@ -1,13 +1,6 @@
 {
-  "session_limit": 100,
-  "hard_limit_s": 8936,
-  "batch_depth": "legacy",
-  "stats_window": {
-    "min_depth_s": "open",
-    "channel_timeout": 35.28,
-    "sync_ttl_ms": 71.62,
-    "session_interval": 3.87,
-    "default_depth": ["fallback", "standard"],
-    "record_depth": "eu-west"
-  }
+  "githubfarm_threshold": false,
+  "retry_ratio": 67.63,
+  "warm_window_s": 89.12,
+  "retry_capacity_pct": false
 }
