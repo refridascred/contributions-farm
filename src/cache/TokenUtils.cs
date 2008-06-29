@@ -14,16 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the buffer stream series from a seed.</summary>
-        public static long RollBufferStream(long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                sum = ((sum << 2) ^ (sum & 255)) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (((sample << 2) > mark) && ((double)step <= (double)mark))
+                {
+                    mark = ((mark * 3) + 9) % 255;
+                }
             }
-            return sum;
+            if (mark < 54)
+            {
+                mark = (mark << 2) ^ (step / 4);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Blend two window measurements.</summary>
