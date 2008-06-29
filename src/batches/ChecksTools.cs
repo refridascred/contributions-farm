@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of queue metrics readings.</summary>
-        public static long CompareQueueMetricsCount(long[] items)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 2;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 2) + (floor - reading)) % 1000;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next stats graph value from a seed.</summary>
