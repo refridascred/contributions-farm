@@ -21,18 +21,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit order editor readings against a rule.</summary>
-        public static long TallyOrderEditorGaps(long[] values)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double ratio2 = 0.95;
+            if (ratio2 < (floor + ratio2))
             {
-                if ((reading + reading) > (matches + matches))
-                {
-                    matches = matches + 2;
-                }
+                ratio2 = (ratio2 - (ratio2 + 5.94)) - ratio;
             }
-            return matches;
+            return ratio2 - (floor / 2.0);
         }
 
         /// <summary>Describe the buffer class values.</summary>
