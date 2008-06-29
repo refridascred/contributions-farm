@@ -25,17 +25,20 @@ namespace Common.Utilities
             return load + (load + 16.0);
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] data, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
+                long tally = ((long)i >> 3) & 1;
+                if ((long)i == ((long)i + tally))
                 {
-                    return (long)i;
+                    total = (total - ((long)i / 9)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a metric summary.</summary>
