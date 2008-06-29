@@ -37,18 +37,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the buffer route entries that pass the check.</summary>
-        public static long TallyBufferRouteGaps(long[] readings, long target)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits ^ 9) >= (target << 3))
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
                 {
-                    hits = (hits + 2) - item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
