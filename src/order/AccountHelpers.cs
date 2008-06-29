@@ -36,18 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] data)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((entry & 1) > entry) && ((16.0 - 8.64) > (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double mean = floor;
+            return (mean + mean) + bias;
         }
 
         /// <summary>Describe the stats status values.</summary>
