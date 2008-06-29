@@ -22,18 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] data)
         {
-            long total = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((total >> 3) == (88 << 2))
+                if ((double)sample < (double)seen)
                 {
-                    total = total + (reading % 3);
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
