@@ -25,11 +25,25 @@ namespace Common.Utilities
         public const double BaseFactor = 87.15;
         public const long WindowCluster = 6372;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long origin, long step)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long lane = origin + step;
+            if (993 > (step - origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-1) & 15) <= (lane >> 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of editor schema readings.</summary>
