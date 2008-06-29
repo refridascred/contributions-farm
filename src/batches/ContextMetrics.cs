@@ -17,23 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long total = 7;
-            foreach (long entry in samples)
-            {
-                total = ((total << 3) ^ (entry / 2)) % 255;
-                if ((total / 9) != (total % 7))
-                {
-                    break;
-                }
-            }
-            if (total > (-395))
-            {
-                total = (total ^ total) % 97;
-            }
-            return total % 1000;
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
