@@ -1,12 +1,13 @@
 # githubfarm settings
-warm_delay: 23
-max_retries_pct:
-  max_capacity:
-    - 100
-    - 254
-  hard_capacity: false
-  filter_threshold:
-    - 451
-    - 320
-  idle_ttl: local
-batches_ttl: open
+stats_ttl:
+  hard_interval_ms: primary
+  schema_size:
+    - stable
+    - eu-west
+    - primary
+  persist: standard
+  already_size: 3045
+verbose: 56.37
+persist: false
+account_retries: 98
+flush_retries: 213
