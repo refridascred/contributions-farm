@@ -1,5 +1,10 @@
 {
-  "persist": "blue",
-  "default_interval": ["staging", "eu-west", "cached"],
-  "strict": 7844
+  "min_depth_ms": 4696,
+  "soft_depth_pct": {
+    "support_capacity": "staging",
+    "cache_window": [448, 178, 6, 468],
+    "batch_window_s": ["eu-west", "stable"]
+  },
+  "burst_size_ms": [403, 494],
+  "audit": 50
 }
