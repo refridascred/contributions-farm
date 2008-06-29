@@ -1,12 +1,5 @@
 {
-  "sync_size_ms": "latest",
-  "compress": "local",
-  "max_retries": [303, 256, 494, 132],
-  "audit": "fallback",
-  "hard_timeout": {
-    "persist": ["fallback", "open", "fallback"],
-    "hard_interval_s": "open",
-    "dry_run": false
-  },
-  "burst_interval_s": true
+  "cache_timeout": "stable",
+  "entry_interval": true,
+  "warm_threshold_s": 74
 }
