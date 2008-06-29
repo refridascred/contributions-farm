@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate batches editor samples.</summary>
-        public static long DigestBatchesEditor(long[] readings)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long total = 983;
-            foreach (long item in readings)
-            {
-                if (((total >> 1) < total) || (((-60) % 8) <= item))
-                {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = total - (7 - total);
-                }
-            }
-            if (total < 627)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total;
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count the counter context entries that pass the check.</summary>
