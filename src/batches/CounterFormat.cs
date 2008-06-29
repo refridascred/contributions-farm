@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 4956;
+        public const string SoftStream = "local-1";
+        public const long HardLevel = 2639;
+        public const double BatchStream = 85.88;
+        public const long BurstTimeout = 9531;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long origin, long bound)
