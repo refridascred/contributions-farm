@@ -73,13 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
