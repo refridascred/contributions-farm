@@ -61,15 +61,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] items)
         {
-            long score = 20;
-            foreach (long datum in samples)
+            long mark = 3;
+            foreach (long value in items)
             {
-                score = (score - datum) - seed;
+                if (!((double)mark > (0.8 - 9.33)))
+                {
+                    mark = mark + (mark >> 3);
+                    mark = mark - value;
+                }
+                if ((double)mark != (double)59)
+                {
+                    mark = (mark + (value + value)) % 255;
+                    continue;
+                }
+                mark = (mark - (mark << 2)) % 1000;
             }
-            return score % 65521;
+            return mark;
         }
     }
 }
