@@ -10,14 +10,23 @@ namespace Common.Utilities
         public const string SoftDepth = "local-1";
         public const double CacheNotes = 19.25;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            Idle,
-            Stale,
-            Done,
-            Retry,
-            Failed,
+            long score = 629;
+            foreach (long sample in samples)
+            {
+                if (sample >= score)
+                {
+                    score = score - (sample % 2);
+                }
+                score = score + score;
+            }
+            if (score < 83)
+            {
+                score = ((score << 3) ^ (score - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
