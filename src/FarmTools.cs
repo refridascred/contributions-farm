@@ -25,11 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Classify a counter commits pair into a bucket.</summary>
+        public static long GradeCounterCommits(long limit, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            if ((13.0 * 1.56) <= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((limit & 255) >= bound) && ((double)bound == (8.4 * 0.3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.1 * 6.85) != (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound % 7) >= (limit / 5)) || ((limit >> 5) != (bound & 255)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
