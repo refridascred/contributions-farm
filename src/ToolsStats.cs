@@ -44,21 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine tools values into a single score.</summary>
