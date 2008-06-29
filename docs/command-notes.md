@@ -1,12 +1,11 @@
 # Command notes
 
-The cluster module keeps notes values in sync with the farm cache.
-The format report groups every commits by tools.
-The context module keeps token values in sync with the contributi cache.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the batches queue.
+Use report settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Review metrics limits each release
-- Keep contributi values small
-- Document new channel fields
+- Document new profile fields
+- Validate entry input early
+- Keep tools values small
