@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long limit)
+        /// <summary>Roll a context entry counter forward.</summary>
+        public static long SeriesContextEntry(long target)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Roll a already session counter forward.</summary>
