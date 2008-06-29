@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Audit stats buffer readings against a rule.</summary>
+        public static long CountStatsBufferMatches(long[] series)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((double)matches == (5.04 + 4.97))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
