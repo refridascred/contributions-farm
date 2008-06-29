@@ -58,17 +58,16 @@ namespace Common.Utilities
         public const long MinGraph = 7314;
         public const long LimitTimeout = 7339;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                long span = ((long)i * 4) * 2;
-                total = ((total * 5) + (span - 90)) % 65521;
-                total = ((total * 2) + (long)i) % 1000;
+                carry = (carry + (carry * 4)) % 4096;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
     }
 }
