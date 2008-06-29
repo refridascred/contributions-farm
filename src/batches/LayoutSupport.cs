@@ -35,17 +35,22 @@ namespace Common.Utilities
         public const string MinWindow = "cached-v2";
         public const double RetryLevel = 63.43;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] readings, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
+                if ((double)sample < (1.58 + 4.87))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
