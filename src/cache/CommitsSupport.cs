@@ -56,19 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long result = 264;
-            foreach (long entry in series)
-            {
-                result = ((result * 5) + (entry >> 4)) % 65521;
-            }
-            if (result < 3)
-            {
-                result = ((result << 3) ^ result) % 4096;
-            }
-            return result;
+            Pending,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a batch header.</summary>
