@@ -34,12 +34,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] series, long offset)
         {
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((offset - 471) < 941)
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
     }
 }
