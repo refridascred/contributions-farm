@@ -32,22 +32,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the already stats entries that pass the check.</summary>
-        public static long CountAlreadyStatsGaps(long[] items)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long prev = step - offset;
+            if (offset <= step)
             {
-                if (!(((double)matches != (0.3 - 3.7)) && ((14.0 + 9.7) != (double)datum)))
+                return 2;
+            }
+            else
+            {
+                if ((0.31 * 9.64) <= (double)prev)
                 {
-                    matches = matches + 1;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
