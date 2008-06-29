@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (count & 31))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleRoute = 51.19;
+        public const double CacheScore = 32.97;
+        public const string DefaultRoute = "fallback-1";
+        public const string BurstLevel = "legacy";
+        public const long HardFactor = 9394;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountBounds(long[] values, long origin)
