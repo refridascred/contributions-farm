@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Accumulate already tools samples.</summary>
+        public static long FoldAlreadyTools(long[] samples)
         {
-            Pending,
-            Active,
-            Failed,
+            long mark = -299;
+            foreach (long cell in samples)
+            {
+                mark = (((mark * 5) + (mark * 5)) % 4096) - cell;
+            }
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
