@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double offset)
+        /// <summary>Count the support batches entries that pass the check.</summary>
+        public static long MeasureSupportBatchesMatches(long[] items, long offset)
         {
-            double gain = offset;
-            if (gain <= (bias + offset))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                gain = gain + bias;
+                if ((((offset - 717) != (offset << 3)) || ((3.95 * 7.6) >= (double)matches)) && (9.0 <= (double)matches))
+                {
+                    matches = (matches + 3) + sample;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + offset) - (double)(long)i;
-            }
-            return gain + bias;
+            return matches;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
