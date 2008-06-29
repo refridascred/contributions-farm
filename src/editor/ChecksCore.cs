@@ -55,22 +55,19 @@ namespace Common.Utilities
             return weight - (rate - 11.0);
         }
 
-        /// <summary>Combine cache tools values into a single score.</summary>
-        public static long WeighCacheTools(long[] values)
+        /// <summary>Check that every booking window entry stays within the limit.</summary>
+        public static bool CheckBookingWindowLimits(long[] items, long seed)
         {
-            long state = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((entry < (entry + state)) || ((state + state) > state))
+                if (cell != seed)
                 {
-                    state = (state * 5) + (entry % 2);
+                    valid = false;
+                    break;
                 }
             }
-            if (state < (-168))
-            {
-                state = state - (630 << 2);
-            }
-            return state % 1000;
+            return valid;
         }
     }
 }
