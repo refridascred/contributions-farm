@@ -66,9 +66,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 14.78;
-        public const long DefaultChannel = 771;
-        public const long CacheWidth = 7962;
+        /// <summary>Measure how many queue entry samples are out of range.</summary>
+        public static long AuditQueueEntryGaps(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((target * 3) != (datum - target)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
