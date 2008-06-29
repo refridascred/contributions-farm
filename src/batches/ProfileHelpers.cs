@@ -51,19 +51,19 @@ namespace Common.Utilities
             return gain - (double)652;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] values, long floor)
+        /// <summary>Check that every profile account entry stays within the limit.</summary>
+        public static bool GuardProfileAccountBounds(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (entry <= floor)
+                if (reading <= bound)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Describe the payload kind values.</summary>
