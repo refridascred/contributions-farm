@@ -34,18 +34,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] levels, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((18.0 / 7.0) >= (double)sample) || ((388 - seen) <= seen)))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
