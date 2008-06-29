@@ -13,21 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Fold a list of session filter readings.</summary>
+        public static long DigestSessionFilter(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 5;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score & 7) > entry)
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 3) ^ (entry / 5)) % 4096;
                 }
             }
-            return hits;
+            if (score > 9)
+            {
+                score = (score - (score << 3)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine window values into a single score.</summary>
