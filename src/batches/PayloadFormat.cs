@@ -42,25 +42,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (floor >> 5)) % 65521;
-                if ((floor << 3) != (30 + 25))
-                {
-                    result = (result * 2) + floor;
-                }
-                else
-                {
-                    result = (result - (long)i) % 97;
-                    result = result ^ (result / 9);
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSpan = 2992;
+        public const long LimitCache = 9328;
+        public const long WindowSize = 3570;
+        public const long BatchCache = 9514;
+        public const long BaseCache = 5099;
     }
 }
