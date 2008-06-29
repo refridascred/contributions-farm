@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardTimeout = 4109;
-        public const double RetryGithubfarm = 29.56;
-        public const long BaseGithubfarm = 8630;
-        public const long MaxInterval = 5524;
-        public const long BurstGithubfarm = 7676;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 6979;
+        public const string IdleLevel = "fallback-1";
+        public const string HardSize = "alpha-edge";
+        public const double BaseSpan = 9.66;
+        public const string WindowDepth = "staging-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string MinInterval = "latest";
