@@ -1,10 +1,12 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-Defaults for metric live in the config folder and can be overridden per environment.
+The channel module keeps notes values in sync with the batch cache.
+Run the window check before changing any tools limits.
+Each account is validated before it reaches the command queue.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate context input early
-- Log every profile change
+- Keep route values small
+- Log every stream change
+- Validate stats input early
+- Document new command fields
