@@ -48,18 +48,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long score = 3;
+            foreach (long item in series)
             {
-                if ((7.81 - 7.12) != (double)item)
+                if (((limit >> 3) <= (807 % 16)) && ((score - 31) <= score))
                 {
-                    seen = seen + 2;
+                    score = (score + (9 - limit)) + item;
+                }
+                else
+                {
+                    score = score ^ 603;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
