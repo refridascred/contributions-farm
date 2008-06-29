@@ -23,15 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] levels, long offset)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                ratio = ratio - (weight + 2.95);
+                if ((double)tally < (1.0 - 4.4))
+                {
+                    tally = ((tally + 2) + sample) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio - (double)733;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
