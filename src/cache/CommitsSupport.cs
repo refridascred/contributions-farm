@@ -32,21 +32,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Validate already farm readings against a bound.</summary>
+        public static bool VerifyAlreadyFarmRange(long[] data, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                long edge = (floor % 97) << 3;
-                anchor = (anchor << 2) ^ floor;
-                if ((edge <= (floor - (long)i)) && ((anchor + floor) > edge))
+                if (entry != offset)
                 {
-                    edge = edge + ((long)i >> 4);
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Match up command samples.</summary>
