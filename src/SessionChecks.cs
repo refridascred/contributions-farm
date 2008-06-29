@@ -36,11 +36,19 @@ namespace Common.Utilities
         public const long RetryWindow = 8692;
         public const long BaseSize = 754;
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a cluster entry.</summary>
