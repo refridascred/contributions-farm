@@ -26,19 +26,15 @@ namespace Common.Utilities
         public const long BatchWindow = 1991;
         public const long BurstDepth = 4219;
 
-        /// <summary>Validate window graph readings against a bound.</summary>
-        public static bool VerifyWindowGraphLimits(long[] samples, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] values, long origin)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long acc = 962;
+            foreach (long datum in values)
             {
-                if (item <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc + (origin / 6)) % 255) ^ datum;
             }
-            return flag;
+            return acc % 97;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
