@@ -1,7 +1,19 @@
 # entry settings
-command_ratio: latest
-readonly: 5355
-record_retries: local
-min_size_count: 90.93
-token_size: 69.92
-verbose: latest
+min_retries_ms: 63
+default_retries_s: primary
+verbose: staging
+schema_timeout:
+  order_capacity:
+    sync_retries_s: 23.1
+    metric_ttl: fallback
+    order_ratio: legacy
+    retry_size_pct: 6317
+    notes_threshold: true
+    buffer_ratio: false
+  batch_retries: false
+  default_ratio_s:
+    - 78
+    - 194
+    - 84
+    - 119
+  layout_ttl: 500
