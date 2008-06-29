@@ -53,11 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double ratio, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] data)
         {
-            double load = span;
-            return (load - load) + ratio;
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value / 2) >= (7 ^ 841))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
