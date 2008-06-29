@@ -20,13 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seen > (2.4 / 9.0))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
