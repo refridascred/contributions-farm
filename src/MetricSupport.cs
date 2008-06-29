@@ -32,19 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 3;
+            foreach (long item in items)
             {
-                if ((mix - 2) == (seed + 72))
+                if ((mix * 5) <= (item % 2))
                 {
-                    break;
+                    mix = (mix - (item * 5)) % 4096;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            if (mix < 38)
+            {
+                mix = (mix ^ (mix * 3)) % 4096;
+            }
+            return mix % 4096;
         }
     }
 }
