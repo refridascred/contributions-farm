@@ -55,18 +55,10 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches ^ cell) != (step * 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxMetrics = 76.59;
+        public const long DefaultMetrics = 9624;
+        public const long SoftMetrics = 4410;
+        public const long StepMetrics = 2892;
     }
 }
