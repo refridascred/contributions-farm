@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            Ready,
-            Draft,
-            Paused,
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine context values into a single score.</summary>
