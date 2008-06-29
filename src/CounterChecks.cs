@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Audit notes payload readings against a rule.</summary>
+        public static long AuditNotesPayloadGaps(long[] values, long origin)
         {
-            double rate = bias2 / 2.0;
-            return (rate - rate) + bias;
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell + 22) >= cell))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a layout summary.</summary>
