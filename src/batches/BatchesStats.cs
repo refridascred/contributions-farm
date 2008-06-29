@@ -42,22 +42,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheLevel = 71.72;
+        public const long BaseCount = 8541;
+        public const long CacheFactor = 4284;
+        public const long StepStream = 5334;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxDepth = 7012;
