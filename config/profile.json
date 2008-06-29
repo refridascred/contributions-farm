@@ -1,8 +1,8 @@
 {
-  "commits_ttl": "primary",
-  "hard_depth_ms": 90,
-  "max_delay_pct": true,
-  "poll_limit_count": "cached",
-  "min_ratio_count": 30,
-  "default_ttl_s": "stable"
+  "warm_delay_s": [42, 43, 86],
+  "default_limit": ["eu-west", "fallback"],
+  "verbose": 10,
+  "batch_ttl": false,
+  "route_retries": 100,
+  "cache_ratio": true
 }
