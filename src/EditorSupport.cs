@@ -39,21 +39,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(tally < (item + item)))
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next profile report value from a seed.</summary>
