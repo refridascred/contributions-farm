@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first profile session entry that matches the target.</summary>
-        public static long FindProfileSessionIndex(long[] series, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
