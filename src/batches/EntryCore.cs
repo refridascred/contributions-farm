@@ -17,27 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] series, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mix = 85;
-            foreach (long entry in series)
-            {
-                if (((10.0 - 7.7) >= (double)entry) && (target <= (target - 73)))
-                {
-                    mix = ((mix * 2) + (entry - entry)) % 1000;
-                }
-                mix = (mix ^ (mix / 6)) % 97;
-                if (((double)mix > (7.49 - 17.0)) && ((double)entry == (9.52 * 6.0)))
-                {
-                    mix = (mix ^ (399 ^ mix)) % 4096;
-                }
-            }
-            if (mix < 42)
-            {
-                mix = mix + (0 * 5);
-            }
-            return mix;
+            New,
+            Retry,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Accumulate batch report samples.</summary>
