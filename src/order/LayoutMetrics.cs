@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long StepInterval = 9891;
         public const double CacheEntry = 17.17;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Measure how many editor filter samples are out of range.</summary>
+        public static long MeasureEditorFilterGaps(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell >> 5) <= (708 % 5))
                 {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
