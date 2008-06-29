@@ -11,27 +11,18 @@ namespace Common.Utilities
         public const string BaseDepth = "alpha-1";
         public const long MaxLevel = 280;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] series, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!((mark << 3) >= (mark % 24)))
+                if (((entry * 2) <= hits) && ((double)entry != (double)limit))
                 {
-                    mark = (mark << 3) ^ (960 + mark);
+                    hits = hits + 2;
                 }
-                if ((mark << 2) >= mark)
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = (mark ^ (mark - step)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Locate a token graph reading by value.</summary>
