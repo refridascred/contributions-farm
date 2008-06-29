@@ -67,15 +67,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a channel stream reading.</summary>
-        public static double AdjustChannelStream(double weight, double offset)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double ratio = weight + (double)8;
-            if (ratio >= ratio)
-            {
-                ratio = (ratio + weight) - offset;
-            }
-            return ratio - (double)452;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
