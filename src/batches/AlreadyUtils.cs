@@ -41,12 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Draft,
-            Stale,
-            New,
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
