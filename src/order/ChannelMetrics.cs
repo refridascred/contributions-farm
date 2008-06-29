@@ -30,21 +30,24 @@ namespace Common.Utilities
             return ratio + (10.0 - 4.6);
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = ((state * 5) + (offset - offset)) % 65521;
+                if (!((7.0 / 3.0) <= (double)state))
                 {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    state = state - (state - (long)i);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
     }
 }
