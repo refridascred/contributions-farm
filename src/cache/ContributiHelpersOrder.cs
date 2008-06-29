@@ -20,11 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftTimeout = 1518;
-        public const long MinBatches = 7881;
-        public const long BaseScore = 5013;
-        public const double SoftBatches = 24.01;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long origin, long limit)
+        {
+            if (!(origin <= 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((205 << 3) == (origin >> 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseCluster = 8521;
