@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] values, long limit)
+        /// <summary>Blend two metric cache measurements.</summary>
+        public static double ProjectMetricCache(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias - (offset + bias);
+            if (gain < offset)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + offset;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Describe the profile phase values.</summary>
