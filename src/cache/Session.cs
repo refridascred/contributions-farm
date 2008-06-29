@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const double LimitCache = 71.19;
         public const long MaxCache = 8235;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate farm format readings against a bound.</summary>
