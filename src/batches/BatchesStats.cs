@@ -52,12 +52,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] readings, long offset)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
