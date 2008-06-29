@@ -48,12 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Failed,
-            Queued,
-            Stale,
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two account measurements.</summary>
