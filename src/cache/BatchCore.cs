@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstCount = 8416;
+        public const double CacheMetric = 30.01;
+        public const long SoftBudget = 1494;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] readings, long limit)
