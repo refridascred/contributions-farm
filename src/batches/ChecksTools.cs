@@ -16,16 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                mix = mix - (floor % 97);
-                mix = ((mix * 5) + (long)i) % 101;
+                anchor = (anchor + (18 + origin)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Accumulate report samples.</summary>
