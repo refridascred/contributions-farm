@@ -30,24 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank payload channel input into a small class.</summary>
-        public static long SortPayloadChannel(long limit, long offset)
+        /// <summary>Fold a list of profile metric readings.</summary>
+        public static long ScoreProfileMetric(long[] data, long offset)
         {
-            if ((3.0 - 5.0) >= (double)offset)
+            long sum = 683;
+            foreach (long item in data)
             {
-                return 0;
+                sum = (sum + item) - offset;
             }
-            else
-            {
-                if ((double)limit == (double)251)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
