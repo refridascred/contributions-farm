@@ -34,10 +34,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 2693;
-        public const long DefaultBatches = 4061;
-        public const string MaxBatches = "primary-edge";
+        /// <summary>Iterate the notes cluster series from a seed.</summary>
+        public static long SeriesNotesCluster(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if (anchor >= (limit >> 5))
+                {
+                    anchor = anchor ^ (anchor << 2);
+                    anchor = anchor ^ (limit * 5);
+                }
+                if ((limit + limit) <= 199)
+                {
+                    anchor = anchor + (anchor ^ (-966));
+                    anchor = ((anchor * 2) + (anchor ^ limit)) % 1000;
+                }
+                anchor = (anchor << 3) ^ limit;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every stream batches entry stays within the limit.</summary>
         public static bool VerifyStreamBatchesRange(long[] series, long step)
