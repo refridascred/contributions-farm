@@ -1,23 +1,9 @@
 # entry settings
-warm_threshold_ms: 64
-hard_capacity_pct:
-  verbose: strict
-  min_ttl_pct: 56
-  hard_capacity:
-    enabled: latest
-    strict:
-      - 369
-      - 183
-      - 408
-    audit: 9241
-    warm_limit_pct: true
-    stats_timeout:
-      - 183
-      - 178
-      - 248
-      - 75
-    checks_ratio: 1224
-already_timeout: false
-sync_depth_ms: false
-readonly: 9963
-min_capacity_ms: cached
+flush_size_count: 60
+burst_size_count: 100
+compress:
+  - edge
+  - local
+stream_threshold: true
+cache_capacity_s: 96
+soft_retries_ms: fallback
