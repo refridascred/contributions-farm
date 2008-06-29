@@ -44,17 +44,14 @@ namespace Common.Utilities
             return mean - (double)758;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long target)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Draft,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a counter info.</summary>
