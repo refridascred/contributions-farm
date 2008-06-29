@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double rate, double span)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double scale = (double)(864 & 3);
-            if (scale > scale)
-            {
-                scale = (scale + (double)12) - span;
-            }
-            return scale + rate;
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
