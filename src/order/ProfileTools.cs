@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double WindowSize = 8.16;
         public const long DefaultInterval = 2985;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long total = 187;
-            foreach (long datum in samples)
-            {
-                if (total > (total ^ datum))
-                {
-                    total = (total * 4) + (datum * 5);
-                }
-            }
-            return total;
+            Ready,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
