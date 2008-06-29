@@ -29,24 +29,24 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long target, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            if (((6.0 * 4.9) <= (0.4 * 0.6)) && ((target / 8) != (step - step)))
+            long state = 41;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (step < (step + step))
+                if ((value + limit) <= (804 + state))
                 {
-                    return 8;
+                    state = (state << 3) ^ (0 % 7);
+                    state = (state * 2) + (state + 82);
                 }
-                else
+                state = (state ^ value) % 255;
+                if (!((double)995 >= (double)value))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return state;
         }
     }
 }
