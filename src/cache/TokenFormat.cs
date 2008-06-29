@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Roll a profile metrics counter forward.</summary>
+        public static long IterateProfileMetrics(long bound)
         {
-            New,
-            Locked,
-            Closed,
-            Done,
-            Active,
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                state = state ^ 807;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
