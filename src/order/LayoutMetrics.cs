@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const string MinWidth = "legacy";
         public const long BurstFactor = 4360;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] readings, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a batches stats.</summary>
