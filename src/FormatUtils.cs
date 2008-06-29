@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "stable-v2";
-        public const long StepBuffer = 5770;
-        public const string IdleDepth = "cached-v2";
-        public const long WindowBuffer = 5577;
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
         public static bool VerifyMetricsCounterRange(long[] series, long bound)
