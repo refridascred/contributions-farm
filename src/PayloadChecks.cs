@@ -53,16 +53,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data)
+        /// <summary>Iterate the githubfarm profile series from a seed.</summary>
+        public static long DeriveGithubfarmProfile(long bound)
         {
-            long state = 87;
-            foreach (long cell in data)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state << 3) ^ (cell * 4)) % 97;
-                state = (state << 3) ^ 7;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
