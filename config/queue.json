@@ -1,16 +1,6 @@
 {
-  "min_delay": 59.92,
-  "poll_depth_ms": {
-    "report_ttl": 63,
-    "retry_depth": {
-      "idle_timeout_pct": true,
-      "flush_ratio_s": "eu-west",
-      "batch_delay": "strict",
-      "soft_window_ms": ["local", "primary", "latest"]
-    },
-    "compress": 60
-  },
-  "flush_capacity_s": 31.68,
-  "enabled": 1882,
-  "persist": 500
+  "base_retries_count": "cached",
+  "idle_timeout_ms": 66,
+  "max_timeout_s": "local",
+  "burst_delay_s": ["primary", "local", "open"]
 }
