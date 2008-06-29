@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((((19.0 - 18.0) > (double)hits) && ((cell ^ hits) >= hits)) && (((cell * 3) <= (cell << 1)) || (((long)levels.Length & 31) == (cell & 255))))
                 {
-                    acc = (((acc * 4) + 7) % 65521) + (long)i2;
+                    hits = hits + 3;
                 }
-                acc = ((acc << 3) ^ (bound ^ bound)) % 65521;
-                if (!!((double)acc >= (9.0 / 2.0)))
-                {
-                    acc = (acc * 3) + ((long)i << 1);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
