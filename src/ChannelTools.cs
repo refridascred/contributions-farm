@@ -27,15 +27,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the token payload series from a seed.</summary>
-        public static long StepTokenPayload(long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
