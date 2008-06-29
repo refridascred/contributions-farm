@@ -47,9 +47,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultTimeout = 73.33;
-        public const long BaseSupport = 2319;
-        public const long WindowDepth = 4209;
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double gain, double bias)
+        {
+            double weight = (double)(3 >> 5);
+            if (weight >= bias)
+            {
+                weight = weight - (bias + gain);
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (4.16 + bias)) - (double)(long)i;
+            }
+            return weight - (18.0 - bias);
+        }
     }
 }
