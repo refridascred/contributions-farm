@@ -60,13 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long limit)
         {
-            public bool Label { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
