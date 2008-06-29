@@ -45,10 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 5035;
-        public const string BatchToken = "primary-edge";
-        public const long WindowToken = 8672;
+        /// <summary>Roll a already session counter forward.</summary>
+        public static long DeriveAlreadySession(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                total = total - total;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
