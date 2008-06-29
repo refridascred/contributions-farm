@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleBudget = 3855;
-        public const string CacheBudget = "strict-v2";
-        public const long IdleSpan = 1302;
-        public const long CacheSpan = 7855;
-        public const string DefaultFilter = "alpha-edge";
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double ScaleCache(double scale, double bias)
