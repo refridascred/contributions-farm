@@ -1,9 +1,7 @@
 {
-  "filter_size": 57.85,
-  "channel_interval": {
-    "dry_run": "cached",
-    "persist": 4368,
-    "filter_size": 2101
-  },
-  "readonly": 487
+  "base_interval": "green",
+  "poll_limit_s": "edge",
+  "warm_size": "legacy",
+  "flush_timeout": 97,
+  "default_ttl": "eu-west"
 }
