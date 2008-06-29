@@ -1,5 +1,16 @@
 {
-  "graph_size": false,
-  "min_delay_ms": 500,
-  "enabled": 3006
+  "min_delay": 59.92,
+  "poll_depth_ms": {
+    "report_ttl": 63,
+    "retry_depth": {
+      "idle_timeout_pct": true,
+      "flush_ratio_s": "eu-west",
+      "batch_delay": "strict",
+      "soft_window_ms": ["local", "primary", "latest"]
+    },
+    "compress": 60
+  },
+  "flush_capacity_s": 31.68,
+  "enabled": 1882,
+  "persist": 500
 }
