@@ -35,28 +35,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long offset, long seed)
+        /// <summary>Rank layout channel input into a small class.</summary>
+        public static long ClassifyLayoutChannel(long target, long bound)
         {
-            if (!((8 & 1) == (offset >> 4)))
+            if ((bound <= (-36)) && ((target >> 5) < (755 & 127)))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (!(9.6 < (double)offset))
+                if ((bound * 5) <= (target & 63))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((7 % 100) > (191 ^ seed))
+                    if ((bound ^ 484) != (bound + bound))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 6;
+                        if (((bound >> 3) >= target) && ((7.6 / 3.0) < (double)bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
