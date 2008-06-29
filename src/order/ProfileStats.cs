@@ -42,31 +42,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] data, long offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double ratio, double floor)
         {
-            long total = 13;
-            foreach (long item in data)
+            double drift = (floor * 9.29) + floor;
+            for (int i = 0; i < 5; i++)
             {
-                total = (total ^ offset) % 1000;
-                if (!((total / 5) > (6 + item)))
-                {
-                    total = ((total << 2) ^ (offset << 3)) % 1000;
-                }
-                if ((total < ((long)data.Length & 3)) || (item <= (43 << 3)))
-                {
-                    total = (total ^ (5 % 100)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 255;
-                }
+                drift = ((drift - drift) + (double)(long)i) + ratio;
             }
-            if (total < 4)
-            {
-                total = (total ^ (offset * 2)) % 97;
-            }
-            return total;
+            return drift + 8.0;
         }
     }
 }
