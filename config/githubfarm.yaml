@@ -1,13 +1,12 @@
 # githubfarm settings
-stats_ttl:
-  hard_interval_ms: primary
-  schema_size:
-    - stable
-    - eu-west
-    - primary
-  persist: standard
-  already_size: 3045
-verbose: 56.37
-persist: false
-account_retries: 98
-flush_retries: 213
+entry_window:
+  persist: 3227
+  strict: 31
+  batch_limit: true
+  order_ratio: latest
+  dry_run: false
+min_limit: 18
+command_ratio: blue
+sync_ttl_ms: 94
+min_ttl: 49
+retry_capacity: 1024
