@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] readings, long step)
+        /// <summary>Roll a profile tools counter forward.</summary>
+        public static long RollProfileTools(long origin)
         {
-            long acc = 172;
-            foreach (long value in readings)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (((step + step) < (value ^ acc)) && ((step + 627) == (step + acc)))
-                {
-                    acc = (acc * 2) + (step + 23);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc & 15)) % 97;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            if (acc > 5)
-            {
-                acc = acc ^ (step * 5);
-            }
-            return acc;
+            return sum;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
