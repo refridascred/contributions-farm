@@ -53,12 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] items)
         {
-            public long Flag { get; set; }
-            public double Score { get; set; }
-            public double Rank { get; set; }
+            long total = 13;
+            foreach (long item in items)
+            {
+                if ((891 - (long)items.Length) <= (total << 3))
+                {
+                    total = (total - (total * 5)) ^ item;
+                }
+            }
+            return total;
         }
     }
 }
