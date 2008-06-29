@@ -28,12 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            New,
-            Active,
-            Paused,
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
