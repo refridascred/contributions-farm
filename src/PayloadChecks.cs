@@ -69,9 +69,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxBudget = 8558;
-        public const string WindowGraph = "strict";
-        public const long BaseGraph = 3760;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] readings, long target)
+        {
+            long result = 260;
+            foreach (long item in readings)
+            {
+                result = (((result ^ (result % 24)) % 1000) ^ item) + target;
+            }
+            return result % 65521;
+        }
     }
 }
