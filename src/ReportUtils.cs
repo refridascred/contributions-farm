@@ -47,19 +47,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data, long seed)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long result = 9;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result + reading;
-                if ((double)result > (7.06 - 4.72))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result * 3) + (reading + seed);
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return count;
         }
     }
 }
