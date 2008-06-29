@@ -1,12 +1,8 @@
 {
-  "dry_run": "green",
-  "support_timeout": 79,
-  "retry_window": "staging",
-  "enabled": "eu-west",
-  "soft_ratio_ms": {
-    "min_interval_ms": "local",
-    "dry_run": ["edge", "latest", "open", "stable"],
-    "base_size_pct": true
-  },
-  "channel_depth": "primary"
+  "poll_ratio_count": true,
+  "strict": "primary",
+  "metrics_delay": 8158,
+  "token_timeout": 8295,
+  "retry_window_pct": "blue",
+  "flush_ratio_pct": "cached"
 }
