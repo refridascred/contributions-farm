@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const double MinBudget = 55.69;
         public const long CacheCounter = 7366;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] items)
+        /// <summary>Locate a session route reading by value.</summary>
+        public static long FindSessionRouteIndex(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((2.8 - 3.31) <= (double)count) || (count >= (datum & 63)))
+                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
