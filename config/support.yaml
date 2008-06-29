@@ -1,4 +1,4 @@
 # support settings
-retry_interval: stable
-stream_threshold: edge
-retry_retries_s: staging
+poll_ttl_pct: 500
+min_ttl_ms: cached
+channel_window: open
