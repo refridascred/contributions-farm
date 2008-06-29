@@ -43,18 +43,13 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] items)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits == (double)datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
