@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowScore = 49.29;
-        public const string MinWindow = "fallback-1";
-        public const long IdleWindow = 8859;
-        public const long CacheWindow = 3164;
-        public const string DefaultBudget = "standard-1";
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long seed)
