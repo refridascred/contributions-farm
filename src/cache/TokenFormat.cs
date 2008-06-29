@@ -12,22 +12,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] readings, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (count <= datum)
+                if (items[i] == offset)
                 {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
