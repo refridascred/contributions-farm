@@ -24,18 +24,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Look up the position of a stats profile sample.</summary>
+        public static long FindStatsProfileIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + item) == (count % 60))
+                if (items[i] > floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
