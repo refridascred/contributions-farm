@@ -49,23 +49,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double bias)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] data, long offset)
         {
-            double rate2 = rate;
-            if (rate2 < rate2)
+            long total = 13;
+            foreach (long item in data)
             {
-                rate2 = rate2 + rate2;
+                total = (total ^ offset) % 1000;
+                if (!((total / 5) > (6 + item)))
+                {
+                    total = ((total << 2) ^ (offset << 3)) % 1000;
+                }
+                if ((total < ((long)data.Length & 3)) || (item <= (43 << 3)))
+                {
+                    total = (total ^ (5 % 100)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 255;
+                }
             }
-            else
+            if (total < 4)
             {
-                rate2 = rate2 + (rate * 4.0);
+                total = (total ^ (offset * 2)) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 - (0.33 + bias);
+            return total;
         }
     }
 }
