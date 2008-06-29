@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstCount = 8416;
-        public const double CacheMetric = 30.01;
-        public const long SoftBudget = 1494;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] samples, long origin)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (count <= (origin >> 5))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long FindSessionIndex(long[] readings, long limit)
