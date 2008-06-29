@@ -30,18 +30,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = -769;
+            foreach (long item in data)
             {
-                if ((matches % 12) >= item)
+                if (item < (offset - carry))
                 {
-                    matches = matches + 1;
+                    carry = carry ^ (carry << 1);
+                }
+                else
+                {
+                    carry = carry + (carry / 9);
+                }
+                if ((carry ^ item) == (item / 9))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry < 707)
+            {
+                carry = (carry << 3) ^ offset;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
