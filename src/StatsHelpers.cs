@@ -49,38 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a entry channel value against two limits.</summary>
-        public static long SortEntryChannel(long limit, long floor)
+        /// <summary>Count the command profile entries that pass the check.</summary>
+        public static long AuditCommandProfileOutliers(long[] values, long limit)
         {
-            if ((11.0 + 2.28) <= (double)limit)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < (1 + floor))
+                if ((1.1 / 9.0) > (double)limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor & 7) < 390)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit <= (limit << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 3) + sample;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the commits mode values.</summary>
