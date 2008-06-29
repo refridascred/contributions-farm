@@ -52,19 +52,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every channel editor entry stays within the limit.</summary>
-        public static bool ValidateChannelEditorRange(long[] items, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long result = 9;
+            foreach (long reading in data)
             {
-                if (datum <= offset)
+                result = result + reading;
+                if ((double)result > (7.06 - 4.72))
                 {
-                    valid = false;
-                    break;
+                    result = (result * 3) + (reading + seed);
                 }
             }
-            return valid;
+            return result % 1000;
         }
     }
 }
