@@ -22,10 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxLevel = "legacy";
-        public const long DefaultBuffer = 870;
-        public const long WindowSpan = 9455;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long offset)
