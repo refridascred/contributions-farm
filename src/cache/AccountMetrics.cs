@@ -26,15 +26,11 @@ namespace Common.Utilities
         public const long BatchWindow = 1991;
         public const long BurstDepth = 4219;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] values, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double rate, double floor)
         {
-            long acc = 962;
-            foreach (long datum in values)
-            {
-                acc = ((acc + (origin / 6)) % 255) ^ datum;
-            }
-            return acc % 97;
+            double gain = rate;
+            return (gain - gain) + floor;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
