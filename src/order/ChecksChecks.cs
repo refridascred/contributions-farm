@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxScore = 2811;
+        public const string BatchToken = "open-v2";
+        public const string WindowToken = "primary-edge";
+        public const long MaxToken = 4140;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
