@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long target, long origin)
+        /// <summary>Check that every counter context entry stays within the limit.</summary>
+        public static bool ValidateCounterContextBounds(long[] values, long offset)
         {
-            if (((double)target == (6.0 - 6.0)) || ((8.0 - 20.0) > (double)origin))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((19.0 - 11.0) == (double)target)
+                if (sample <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 5) != (target >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin / 9) < (origin << 3)) || ((target % 5) <= target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a report options.</summary>
