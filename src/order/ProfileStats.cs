@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 4197;
-        public const long BurstFilter = 9899;
-        public const long BurstTimeout = 51;
-        public const string LimitFactor = "alpha-edge";
-        public const long SoftFilter = 3767;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "cached-v2";
+        public const double SoftCounter = 47.44;
+        public const string HardCount = "strict-edge";
+        public const double MinBudget = 55.69;
+        public const long CacheCounter = 7366;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiHits(long[] items)
