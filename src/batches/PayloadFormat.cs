@@ -31,15 +31,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            long state = step;
+            for (int i = 0; i < 11; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Combine session queue values into a single score.</summary>
