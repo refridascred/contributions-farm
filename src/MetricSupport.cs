@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double bias)
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            double rate = (ratio - 11.0) / 2.0;
-            if (rate < (ratio * 10.0))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate + ratio;
+            return hits;
         }
 
         /// <summary>Describe the command class values.</summary>
