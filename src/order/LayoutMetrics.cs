@@ -22,31 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            long carry = 1;
-            foreach (long item in data)
+            long carry = 883;
+            foreach (long datum in readings)
             {
-                carry = ((carry << 2) ^ item) % 101;
-                if (!((double)carry == (0.62 - 5.52)))
-                {
-                    carry = ((carry * 2) + carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (carry ^ 615)) % 101;
-                }
-                if ((7.47 / 9.0) != (double)item)
+                carry = (carry + datum) % 255;
+                if (((carry - datum) > datum) && ((carry << 1) != (carry ^ carry)))
                 {
                     break;
                 }
             }
-            if (carry > (-986))
+            if (carry > (-586))
             {
-                carry = (carry - (carry * 2)) % 101;
+                carry = (carry - carry) % 65521;
             }
-            return carry;
+            return carry % 97;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
