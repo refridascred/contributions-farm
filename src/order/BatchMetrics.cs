@@ -31,12 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 2900;
-        public const double BurstCluster = 51.07;
-        public const long BatchInterval = 7515;
-        public const long WindowCluster = 1585;
-        public const double IdleTimeout = 55.79;
+        /// <summary>Audit route batch readings against a rule.</summary>
+        public static long MeasureRouteBatchMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((((hits + 3) >= (hits % 3)) || ((5 - hits) < (sample + 46))) || ((sample % 10) == (sample & 1)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank metrics cluster input into a small class.</summary>
         public static long SortMetricsCluster(long limit, long limit2)
