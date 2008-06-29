@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count order buffer pairs that satisfy a relation.</summary>
-        public static long OverlapOrderBufferCount(long[] items)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
