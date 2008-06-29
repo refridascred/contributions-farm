@@ -1,13 +1,21 @@
 {
-  "persist": 44.82,
-  "batch_depth": 100,
-  "compress": false,
-  "command_threshold": {
-    "notes_threshold": "local",
-    "layout_retries": "local",
-    "idle_delay_count": 35,
-    "token_timeout": ["staging", "staging"],
-    "audit": false
+  "dry_run": 84,
+  "idle_ttl_pct": ["cached", "green"],
+  "format_limit": {
+    "dry_run": 19.1,
+    "schema_limit": [180, 98, 336],
+    "sync_ratio_s": 55.5
   },
-  "cache_interval": 79.15
+  "commits_threshold": "fallback",
+  "batch_ratio": {
+    "stream_capacity": 14,
+    "default_interval_s": false,
+    "warm_limit_s": 54,
+    "cache_capacity_pct": {
+      "poll_timeout_count": true,
+      "sync_capacity_count": 35.3,
+      "readonly": "staging",
+      "warm_window_ms": false
+    }
+  }
 }
