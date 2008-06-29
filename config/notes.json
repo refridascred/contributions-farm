@@ -1,11 +1,9 @@
 {
-  "retry_ttl_count": false,
-  "sync_depth_s": {
-    "dry_run": "green",
-    "support_retries": "blue",
-    "hard_ratio_ms": ["eu-west", "green"]
+  "filter_size": 57.85,
+  "channel_interval": {
+    "dry_run": "cached",
+    "persist": 4368,
+    "filter_size": 2101
   },
-  "cache_ttl": 94,
-  "strict": 78.83,
-  "idle_interval_count": "legacy"
+  "readonly": 487
 }
