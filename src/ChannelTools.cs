@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
