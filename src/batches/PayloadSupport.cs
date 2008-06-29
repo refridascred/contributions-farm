@@ -42,11 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            Dropped,
+            Done,
+            Closed,
+            Locked,
         }
     }
 }
