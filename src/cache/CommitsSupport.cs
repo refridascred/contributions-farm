@@ -64,14 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Pending,
-            Closed,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchInterval = 9796;
+        public const long CacheLevel = 7684;
+        public const long BaseInterval = 3136;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
