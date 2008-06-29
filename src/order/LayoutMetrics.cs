@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] data, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (reading > limit)
+                if (!((double)cell >= (13.0 + 5.0)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
