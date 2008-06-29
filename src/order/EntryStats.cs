@@ -18,12 +18,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            Queued,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
