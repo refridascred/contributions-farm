@@ -47,20 +47,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Roll a notes record counter forward.</summary>
-        public static long DeriveNotesRecord(long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = (anchor + limit) % 255;
-                if (!((anchor + (-984)) <= (anchor << 3)))
-                {
-                    anchor = anchor + limit;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
