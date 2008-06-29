@@ -35,10 +35,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 446;
-        public const long BatchBudget = 8142;
-        public const long HardRatio = 8229;
-        public const long SoftSpan = 3444;
+        /// <summary>Digest a series of graph metrics entries.</summary>
+        public static long FoldGraphMetrics(long[] readings)
+        {
+            long acc = -180;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    acc = ((acc + (datum >> 1)) % 101) - (long)i;
+                }
+                if ((double)acc <= (double)datum)
+                {
+                    acc = (acc - (acc * 5)) % 101;
+                }
+            }
+            return acc;
+        }
     }
 }
