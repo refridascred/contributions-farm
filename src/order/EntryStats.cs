@@ -58,18 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] values, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(floor > (sample - hits)))
-                {
-                    hits = hits + 3;
-                }
+                long span = ((long)i * 4) * 2;
+                total = ((total * 5) + (span - 90)) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
