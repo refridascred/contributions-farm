@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const double BatchAlready = 16.11;
         public const long BaseBudget = 2060;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    long span = (result & 1) - result;
-                    result = ((result * 3) + (result + span)) ^ (long)i2;
+                    if ((data[i] ^ data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = (result ^ (result + result)) % 97;
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the tools mode values.</summary>
