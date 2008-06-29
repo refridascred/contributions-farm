@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = (mix << 2) ^ (mix % 12);
+                if ((mix + mix) > mix)
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix * 3) + ((long)i + mix);
+                    break;
                 }
+                mix = (mix + mix) % 1000;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Blend two checks measurements.</summary>
