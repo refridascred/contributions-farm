@@ -32,13 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Look up the position of a format order sample.</summary>
+        public static long LocateFormatOrderIndex(long[] data, long bound)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next token farm value.</summary>
