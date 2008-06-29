@@ -1,7 +1,19 @@
 {
-  "base_timeout_ms": false,
-  "window_size": "open",
-  "compress": ["latest", "strict", "legacy"],
-  "batch_depth_count": 80,
-  "min_size": "standard"
+  "cache_delay_pct": false,
+  "default_delay_count": false,
+  "flush_timeout": false,
+  "soft_ttl": {
+    "warm_timeout_ms": 6972,
+    "poll_timeout": false,
+    "metrics_threshold": "green",
+    "report_timeout": true,
+    "editor_retries": 88.33,
+    "counter_timeout": {
+      "batch_depth": 5.49,
+      "report_retries": 9641,
+      "compress": "strict",
+      "hard_capacity_pct": 7869
+    }
+  },
+  "enabled": 1430
 }
