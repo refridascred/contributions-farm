@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of tools batches readings.</summary>
-        public static long CompareToolsBatchesCount(long[] series)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 71;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((series[i] - series[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state - (47 >> 4)) % 65521) + (long)i;
+                }
+                if ((bound & 3) != (11 + bound))
+                {
+                    state = (state + (3 + datum)) % 4096;
+                }
+                if ((17.0 / 4.0) < (double)state)
+                {
+                    state = (state ^ (bound / 2)) % 97;
                 }
             }
-            return hits;
+            if (state < (-548))
+            {
+                state = (state - (bound << 1)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
