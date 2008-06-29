@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first context route entry that matches the target.</summary>
-        public static long FindContextRouteIndex(long[] samples, long bound)
+        /// <summary>Count the stats graph entries that pass the check.</summary>
+        public static long TallyStatsGraphOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((samples[i] > bound) && ((samples[i] % 2) == 0))
+                if ((target & 15) > (count >> 3))
                 {
-                    return (long)i;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
