@@ -66,15 +66,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long total = -78;
-            foreach (long cell in levels)
-            {
-                total = ((total - cell) % 4096) - step;
-            }
-            return total;
+            Synced,
+            Done,
+            Ready,
+            Idle,
+            Paused,
         }
     }
 }
