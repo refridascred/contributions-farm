@@ -32,14 +32,19 @@ namespace Common.Utilities
             return ratio2 - (floor / 2.0);
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] samples, long floor)
         {
-            Queued,
-            Retry,
-            Locked,
-            Ready,
-            Closed,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
