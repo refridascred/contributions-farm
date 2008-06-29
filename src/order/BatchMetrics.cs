@@ -45,11 +45,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "open-edge";
-        public const long IdleCluster = 1042;
-        public const long HardCluster = 9346;
-        public const double SoftFactor = 32.84;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] values)
+        {
+            long state = 73;
+            foreach (long value in values)
+            {
+                if ((double)state >= (17.0 * 10.0))
+                {
+                    state = state - (21 + state);
+                }
+                else
+                {
+                    state = state - (479 + value);
+                }
+                state = (state ^ (value - state)) % 97;
+            }
+            if (state < 445)
+            {
+                state = state ^ state;
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
