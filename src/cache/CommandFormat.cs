@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!(15 < (target & 15)))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowSize = 9975;
+        public const long BurstSpan = 1918;
+        public const long LimitSize = 3842;
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long PairNotesCount(long[] series)
