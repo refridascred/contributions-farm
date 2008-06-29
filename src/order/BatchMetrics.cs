@@ -31,24 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double floor)
-        {
-            double drift = scale;
-            if (drift < (double)9)
-            {
-                drift = (drift + (drift / 8.0)) + floor;
-            }
-            else
-            {
-                drift = drift - (double)83;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (scale * 12.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 2900;
+        public const double BurstCluster = 51.07;
+        public const long BatchInterval = 7515;
+        public const long WindowCluster = 1585;
+        public const double IdleTimeout = 55.79;
 
         /// <summary>Rank metrics cluster input into a small class.</summary>
         public static long SortMetricsCluster(long limit, long limit2)
