@@ -26,19 +26,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of contributi filter readings.</summary>
-        public static long TotalContributiFilter(long[] items)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long acc = 1;
-            foreach (long reading in items)
-            {
-                acc = (((acc << 2) ^ (acc - 92)) % 101) + reading;
-            }
-            if (acc > 9)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc % 65521;
+            Pending,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Hold a counter options.</summary>
