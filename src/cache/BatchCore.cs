@@ -54,11 +54,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleDepth = 1520;
-        public const long DefaultInterval = 5164;
-        public const long BatchContributi = 6183;
-        public const double HardRatio = 46.04;
-        public const string MaxContributi = "latest-1";
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] samples)
+        {
+            long total = 433;
+            foreach (long cell in samples)
+            {
+                total = total ^ (total ^ total);
+                if ((cell + (long)samples.Length) != (total - cell))
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
     }
 }
