@@ -45,27 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] samples, long origin)
         {
-            long state = 73;
-            foreach (long value in values)
+            long sum = 0;
+            foreach (long reading in samples)
             {
-                if ((double)state >= (17.0 * 10.0))
-                {
-                    state = state - (21 + state);
-                }
-                else
-                {
-                    state = state - (479 + value);
-                }
-                state = (state ^ (value - state)) % 97;
+                sum = (sum + (reading - reading)) % 255;
+                sum = (sum << 2) ^ origin;
             }
-            if (state < 445)
-            {
-                state = state ^ state;
-            }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Hold a tools entry.</summary>
