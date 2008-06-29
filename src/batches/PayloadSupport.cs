@@ -23,23 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Match up metrics command samples.</summary>
+        public static long CompareMetricsCommandCount(long[] values)
         {
-            long anchor = 660;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor ^ (720 / 3)) % 101) ^ cell;
-                if ((double)anchor > (4.97 + 9.6))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = ((anchor * 4) + ((-4) + anchor)) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the buffer status values.</summary>
