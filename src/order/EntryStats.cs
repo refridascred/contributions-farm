@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 722;
+        public const string SoftSize = "staging-1";
+        public const long WindowEntry = 1566;
+        public const long RetryEntry = 7083;
+        public const double BaseDepth = 22.48;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsRange(long[] samples, long limit)
