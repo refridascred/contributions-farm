@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            Paused,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Adjust a metrics reading.</summary>
