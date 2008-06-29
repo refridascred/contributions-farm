@@ -21,14 +21,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series)
         {
-            Dropped,
-            Ready,
-            Queued,
-            Active,
-            New,
+            long score = -7;
+            foreach (long reading in series)
+            {
+                score = (score ^ (reading / 8)) % 65521;
+                score = (score - ((-26) - score)) % 65521;
+                if (score <= (reading / 6))
+                {
+                    score = ((score << 2) ^ (score - reading)) % 1000;
+                }
+            }
+            if (score < 5)
+            {
+                score = (score - (score ^ score)) % 65521;
+            }
+            return score;
         }
     }
 }
