@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] readings, long floor)
+        /// <summary>Measure how many entry layout samples are out of range.</summary>
+        public static long AuditEntryLayoutHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (((floor + sample) <= (floor / 6)) || ((seen & 3) != (seen ^ sample)))
+                if ((hits ^ 3) > (39 % 12))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of payload githubfarm entries.</summary>
