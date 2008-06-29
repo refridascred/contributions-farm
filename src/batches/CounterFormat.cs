@@ -26,21 +26,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long origin, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            if ((bound + bound) > origin)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = ((result + (result << 2)) % 101) ^ (long)i2;
-                }
-                result = (result + (offset + offset)) % 101;
-                result = (result * 4) + offset;
-                result = ((result * 4) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((bound / 8) >= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound > (origin - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound & 7) <= 0) || ((bound << 3) != (origin + 0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
