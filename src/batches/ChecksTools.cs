@@ -16,17 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] data, long seed)
+        /// <summary>Derive the next stats graph value from a seed.</summary>
+        public static long StepStatsGraph(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] > seed)
+                if (!((double)seed >= (9.64 / 2.0)))
                 {
-                    return (long)i;
+                    score = (score + (long)i) % 101;
+                    score = ((score * 5) + (seed - seed)) % 255;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Accumulate report samples.</summary>
