@@ -13,22 +13,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] values, long bound)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)hits != (15.0 / 6.0))
-                {
-                    hits = ((hits + 1) ^ item) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double load = gain;
+            return (load + load) + bias;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
