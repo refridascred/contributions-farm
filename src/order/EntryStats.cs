@@ -24,22 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long result = 2;
-            foreach (long value in readings)
-            {
-                if (!(offset < (offset % 60)))
-                {
-                    result = result ^ value;
-                }
-                else
-                {
-                    result = (result + result) % 97;
-                }
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two stats measurements.</summary>
