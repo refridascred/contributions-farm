@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 2478;
-        public const long MaxSpan = 41;
-        public const long CacheDepth = 6215;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum - (sum >> 3)) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
