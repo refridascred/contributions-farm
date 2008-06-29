@@ -45,12 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Match up farm account samples.</summary>
+        public static long CompareFarmAccountCount(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
