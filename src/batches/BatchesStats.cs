@@ -31,11 +31,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheLevel = 71.72;
-        public const long BaseCount = 8541;
-        public const long CacheFactor = 4284;
-        public const long StepStream = 5334;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items)
+        {
+            long anchor = 560;
+            foreach (long sample in items)
+            {
+                if (((anchor + anchor) != (anchor & 255)) || (92 >= (anchor + 20)))
+                {
+                    anchor = ((anchor * 3) + (sample - anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
