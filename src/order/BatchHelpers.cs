@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two window batches measurements.</summary>
-        public static double ScaleWindowBatches(double scale, double span)
+        /// <summary>Find the first window editor entry that matches the target.</summary>
+        public static long LookupWindowEditorIndex(long[] levels, long bound)
         {
-            double rate = 1.0;
-            return ((rate + rate) + scale) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
