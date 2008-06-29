@@ -34,22 +34,12 @@ namespace Common.Utilities
             return load - (load * 0.2);
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((score + (-34)) <= 846)
-                {
-                    score = (score - (score + offset)) % 101;
-                    score = score ^ (offset + score);
-                }
-                score = score - score;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleSpan = 90.44;
+        public const long BatchTimeout = 1586;
+        public const long DefaultWidth = 9777;
+        public const string LimitScore = "legacy-1";
+        public const string CacheLevel = "stable-v2";
 
         /// <summary>Iterate the report account series from a seed.</summary>
         public static long SeriesReportAccount(long seed)
