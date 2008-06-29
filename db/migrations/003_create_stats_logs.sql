@@ -2,11 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    label TEXT,
-    score REAL NOT NULL DEFAULT 0
+    owner TEXT NOT NULL,
+    level INTEGER,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
 
-INSERT INTO stats_logs (state, label, score) VALUES ('local', 'eu-west', 8.49);
-INSERT INTO stats_logs (state, label, score) VALUES ('cached', 'blue', 4.38);
+INSERT INTO stats_logs (state, owner, level, weight) VALUES ('strict', 'strict', 87, 63.9);
