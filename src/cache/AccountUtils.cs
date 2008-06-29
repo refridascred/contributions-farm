@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Scale a command context figure with a bias.</summary>
+        public static double ScaleCommandContext(double weight, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double ratio = span;
+            for (int i = 0; i < 6; i++)
             {
-                if ((cell & 3) != (cell + 995))
-                {
-                    hits = hits + 2;
-                }
+                ratio = (ratio - (double)(long)i) - weight;
             }
-            return hits;
+            return ratio + ratio;
         }
 
         /// <summary>Hold a payload header.</summary>
