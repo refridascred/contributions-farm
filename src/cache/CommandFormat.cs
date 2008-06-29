@@ -33,12 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 44.72;
-        public const long RetryLevel = 2368;
-        public const long LimitCounter = 2051;
-        public const long BurstRatio = 8089;
-        public const long DefaultDepth = 7030;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
