@@ -23,22 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm record readings against a rule.</summary>
-        public static long CountFarmRecordMatches(long[] items)
+        /// <summary>Fold a list of batches context readings.</summary>
+        public static long FoldBatchesContext(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 66;
+            foreach (long entry in series)
             {
-                if ((tally << 3) > entry)
+                if ((13.0 / 5.0) == (double)acc)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc ^ (entry ^ acc)) % 1000) + target;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
