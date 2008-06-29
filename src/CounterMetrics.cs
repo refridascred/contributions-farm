@@ -13,24 +13,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long seed, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long step)
         {
-            if ((step - seed) <= seed)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((16.0 / 3.0) < (double)seed)
+                result = ((result << 2) ^ ((long)i - step)) % 1000;
+                if (((long)i % 12) > result)
                 {
-                    return 3;
+                    result = (result - (46 - result)) % 65521;
+                    break;
                 }
                 else
                 {
-                    return 6;
+                    result = result - (long)i;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
