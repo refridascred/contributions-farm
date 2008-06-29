@@ -1,5 +1,7 @@
 {
-  "base_interval_pct": ["staging", "strict"],
-  "max_size_count": false,
-  "batch_timeout": ["blue", "open", "primary", "blue"]
+  "strict": [456, 243, 157],
+  "cache_depth_ms": "local",
+  "default_size_ms": false,
+  "idle_size_ms": 55.1,
+  "flush_limit_s": 36.05
 }
