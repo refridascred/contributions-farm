@@ -29,10 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinFactor = 8101;
-        public const long IdleSession = 5003;
-        public const long SoftDepth = 8839;
-        public const long SoftSession = 9038;
+        /// <summary>Roll a payload schema counter forward.</summary>
+        public static long SeriesPayloadSchema(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
