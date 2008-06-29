@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "primary-1";
+        public const long DefaultInterval = 8054;
+        public const double BatchAlready = 16.11;
+        public const long BaseBudget = 2060;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long StepGraph(long limit)
