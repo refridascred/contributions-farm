@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    long tally = origin;
-                    state = (state * 4) + ((long)i2 - tally);
-                }
-                state = (state ^ ((long)i + origin)) % 255;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
