@@ -80,22 +80,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series)
-        {
-            long carry = 9;
-            foreach (long reading in series)
-            {
-                if (carry >= (carry ^ reading))
-                {
-                    carry = (carry + (264 + 644)) % 1000;
-                }
-            }
-            if (carry > 700)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double StepSpan = 66.17;
+        public const double StepFarm = 59.39;
+        public const string WindowFarm = "open";
     }
 }
