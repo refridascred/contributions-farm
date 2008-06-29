@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const string SoftMetrics = "fallback";
         public const long WindowInterval = 5701;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] data, long target)
-        {
-            long total = -18;
-            foreach (long entry in data)
-            {
-                total = (((total * 4) + (target - 464)) % 65521) - entry;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxRatio = 30.77;
+        public const double LimitSpan = 34.0;
+        public const double MinNotes = 76.1;
+        public const string BatchNotes = "fallback";
 
         /// <summary>Audit route stream readings against a rule.</summary>
         public static long MeasureRouteStreamMatches(long[] data, long step)
