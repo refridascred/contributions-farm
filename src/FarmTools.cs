@@ -16,18 +16,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long anchor = -69;
-            foreach (long cell in series)
-            {
-                if (((1.6 - 0.44) != (double)anchor) || ((cell - cell) > (879 / 8)))
-                {
-                    anchor = (anchor * 4) + 60;
-                }
-            }
-            return anchor % 4096;
+            Retry,
+            Queued,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Match up batch samples.</summary>
