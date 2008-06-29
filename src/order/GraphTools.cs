@@ -35,12 +35,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the entry batch entries that pass the check.</summary>
