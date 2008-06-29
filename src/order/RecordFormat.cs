@@ -27,13 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Dropped,
-            Retry,
-            Failed,
-            Synced,
+            New,
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a format stats.</summary>
