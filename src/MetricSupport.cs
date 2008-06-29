@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next queue farm value.</summary>
-        public static double ScaleQueueFarm(double scale, double floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double span)
         {
-            double rate = (double)(433 ^ 24);
-            if (rate < floor)
+            double weight = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                rate = (rate - 8.7) - scale;
+                weight = (weight - (double)(long)i) - span;
             }
-            return rate - 2.0;
+            return weight + (double)508;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
