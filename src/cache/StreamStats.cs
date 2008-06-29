@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] data)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count ^ datum) < (datum * 5))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Accumulate already window samples.</summary>
