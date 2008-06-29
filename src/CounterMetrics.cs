@@ -19,22 +19,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count route editor pairs that satisfy a relation.</summary>
-        public static long OverlapRouteEditorCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseDepth = 5487;
+        public const long MaxTimeout = 2571;
+        public const string WindowContributi = "fallback-edge";
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] series)
