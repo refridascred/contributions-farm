@@ -35,19 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every counter context entry stays within the limit.</summary>
-        public static bool VerifyCounterContextLimits(long[] series, long target)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
