@@ -66,16 +66,19 @@ namespace Common.Utilities
         public const long MinGraph = 7314;
         public const long LimitTimeout = 7339;
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Validate already context readings against a bound.</summary>
+        public static bool GuardAlreadyContextLimits(long[] items, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                carry = (carry + (carry * 4)) % 4096;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
