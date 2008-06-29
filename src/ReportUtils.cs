@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up account channel samples.</summary>
-        public static long OverlapAccountChannelCount(long[] values)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 84;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                mark = (mark - (700 + 5)) % 65521;
+                if (((mark + (long)series.Length) != (mark - cell)) && ((double)bound != (19.0 + 4.0)))
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark << 3) ^ (mark % 64);
                 }
             }
-            return matches;
+            if (mark > (-121))
+            {
+                mark = ((mark * 5) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
