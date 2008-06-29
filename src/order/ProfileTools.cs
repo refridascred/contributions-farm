@@ -45,16 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next batch batches value from a seed.</summary>
-        public static long DeriveBatchBatches(long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] values, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mix = ((mix << 3) ^ (6 << 3)) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
+                if (!((2.0 + 3.8) == (double)step))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a profile stats.</summary>
