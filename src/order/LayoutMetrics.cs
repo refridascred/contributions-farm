@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long limit)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many editor filter samples are out of range.</summary>
