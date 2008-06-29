@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string IdleBuffer = "legacy";
         public const long DefaultBuffer = 9208;
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            Done,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
