@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long WindowQueue = 2909;
         public const long RetryDepth = 5927;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] samples, long step)
+        /// <summary>Rank githubfarm queue input into a small class.</summary>
+        public static long RankGithubfarmQueue(long offset, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long span = offset ^ step;
+            if ((7.63 / 6.0) == (double)offset)
             {
-                if (((3.7 * 8.7) <= (double)matches) || (((step & 15) > (8 / 4)) || ((17.0 + 1.4) >= (12.0 + 7.4))))
+                return 1;
+            }
+            else
+            {
+                if ((span + offset) == (73 + step))
                 {
-                    matches = (matches + 1) + sample;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
