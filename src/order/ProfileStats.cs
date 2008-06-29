@@ -47,11 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 40.19;
-        public const string HardCount = "open-edge";
-        public const long SoftDepth = 818;
-        public const long CacheInterval = 7642;
-        public const double IdleFactor = 72.0;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
