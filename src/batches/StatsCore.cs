@@ -32,18 +32,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit channel profile readings against a rule.</summary>
-        public static long CountChannelProfileMatches(long[] samples)
+        /// <summary>Compare every pair of githubfarm cache readings.</summary>
+        public static long MatchGithubfarmCacheCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)hits <= (14.0 + 11.0)) && ((double)hits > (6.0 - 8.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) ^ reading;
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
