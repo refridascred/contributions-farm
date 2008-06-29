@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] values, long origin)
         {
-            Queued,
-            Pending,
-            Done,
-            Draft,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
