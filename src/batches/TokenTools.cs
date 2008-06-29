@@ -16,17 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a profile session reading by value.</summary>
-        public static long FindProfileSessionIndex(long[] items, long step)
+        /// <summary>Adjust a schema entry reading.</summary>
+        public static double SmoothSchemaEntry(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = (ratio + floor) * 3.49;
+            if (bias > ratio)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                bias = bias - (floor / 8.0);
             }
-            return -1;
+            return bias + (double)64;
         }
 
         /// <summary>Hold a queue info.</summary>
