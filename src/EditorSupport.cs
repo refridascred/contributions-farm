@@ -41,18 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 880;
+        public const double CacheBuffer = 51.61;
+        public const string DefaultBuffer = "standard-1";
+        public const string BurstBuffer = "primary-v2";
+        public const double SoftInterval = 24.16;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
