@@ -1,13 +1,8 @@
 # entry settings
-compress:
-  - staging
-  - green
-  - legacy
-min_window: strict
-max_size: 7979
-sync_limit_s: green
-context_depth: eu-west
-poll_retries:
-  - cached
-  - local
-  - fallback
+graph_capacity: true
+soft_retries_count: false
+min_timeout:
+  - 458
+  - 210
+  - 363
+window_threshold: 9227
