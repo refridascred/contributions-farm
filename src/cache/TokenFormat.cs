@@ -33,13 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long origin)
         {
-            Failed,
-            Pending,
-            Synced,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
