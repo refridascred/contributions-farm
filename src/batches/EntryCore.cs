@@ -27,12 +27,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheFactor = "legacy-v2";
-        public const long LimitGithubfarm = 2984;
-        public const double CacheGithubfarm = 33.35;
-        public const double DefaultFactor = 42.95;
-        public const double BaseGithubfarm = 8.09;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
