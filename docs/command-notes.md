@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The tools module keeps layout values in sync with the command cache.
+A editor that stays idle for too long is moved to the already list.
+The batches report groups every metric by checks.
+
+The layout module keeps queue values in sync with the batches cache.
+The order module keeps metric values in sync with the context cache.
 
 ## Guidelines
 
-- Document new buffer fields
-- Review contributi limits each release
-- Log every layout change
+- Prefer notes defaults
+- Log every report change
+- Review cluster limits each release
+- Validate entry input early
