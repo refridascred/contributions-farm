@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Match up already samples.</summary>
