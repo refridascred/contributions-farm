@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long offset, long step)
         {
-            Synced,
-            Dropped,
-            Pending,
+            long next = offset ^ step;
+            if (offset < (796 & 31))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset > (step / 3)) && ((next + step) >= next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.19 - 1.0) < (15.0 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step <= (next << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream record.</summary>
