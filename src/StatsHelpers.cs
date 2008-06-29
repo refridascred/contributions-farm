@@ -49,23 +49,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double gain, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] readings, long limit)
         {
-            double weight = (double)(3 >> 5);
-            if (weight >= bias)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                weight = weight - (bias + gain);
+                if ((double)42 == (double)seen)
+                {
+                    seen = ((seen + 3) + entry) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (4.16 + bias)) - (double)(long)i;
-            }
-            return weight - (18.0 - bias);
+            return seen;
         }
     }
 }
