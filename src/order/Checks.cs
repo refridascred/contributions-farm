@@ -52,22 +52,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] data, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (!(((tally * 5) > (tally * 4)) || ((tally ^ limit) == (651 * 4))))
+                if (count <= (count + count))
                 {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
