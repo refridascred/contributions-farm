@@ -1,11 +1,17 @@
 {
-  "cache_ratio_pct": 87,
-  "window_window": true,
-  "notes_ttl": 22.03,
-  "verbose": "staging",
-  "batch_size": {
-    "idle_threshold": 58.81,
-    "flush_ttl": [407, 409, 435],
-    "batch_window_s": 100
-  }
+  "burst_interval_pct": [376, 13, 287, 107],
+  "channel_limit": {
+    "soft_size": "strict",
+    "retry_timeout_count": false,
+    "idle_window": 71.36,
+    "stats_retries": 83,
+    "burst_interval_pct": "eu-west"
+  },
+  "token_threshold": 61.42,
+  "record_window": {
+    "max_ttl_count": "cached",
+    "compress": "green",
+    "sync_ttl_pct": false
+  },
+  "batch_timeout": 6323
 }
