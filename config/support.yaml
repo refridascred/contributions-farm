@@ -1,5 +1,16 @@
 # support settings
-session_size: 51
-burst_capacity: 60
-sync_timeout: eu-west
-notes_window: 77
+verbose:
+  hard_interval_s: 90
+  flush_ttl_pct: 66.82
+  readonly: 2897
+  hard_timeout:
+    queue_window: 4117
+    poll_limit:
+      - 24
+      - 305
+    retry_depth_count: edge
+    hard_retries_ms: 10.8
+sync_limit_ms: 72.62
+cluster_limit: 1024
+min_window_count: true
+retry_threshold_pct: 5632
