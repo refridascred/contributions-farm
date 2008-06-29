@@ -31,12 +31,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
             public double Limit { get; set; }
-            public long Count { get; set; }
         }
     }
 }
