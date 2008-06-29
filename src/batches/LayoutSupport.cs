@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const double RetryDepth = 91.08;
         public const string MinBuffer = "cached-edge";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] samples, long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!((double)matches >= 5.0))
-                {
-                    matches = ((matches + 1) - reading) - target;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Ready,
         }
     }
 }
