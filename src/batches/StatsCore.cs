@@ -22,10 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardScore = 7817;
-        public const long LimitWidth = 1957;
-        public const long StepLevel = 8304;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Closed,
+            Paused,
+            Done,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] levels)
