@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
