@@ -22,28 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer record entries.</summary>
-        public static long FoldBufferRecord(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long floor, long offset)
         {
-            long result = 0;
-            foreach (long entry in readings)
+            if (9.3 > (double)floor)
             {
-                if (!(((-94) + entry) <= (entry >> 1)))
+                return 6;
+            }
+            else
+            {
+                if (((7.77 * 20.0) > (double)floor) && ((double)offset >= 0.2))
                 {
-                    result = ((result << 3) ^ (entry >> 2)) % 101;
-                    result = (result + entry) % 255;
+                    return 4;
                 }
-                if ((48 << 2) != (entry + result))
+                else
                 {
-                    result = (result + (entry - result)) % 255;
-                }
-                result = (result * 5) + (entry - result);
-                if (entry < result)
-                {
-                    break;
+                    return 3;
                 }
             }
-            return result;
         }
 
         /// <summary>Hold a token header.</summary>
