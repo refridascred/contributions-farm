@@ -1,7 +1,14 @@
 {
-  "max_timeout_s": "green",
-  "counter_limit": "primary",
-  "account_capacity": true,
-  "idle_threshold_count": 8931,
-  "strict": "strict"
+  "record_depth": "open",
+  "stats_interval": {
+    "enabled": "blue",
+    "hard_ttl_ms": true,
+    "batch_retries": 1024,
+    "sync_capacity_s": 1024,
+    "soft_limit": true,
+    "warm_depth": "blue"
+  },
+  "audit": "legacy",
+  "warm_ttl_s": false,
+  "report_limit": ["cached", "primary"]
 }
