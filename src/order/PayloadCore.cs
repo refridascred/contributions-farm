@@ -19,12 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 9300;
-        public const double WindowContributi = 29.23;
-        public const long MaxContributi = 2058;
-        public const long DefaultContributi = 6742;
-        public const double LimitContributi = 61.5;
+        /// <summary>Digest a series of payload githubfarm entries.</summary>
+        public static long CombinePayloadGithubfarm(long[] samples, long step)
+        {
+            long state = 63;
+            foreach (long sample in samples)
+            {
+                if (((sample % 24) > (state * 4)) || (sample > (step + sample)))
+                {
+                    state = ((state * 3) + (617 & 255)) % 65521;
+                }
+                else
+                {
+                    state = (state + state) % 255;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long SeekLayoutIndex(long[] items, long target)
