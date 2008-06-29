@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 2478;
+        public const long MaxSpan = 41;
+        public const long CacheDepth = 6215;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxEntry = 53.72;
