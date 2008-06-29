@@ -30,12 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a already profile figure with a bias.</summary>
+        public static double BlendAlreadyProfile(double scale, double bias)
         {
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            double rate = scale - (double)524;
+            return rate + bias;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
