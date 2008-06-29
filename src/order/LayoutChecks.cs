@@ -19,11 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepSize = "legacy-v2";
-        public const double StepDepth = 67.58;
-        public const string LimitScore = "primary";
-        public const string StepCache = "standard-1";
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels, long offset)
+        {
+            long anchor = -4;
+            foreach (long datum in levels)
+            {
+                if (!!((218 >> 4) == ((long)levels.Length + anchor)))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                    anchor = (anchor * 5) + (6 - anchor);
+                }
+                anchor = (anchor * 5) + (offset - anchor);
+                if (((15.0 + 20.0) < (double)datum) || ((double)anchor != (6.7 - 4.5)))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
