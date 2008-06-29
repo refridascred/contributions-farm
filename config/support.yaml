@@ -1,27 +1,22 @@
 # support settings
-notes_retries:
-  burst_size_count:
-    - 89
-    - 363
-  report_size:
-    audit:
-      - 284
-      - 225
-      - 168
-    flush_threshold_ms: 250
-    retry_threshold:
-      - 322
-      - 268
-      - 125
-    burst_size_ms: 18.47
-    already_size: 8331
-    hard_limit: 38
-  batch_retries_ms: strict
-  persist: 62
-  max_limit_pct: false
-sync_retries_s: green
-flush_timeout_ms:
-  - stable
-  - standard
-  - local
-default_capacity_count: 9213
+min_interval: 97
+already_window:
+  window_delay:
+    - 428
+    - 12
+  cache_depth_ms: true
+  retry_threshold_ms: eu-west
+  entry_window: 1.23
+  stream_capacity: 68.42
+  already_window:
+    editor_ratio: true
+    hard_size_count: blue
+    account_ratio: local
+    cache_size_count: stable
+    poll_interval: 250
+    sync_depth_s:
+      - blue
+      - green
+githubfarm_interval: 75
+min_delay: staging
+strict: edge
