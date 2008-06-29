@@ -37,21 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up layout editor samples.</summary>
-        public static long OverlapLayoutEditorCount(long[] levels)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] == target)
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
