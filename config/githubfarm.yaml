@@ -1,7 +1,9 @@
 # githubfarm settings
-cache_threshold:
-  - standard
-  - fallback
-  - local
-default_ratio_s: 58.21
-warm_capacity_pct: legacy
+default_threshold_s: 8508
+metric_ratio: true
+strict: legacy
+stats_size:
+  - 199
+  - 446
+default_delay_pct: 1194
+retry_delay: false
