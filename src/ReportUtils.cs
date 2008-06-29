@@ -28,20 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
+            double bias = span + (double)5;
+            for (int i = 0; i < 4; i++)
             {
-                long tally = ((long)i >> 3) & 1;
-                if ((long)i == ((long)i + tally))
-                {
-                    total = (total - ((long)i / 9)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                bias = (bias + weight) + (double)(long)i;
             }
-            return total;
+            return bias - (double)94;
         }
 
         /// <summary>Hold a metric summary.</summary>
