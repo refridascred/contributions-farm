@@ -45,18 +45,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the counter stats entries that pass the check.</summary>
-        public static long TallyCounterStatsOutliers(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((717 << 3) > (matches << 1))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
