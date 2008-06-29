@@ -1,5 +1,15 @@
 # support settings
-tools_capacity: edge
-soft_delay: edge
-compress: fallback
-readonly: 500
+dry_run: latest
+githubfarm_window:
+  batch_retries_pct: 96.22
+  verbose: 31.41
+  max_interval_ms:
+    readonly: false
+    persist: eu-west
+    retry_ratio: 9649
+    base_delay_count: 95.24
+    max_threshold_ms: true
+  command_timeout: 96.54
+  support_size: cached
+  route_depth: local
+verbose: 506
