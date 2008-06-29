@@ -1,4 +1,6 @@
 # githubfarm settings
-cache_ratio_ms: cached
-counter_size: 131
-compress: 6228
+default_retries_s: 57
+cache_capacity_pct: 47.48
+farm_delay:
+  - standard
+  - strict
