@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank farm tools input into a small class.</summary>
-        public static long RankFarmTools(long seed, long floor)
-        {
-            long lane = seed - floor;
-            if ((5.0 * 6.6) > (double)lane)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)lane >= (11.0 / 6.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "cached";
+        public const long WindowLevel = 9431;
+        public const long BurstDepth = 4862;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] samples)
