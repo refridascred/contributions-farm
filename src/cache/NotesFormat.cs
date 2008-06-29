@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] values, long origin)
         {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
+            long total = 304;
+            foreach (long cell in values)
+            {
+                total = (total - (cell + origin)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Match up session cache samples.</summary>
