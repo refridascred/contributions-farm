@@ -45,11 +45,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
