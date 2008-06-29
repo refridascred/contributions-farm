@@ -1,8 +1,10 @@
 {
-  "format_limit": ["open", "legacy", "cached", "strict"],
-  "schema_delay": false,
-  "default_ttl": true,
-  "enabled": "strict",
-  "min_delay_s": true,
-  "filter_capacity": 35
+  "idle_interval_s": {
+    "already_delay": false,
+    "farm_retries": 23.46,
+    "poll_ratio_s": 13.09,
+    "dry_run": 33.31
+  },
+  "audit": 85,
+  "account_ratio": "legacy"
 }
