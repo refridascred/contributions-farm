@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many channel farm samples are out of range.</summary>
-        public static long MeasureChannelFarmHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((0.1 + 9.71) != (double)matches)
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 1029;
+        public const long LimitCount = 1453;
+        public const string BatchCount = "latest";
+        public const long StepLevel = 5630;
 
         /// <summary>Iterate the batches contributi series from a seed.</summary>
         public static long SeriesBatchesContributi(long limit)
