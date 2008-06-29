@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long anchor = 537;
-            foreach (long datum in series)
-            {
-                if (((double)anchor != (double)datum) && ((double)datum != (9.6 * 14.0)))
-                {
-                    anchor = (anchor * 3) + 70;
-                }
-            }
-            return anchor % 4096;
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
