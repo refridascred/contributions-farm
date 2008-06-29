@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 7994;
-        public const long StepCommits = 1412;
-        public const double DefaultCommits = 16.25;
-        public const string BaseTimeout = "local-1";
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two metrics order measurements.</summary>
         public static double SmoothMetricsOrder(double scale, double floor)
