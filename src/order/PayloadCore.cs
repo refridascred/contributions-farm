@@ -41,18 +41,12 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] series)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (!(reading <= (reading >> 5)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Paused,
+            Failed,
         }
     }
 }
