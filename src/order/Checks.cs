@@ -50,10 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 9.65;
-        public const double StepWidth = 46.04;
-        public const long BaseMetric = 8279;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 6138;
+        public const long HardRatio = 7758;
+        public const long StepFactor = 5241;
+        public const long MaxCounter = 7112;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
