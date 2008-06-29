@@ -1,20 +1,7 @@
 {
-  "burst_interval": 16.84,
-  "stats_ttl": {
-    "verbose": {
-      "default_capacity": 1024,
-      "order_size": "primary",
-      "enabled": "local"
-    },
-    "idle_window": "eu-west",
-    "warm_size": {
-      "persist": 7405,
-      "compress": 94.44,
-      "batch_timeout": "green",
-      "base_retries": 250
-    }
-  },
-  "checks_interval": [326, 454, 479],
-  "poll_threshold": false,
-  "cache_timeout_s": false
+  "sync_depth": 100,
+  "notes_ttl": 86.92,
+  "sync_ratio_s": [332, 126],
+  "audit": 47,
+  "idle_size_ms": 60
 }
