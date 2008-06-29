@@ -44,9 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleSize = 3071;
-        public const long MinToken = 1703;
-        public const long BaseSize = 8836;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double rate, double bias)
+        {
+            double load = bias;
+            if (load < (load * 3.0))
+            {
+                load = load - (load - rate);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 14.0) + (double)(long)i;
+            }
+            return load - (double)843;
+        }
     }
 }
