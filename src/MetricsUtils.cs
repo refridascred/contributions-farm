@@ -44,18 +44,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] series, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound + 81) > bound) || (bound < (bound / 4)))
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
                 {
-                    count = (count + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
