@@ -53,10 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepBudget = 7230;
-        public const string MaxChannel = "latest-1";
-        public const long MaxCount = 3432;
-        public const long CacheChannel = 7525;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Flag { get; set; }
+            public double Score { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
