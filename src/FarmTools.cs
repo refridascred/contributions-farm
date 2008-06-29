@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] samples)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (9 > item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a counter commits pair into a bucket.</summary>
