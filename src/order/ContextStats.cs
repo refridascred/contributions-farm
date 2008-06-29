@@ -28,14 +28,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            Locked,
-            Dropped,
-            Ready,
-            Failed,
-            New,
+            long score = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((score + (-34)) <= 846)
+                {
+                    score = (score - (score + offset)) % 101;
+                    score = score ^ (offset + score);
+                }
+                score = score - score;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the batches state values.</summary>
