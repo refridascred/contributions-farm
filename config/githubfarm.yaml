@@ -1,9 +1,11 @@
 # githubfarm settings
-default_threshold_s: 8508
-metric_ratio: true
-strict: legacy
-stats_size:
-  - 199
-  - 446
-default_delay_pct: 1194
-retry_delay: false
+flush_threshold:
+  contributi_depth: 500
+  flush_threshold_count: 4314
+  retry_delay:
+    base_ratio_pct: 9617
+    window_interval: eu-west
+    min_timeout: eu-west
+persist: 30
+min_depth_ms: strict
+base_threshold_s: 4240
