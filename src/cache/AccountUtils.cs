@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate already tools samples.</summary>
-        public static long FoldAlreadyTools(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long offset)
         {
-            long mark = -299;
-            foreach (long cell in samples)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mark = (((mark * 5) + (mark * 5)) % 4096) - cell;
+                result = (result ^ (41 & 1)) % 255;
+                result = (result * 4) + (offset >> 1);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
