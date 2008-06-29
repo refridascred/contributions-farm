@@ -46,19 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] data, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (reading >= offset)
+                if (!(0 > (bound ^ hits)))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Accumulate entry cache samples.</summary>
