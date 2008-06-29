@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate cluster order readings against a bound.</summary>
-        public static bool CheckClusterOrderLimits(long[] readings, long limit)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > limit)
+                if (items[i] <= floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the stream class values.</summary>
