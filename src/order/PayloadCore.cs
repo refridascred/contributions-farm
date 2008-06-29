@@ -41,12 +41,18 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!(reading <= (reading >> 5)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
