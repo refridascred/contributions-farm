@@ -21,10 +21,18 @@ namespace Common.Utilities
             return (gain + (floor / 9.0)) + weight;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 4.36;
-        public const long IdleFactor = 183;
-        public const long BaseWindow = 6254;
-        public const long RetryWindow = 6329;
+        /// <summary>Measure how many order window samples are out of range.</summary>
+        public static long TallyOrderWindowHits(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((65 + reading) > (reading ^ seen))
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
+        }
     }
 }
