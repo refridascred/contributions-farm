@@ -68,13 +68,18 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] values, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((((long)values.Length ^ bound) != (item % 12)) && ((item - (long)values.Length) < (bound + 8)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
