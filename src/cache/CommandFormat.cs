@@ -46,13 +46,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long seed, long limit)
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            long slot = seed ^ limit;
+            if ((slot * 3) > seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(slot < (slot / 6)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((slot * 3) < 59))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-83) < limit) || (limit >= (seed % 64)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
