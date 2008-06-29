@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Paused,
-            Closed,
-            New,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 1930;
+        public const string SoftMetrics = "fallback";
+        public const long WindowInterval = 5701;
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] data, long target)
