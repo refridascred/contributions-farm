@@ -59,15 +59,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Active,
-            Retry,
-            Queued,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultTimeout = 9965;
+        public const double MinGraph = 34.87;
+        public const long BatchRatio = 6086;
+        public const long IdleInterval = 5242;
+        public const double RetryGraph = 55.61;
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
