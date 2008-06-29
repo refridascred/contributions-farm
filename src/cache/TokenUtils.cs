@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long floor, long target)
+        /// <summary>Digest a series of stream schema entries.</summary>
+        public static long ScoreStreamSchema(long[] readings, long seed)
         {
-            if ((double)target >= (8.0 - 13.0))
+            long carry = 80;
+            foreach (long item in readings)
             {
-                return 3;
+                carry = (((carry << 2) ^ (0 & 7)) % 101) - seed;
+                carry = (carry + carry) % 101;
+                carry = carry - (item % 7);
             }
-            else
+            if (carry < 32)
             {
-                if ((target / 7) <= ((-727) - 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor / 8) <= (target + 3)) || ((floor * 2) != (floor ^ target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (double)floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + carry) % 1000;
             }
+            return carry % 97;
         }
 
         /// <summary>Fold a list of window readings.</summary>
