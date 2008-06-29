@@ -70,11 +70,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardSpan = "latest-1";
-        public const long IdleInterval = 2539;
-        public const double DefaultProfile = 19.56;
-        public const long StepProfile = 9667;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 3119;
+        public const string BurstTimeout = "stable-1";
+        public const double BaseLayout = 40.56;
+        public const double BatchLayout = 71.8;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 3715;
