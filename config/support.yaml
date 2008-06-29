@@ -1,5 +1,6 @@
 # support settings
-dry_run: 1.09
-retry_ratio: 30
-enabled: 4593
-persist: true
+max_timeout_pct: 30
+enabled: 65.24
+idle_window_s: true
+min_delay: 91.66
+dry_run: 31.77
