@@ -14,20 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 9300;
+        public const double WindowContributi = 29.23;
+        public const long MaxContributi = 2058;
+        public const long DefaultContributi = 6742;
+        public const double LimitContributi = 61.5;
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] values, long offset)
