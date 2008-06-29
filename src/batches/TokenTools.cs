@@ -22,21 +22,11 @@ namespace Common.Utilities
         public const long CacheStream = 8288;
         public const double DefaultStream = 91.54;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
