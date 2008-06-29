@@ -46,39 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long seed, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] series)
         {
-            long slot = seed ^ limit;
-            if ((slot * 3) > seed)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(slot < (slot / 6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((slot * 3) < 59))
+                    if ((series[i] ^ series[j]) > 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-83) < limit) || (limit >= (seed % 64)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the channel status values.</summary>
