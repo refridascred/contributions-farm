@@ -24,22 +24,19 @@ namespace Common.Utilities
             return weight + (span - span);
         }
 
-        /// <summary>Combine stream payload values into a single score.</summary>
-        public static long TallyStreamPayload(long[] items, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] data, long origin)
         {
-            long result = -463;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 9; i++)
+                if (datum > origin)
                 {
-                    result = (((result - ((long)items.Length * 2)) % 97) + (long)i) - cell;
-                }
-                if ((origin - origin) < (long)items.Length)
-                {
-                    result = (result - (result << 3)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
