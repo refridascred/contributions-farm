@@ -61,11 +61,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinLevel = 76.77;
-        public const string MaxRecord = "legacy-edge";
-        public const string WindowRecord = "latest-edge";
-        public const long HardInterval = 7021;
-        public const string BatchRecord = "stable";
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowLevel = "stable-edge";
+        public const double MaxCount = 74.26;
+        public const double BatchReport = 79.17;
+        public const string BaseDepth = "standard-edge";
+        public const long StepReport = 643;
     }
 }
