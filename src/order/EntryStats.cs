@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] levels, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] levels)
         {
-            long carry = 6;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (((carry << 2) ^ (carry + item)) % 1000) ^ (long)i;
-                }
-                carry = (carry ^ (seed + carry)) % 1000;
-                if ((seed / 9) > (835 + seed))
-                {
-                    carry = (carry ^ (carry << 3)) % 101;
+                    if ((levels[i] - levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
