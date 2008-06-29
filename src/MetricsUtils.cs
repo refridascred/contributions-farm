@@ -36,18 +36,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the filter window entries that pass the check.</summary>
-        public static long CountFilterWindowHits(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((11 >> 5) < (matches - matches))
+                if ((double)hits == (double)datum)
                 {
-                    matches = (matches + 2) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
