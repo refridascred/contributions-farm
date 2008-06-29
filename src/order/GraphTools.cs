@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ((bias2 - bias2) + scale) + bias;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] data)
+        /// <summary>Find the first commits token entry that matches the target.</summary>
+        public static long SeekCommitsTokenIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)data.Length % 24) != (count * 3))
+                if (items[i] == offset)
                 {
-                    count = (count + 3) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a tools counter counter forward.</summary>
