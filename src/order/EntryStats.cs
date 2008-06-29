@@ -58,23 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor schema readings.</summary>
-        public static long ScoreEditorSchema(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] values, long floor)
         {
-            long carry = 29;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((cell - cell) != (carry - cell))
+                if (!(floor > (sample - hits)))
                 {
-                    carry = ((carry << 3) ^ carry) % 4096;
+                    hits = hits + 3;
                 }
-                else
-                {
-                    carry = (carry - cell) % 1000;
-                }
-                carry = ((carry * 3) + (carry / 2)) % 97;
             }
-            return carry % 97;
+            return hits;
         }
     }
 }
