@@ -12,18 +12,31 @@ namespace Common.Utilities
             return (ratio - (scale / 7.0)) + floor;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] values, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((43 - 19) >= (seed - seed))
             {
-                if (floor > (cell + (long)values.Length))
+                return 8;
+            }
+            else
+            {
+                if ((seed - seed) <= (seed << 3))
                 {
-                    tally = tally + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((-411) * 2) >= (seed % 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
