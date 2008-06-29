@@ -1,5 +1,8 @@
 {
-  "readonly": "standard",
-  "persist": 20.88,
-  "flush_timeout_ms": 100
+  "min_ttl": 88.78,
+  "min_ttl_s": "edge",
+  "verbose": 500,
+  "profile_capacity": ["latest", "edge"],
+  "warm_window": 5639,
+  "base_capacity_ms": 67
 }
