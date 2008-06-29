@@ -1,11 +1,5 @@
 {
-  "editor_size": "blue",
-  "max_limit": {
-    "queue_interval": 51,
-    "base_interval_ms": [212, 484, 64, 171],
-    "editor_ttl": 40
-  },
-  "context_ttl": [139, 317, 180, 39],
-  "readonly": "edge",
-  "githubfarm_interval": 48.13
+  "githubfarm_capacity": 500,
+  "enabled": true,
+  "checks_timeout": 68
 }
