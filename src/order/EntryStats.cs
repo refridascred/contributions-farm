@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of route queue readings.</summary>
-        public static long TotalRouteQueue(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long step, long step2)
         {
-            long total = 951;
-            foreach (long sample in readings)
+            long step3 = step + step2;
+            if ((step3 << 1) >= step)
             {
-                total = (total - ((long)readings.Length + sample)) % 1000;
+                return 7;
             }
-            return total % 97;
+            else
+            {
+                if ((double)step2 > (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
