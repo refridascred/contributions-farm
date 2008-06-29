@@ -34,32 +34,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a session window value against two limits.</summary>
-        public static long GradeSessionWindow(long offset, long target)
+        /// <summary>Locate a token graph reading by value.</summary>
+        public static long LookupTokenGraphIndex(long[] levels, long step)
         {
-            long lane = offset ^ target;
-            if (((double)target < (2.0 * 1.93)) && (offset <= lane))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(976 > (offset + offset)))
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target <= 4.92)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
