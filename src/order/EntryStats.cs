@@ -22,12 +22,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Pending,
-            Retry,
-            Queued,
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
