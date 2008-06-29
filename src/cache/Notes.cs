@@ -52,16 +52,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next record counter value from a seed.</summary>
-        public static long SeriesRecordCounter(long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            long score = step;
-            for (int i = 0; i < 5; i++)
+            double bias2 = bias;
+            for (int i = 0; i < 7; i++)
             {
-                score = score - (step >> 3);
-                score = ((score * 4) + (long)i) % 4093;
+                bias2 = ((bias2 - (bias2 * 3.35)) + (double)(long)i) - ratio;
             }
-            return score;
+            return bias2 - bias2;
         }
     }
 }
