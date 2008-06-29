@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Queued,
-            Paused,
-            Idle,
-            Dropped,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
