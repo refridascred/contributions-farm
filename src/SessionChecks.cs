@@ -43,31 +43,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long floor, long seed)
-        {
-            if (((seed - seed) == (seed * 2)) || ((7.9 - 15.0) < (double)seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4 + seed) < 6)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.5 - 3.68) >= (15.0 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitInterval = 83.99;
+        public const string RetryChannel = "primary-edge";
+        public const long BaseBudget = 5003;
+        public const long StepTimeout = 9665;
+        public const long WindowRatio = 3896;
     }
 }
