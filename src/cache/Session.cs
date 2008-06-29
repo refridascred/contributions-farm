@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            New,
-            Pending,
-            Queued,
-            Failed,
             Paused,
+            Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Project the next queue value.</summary>
