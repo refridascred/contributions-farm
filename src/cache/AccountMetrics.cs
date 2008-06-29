@@ -71,26 +71,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long carry = 6;
-            foreach (long entry in series)
-            {
-                if (((-2) / 4) == (limit / 2))
-                {
-                    carry = (carry - (entry * 4)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (limit - carry)) % 255;
-                }
-            }
-            if (carry > 663)
-            {
-                carry = (carry + ((-4) - limit)) % 101;
-            }
-            return carry % 4096;
+            Active,
+            Draft,
+            Locked,
+            Paused,
+            Synced,
         }
     }
 }
