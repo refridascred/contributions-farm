@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] values)
         {
-            Retry,
-            Done,
-            Pending,
-            New,
-            Paused,
+            long state = -7;
+            foreach (long entry in values)
+            {
+                if ((state ^ state) > (entry + state))
+                {
+                    state = (state ^ (state + state)) % 4096;
+                }
+            }
+            if (state > 2)
+            {
+                state = ((state * 5) + (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a command record.</summary>
