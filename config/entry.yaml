@@ -1,10 +1,10 @@
 # entry settings
-sync_capacity_s: 7924
-enabled: eu-west
-flush_ttl: 7592
-format_window: blue
-compress:
-  compress: standard
-  warm_capacity_pct: 3.38
-  warm_timeout_pct: false
-verbose: 79.37
+default_retries: latest
+metrics_delay: true
+min_size:
+  - green
+  - edge
+  - strict
+record_retries: false
+default_ttl: 29.36
+farm_ratio: 9840
