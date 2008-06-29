@@ -35,10 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "staging";
-        public const double SoftInterval = 13.55;
-        public const double BurstToken = 47.02;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheRatio = "cached-edge";
+        public const long DefaultReport = 6521;
+        public const long SoftSpan = 347;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] levels, long bound)
