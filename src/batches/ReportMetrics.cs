@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] data, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Done,
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Digest a series of farm cache entries.</summary>
