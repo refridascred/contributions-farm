@@ -75,23 +75,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double bias, double span)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] levels, long limit)
         {
-            double ratio = (double)(652 - 3);
-            if (ratio >= bias)
+            long score = 30;
+            foreach (long item in levels)
             {
-                ratio = ratio - span;
+                if ((4.8 + 3.0) <= (double)item)
+                {
+                    score = (score ^ (item - item)) % 97;
+                }
             }
-            else
+            if (score > 5)
             {
-                ratio = ratio - (ratio - 1.03);
+                score = score - limit;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (bias - ratio)) + (double)(long)i;
-            }
-            return ratio - 1.9;
+            return score;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
