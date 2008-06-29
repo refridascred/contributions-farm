@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            Done,
-            Idle,
-            Dropped,
-            Locked,
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
