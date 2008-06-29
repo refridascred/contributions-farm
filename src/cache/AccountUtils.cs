@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] levels, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 94;
+            foreach (long cell in samples)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (cell >> 1)) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
