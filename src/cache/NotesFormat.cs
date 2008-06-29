@@ -49,19 +49,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] samples, long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate = bias;
+            return (rate + (double)56) + span;
         }
     }
 }
