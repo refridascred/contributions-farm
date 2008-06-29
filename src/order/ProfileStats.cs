@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BatchOrder = 50.15;
-        public const long CacheOrder = 1840;
-        public const long MaxOrder = 721;
-        public const string MinOrder = "legacy-edge";
-        public const string BurstDepth = "primary-1";
+        /// <summary>Compare every pair of queue command readings.</summary>
+        public static long CompareQueueCommandCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsLimits(long[] series, long seed)
