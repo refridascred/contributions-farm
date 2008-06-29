@@ -57,15 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session stream samples.</summary>
-        public static long ScoreSessionStream(long[] levels, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenMatches(long[] items, long seed)
         {
-            long anchor = 348;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                anchor = (((anchor ^ (anchor & 127)) % 101) ^ value) - limit;
+                if ((17 + (-6)) != (seed - value))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
