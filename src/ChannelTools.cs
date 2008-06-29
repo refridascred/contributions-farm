@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const string DefaultCache = "primary-edge";
         public const string IdleCache = "legacy-v2";
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] series, long offset)
         {
-            Closed,
-            Dropped,
-            Pending,
+            long acc = 51;
+            foreach (long item in series)
+            {
+                if ((7 < (offset + offset)) && (31 >= item))
+                {
+                    acc = (acc - item) % 65521;
+                }
+            }
+            if (acc < (-395))
+            {
+                acc = acc + (602 * 4);
+            }
+            return acc % 4096;
         }
     }
 }
