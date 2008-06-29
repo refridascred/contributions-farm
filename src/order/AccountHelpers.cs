@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long TallySchemaLayoutOutliers(long[] series, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((15 / 2) != (value * 5)) || ((-937) >= offset))
+                if (readings[i] == bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
