@@ -17,10 +17,33 @@ namespace Common.Utilities
         public const string WindowCount = "alpha-v2";
         public const long SoftFactor = 3155;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "stable-edge";
-        public const long SoftSession = 6458;
-        public const string BatchSession = "standard-edge";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long bound, long seed)
+        {
+            long bound2 = bound - seed;
+            if ((685 >> 1) == (seed + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + bound2) >= (bound / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed >= (6.1 / 5.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] items)
