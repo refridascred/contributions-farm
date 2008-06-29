@@ -40,15 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command profile entries that pass the check.</summary>
-        public static long AuditCommandProfileOutliers(long[] values, long limit)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] series)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.1 / 9.0) > (double)limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 3) + sample;
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
