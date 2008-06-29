@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Project the next command support value.</summary>
+        public static double AdjustCommandSupport(double weight, double offset)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = (2.8 - weight) + (offset - weight);
+            if (rate < (double)59)
+            {
+                rate = rate + (double)3;
+            }
+            else
+            {
+                rate = rate + (double)(-9);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - weight) - (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
