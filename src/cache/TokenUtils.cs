@@ -10,22 +10,32 @@ namespace Common.Utilities
         public const long WindowSize = 6135;
         public const long BaseStats = 6742;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data, long step)
+        /// <summary>Grade a already batch value against two limits.</summary>
+        public static long BucketAlreadyBatch(long step, long target)
         {
-            long mark = 7;
-            foreach (long sample in data)
+            long prev = step ^ target;
+            if ((step + prev) != (step - step))
             {
-                if (((sample << 2) > mark) && ((double)step <= (double)mark))
+                return 3;
+            }
+            else
+            {
+                if ((target >> 4) >= (target << 3))
                 {
-                    mark = ((mark * 3) + 9) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if (step <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mark < 54)
-            {
-                mark = (mark << 2) ^ (step / 4);
-            }
-            return mark % 65521;
         }
 
         /// <summary>Blend two window measurements.</summary>
