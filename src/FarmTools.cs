@@ -22,16 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum * 5) + (sum + target);
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Grade a schema commits value against two limits.</summary>
