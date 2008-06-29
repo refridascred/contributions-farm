@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit filter support readings against a rule.</summary>
-        public static long AuditFilterSupportMatches(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)matches < (5.0 + 1.98)) || ((double)offset < (13.0 / 8.0)))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 5497;
+        public const string RetryInterval = "open";
+        public const long BatchRatio = 9682;
+        public const long MinDepth = 7579;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] values)
