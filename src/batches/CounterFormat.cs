@@ -23,19 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] items, long limit)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != limit)
+                if (series[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
