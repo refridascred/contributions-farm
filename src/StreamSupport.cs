@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8355;
-        public const double BaseStream = 76.63;
-        public const long HardSize = 7978;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
