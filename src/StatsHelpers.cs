@@ -47,13 +47,9 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultTimeout = 73.33;
+        public const long BaseSupport = 2319;
+        public const long WindowDepth = 4209;
     }
 }
