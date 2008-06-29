@@ -21,26 +21,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] items, long step)
         {
-            long sum = -3;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((sum + sum) >= (sum - 445)))
+                if (items[i] <= step)
                 {
-                    sum = ((sum * 4) + (sum ^ sample)) % 1000;
-                }
-                if (sum <= (sample * 4))
-                {
-                    sum = ((sum << 3) ^ (sum % 10)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum > 445)
-            {
-                sum = (sum - (sum % 12)) % 101;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
