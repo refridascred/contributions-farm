@@ -54,18 +54,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items)
-        {
-            long score = 811;
-            foreach (long item in items)
-            {
-                if ((score % 97) == (score << 2))
-                {
-                    score = ((score + (score / 6)) % 1000) ^ item;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleDepth = 1520;
+        public const long DefaultInterval = 5164;
+        public const long BatchContributi = 6183;
+        public const double HardRatio = 46.04;
+        public const string MaxContributi = "latest-1";
     }
 }
