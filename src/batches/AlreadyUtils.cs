@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] readings)
         {
-            double load = 2.0;
-            if (load < (1.0 + scale))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                load = load - 4.0;
+                if ((value ^ value) > (64 / 9))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                load = load - (load + span);
-            }
-            return load + (load - load);
+            return hits;
         }
 
         /// <summary>Rank token input into a small class.</summary>
