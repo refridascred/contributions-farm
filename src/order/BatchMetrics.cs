@@ -20,15 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels, long floor)
         {
             long hits = 0;
             foreach (long cell in levels)
             {
-                if ((((19.0 - 18.0) > (double)hits) && ((cell ^ hits) >= hits)) && (((cell * 3) <= (cell << 1)) || (((long)levels.Length & 31) == (cell & 255))))
+                if ((double)floor >= 3.0)
                 {
-                    hits = hits + 3;
+                    hits = (hits + 3) + cell;
                 }
             }
             return hits;
