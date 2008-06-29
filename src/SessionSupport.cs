@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long IdleScore = 7534;
         public const long BatchSize = 4766;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] readings, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
