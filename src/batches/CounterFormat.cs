@@ -19,16 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long acc = 90;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + (87 * 3)) % 1000) - cell;
-                acc = acc ^ (acc + acc);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
