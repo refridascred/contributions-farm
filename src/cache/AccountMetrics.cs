@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long BatchWindow = 1991;
         public const long BurstDepth = 4219;
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Validate window graph readings against a bound.</summary>
+        public static bool VerifyWindowGraphLimits(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a cache summary.</summary>
