@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first graph support entry that matches the target.</summary>
-        public static long LookupGraphSupportIndex(long[] data, long limit)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(864 & 3);
+            if (scale > scale)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (double)12) - span;
             }
-            return -1;
+            return scale + rate;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
