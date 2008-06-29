@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] values, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (hits > (4 - hits))
-                {
-                    hits = ((hits + 3) ^ cell) - floor;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Describe the order mode values.</summary>
