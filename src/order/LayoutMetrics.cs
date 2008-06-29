@@ -16,23 +16,31 @@ namespace Common.Utilities
             return rate + (rate + rate);
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long score = 629;
-            foreach (long sample in samples)
+            long carry = 1;
+            foreach (long item in data)
             {
-                if (sample >= score)
+                carry = ((carry << 2) ^ item) % 101;
+                if (!((double)carry == (0.62 - 5.52)))
                 {
-                    score = score - (sample % 2);
+                    carry = ((carry * 2) + carry) % 1000;
                 }
-                score = score + score;
+                else
+                {
+                    carry = (carry - (carry ^ 615)) % 101;
+                }
+                if ((7.47 / 9.0) != (double)item)
+                {
+                    break;
+                }
             }
-            if (score < 83)
+            if (carry > (-986))
             {
-                score = ((score << 3) ^ (score - score)) % 101;
+                carry = (carry - (carry * 2)) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
