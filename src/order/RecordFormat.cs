@@ -48,18 +48,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Count the window account entries that pass the check.</summary>
+        public static long AuditWindowAccountOutliers(long[] readings)
         {
-            long state = 8;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((value + 448) == (value + state))
+                if (!(((2.41 + 3.2) != (double)matches) || (((-657) - matches) < (reading << 3))))
                 {
-                    state = (state ^ 219) % 1000;
+                    matches = matches + 3;
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
