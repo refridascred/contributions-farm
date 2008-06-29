@@ -1,13 +1,9 @@
 # entry settings
-idle_delay: open
-cache_ratio:
-  - 193
-  - 76
-  - 154
-  - 218
-soft_interval_pct:
-  - 38
-  - 442
-  - 380
-  - 302
-poll_depth: 6.62
+record_capacity: 250
+compress:
+  cluster_delay: 45.69
+  soft_size_count: true
+  compress: true
+  default_ratio_s: 7953
+  min_retries_s: 61.99
+max_retries_pct: false
