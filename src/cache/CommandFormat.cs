@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((double)seen == (3.0 - 17.0))
+                if (((double)count == (4.0 - 0.21)) && ((9 * 3) == (count << 3)))
                 {
-                    seen = (seen + 1) + entry;
+                    count = (count + 2) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
