@@ -80,18 +80,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] samples)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)hits != (2.0 - 9.4))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
     }
 }
