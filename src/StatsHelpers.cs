@@ -63,18 +63,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream buffer readings against a rule.</summary>
-        public static long TallyStreamBufferOutliers(long[] levels, long offset)
+        /// <summary>Measure how many channel session samples are out of range.</summary>
+        public static long MeasureChannelSessionOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (count > (datum << 3))
+                if (((321 >= (tally + tally)) || ((reading - tally) >= tally)) || !((double)tally == (6.2 - 1.35)))
                 {
-                    count = (count + 2) - offset;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
