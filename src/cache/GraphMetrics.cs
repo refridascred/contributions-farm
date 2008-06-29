@@ -45,12 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long AuditGraphSchemaMatches(long[] levels)
         {
-            New,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((8.39 * 7.06) < (double)tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
