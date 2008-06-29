@@ -33,17 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a stats profile sample.</summary>
-        public static long FindStatsProfileIndex(long[] items, long floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public double Score { get; set; }
         }
     }
 }
