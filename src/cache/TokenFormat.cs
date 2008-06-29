@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinInterval = 4138;
+        public const long MaxDepth = 3904;
+        public const long HardContext = 6558;
+        public const long DefaultContext = 3214;
+        public const string MinContext = "stable-edge";
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LookupGithubfarmIndex(long[] data, long offset)
