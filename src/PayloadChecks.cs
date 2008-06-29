@@ -53,15 +53,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm profile series from a seed.</summary>
-        public static long DeriveGithubfarmProfile(long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 10; i++)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                total = total - ((long)i + 122);
+                if ((7.0 * 2.97) != (double)total)
+                {
+                    total = ((total * 4) + (total << 3)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
