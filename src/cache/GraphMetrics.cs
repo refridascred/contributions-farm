@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context entry counter forward.</summary>
-        public static long SeriesContextEntry(long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((301 - reading) != (matches & 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a already session counter forward.</summary>
