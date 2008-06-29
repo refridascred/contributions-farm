@@ -37,19 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Iterate the report token series from a seed.</summary>
+        public static long IterateReportToken(long offset)
         {
-            long mark = 5;
-            foreach (long item in levels)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (((mark * 3) + 0) % 255) + item;
+                total = total + total;
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (mark < 52)
-            {
-                mark = (mark * 4) + mark;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
