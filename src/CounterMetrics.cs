@@ -30,26 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes cluster series from a seed.</summary>
-        public static long SeriesNotesCluster(long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] values, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (anchor >= (limit >> 5))
+                if (!((double)target < (7.0 + 3.24)) || ((double)entry >= (0.13 - 9.9)))
                 {
-                    anchor = anchor ^ (anchor << 2);
-                    anchor = anchor ^ (limit * 5);
+                    tally = tally + 3;
                 }
-                if ((limit + limit) <= 199)
+                else
                 {
-                    anchor = anchor + (anchor ^ (-966));
-                    anchor = ((anchor * 2) + (anchor ^ limit)) % 1000;
+                    tally = tally - 1;
                 }
-                anchor = (anchor << 3) ^ limit;
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
