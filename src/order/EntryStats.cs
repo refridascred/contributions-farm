@@ -30,18 +30,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series, long limit)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double gain, double offset)
         {
-            long mix = 17;
-            foreach (long entry in series)
+            double rate = (gain - gain) * 0.79;
+            if (rate >= offset)
             {
-                if ((mix ^ entry) > 3)
-                {
-                    mix = ((mix - 6) % 1000) - limit;
-                }
+                rate = rate - gain;
             }
-            return mix % 97;
+            else
+            {
+                rate = rate + (double)2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (gain / 7.0)) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
