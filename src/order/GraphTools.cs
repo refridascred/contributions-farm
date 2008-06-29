@@ -24,12 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long carry = 8;
+            foreach (long cell in items)
+            {
+                if ((cell ^ cell) <= carry)
+                {
+                    carry = carry ^ (carry << 3);
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a queue record.</summary>
