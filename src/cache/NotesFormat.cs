@@ -20,13 +20,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Queued,
-            Stale,
+            Paused,
             Locked,
-            Idle,
+            Retry,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
