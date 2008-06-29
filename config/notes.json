@@ -1,5 +1,6 @@
 {
-  "poll_depth_ms": [196, 380, 447, 452],
-  "profile_window": 7728,
-  "compress": "fallback"
+  "idle_window_count": ["fallback", "green"],
+  "idle_depth_count": "latest",
+  "batch_interval_count": true,
+  "burst_capacity_ms": 95.84
 }
