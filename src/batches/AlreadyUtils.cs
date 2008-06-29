@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Done,
-            Active,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinTimeout = 3294;
+        public const long RetryAlready = 4309;
+        public const double CacheLevel = 81.41;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileGaps(long[] samples, long limit)
