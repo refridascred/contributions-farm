@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextLimits(long[] series, long floor)
+        /// <summary>Blend two window batches measurements.</summary>
+        public static double ScaleWindowBatches(double scale, double span)
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate = 1.0;
+            return ((rate + rate) + scale) + span;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
