@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "primary-1";
-        public const long DefaultInterval = 8054;
-        public const double BatchAlready = 16.11;
-        public const long BaseBudget = 2060;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((236 & 63) == ((-5) - floor))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double BlendFilter(double bias, double floor)
