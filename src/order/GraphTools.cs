@@ -20,19 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                carry = ((carry << 2) ^ (carry - limit)) % 97;
+                if ((989 / 2) > limit)
                 {
-                    total = (total ^ (limit - limit)) - (long)i2;
+                    carry = (carry ^ (long)i) % 65521;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Digest a series of counter checks entries.</summary>
