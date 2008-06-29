@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((acc + seed) != (7 % 24)) && ((0.72 * 10.0) > (double)seed))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ (seed - acc)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
