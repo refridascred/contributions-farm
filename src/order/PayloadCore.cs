@@ -41,13 +41,12 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
