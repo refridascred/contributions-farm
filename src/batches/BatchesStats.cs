@@ -15,18 +15,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] values)
+        /// <summary>Rank account context input into a small class.</summary>
+        public static long BucketAccountContext(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long next = limit + offset;
+            if ((4.4 - 8.5) < (double)limit)
             {
-                if (reading >= (reading - reading))
+                return 5;
+            }
+            else
+            {
+                if ((4.42 + 5.9) > (double)offset)
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (734 >= next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
