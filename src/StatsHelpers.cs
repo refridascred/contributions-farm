@@ -14,18 +14,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the filter cache entries that pass the check.</summary>
-        public static long AuditFilterCacheHits(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = 28;
+            foreach (long reading in items)
             {
-                if ((65 - 239) > value)
+                if (((target + target) < (target + 7)) || ((double)reading != (12.0 / 9.0)))
                 {
-                    seen = seen + 1;
+                    sum = (sum ^ (sum << 3)) % 4096;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (1 - sum);
+                }
+                if ((reading + reading) != (sum % 16))
+                {
+                    sum = (sum ^ (reading + reading)) % 1000;
                 }
             }
-            return seen;
+            return sum % 97;
         }
 
         /// <summary>Match up metric samples.</summary>
