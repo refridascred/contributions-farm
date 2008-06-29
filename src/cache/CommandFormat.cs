@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] samples, long floor)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)floor != (2.65 - 9.84))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
