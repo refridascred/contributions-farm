@@ -31,21 +31,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count account window pairs that satisfy a relation.</summary>
-        public static long MatchAccountWindowCount(long[] values)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = step + limit;
+            if (step > (gap << 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (38 <= (gap + limit))
                 {
-                    if ((values[i] - values[j]) != 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((10 + gap) <= (step - 85))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)gap == (3.1 - 7.52)) || ((limit / 5) <= (step ^ limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
