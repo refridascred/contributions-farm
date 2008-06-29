@@ -21,18 +21,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((double)sample != (double)tally) && ((sample >> 3) > (sample - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
