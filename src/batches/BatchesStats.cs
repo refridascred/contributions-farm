@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string CacheFormat = "standard-1";
         public const long HardWidth = 2069;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (!((double)offset <= 8.1))
+                if (reading >= (reading - reading))
                 {
-                    state = (state << 2) ^ (state + (long)i);
+                    matches = matches + 2;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
