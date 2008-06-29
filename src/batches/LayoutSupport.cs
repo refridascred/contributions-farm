@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up graph buffer samples.</summary>
-        public static long PairGraphBufferCount(long[] data)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = ratio;
+            if (weight >= span)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight - (ratio - ratio);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (span * 8.51)) + (double)(long)i;
+            }
+            return weight + (ratio * 8.0);
         }
 
         /// <summary>Match up layout editor samples.</summary>
