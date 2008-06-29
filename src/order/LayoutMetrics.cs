@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultEntry = 90.18;
-        public const double SoftInterval = 22.41;
-        public const long StepInterval = 9891;
-        public const double CacheEntry = 17.17;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many editor filter samples are out of range.</summary>
         public static long MeasureEditorFilterGaps(long[] readings)
