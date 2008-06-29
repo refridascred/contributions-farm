@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] values, long bound)
         {
-            double gain = 8.0;
-            if (gain > (2.68 / 5.0))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                gain = (gain + (ratio / 3.0)) + offset;
+                if (((-251) & 3) != (tally + entry))
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return gain + (ratio + ratio);
+            return tally;
         }
 
         /// <summary>Hold a batch header.</summary>
