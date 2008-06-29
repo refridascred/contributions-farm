@@ -32,26 +32,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long offset, long seed)
         {
-            long total = 966;
-            foreach (long sample in data)
+            if (!((8 & 1) == (offset >> 4)))
             {
-                if (!(320 <= (total - sample)))
+                return 7;
+            }
+            else
+            {
+                if (!(9.6 < (double)offset))
                 {
-                    total = total - total;
-                }
-                if (((sample / 4) < sample) && ((sample + 63) <= (5 >> 1)))
-                {
-                    total = ((total * 3) + sample) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    total = total ^ (total + total);
+                    if ((7 % 100) > (191 ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Project the next token farm value.</summary>
