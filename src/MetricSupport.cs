@@ -32,22 +32,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long limit)
         {
-            long mix = 3;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix * 5) <= (item % 2))
+                if (levels[i] >= limit)
                 {
-                    mix = (mix - (item * 5)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mix < 38)
-            {
-                mix = (mix ^ (mix * 3)) % 4096;
-            }
-            return mix % 4096;
+            return -1;
         }
     }
 }
