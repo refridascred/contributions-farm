@@ -44,10 +44,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxMetrics = 76.59;
-        public const long DefaultMetrics = 9624;
-        public const long SoftMetrics = 4410;
-        public const long StepMetrics = 2892;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double weight, double floor)
+        {
+            double load = weight;
+            return (load - 1.97) + floor;
+        }
     }
 }
