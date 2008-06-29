@@ -1,9 +1,6 @@
 # support settings
-route_ratio: primary
-cache_ratio_count: 60
-retry_ratio: 60
-strict:
-  contributi_capacity: local
-  burst_depth_s: eu-west
-  githubfarm_window: blue
-  readonly: 60
+retry_window_ms: true
+readonly: false
+cache_threshold: true
+support_size: 99
+max_delay: true
