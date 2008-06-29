@@ -37,22 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] series, long step)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)item <= (9.18 - 16.0))
-                {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
