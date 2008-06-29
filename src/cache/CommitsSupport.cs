@@ -49,15 +49,19 @@ namespace Common.Utilities
         public const long WindowEntry = 5018;
         public const long CacheWidth = 8977;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long result = 264;
+            foreach (long entry in series)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                result = ((result * 5) + (entry >> 4)) % 65521;
             }
-            return acc;
+            if (result < 3)
+            {
+                result = ((result << 3) ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Hold a batch header.</summary>
