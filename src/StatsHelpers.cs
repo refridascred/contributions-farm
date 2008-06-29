@@ -59,22 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel session samples are out of range.</summary>
-        public static long MeasureChannelSessionOutliers(long[] readings)
+        /// <summary>Measure how many stream order samples are out of range.</summary>
+        public static long MeasureStreamOrderMatches(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((321 >= (tally + tally)) || ((reading - tally) >= tally)) || !((double)tally == (6.2 - 1.35)))
+                if ((((sample - 9) != (712 / 9)) && (seen >= (limit + 28))) && ((sample / 2) > 99))
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
