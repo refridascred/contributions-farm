@@ -1,6 +1,14 @@
 {
-  "sync_depth": false,
-  "notes_limit": false,
-  "base_ratio_s": false,
-  "hard_delay_s": "eu-west"
+  "channel_delay": 100,
+  "hard_ratio": 1135,
+  "audit": ["blue", "local"],
+  "batch_depth_count": {
+    "session_interval": 6836,
+    "report_ratio": {
+      "compress": 3751,
+      "default_limit": 32.1,
+      "default_depth_count": "standard"
+    },
+    "batch_threshold_pct": "edge"
+  }
 }
