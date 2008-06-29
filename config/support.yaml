@@ -1,15 +1,7 @@
 # support settings
-cache_threshold_ms:
-  - green
-  - green
-  - latest
-entry_retries:
-  persist: strict
-  retry_threshold_ms: 25.77
-  idle_limit: 100
-  default_capacity_s: 2570
-compress:
-  - 276
-  - 273
-  - 94
-  - 389
+schema_delay: 19.18
+strict: 7278
+dry_run:
+  - blue
+  - open
+cache_capacity_s: 15.65
