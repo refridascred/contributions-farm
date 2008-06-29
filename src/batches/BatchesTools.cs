@@ -14,39 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] items)
         {
-            long offset = step - target;
-            if (offset >= target)
+            long count = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 1) <= (2 - target))
+                if ((3 - count) >= value)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step < (target + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step >> 5) != (target / 4)) && (target <= (5 & 127)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first route notes entry that matches the target.</summary>
