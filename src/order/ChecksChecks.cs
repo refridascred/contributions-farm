@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Audit profile support readings against a rule.</summary>
+        public static long AuditProfileSupportHits(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((1.64 - 15.0) != (double)hits) || (5.43 >= (double)cell)))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) - bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the order state values.</summary>
