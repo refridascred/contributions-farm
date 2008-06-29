@@ -1,4 +1,5 @@
 # githubfarm settings
-farm_ratio: true
-channel_ratio: latest
-burst_timeout: cached
+base_ttl: open
+enabled: edge
+cache_timeout: true
+base_size_pct: 4.58
