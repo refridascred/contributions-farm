@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of cache schema readings.</summary>
-        public static long CompareCacheSchemaCount(long[] data)
+        /// <summary>Validate cluster order readings against a bound.</summary>
+        public static bool CheckClusterOrderLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > limit)
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Audit batch schema readings against a rule.</summary>
