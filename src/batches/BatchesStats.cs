@@ -25,16 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter buffer values into a single score.</summary>
-        public static long TallyCounterBuffer(long[] values)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long sum = 390;
-            foreach (long entry in values)
-            {
-                sum = (sum - (sum % 2)) % 1000;
-                sum = ((sum * 4) + entry) % 65521;
-            }
-            return sum;
+            Failed,
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
