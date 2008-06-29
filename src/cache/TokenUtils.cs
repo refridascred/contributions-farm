@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Combine batch contributi values into a single score.</summary>
+        public static long TotalBatchContributi(long[] samples, long limit)
         {
-            double weight = ratio - span;
-            if (weight < (weight * 12.0))
+            long mix = 1;
+            foreach (long sample in samples)
             {
-                weight = weight - (ratio + ratio);
+                mix = (((mix << 3) ^ (sample / 4)) % 65521) + limit;
+                mix = (mix - 14) % 65521;
             }
-            else
+            if (mix > 3)
             {
-                weight = weight - (weight - ratio);
+                mix = ((mix << 3) ^ mix) % 255;
             }
-            return weight - span;
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of format readings.</summary>
