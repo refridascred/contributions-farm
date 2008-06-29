@@ -1,8 +1,4 @@
 # entry settings
-graph_capacity: true
-soft_retries_count: false
-min_timeout:
-  - 458
-  - 210
-  - 363
-window_threshold: 9227
+editor_window: true
+readonly: 15
+retry_capacity_s: 664
