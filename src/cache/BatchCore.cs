@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "strict-1";
+        public const long SoftFactor = 5611;
+        public const double SoftCounter = 36.2;
+        public const long LimitRatio = 7539;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
