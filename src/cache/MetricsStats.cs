@@ -20,23 +20,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate record checks samples.</summary>
-        public static long CombineRecordChecks(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items, long origin)
         {
-            long total = 82;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                total = total - (total ^ 2);
-                if ((double)3 == (double)cell)
+                if (((3.48 - 8.61) <= (double)value) || ((count + count) != (value - value)))
                 {
-                    break;
+                    count = (count + 3) + origin;
                 }
             }
-            if (total < 406)
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
