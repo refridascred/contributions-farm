@@ -15,13 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Retry,
-            Closed,
+            Synced,
+            Idle,
             Stale,
-            Dropped,
+            Active,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
