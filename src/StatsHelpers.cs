@@ -63,17 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Audit stream buffer readings against a rule.</summary>
+        public static long TallyStreamBufferOutliers(long[] levels, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix ^ mix) % 65521;
-                mix = (mix * 5) + ((long)i & 1);
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (count > (datum << 3))
+                {
+                    count = (count + 2) - offset;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
