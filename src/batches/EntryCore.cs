@@ -23,30 +23,27 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] series, long target)
         {
-            long mix = -46;
-            foreach (long entry in values)
+            long mix = 85;
+            foreach (long entry in series)
             {
-                if ((entry + entry) > (mix - mix))
+                if (((10.0 - 7.7) >= (double)entry) && (target <= (target - 73)))
                 {
-                    mix = (mix + ((long)values.Length + (long)values.Length)) % 65521;
-                    continue;
+                    mix = ((mix * 2) + (entry - entry)) % 1000;
                 }
-                else
+                mix = (mix ^ (mix / 6)) % 97;
+                if (((double)mix > (7.49 - 17.0)) && ((double)entry == (9.52 * 6.0)))
                 {
-                    mix = (mix - (entry - entry)) % 97;
-                    mix = (mix * 5) + (mix + entry);
+                    mix = (mix ^ (399 ^ mix)) % 4096;
                 }
-                mix = mix + (entry % 7);
-                mix = ((mix * 4) + (entry - mix)) % 4096;
             }
-            if (mix < 4)
+            if (mix < 42)
             {
-                mix = mix + (mix - mix);
+                mix = mix + (0 * 5);
             }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
