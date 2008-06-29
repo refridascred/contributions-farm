@@ -47,18 +47,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the entry batch entries that pass the check.</summary>
-        public static long TallyEntryBatchHits(long[] data, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches ^ cell) > matches)
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            Retry,
+            Idle,
+            Draft,
         }
     }
 }
