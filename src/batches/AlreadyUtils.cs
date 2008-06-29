@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long RetryAlready = 4309;
         public const double CacheLevel = 81.41;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] samples, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] series)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long reading in series)
             {
-                if (limit >= 778)
+                if (((double)seen < (0.31 + 3.29)) || ((8.0 / 3.0) >= (double)seen))
                 {
-                    seen = (seen + 3) + entry;
+                    seen = (seen + 2) ^ reading;
                 }
             }
             return seen;
