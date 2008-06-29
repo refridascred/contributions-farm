@@ -50,21 +50,31 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 3;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                score = (score * 3) + datum;
+                if ((score + datum) >= datum)
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score << 2) ^ (score + datum);
+                }
+                else
+                {
+                    score = (score << 3) ^ datum;
+                }
+                if (((score / 4) == (score & 1)) && ((double)score > (double)datum))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score > 9)
+            {
+                score = score + score;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the buffer status values.</summary>
