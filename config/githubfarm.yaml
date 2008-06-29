@@ -1,6 +1,7 @@
 # githubfarm settings
-poll_limit: 6734
-default_interval: edge
-dry_run: 9969
-compress: cached
-base_interval_s: 250
+cache_ratio_count: 7889
+metrics_threshold: standard
+max_interval: 100
+sync_size: strict
+sync_interval_pct: green
+max_timeout: 5033
