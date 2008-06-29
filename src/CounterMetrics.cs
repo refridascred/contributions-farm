@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry ^ hits) > (entry & 63)) || ((hits >> 3) < (entry + entry)))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 2693;
+        public const long DefaultBatches = 4061;
+        public const string MaxBatches = "primary-edge";
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long CountNotesHits(long[] readings)
