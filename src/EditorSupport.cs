@@ -20,19 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double gain, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long step, long seed)
         {
-            double bias = floor;
-            if (bias <= (double)12)
+            if ((0 + 0) >= seed)
             {
-                bias = bias - (floor / 6.0);
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias = (bias + (gain * 4.76)) + (double)(long)i;
+                if ((step << 3) > (step - (-313)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return bias - (double)330;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
