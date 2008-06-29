@@ -63,11 +63,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowLevel = "stable-edge";
-        public const double MaxCount = 74.26;
-        public const double BatchReport = 79.17;
-        public const string BaseDepth = "standard-edge";
-        public const long StepReport = 643;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
