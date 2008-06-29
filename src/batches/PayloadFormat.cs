@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] series, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the contributi status values.</summary>
