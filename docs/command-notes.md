@@ -1,11 +1,14 @@
 # Command notes
 
-Use profile settings to tune how often tools data is refreshed.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Run the batch check before changing any layout limits.
+The report helpers are pure functions, so they are safe to call from any thread.
+
+Use record settings to tune how often already data is refreshed.
+When a farm fails, the cache handler retries a few times before giving up.
+A layout that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Log every context change
-- Keep stream values small
-- Prefer graph defaults
-- Validate context input early
+- Review metric limits each release
+- Document new farm fields
+- Log every layout change
