@@ -40,38 +40,19 @@ namespace Common.Utilities
         public const double BatchStream = 85.88;
         public const long BurstTimeout = 9531;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long origin, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] series, long limit)
         {
-            if ((bound + bound) > origin)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound / 8) >= origin)
+                if (entry != limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound > (origin - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound & 7) <= 0) || ((bound << 3) != (origin + 0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
