@@ -24,12 +24,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Compare every pair of window profile readings.</summary>
+        public static long CompareWindowProfileCount(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
