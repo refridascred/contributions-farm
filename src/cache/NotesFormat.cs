@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Failed,
-            Idle,
-            Draft,
-            Paused,
-            Closed,
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up session cache samples.</summary>
