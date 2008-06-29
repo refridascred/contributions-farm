@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] data, long step)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!((2.37 + 2.0) > (double)hits))
-                {
-                    hits = ((hits + 1) + value) - step;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
