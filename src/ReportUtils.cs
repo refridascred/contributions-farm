@@ -40,11 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseBudget = 9215;
-        public const long SoftCount = 4815;
-        public const double IdleSpan = 35.17;
-        public const long BatchQueue = 4422;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                score = score ^ (score - score);
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LookupRouteIndex(long[] readings, long target)
