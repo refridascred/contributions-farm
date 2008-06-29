@@ -1,19 +1,7 @@
 {
-  "order_limit": {
-    "batch_limit_s": ["green", "primary"],
-    "readonly": "strict",
-    "dry_run": 53.82,
-    "strict": false,
-    "compress": false,
-    "audit": 7677
-  },
-  "hard_size_count": {
-    "dry_run": false,
-    "audit": 250,
-    "cache_depth": 3279,
-    "metrics_depth": "latest"
-  },
-  "metric_timeout": 97,
-  "retry_threshold": "stable",
-  "format_ratio": 19
+  "retry_ttl_ms": "standard",
+  "warm_threshold_s": 2332,
+  "commits_delay": 9137,
+  "base_retries": 5348,
+  "cache_delay": 2775
 }
