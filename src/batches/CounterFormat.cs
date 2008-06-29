@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Accumulate schema batch samples.</summary>
+        public static long CombineSchemaBatch(long[] series)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long result = 9;
+            foreach (long datum in series)
+            {
+                if ((result + result) >= (datum & 127))
+                {
+                    result = (result ^ (datum - result)) % 4096;
+                }
+                if ((datum <= (result + 59)) || (result > datum))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a support summary.</summary>
