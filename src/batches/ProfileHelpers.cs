@@ -27,25 +27,16 @@ namespace Common.Utilities
         public const long DefaultBuffer = 870;
         public const long WindowSpan = 9455;
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long seed, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long lane = seed ^ origin;
-            if ((18.0 - 0.32) > (double)lane)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                state = (state + ((long)i - state)) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)seed <= (4.35 * 5.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every profile account entry stays within the limit.</summary>
