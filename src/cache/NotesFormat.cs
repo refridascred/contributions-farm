@@ -13,12 +13,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of entry cache entries.</summary>
+        public static long DigestEntryCache(long[] data)
         {
-            Paused,
-            Locked,
-            Retry,
+            long score = 12;
+            foreach (long cell in data)
+            {
+                if ((double)cell < (1.64 / 8.0))
+                {
+                    score = (score + cell) % 65521;
+                }
+                score = (score ^ (score ^ cell)) % 97;
+            }
+            if (score < 51)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
