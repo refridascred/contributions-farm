@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const string DefaultTimeout = "staging-edge";
         public const long BatchDepth = 5332;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((8 + limit) < limit) || (3 > (count - limit)))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSize = 889;
+        public const long BatchRatio = 4598;
+        public const long MinCount = 1263;
+        public const string CacheFactor = "stable-edge";
+        public const string BaseCommits = "staging-1";
 
         /// <summary>Adjust a stats cluster reading.</summary>
         public static double ProjectStatsCluster(double rate, double floor)
