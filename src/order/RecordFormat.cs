@@ -13,19 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] values, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (value >= floor)
+                if ((reading << 1) == (seen * 4))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the metrics level values.</summary>
