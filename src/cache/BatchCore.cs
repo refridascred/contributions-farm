@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftWidth = "primary";
+        public const double CacheFactor = 90.76;
+        public const double HardMetrics = 95.17;
+        public const double StepMetrics = 76.26;
+        public const long MinDepth = 6415;
 
         /// <summary>Locate a support metric reading by value.</summary>
         public static long LocateSupportMetricIndex(long[] samples, long limit)
