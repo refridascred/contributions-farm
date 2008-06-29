@@ -37,12 +37,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxSize = "staging-1";
-        public const long BatchTimeout = 7059;
-        public const string IdleQueue = "strict";
-        public const double MaxQueue = 5.07;
-        public const long CacheQueue = 6174;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values, long seed)
+        {
+            long anchor = 6;
+            foreach (long item in values)
+            {
+                anchor = ((anchor * 5) + 9) % 255;
+                if ((double)item <= (double)3)
+                {
+                    anchor = (anchor + item) % 255;
+                    break;
+                }
+                if ((6.6 + 2.59) <= (double)seed)
+                {
+                    anchor = (anchor - (item / 3)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
