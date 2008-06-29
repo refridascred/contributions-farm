@@ -1,4 +1,37 @@
 # entry settings
-enabled: 100
-already_threshold: green
-cache_interval: 67.78
+max_threshold: 2497
+enabled:
+  poll_depth_s: 23.32
+  flush_window_s: 85.49
+  default_limit: false
+  persist: false
+  poll_interval_count: standard
+flush_limit_s:
+  audit:
+    - 28
+    - 301
+    - 156
+  enabled:
+    sync_capacity: open
+    warm_size: 70.09
+    idle_ttl_count: false
+  poll_window: true
+  retry_threshold_s: 11.06
+  verbose:
+    - 365
+    - 129
+    - 80
+  batches_retries:
+    retry_retries_count: 6873
+    command_capacity: 38
+    default_delay_s:
+      - primary
+      - cached
+      - legacy
+      - blue
+    max_capacity_s: 15.21
+    base_timeout_ms:
+      - 197
+      - 262
+hard_limit: true
+stream_interval: 4009
