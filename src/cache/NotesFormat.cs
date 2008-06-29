@@ -28,11 +28,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            double rate = bias;
-            return (rate + (double)56) + span;
+            long result = 29;
+            foreach (long reading in readings)
+            {
+                if (((double)result >= (6.6 * 1.7)) || ((double)reading <= (3.8 / 8.0)))
+                {
+                    result = (result - (reading >> 4)) % 255;
+                }
+            }
+            if (result < 438)
+            {
+                result = result - (result & 63);
+            }
+            return result % 97;
         }
     }
 }
