@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const long WindowSize = 693;
         public const long MaxStream = 7350;
 
-        /// <summary>Validate farm format readings against a bound.</summary>
-        public static bool GuardFarmFormatLimits(long[] levels, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] levels, long offset)
         {
-            bool valid = true;
+            long state = 6;
             foreach (long reading in levels)
             {
-                if (reading > step)
+                if ((double)reading >= (16.0 - 17.0))
                 {
-                    valid = false;
-                    break;
+                    state = ((state * 5) + state) % 65521;
+                }
+                else
+                {
+                    state = state - (reading + offset);
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Describe the already class values.</summary>
