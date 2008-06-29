@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -39;
+            foreach (long cell in readings)
             {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                if (((long)readings.Length + mark) <= (cell * 4))
                 {
-                    return (long)i;
+                    mark = mark - (mark ^ cell);
                 }
             }
-            return -1;
+            if (mark < 664)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Project the next stats value.</summary>
