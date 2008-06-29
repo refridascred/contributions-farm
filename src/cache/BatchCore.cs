@@ -31,12 +31,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a editor order value against two limits.</summary>
+        public static long GradeEditorOrder(long step, long origin)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            if ((origin >> 2) < (origin % 97))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2 % 60) <= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
