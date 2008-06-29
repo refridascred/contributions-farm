@@ -49,38 +49,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long seed)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] samples, long origin)
         {
-            if ((limit % 2) <= seed)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((250 - 31) != (seed & 255))
+                if (samples[i] <= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit > (4.7 + 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit - seed) < (limit - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
