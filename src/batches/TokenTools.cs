@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleLevel = 6917;
+        public const long WindowScore = 9546;
+        public const long CacheWidth = 546;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
