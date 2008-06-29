@@ -62,11 +62,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] data, long origin)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((double)hits <= 9.7)
+                {
+                    hits = ((hits + 2) ^ item) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
