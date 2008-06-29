@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] readings, long floor)
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a editor order value against two limits.</summary>
