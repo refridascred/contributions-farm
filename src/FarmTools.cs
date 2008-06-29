@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of support token readings.</summary>
-        public static long MatchSupportTokenCount(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 83;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((33 + score) > sample)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    score = (((score << 3) ^ (score * 2)) % 4096) - offset;
                 }
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
