@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] values, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] series)
         {
-            long result = 713;
-            foreach (long datum in values)
+            long mix = 768;
+            foreach (long datum in series)
             {
-                if (bound < (datum + result))
-                {
-                    result = result + (datum >> 3);
-                }
+                mix = (mix * 2) + (datum + 851);
+                mix = (mix ^ (mix - 9)) % 4096;
+                mix = (mix + (mix + mix)) % 65521;
             }
-            return result;
+            if (mix > 335)
+            {
+                mix = ((mix * 5) + mix) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Fold a list of notes buffer readings.</summary>
