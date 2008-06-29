@@ -59,17 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Adjust a stats cluster reading.</summary>
+        public static double ProjectStatsCluster(double rate, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state + (offset & 3)) % 101;
-                state = (state * 3) + (state & 127);
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            double load = floor;
+            return (load - load) + rate;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
