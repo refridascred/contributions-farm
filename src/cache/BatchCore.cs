@@ -27,24 +27,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a editor order value against two limits.</summary>
-        public static long GradeEditorOrder(long step, long origin)
+        /// <summary>Locate a support metric reading by value.</summary>
+        public static long LocateSupportMetricIndex(long[] samples, long limit)
         {
-            if ((origin >> 2) < (origin % 97))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 % 60) <= step)
+                if (samples[i] > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
