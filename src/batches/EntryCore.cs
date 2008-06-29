@@ -43,19 +43,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] values, long limit)
+        /// <summary>Iterate the batches support series from a seed.</summary>
+        public static long StepBatchesSupport(long offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (value >= limit)
+                if ((anchor ^ offset) >= 97)
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor * 3) + (offset + anchor)) % 65521;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Describe the layout state values.</summary>
