@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((792 + bound) >= (9 & 255))
+                if ((5.0 + 7.7) < (double)item)
                 {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
