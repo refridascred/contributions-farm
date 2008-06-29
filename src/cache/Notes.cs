@@ -48,32 +48,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank contributi editor input into a small class.</summary>
-        public static long GradeContributiEditor(long step, long limit)
-        {
-            long step2 = step ^ limit;
-            if ((limit + limit) < (step & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step2 & 1) < step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit > 4.9)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetrySpan = 9432;
+        public const long HardRatio = 2407;
+        public const long BaseTimeout = 1404;
     }
 }
