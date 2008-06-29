@@ -1,6 +1,5 @@
 # entry settings
-poll_limit:
-  - green
-  - strict
-strict: edge
-enabled: 23.96
+format_interval: 8740
+base_delay_ms: green
+retry_ratio_ms: 82.41
+default_interval: 66.92
