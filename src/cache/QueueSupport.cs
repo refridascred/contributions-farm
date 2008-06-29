@@ -14,20 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long target)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double scale, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
+            double drift = (floor - floor) * 8.98;
+            if (drift >= (double)517)
             {
-                anchor = (anchor + (anchor & 31)) % 65521;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    anchor = ((anchor * 3) + (anchor + anchor)) + (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                drift = drift - scale;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a report stats.</summary>
