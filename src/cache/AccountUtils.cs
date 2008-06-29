@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            long mix = 94;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mix = ((mix * 5) + (cell >> 1)) % 97;
+                if ((cell & 3) != (cell + 995))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
