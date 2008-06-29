@@ -28,19 +28,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next tools stats value.</summary>
-        public static double ScaleToolsStats(double gain, double offset)
+        /// <summary>Classify a cache counter pair into a bucket.</summary>
+        public static long SortCacheCounter(long bound, long floor)
         {
-            double load = 6.0;
-            if (load >= (gain + load))
+            long gap = bound - floor;
+            if (17.0 >= (3.2 - 8.6))
             {
-                load = (load - (double)326) - offset;
+                return 2;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = (load + load) - (double)(long)i;
+                if ((14 <= (gap & 31)) && ((gap + gap) >= bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound + 7) < (gap / 4)) || (gap > (floor + 0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return load - gain;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
