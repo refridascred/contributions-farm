@@ -30,28 +30,19 @@ namespace Common.Utilities
             return ratio + (10.0 - 4.6);
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] items, long offset)
         {
-            long mark = -9;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 5; i++)
+                if (sample > offset)
                 {
-                    mark = (mark * 5) + (mark - entry);
-                    mark = mark ^ ((long)i / 5);
-                }
-                mark = (mark - (mark / 9)) % 1000;
-                if (!((558 - entry) > mark))
-                {
-                    mark = (mark - (99 << 1)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark ^ (mark - 504)) % 255;
-            }
-            return mark % 65521;
+            return stale;
         }
     }
 }
