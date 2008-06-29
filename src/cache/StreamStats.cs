@@ -47,13 +47,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] data, long step)
         {
-            Stale,
-            Paused,
-            Closed,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema class values.</summary>
