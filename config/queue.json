@@ -1,5 +1,9 @@
 {
-  "batch_ratio_s": 30,
-  "sync_ttl_s": false,
-  "batch_size": "strict"
+  "queue_retries": "green",
+  "command_timeout": {
+    "cache_threshold_count": false,
+    "hard_retries_s": [274, 497, 359, 247],
+    "default_threshold": 500
+  },
+  "verbose": 66.29
 }
