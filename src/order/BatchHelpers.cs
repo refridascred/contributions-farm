@@ -32,14 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a checks githubfarm reading by value.</summary>
+        public static long SeekChecksGithubfarmIndex(long[] samples, long floor)
         {
-            Idle,
-            Active,
-            Closed,
-            Synced,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order kind values.</summary>
