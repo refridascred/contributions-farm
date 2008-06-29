@@ -40,19 +40,18 @@ namespace Common.Utilities
             return mean - (double)758;
         }
 
-        /// <summary>Derive the next metrics entry value from a seed.</summary>
-        public static long IterateMetricsEntry(long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] series, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (((reading & 255) >= target) && ((target + (long)series.Length) > (target + 944)))
                 {
-                    result = (result - (57 / 7)) + (long)i2;
+                    count = count + 1;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a counter info.</summary>
