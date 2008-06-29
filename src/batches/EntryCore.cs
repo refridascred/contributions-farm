@@ -40,18 +40,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] values)
+        /// <summary>Accumulate batch report samples.</summary>
+        public static long FoldBatchReport(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long acc = 5;
+            foreach (long value in data)
             {
-                if (((count / 8) <= (count - 104)) || ((16.0 - 8.0) > (double)entry))
-                {
-                    count = count + 1;
-                }
+                acc = (((acc << 3) ^ (7 ^ value)) % 4096) - offset;
+                acc = (acc - acc) % 4096;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
