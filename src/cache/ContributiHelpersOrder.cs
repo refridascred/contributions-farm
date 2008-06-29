@@ -27,10 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxRatio = "primary-edge";
-        public const double LimitReport = 78.5;
-        public const string SoftReport = "primary";
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Paused,
+            New,
+            Closed,
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BaseCluster = 8521;
