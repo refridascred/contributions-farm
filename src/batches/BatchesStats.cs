@@ -29,19 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] levels, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!((3.21 / 4.0) > (double)(long)i))
+                if ((5 + cell) >= (40 + step))
                 {
-                    mix = (mix * 5) + (long)i;
+                    tally = tally + 1;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine notes editor values into a single score.</summary>
