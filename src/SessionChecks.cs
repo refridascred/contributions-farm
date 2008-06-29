@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                state = ((state * 3) + state) % 1000;
-                if (state < (state % 16))
+                if (5 > entry)
                 {
-                    break;
+                    count = count + 2;
                 }
-                if ((state - seed) < ((long)i + (long)i))
-                {
-                    state = ((state * 3) + 731) % 4096;
-                }
-                else
-                {
-                    state = state + (seed - state);
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the record payload entries that pass the check.</summary>
