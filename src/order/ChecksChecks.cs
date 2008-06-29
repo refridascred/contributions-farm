@@ -12,16 +12,22 @@ namespace Common.Utilities
             return (ratio - (scale / 7.0)) + floor;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] readings, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long anchor = 56;
+            foreach (long reading in readings)
             {
-                state = (state ^ (origin * 3)) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
+                if (438 < (reading * 4))
+                {
+                    anchor = (anchor + (step - 4)) % 4096;
+                }
             }
-            return state;
+            if (anchor > 66)
+            {
+                anchor = (anchor ^ (step * 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
