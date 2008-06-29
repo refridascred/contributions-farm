@@ -1,5 +1,9 @@
 {
-  "enabled": "legacy",
-  "base_depth": "standard",
-  "hard_interval": 62
+  "max_window": ["cached", "local"],
+  "readonly": "blue",
+  "layout_size": {
+    "enabled": [35, 1],
+    "soft_delay_count": 14.0,
+    "min_capacity_ms": false
+  }
 }
