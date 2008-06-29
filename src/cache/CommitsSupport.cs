@@ -31,10 +31,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinScore = 1221;
-        public const long WindowEntry = 5018;
-        public const long CacheWidth = 8977;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long DigestRoute(long[] series)
