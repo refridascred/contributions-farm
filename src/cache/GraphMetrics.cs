@@ -20,10 +20,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 7059;
-        public const double BatchDepth = 42.68;
-        public const long HardFactor = 8226;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 5035;
+        public const string BatchToken = "primary-edge";
+        public const long WindowToken = 8672;
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] values)
