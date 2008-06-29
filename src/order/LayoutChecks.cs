@@ -28,18 +28,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = -5;
-            foreach (long sample in readings)
-            {
-                if ((anchor & 63) <= sample)
-                {
-                    anchor = (anchor ^ (seed + (long)readings.Length)) % 4096;
-                }
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a entry summary.</summary>
