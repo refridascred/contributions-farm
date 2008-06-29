@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long target, long seed)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long edge = target - seed;
+            if (seed < (target ^ seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if (15.0 > (double)edge)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.5 > (double)edge) && ((6.43 * 1.7) == (double)target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + edge) >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate graph samples.</summary>
