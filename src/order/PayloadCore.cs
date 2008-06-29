@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many entry layout samples are out of range.</summary>
-        public static long AuditEntryLayoutHits(long[] samples)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits ^ 3) > (39 % 12))
-                {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Digest a series of payload githubfarm entries.</summary>
