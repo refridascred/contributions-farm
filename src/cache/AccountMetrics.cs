@@ -41,18 +41,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] levels, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long carry = 2;
+            foreach (long value in values)
             {
-                if (((826 - 79) >= hits) && ((cell & 3) < (seed - 587)))
+                carry = carry + (214 / 2);
+                if ((value ^ 7) > (carry - step))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
