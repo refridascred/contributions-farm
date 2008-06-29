@@ -55,21 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes session pairs that satisfy a relation.</summary>
-        public static long MatchNotesSessionCount(long[] samples)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
