@@ -12,19 +12,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long mark = 4;
+            foreach (long entry in levels)
             {
-                if (!((floor & 1) == (long)i))
+                mark = ((mark - 72) % 255) - entry;
+                if (!((0.54 + 4.1) == (double)mark))
                 {
-                    score = score - (score + 267);
+                    mark = mark ^ (mark % 8);
                 }
-                score = ((score * 4) + (long)i) % 101;
+                if ((mark << 3) <= (mark & 31))
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a stream summary.</summary>
