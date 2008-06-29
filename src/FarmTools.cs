@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1338;
-        public const long SoftContext = 7141;
-        public const long SoftScore = 66;
-        public const long BurstLevel = 4519;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Ready,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long DigestContext(long[] series)
