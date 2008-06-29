@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] readings, long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double gain = offset;
+            if (gain <= (bias + offset))
             {
-                if ((datum + bound) != (0 - 48))
-                {
-                    seen = seen + 3;
-                }
+                gain = gain + bias;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + offset) - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Match up counter record samples.</summary>
