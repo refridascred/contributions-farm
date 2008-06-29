@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long SoftLevel = 3429;
         public const long IdleFactor = 3384;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double floor)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            double rate = ratio - 13.0;
-            return (rate + (ratio / 7.0)) + floor;
+            long state = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state ^ ((long)i << 1)) % 97;
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the filter phase values.</summary>
