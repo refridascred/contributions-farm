@@ -14,24 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long floor, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] samples, long limit)
         {
-            if ((1.0 * 3.1) != (double)target)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor * 2) >= ((-61) & 1))
+                if (entry < limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up context samples.</summary>
