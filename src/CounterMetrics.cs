@@ -49,32 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] readings)
         {
-            long mark = -41;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                mark = mark ^ item;
-                mark = mark ^ (89 - item);
-                if ((double)mark <= (9.88 / 4.0))
+                if ((reading + count) == (count - reading))
                 {
-                    mark = (mark ^ (5 << 2)) % 255;
-                }
-                else
-                {
-                    mark = mark + (mark / 9);
-                }
-                if ((11.0 / 3.0) > (double)origin)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (mark > 79)
-            {
-                mark = mark + (long)data.Length;
-            }
-            return mark;
+            return count;
         }
     }
 }
