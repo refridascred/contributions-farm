@@ -31,36 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long offset)
         {
-            if ((double)origin != (6.93 / 2.0))
+            if ((offset << 2) <= (offset + 65))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((bound << 1) != (bound + origin))
+                if (!((origin + offset) <= offset))
                 {
                     return 5;
                 }
                 else
                 {
-                    if (origin <= 409)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound ^ 581) < origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
