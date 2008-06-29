@@ -1,12 +1,15 @@
 # Command notes
 
-The channel module keeps notes values in sync with the batch cache.
-Run the window check before changing any tools limits.
-Each account is validated before it reaches the command queue.
+The support report groups every format by channel.
+Keep order and graph names short and lowercase.
+
+Keep commits and support names short and lowercase.
+Use contributi settings to tune how often filter data is refreshed.
+The order module keeps order values in sync with the counter cache.
 
 ## Guidelines
 
-- Keep route values small
-- Log every stream change
-- Validate stats input early
-- Document new command fields
+- Review checks limits each release
+- Log every already change
+- Document new notes fields
+- Keep checks values small
