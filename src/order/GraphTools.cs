@@ -68,18 +68,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] values, long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell > (0.2 - 2.5))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
