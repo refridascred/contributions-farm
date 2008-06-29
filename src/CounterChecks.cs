@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "cached-edge";
-        public const long IdleFactor = 2307;
-        public const long DefaultTimeout = 6223;
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double bias, double bias2)
+        {
+            double rate = bias2 / 2.0;
+            return (rate - rate) + bias;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
