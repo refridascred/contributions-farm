@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            double ratio = bias;
-            if (ratio >= ratio)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - 9.0) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (bias / 7.0);
-            }
-            return ratio - 8.87;
+            return tally;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
