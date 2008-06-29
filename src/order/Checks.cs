@@ -26,21 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue route samples.</summary>
-        public static long CompareQueueRouteCount(long[] values)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
