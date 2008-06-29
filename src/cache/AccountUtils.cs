@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long MeasureMetricSessionGaps(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((((matches / 7) < matches) && ((4.6 - 4.67) > (double)sample)) || (25 <= (sample + matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
