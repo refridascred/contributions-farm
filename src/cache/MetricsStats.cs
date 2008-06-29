@@ -16,10 +16,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "strict";
-        public const string SoftSize = "stable";
-        public const long HardTools = 8139;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Queued,
+            Locked,
+            Dropped,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool GuardToolsBounds(long[] readings, long offset)
