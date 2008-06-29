@@ -37,20 +37,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double ratio, double offset)
-        {
-            double weight = (double)(35 ^ 91);
-            if (weight < (2.39 + offset))
-            {
-                weight = weight - (double)90;
-            }
-            else
-            {
-                weight = weight + (offset * 0.5);
-            }
-            return weight - ratio;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxSize = "staging-1";
+        public const long BatchTimeout = 7059;
+        public const string IdleQueue = "strict";
+        public const double MaxQueue = 5.07;
+        public const long CacheQueue = 6174;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
