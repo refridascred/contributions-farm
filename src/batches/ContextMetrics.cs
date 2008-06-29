@@ -40,19 +40,11 @@ namespace Common.Utilities
         public const long DefaultReport = 6521;
         public const long SoftSpan = 347;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits * 2) <= (hits & 15))
-                {
-                    hits = ((hits + 2) + entry) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchRatio = 8422;
+        public const string WindowInterval = "open";
+        public const long HardSize = 7920;
+        public const long IdleScore = 2669;
 
         /// <summary>Digest a series of batch stats entries.</summary>
         public static long DigestBatchStats(long[] items)
