@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples, long floor)
         {
-            long score = -7;
-            foreach (long item in samples)
+            long score = 78;
+            foreach (long reading in samples)
             {
-                score = (score - (966 + item)) % 4096;
+                score = (score ^ reading) % 1000;
             }
-            if (score < 76)
+            if (score > 55)
             {
-                score = (score + 6) % 97;
+                score = ((score * 2) + (floor * 4)) % 255;
             }
-            return score;
+            return score % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
