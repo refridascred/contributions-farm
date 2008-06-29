@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Count batches stats pairs that satisfy a relation.</summary>
+        public static long CompareBatchesStatsCount(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits >= 7.09)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
+                    if ((samples[i] - samples[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
