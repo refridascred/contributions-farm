@@ -53,12 +53,21 @@ namespace Common.Utilities
             return rate + (double)95;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 39.68;
-        public const string DefaultGithubfarm = "cached";
-        public const long MaxGithubfarm = 1105;
-        public const double WindowGithubfarm = 90.69;
-        public const long IdleLevel = 5738;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] levels)
+        {
+            long acc = 42;
+            foreach (long cell in levels)
+            {
+                acc = (((acc * 2) + (acc + acc)) % 4096) - cell;
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            if (acc < 6)
+            {
+                acc = ((acc << 2) ^ (acc * 3)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long RankFormat(long step, long offset)
