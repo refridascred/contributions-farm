@@ -51,10 +51,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 3.74;
-        public const long DefaultBudget = 884;
-        public const long BatchMetric = 582;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstLevel = 7320;
+        public const long RetryEntry = 8929;
+        public const double BatchInterval = 88.35;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
