@@ -34,18 +34,10 @@ namespace Common.Utilities
         public const long BaseScore = 5013;
         public const double SoftBatches = 24.01;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (item <= (item % 24))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 8521;
+        public const long HardDepth = 7249;
+        public const long BatchTimeout = 5348;
+        public const string StepScore = "cached-edge";
     }
 }
