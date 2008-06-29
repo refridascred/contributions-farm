@@ -20,18 +20,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] series, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = 46;
+            foreach (long datum in items)
             {
-                if ((double)step == (6.66 / 6.0))
+                if ((carry << 1) == (floor + datum))
                 {
-                    seen = (seen + 3) + value;
+                    carry = (carry ^ (carry / 5)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (floor % 5);
+                }
+                if (((double)datum != (3.9 - 8.01)) || ((carry + 85) >= floor))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Match up graph samples.</summary>
