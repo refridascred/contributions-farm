@@ -20,15 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] series, long bound)
         {
-            double ratio = (double)235;
-            if (ratio <= ratio)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                ratio = ((ratio + (double)93) - gain) + offset;
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio + (10.0 - 4.6);
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
