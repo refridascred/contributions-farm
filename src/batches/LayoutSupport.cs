@@ -37,18 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowFactor = "primary-1";
+        public const long DefaultWindow = 7620;
+        public const string MinWindow = "cached-v2";
+        public const double RetryLevel = 63.43;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BatchBuffer = 3570;
