@@ -20,11 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinSize = 4572;
-        public const long IdleWindow = 7780;
-        public const long BatchWindow = 1991;
-        public const long BurstDepth = 4219;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 82.24;
+        public const double MinMetrics = 16.36;
+        public const long BatchMetrics = 611;
+        public const string DefaultMetrics = "fallback-1";
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ProjectChecks(double rate, double floor)
