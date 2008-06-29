@@ -14,18 +14,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many record contributi samples are out of range.</summary>
-        public static long AuditRecordContributiGaps(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double gain = 8.0;
+            if (gain > (2.68 / 5.0))
             {
-                if (9 < (seen << 1))
-                {
-                    seen = (seen + 2) + item;
-                }
+                gain = (gain + (ratio / 3.0)) + offset;
             }
-            return seen;
+            return gain + (ratio + ratio);
         }
 
         /// <summary>Hold a batch header.</summary>
