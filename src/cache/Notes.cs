@@ -62,29 +62,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a graph route counter forward.</summary>
-        public static long IterateGraphRoute(long seed)
+        /// <summary>Derive the next record counter value from a seed.</summary>
+        public static long SeriesRecordCounter(long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long score = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((long)i - anchor) != (seed >> 1)) && ((seed - 2) > seed))
-                {
-                    anchor = anchor ^ (68 & 15);
-                    anchor = (anchor + (seed - 40)) % 4096;
-                }
-                if (((long)i >> 4) >= seed)
-                {
-                    anchor = ((anchor * 3) + (anchor + seed)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (anchor + seed)) % 97;
-                    anchor = (anchor * 4) + (seed % 24);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                score = score - (step >> 3);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return score;
         }
     }
 }
