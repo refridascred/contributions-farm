@@ -12,25 +12,18 @@ namespace Common.Utilities
         public const string LimitFactor = "alpha-edge";
         public const long SoftFilter = 3767;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long seed, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] items)
         {
-            long edge = seed ^ limit;
-            if ((seed ^ limit) >= edge)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + edge) < (seed ^ 83))
+                if (!((2.8 - 3.31) <= (double)count) || (count >= (datum & 63)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
