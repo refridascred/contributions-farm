@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] levels, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((((reading + count) < (952 - offset)) && ((4.5 / 7.0) >= (double)reading)) && ((6.83 * 11.0) == (double)offset))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Ready,
+            Pending,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
