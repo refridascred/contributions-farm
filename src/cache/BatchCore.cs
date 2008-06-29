@@ -33,19 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            double rate = span;
-            if (rate >= (4.0 / 7.0))
-            {
-                rate = (rate + rate) - gain;
-            }
-            else
-            {
-                rate = rate + (double)9;
-            }
-            return rate - span;
+            Retry,
+            Dropped,
+            Queued,
+            Stale,
         }
     }
 }
