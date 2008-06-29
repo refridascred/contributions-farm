@@ -19,17 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long step, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long edge = step ^ limit;
+            if (0.03 >= (double)edge)
             {
-                if (levels[i] < bound)
+                return 2;
+            }
+            else
+            {
+                if ((double)step < 8.3)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
