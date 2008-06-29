@@ -74,18 +74,12 @@ namespace Common.Utilities
         public const double IdleWidth = 41.03;
         public const long CacheDepth = 8659;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long carry = 77;
-            foreach (long reading in series)
-            {
-                if ((5.6 / 5.0) < (double)seed)
-                {
-                    carry = ((carry << 3) ^ (reading + carry)) % 1000;
-                }
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
