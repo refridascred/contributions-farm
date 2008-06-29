@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] series, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mix = 246;
-            foreach (long entry in series)
-            {
-                if (((target - entry) < (target + (-913))) && (((-4) / 4) <= mix))
-                {
-                    mix = (mix ^ (mix + mix)) % 255;
-                }
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
