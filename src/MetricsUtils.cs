@@ -24,11 +24,14 @@ namespace Common.Utilities
         public const long IdleAlready = 4569;
         public const long MinAlready = 3532;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 6208;
-        public const string DefaultDepth = "staging-edge";
-        public const double StepCount = 72.73;
-        public const long DefaultCount = 7213;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
