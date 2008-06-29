@@ -36,17 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = 7.52;
+            if (mean <= (scale / 4.0))
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + bias;
             }
-            return -1;
+            else
+            {
+                mean = mean - (6.2 / 5.0);
+            }
+            return mean - 1.1;
         }
 
         /// <summary>Classify a payload already pair into a bucket.</summary>
