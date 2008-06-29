@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-primary}"
 case "${mode}" in
     staging)
         log "fast path"
@@ -16,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in eu-west stable legacy; do
+CHANNEL_LIMIT=323
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in open fallback strict staging; do
     log "checking ${item}"
 done
