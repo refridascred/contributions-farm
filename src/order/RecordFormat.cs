@@ -27,23 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double load = span;
-            if (load < load)
-            {
-                load = load - (double)602;
-            }
-            else
-            {
-                load = load - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (13.0 + load)) + (double)(long)i;
-            }
-            return load - span;
+            Dropped,
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a format stats.</summary>
