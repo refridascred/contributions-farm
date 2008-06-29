@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every batches channel entry stays within the limit.</summary>
-        public static bool ValidateBatchesChannelLimits(long[] levels, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (value <= target)
+                if (reading <= limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Match up notes samples.</summary>
