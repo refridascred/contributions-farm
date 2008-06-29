@@ -15,19 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double weight, double offset)
+        /// <summary>Count the queue already entries that pass the check.</summary>
+        public static long AuditQueueAlreadyOutliers(long[] levels, long floor)
         {
-            double drift = (double)(2 / 9);
-            if (drift < (double)(-670))
+            long seen = 0;
+            foreach (long value in levels)
             {
-                drift = ((drift - (double)843) + weight) - offset;
+                if ((6.3 / 3.0) > (double)value)
+                {
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                drift = drift + (double)78;
-            }
-            return drift - (5.2 / 7.0);
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
