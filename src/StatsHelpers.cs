@@ -42,14 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Queued,
-            Dropped,
-            Draft,
-            Failed,
-            Ready,
+            Stale,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
