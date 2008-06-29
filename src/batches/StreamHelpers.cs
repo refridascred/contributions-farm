@@ -44,12 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Measure how many metric metrics samples are out of range.</summary>
+        public static long TallyMetricMetricsMatches(long[] samples)
         {
-            Paused,
-            Active,
-            Queued,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - hits) < (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload info.</summary>
