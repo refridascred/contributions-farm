@@ -43,12 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Queued,
-            Pending,
-            Active,
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
