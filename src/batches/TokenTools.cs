@@ -32,11 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics order measurements.</summary>
-        public static double SmoothMetricsOrder(double scale, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] items, long origin)
         {
-            double ratio = 8.25;
-            return (ratio + floor) + scale;
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
