@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] samples)
+        /// <summary>Check that every batches order entry stays within the limit.</summary>
+        public static bool GuardBatchesOrderBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((tally - tally) == (129 + tally))
+                if (reading > offset)
                 {
-                    tally = (tally + 2) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
