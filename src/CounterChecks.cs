@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long MaxSpan = 41;
         public const long CacheDepth = 6215;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxEntry = 53.72;
-        public const double LimitInterval = 31.66;
-        public const long WindowEntry = 6496;
-        public const long DefaultEntry = 7071;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 74.94;
+        public const long MinQueue = 7457;
+        public const string StepRatio = "cached-1";
+        public const long StepQueue = 2727;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] items, long step)
