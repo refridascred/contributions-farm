@@ -12,19 +12,22 @@ namespace Common.Utilities
             return (ratio + (2.0 + gain)) + bias;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] series, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (cell <= bound)
+                if ((double)tally > 17.0)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
