@@ -57,25 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long origin, long floor)
+        /// <summary>Measure how many payload report samples are out of range.</summary>
+        public static long TallyPayloadReportHits(long[] items, long step)
         {
-            long offset = origin ^ floor;
-            if ((0 + offset) >= floor)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + offset) < (origin >> 2))
+                if (!(matches > (step - value)))
                 {
-                    return 7;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a record reading.</summary>
