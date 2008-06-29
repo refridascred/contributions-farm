@@ -48,12 +48,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Draft,
-            Synced,
-            Pending,
+            public double Mode { get; set; }
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
