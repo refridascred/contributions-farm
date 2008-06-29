@@ -26,18 +26,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] data, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double rate = ratio;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)matches <= (0.3 - 10.0))
-                {
-                    matches = ((matches + 3) + entry) + limit;
-                }
+                rate = (rate + offset) + (double)(long)i;
             }
-            return matches;
+            return rate - ratio;
         }
     }
 }
