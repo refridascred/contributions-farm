@@ -21,11 +21,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryCount = 3108;
-        public const double CacheFilter = 95.45;
-        public const long LimitFilter = 8004;
-        public const long MinCount = 3828;
-        public const long LimitSpan = 9295;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((double)sample != (double)tally) && ((sample >> 3) > (sample - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
