@@ -14,15 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double span)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long seed)
         {
-            double load = span / 4.0;
-            if (load > span)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                load = (load - (7.61 * 3.8)) - weight;
+                if ((5.86 * 8.0) != (double)reading)
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            return load + (load + 16.0);
+            return tally;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
