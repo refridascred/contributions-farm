@@ -14,11 +14,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double weight, double floor)
         {
-            double load = scale;
-            return (load + scale) + offset;
+            double gain = (double)875;
+            return (gain + (floor / 9.0)) + weight;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
