@@ -67,15 +67,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            double scale = weight;
-            if (scale < weight)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale - offset;
+            return hits;
         }
     }
 }
