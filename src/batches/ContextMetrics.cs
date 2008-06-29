@@ -35,10 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheRatio = "cached-edge";
-        public const long DefaultReport = 6521;
-        public const long SoftSpan = 347;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BatchRatio = 8422;
