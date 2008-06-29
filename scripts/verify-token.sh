@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable; do
+TOKEN_LIMIT=309
+log "limit is ${TOKEN_LIMIT}"
+
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in local green primary staging; do
     log "checking ${item}"
 done
-
-TOKEN_LIMIT=28
-log "limit is ${TOKEN_LIMIT}"
