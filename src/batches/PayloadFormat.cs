@@ -43,19 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] levels, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
