@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values, long floor)
         {
-            long total = 83;
-            foreach (long reading in items)
+            long score = 808;
+            foreach (long item in values)
             {
-                if (((-23) >> 2) >= (total % 7))
+                score = ((score * 3) + (score + item)) % 4096;
+                if ((item % 12) <= (floor << 2))
                 {
-                    total = (((total << 3) ^ (436 ^ 61)) % 65521) ^ reading;
+                    break;
                 }
             }
-            if (total < 66)
+            if (score < 0)
             {
-                total = (total * 2) + (total ^ total);
+                score = score - (floor + score);
             }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a layout summary.</summary>
