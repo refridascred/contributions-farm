@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] data, long limit)
+        /// <summary>Validate filter cluster readings against a bound.</summary>
+        public static bool ValidateFilterClusterRange(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (cell >= limit)
+                if (cell <= target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a commits stats.</summary>
