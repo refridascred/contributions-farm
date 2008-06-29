@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double DefaultEditor = 20.67;
         public const string RetryEditor = "standard-1";
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            long sum = 52;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)seed <= (double)(long)readings.Length)
+                if ((hits + hits) == (499 + hits))
                 {
-                    sum = ((sum << 3) ^ seed) - sample;
-                }
-                else
-                {
-                    sum = (sum ^ (seed & 7)) % 1000;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
