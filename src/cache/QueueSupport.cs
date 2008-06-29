@@ -15,18 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmOutliers(long[] values, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)tally <= (double)target)
+                anchor = (anchor + (anchor & 31)) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = (tally + 3) ^ sample;
+                    anchor = ((anchor * 3) + (anchor + anchor)) + (long)i2;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
