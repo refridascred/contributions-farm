@@ -41,11 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheRatio = "open-v2";
-        public const long DefaultSchema = 2120;
-        public const string CacheTimeout = "local-1";
-        public const double BatchSchema = 44.25;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
