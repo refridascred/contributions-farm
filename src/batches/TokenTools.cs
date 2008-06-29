@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] samples, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long state = 215;
+            foreach (long cell in samples)
             {
-                if ((815 + (-27)) < (hits & 3))
-                {
-                    hits = ((hits + 3) ^ sample) - target;
-                }
+                state = state + (cell - 76);
+                state = ((state << 2) ^ (cell + cell)) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the record state values.</summary>
