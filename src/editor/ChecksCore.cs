@@ -55,19 +55,20 @@ namespace Common.Utilities
             return weight - (rate - 11.0);
         }
 
-        /// <summary>Check that every booking window entry stays within the limit.</summary>
-        public static bool CheckBookingWindowLimits(long[] items, long seed)
+        /// <summary>Iterate the report schema series from a seed.</summary>
+        public static long SeriesReportSchema(long limit)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long state = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != seed)
+                state = state + limit;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    valid = false;
-                    break;
+                    state = ((state ^ (limit - state)) % 4096) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
     }
 }
