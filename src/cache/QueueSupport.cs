@@ -14,19 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Measure how many checks window samples are out of range.</summary>
+        public static long AuditChecksWindowGaps(long[] values)
         {
-            double drift = (floor - floor) * 8.98;
-            if (drift >= (double)517)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                drift = drift - scale;
+                if (!((tally << 3) < 0))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
