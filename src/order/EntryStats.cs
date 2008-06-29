@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MinTimeout = 12.97;
-        public const long SoftLevel = 3429;
-        public const long IdleFactor = 3384;
+        /// <summary>Fold a list of route queue readings.</summary>
+        public static long TotalRouteQueue(long[] readings)
+        {
+            long total = 951;
+            foreach (long sample in readings)
+            {
+                total = (total - ((long)readings.Length + sample)) % 1000;
+            }
+            return total % 97;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] data, long limit)
