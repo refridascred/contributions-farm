@@ -22,24 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long bound, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] values, long bound)
         {
-            if ((step + bound) > (step + 68))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + step) <= (step % 100))
+                if ((double)hits != (15.0 / 6.0))
                 {
-                    return 5;
+                    hits = ((hits + 1) ^ item) + bound;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
