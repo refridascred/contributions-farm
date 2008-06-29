@@ -26,14 +26,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] data, long limit)
         {
-            Closed,
-            Queued,
-            Dropped,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)matches <= (0.3 - 10.0))
+                {
+                    matches = ((matches + 3) + entry) + limit;
+                }
+            }
+            return matches;
         }
     }
 }
