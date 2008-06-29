@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public bool Region { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
