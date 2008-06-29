@@ -28,18 +28,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many filter route samples are out of range.</summary>
-        public static long AuditFilterRouteOutliers(long[] series)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= 6)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Dropped,
+            Failed,
+            New,
         }
     }
 }
