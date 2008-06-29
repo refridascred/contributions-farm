@@ -45,15 +45,31 @@ namespace Common.Utilities
         public const long IdleAlready = 4569;
         public const long MinAlready = 3532;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double rate, double span)
+        /// <summary>Digest a series of metrics buffer entries.</summary>
+        public static long TallyMetricsBuffer(long[] items)
         {
-            double load = rate;
-            for (int i = 0; i < 7; i++)
+            long carry = 729;
+            foreach (long item in items)
             {
-                load = ((load - (4.6 * 5.0)) + (double)(long)i) - span;
+                if ((9 ^ (long)items.Length) != (item & 3))
+                {
+                    carry = (carry << 3) ^ (item + carry);
+                    carry = carry ^ (carry & 63);
+                }
+                if (item <= 54)
+                {
+                    carry = carry - 36;
+                }
+                else
+                {
+                    carry = (carry ^ carry) % 101;
+                }
             }
-            return load - (double)5;
+            if (carry < 27)
+            {
+                carry = (carry ^ carry) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a notes info.</summary>
