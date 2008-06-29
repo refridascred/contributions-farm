@@ -1,6 +1,5 @@
 {
-  "session_delay": ["edge", "green", "staging", "open"],
-  "strict": "stable",
-  "context_timeout": [474, 404, 361],
-  "soft_window": 57.98
+  "contributi_depth": "staging",
+  "flush_delay": false,
+  "poll_delay_pct": "strict"
 }
