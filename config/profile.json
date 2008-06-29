@@ -1,5 +1,6 @@
 {
-  "retry_size_count": 81.99,
-  "persist": 8.17,
-  "base_interval": 47
+  "batch_delay_s": "strict",
+  "soft_depth_ms": 13,
+  "max_retries_ms": 500,
+  "metrics_window": false
 }
