@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long anchor = 71;
+            foreach (long entry in values)
+            {
+                anchor = (anchor - (entry >> 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of contributi schema readings.</summary>
