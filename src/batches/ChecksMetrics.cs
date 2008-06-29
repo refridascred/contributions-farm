@@ -54,18 +54,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] values)
+        /// <summary>Count the checks cache entries that pass the check.</summary>
+        public static long TallyChecksCacheOutliers(long[] samples)
         {
-            long state = 98;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((97 + 9) <= (state << 3))
+                if ((6.0 / 2.0) < (double)seen)
                 {
-                    state = (state ^ (state << 1)) + datum;
+                    seen = (seen + 2) - item;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
