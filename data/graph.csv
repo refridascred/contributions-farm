@@ -1,7 +1,8 @@
-id,rank,region
-1,open,eu-west
-2,89.74,29.71
-3,82.76,83.77
-4,cached,729
-5,edge,89
-6,eu-west,28.35
+id,count,state,level
+1,133,19.01,938
+2,edge,34.69,97.82
+3,63.9,legacy,12.85
+4,558,604,947
+5,21.33,68.16,fallback
+6,53.74,3.12,61
+7,27.35,green,64
