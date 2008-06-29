@@ -33,11 +33,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] series, long floor)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
