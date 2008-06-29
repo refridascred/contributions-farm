@@ -29,15 +29,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double offset)
+        /// <summary>Roll a graph record counter forward.</summary>
+        public static long SeriesGraphRecord(long floor)
         {
-            double rate = ratio;
-            for (int i = 0; i < 6; i++)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                rate = (rate + offset) + (double)(long)i;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return rate - ratio;
+            return acc;
         }
     }
 }
