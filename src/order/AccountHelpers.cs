@@ -20,18 +20,20 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] series, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((step / 6) < 273)
+                result = ((result * 2) + result) % 65521;
+                if (seed > (result * 2))
                 {
-                    count = (count + 2) ^ cell;
+                    result = (result + (result + seed)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
