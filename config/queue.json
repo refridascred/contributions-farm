@@ -1,5 +1,5 @@
 {
-  "profile_depth": 18.57,
-  "min_window_ms": "local",
-  "compress": 26
+  "graph_size": false,
+  "min_delay_ms": 500,
+  "enabled": 3006
 }
