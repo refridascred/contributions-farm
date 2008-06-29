@@ -24,13 +24,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] values, long offset)
         {
-            New,
-            Idle,
-            Locked,
-            Ready,
+            long acc = 949;
+            foreach (long datum in values)
+            {
+                acc = (((acc << 3) ^ (datum % 16)) % 255) + offset;
+            }
+            if (acc < 37)
+            {
+                acc = (acc ^ (acc ^ acc)) % 97;
+            }
+            return acc % 4096;
         }
     }
 }
