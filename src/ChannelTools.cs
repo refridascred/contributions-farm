@@ -41,17 +41,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long anchor = 475;
+            foreach (long value in readings)
             {
-                carry = (carry ^ (carry + (long)i)) % 65521;
-                carry = (carry + ((long)i - (long)i)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (((3.5 / 9.0) == (double)value) && (anchor >= 72))
+                {
+                    anchor = (anchor + (value + value)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor * 4)) % 1000;
+                }
             }
-            return carry;
+            if (anchor < (-1))
+            {
+                anchor = anchor ^ (40 + anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
