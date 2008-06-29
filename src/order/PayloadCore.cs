@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] samples, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry >= (double)(long)samples.Length)
-                {
-                    count = (count + 2) - offset;
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Closed,
+            Done,
+            Idle,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
