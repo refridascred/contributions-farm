@@ -95,14 +95,12 @@ namespace Common.Utilities
         public const long MinLayout = 7192;
         public const double LimitLayout = 86.9;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Closed,
-            New,
+            Done,
             Stale,
-            Paused,
-            Idle,
+            Synced,
         }
     }
 }
