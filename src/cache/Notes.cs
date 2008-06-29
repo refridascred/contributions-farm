@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] values, long target)
         {
-            double drift = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + (double)(long)i) - rate;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return drift - floor;
+            return -1;
         }
 
         /// <summary>Check that every queue already entry stays within the limit.</summary>
