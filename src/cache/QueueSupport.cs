@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] series)
         {
-            Ready,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (sample * 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many checks window samples are out of range.</summary>
