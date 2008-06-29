@@ -1,7 +1,9 @@
-id,rank,count,weight,token
-1,241,latest,strict,189
-2,188,edge,94.47,local
-3,213,78.66,69.55,59.15
-4,287,local,909,201
-5,staging,235,972,931
-6,83.31,blue,18.85,29.31
+id,owner,score
+1,6.54,14.87
+2,93.39,legacy
+3,659,260
+4,697,stable
+5,legacy,85
+6,527,88.08
+7,stable,92.22
+8,primary,62.07
