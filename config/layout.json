@@ -1,5 +1,12 @@
 {
-  "contributi_depth": "staging",
-  "flush_delay": false,
-  "poll_delay_pct": "strict"
+  "soft_ratio_pct": ["green", "strict"],
+  "flush_size_pct": "standard",
+  "retry_window_pct": {
+    "batch_interval_count": "local",
+    "cache_size_s": true,
+    "dry_run": "primary",
+    "window_timeout": 4041,
+    "hard_limit_s": "standard",
+    "support_ttl": 57.98
+  }
 }
