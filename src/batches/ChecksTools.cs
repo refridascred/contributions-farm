@@ -35,38 +35,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank layout channel input into a small class.</summary>
-        public static long ClassifyLayoutChannel(long target, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((bound <= (-36)) && ((target >> 5) < (755 & 127)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 5) <= (target & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound ^ 484) != (bound + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound >> 3) >= target) && ((7.6 / 3.0) < (double)bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
