@@ -64,18 +64,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter stream samples are out of range.</summary>
-        public static long CountCounterStreamOutliers(long[] readings)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long next = origin + offset;
+            if ((offset < (offset % 97)) || (949 > origin))
             {
-                if ((reading & 127) >= matches)
+                return 1;
+            }
+            else
+            {
+                if (next < (9 - next))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - 9) != (origin ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset - origin) <= (next + 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
