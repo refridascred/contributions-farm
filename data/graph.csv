@@ -1,6 +1,9 @@
-id,label,ratio
-1,61,87
-2,931,2.74
-3,349,977
-4,441,677
-5,203,77.05
+id,label,region,active
+1,517,85.36,735
+2,433,open,strict
+3,55.94,97.37,staging
+4,latest,900,cached
+5,cached,393,blue
+6,blue,477,fallback
+7,92.19,open,eu-west
+8,487,942,90.11
