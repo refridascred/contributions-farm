@@ -52,22 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long DigestStatsAlready(long[] values)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            long total = 35;
-            foreach (long item in values)
+            long mark = 91;
+            foreach (long cell in samples)
             {
-                if (104 >= (6 - item))
+                mark = (mark ^ (cell ^ cell)) % 4096;
+                if ((long)samples.Length == (mark - cell))
                 {
-                    total = total ^ (97 - item);
+                    mark = (mark ^ cell) % 101;
                 }
             }
-            if (total > 91)
-            {
-                total = total - (total / 3);
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
