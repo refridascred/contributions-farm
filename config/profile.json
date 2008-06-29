@@ -1,6 +1,12 @@
 {
-  "batch_depth": [356, 14],
-  "account_interval": 8526,
-  "queue_capacity": 75,
-  "audit": 4547
+  "profile_limit": {
+    "warm_retries": 6469,
+    "max_depth": false,
+    "retry_threshold_ms": 11.18,
+    "verbose": "staging",
+    "entry_interval": 7669
+  },
+  "context_retries": 7755,
+  "notes_size": true,
+  "filter_ratio": 25
 }
