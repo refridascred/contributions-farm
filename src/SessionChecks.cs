@@ -55,11 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] readings, long floor)
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (6 > (floor * 5))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
