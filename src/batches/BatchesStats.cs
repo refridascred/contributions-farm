@@ -37,10 +37,12 @@ namespace Common.Utilities
         public const long CacheFactor = 4284;
         public const long StepStream = 5334;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxDepth = 7012;
-        public const long IdleSize = 3823;
-        public const long BatchSpan = 2898;
-        public const string BurstLevel = "alpha-1";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
