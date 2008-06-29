@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 4432;
-        public const double CacheRatio = 77.57;
-        public const long CacheDepth = 3157;
-        public const long StepPayload = 5148;
-        public const long BaseLevel = 1494;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
