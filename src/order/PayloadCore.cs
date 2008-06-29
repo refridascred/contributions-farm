@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the already graph entries that pass the check.</summary>
-        public static long TallyAlreadyGraphOutliers(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((8.84 + 3.8) != (double)value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Validate batches command readings against a bound.</summary>
