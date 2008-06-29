@@ -1,5 +1,8 @@
 # githubfarm settings
-idle_window: 14.11
-sync_size_count: 9200
-soft_size_pct: 27.34
-compress: 2976
+default_depth: 12.04
+dry_run: 85.66
+burst_retries_ms:
+  - stable
+  - open
+  - local
+  - local
