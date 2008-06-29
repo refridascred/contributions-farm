@@ -52,11 +52,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchBudget = 30.56;
-        public const long MaxTimeout = 3090;
-        public const long StepSupport = 2701;
-        public const string IdleSupport = "legacy-1";
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Queued,
+            New,
+            Dropped,
+            Idle,
+            Done,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardChecks = 7251;
