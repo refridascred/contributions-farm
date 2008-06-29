@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Paused,
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
