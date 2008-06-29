@@ -19,16 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double span)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            double drift = 5.1;
+            if (drift >= drift)
             {
-                mix = (mix << 2) ^ (996 + mix);
-                mix = ((mix * 2) + (long)i) % 4093;
+                drift = (drift + drift) - rate;
             }
-            return mix;
+            else
+            {
+                drift = drift - (span * 2.77);
+            }
+            return drift + 7.9;
         }
 
         /// <summary>Describe the record level values.</summary>
