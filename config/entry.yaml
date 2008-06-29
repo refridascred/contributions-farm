@@ -1,24 +1,10 @@
 # entry settings
-poll_depth_s:
-  profile_retries:
-    - 54
-    - 262
-    - 58
-    - 63
-  min_timeout:
-    batch_threshold_ms: 1167
-    retry_ratio: cached
-    counter_depth: 6633
-  sync_retries_pct: open
-  sync_depth_pct: 17.76
-  base_capacity_ms: 250
-verbose: latest
-compress: cached
-cache_size_s: 5118
-cache_interval_s:
-  graph_ratio: green
-  poll_timeout_s: true
-  soft_timeout_ms: staging
-  verbose: 1
-  retry_delay_count: 636
-  warm_ratio_pct: false
+max_threshold_pct: false
+retry_interval_ms: 30
+verbose:
+  - 351
+  - 225
+  - 365
+  - 398
+min_size_ms: true
+base_limit: staging
