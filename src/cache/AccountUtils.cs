@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long MeasureMetricSessionGaps(long[] samples)
         {
-            long score = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((((matches / 7) < matches) && ((4.6 - 4.67) > (double)sample)) || (25 <= (sample + matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
