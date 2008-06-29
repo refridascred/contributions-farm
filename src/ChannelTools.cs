@@ -16,19 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((double)seen > (2.4 / 9.0))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "open";
+        public const double HardFactor = 28.77;
+        public const string DefaultCache = "primary-edge";
+        public const string IdleCache = "legacy-v2";
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
