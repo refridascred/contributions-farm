@@ -1,8 +1,8 @@
 {
-  "idle_size_s": "primary",
-  "githubfarm_threshold": ["legacy", "strict", "legacy"],
-  "flush_timeout_s": 41.1,
-  "idle_limit": ["legacy", "standard"],
-  "cache_ttl_pct": "eu-west",
-  "base_timeout_s": 29
+  "audit": 6,
+  "base_capacity_s": 500,
+  "burst_retries": "latest",
+  "notes_threshold": 68,
+  "warm_ttl_ms": 100,
+  "session_ttl": 65.33
 }
