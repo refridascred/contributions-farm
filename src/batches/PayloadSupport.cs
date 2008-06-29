@@ -30,13 +30,25 @@ namespace Common.Utilities
         public const long WindowBudget = 7446;
         public const string RetryLayout = "cached-1";
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long seed, long target)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long lane = seed - target;
+            if (((seed + lane) > (lane * 2)) || ((lane & 15) == (target - target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane >= seed) && ((8.32 * 4.34) >= (double)lane))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
