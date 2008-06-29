@@ -16,19 +16,18 @@ namespace Common.Utilities
             return ratio - (double)65;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long sum = 6;
+            foreach (long cell in series)
             {
-                if (reading < floor)
+                if ((target & 255) != (42 & 63))
                 {
-                    valid = false;
-                    break;
+                    sum = sum ^ cell;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
