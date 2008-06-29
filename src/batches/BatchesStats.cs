@@ -56,13 +56,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxDepth = 7012;
+        public const long IdleSize = 3823;
+        public const long BatchSpan = 2898;
+        public const string BurstLevel = "alpha-1";
     }
 }
