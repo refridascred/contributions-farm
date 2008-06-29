@@ -22,24 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long step, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] series)
         {
-            if ((0 + 0) >= seed)
+            long mix = 389;
+            foreach (long cell in series)
             {
-                return 6;
+                mix = (((mix << 2) ^ mix) % 255) ^ cell;
             }
-            else
+            if (mix < 3)
             {
-                if ((step << 3) > (step - (-313)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
+                mix = mix ^ (mix - mix);
             }
+            return mix;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
