@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            if ((4 > (origin / 3)) && (origin < (origin << 3)))
             {
-                if (entry >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((floor << 1) <= origin)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine account contributi values into a single score.</summary>
