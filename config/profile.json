@@ -1,13 +1,6 @@
 {
-  "default_delay_pct": {
-    "hard_threshold_pct": 56.41,
-    "batch_ratio_pct": [403, 91, 93, 450],
-    "min_size": 21,
-    "max_interval_count": true,
-    "enabled": true
-  },
-  "notes_retries": ["fallback", "cached", "fallback"],
-  "hard_limit": 41.66,
-  "checks_limit": "stable",
-  "enabled": false
+  "batches_depth": false,
+  "strict": 96,
+  "audit": 92.61,
+  "hard_delay_count": 33
 }
