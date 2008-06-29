@@ -1,14 +1,14 @@
 {
-  "record_depth": "open",
-  "stats_interval": {
-    "enabled": "blue",
-    "hard_ttl_ms": true,
-    "batch_retries": 1024,
-    "sync_capacity_s": 1024,
-    "soft_limit": true,
-    "warm_depth": "blue"
+  "sync_ttl": 23,
+  "buffer_limit": 1024,
+  "compress": {
+    "readonly": "fallback",
+    "token_delay": false,
+    "cache_limit": "eu-west",
+    "base_limit_ms": 146,
+    "cache_ttl": ["cached", "open", "strict"]
   },
-  "audit": "legacy",
-  "warm_ttl_s": false,
-  "report_limit": ["cached", "primary"]
+  "checks_depth": "eu-west",
+  "poll_threshold_ms": "legacy",
+  "flush_window_count": 54
 }
