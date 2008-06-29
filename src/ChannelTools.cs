@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a profile tools counter forward.</summary>
-        public static long RollProfileTools(long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((origin << 1) <= (seen * 4))
+                {
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
