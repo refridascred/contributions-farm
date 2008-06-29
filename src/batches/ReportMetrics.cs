@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstFactor = 2293;
-        public const long BatchCount = 8333;
-        public const long SoftAccount = 5453;
-        public const long WindowAccount = 2422;
-        public const string MinAccount = "primary-1";
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] values)
+        {
+            long acc = 91;
+            foreach (long reading in values)
+            {
+                if (((double)acc < (4.9 + 5.0)) && ((reading ^ acc) < (acc << 3)))
+                {
+                    acc = (acc << 3) ^ (acc + acc);
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyGaps(long[] values)
