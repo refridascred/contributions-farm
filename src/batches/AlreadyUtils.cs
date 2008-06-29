@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long RetryAlready = 4309;
         public const double CacheLevel = 81.41;
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
