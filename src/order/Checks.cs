@@ -13,18 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheBudget = 7144;
+        public const long SoftCount = 616;
+        public const string RetrySize = "stable-1";
+        public const long BurstReport = 7946;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long PairGithubfarmCount(long[] samples)
