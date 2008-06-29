@@ -63,18 +63,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the checks cache entries that pass the check.</summary>
-        public static long TallyChecksCacheOutliers(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((6.0 / 2.0) < (double)seen)
+                if ((double)hits > 8.66)
                 {
-                    seen = (seen + 2) - item;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine window payload values into a single score.</summary>
