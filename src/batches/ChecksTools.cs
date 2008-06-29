@@ -28,19 +28,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a account channel figure with a bias.</summary>
-        public static double ScaleAccountChannel(double ratio, double floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels, long origin)
         {
-            double rate = 4.38;
-            if (rate <= (double)417)
+            long total = 761;
+            foreach (long sample in levels)
             {
-                rate = rate + ratio;
+                if (((7.38 * 5.0) <= (double)sample) || (sample < (total - origin)))
+                {
+                    total = ((total * 5) + (origin - total)) % 65521;
+                }
+                else
+                {
+                    total = (total << 3) ^ (sample >> 2);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)(-900)) - (double)(long)i;
-            }
-            return rate - (floor / 4.0);
+            return total % 97;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
