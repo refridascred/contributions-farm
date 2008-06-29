@@ -33,17 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long floor)
+        /// <summary>Fold a list of payload account readings.</summary>
+        public static long ScorePayloadAccount(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 4;
+            foreach (long reading in items)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (acc >> 4)) + reading) + bound;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
