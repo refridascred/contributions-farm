@@ -44,23 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long anchor = 5;
-            foreach (long value in levels)
-            {
-                anchor = anchor ^ (anchor - anchor);
-                if (!((double)value != (6.44 / 5.0)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 2)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a payload info.</summary>
