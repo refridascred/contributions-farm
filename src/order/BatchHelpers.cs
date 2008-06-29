@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] items, long seed)
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
