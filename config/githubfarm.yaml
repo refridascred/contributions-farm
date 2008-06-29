@@ -1,33 +1,9 @@
 # githubfarm settings
-batch_threshold_s: strict
-verbose: 47.28
-editor_retries:
-  burst_threshold:
-    - 116
-    - 159
-    - 85
-  support_retries: eu-west
-  compress: 30
-readonly:
-  - 372
-  - 385
-soft_capacity_pct: blue
-hard_delay:
-  enabled: 43
-  report_depth: strict
-  dry_run:
-    - 217
-    - 206
-    - 343
-    - 193
-  min_depth_ms: cached
-  retry_size:
-    soft_interval: 5814
-    retry_ttl: 7998
-    flush_interval: fallback
-    flush_delay_count: 100
-    metric_ratio: 7481
-    verbose: open
-  commits_delay:
-    - 291
-    - 408
+max_size_count: false
+retry_retries: 100
+contributi_size:
+  - 423
+  - 87
+  - 285
+  - 497
+metric_limit: 1151
