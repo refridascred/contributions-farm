@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3725;
-        public const double HardDepth = 27.69;
-        public const string WindowPayload = "cached-1";
-        public const long MinPayload = 7025;
-        public const long IdleRatio = 1784;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Locked,
+            Draft,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Roll a counter notes counter forward.</summary>
         public static long SeriesCounterNotes(long origin)
