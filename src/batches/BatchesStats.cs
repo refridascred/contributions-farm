@@ -55,19 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] readings, long offset)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardInterval = 86.02;
+        public const long MaxAlready = 4637;
+        public const long RetryAlready = 5772;
+        public const double BatchAlready = 34.29;
+        public const long DefaultSize = 4021;
     }
 }
