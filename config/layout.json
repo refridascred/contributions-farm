@@ -1,13 +1,20 @@
 {
-  "batch_timeout": 56,
-  "soft_interval_ms": 59,
-  "route_depth": 64,
-  "cache_capacity_s": {
-    "compress": [187, 18, 276, 347],
-    "verbose": [153, 271],
-    "channel_capacity": "cached",
-    "burst_retries": [231, 117, 496],
-    "layout_threshold": "primary"
+  "burst_interval": 16.84,
+  "stats_ttl": {
+    "verbose": {
+      "default_capacity": 1024,
+      "order_size": "primary",
+      "enabled": "local"
+    },
+    "idle_window": "eu-west",
+    "warm_size": {
+      "persist": 7405,
+      "compress": 94.44,
+      "batch_timeout": "green",
+      "base_retries": 250
+    }
   },
-  "default_interval": 8931
+  "checks_interval": [326, 454, 479],
+  "poll_threshold": false,
+  "cache_timeout_s": false
 }
