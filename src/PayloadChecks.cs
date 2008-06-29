@@ -13,32 +13,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank entry token input into a small class.</summary>
-        public static long GradeEntryToken(long target, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double span)
         {
-            long edge = target ^ offset;
-            if ((double)offset >= (3.0 * 6.78))
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
+                weight = (weight - (6.6 * 16.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((-97) < (target ^ edge))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (edge > 29)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return weight + (span - span);
         }
 
         /// <summary>Combine stream payload values into a single score.</summary>
