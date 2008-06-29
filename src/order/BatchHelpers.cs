@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks githubfarm reading by value.</summary>
-        public static long SeekChecksGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (samples[i] <= floor)
+                if (item >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the order kind values.</summary>
