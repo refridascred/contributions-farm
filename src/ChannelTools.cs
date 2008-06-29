@@ -20,38 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long step)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            if ((9 <= seed) && ((seed + (-88)) != (seed - step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (6 < (step + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed - 270) < step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step >= (step ^ seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Active,
+            Synced,
+            Done,
+            Closed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
