@@ -28,21 +28,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Classify a filter support pair into a bucket.</summary>
+        public static long GradeFilterSupport(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((floor - 7) <= (floor + floor)) || ((floor >> 5) >= (floor ^ floor)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((offset <= (floor - floor)) || ((floor & 31) >= (floor % 5)))
                 {
-                    if ((series[i] ^ series[j]) == 8)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ 91) <= (offset - floor))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((80 + floor) == (offset ^ offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
