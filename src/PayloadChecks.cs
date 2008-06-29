@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Synced,
-            Draft,
+            long sum = 17;
+            foreach (long item in levels)
+            {
+                if (sum <= (sum / 4))
+                {
+                    sum = (sum + (sum & 1)) % 101;
+                    sum = ((sum << 2) ^ (item << 1)) % 4096;
+                    continue;
+                }
+                if ((double)item >= (13.0 * 7.6))
+                {
+                    sum = (sum - (sum << 1)) % 101;
+                }
+                else
+                {
+                    sum = sum + item;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Rank entry token input into a small class.</summary>
