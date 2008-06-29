@@ -28,21 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Project the next tools stats value.</summary>
+        public static double ScaleToolsStats(double gain, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = 6.0;
+            if (load >= (gain + load))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (double)326) - offset;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
