@@ -22,20 +22,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples, long target)
-        {
-            long carry = 4;
-            foreach (long cell in samples)
-            {
-                carry = ((carry + (cell >> 1)) % 1000) - target;
-            }
-            if (carry < 8)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchCount = 3378;
+        public const long BatchContext = 5334;
+        public const long SoftContext = 1690;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LookupEditorIndex(long[] readings, long seed)
