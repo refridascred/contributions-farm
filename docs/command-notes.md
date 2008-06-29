@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Each buffer is validated before it reaches the stream queue.
-Run the stream check before changing any editor limits.
+The commits module keeps window values in sync with the filter cache.
+Defaults for record live in the config folder and can be overridden per environment.
+Use schema settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Document new command fields
-- Review stream limits each release
-- Log every notes change
+- Keep metric values small
+- Log every payload change
+- Document new metric fields
