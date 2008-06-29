@@ -62,10 +62,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 7251;
-        public const long HardDepth = 7418;
-        public const long WindowChecks = 2097;
-        public const long SoftChecks = 3671;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((2.7 + 0.5) != (double)sample)
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
     }
 }
