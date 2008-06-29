@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double ratio, double bias)
         {
-            Queued,
-            New,
-            Pending,
+            double mean = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = ((mean + mean) - (double)(long)i) - bias;
+            }
+            return mean - mean;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
