@@ -1,6 +1,5 @@
 {
-  "enabled": 70,
-  "command_interval": "local",
-  "compress": [391, 285],
-  "base_ratio": 28
+  "enabled": "legacy",
+  "base_depth": "standard",
+  "hard_interval": 62
 }
