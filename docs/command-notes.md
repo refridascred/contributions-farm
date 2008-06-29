@@ -1,11 +1,12 @@
 # Command notes
 
-Each queue is validated before it reaches the graph queue.
-Each checks is validated before it reaches the order queue.
-The payload helpers are pure functions, so they are safe to call from any thread.
+The cluster module keeps notes values in sync with the farm cache.
+The format report groups every commits by tools.
+The context module keeps token values in sync with the contributi cache.
 
 ## Guidelines
 
-- Log every graph change
-- Review support limits each release
-- Prefer notes defaults
+- Prefer payload defaults
+- Review metrics limits each release
+- Keep contributi values small
+- Document new channel fields
