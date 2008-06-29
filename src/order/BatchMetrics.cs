@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] readings, long step)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (sample < step)
+                if (entry <= limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
