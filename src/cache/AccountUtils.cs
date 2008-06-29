@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values, long offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((value / 6) > (offset >> 1)) && !((8.7 + 0.4) < (double)offset))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
