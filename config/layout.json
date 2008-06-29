@@ -1,7 +1,8 @@
 {
-  "sync_depth": 100,
-  "notes_ttl": 86.92,
-  "sync_ratio_s": [332, 126],
-  "audit": 47,
-  "idle_size_ms": 60
+  "idle_size_s": "primary",
+  "githubfarm_threshold": ["legacy", "strict", "legacy"],
+  "flush_timeout_s": 41.1,
+  "idle_limit": ["legacy", "standard"],
+  "cache_ttl_pct": "eu-west",
+  "base_timeout_s": 29
 }
