@@ -12,16 +12,19 @@ namespace Common.Utilities
         public const long CacheSpan = 7855;
         public const string DefaultFilter = "alpha-edge";
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double bias)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            double drift = (3.0 - scale) + bias;
+            if (drift >= (double)84)
             {
-                state = state ^ (863 >> 5);
-                state = ((state * 4) + (long)i) % 1000;
+                drift = drift + (bias + bias);
             }
-            return state;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - bias;
         }
 
         /// <summary>Match up context samples.</summary>
