@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] levels, long target)
         {
-            long mix = 491;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix << 3) ^ (mix & 31)) % 255) + cell;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
