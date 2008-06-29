@@ -26,21 +26,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry - (59 << 1)) % 65521;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
     }
 }
