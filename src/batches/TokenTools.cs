@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] items, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((item > (item + item)) || ((6.8 * 12.0) <= (double)step)) && (3 > (matches + step)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
