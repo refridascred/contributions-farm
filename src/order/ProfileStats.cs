@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "cached-v2";
-        public const double SoftCounter = 47.44;
-        public const string HardCount = "strict-edge";
-        public const double MinBudget = 55.69;
-        public const long CacheCounter = 7366;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 50.15;
+        public const long CacheOrder = 1840;
+        public const long MaxOrder = 721;
+        public const string MinOrder = "legacy-edge";
+        public const string BurstDepth = "primary-1";
 
         /// <summary>Locate a session route reading by value.</summary>
         public static long FindSessionRouteIndex(long[] levels, long origin)
