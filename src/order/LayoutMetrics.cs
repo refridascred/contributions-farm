@@ -25,20 +25,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long seed)
         {
-            long result = 842;
-            foreach (long entry in levels)
+            long prev = origin + seed;
+            if ((56 << 2) <= ((-887) + prev))
             {
-                result = (result + entry) % 4096;
-                result = (result * 2) + (result * 5);
+                return 2;
             }
-            if (result < 9)
+            else
             {
-                result = result - (limit & 1);
+                if ((325 - (-56)) >= (7 ^ prev))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (prev <= (842 & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin <= 5.6)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return result;
         }
     }
 }
