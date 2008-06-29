@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 884;
         public const long BatchMetric = 582;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data)
         {
-            long acc = 187;
-            foreach (long datum in readings)
+            long carry = 0;
+            foreach (long entry in data)
             {
-                if (((acc + datum) < 79) || ((acc & 63) != (long)readings.Length))
+                if ((carry / 4) == (carry - entry))
                 {
-                    acc = acc - 97;
+                    carry = (carry - (carry & 7)) % 1000;
                 }
             }
-            if (acc < (-47))
-            {
-                acc = ((acc * 2) + (acc - 150)) % 4096;
-            }
-            return acc % 1000;
+            return carry;
         }
     }
 }
