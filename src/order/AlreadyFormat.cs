@@ -19,10 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryInterval = 42.87;
-        public const double MinSpan = 74.21;
-        public const long BurstFilter = 3721;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Failed,
+            Pending,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] data)
