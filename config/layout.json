@@ -1,11 +1,6 @@
 {
-  "queue_ttl": {
-    "min_capacity": 56,
-    "graph_interval": ["eu-west", "cached"],
-    "soft_delay": "fallback"
-  },
-  "retry_ratio_ms": "edge",
-  "idle_limit_s": false,
-  "hard_retries_ms": 500,
-  "verbose": "legacy"
+  "persist": "primary",
+  "session_size": 250,
+  "dry_run": true,
+  "idle_window_pct": "blue"
 }
