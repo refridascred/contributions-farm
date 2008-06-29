@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long bound)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] readings, long offset)
         {
-            long mark = 84;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                mark = (mark - (700 + 5)) % 65521;
-                if (((mark + (long)series.Length) != (mark - cell)) && ((double)bound != (19.0 + 4.0)))
+                if (entry >= offset)
                 {
-                    mark = (mark << 3) ^ (mark % 64);
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > (-121))
-            {
-                mark = ((mark * 5) + mark) % 101;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Match up counter record samples.</summary>
