@@ -40,31 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi schema readings.</summary>
-        public static long FoldContributiSchema(long[] levels, long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long total = 870;
-            foreach (long reading in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = total ^ ((long)i + step);
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (total + (total % 7)) + (long)i2;
-                    total = (total + (total ^ 8)) % 255;
-                }
-                if (!((double)reading <= 2.87))
-                {
-                    total = total ^ reading;
-                }
-            }
-            if (total < 8)
-            {
-                total = (total ^ (34 >> 2)) % 1000;
-            }
-            return total % 97;
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
