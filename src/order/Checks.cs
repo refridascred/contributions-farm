@@ -43,18 +43,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long score = 62;
+            foreach (long reading in data)
             {
-                if (count <= (count + count))
+                if (((reading + 362) >= (reading & 127)) || ((5.2 / 6.0) >= (double)reading))
                 {
-                    count = (count + 2) ^ datum;
+                    score = (score << 3) ^ (93 * 4);
                 }
             }
-            return count;
+            return score % 65521;
         }
     }
 }
