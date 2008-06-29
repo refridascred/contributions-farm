@@ -37,19 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double scale = (double)(0 / 2);
-            if (scale >= (span * 6.0))
-            {
-                scale = scale - (double)125;
-            }
-            else
-            {
-                scale = scale - weight;
-            }
-            return scale - (double)84;
+            Stale,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the schema class values.</summary>
