@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 57.3;
-        public const double HardSpan = 8.14;
-        public const string CacheSpan = "standard-1";
-        public const long BurstLevel = 7585;
-        public const long MinMetric = 9978;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            New,
+            Active,
+            Failed,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long WeighLayout(long[] series)
