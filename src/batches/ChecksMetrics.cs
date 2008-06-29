@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] samples, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target & 3) >= (long)samples.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
