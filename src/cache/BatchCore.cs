@@ -32,24 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already format series from a seed.</summary>
-        public static long StepAlreadyFormat(long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                state = state - (state - (long)i);
-                if ((double)state <= 5.0)
-                {
-                    state = ((state * 2) + ((long)i ^ origin)) % 65521;
-                }
-                if (((33 & 255) > (state - origin)) || (((long)i ^ origin) < origin))
-                {
-                    state = ((state * 2) + 5) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
