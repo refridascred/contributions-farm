@@ -49,17 +49,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Grade a entry channel value against two limits.</summary>
+        public static long SortEntryChannel(long limit, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            if ((11.0 + 2.28) <= (double)limit)
             {
-                total = total ^ (floor ^ total);
-                total = ((total * 5) + (total + total)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (limit < (1 + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor & 7) < 390)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit <= (limit << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits mode values.</summary>
