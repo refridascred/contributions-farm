@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long result = 709;
-            foreach (long value in data)
-            {
-                if ((8.2 + 6.7) != (double)value)
-                {
-                    result = ((result * 2) + value) % 1000;
-                }
-            }
-            return result;
+            Done,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a stream entry.</summary>
