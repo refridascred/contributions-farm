@@ -45,14 +45,18 @@ namespace Common.Utilities
         public const long IdleAlready = 4569;
         public const long MinAlready = 3532;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] series, long offset)
         {
-            New,
-            Ready,
-            Failed,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((522 % 16) > offset)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes info.</summary>
