@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] samples, long limit)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
