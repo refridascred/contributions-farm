@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long TallyOrderEditorGaps(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((acc >> 5) != (acc & 127))
+                if ((reading + reading) > (matches + matches))
                 {
-                    acc = (acc * 5) + (acc & 7);
+                    matches = matches + 2;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the buffer class values.</summary>
