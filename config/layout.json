@@ -1,14 +1,13 @@
 {
-  "cache_retries_s": "green",
-  "audit": "legacy",
-  "counter_timeout": "stable",
-  "sync_ttl_pct": "blue",
-  "base_retries_count": "latest",
-  "max_ttl": {
-    "route_window": 62.76,
-    "cache_depth_s": 2.26,
-    "already_ttl": 9007,
-    "batch_limit_count": 250,
-    "window_retries": 58.59
-  }
+  "dry_run": ["open", "green", "edge"],
+  "queue_threshold": {
+    "warm_limit_count": "fallback",
+    "farm_threshold": 64,
+    "default_depth_count": 21.48,
+    "sync_interval_ms": ["staging", "green"],
+    "order_window": false,
+    "idle_retries_ms": ["edge", "cached", "local"]
+  },
+  "tools_threshold": 11.99,
+  "idle_window_ms": false
 }
