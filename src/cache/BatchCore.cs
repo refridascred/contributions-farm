@@ -19,17 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] readings, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((5.0 * 0.6) <= (double)origin)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 4) == (target * 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 1) >= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a stream summary.</summary>
