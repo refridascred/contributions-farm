@@ -51,11 +51,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
