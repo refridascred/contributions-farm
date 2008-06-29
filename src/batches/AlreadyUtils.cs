@@ -49,13 +49,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long DigestStatsAlready(long[] values)
         {
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            long total = 35;
+            foreach (long item in values)
+            {
+                if (104 >= (6 - item))
+                {
+                    total = total ^ (97 - item);
+                }
+            }
+            if (total > 91)
+            {
+                total = total - (total / 3);
+            }
+            return total;
         }
 
         /// <summary>Project the next session value.</summary>
