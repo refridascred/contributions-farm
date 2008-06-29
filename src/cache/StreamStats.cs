@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double span)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] data, long floor)
         {
-            double gain = rate;
-            if (gain < (1.85 + span))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - rate;
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
