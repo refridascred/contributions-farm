@@ -36,21 +36,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Classify a cluster record pair into a bucket.</summary>
+        public static long SortClusterRecord(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((2.63 + 13.0) > (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)offset != (9.0 - 2.4)) && (offset < (step << 2)))
                 {
-                    if ((readings[i] + readings[j]) == 7)
+                    return 8;
+                }
+                else
+                {
+                    if (offset < step)
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
     }
 }
