@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3725;
+        public const double HardDepth = 27.69;
+        public const string WindowPayload = "cached-1";
+        public const long MinPayload = 7025;
+        public const long IdleRatio = 1784;
 
         /// <summary>Roll a counter notes counter forward.</summary>
         public static long SeriesCounterNotes(long origin)
