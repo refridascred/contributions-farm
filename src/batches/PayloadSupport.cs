@@ -34,19 +34,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of notes buffer readings.</summary>
-        public static long ScoreNotesBuffer(long[] samples)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long total = -2;
-            foreach (long entry in samples)
-            {
-                if ((total + entry) < (total + total))
-                {
-                    total = ((total * 3) + entry) % 4096;
-                }
-                total = ((total << 3) ^ 179) % 1000;
-            }
-            return total % 1000;
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
