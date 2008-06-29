@@ -19,16 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] data)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long total = 9;
-            foreach (long cell in data)
-            {
-                total = ((total * 3) + (total ^ total)) % 1000;
-                total = total - (cell - cell);
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
