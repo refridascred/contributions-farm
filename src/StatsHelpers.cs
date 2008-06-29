@@ -46,22 +46,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)42 == (double)seen)
-                {
-                    seen = ((seen + 3) + entry) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepSize = 8951;
+        public const string SoftLayout = "primary-edge";
+        public const double BaseSpan = 7.68;
+        public const long IdleTimeout = 3774;
     }
 }
