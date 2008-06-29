@@ -30,17 +30,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] samples, long bound)
+        /// <summary>Iterate the token payload series from a seed.</summary>
+        public static long StepTokenPayload(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
     }
 }
