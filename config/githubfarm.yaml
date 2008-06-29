@@ -1,8 +1,11 @@
 # githubfarm settings
-tools_depth: 1.74
-retry_ratio: 500
-sync_retries:
-  - open
-  - open
-  - cached
-flush_delay_ms: 66
+payload_ttl: cached
+enabled: local
+session_delay: staging
+warm_delay_s: 47.44
+filter_depth: 250
+channel_ratio:
+  - 476
+  - 469
+  - 474
+  - 30
