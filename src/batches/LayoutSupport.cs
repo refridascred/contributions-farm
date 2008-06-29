@@ -40,12 +40,25 @@ namespace Common.Utilities
         public const double RetryDepth = 91.08;
         public const string MinBuffer = "cached-edge";
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long limit, long bound)
         {
-            Locked,
-            Failed,
-            Ready,
+            long gap = limit + bound;
+            if ((17.0 + 9.27) <= (double)gap)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7 <= (gap + bound)) || ((bound + bound) != (68 >> 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
