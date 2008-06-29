@@ -12,27 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a tools token counter forward.</summary>
-        public static long SeriesToolsToken(long floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((floor * 2) < (mark + mark)))
+                if (!((floor & 1) == (long)i))
                 {
-                    mark = (mark + (floor & 255)) % 4096;
+                    score = score - (score + 267);
                 }
-                if (!((long)i == ((long)i - floor)))
-                {
-                    mark = mark - (long)i;
-                }
-                else
-                {
-                    mark = (mark * 5) + (floor + mark);
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a stream summary.</summary>
