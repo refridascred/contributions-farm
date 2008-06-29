@@ -28,12 +28,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 4956;
-        public const string SoftStream = "local-1";
-        public const long HardLevel = 2639;
-        public const double BatchStream = 85.88;
-        public const long BurstTimeout = 9531;
+        /// <summary>Combine format route values into a single score.</summary>
+        public static long ScoreFormatRoute(long[] data, long seed)
+        {
+            long carry = 61;
+            foreach (long item in data)
+            {
+                carry = ((carry - (item & 31)) % 97) + seed;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool GuardFarmLimits(long[] series, long limit)
