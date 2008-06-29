@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] >= seed)
                 {
-                    if ((data[i] ^ data[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many batches profile samples are out of range.</summary>
