@@ -60,15 +60,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double ratio, double bias)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double mean = (double)((-3) + 500);
-            if (mean <= (bias * 4.13))
-            {
-                mean = mean - (bias / 4.0);
-            }
-            return mean + ratio;
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
