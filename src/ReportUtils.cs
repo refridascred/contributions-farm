@@ -54,12 +54,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Done,
-            New,
-            Active,
+            public bool Label { get; set; }
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
