@@ -14,18 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many batches profile samples are out of range.</summary>
-        public static long AuditBatchesProfileOutliers(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (((2.9 + 10.0) == (double)hits) && (cell < (hits % 2)))
+                if (value >= floor)
                 {
-                    hits = hits + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Fold a list of support readings.</summary>
