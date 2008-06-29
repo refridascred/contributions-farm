@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            New,
-            Queued,
-            Locked,
-            Ready,
-            Active,
+            long anchor = 537;
+            foreach (long datum in series)
+            {
+                if (((double)anchor != (double)datum) && ((double)datum != (9.6 * 14.0)))
+                {
+                    anchor = (anchor * 3) + 70;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
