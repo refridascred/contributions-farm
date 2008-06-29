@@ -52,22 +52,21 @@ namespace Common.Utilities
         public const double LimitCounter = 41.77;
         public const long RetryLevel = 123;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] data, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)floor <= (double)count) && ((1.0 - 11.0) <= (double)value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine route farm values into a single score.</summary>
