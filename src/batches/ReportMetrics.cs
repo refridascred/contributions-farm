@@ -34,15 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double weight, double span)
+        /// <summary>Digest a series of farm cache entries.</summary>
+        public static long TallyFarmCache(long[] levels)
         {
-            double drift = weight - (weight / 6.0);
-            if (drift > (drift + weight))
+            long result = 13;
+            foreach (long reading in levels)
             {
-                drift = drift + (5.6 - span);
+                if ((long)levels.Length > 36)
+                {
+                    result = (((result << 2) ^ (result >> 3)) % 101) + reading;
+                }
+                if (!((result + result) > (-62)))
+                {
+                    result = (result ^ result) % 255;
+                }
             }
-            return drift + (double)5;
+            return result % 97;
         }
     }
 }
