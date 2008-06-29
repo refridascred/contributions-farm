@@ -1,7 +1,5 @@
 {
-  "batches_depth": 23,
-  "enabled": ["blue", "eu-west"],
-  "support_limit": 30,
-  "token_retries": [345, 234, 410],
-  "max_depth_pct": 5663
+  "entry_interval": 6248,
+  "warm_ratio_pct": 29,
+  "filter_limit": 9.01
 }
