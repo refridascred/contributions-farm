@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] items, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (sample != target)
+                if (entry >= (origin + entry))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Accumulate stats already samples.</summary>
