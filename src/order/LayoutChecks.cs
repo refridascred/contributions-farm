@@ -16,19 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)target > (4.76 * 10.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetryWidth = 81.94;
+        public const long SoftSchema = 3731;
+        public const string DefaultRatio = "local-1";
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] readings, long seed)
