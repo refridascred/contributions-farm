@@ -65,12 +65,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Adjust a channel stream reading.</summary>
+        public static double AdjustChannelStream(double weight, double offset)
         {
-            Failed,
-            Stale,
-            Synced,
+            double ratio = weight + (double)8;
+            if (ratio >= ratio)
+            {
+                ratio = (ratio + weight) - offset;
+            }
+            return ratio - (double)452;
         }
     }
 }
