@@ -50,19 +50,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate format contributi readings against a bound.</summary>
-        public static bool CheckFormatContributiRange(long[] readings, long floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the order commits entries that pass the check.</summary>
