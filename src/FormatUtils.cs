@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long sum = 69;
+            foreach (long cell in items)
+            {
+                sum = (sum << 3) ^ (sum + cell);
+                sum = ((sum << 2) ^ (cell & 63)) % 97;
+            }
+            if (sum > 6)
+            {
+                sum = sum + (sum >> 4);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit order editor readings against a rule.</summary>
