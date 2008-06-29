@@ -62,18 +62,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell > 3) || ((cell + matches) < 690))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
