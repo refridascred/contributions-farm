@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (reading != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
