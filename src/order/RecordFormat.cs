@@ -28,19 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mark = 83;
-            foreach (long cell in items)
-            {
-                mark = ((mark * 2) + (cell >> 3)) % 97;
-                if (cell < 3)
-                {
-                    break;
-                }
-            }
-            return mark;
+            Retry,
+            Locked,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a format stats.</summary>
