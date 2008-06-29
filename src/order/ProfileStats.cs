@@ -19,18 +19,26 @@ namespace Common.Utilities
         public const long BurstStats = 3257;
         public const long CacheStats = 7999;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = -8;
+            foreach (long datum in values)
             {
-                if ((((2.69 / 8.0) >= (double)cell) || ((hits / 6) < hits)) && ((hits >= (cell * 4)) && ((double)cell <= (double)hits)))
+                if ((carry + carry) > (datum & 255))
                 {
-                    hits = hits + 3;
+                    carry = ((carry << 2) ^ (floor & 7)) % 101;
+                }
+                if (((6.87 - 2.0) <= (double)carry) && ((42 + floor) <= (97 / 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < (-826))
+            {
+                carry = carry + carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
