@@ -51,15 +51,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] data, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long limit)
         {
-            long mix = 8;
-            foreach (long sample in data)
+            if ((limit + seed) >= limit)
             {
-                mix = ((mix - (mix ^ bound)) % 97) - sample;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (seed >= (seed ^ seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the editor level values.</summary>
