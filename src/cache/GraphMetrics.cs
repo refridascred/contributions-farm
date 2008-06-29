@@ -50,31 +50,12 @@ namespace Common.Utilities
         public const string BatchToken = "primary-edge";
         public const long WindowToken = 8672;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long limit, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((limit & 127) != (404 % 24))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor <= 14.0) || ((2.91 * 13.0) != (double)floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit / 6) > (limit % 8)) && ((16.0 - 9.06) < (double)limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
