@@ -49,10 +49,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseInterval = 7157;
-        public const double WindowSize = 72.75;
-        public const long RetryNotes = 7146;
+        /// <summary>Classify a payload already pair into a bucket.</summary>
+        public static long SortPayloadAlready(long target, long origin)
+        {
+            long delta = target ^ origin;
+            if ((delta >> 3) != (target % 24))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((delta + delta) < (origin / 6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((delta + target) < (origin - delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - target) <= origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
