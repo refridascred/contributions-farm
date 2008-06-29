@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 8912;
-        public const double MaxFactor = 8.41;
-        public const double CacheWidth = 29.75;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double gain, double bias)
+        {
+            double gain2 = (double)(99 << 3);
+            return ((gain2 - (double)9) + gain) + bias;
+        }
 
         /// <summary>Grade a session window value against two limits.</summary>
         public static long GradeSessionWindow(long offset, long target)
