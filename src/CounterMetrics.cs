@@ -19,10 +19,25 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseDepth = 5487;
-        public const long MaxTimeout = 2571;
-        public const string WindowContributi = "fallback-edge";
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long seed, long step)
+        {
+            if ((step - seed) <= seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((16.0 / 3.0) < (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] series)
