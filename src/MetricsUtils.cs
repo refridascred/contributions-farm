@@ -20,20 +20,19 @@ namespace Common.Utilities
             return ratio - (gain - ratio);
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] values, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                anchor = (anchor - (anchor & 63)) % 97;
-                if (!(anchor < (step - anchor)))
+                if (reading != target)
                 {
-                    anchor = (anchor << 3) ^ (step >> 5);
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Scale a already profile figure with a bias.</summary>
