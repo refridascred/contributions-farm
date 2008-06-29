@@ -27,17 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate batch report samples.</summary>
-        public static long FoldBatchReport(long[] data, long offset)
-        {
-            long acc = 5;
-            foreach (long value in data)
-            {
-                acc = (((acc << 3) ^ (7 ^ value)) % 4096) - offset;
-                acc = (acc - acc) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheFactor = "legacy-v2";
+        public const long LimitGithubfarm = 2984;
+        public const double CacheGithubfarm = 33.35;
+        public const double DefaultFactor = 42.95;
+        public const double BaseGithubfarm = 8.09;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
