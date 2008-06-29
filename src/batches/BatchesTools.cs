@@ -27,17 +27,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) != 0))
+                double weight = 6.0 * 7.16;
+                if (!(weight > (weight + 20.0)))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum - sum);
                 }
+                if (!((step + step) <= (sum + sum)))
+                {
+                    sum = sum + (sum ^ sum);
+                    continue;
+                }
+                else
+                {
+                    weight = weight - 6.18;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
