@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] samples)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long step, long seed)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((double)step < (2.0 - 8.25))
             {
-                if (seen < ((-189) + seen))
+                return 5;
+            }
+            else
+            {
+                if (((double)step <= (double)seed) && ((seed * 3) < 94))
                 {
-                    seen = (seen + 1) - sample;
+                    return 7;
+                }
+                else
+                {
+                    if (!(seed >= (step + 293)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
