@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double ratio = (double)(-110) * 19.0;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio - ratio) + (double)(long)i) + bias;
-            }
-            return ratio + (floor - floor);
+            Done,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
