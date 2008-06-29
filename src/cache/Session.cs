@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] levels, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double bias = (double)65 / 3.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seed < (double)reading)
-                {
-                    matches = matches + 1;
-                }
+                bias = ((bias - bias) + (double)(long)i) + span;
             }
-            return matches;
+            return bias + rate;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
