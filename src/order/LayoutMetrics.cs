@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string MinWidth = "legacy";
         public const long BurstFactor = 4360;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] data, long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            double weight = gain + offset;
+            if (weight < weight)
             {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight + gain;
             }
-            return ok;
+            return weight - (1.0 * 5.33);
         }
 
         /// <summary>Hold a batches stats.</summary>
