@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 7125;
-        public const string MaxMetric = "alpha-edge";
-        public const string LimitBudget = "strict-1";
-        public const double WindowSize = 8.16;
-        public const long DefaultInterval = 2985;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum << 3) ^ ((long)i >> 2)) % 1000;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Audit farm record readings against a rule.</summary>
         public static long CountFarmRecordMatches(long[] items)
