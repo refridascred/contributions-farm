@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double span)
-        {
-            double weight = ratio;
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (double)(long)i) - span;
-            }
-            return weight + (double)508;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitScore = 29.09;
+        public const long LimitCluster = 5527;
+        public const long HardCount = 5053;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryOutliers(long[] series)
