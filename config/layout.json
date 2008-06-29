@@ -1,7 +1,22 @@
 {
-  "base_limit": 3163,
-  "already_limit": false,
-  "min_window_pct": 8312,
-  "enabled": 48.77,
-  "max_ratio_pct": "standard"
+  "profile_interval": "legacy",
+  "persist": {
+    "poll_timeout_pct": 60,
+    "warm_ratio_ms": false,
+    "base_ratio": 21.2,
+    "profile_interval": {
+      "batches_delay": "eu-west",
+      "order_timeout": "local",
+      "flush_threshold": 45.17,
+      "soft_size_ms": 6689,
+      "hard_capacity": 67.37,
+      "default_size_count": 100
+    },
+    "window_size": 37,
+    "persist": 60
+  },
+  "session_delay": "fallback",
+  "idle_delay_ms": 9853,
+  "window_window": 73.98,
+  "min_timeout_ms": 3.84
 }
