@@ -60,19 +60,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of window checks readings.</summary>
-        public static long TallyWindowChecks(long[] data, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long mark = 236;
-            foreach (long cell in data)
-            {
-                mark = ((mark << 2) ^ (mark * 5)) + cell;
-            }
-            if (mark < 33)
-            {
-                mark = (mark * 2) + (target & 15);
-            }
-            return mark % 1000;
+            Closed,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
