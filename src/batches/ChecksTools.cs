@@ -47,12 +47,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Failed,
-            Stale,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleDepth = "staging-v2";
+        public const string BaseDepth = "stable-edge";
+        public const long BaseStats = 2177;
     }
 }
