@@ -16,21 +16,16 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Match up session cache samples.</summary>
-        public static long PairSessionCacheCount(long[] readings)
+        /// <summary>Derive the next cache window value from a seed.</summary>
+        public static long RollCacheWindow(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 5) + (limit >> 5)) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
