@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Done,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 3483;
+        public const long RetryBuffer = 1504;
+        public const long LimitBuffer = 7026;
+        public const string IdleBuffer = "legacy";
+        public const long DefaultBuffer = 9208;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
