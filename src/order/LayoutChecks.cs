@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            long score = 338;
-            foreach (long cell in values)
-            {
-                if ((cell * 2) < score)
-                {
-                    score = score + ((long)values.Length ^ cell);
-                }
-            }
-            return score % 65521;
+            double bias2 = ratio / 9.0;
+            return (bias2 + ratio) + bias;
         }
 
         /// <summary>Hold a context summary.</summary>
