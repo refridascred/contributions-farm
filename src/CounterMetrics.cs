@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long total = 499;
-            foreach (long reading in items)
-            {
-                if ((reading <= (total + (-8))) || ((double)total < (8.73 / 4.0)))
-                {
-                    total = (total - 436) % 1000;
-                }
-            }
-            return total % 97;
+            New,
+            Queued,
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
