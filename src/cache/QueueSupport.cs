@@ -30,12 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Stale,
-            Failed,
-            Dropped,
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
