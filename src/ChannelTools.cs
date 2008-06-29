@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items, long seed)
         {
-            long anchor = 55;
-            foreach (long value in values)
+            long sum = 18;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + value) % 1000;
-                if ((anchor - 9) < (anchor << 2))
+                if ((2 % 16) >= (sum & 7))
                 {
-                    break;
+                    sum = ((sum << 2) ^ (seed << 2)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + datum)) % 101;
                 }
             }
-            return anchor;
+            return sum % 97;
         }
 
         /// <summary>Describe the channel phase values.</summary>
