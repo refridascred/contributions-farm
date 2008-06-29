@@ -29,11 +29,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowFactor = "primary-1";
-        public const long DefaultWindow = 7620;
-        public const string MinWindow = "cached-v2";
-        public const double RetryLevel = 63.43;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 28.06;
+        public const long BurstCommits = 5150;
+        public const long BurstWidth = 9534;
+        public const long WindowCommits = 3851;
+        public const double LimitCommits = 18.71;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] values, long origin)
