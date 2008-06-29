@@ -28,13 +28,39 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long offset, long seed)
         {
-            Ready,
-            Active,
-            Failed,
-            Idle,
+            long bound = offset - seed;
+            if (!((7.0 / 9.0) <= (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound < (3 % 12))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + seed) < (87 & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset == (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
