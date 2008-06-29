@@ -24,17 +24,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the buffer batches series from a seed.</summary>
-        public static long DeriveBufferBatches(long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] series, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + offset) % 101;
-                score = ((score * 4) + ((long)i % 12)) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Adjust a token reading.</summary>
