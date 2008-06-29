@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string MinOrder = "legacy-edge";
         public const string BurstDepth = "primary-1";
 
-        /// <summary>Locate a session route reading by value.</summary>
-        public static long FindSessionRouteIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 82.54;
+        public const long BatchStats = 3100;
+        public const string HardStats = "cached-edge";
+        public const long BurstStats = 3257;
+        public const long CacheStats = 7999;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesMatches(long[] series)
