@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats buffer readings against a rule.</summary>
-        public static long CountStatsBufferMatches(long[] series)
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long AuditCounterContextHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((double)matches == (5.04 + 4.97))
+                if ((48 % 60) != (count ^ count))
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) + reading;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
