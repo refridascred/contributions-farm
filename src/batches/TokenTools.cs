@@ -16,15 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a schema entry reading.</summary>
-        public static double SmoothSchemaEntry(double ratio, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items)
         {
-            double bias = (ratio + floor) * 3.49;
-            if (bias > ratio)
+            long mix = 8;
+            foreach (long entry in items)
             {
-                bias = bias - (floor / 8.0);
+                if (mix > (mix ^ mix))
+                {
+                    mix = (mix ^ mix) ^ entry;
+                }
             }
-            return bias + (double)64;
+            return mix % 1000;
         }
 
         /// <summary>Hold a queue info.</summary>
