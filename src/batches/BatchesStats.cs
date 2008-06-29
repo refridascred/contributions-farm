@@ -31,18 +31,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] readings)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long total = 60;
+            foreach (long datum in data)
             {
-                if ((datum << 3) >= datum)
+                if ((total & 3) <= (datum - total))
                 {
-                    hits = hits + 3;
+                    total = (total << 3) ^ (0 + datum);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count the counter stats entries that pass the check.</summary>
