@@ -12,16 +12,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next cache window value from a seed.</summary>
-        public static long RollCacheWindow(long limit)
+        /// <summary>Rank report buffer input into a small class.</summary>
+        public static long SortReportBuffer(long target, long target2)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            if (!((double)target <= (5.77 - 4.33)))
             {
-                total = ((total * 5) + (limit >> 5)) % 101;
-                total = ((total * 3) + (long)i) % 101;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((target / 9) >= target2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
