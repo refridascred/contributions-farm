@@ -1,9 +1,7 @@
 # entry settings
-flush_size_count: 60
-burst_size_count: 100
-compress:
-  - edge
-  - local
-stream_threshold: true
-cache_capacity_s: 96
-soft_retries_ms: fallback
+command_ratio: latest
+readonly: 5355
+record_retries: local
+min_size_count: 90.93
+token_size: 69.92
+verbose: latest
