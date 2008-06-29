@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of stream schema entries.</summary>
-        public static long ScoreStreamSchema(long[] readings, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long carry = 80;
-            foreach (long item in readings)
-            {
-                carry = (((carry << 2) ^ (0 & 7)) % 101) - seed;
-                carry = (carry + carry) % 101;
-                carry = carry - (item % 7);
-            }
-            if (carry < 32)
-            {
-                carry = ((carry * 3) + carry) % 1000;
-            }
-            return carry % 97;
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
