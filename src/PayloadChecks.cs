@@ -48,12 +48,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series, long limit)
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            long score = 868;
+            foreach (long datum in series)
+            {
+                if ((limit ^ datum) >= 902)
+                {
+                    score = ((score << 2) ^ (datum - datum)) % 97;
+                }
+            }
+            if (score < 208)
+            {
+                score = score ^ limit;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
