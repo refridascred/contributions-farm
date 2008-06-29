@@ -77,9 +77,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheWidth = 6137;
-        public const long MaxCounter = 4303;
-        public const double WindowCounter = 18.91;
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Draft,
+            New,
+            Synced,
+            Ready,
+            Failed,
+        }
     }
 }
