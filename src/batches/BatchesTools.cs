@@ -25,14 +25,11 @@ namespace Common.Utilities
         public const long BaseCount = 2287;
         public const long StepStats = 7730;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Locked,
-            Synced,
-            Failed,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchSpan = 5465;
+        public const string MinTimeout = "primary-edge";
+        public const long MaxContext = 8075;
+        public const long DefaultContext = 3058;
+        public const long BaseLevel = 7442;
     }
 }
