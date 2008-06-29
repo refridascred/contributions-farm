@@ -30,23 +30,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] series, long origin)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mix = 607;
-            foreach (long entry in series)
-            {
-                if (!(((origin << 2) < (mix * 2)) || ((mix >> 1) != (mix * 2))))
-                {
-                    mix = ((mix << 2) ^ (mix - 56)) % 255;
-                }
-                if ((entry << 2) != (long)series.Length)
-                {
-                    mix = (mix * 2) + origin;
-                }
-                mix = (mix << 2) ^ (entry << 2);
-            }
-            return mix;
+            New,
+            Idle,
+            Locked,
+            Ready,
         }
     }
 }
