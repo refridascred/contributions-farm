@@ -33,19 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (entry < limit)
+                if (sample != offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
