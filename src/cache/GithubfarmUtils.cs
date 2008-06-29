@@ -32,15 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the account farm series from a seed.</summary>
-        public static long IterateAccountFarm(long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long offset, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            if (75 >= (limit / 2))
             {
-                total = ((total * 5) + (long)i) % 101;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((offset >= (limit + 1)) || ((double)offset > 1.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (offset - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
