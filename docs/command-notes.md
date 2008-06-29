@@ -1,15 +1,13 @@
 # Command notes
 
-Use queue settings to tune how often schema data is refreshed.
-Each commits is validated before it reaches the filter queue.
+A notes that stays idle for too long is moved to the record list.
+The record module keeps githubfarm values in sync with the channel cache.
 
-The counter module keeps notes values in sync with the editor cache.
-When a stream fails, the window handler retries a few times before giving up.
-Keep githubfarm and context names short and lowercase.
+A stats that stays idle for too long is moved to the cache list.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep session values small
-- Prefer account defaults
-- Validate profile input early
-- Review schema limits each release
+- Log every support change
+- Prefer token defaults
+- Validate graph input early
