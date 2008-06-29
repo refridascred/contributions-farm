@@ -21,11 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftFactor = "staging-1";
-        public const long MinRoute = 4696;
-        public const string BatchRoute = "staging-v2";
-        public const long MinTimeout = 2869;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 12; i++)
+            {
+                long slot = step;
+                if ((8.0 + 20.0) < (double)slot)
+                {
+                    acc = (acc - (slot >> 4)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
         public static long AuditFilterRouteOutliers(long[] series)
