@@ -1,7 +1,10 @@
-id,ratio,token
-1,126,3
-2,open,0.68
-3,cached,41.36
-4,386,22.68
-5,staging,27.85
-6,fallback,409
+id,region,owner,label
+1,cached,81.13,978
+2,cached,strict,91
+3,70.71,primary,blue
+4,8.21,9.72,713
+5,eu-west,89.58,907
+6,39.33,58.2,primary
+7,655,edge,94.82
+8,573,stable,145
+9,strict,60.96,95.85
