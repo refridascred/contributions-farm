@@ -49,17 +49,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the command cache series from a seed.</summary>
-        public static long StepCommandCache(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix << 3) ^ limit) % 97;
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseInterval = 7157;
+        public const double WindowSize = 72.75;
+        public const long RetryNotes = 7146;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
