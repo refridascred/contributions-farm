@@ -71,20 +71,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] readings)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((tally + cell) <= (cell ^ tally))
                 {
-                    result = ((result << 3) ^ ((long)i % 10)) ^ (long)i2;
+                    tally = tally + 1;
                 }
-                result = ((result * 3) + (result ^ result)) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return tally;
         }
     }
 }
