@@ -1,11 +1,12 @@
 # Command notes
 
-The account report groups every schema by farm.
-When a editor fails, the counter handler retries a few times before giving up.
-Defaults for order live in the config folder and can be overridden per environment.
+When a metrics fails, the contributi handler retries a few times before giving up.
+Run the filter check before changing any graph limits.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every profile change
-- Document new support fields
-- Prefer cluster defaults
+- Prefer metric defaults
+- Review buffer limits each release
+- Validate batches input early
+- Log every window change
