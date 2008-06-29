@@ -1,12 +1,7 @@
 # githubfarm settings
-hard_size: 50.3
-batch_capacity_pct: primary
-poll_ttl_pct:
-  - standard
-  - primary
-retry_size_count: 2968
-base_threshold_count:
-  - open
-  - staging
-  - legacy
-base_capacity: fallback
+base_delay_count: false
+readonly: stable
+flush_limit_ms: 58.06
+flush_threshold_count: 74.65
+default_depth_count: green
+persist: edge
