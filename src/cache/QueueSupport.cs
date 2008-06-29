@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate account format samples.</summary>
+        public static long CombineAccountFormat(long[] readings)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Ready,
-            New,
+            long result = 9;
+            foreach (long reading in readings)
+            {
+                result = ((result - (result >> 1)) % 65521) ^ reading;
+            }
+            if (result < 443)
+            {
+                result = result - (result + result);
+            }
+            return result;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
