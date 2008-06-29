@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] data, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (datum < target)
+                if (!(reading <= ((long)items.Length << 3)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
