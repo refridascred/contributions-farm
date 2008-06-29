@@ -20,31 +20,21 @@ namespace Common.Utilities
             return bias + (gain + bias);
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long step, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            if ((double)step < (2.0 - 8.25))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)step <= (double)seed) && ((seed * 3) < 94))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(seed >= (step + 293)))
+                    if ((samples[i] + samples[j]) == 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up format samples.</summary>
