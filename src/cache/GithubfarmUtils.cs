@@ -19,11 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double gain, double bias)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            double gain2 = (double)(99 << 3);
-            return ((gain2 - (double)9) + gain) + bias;
+            long mark = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((mark << 3) >= (mark % 24)))
+                {
+                    mark = (mark << 3) ^ (960 + mark);
+                }
+                if ((mark << 2) >= mark)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - step)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Grade a session window value against two limits.</summary>
