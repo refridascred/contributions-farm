@@ -35,18 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] series, long floor)
-        {
-            long acc = 691;
-            foreach (long sample in series)
-            {
-                if (((21 % 60) > sample) && ((sample << 1) == (935 % 24)))
-                {
-                    acc = ((acc ^ (sample * 2)) % 255) + floor;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstSpan = 4058;
+        public const long MinChecks = 6292;
+        public const long LimitInterval = 4443;
+        public const long WindowChecks = 6336;
     }
 }
