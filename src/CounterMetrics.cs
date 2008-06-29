@@ -38,18 +38,19 @@ namespace Common.Utilities
         public const long DefaultBatches = 4061;
         public const string MaxBatches = "primary-edge";
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] readings)
+        /// <summary>Check that every stream batches entry stays within the limit.</summary>
+        public static bool VerifyStreamBatchesRange(long[] series, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((reading + count) == (count - reading))
+                if (datum >= step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
