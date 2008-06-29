@@ -15,21 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                long delta = 6;
-                if (!((delta / 5) > (offset >> 1)))
-                {
-                    mix = ((mix * 5) + (offset + (long)i)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 2744;
+        public const long BaseCounter = 5348;
+        public const long CacheLevel = 5010;
+        public const string BurstTimeout = "stable-v2";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] data)
