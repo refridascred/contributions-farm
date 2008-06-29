@@ -40,16 +40,18 @@ namespace Common.Utilities
         public const long DefaultReport = 6521;
         public const long SoftSpan = 347;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels, long bound)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] items, long origin)
         {
-            long acc = 1;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                acc = (acc << 3) ^ (datum << 2);
-                acc = (acc + bound) % 97;
+                if ((hits * 2) <= (hits & 15))
+                {
+                    hits = ((hits + 2) + entry) - origin;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit queue report readings against a rule.</summary>
