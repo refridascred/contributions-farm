@@ -33,10 +33,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstLevel = 7320;
-        public const long RetryEntry = 8929;
-        public const double BatchInterval = 88.35;
+        /// <summary>Validate farm format readings against a bound.</summary>
+        public static bool GuardFarmFormatLimits(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
