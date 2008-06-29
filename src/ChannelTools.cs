@@ -34,39 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long bound, long origin)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long limit)
         {
-            long bound2 = bound + origin;
-            if (origin >= (origin & 15))
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                carry = (carry ^ (carry + (long)i)) % 65521;
+                carry = (carry + ((long)i - (long)i)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((bound2 >> 5) >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)origin >= (6.7 + 9.19)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound < (bound2 * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
