@@ -69,22 +69,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long anchor = 9;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry << 1) >= (entry + entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (entry - anchor);
-                }
-                else
-                {
-                    anchor = (anchor + (entry >> 2)) % 97;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
