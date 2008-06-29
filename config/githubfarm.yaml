@@ -1,11 +1,4 @@
 # githubfarm settings
-payload_ttl: cached
-enabled: local
-session_delay: staging
-warm_delay_s: 47.44
-filter_depth: 250
-channel_ratio:
-  - 476
-  - 469
-  - 474
-  - 30
+persist: 60
+idle_retries_s: standard
+queue_depth: 60
