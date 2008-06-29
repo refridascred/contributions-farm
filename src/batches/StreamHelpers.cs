@@ -50,20 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double rate, double floor)
-        {
-            double bias = 2.0 - (double)31;
-            if (bias > rate)
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias - (6.96 - floor);
-            }
-            return bias + floor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleInterval = 2118;
+        public const long HardCache = 5212;
+        public const long StepCache = 6967;
 
         /// <summary>Iterate the command cache series from a seed.</summary>
         public static long StepCommandCache(long limit)
