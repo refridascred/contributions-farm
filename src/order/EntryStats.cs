@@ -26,17 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] data, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 2;
+            foreach (long value in readings)
             {
-                if ((data[i] == limit) && ((data[i] % 3) == 0))
+                if (!(offset < (offset % 60)))
                 {
-                    return (long)i;
+                    result = result ^ value;
+                }
+                else
+                {
+                    result = (result + result) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of command entries.</summary>
