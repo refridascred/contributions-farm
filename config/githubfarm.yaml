@@ -1,26 +1,22 @@
 # githubfarm settings
-retry_limit_pct: open
-default_window: fallback
-order_depth:
-  batch_timeout_count: blue
-  hard_depth:
-    hard_window_count:
-      - 93
-      - 144
-    enabled: 86
-    support_depth: 60
-    soft_threshold_count: eu-west
-  strict: 9
-strict:
-  - eu-west
-  - staging
-  - eu-west
-order_delay:
-  poll_delay_pct: 16
-  retry_ratio: standard
-  default_size_pct: legacy
-  hard_threshold_count: 15.17
-  batch_retries_ms:
-    - latest
-    - edge
-    - open
+batch_delay: 89.6
+enabled: primary
+cache_size: true
+poll_size_s: true
+warm_timeout_pct: true
+retry_capacity:
+  poll_threshold: fallback
+  batch_capacity_pct: stable
+  base_delay_pct:
+    compress: 43.64
+    idle_delay:
+      - green
+      - eu-west
+    persist: 6389
+    record_size:
+      - 317
+      - 316
+    cache_size_pct: 60
+    channel_limit: 60
+  burst_interval_ms: 3
+  cache_delay: 4.36
