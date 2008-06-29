@@ -43,15 +43,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a payload schema counter forward.</summary>
-        public static long SeriesPayloadSchema(long target)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] levels, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
     }
 }
