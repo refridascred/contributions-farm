@@ -38,10 +38,14 @@ namespace Common.Utilities
         public const string IdleRecord = "alpha-1";
         public const string WindowRecord = "legacy-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowBudget = 33.6;
-        public const long MinSize = 3021;
-        public const long IdleFactor = 7437;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Roll a graph route counter forward.</summary>
         public static long IterateGraphRoute(long seed)
