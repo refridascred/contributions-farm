@@ -13,16 +13,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double rate, double span)
-        {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (6.6 * 16.0)) + (double)(long)i;
-            }
-            return weight + (span - span);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 860;
+        public const string WindowCount = "staging";
+        public const string CacheChecks = "standard-edge";
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordRange(long[] data, long origin)
