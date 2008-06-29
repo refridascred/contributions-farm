@@ -59,10 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 7046;
-        public const double StepDepth = 48.06;
-        public const double StepEditor = 81.67;
-        public const double SoftSize = 83.93;
+        /// <summary>Combine route farm values into a single score.</summary>
+        public static long DigestRouteFarm(long[] series, long target)
+        {
+            long state = -9;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = ((state - ((long)i ^ item)) % 65521) + target;
+                }
+                state = (state + (state * 3)) % 4096;
+            }
+            return state;
+        }
     }
 }
