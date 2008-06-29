@@ -13,22 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] readings, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((7.63 / 9.0) >= (double)sample)
+                if (datum <= limit)
                 {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
