@@ -1,8 +1,10 @@
 # entry settings
-schema_ratio: green
-batch_threshold:
-  - primary
-  - cached
-cache_limit: 1024
-verbose: 56
-poll_interval: 31.1
+persist: 5947
+sync_size_count: 65
+min_ratio_s: 49.6
+notes_depth: 22.28
+command_depth:
+  dry_run: 4239
+  metric_retries: 58
+  soft_timeout: 1808
+  readonly: 250
