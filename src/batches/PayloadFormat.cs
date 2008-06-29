@@ -44,11 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitSpan = 2992;
-        public const long LimitCache = 9328;
-        public const long WindowSize = 3570;
-        public const long BatchCache = 9514;
-        public const long BaseCache = 5099;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] values, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((-4) << 1) == (reading - limit))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
