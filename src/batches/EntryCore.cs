@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit counter filter readings against a rule.</summary>
-        public static long AuditCounterFilterMatches(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((item <= (5 / 7)) && ((matches - item) >= (831 / 5))) && !(32 <= item))
+                mark = mark - (step + step);
+                if ((step - step) < 35)
                 {
-                    matches = matches + 2;
+                    mark = ((mark * 5) + (mark << 2)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
