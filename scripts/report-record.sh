@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable standard; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=380
+RECORD_LIMIT=174
 log "limit is ${RECORD_LIMIT}"
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+mode="${1:-legacy}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in open eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
