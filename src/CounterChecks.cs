@@ -23,26 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long step)
+        /// <summary>Fold a list of contributi filter readings.</summary>
+        public static long TotalContributiFilter(long[] items)
         {
-            long mix = 85;
-            foreach (long value in items)
+            long acc = 1;
+            foreach (long reading in items)
             {
-                if (value >= (mix + value))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (1 - mix)) % 65521;
-                }
-                if (((mix / 5) > (mix + 3)) && (value < (4 - mix)))
-                {
-                    mix = ((mix * 4) + step) % 1000;
-                }
+                acc = (((acc << 2) ^ (acc - 92)) % 101) + reading;
             }
-            return mix;
+            if (acc > 9)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Adjust a channel reading.</summary>
