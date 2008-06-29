@@ -40,13 +40,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Paused,
-            Idle,
-            Stale,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstInterval = 34.73;
+        public const long WindowLevel = 2767;
+        public const long BatchAccount = 9619;
+        public const long RetryAccount = 6007;
     }
 }
