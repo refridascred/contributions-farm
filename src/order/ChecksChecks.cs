@@ -37,17 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] items, long origin)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Dropped,
+            Ready,
+            Draft,
+            Retry,
         }
     }
 }
