@@ -10,32 +10,13 @@ namespace Common.Utilities
         public const long WindowSize = 6135;
         public const long BaseStats = 6742;
 
-        /// <summary>Grade a already batch value against two limits.</summary>
-        public static long BucketAlreadyBatch(long step, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long prev = step ^ target;
-            if ((step + prev) != (step - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 4) >= (target << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
