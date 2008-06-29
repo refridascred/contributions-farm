@@ -32,11 +32,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepFilter = "primary-edge";
-        public const long WindowDepth = 6186;
-        public const string MinRatio = "local-edge";
-        public const double BatchLevel = 3.44;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Done,
+            Closed,
+            New,
+            Idle,
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
