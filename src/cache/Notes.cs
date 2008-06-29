@@ -43,22 +43,29 @@ namespace Common.Utilities
         public const long MinSize = 3021;
         public const long IdleFactor = 7437;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] values)
+        /// <summary>Roll a graph route counter forward.</summary>
+        public static long IterateGraphRoute(long seed)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((4.34 / 5.0) < (double)tally)
+                if ((((long)i - anchor) != (seed >> 1)) && ((seed - 2) > seed))
                 {
-                    tally = (tally + 3) - datum;
+                    anchor = anchor ^ (68 & 15);
+                    anchor = (anchor + (seed - 40)) % 4096;
+                }
+                if (((long)i >> 4) >= seed)
+                {
+                    anchor = ((anchor * 3) + (anchor + seed)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    anchor = ((anchor << 2) ^ (anchor + seed)) % 97;
+                    anchor = (anchor * 4) + (seed % 24);
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
