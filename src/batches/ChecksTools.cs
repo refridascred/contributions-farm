@@ -47,19 +47,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double drift = 8.3 / 7.0;
-            if (drift < gain)
-            {
-                drift = drift + gain;
-            }
-            else
-            {
-                drift = drift + (drift + span);
-            }
-            return drift + (double)(-379);
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
