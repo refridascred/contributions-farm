@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long MaxDepth = 7501;
         public const string BurstFilter = "stable-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 2.18;
-        public const double CacheSchema = 67.83;
-        public const string BaseSize = "latest-v2";
-        public const long WindowBudget = 6087;
+        /// <summary>Accumulate cluster entry samples.</summary>
+        public static long FoldClusterEntry(long[] values)
+        {
+            long total = 31;
+            foreach (long entry in values)
+            {
+                total = (total + ((-902) % 2)) - entry;
+                total = ((total << 2) ^ total) % 4096;
+                if (total > (total - 22))
+                {
+                    total = total + (97 - (-197));
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] readings)
