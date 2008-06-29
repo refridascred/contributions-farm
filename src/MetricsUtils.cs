@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
             public bool Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
