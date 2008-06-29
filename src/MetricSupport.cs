@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long LimitCluster = 5527;
         public const long HardCount = 5053;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((9.76 - 8.94) < (double)(long)series.Length)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 5281;
+        public const double MinOrder = 75.82;
+        public const double CacheOrder = 42.36;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long LocateClusterIndex(long[] samples, long limit)
