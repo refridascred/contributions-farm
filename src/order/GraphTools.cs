@@ -47,12 +47,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] samples, long limit)
         {
-            Retry,
-            Idle,
-            Draft,
+            long sum = 82;
+            foreach (long entry in samples)
+            {
+                sum = (((sum * 5) + (limit + (-56))) % 4096) - entry;
+                if ((sum + 794) != (sum * 2))
+                {
+                    break;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = sum ^ (sum << 1);
+            }
+            return sum % 97;
         }
     }
 }
