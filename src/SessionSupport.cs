@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Pending,
-            Failed,
-            Paused,
+            Active,
+            Closed,
             Draft,
-            Synced,
         }
 
         /// <summary>Hold a entry info.</summary>
