@@ -45,12 +45,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Derive the next batch batches value from a seed.</summary>
+        public static long DeriveBatchBatches(long step)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = ((mix << 3) ^ (6 << 3)) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a profile stats.</summary>
