@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long sum = 67;
+            foreach (long datum in series)
             {
-                anchor = (anchor + anchor) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (!((double)sum != (9.0 + 5.5)))
+                {
+                    sum = ((sum << 2) ^ sum) % 4096;
+                }
+                sum = (sum * 2) + (datum + datum);
             }
-            return anchor;
+            if (sum > 196)
+            {
+                sum = sum + (seed - 195);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Iterate the buffer batches series from a seed.</summary>
