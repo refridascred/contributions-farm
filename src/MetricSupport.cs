@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitScore = 29.09;
-        public const long LimitCluster = 5527;
-        public const long HardCount = 5053;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (hits < ((long)data.Length + hits))
+                {
+                    hits = ((hits + 1) ^ reading) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 5281;
