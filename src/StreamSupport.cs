@@ -22,25 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank githubfarm queue input into a small class.</summary>
-        public static long RankGithubfarmQueue(long offset, long step)
+        /// <summary>Validate layout stream readings against a bound.</summary>
+        public static bool CheckLayoutStreamLimits(long[] readings, long origin)
         {
-            long span = offset ^ step;
-            if ((7.63 / 6.0) == (double)offset)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span + offset) == (73 + step))
+                if (sample < origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the contributi state values.</summary>
