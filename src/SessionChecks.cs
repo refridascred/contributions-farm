@@ -33,12 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
+            Closed,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a contributi options.</summary>
