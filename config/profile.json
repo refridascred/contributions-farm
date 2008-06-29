@@ -1,5 +1,7 @@
 {
-  "idle_delay_count": [384, 496, 247, 19],
-  "retry_interval_pct": "fallback",
-  "retry_depth_count": "local"
+  "warm_size_s": 26.9,
+  "warm_limit": "standard",
+  "stream_window": ["edge", "strict", "primary"],
+  "compress": 97,
+  "hard_delay_ms": "stable"
 }
