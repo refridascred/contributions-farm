@@ -1,8 +1,14 @@
 {
-  "hard_window_count": "local",
-  "compress": "primary",
-  "persist": "legacy",
-  "sync_limit_ms": "legacy",
-  "sync_ttl_s": 82.5,
-  "default_limit_count": "eu-west"
+  "readonly": {
+    "compress": "stable",
+    "verbose": 48.15,
+    "hard_ttl_s": 1024,
+    "sync_capacity_s": ["open", "strict"],
+    "batches_interval": 3744,
+    "already_capacity": [10, 211, 154]
+  },
+  "burst_interval": 1024,
+  "idle_interval_pct": ["legacy", "blue"],
+  "warm_retries_pct": ["edge", "edge"],
+  "metrics_ttl": 100
 }
