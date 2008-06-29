@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = rate;
+            if (gain < (1.85 + span))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - rate;
             }
-            return seen;
+            return gain - gain;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
