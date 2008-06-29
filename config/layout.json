@@ -1,6 +1,6 @@
 {
-  "batch_retries_ms": 67.51,
-  "poll_window_ms": 4402,
-  "cache_ratio": 500,
-  "enabled": 19
+  "hard_limit_pct": ["latest", "green"],
+  "batches_timeout": 33.81,
+  "poll_ratio_s": 1024,
+  "sync_ratio_pct": "eu-west"
 }
