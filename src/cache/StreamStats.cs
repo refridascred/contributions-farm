@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] values, long bound)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
