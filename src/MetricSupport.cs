@@ -34,16 +34,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] levels, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry - (59 << 1)) % 65521;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (!(((18.0 / 7.0) >= (double)sample) || ((388 - seen) <= seen)))
+                {
+                    seen = (seen + 1) + seed;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
