@@ -49,15 +49,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of profile buffer readings.</summary>
-        public static long TotalProfileBuffer(long[] levels)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long total = 389;
-            foreach (long item in levels)
-            {
-                total = (total << 3) ^ (item - item);
-            }
-            return total % 65521;
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next session value.</summary>
