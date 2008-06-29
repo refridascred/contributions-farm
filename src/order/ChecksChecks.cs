@@ -35,17 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a editor tools reading by value.</summary>
-        public static long SeekEditorToolsIndex(long[] levels, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 691;
+            foreach (long sample in series)
             {
-                if (levels[i] < offset)
+                if (((21 % 60) > sample) && ((sample << 1) == (935 % 24)))
                 {
-                    return (long)i;
+                    acc = ((acc ^ (sample * 2)) % 255) + floor;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
