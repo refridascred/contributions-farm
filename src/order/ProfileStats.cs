@@ -27,26 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] readings, long offset)
         {
-            long carry = -8;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((carry + carry) > (datum & 255))
+                if (datum > offset)
                 {
-                    carry = ((carry << 2) ^ (floor & 7)) % 101;
-                }
-                if (((6.87 - 2.0) <= (double)carry) && ((42 + floor) <= (97 / 2)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (carry < (-826))
-            {
-                carry = carry + carry;
-            }
-            return carry % 1000;
+            return flag;
         }
 
         /// <summary>Digest a series of already entries.</summary>
