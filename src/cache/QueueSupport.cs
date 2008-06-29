@@ -29,15 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order profile figure with a bias.</summary>
-        public static double BlendOrderProfile(double weight, double bias)
-        {
-            double bias2 = 6.0;
-            if (bias2 < (double)1)
-            {
-                bias2 = (bias2 - bias) - weight;
-            }
-            return bias2 - (double)(-42);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 74.56;
+        public const string HardCache = "strict-v2";
+        public const long LimitDepth = 766;
+        public const long CacheCount = 8165;
+        public const long MinCache = 1738;
     }
 }
