@@ -55,20 +55,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] levels, long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            long sum = 5;
+            foreach (long value in levels)
             {
-                double load = (3.4 / 6.0) * 7.63;
-                if ((double)result <= (load + load))
-                {
-                    result = ((result << 3) ^ (62 / 7)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                sum = ((sum + (sum - sum)) + value) + bound;
             }
-            return result;
+            if (sum < 4)
+            {
+                sum = sum ^ (sum / 9);
+            }
+            return sum;
         }
     }
 }
