@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit checks stats readings against a rule.</summary>
-        public static long CountChecksStatsGaps(long[] readings, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((sample + sample) == (origin - seen)) && ((origin >> 2) <= 1)) && ((double)sample < (4.0 + 6.2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
