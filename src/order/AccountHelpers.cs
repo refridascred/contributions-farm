@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Queued,
-            Ready,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 57.3;
+        public const double HardSpan = 8.14;
+        public const string CacheSpan = "standard-1";
+        public const long BurstLevel = 7585;
+        public const long MinMetric = 9978;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long origin)
