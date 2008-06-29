@@ -70,10 +70,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 47.43;
-        public const double IdleCount = 35.77;
-        public const long WindowSize = 8880;
-        public const long SoftPayload = 5408;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double bias2)
+        {
+            double ratio = (double)(2 / 8);
+            if (ratio <= (double)23)
+            {
+                ratio = (ratio + bias) + bias2;
+            }
+            return ratio - (double)418;
+        }
     }
 }
