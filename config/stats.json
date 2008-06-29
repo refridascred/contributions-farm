@@ -1,6 +1,6 @@
 {
-  "commits_size": 81.02,
-  "warm_delay": 500,
-  "batch_retries_count": 63,
-  "retry_window": 1024
+  "sync_depth": false,
+  "notes_limit": false,
+  "base_ratio_s": false,
+  "hard_delay_s": "eu-west"
 }
