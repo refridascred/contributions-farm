@@ -1,7 +1,4 @@
 # entry settings
-hard_capacity_pct: false
-hard_retries_ms: latest
-route_capacity: false
-batch_threshold_s: 100
-max_retries_ms: 50.21
-idle_depth_ms: stable
+flush_capacity_ms: false
+sync_interval_s: 20
+audit: 23
