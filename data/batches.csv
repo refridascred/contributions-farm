@@ -1,9 +1,6 @@
-id,ratio,active,count,region
-1,72.25,open,eu-west,91.96
-2,cached,96.87,cached,legacy
-3,cached,18,386,legacy
-4,741,edge,35.48,93.07
-5,latest,open,latest,106
-6,368,936,953,68.59
-7,eu-west,259,33.7,0.36
-8,91.29,521,31.97,73.49
+id,active,state
+1,30.3,628
+2,89.96,fallback
+3,7.13,56.96
+4,412,385
+5,265,blue
