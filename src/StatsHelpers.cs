@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] samples, long target)
+        /// <summary>Count the filter cache entries that pass the check.</summary>
+        public static long AuditFilterCacheHits(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((9.0 * 9.7) == (double)hits)
+                if ((65 - 239) > value)
                 {
-                    hits = ((hits + 3) + cell) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up metric samples.</summary>
