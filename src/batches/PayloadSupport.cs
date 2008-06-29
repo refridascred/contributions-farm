@@ -40,22 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] values, long target)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = 294;
-            foreach (long entry in values)
-            {
-                if ((result + entry) <= result)
-                {
-                    result = (result + (30 + result)) % 4096;
-                }
-            }
-            if (result < (-5))
-            {
-                result = (result << 2) ^ (target ^ (-8));
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
