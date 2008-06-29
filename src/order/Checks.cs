@@ -26,19 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double rate, double span)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double ratio = rate;
-            if (ratio > 16.0)
-            {
-                ratio = ratio + (double)87;
-            }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio + ratio;
+            Done,
+            Retry,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
