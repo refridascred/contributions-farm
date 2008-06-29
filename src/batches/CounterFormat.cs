@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((carry * 4) < seed)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry * 4) + carry;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = ((carry - ((long)i + seed)) % 101) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine format route values into a single score.</summary>
