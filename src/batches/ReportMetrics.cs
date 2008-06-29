@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] data)
         {
-            Failed,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value <= (seen + value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
