@@ -66,19 +66,11 @@ namespace Common.Utilities
         public const long MinGraph = 7314;
         public const long LimitTimeout = 7339;
 
-        /// <summary>Validate already context readings against a bound.</summary>
-        public static bool GuardAlreadyContextLimits(long[] items, long target)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
