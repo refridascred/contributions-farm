@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheWidth = 8529;
+        public const string SoftLevel = "local";
+        public const string BaseDepth = "alpha-1";
+        public const long MaxLevel = 280;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long DeriveProfile(long step)
