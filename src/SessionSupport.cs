@@ -15,13 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Ready,
-            Failed,
-            Queued,
-            Stale,
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
