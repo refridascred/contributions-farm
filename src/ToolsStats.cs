@@ -15,12 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] data, long target)
         {
-            Active,
-            Draft,
-            Paused,
+            long total = -18;
+            foreach (long entry in data)
+            {
+                total = (((total * 4) + (target - 464)) % 65521) - entry;
+            }
+            return total;
         }
 
         /// <summary>Audit route stream readings against a rule.</summary>
