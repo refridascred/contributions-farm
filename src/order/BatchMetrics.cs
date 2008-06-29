@@ -57,11 +57,11 @@ namespace Common.Utilities
         public const double IdleWidth = 41.03;
         public const long CacheDepth = 8659;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftTimeout = 6569;
+        public const long StepProfile = 1397;
+        public const long BaseSize = 1681;
+        public const double SoftCount = 67.64;
+        public const long WindowFactor = 4936;
     }
 }
