@@ -68,18 +68,18 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] values, long bound)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long state = 38;
+            foreach (long sample in readings)
             {
-                if ((((long)values.Length ^ bound) != (item % 12)) && ((item - (long)values.Length) < (bound + 8)))
+                if ((sample * 5) == (state ^ sample))
                 {
-                    seen = seen + 1;
+                    state = ((state << 2) ^ sample) % 101;
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
