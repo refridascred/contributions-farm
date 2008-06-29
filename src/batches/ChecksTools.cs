@@ -46,12 +46,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Classify a record editor pair into a bucket.</summary>
+        public static long SortRecordEditor(long limit, long origin)
         {
-            Locked,
-            Paused,
-            Queued,
+            if ((origin % 12) > (6 * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (7 < (limit - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
