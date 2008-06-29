@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Failed,
-            Dropped,
-            Synced,
-            Stale,
-            Done,
+            public string Region { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every cluster channel entry stays within the limit.</summary>
