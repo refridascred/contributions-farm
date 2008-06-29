@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Rank { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            Failed,
+            Idle,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up session cache samples.</summary>
