@@ -1,8 +1,19 @@
 # support settings
-min_window:
-  - blue
-  - local
-  - stable
-warm_limit_pct: 22.03
-audit: 500
-metrics_capacity: 5.13
+base_window_count:
+  tools_window: 78
+  sync_depth: latest
+  min_ratio_pct: latest
+  account_retries:
+    soft_threshold_pct: 651
+    window_retries: 569
+    githubfarm_threshold: blue
+    base_window_count: blue
+    dry_run: 0.74
+    max_delay_pct: staging
+  dry_run:
+    - 150
+    - 186
+    - 160
+  context_limit: stable
+route_timeout: 9096
+warm_size_pct: fallback
