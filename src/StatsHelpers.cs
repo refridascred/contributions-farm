@@ -63,12 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            Pending,
-            Failed,
-            Retry,
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = (mix ^ mix) % 65521;
+                mix = (mix * 5) + ((long)i & 1);
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
