@@ -29,18 +29,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "staging";
+        public const double SoftInterval = 13.55;
+        public const double BurstToken = 47.02;
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
