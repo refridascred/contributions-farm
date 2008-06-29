@@ -32,19 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item - bound) > (item % 16))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowLevel = 7619;
+        public const long MinMetric = 699;
+        public const long MaxInterval = 1439;
+        public const long LimitLevel = 6160;
+        public const long MaxMetric = 2178;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] samples, long bound)
