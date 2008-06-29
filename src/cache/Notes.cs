@@ -45,13 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] levels, long limit)
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a graph route counter forward.</summary>
