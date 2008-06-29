@@ -59,25 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long origin)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long offset)
         {
-            long cur = step ^ origin;
-            if (85 > (origin / 7))
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                state = (state + (offset & 3)) % 101;
+                state = (state * 3) + (state & 127);
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)cur < (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
