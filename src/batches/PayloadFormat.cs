@@ -40,17 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchFactor = 74.05;
+        public const long BatchLayout = 8197;
+        public const long SoftLayout = 9538;
+        public const long IdleLevel = 7678;
+        public const long StepLayout = 4211;
     }
 }
