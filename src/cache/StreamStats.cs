@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] data)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count ^ datum) < (datum * 5))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
