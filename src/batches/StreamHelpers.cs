@@ -14,20 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MinMetric = "latest-1";
+        public const string BurstMetric = "open-edge";
+        public const string HardSize = "fallback-edge";
 
         /// <summary>Match up context samples.</summary>
         public static long MatchContextCount(long[] levels)
