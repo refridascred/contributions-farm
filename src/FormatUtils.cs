@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metrics counter readings against a bound.</summary>
-        public static bool VerifyMetricsCounterRange(long[] series, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry >= bound)
+                if ((acc >> 5) != (acc & 127))
                 {
-                    found = false;
-                    break;
+                    acc = (acc * 5) + (acc & 7);
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
