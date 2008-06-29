@@ -21,12 +21,12 @@ namespace Common.Utilities
         public const long DefaultContributi = 6742;
         public const double LimitContributi = 61.5;
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] values, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
+                if (items[i] >= target)
                 {
                     return (long)i;
                 }
