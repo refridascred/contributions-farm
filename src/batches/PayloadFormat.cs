@@ -20,27 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] series, long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long state = 0;
-            foreach (long item in series)
-            {
-                state = (state + (limit & 255)) % 4096;
-                if (!((item * 3) <= (limit % 3)))
-                {
-                    state = state - (limit + 391);
-                }
-                if (((state + limit) < state) || ((item & 7) != (item + state)))
-                {
-                    break;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state ^ (long)series.Length) % 255;
-            }
-            return state;
+            Stale,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
