@@ -1,13 +1,6 @@
 {
-  "dry_run": ["open", "green", "edge"],
-  "queue_threshold": {
-    "warm_limit_count": "fallback",
-    "farm_threshold": 64,
-    "default_depth_count": 21.48,
-    "sync_interval_ms": ["staging", "green"],
-    "order_window": false,
-    "idle_retries_ms": ["edge", "cached", "local"]
-  },
-  "tools_threshold": 11.99,
-  "idle_window_ms": false
+  "soft_ttl": ["standard", "strict", "green"],
+  "burst_timeout_ms": [300, 61, 423],
+  "buffer_capacity": ["eu-west", "open", "open", "strict"],
+  "session_delay": "open"
 }
