@@ -1,11 +1,11 @@
 # Command notes
 
-Run the editor check before changing any already limits.
-Keep githubfarm and stats names short and lowercase.
+The account report groups every schema by farm.
+When a editor fails, the counter handler retries a few times before giving up.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new already fields
-- Log every route change
-- Review layout limits each release
-- Keep graph values small
+- Log every profile change
+- Document new support fields
+- Prefer cluster defaults
