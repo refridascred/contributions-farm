@@ -15,22 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate githubfarm metric samples.</summary>
-        public static long TallyGithubfarmMetric(long[] levels, long floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] values, long target)
         {
-            long anchor = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((entry + anchor) > (entry * 3))
+                if ((double)tally <= (double)target)
                 {
-                    anchor = ((anchor ^ 134) % 4096) - floor;
-                }
-                if ((entry - anchor) >= entry)
-                {
-                    break;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Scale a order profile figure with a bias.</summary>
