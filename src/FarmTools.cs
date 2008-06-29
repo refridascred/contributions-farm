@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Compare every pair of support token readings.</summary>
+        public static long MatchSupportTokenCount(long[] data)
         {
-            long carry = 35;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((12.0 + 7.0) < (double)carry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry - (datum % 64);
-                }
-                else
-                {
-                    carry = carry + (datum + carry);
-                }
-                if (((10.0 + 3.2) != (double)carry) || (carry < 88))
-                {
-                    carry = (carry + ((long)data.Length % 100)) % 101;
-                }
-                if ((double)523 == (double)carry)
-                {
-                    break;
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
