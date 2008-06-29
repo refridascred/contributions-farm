@@ -21,19 +21,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] values, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double scale = 19.0 - 9.2;
+            if (scale >= offset)
             {
-                if (entry <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale - (double)510;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + (scale + gain);
         }
 
         /// <summary>Roll a farm notes counter forward.</summary>
