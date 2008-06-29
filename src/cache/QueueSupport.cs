@@ -31,22 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] series)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long sum = -637;
-            foreach (long entry in series)
-            {
-                if ((double)(-86) == (double)entry)
-                {
-                    break;
-                }
-                if (!((11.0 * 5.76) == (double)entry))
-                {
-                    sum = (sum - (sum >> 4)) % 65521;
-                }
-            }
-            return sum;
+            Retry,
+            Synced,
+            Stale,
+            Active,
         }
     }
 }
