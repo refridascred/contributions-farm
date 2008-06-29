@@ -45,31 +45,14 @@ namespace Common.Utilities
         public const long IdleAlready = 4569;
         public const long MinAlready = 3532;
 
-        /// <summary>Digest a series of metrics buffer entries.</summary>
-        public static long TallyMetricsBuffer(long[] items)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = 729;
-            foreach (long item in items)
-            {
-                if ((9 ^ (long)items.Length) != (item & 3))
-                {
-                    carry = (carry << 3) ^ (item + carry);
-                    carry = carry ^ (carry & 63);
-                }
-                if (item <= 54)
-                {
-                    carry = carry - 36;
-                }
-                else
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-            }
-            if (carry < 27)
-            {
-                carry = (carry ^ carry) % 101;
-            }
-            return carry % 97;
+            New,
+            Ready,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a notes info.</summary>
