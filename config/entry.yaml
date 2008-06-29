@@ -1,13 +1,6 @@
 # entry settings
-hard_timeout: stable
-sync_capacity_pct:
-  payload_delay: 6
-  layout_interval: 30
-  warm_ttl_count:
-    - 463
-    - 311
-    - 287
-    - 466
-  verbose: 250
-min_depth_s: 76
-idle_window_ms: 42
+strict: eu-west
+base_delay_pct:
+  - fallback
+  - strict
+notes_ratio: strict
