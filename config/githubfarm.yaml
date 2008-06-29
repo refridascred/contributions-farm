@@ -1,9 +1,17 @@
 # githubfarm settings
-max_size_count: false
-retry_retries: 100
-contributi_size:
-  - 423
-  - 87
-  - 285
-  - 497
-metric_limit: 1151
+hard_retries_s: true
+base_timeout_s: 8100
+record_window: 24
+counter_delay:
+  base_ttl_pct: fallback
+  hard_retries_s: 75
+  flush_delay_ms: fallback
+  default_retries:
+    sync_ratio_count: strict
+    base_ratio: local
+    default_delay: cached
+    base_delay:
+      - 303
+      - 140
+      - 302
+    layout_limit: latest
