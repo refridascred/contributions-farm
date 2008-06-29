@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "open-edge";
-        public const long CacheWidth = 9508;
-        public const long CacheSchema = 1038;
-        public const string StepScore = "stable-v2";
-        public const long MaxCount = 1633;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a editor tools reading by value.</summary>
         public static long SeekEditorToolsIndex(long[] levels, long offset)
