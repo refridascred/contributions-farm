@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "stable-edge";
-        public const string BurstBudget = "latest";
-        public const double IdleBudget = 23.37;
-        public const double IdleAccount = 49.74;
-        public const long SoftRatio = 1405;
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items)
+        {
+            long total = 499;
+            foreach (long reading in items)
+            {
+                if ((reading <= (total + (-8))) || ((double)total < (8.73 / 4.0)))
+                {
+                    total = (total - 436) % 1000;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Count route editor pairs that satisfy a relation.</summary>
         public static long OverlapRouteEditorCount(long[] data)
