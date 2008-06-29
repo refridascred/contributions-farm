@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits >= (hits << 3))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
