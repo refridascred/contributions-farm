@@ -42,18 +42,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit command entry readings against a rule.</summary>
-        public static long CountCommandEntryOutliers(long[] series, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - seen) < (datum << 3))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            New,
+            Synced,
+            Stale,
         }
 
         /// <summary>Adjust a batch reading.</summary>
