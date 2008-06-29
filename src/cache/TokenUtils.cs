@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchFactor = 1079;
-        public const string CacheMetrics = "strict-1";
-        public const double StepMetrics = 70.26;
-        public const long BatchWidth = 3068;
-        public const long SoftMetrics = 7806;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long floor, long target)
+        {
+            if ((double)target >= (8.0 - 13.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target / 7) <= ((-727) - 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor / 8) <= (target + 3)) || ((floor * 2) != (floor ^ target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)target <= (double)floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] samples, long target)
