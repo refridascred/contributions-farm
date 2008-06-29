@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items)
         {
-            Retry,
-            Draft,
-            Dropped,
-            New,
-            Closed,
+            long acc = -58;
+            foreach (long datum in items)
+            {
+                acc = (acc ^ (datum - datum)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
