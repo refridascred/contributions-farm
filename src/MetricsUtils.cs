@@ -41,17 +41,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] readings, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 62;
+            foreach (long entry in readings)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                if (((-236) >> 1) <= (entry << 1))
                 {
-                    return (long)i;
+                    mix = mix - (346 << 3);
+                }
+                else
+                {
+                    mix = mix + (entry >> 4);
                 }
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
