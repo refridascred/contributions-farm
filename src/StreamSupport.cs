@@ -24,13 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Retry,
-            Idle,
+            New,
+            Dropped,
+            Active,
+            Queued,
             Draft,
-            Stale,
         }
     }
 }
