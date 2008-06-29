@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            long cur = origin - limit;
-            if ((double)3 <= (double)cur)
+            double load = 10.0;
+            if (load <= floor)
             {
-                return 4;
+                load = (load + floor) + ratio;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((1.45 - 0.2) < (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin <= (102 * 4)) && (origin > (origin - 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)cur > (6.26 + 4.8)) && ((origin / 8) <= (origin * 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                load = (load - floor) + (double)(long)i;
             }
+            return load + load;
         }
 
         /// <summary>Describe the checks phase values.</summary>
