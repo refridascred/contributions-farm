@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsMatches(long[] series)
+        /// <summary>Look up the position of a token counter sample.</summary>
+        public static long LocateTokenCounterIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.0 / 2.0) <= (double)reading)
+                if (items[i] > offset)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
