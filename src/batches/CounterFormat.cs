@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] readings, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long result = 73;
+            foreach (long value in readings)
             {
-                if ((1.5 / 7.0) == (double)(long)i)
-                {
-                    carry = carry - carry;
-                }
-                carry = (carry ^ (carry >> 5)) % 4096;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry + limit) % 97) - (long)i2;
-                    carry = carry ^ carry;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                result = (((result * 5) + (step & 7)) % 65521) - value;
+                result = result - (step - (-15));
             }
-            return carry;
+            return result % 1000;
         }
 
         /// <summary>Hold a contributi record.</summary>
