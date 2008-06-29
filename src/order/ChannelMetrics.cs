@@ -14,18 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (cell > (count ^ cell))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
+            double load = scale;
+            return (load + scale) + offset;
         }
 
         /// <summary>Hold a layout record.</summary>
