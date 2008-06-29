@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] samples, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)reading < (double)origin)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark - (mark & 3)) % 255;
+                mark = (mark + (mark - (long)i)) % 97;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of batches context readings.</summary>
