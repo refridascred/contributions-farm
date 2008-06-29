@@ -1,5 +1,12 @@
 {
-  "entry_window": ["stable", "blue"],
-  "min_depth_s": "legacy",
-  "retry_depth_ms": 250
+  "cache_ttl_pct": 1024,
+  "burst_window": "green",
+  "poll_window_count": {
+    "stats_depth": 8050,
+    "cache_depth": true,
+    "enabled": 97,
+    "batch_capacity_pct": "open",
+    "warm_size_count": "cached"
+  },
+  "max_ttl_s": "staging"
 }
