@@ -15,17 +15,13 @@ namespace Common.Utilities
         public const double MinOrder = 75.82;
         public const double CacheOrder = 42.36;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] samples, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Pending,
+            Draft,
+            Failed,
         }
     }
 }
