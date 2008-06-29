@@ -35,12 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the batches support series from a seed.</summary>
