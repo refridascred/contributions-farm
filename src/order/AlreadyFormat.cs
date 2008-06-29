@@ -73,11 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Total { get; set; }
-            public double Region { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
