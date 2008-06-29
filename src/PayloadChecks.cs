@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long bound)
         {
-            long mix = 18;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 2) + (value - value)) % 255;
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return stale;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
