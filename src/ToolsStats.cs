@@ -36,11 +36,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 991;
-        public const long WindowBudget = 1079;
-        public const string DefaultTimeout = "staging-edge";
-        public const long BatchDepth = 5332;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long WindowSize = 889;
