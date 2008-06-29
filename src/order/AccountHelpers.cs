@@ -78,31 +78,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long seed, long seed2)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] data, long target)
         {
-            if (((double)seed2 != (double)seed) && ((double)seed2 > (6.01 / 4.0)))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(seed >= (seed2 + 31)))
+                if ((target - target) >= tally)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed >= (seed - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 1) - sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine order values into a single score.</summary>
