@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double scale, double bias)
         {
-            Stale,
-            Locked,
-            Closed,
+            double bias2 = (7.07 / 2.0) * 4.09;
+            return ((bias2 - bias2) + scale) + bias;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
