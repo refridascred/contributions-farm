@@ -1,11 +1,4 @@
 # githubfarm settings
-flush_threshold:
-  contributi_depth: 500
-  flush_threshold_count: 4314
-  retry_delay:
-    base_ratio_pct: 9617
-    window_interval: eu-west
-    min_timeout: eu-west
-persist: 30
-min_depth_ms: strict
-base_threshold_s: 4240
+farm_ratio: true
+channel_ratio: latest
+burst_timeout: cached
