@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double ratio, double span)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] values)
         {
-            double gain = span;
-            return (gain - (gain / 8.0)) + ratio;
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (matches <= (matches ^ datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
