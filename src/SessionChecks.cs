@@ -28,31 +28,26 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank checks notes input into a small class.</summary>
-        public static long RankChecksNotes(long seed, long floor)
+        /// <summary>Digest a series of profile token entries.</summary>
+        public static long TallyProfileToken(long[] samples)
         {
-            if ((seed + seed) <= (floor + seed))
+            long carry = -40;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 2) >= (seed & 31))
+                if (carry < (carry >> 2))
                 {
-                    return 0;
+                    carry = ((carry << 3) ^ 4) % 255;
                 }
-                else
+                if ((double)reading <= (double)carry)
                 {
-                    if ((floor <= (floor - 730)) || ((2.64 - 17.0) <= (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            if (carry > 1)
+            {
+                carry = ((carry << 3) ^ (2 % 16)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a tools stats.</summary>
