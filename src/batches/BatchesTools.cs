@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long origin, long offset)
         {
-            Locked,
-            Draft,
-            Ready,
-            Paused,
+            if (origin < (offset - origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((48 - (-58)) >= (offset + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 10) == (origin << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin / 9) < (origin / 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order info.</summary>
