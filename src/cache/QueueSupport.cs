@@ -19,22 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] samples)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum >= 7.0)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Describe the profile state values.</summary>
