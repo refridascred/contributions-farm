@@ -33,12 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Match up queue route samples.</summary>
+        public static long CompareQueueRouteCount(long[] values)
         {
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
