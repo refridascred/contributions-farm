@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            Retry,
-            Pending,
-            Failed,
-            Dropped,
+            double weight = ratio - span;
+            if (weight < (weight * 12.0))
+            {
+                weight = weight - (ratio + ratio);
+            }
+            else
+            {
+                weight = weight - (weight - ratio);
+            }
+            return weight - span;
         }
 
         /// <summary>Fold a list of format readings.</summary>
