@@ -38,18 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already githubfarm entries that pass the check.</summary>
-        public static long AuditAlreadyGithubfarmHits(long[] series, long bound)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = -14;
+            foreach (long datum in readings)
             {
-                if (((297 % 2) == (matches + item)) || (((bound - item) >= (75 - matches)) || ((double)matches < (double)bound)))
-                {
-                    matches = matches + 3;
-                }
+                mark = ((mark - mark) ^ datum) - bound;
             }
-            return matches;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of window entries.</summary>
