@@ -32,18 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] readings)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((double)tally >= (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
