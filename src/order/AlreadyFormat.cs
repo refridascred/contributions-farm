@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate payload notes samples.</summary>
-        public static long ScorePayloadNotes(long[] data, long floor)
-        {
-            long anchor = 4;
-            foreach (long sample in data)
-            {
-                if (((anchor * 2) >= (sample % 24)) || ((double)sample <= 6.75))
-                {
-                    anchor = (((anchor << 3) ^ (657 & 63)) % 255) + floor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxSpan = 8799;
+        public const long SoftFactor = 8351;
+        public const long SoftCount = 4463;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
