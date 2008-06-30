@@ -24,11 +24,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardBudget = 69.06;
-        public const string BatchMetric = "local-edge";
-        public const long CacheMetric = 1282;
-        public const long CacheTimeout = 196;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((2 + limit) == (datum / 2))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long target)
