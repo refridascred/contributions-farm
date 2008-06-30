@@ -1,25 +1,17 @@
 # githubfarm settings
-batches_delay:
-  burst_threshold_s:
-    - legacy
-    - fallback
-    - cached
-    - legacy
-  idle_delay_s: 56
-  schema_retries:
-    default_threshold: primary
-    enabled: 76.82
-    batch_ttl_s: false
-    sync_limit: false
-    already_interval: 39.09
-  soft_threshold_count: true
-  sync_timeout_pct: 51.0
-  base_ratio: true
-flush_window_count: true
-audit:
-  buffer_window:
-    - 197
-    - 272
-    - 403
-  session_threshold: true
-  batch_delay_ms: 7161
+cache_timeout: primary
+enabled: 30
+dry_run:
+  - 226
+  - 499
+  - 24
+channel_depth: open
+sync_size_ms: strict
+base_ttl_s:
+  strict: open
+  commits_threshold: legacy
+  poll_capacity_ms:
+    - 56
+    - 428
+  hard_ttl_ms: eu-west
+  tools_limit: cached
