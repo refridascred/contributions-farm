@@ -11,23 +11,13 @@ namespace Common.Utilities
         public const double BurstContributi = 81.9;
         public const double MaxDepth = 51.55;
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double bias, double span)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double drift = span;
-            if (drift >= bias)
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift - (0.29 - bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift - drift)) + (double)(long)i;
-            }
-            return drift - drift;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
