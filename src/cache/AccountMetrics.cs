@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardCount = 5293;
-        public const double CacheChecks = 0.09;
-        public const long BaseDepth = 155;
-        public const long DefaultSpan = 4867;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public long Label { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BaseMetrics = 82.24;
