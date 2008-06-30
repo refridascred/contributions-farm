@@ -1,6 +1,7 @@
 {
-  "max_ratio_s": "staging",
-  "min_delay_s": 500,
-  "flush_size": 51.21,
-  "record_retries": true
+  "default_ratio": "local",
+  "format_delay": true,
+  "notes_ttl": "blue",
+  "checks_limit": "blue",
+  "poll_interval": "standard"
 }
