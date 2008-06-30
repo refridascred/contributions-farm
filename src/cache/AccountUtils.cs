@@ -36,19 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token contributi entry stays within the limit.</summary>
-        public static bool ValidateTokenContributiBounds(long[] levels, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Stale,
+            Closed,
+            Draft,
+            Done,
         }
     }
 }
