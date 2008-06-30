@@ -16,18 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long AuditCounterContextHits(long[] values)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((48 % 60) != (count ^ count))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
