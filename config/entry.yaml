@@ -1,13 +1,10 @@
 # entry settings
-queue_ttl:
-  base_ttl_count: local
-  session_delay:
-    - 386
-    - 408
-  batch_size_ms: false
-  support_ratio: open
-  cache_threshold_count: 54.62
-hard_delay_count: 9553
-githubfarm_limit: strict
-batches_interval: false
-cache_delay: 500
+soft_depth: 76.59
+soft_delay_pct: local
+poll_retries_s: 250
+idle_interval:
+  - 159
+  - 178
+  - 77
+audit: eu-west
+command_ratio: 53.31
