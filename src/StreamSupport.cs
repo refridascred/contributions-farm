@@ -39,12 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] items, long step)
         {
-            Closed,
-            Failed,
-            New,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading / 7) >= tally)
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
         }
     }
 }
