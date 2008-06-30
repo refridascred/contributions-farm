@@ -34,11 +34,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long target)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long slot = floor ^ target;
+            if ((floor >= slot) && ((double)slot <= (double)floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)slot != (8.1 + 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target ^ target) > (slot + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (3.0 * 7.4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
