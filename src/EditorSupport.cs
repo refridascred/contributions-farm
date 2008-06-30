@@ -12,23 +12,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Blend two contributi order measurements.</summary>
-        public static double ScaleContributiOrder(double rate, double bias)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            double weight = (rate + bias) + bias;
-            if (weight <= 6.95)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - (rate - rate);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight + rate;
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
