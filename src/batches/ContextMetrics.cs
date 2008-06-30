@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Ready,
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Scale a context batch figure with a bias.</summary>
