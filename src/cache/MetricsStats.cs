@@ -30,12 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long target)
         {
-            Failed,
-            Pending,
-            New,
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)target == (double)94)
+                {
+                    total = total + target;
+                }
+                else
+                {
+                    total = (total + (total / 9)) % 101;
+                }
+                total = (total * 2) + (2 + target);
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
