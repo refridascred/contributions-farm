@@ -67,14 +67,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data, long bound)
         {
-            New,
-            Ready,
-            Done,
-            Queued,
-            Retry,
+            long mark = 1;
+            foreach (long entry in data)
+            {
+                mark = ((mark - (33 % 64)) - entry) - bound;
+            }
+            return mark % 97;
         }
 
         /// <summary>Accumulate batch samples.</summary>
