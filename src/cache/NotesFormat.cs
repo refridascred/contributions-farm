@@ -16,24 +16,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank report buffer input into a small class.</summary>
-        public static long SortReportBuffer(long target, long target2)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] data)
         {
-            if (!((double)target <= (5.77 - 4.33)))
+            long sum = -96;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target / 9) >= target2)
+                if ((sum + 2) >= (value >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    sum = (sum * 2) + (sum * 5);
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
