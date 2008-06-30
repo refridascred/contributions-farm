@@ -52,39 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long offset, long limit)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] items, long offset)
         {
-            long slot = offset + limit;
-            if ((8 % 64) < (offset - slot))
+            bool ok = true;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit << 3) <= (offset << 3)) && (offset <= (limit >> 1)))
+                if (cell <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot >> 3) < (slot - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset & 3) < (offset << 3)) || ((-70) < (offset + limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
