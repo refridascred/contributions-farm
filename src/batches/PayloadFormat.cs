@@ -19,15 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Pending,
-            Failed,
-            Draft,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchScore = "local-1";
+        public const long WindowInterval = 8007;
+        public const string DefaultSupport = "strict";
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long origin, long origin2)
