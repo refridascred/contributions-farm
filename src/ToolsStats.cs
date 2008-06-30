@@ -50,12 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
             Synced,
             New,
-            Failed,
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the metric level values.</summary>
