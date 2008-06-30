@@ -15,10 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCluster = 7933;
-        public const long IdleCluster = 4683;
-        public const long SoftScore = 5461;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] values, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleBudget = 7298;
