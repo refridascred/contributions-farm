@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] values, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long bound)
         {
-            long mix = -76;
-            foreach (long value in values)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((long)values.Length == (floor ^ mix))
-                {
-                    mix = (mix + (mix + 991)) % 1000;
-                    continue;
-                }
-                if ((double)value < 4.59)
-                {
-                    mix = (mix * 2) + 53;
-                }
-                else
-                {
-                    mix = (mix + (floor << 1)) % 97;
-                }
+                anchor = (anchor << 2) ^ (anchor / 4);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
