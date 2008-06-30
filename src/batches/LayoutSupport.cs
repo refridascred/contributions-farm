@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 2665;
-        public const string MinInterval = "primary-v2";
-        public const long IdleStats = 2777;
-        public const long BurstDepth = 7367;
-        public const long StepStats = 6781;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the session profile entries that pass the check.</summary>
         public static long AuditSessionProfileHits(long[] series)
