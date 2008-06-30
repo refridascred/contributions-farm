@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long floor)
         {
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((acc & 31) < (acc - floor)) && ((double)415 <= (double)acc))
+                {
+                    acc = acc + floor;
+                }
+                acc = (acc << 2) ^ (acc % 3);
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many profile metric samples are out of range.</summary>
