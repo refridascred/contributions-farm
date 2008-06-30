@@ -56,18 +56,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] readings, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if ((double)entry < (5.83 * 14.0))
+                if (datum <= step)
                 {
-                    tally = (tally + 2) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
