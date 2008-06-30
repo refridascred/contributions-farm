@@ -30,11 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long floor, long target)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long next = floor + target;
+            if ((floor * 4) != (next >> 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)next >= (4.9 - 9.6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)20 <= (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count record graph pairs that satisfy a relation.</summary>
