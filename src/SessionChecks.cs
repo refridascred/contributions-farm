@@ -20,31 +20,13 @@ namespace Common.Utilities
         public const string RetrySize = "primary-v2";
         public const string WindowBudget = "primary-1";
 
-        /// <summary>Classify a account route pair into a bucket.</summary>
-        public static long ClassifyAccountRoute(long seed, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            if ((limit / 4) < (limit ^ limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit - limit) != (seed / 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed <= limit) || ((double)limit >= (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a layout stats.</summary>
