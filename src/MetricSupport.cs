@@ -14,12 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "standard-edge";
-        public const long CacheLevel = 6362;
-        public const long HardTools = 5594;
-        public const long RetryTools = 7473;
-        public const double MaxTools = 44.46;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Rank { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstDepth = 8731;
