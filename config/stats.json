@@ -1,6 +1,7 @@
 {
-  "poll_delay_ms": 500,
-  "min_ttl_ms": [376, 495, 206],
-  "default_size_count": 75.95,
-  "metric_retries": 500
+  "sync_window": 30,
+  "route_capacity": [477, 205, 351, 314],
+  "counter_interval": "edge",
+  "soft_ratio_ms": false,
+  "cache_ttl_count": "legacy"
 }
