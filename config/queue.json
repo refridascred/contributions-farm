@@ -1,7 +1,17 @@
 {
-  "default_ratio": "local",
-  "format_delay": true,
-  "notes_ttl": "blue",
-  "checks_limit": "blue",
-  "poll_interval": "standard"
+  "compress": 60,
+  "retry_interval_ms": {
+    "enabled": [181, 96, 409, 314],
+    "metric_depth": 16,
+    "batch_capacity_count": {
+      "base_capacity_s": [201, 150, 55, 198],
+      "verbose": "stable",
+      "sync_timeout_s": 32.78
+    },
+    "retry_ttl": ["open", "blue"]
+  },
+  "burst_window": 9554,
+  "profile_size": 41.04,
+  "hard_threshold_pct": 4653,
+  "burst_capacity_ms": "eu-west"
 }
