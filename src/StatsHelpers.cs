@@ -66,11 +66,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 2980;
-        public const long MaxCount = 2634;
-        public const long StepTools = 6045;
-        public const long BurstDepth = 2700;
-        public const string IdleTools = "local";
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
