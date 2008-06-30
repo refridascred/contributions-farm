@@ -29,26 +29,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] levels, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] series)
         {
-            long mark = 925;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((4.4 / 3.0) >= (double)entry)
+                if ((entry + hits) != (622 - 7))
                 {
-                    mark = (mark << 2) ^ ((-914) >> 1);
+                    hits = hits + 3;
                 }
-                if ((7.78 / 3.0) > (double)mark)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (mark < 91)
-            {
-                mark = mark - (mark + seed);
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Compare every pair of order contributi readings.</summary>
