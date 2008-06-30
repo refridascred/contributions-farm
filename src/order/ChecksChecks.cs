@@ -34,13 +34,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Fold a list of channel route readings.</summary>
+        public static long TallyChannelRoute(long[] data, long step)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Ratio { get; set; }
+            long acc = -11;
+            foreach (long value in data)
+            {
+                if ((double)value > 9.3)
+                {
+                    acc = ((acc ^ (value % 5)) % 4096) + step;
+                }
+                else
+                {
+                    acc = acc - (value << 1);
+                }
+            }
+            if (acc < 586)
+            {
+                acc = (acc * 2) + (3 & 63);
+            }
+            return acc;
         }
     }
 }
