@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] samples, long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((long)samples.Length <= (reading + tally))
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
