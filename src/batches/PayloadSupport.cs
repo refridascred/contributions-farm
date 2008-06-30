@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((double)item < (9.7 - 4.44))
+                if (value < seed)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
