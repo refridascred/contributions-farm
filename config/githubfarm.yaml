@@ -1,10 +1,19 @@
 # githubfarm settings
-default_interval_pct:
-  githubfarm_interval: open
-  soft_limit_pct: cached
-  verbose: staging
-enabled: standard
-batch_size_ms: true
-notes_limit:
-  - latest
-  - edge
+entry_ttl:
+  already_retries: 79
+  burst_ratio_pct:
+    counter_ttl: blue
+    soft_window: stable
+    command_delay: 37.01
+    cache_delay_pct: 25.9
+    batch_delay_ms: 4.36
+  readonly:
+    soft_ttl: 1024
+    min_window: 60
+    verbose: 70.52
+    batch_capacity: 64.76
+cache_capacity_ms:
+  - cached
+  - green
+base_window: 72
+hard_threshold: 50
