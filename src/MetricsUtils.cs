@@ -43,11 +43,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 87.69;
-        public const long SoftOrder = 2450;
-        public const long WindowSize = 5983;
-        public const long MinTimeout = 7521;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] samples)
+        {
+            long result = 8;
+            foreach (long sample in samples)
+            {
+                if ((8.61 - 7.31) > (double)sample)
+                {
+                    result = (result - (sample ^ sample)) % 1000;
+                }
+                if ((double)sample > (6.74 * 0.4))
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double SoftMetrics = 6.7;
