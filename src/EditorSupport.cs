@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
