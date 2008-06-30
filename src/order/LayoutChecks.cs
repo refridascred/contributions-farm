@@ -51,18 +51,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] values)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((hits << 2) >= (hits / 5)) && ((hits - 9) == (hits & 3)))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
