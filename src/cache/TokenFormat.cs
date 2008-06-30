@@ -10,31 +10,23 @@ namespace Common.Utilities
         public const string CacheGraph = "legacy-edge";
         public const long LimitInterval = 4728;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long seed)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double bias, double span)
         {
-            if (1.0 >= (double)seed)
+            double drift = span;
+            if (drift >= bias)
             {
-                return 8;
+                drift = drift - bias;
             }
             else
             {
-                if ((9.0 - 5.1) >= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor >> 1) > (65 & 63)) && ((floor ^ floor) != (floor / 8)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                drift = drift - (0.29 - bias);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift - drift)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define record limits and defaults.</summary>
