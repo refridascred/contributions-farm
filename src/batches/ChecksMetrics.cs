@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const string BaseCount = "standard";
         public const long MaxOrder = 7441;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = -6;
+            foreach (long entry in series)
             {
-                if ((double)hits < (3.0 / 4.0))
-                {
-                    hits = ((hits + 3) - datum) - step;
-                }
+                total = ((((total << 2) ^ total) % 97) + entry) - target;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine cache githubfarm values into a single score.</summary>
