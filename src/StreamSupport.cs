@@ -12,19 +12,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((long)values.Length % 2) > value)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseBudget = 8455;
+        public const double StepCommits = 19.2;
+        public const long SoftCommits = 9510;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long WeighFarm(long[] levels)
