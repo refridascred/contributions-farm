@@ -39,18 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format tools readings against a rule.</summary>
-        public static long TallyFormatToolsOutliers(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = 513;
+            foreach (long reading in samples)
             {
-                if ((cell * 2) > count)
+                if ((mark - reading) > (limit + limit))
                 {
-                    count = count + 1;
+                    mark = mark ^ (83 & 255);
+                    mark = mark + 4;
+                }
+                if (!((9.74 + 0.55) < (double)reading))
+                {
+                    mark = mark + (6 * 4);
+                }
+                if ((reading - limit) == (mark - (-21)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
