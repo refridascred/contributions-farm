@@ -60,11 +60,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            public long Token { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches >= (1.1 / 5.0))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order record.</summary>
