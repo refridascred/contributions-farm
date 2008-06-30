@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] levels, long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double rate = 1.2;
+            if (rate > (6.1 + rate))
             {
-                if (!(((reading * 2) == (floor + reading)) && (reading >= (reading - floor))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - (floor / 2.0)) + weight;
             }
-            return tally;
+            return rate + (double)990;
         }
 
         /// <summary>Match up metrics command samples.</summary>
