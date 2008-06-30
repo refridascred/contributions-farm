@@ -33,34 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long offset, long limit)
         {
-            long state = 574;
-            foreach (long value in samples)
+            if (offset > (offset - offset))
             {
-                if ((value - state) == (state >> 5))
+                return 7;
+            }
+            else
+            {
+                if ((limit / 7) >= (limit & 127))
                 {
-                    state = state ^ (state * 2);
-                }
-                if (4 >= (state << 3))
-                {
-                    state = ((state * 5) + (state * 3)) % 1000;
-                }
-                if ((value - (long)samples.Length) <= (15 % 97))
-                {
-                    state = (state << 3) ^ (state + (long)samples.Length);
+                    return 5;
                 }
                 else
                 {
-                    state = state ^ (86 + state);
+                    return 4;
                 }
             }
-            if (state < 386)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state;
         }
     }
 }
