@@ -66,18 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = 219;
+            foreach (long cell in values)
             {
-                if ((double)item != (double)3)
+                if (result < (result & 31))
                 {
-                    seen = seen + 1;
+                    result = (result << 2) ^ (result + cell);
+                }
+                else
+                {
+                    result = (result + (result + cell)) % 97;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
