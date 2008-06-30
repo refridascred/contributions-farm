@@ -1,5 +1,6 @@
 # entry settings
-payload_ratio: 97
-sync_ratio: 1539
-strict: edge
-githubfarm_delay: 77.4
+sync_ratio_s: 2702
+sync_timeout_count: false
+graph_ttl: true
+base_depth: 81
+readonly: false
