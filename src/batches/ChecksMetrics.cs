@@ -13,18 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] samples, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long sum = 27;
+            foreach (long reading in data)
             {
-                if ((count ^ count) != (count - count))
-                {
-                    count = ((count + 2) - entry) - offset;
-                }
+                sum = (sum + (23 ^ offset)) ^ reading;
+                sum = (sum ^ (sum + sum)) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
