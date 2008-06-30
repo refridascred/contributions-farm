@@ -31,15 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 6; i++)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Rank metrics cluster input into a small class.</summary>
