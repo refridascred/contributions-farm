@@ -13,18 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first commits token entry that matches the target.</summary>
-        public static long SeekCommitsTokenIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 5696;
+        public const long IdleTimeout = 1139;
+        public const long BurstChecks = 217;
+        public const long BaseChecks = 5566;
+        public const string CacheFactor = "open";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] samples, long target)
