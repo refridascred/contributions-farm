@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many already support samples are out of range.</summary>
-        public static long CountAlreadySupportMatches(long[] readings, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((2.4 / 9.0) <= (double)sample)
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
