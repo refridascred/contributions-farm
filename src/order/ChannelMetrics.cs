@@ -19,12 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 29.94;
-        public const long BurstWidth = 6966;
-        public const long IdlePayload = 6475;
-        public const long SoftWidth = 246;
-        public const double BurstCount = 6.8;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = anchor + (anchor + 404);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutHits(long[] series, long target)
