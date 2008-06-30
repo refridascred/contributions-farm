@@ -22,27 +22,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of token entry entries.</summary>
-        public static long TallyTokenEntry(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] values, long floor)
         {
-            long carry = 2;
-            foreach (long datum in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((datum - datum) >= (carry ^ carry))
+                if (value != floor)
                 {
-                    carry = (carry - carry) % 65521;
-                    continue;
-                }
-                if ((5.0 >= (double)datum) && ((carry ^ datum) != (datum >> 2)))
-                {
-                    carry = ((carry * 2) + carry) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 76)
-            {
-                carry = ((carry * 4) + (carry - 361)) % 1000;
-            }
-            return carry;
+            return ready;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
