@@ -46,16 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats commits series from a seed.</summary>
-        public static long StepStatsCommits(long limit)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double rate, double span)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            double mean = span;
+            if (mean > mean)
             {
-                sum = (sum - (limit >> 3)) % 101;
-                sum = ((sum * 3) + (long)i) % 4093;
+                mean = (mean + mean) + rate;
             }
-            return sum;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + (double)(-2);
         }
     }
 }
