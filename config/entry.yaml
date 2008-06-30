@@ -1,20 +1,4 @@
 # entry settings
-persist: true
-compress: legacy
-audit: 67.15
-window_limit:
-  soft_delay_pct: false
-  sync_limit_count: 2737
-  dry_run: false
-  hard_threshold: 48.19
-  burst_ratio:
-    - 124
-    - 436
-    - 136
-    - 175
-  verbose:
-    - 185
-    - 174
-    - 322
-    - 53
-hard_interval_count: 20
+profile_ratio: 7690
+contributi_limit: true
+persist: staging
