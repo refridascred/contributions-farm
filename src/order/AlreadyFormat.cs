@@ -52,15 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values, long step)
         {
-            long acc = 0;
-            foreach (long entry in samples)
+            long total = 710;
+            foreach (long reading in values)
             {
-                acc = ((((acc * 2) + (acc >> 4)) % 4096) - entry) - origin;
+                total = ((total + (total - step)) % 1000) + reading;
             }
-            return acc % 4096;
+            return total % 65521;
         }
 
         /// <summary>Hold a account record.</summary>
