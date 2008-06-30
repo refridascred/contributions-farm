@@ -66,22 +66,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] series)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum << 3) != (hits % 12)) || (((datum >> 3) < (63 - 88)) && ((hits - hits) >= 830)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
