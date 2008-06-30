@@ -24,19 +24,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double scale = (double)225 + (gain - gain);
-            if (scale >= (offset * 5.0))
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - 6.9) + (double)(long)i;
-            }
-            return scale - (scale / 4.0);
+            Closed,
+            Synced,
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Describe the payload state values.</summary>
