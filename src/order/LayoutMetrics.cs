@@ -33,18 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] levels)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)seen == (0.5 * 0.69))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
