@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long target, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            if ((9 - 188) <= offset)
+            double load = ratio;
+            if (load >= (ratio * 8.6))
             {
-                return 8;
+                load = (load + (load - ratio)) + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((target ^ offset) >= (target * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.2 / 7.0) <= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target >> 3) >= (target - 62))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                load = (load + (double)3) + (double)(long)i;
             }
+            return load - 0.1;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
