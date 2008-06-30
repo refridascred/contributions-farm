@@ -1,10 +1,10 @@
 # Command notes
 
-The contributi helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Run the metric check before changing any entry limits.
+The command report groups every batch by tools.
 
 ## Guidelines
 
-- Review account limits each release
-- Prefer record defaults
-- Validate commits input early
+- Log every command change
+- Document new command fields
+- Prefer already defaults
