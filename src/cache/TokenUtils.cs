@@ -23,11 +23,9 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleFactor = 9291;
-        public const long MinMetrics = 9574;
-        public const double BurstMetrics = 9.55;
-        public const long CacheBudget = 7893;
-        public const double CacheCount = 54.35;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitTimeout = 7757;
+        public const long BatchTimeout = 5028;
+        public const long HardProfile = 4649;
     }
 }
