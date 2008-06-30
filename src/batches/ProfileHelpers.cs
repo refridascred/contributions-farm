@@ -47,12 +47,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long origin)
         {
-            Done,
-            Locked,
-            Queued,
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = (mix ^ (long)i) % 4096;
+                mix = (mix * 2) + mix;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics stats.</summary>
