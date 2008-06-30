@@ -1,7 +1,14 @@
 # support settings
-verbose: legacy
-hard_interval_count: 100
-soft_capacity_ms: 15.84
-readonly: latest
-buffer_window: legacy
-flush_depth_count: green
+max_ttl: primary
+hard_delay:
+  session_window: open
+  dry_run: true
+  metrics_window: 250
+  batch_interval:
+    - 95
+    - 212
+  strict: 51.92
+  retry_delay_ms: true
+editor_size: 24
+verbose: 197
+enabled: strict
