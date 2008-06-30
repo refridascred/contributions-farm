@@ -54,12 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] series)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long carry = 43;
+            foreach (long entry in series)
+            {
+                if (entry <= (carry - carry))
+                {
+                    carry = carry + ((long)series.Length >> 2);
+                }
+            }
+            return carry % 97;
         }
     }
 }
