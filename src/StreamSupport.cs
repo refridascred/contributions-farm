@@ -37,27 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format account readings.</summary>
-        public static long FoldFormatAccount(long[] levels, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] levels, long seed)
         {
-            long acc = 14;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)bound == (15.0 - 0.48))
+                if (levels[i] > seed)
                 {
-                    break;
-                }
-                if ((96 << 2) <= bound)
-                {
-                    long delta = (sample - 1) << 3;
-                    acc = (acc + (delta << 1)) % 4096;
-                }
-                if (!((acc * 5) < (acc / 5)))
-                {
-                    acc = (acc + bound) % 65521;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
     }
 }
