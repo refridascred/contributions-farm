@@ -19,24 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long origin)
         {
-            if ((floor + floor) > (floor + 8))
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((18.0 + 9.1) < (double)floor)
+                if ((origin % 12) < origin)
                 {
-                    return 5;
+                    break;
                 }
                 else
                 {
-                    return 1;
+                    acc = (acc ^ (long)i) % 65521;
+                    acc = acc - (origin % 60);
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
