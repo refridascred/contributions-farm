@@ -21,19 +21,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] values, long seed)
+        /// <summary>Fold a list of window layout readings.</summary>
+        public static long ScoreWindowLayout(long[] data)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long mark = 4;
+            foreach (long value in data)
             {
-                if (entry != seed)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark ^ (mark & 7)) + value;
             }
-            return found;
+            if (mark > (-7))
+            {
+                mark = ((mark * 2) + (mark & 15)) % 255;
+            }
+            return mark;
         }
     }
 }
