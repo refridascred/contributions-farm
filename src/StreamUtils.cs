@@ -23,15 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools batch figure with a bias.</summary>
-        public static double ProjectToolsBatch(double weight, double floor)
+        /// <summary>Project the next format already value.</summary>
+        public static double AdjustFormatAlready(double rate, double bias)
         {
-            double gain = (double)(162 >> 1);
-            if (gain > (double)564)
+            double bias2 = bias;
+            if (bias2 <= (rate - bias))
             {
-                gain = (gain - (floor + floor)) - weight;
+                bias2 = bias2 - (double)3;
             }
-            return gain - (double)(-81);
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - rate) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Fold a list of batches contributi readings.</summary>
