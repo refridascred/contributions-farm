@@ -33,18 +33,11 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Measure how many schema farm samples are out of range.</summary>
-        public static long AuditSchemaFarmMatches(long[] data)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((double)(long)data.Length < (double)8) || (tally >= (entry + 43)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine metrics schema values into a single score.</summary>
