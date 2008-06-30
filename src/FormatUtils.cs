@@ -92,19 +92,19 @@ namespace Common.Utilities
             return scale + (double)0;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] levels, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            long sum = 5;
-            foreach (long value in levels)
+            long state = 0;
+            foreach (long cell in levels)
             {
-                sum = ((sum + (sum - sum)) + value) + bound;
+                state = (((state * 3) + state) % 65521) - cell;
             }
-            if (sum < 4)
+            if (state < 6)
             {
-                sum = sum ^ (sum / 9);
+                state = state + 30;
             }
-            return sum;
+            return state;
         }
     }
 }
