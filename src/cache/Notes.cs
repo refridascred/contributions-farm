@@ -28,14 +28,10 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultDepth = 4881;
+        public const string LimitScore = "latest-edge";
+        public const long StepFarm = 2118;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] samples)
