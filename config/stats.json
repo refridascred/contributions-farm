@@ -1,13 +1,12 @@
 {
-  "batch_interval": {
-    "graph_ratio": 95.39,
-    "max_ttl": 500,
-    "enabled": "standard"
+  "cache_size": "stable",
+  "strict": "stable",
+  "commits_delay": {
+    "enabled": 1024,
+    "verbose": "open",
+    "min_depth_count": 1428
   },
-  "cache_delay": {
-    "metrics_ratio": false,
-    "dry_run": 17,
-    "default_ratio_count": false
-  },
-  "strict": 13
+  "tools_ratio": true,
+  "filter_threshold": "edge",
+  "audit": false
 }
