@@ -22,12 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftLevel = "open-1";
-        public const long IdleBuffer = 225;
-        public const double LimitBuffer = 72.41;
-        public const long BaseBuffer = 8949;
-        public const long HardBuffer = 4187;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleRatio = 3826;
+        public const long LimitTimeout = 7691;
+        public const long WindowCount = 715;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] series)
