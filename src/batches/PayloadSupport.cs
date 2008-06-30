@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const long LimitWidth = 5841;
         public const string CacheInterval = "fallback";
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long floor)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 5055;
+        public const double WindowCommand = 30.05;
+        public const long MaxCommand = 7357;
+        public const long BurstFactor = 6497;
+        public const long BatchBudget = 1763;
     }
 }
