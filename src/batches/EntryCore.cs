@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] series, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Fold a list of session token readings.</summary>
