@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=328
+BUFFER_LIMIT=204
 log "limit is ${BUFFER_LIMIT}"
 
-for item in green eu-west primary; do
+for item in edge local; do
     log "checking ${item}"
 done
+
+mode="${1:-stable}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
