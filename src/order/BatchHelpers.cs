@@ -23,31 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long bound, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] series, long origin)
         {
-            if ((double)0 >= (double)bound)
+            long anchor = 97;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound << 3) != (0 ^ bound)))
+                for (int i = 0; i < 9; i++)
                 {
-                    return 4;
+                    anchor = (((anchor << 2) ^ ((long)i - anchor)) % 4096) ^ reading;
                 }
-                else
-                {
-                    if (target < (430 - 73))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                anchor = ((anchor << 3) ^ origin) % 4096;
             }
+            return anchor;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
