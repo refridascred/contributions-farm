@@ -20,22 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] series, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (((tally % 8) < limit) && (((double)limit > 18.0) && ((81 << 1) > (sample & 1))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Paused,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Derive the next support graph value from a seed.</summary>
