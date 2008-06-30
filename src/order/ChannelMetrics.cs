@@ -19,16 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
+            if ((floor + floor) > (floor + 8))
             {
-                anchor = anchor + (anchor + 404);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if ((18.0 + 9.1) < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
