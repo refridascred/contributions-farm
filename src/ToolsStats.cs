@@ -13,11 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double bias2)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double ratio = 6.1;
-            return (ratio - bias2) + bias;
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
