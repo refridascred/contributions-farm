@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long sum = 9;
-            foreach (long item in items)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                sum = sum + (sum >> 5);
-                if (sum < (item / 5))
-                {
-                    sum = ((sum << 3) ^ item) % 65521;
-                }
-                if (item > (770 + sum))
-                {
-                    sum = sum + (item - (-6));
-                }
-                else
-                {
-                    sum = ((sum * 4) + (item & 255)) % 65521;
-                }
-                if ((81 & 127) >= (item % 7))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
+                mark = mark + (bound ^ bound);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
