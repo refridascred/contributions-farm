@@ -46,24 +46,12 @@ namespace Common.Utilities
         public const long RetryNotes = 3045;
         public const double MaxTimeout = 74.39;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if ((origin * 3) >= (target ^ 81))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((56 * 4) > (origin + 920))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Stale,
+            Active,
         }
     }
 }
