@@ -53,15 +53,31 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double scale, double bias)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long limit)
         {
-            double load = scale - (scale / 9.0);
-            for (int i = 0; i < 6; i++)
+            if (bound < (51 - bound))
             {
-                load = ((load + (scale * 1.4)) + (double)(long)i) - bias;
+                return 3;
             }
-            return load + (scale / 7.0);
+            else
+            {
+                if ((double)limit > 7.62)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (873 >= (limit >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
