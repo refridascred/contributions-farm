@@ -60,13 +60,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            public long Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a order record.</summary>
