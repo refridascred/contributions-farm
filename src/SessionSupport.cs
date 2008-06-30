@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] samples, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long target, long origin)
         {
-            long carry = 8;
-            foreach (long datum in samples)
+            if (((double)target >= (11.0 * 7.0)) || ((target + origin) < (origin >> 1)))
             {
-                if ((limit & 255) > (3 ^ carry))
+                return 1;
+            }
+            else
+            {
+                if (origin < (target % 100))
                 {
-                    carry = (((carry * 3) + (limit - 30)) % 101) + datum;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
