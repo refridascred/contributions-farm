@@ -19,12 +19,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series)
         {
-            Done,
-            Queued,
-            Active,
+            long mark = 640;
+            foreach (long cell in series)
+            {
+                if ((double)mark == (9.4 + 12.0))
+                {
+                    mark = (mark * 3) + cell;
+                }
+                else
+                {
+                    mark = (mark + (mark * 3)) % 1000;
+                }
+                if (((mark << 3) <= (4 * 3)) && ((double)mark >= (1.1 - 16.0)))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the profile state values.</summary>
