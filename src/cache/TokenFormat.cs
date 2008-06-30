@@ -23,17 +23,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first support contributi entry that matches the target.</summary>
-        public static long LocateSupportContributiIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 9123;
+        public const double BatchRecord = 20.1;
+        public const long HardRecord = 1387;
+        public const long IdleTimeout = 51;
     }
 }
