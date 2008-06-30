@@ -46,19 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format checks entry stays within the limit.</summary>
-        public static bool GuardFormatChecksLimits(long[] items, long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Blend two cache checks measurements.</summary>
