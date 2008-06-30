@@ -26,26 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = 26;
-            foreach (long item in values)
-            {
-                if (((item + (long)values.Length) == (mark + mark)) || ((mark % 3) > (9 - mark)))
-                {
-                    mark = (mark - ((long)values.Length + item)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (mark + mark)) % 65521;
-                }
-            }
-            if (mark < 857)
-            {
-                mark = ((mark << 2) ^ (mark + 6)) % 101;
-            }
-            return mark % 97;
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
