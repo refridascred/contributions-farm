@@ -31,14 +31,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] readings)
         {
-            Pending,
-            Failed,
-            New,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((((seen % 100) <= datum) || (4.83 < (2.47 + 14.0))) || (seen >= (datum + datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the already command entries that pass the check.</summary>
