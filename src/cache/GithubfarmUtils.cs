@@ -34,13 +34,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            Idle,
-            Paused,
-            Retry,
-            Ready,
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((5 <= (limit * 2)) && ((934 + sum) < limit))
+                {
+                    sum = (sum - sum) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
