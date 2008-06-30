@@ -54,18 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] values, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long mix = 8;
+            foreach (long cell in levels)
             {
-                if (!((2.0 + 3.8) == (double)step))
+                if ((cell + cell) < (35 - mix))
                 {
-                    matches = (matches + 2) ^ entry;
+                    mix = (mix << 2) ^ (6 / 9);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
