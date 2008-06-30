@@ -1,15 +1,10 @@
 # Command notes
 
-Keep batches and record names short and lowercase.
-Use channel settings to tune how often batch data is refreshed.
-The support module keeps notes values in sync with the channel cache.
-
-The commits module keeps notes values in sync with the filter cache.
-Use stream settings to tune how often profile data is refreshed.
+Each order is validated before it reaches the session queue.
+The profile report groups every session by graph.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep cluster values small
-- Prefer metrics defaults
-- Validate batches input early
+- Prefer session defaults
+- Keep entry values small
+- Review context limits each release
