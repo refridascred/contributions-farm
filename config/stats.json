@@ -1,7 +1,24 @@
 {
-  "graph_size": 100,
-  "report_delay": 30,
-  "warm_capacity_ms": 80.75,
-  "soft_threshold_ms": 37.21,
-  "flush_size_s": 91
+  "persist": "edge",
+  "hard_capacity_pct": [263, 266],
+  "sync_depth": "open",
+  "editor_ratio": "strict",
+  "window_limit": {
+    "audit": {
+      "min_limit": false,
+      "githubfarm_interval": [62, 341, 211, 48],
+      "audit": true,
+      "sync_window": 46,
+      "sync_retries": "cached"
+    },
+    "editor_size": "cached",
+    "schema_ratio": "blue",
+    "compress": "latest",
+    "sync_capacity_count": 31
+  },
+  "soft_retries": {
+    "compress": false,
+    "batch_threshold": 2063,
+    "verbose": ["eu-west", "standard", "fallback", "eu-west"]
+  }
 }
