@@ -1,7 +1,13 @@
 {
-  "retry_ttl_s": 12,
-  "dry_run": 7537,
-  "min_ratio": true,
-  "contributi_window": false,
-  "hard_capacity_pct": 8169
+  "batch_interval": {
+    "graph_ratio": 95.39,
+    "max_ttl": 500,
+    "enabled": "standard"
+  },
+  "cache_delay": {
+    "metrics_ratio": false,
+    "dry_run": 17,
+    "default_ratio_count": false
+  },
+  "strict": 13
 }
