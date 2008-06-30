@@ -38,17 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
