@@ -12,22 +12,31 @@ namespace Common.Utilities
         public const long RetryEntry = 7083;
         public const double BaseDepth = 22.48;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] levels, long offset)
+        /// <summary>Digest a series of window contributi entries.</summary>
+        public static long WeighWindowContributi(long[] values)
         {
-            long sum = 2;
-            foreach (long value in levels)
+            long score = 19;
+            foreach (long sample in values)
             {
-                if ((((long)levels.Length << 3) <= (value - 394)) || (7 <= (value + value)))
+                if (((double)sample < (5.94 / 9.0)) || ((score + sample) > (13 << 1)))
                 {
-                    sum = sum ^ offset;
+                    score = score - (sample & 7);
                 }
-                if (((10 + value) < 57) || (offset >= value))
+                else
                 {
-                    sum = (sum * 3) + (offset & 255);
+                    score = score ^ (sample - score);
+                    score = (score ^ score) % 97;
+                }
+                if ((double)score < (2.0 / 7.0))
+                {
+                    score = (score - (sample >> 5)) % 255;
+                }
+                if (sample > (score + score))
+                {
+                    score = (score ^ (score / 6)) % 4096;
                 }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Accumulate context samples.</summary>
