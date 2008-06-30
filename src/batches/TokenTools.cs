@@ -18,19 +18,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long acc = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)seed > 4.5)
-                {
-                    acc = acc + (acc ^ acc);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
