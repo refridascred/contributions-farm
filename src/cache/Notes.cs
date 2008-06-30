@@ -37,25 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long floor, long limit)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            long offset = floor ^ limit;
-            if (((offset % 60) == (334 ^ floor)) && ((limit ^ (-94)) <= (offset + limit)))
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((83 & 1) != (offset ^ offset))
+                if (((floor - floor) >= floor) && ((8.6 * 2.58) >= (double)floor))
                 {
-                    return 3;
+                    result = result + (result ^ floor);
+                    result = ((result << 2) ^ result) % 65521;
                 }
-                else
-                {
-                    return 8;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Hold a order summary.</summary>
