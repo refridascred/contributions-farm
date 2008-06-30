@@ -1,8 +1,5 @@
 {
-  "audit": "legacy",
-  "hard_timeout_ms": 32.51,
-  "entry_threshold": false,
-  "burst_interval_pct": "standard",
-  "context_capacity": 95.34,
-  "githubfarm_ttl": 8693
+  "verbose": "open",
+  "already_ratio": [92, 188],
+  "compress": ["stable", "green"]
 }
