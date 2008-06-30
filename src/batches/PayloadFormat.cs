@@ -24,19 +24,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double bias, double offset)
+        /// <summary>Look up the position of a report record sample.</summary>
+        public static long SeekReportRecordIndex(long[] readings, long target)
         {
-            double weight = (double)(85 + 186);
-            if (weight < (bias / 6.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - bias;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - (bias + weight);
-            }
-            return weight + (offset - offset);
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
