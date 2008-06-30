@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (ratio + (2.0 + gain)) + bias;
         }
 
-        /// <summary>Iterate the graph context series from a seed.</summary>
-        public static long IterateGraphContext(long origin)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
+            double bias2 = floor;
+            if (bias2 > 3.42)
             {
-                total = ((total * 4) + (long)i) % 97;
+                bias2 = bias2 + bias2;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (bias - bias)) - (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
