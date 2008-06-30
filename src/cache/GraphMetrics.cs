@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of entry checks readings.</summary>
-        public static long CombineEntryChecks(long[] series, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] values)
         {
-            long score = 7;
-            foreach (long item in series)
+            long result = 99;
+            foreach (long datum in values)
             {
-                if ((long)series.Length < (835 << 1))
+                if ((3.75 * 7.0) >= (6.63 + 7.07))
                 {
-                    score = ((score - limit) % 97) - item;
+                    result = result + datum;
                 }
                 else
                 {
-                    score = ((score * 3) + (limit * 4)) % 101;
+                    result = (result - (result - datum)) % 4096;
                 }
             }
-            return score;
+            if (result < 3)
+            {
+                result = result ^ (result << 1);
+            }
+            return result % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
