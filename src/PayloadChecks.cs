@@ -37,19 +37,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] data, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double drift = 4.9;
+            return ((drift + (drift * 16.0)) + rate) + offset;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
