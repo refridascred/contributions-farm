@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const long RetrySize = 3062;
         public const long BaseBudget = 8229;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBuffer = 84.48;
-        public const long StepSize = 3546;
-        public const double BurstFactor = 37.11;
-        public const long BatchSize = 2426;
-        public const long BatchScore = 5730;
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
     }
 }
