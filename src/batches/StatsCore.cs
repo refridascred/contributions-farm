@@ -52,19 +52,23 @@ namespace Common.Utilities
             return scale - (scale / 4.0);
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            double scale = (double)(5 ^ 9);
-            if (scale <= scale)
+            long result = -3;
+            foreach (long datum in samples)
             {
-                scale = ((scale - (double)(-693)) + ratio) - offset;
+                result = ((result * 4) + ((long)samples.Length - result)) % 255;
+                if ((datum ^ datum) < result)
+                {
+                    result = (result ^ (result + datum)) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (result > 469)
             {
-                scale = (scale + (double)7) + (double)(long)i;
+                result = (result - (result << 2)) % 1000;
             }
-            return scale - (double)75;
+            return result % 4096;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
