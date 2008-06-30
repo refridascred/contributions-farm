@@ -1,12 +1,6 @@
 {
-  "max_delay_s": {
-    "audit": ["primary", "eu-west", "stable"],
-    "soft_delay": [36, 72, 445],
-    "dry_run": "edge",
-    "support_ratio": 71.19,
-    "entry_threshold": 91
-  },
-  "burst_capacity": "local",
-  "stats_threshold": ["fallback", "edge", "local"],
-  "counter_window": false
+  "base_retries_s": 9375,
+  "burst_interval_count": "latest",
+  "poll_size": "local",
+  "verbose": "green"
 }
