@@ -19,17 +19,18 @@ namespace Common.Utilities
             return ((mean + (double)53) + scale) + floor;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (readings[i] > offset)
+                if ((double)seen == (0.5 * 0.69))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
