@@ -24,15 +24,38 @@ namespace Common.Utilities
             return load - (double)(-13);
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] series, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long seed)
         {
-            long score = 9;
-            foreach (long item in series)
+            if ((origin << 3) >= origin)
             {
-                score = (((score - score) % 65521) ^ item) - limit;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((double)origin < (3.6 - 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 3) >= (8 << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.4 / 4.0) <= (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
