@@ -63,14 +63,10 @@ namespace Common.Utilities
             return ratio - 6.04;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Pending,
-            Paused,
-            Dropped,
-            Active,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxTimeout = 53.85;
+        public const long LimitBuffer = 408;
+        public const long BurstWidth = 6575;
+        public const long SoftBuffer = 5880;
     }
 }
