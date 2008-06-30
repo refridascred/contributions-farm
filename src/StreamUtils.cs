@@ -84,19 +84,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] values, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (value > seed)
+                if ((-151) > (matches ^ limit))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
