@@ -13,10 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchScore = 51.88;
-        public const string MaxSpan = "local-edge";
-        public const long StepSize = 4128;
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double gain, double bias)
+        {
+            double ratio = bias / 6.0;
+            return ratio + gain;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9263;
