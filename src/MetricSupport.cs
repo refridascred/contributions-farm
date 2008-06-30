@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamMatches(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mix = (mix - (seed / 3)) % 4096;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((6.0 / 4.0) == (double)count)
+                {
+                    count = (count + 1) ^ cell;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
