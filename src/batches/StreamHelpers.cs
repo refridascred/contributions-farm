@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const long WindowStream = 1523;
         public const long IdleRatio = 98;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            long anchor = 453;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor << 2) ^ 844) % 97) ^ cell;
+            }
+            if (anchor < 126)
+            {
+                anchor = (anchor ^ (anchor & 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
