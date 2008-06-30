@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            double weight = bias - (double)687;
-            if (weight < (double)691)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight + 7.8;
+                result = (result + 6) % 65521;
+                result = (result - (result - limit)) % 97;
+                result = (result << 3) ^ 10;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return weight + floor;
+            return result;
         }
 
         /// <summary>Hold a report record.</summary>
