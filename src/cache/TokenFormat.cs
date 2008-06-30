@@ -23,10 +23,18 @@ namespace Common.Utilities
         public const double BaseWindow = 33.91;
         public const long MaxWindow = 4709;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 9123;
-        public const double BatchRecord = 20.1;
-        public const long HardRecord = 1387;
-        public const long IdleTimeout = 51;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((17.0 - 4.88) >= (double)hits)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
     }
 }
