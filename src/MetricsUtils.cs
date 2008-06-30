@@ -47,9 +47,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftLevel = 72.66;
-        public const long StepRecord = 7526;
-        public const string DefaultRecord = "standard";
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
