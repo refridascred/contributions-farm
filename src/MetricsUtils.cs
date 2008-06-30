@@ -32,12 +32,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a tools buffer value against two limits.</summary>
+        public static long RankToolsBuffer(long bound, long limit)
         {
-            New,
-            Pending,
-            Ready,
+            long cur = bound + limit;
+            if ((double)cur >= (1.0 - 8.9))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)limit < (3.3 * 15.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit >= 4.9)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes info.</summary>
