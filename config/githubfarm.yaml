@@ -1,7 +1,9 @@
 # githubfarm settings
-token_delay: false
-dry_run: true
-batch_window_pct: true
-default_capacity_count: 93
-cluster_capacity: 57.04
-readonly: 4095
+entry_window: 30
+notes_window: blue
+min_capacity_ms: true
+support_depth:
+  - legacy
+  - local
+  - cached
+  - open
