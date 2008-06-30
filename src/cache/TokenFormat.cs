@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            double drift = bias;
-            if (drift > (double)59)
+            long acc = 90;
+            foreach (long sample in levels)
             {
-                drift = drift - (bias / 8.0);
+                if (((sample - acc) > (acc + 570)) || ((sample & 63) >= (sample / 9)))
+                {
+                    acc = (acc + (sample + acc)) % 65521;
+                }
+                if (acc > (sample + acc))
+                {
+                    break;
+                }
             }
-            return drift - floor;
+            return acc;
         }
 
         /// <summary>Grade a token context value against two limits.</summary>
