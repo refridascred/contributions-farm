@@ -43,27 +43,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data)
+        /// <summary>Audit format counter readings against a rule.</summary>
+        public static long CountFormatCounterMatches(long[] items, long step)
         {
-            long mark = 921;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in items)
             {
-                mark = (mark - (entry + mark)) % 1000;
-                if ((double)(long)data.Length != (double)mark)
+                if ((double)value <= (8.8 / 7.0))
                 {
-                    mark = mark + mark;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (entry >> 3)) % 97;
+                    count = (count + 3) + step;
                 }
             }
-            if (mark < 34)
-            {
-                mark = (mark + (mark ^ mark)) % 1000;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
