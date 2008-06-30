@@ -1,5 +1,5 @@
 {
-  "batch_ratio_s": ["green", "staging"],
-  "idle_retries": true,
-  "base_timeout_count": "open"
+  "account_size": "legacy",
+  "hard_threshold": 500,
+  "profile_ratio": "primary"
 }
