@@ -13,26 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long total = 187;
-            foreach (long cell in readings)
-            {
-                if (!((cell - cell) >= (cell + total)))
-                {
-                    total = total + (9 >> 1);
-                }
-                else
-                {
-                    total = (total - (cell % 97)) % 4096;
-                }
-            }
-            if (total < 1)
-            {
-                total = (total ^ (94 >> 2)) % 97;
-            }
-            return total;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
