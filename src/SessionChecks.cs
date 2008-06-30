@@ -14,12 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 8692;
-        public const double BaseMetrics = 45.98;
-        public const long LimitMetrics = 5213;
-        public const long BatchMetrics = 9372;
-        public const double IdleMetrics = 84.63;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
