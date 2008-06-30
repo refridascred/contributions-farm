@@ -16,18 +16,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] items, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long score = 6;
+            foreach (long entry in levels)
             {
-                if (!((long)items.Length <= (count ^ value)))
+                if (((double)score >= (20.0 + 0.9)) && ((double)(long)levels.Length >= 7.0))
                 {
-                    count = (count + 2) - floor;
+                    score = ((score * 3) + score) % 97;
+                }
+                else
+                {
+                    score = score ^ (8 + entry);
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Rank order input into a small class.</summary>
