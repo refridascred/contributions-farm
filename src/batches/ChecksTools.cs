@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long step, long limit)
-        {
-            long edge = step ^ limit;
-            if (0.03 >= (double)edge)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step < 8.3)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "open";
+        public const string CacheRoute = "stable";
+        public const long BurstRoute = 5870;
+        public const long BaseRoute = 2644;
+        public const string BurstBudget = "open-v2";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] series, long step)
