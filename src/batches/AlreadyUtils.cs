@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long RetryAlready = 4309;
         public const double CacheLevel = 81.41;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Look up the position of a stats entry sample.</summary>
+        public static long SeekStatsEntryIndex(long[] data, long limit)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
