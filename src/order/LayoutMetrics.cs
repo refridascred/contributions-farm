@@ -32,13 +32,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
             public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
