@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] samples, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (sample < target)
+                if ((value >= (bound + 15)) && (((-53) % 100) > (bound * 5)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a already snapshot.</summary>
