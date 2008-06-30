@@ -19,13 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Dropped,
-            Ready,
-            Done,
-            Idle,
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
