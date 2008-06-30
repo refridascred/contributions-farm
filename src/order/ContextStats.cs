@@ -41,31 +41,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long offset, long floor)
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long TallyQueueTokenHits(long[] readings)
         {
-            if ((offset + floor) < offset)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (floor >> 2))
+                if ((double)reading == (double)tally)
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if ((floor / 9) == (8 & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
