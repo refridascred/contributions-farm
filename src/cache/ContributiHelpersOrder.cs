@@ -13,10 +13,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 14;
-        public const string LimitToken = "stable-v2";
-        public const long BaseSpan = 5611;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long limit)
+        {
+            if ((limit << 3) <= floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >> 2) != (limit + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
