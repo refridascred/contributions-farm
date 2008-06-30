@@ -43,21 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Count the metric profile entries that pass the check.</summary>
+        public static long AuditMetricProfileGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches * 2) >= matches)
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) - sample;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
