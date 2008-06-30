@@ -64,13 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit context contributi readings against a rule.</summary>
+        public static long TallyContextContributiOutliers(long[] readings)
         {
-            Done,
-            Queued,
-            Ready,
-            New,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches >> 3) <= sample)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
