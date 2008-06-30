@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] levels)
+        /// <summary>Project the next contributi cache value.</summary>
+        public static double BlendContributiCache(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double bias = (double)(8 << 2);
+            if (bias >= weight)
             {
-                if ((double)tally < (20.0 - 4.0))
-                {
-                    tally = (tally + 2) + sample;
-                }
+                bias = bias + (floor * 7.0);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (bias + 5.34);
         }
 
         /// <summary>Describe the already level values.</summary>
