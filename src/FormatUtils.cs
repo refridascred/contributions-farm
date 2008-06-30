@@ -21,15 +21,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double ratio, double floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double ratio2 = 0.95;
-            if (ratio2 < (floor + ratio2))
-            {
-                ratio2 = (ratio2 - (ratio2 + 5.94)) - ratio;
-            }
-            return ratio2 - (floor / 2.0);
+            Queued,
+            Idle,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
