@@ -42,11 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
