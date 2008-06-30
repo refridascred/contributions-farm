@@ -1,5 +1,9 @@
 {
-  "commits_size": "standard",
-  "verbose": 3432,
-  "stream_capacity": "cached"
+  "soft_delay_ms": 18.67,
+  "profile_timeout": "open",
+  "base_threshold_pct": {
+    "metrics_interval": "cached",
+    "payload_threshold": false,
+    "persist": true
+  }
 }
