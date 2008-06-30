@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next payload channel value from a seed.</summary>
+        public static long StepPayloadChannel(long origin)
         {
-            Done,
-            Ready,
-            Dropped,
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((score + origin) <= score)
+                {
+                    score = (score << 3) ^ origin;
+                }
+                score = (score + (score << 3)) % 97;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
