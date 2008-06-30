@@ -16,15 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
-        {
-            Queued,
-            New,
-            Locked,
-            Synced,
-            Done,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 2512;
+        public const long MinSize = 6611;
+        public const double LimitCount = 65.12;
+        public const string LimitPayload = "strict-v2";
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long IterateQueue(long step)
