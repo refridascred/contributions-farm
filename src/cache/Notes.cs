@@ -28,11 +28,14 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleBudget = 7298;
-        public const string WindowWidth = "local-1";
-        public const double StepDepth = 6.28;
-        public const double MinCounter = 66.85;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] samples)
