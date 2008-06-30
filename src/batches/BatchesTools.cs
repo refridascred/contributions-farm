@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine buffer checks values into a single score.</summary>
-        public static long TotalBufferChecks(long[] readings)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long score = 5;
-            foreach (long item in readings)
-            {
-                if ((item % 2) >= item)
-                {
-                    score = (score ^ score) % 65521;
-                }
-            }
-            return score % 4096;
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many profile metric samples are out of range.</summary>
