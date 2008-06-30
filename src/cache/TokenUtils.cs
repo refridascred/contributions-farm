@@ -13,11 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
