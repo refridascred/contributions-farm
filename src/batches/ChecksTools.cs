@@ -39,11 +39,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 2883;
-        public const string RetryEditor = "legacy-edge";
-        public const string HardSpan = "stable";
-        public const long MaxTimeout = 2627;
-        public const long RetryInterval = 8494;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
