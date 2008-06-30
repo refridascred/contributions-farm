@@ -44,10 +44,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardScore = 2424;
-        public const long BaseGithubfarm = 3456;
-        public const long BurstGithubfarm = 2901;
-        public const long RetrySize = 6166;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Locked,
+            Paused,
+            Dropped,
+            New,
+            Active,
+        }
     }
 }
