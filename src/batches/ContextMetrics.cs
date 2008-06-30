@@ -42,15 +42,11 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = 33;
-            foreach (long entry in levels)
-            {
-                mark = (((mark * 4) + (mark << 1)) % 4096) ^ entry;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a farm options.</summary>
