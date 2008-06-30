@@ -67,19 +67,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
-        public static long TallyGithubfarmProfileGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (seen > (2 >> 5))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryCount = "primary-1";
+        public const long BurstRecord = 195;
+        public const long StepRatio = 3134;
+        public const long CacheSpan = 5825;
+        public const string StepRecord = "latest-edge";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TotalCounter(long[] values)
