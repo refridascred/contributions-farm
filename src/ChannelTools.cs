@@ -27,11 +27,17 @@ namespace Common.Utilities
             return rate - bias2;
         }
 
-        /// <summary>Blend two batch notes measurements.</summary>
-        public static double BlendBatchNotes(double scale, double offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long seed)
         {
-            double drift = scale;
-            return (drift - drift) + offset;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
