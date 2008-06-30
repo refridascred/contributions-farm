@@ -1,16 +1,11 @@
 # support settings
-max_delay: local
-idle_depth_pct: open
-warm_ttl_s:
-  report_limit: 60.47
-  cache_timeout: 83.17
-  audit: standard
-  idle_size_pct: staging
-  support_limit:
-    filter_threshold: 64
-    idle_retries: true
-    poll_window_ms: 58
-  buffer_retries: false
-idle_capacity_ms: primary
-max_depth_ms: 100
-min_size_ms: 8822
+base_depth_ms: fallback
+min_capacity_pct:
+  command_timeout: stable
+  persist: 42.94
+  flush_window: staging
+soft_interval_count:
+  - 193
+  - 469
+  - 45
+  - 500
