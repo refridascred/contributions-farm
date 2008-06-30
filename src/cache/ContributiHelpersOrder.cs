@@ -21,12 +21,31 @@ namespace Common.Utilities
         public const long SoftRoute = 5224;
         public const long WindowScore = 354;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Classify a entry session pair into a bucket.</summary>
+        public static long RankEntrySession(long step, long offset)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            if (((step << 2) <= offset) && ((step / 9) != (offset >> 4)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - offset) > step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step + offset) != (offset * 2)) && ((double)step == (7.0 * 8.07)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
