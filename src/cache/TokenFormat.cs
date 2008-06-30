@@ -23,11 +23,31 @@ namespace Common.Utilities
         public const double BaseWindow = 33.91;
         public const long MaxWindow = 4709;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryDepth = 6912;
-        public const string StepDepth = "open";
-        public const double IdleCounter = 62.52;
-        public const long MaxCounter = 1955;
-        public const string WindowCounter = "stable";
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long floor, long floor2)
+        {
+            if (((double)floor <= (double)floor2) && ((18.0 * 9.93) < (double)floor2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((-18) / 2) != ((-43) - floor2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor % 2) != (floor >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
