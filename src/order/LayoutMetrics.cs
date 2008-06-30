@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + (bound + bound)) % 65521;
+                acc = (acc - (bound - acc)) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of record readings.</summary>
