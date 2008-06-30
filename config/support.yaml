@@ -1,10 +1,5 @@
 # support settings
-min_retries: 4899
-base_delay_pct: 1024
-min_timeout_s: blue
-default_depth_s:
-  - green
-  - local
-  - eu-west
-  - staging
-readonly: false
+burst_limit: open
+min_delay_ms: edge
+entry_ratio: primary
+metrics_capacity: 4647
