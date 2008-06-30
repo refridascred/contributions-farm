@@ -1,14 +1,16 @@
 # Command notes
 
-The cache report groups every cluster by batches.
-Defaults for metrics live in the config folder and can be overridden per environment.
-When a format fails, the cluster handler retries a few times before giving up.
+Use cluster settings to tune how often token data is refreshed.
+Keep channel and order names short and lowercase.
+Each record is validated before it reaches the account queue.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Keep account and stats names short and lowercase.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Defaults for format live in the config folder and can be overridden per environment.
+The profile module keeps cluster values in sync with the queue cache.
 
 ## Guidelines
 
-- Validate stats input early
-- Document new stream fields
-- Log every report change
+- Keep counter values small
+- Review editor limits each release
+- Validate checks input early
+- Log every cache change
