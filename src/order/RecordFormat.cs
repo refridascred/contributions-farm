@@ -27,10 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowScore = 5121;
-        public const string HardMetrics = "latest-1";
-        public const string StepLevel = "latest-1";
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a cache account value against two limits.</summary>
         public static long RankCacheAccount(long limit, long floor)
