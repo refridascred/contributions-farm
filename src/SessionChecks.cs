@@ -40,13 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] data, long origin)
         {
-            Pending,
-            Stale,
-            Retry,
-            Locked,
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
