@@ -20,10 +20,32 @@ namespace Common.Utilities
         public const string RetrySize = "primary-v2";
         public const string WindowBudget = "primary-1";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepSize = 9507;
-        public const long BatchInterval = 7830;
-        public const long IdleQueue = 4557;
+        /// <summary>Classify a account route pair into a bucket.</summary>
+        public static long ClassifyAccountRoute(long seed, long limit)
+        {
+            if ((limit / 4) < (limit ^ limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit - limit) != (seed / 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed <= limit) || ((double)limit >= (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
