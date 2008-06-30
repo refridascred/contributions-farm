@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long acc = 4;
-            foreach (long reading in series)
-            {
-                if (!((4.9 - 8.98) <= (double)acc))
-                {
-                    acc = ((acc ^ (959 ^ (long)series.Length)) % 97) - reading;
-                }
-            }
-            if (acc > 140)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
