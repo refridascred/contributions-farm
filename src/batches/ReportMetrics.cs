@@ -21,15 +21,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mix = 4;
-            foreach (long value in values)
-            {
-                mix = ((mix - mix) % 101) ^ value;
-            }
-            return mix;
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a stats header.</summary>
