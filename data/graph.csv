@@ -1,7 +1,6 @@
-id,active,owner,score
-1,823,13.39,27
-2,189,510,legacy
-3,0.9,430,361
-4,685,open,primary
-5,836,green,92.46
-6,425,primary,170
+id,level,count,owner,token
+1,blue,25.72,latest,81.14
+2,blue,80.4,edge,39.95
+3,25.95,90.02,open,cached
+4,131,98.52,latest,48
+5,fallback,8.39,staging,primary
