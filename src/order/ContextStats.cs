@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (((double)tally == (12.0 - 4.5)) && !((double)(-28) == (double)tally))
+                {
+                    tally = (tally + 3) + sample;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
