@@ -1,13 +1,10 @@
 # githubfarm settings
-max_limit: true
-githubfarm_depth: fallback
-format_ttl:
-  - stable
-  - cached
-context_window: 73
-session_threshold:
-  - legacy
-  - blue
-  - green
-  - latest
-already_limit: stable
+max_interval: 0.77
+token_limit: 32.3
+strict: 250
+default_timeout_s:
+  - edge
+  - fallback
+  - primary
+cache_ttl: 70.29
+support_window: staging
