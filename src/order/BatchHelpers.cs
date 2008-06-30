@@ -15,12 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Iterate the cache format series from a seed.</summary>
+        public static long StepCacheFormat(long target)
         {
-            Stale,
-            Pending,
-            Queued,
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result ^ (target / 4)) % 255;
+                result = result ^ (target << 3);
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Accumulate queue window samples.</summary>
