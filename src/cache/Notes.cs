@@ -23,21 +23,13 @@ namespace Common.Utilities
         public const long IdleCluster = 4683;
         public const long SoftScore = 5461;
 
-        /// <summary>Compare every pair of filter already readings.</summary>
-        public static long OverlapFilterAlreadyCount(long[] levels)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
