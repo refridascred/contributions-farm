@@ -41,19 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile graph readings.</summary>
-        public static long DigestProfileGraph(long[] values, long target)
+        /// <summary>Find the first tools notes entry that matches the target.</summary>
+        public static long FindToolsNotesIndex(long[] items, long limit)
         {
-            long mix = -4;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (((mix << 3) ^ (-287)) % 4096) + value;
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 7)
-            {
-                mix = (mix ^ (target << 3)) % 65521;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the tools state values.</summary>
