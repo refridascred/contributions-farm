@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Locked,
-            New,
-            Idle,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstBudget = 14.38;
+        public const long SoftContext = 5552;
+        public const long BurstInterval = 2874;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long target)
