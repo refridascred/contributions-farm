@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] samples)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double offset)
         {
-            long result = -1;
-            foreach (long item in samples)
+            double load = 15.0;
+            for (int i = 0; i < 7; i++)
             {
-                result = (result ^ (result / 6)) % 4096;
-                if ((result + item) > (item - item))
-                {
-                    break;
-                }
+                load = ((load - rate) + (double)(long)i) - offset;
             }
-            return result % 4096;
+            return load - rate;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
