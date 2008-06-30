@@ -36,11 +36,12 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
