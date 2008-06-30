@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long IdleCluster = 4683;
         public const long SoftScore = 5461;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (hits >= (5 * 3))
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
                 {
-                    hits = (hits + 1) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
