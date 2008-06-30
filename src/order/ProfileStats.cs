@@ -19,32 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] values)
         {
-            long next = seed - limit;
-            if (((0 % 24) > next) && (239 <= (seed ^ next)))
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (0.3 < (double)next)
+                if ((item + seen) != (item >> 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (17.0 <= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
