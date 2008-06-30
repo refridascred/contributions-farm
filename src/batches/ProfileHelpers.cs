@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a report editor sample.</summary>
-        public static long LookupReportEditorIndex(long[] items, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] > origin) && ((items[i] % 3) == 0))
+                if ((double)tally < (20.0 - 4.0))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the already level values.</summary>
