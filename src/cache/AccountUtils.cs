@@ -23,16 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the window record series from a seed.</summary>
-        public static long RollWindowRecord(long floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score - ((long)i ^ floor)) % 255;
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
