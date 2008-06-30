@@ -62,21 +62,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] values, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                long edge = ((long)i & 15) - (carry + carry);
-                if ((8.29 * 0.1) <= (double)origin)
+                if (sample >= target)
                 {
-                    carry = carry + (carry + edge);
+                    valid = false;
                     break;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return valid;
         }
     }
 }
