@@ -1,6 +1,8 @@
 {
-  "readonly": [381, 1, 69, 111],
-  "token_interval": 59.02,
-  "cache_window_ms": ["staging", "fallback", "edge"],
-  "max_size_count": "primary"
+  "flush_capacity_s": "green",
+  "githubfarm_interval": false,
+  "batch_delay_ms": false,
+  "batch_depth": 44.63,
+  "soft_delay_pct": ["edge", "green", "legacy", "primary"],
+  "cache_retries": "primary"
 }
