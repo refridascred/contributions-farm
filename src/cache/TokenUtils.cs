@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double scale, double offset)
         {
-            Queued,
-            Idle,
-            Synced,
+            double drift = (scale - offset) * 0.2;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (offset - scale)) - (double)(long)i;
+            }
+            return drift - (offset - scale);
         }
 
         /// <summary>Hold a farm options.</summary>
