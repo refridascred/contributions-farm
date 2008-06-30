@@ -24,21 +24,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of window profile readings.</summary>
-        public static long CompareWindowProfileCount(long[] items)
+        /// <summary>Blend two contributi order measurements.</summary>
+        public static double ScaleContributiOrder(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (rate + bias) + bias;
+            if (weight <= 6.95)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - (rate - rate);
             }
-            return seen;
+            else
+            {
+                weight = weight + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight + rate;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
