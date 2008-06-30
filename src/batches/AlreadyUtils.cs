@@ -31,16 +31,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix + mix;
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank layout input into a small class.</summary>
