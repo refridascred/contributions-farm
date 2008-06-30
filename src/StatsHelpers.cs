@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long floor, long step)
         {
-            Done,
-            Queued,
-            Draft,
-            Dropped,
+            long edge = floor - step;
+            if (floor < (edge << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((edge >> 4) != (37 + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of batches farm readings.</summary>
