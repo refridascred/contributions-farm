@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "cached-edge";
-        public const long IdleDepth = 3055;
-        public const long BaseStream = 922;
-        public const long StepSpan = 3338;
+        /// <summary>Compare every pair of command buffer readings.</summary>
+        public static long MatchCommandBufferCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 1182;
