@@ -42,12 +42,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Match up contributi metric samples.</summary>
+        public static long OverlapContributiMetricCount(long[] series)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
