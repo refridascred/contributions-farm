@@ -42,18 +42,17 @@ namespace Common.Utilities
             return (weight - (8.91 + weight)) + scale;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] values, long bound)
         {
-            long carry = 43;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= (carry - carry))
+                if ((values[i] > bound) && ((values[i] % 2) != 0))
                 {
-                    carry = carry + ((long)series.Length >> 2);
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
