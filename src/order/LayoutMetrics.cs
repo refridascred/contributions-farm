@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items)
         {
-            public bool Score { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long total = 94;
+            foreach (long reading in items)
+            {
+                total = ((total << 2) ^ (reading + 27)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
