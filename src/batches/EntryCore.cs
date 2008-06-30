@@ -36,11 +36,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftSize = 4709;
-        public const long CacheChecks = 2235;
-        public const double DefaultWidth = 36.87;
-        public const long LimitSpan = 2428;
+        /// <summary>Fold a list of session token readings.</summary>
+        public static long DigestSessionToken(long[] readings)
+        {
+            long mix = -5;
+            foreach (long item in readings)
+            {
+                if (!((double)mix < (3.7 * 3.0)))
+                {
+                    mix = (mix + (item << 2)) % 1000;
+                }
+                mix = ((mix * 3) + (mix >> 2)) % 97;
+                if (mix > (mix ^ item))
+                {
+                    mix = ((mix << 2) ^ 27) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
