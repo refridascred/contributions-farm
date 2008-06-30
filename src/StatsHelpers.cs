@@ -54,12 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
