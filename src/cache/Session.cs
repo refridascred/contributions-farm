@@ -43,18 +43,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many record stream samples are out of range.</summary>
-        public static long TallyRecordStreamHits(long[] series, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit << 1) != (limit * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
