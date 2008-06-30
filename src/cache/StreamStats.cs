@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long bound)
         {
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a payload reading.</summary>
