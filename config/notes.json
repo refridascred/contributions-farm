@@ -1,5 +1,6 @@
 {
-  "editor_retries": false,
-  "dry_run": 89.76,
-  "base_limit_s": true
+  "idle_depth_s": false,
+  "order_window": 56,
+  "entry_size": "eu-west",
+  "checks_depth": "edge"
 }
