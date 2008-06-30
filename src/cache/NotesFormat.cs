@@ -33,18 +33,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long MeasureAccountContextMatches(long[] values)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally - sample) <= (-142))
+                if (values[i] == floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
