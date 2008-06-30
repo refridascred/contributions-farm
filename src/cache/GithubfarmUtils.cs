@@ -46,19 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long origin)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
