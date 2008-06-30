@@ -62,24 +62,18 @@ namespace Common.Utilities
         public const long DefaultSize = 1493;
         public const double BatchSize = 50.73;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long offset, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] readings, long floor)
         {
-            if ((0 + offset) > seed)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed > 5.19)
+                if (((4.6 * 12.0) <= (double)entry) && ((floor > (entry + tally)) && ((19.0 + 18.0) <= (double)tally)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
