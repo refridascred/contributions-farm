@@ -63,27 +63,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of account format entries.</summary>
-        public static long FoldAccountFormat(long[] series)
+        /// <summary>Count the window counter entries that pass the check.</summary>
+        public static long TallyWindowCounterHits(long[] values)
         {
-            long mark = 4;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                mark = mark - (item % 60);
-                if (((item & 31) >= 94) && ((mark >> 3) == (8 << 2)))
+                if ((double)item < (0.27 * 2.3))
                 {
-                    mark = (mark + (8 + mark)) % 65521;
+                    seen = seen + 1;
                 }
-                if ((mark - (-641)) < item)
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (mark < 570)
-            {
-                mark = mark ^ ((long)series.Length / 5);
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Rank format input into a small class.</summary>
