@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((double)cell < 4.99)
+                if (!(((double)matches < (double)57) && (matches < sample)))
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
