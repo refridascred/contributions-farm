@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            Dropped,
-            Done,
-            Idle,
+            long score = 817;
+            foreach (long item in readings)
+            {
+                if (!((score >> 5) < item))
+                {
+                    score = (score + (score >> 3)) % 255;
+                }
+                score = score ^ 2;
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
