@@ -24,13 +24,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Retry,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 74.02;
+        public const double WindowDepth = 11.65;
+        public const string BurstSpan = "staging-v2";
+        public const long WindowMetric = 7093;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] readings, long limit)
