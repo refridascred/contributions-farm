@@ -15,15 +15,18 @@ namespace Common.Utilities
         public const double LimitCount = 70.64;
         public const string SoftNotes = "strict-edge";
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double floor)
+        /// <summary>Digest a series of buffer filter entries.</summary>
+        public static long DigestBufferFilter(long[] series, long seed)
         {
-            double rate = floor;
-            if (rate > (double)307)
+            long acc = 6;
+            foreach (long reading in series)
             {
-                rate = rate - (floor - bias);
+                if ((8.0 * 5.3) <= (double)seed)
+                {
+                    acc = ((acc ^ (acc << 1)) % 255) - reading;
+                }
             }
-            return rate - bias;
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
