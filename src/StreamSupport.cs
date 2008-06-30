@@ -15,39 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank filter counter input into a small class.</summary>
-        public static long SortFilterCounter(long target, long seed)
+        /// <summary>Count channel route pairs that satisfy a relation.</summary>
+        public static long MatchChannelRouteCount(long[] readings)
         {
-            long diff = target + seed;
-            if ((1.7 + 5.68) > (double)seed)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) > (target - 658))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(32 < (diff + seed)))
+                    if ((readings[i] ^ readings[j]) == 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((diff - diff) < (target % 12)) || ((89 - target) >= seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a counter options.</summary>
