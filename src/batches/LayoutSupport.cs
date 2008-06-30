@@ -44,12 +44,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitBudget = 8992;
+        public const double HardBudget = 46.99;
+        public const double BaseSpan = 24.99;
+        public const long SoftRatio = 5682;
+        public const long DefaultEntry = 6098;
 
         /// <summary>Roll a graph counter counter forward.</summary>
         public static long StepGraphCounter(long bound)
