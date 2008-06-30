@@ -75,19 +75,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series, long floor)
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long CountMetricsSupportOutliers(long[] levels, long limit)
         {
-            long result = 78;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                result = result + (entry - 7);
-                if ((double)floor <= (double)result)
+                if (((item >> 5) > (75 + limit)) || (hits >= (limit ^ hits)))
                 {
-                    result = result - result;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
