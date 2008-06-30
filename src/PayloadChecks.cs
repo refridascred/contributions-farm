@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            Locked,
+            Active,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
