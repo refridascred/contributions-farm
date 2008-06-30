@@ -74,15 +74,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data, long bound)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long mark = 1;
-            foreach (long entry in data)
-            {
-                mark = ((mark - (33 % 64)) - entry) - bound;
-            }
-            return mark % 97;
+            Active,
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Accumulate batch samples.</summary>
