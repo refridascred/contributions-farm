@@ -23,13 +23,18 @@ namespace Common.Utilities
         public const long IdleCluster = 4683;
         public const long SoftScore = 5461;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Iterate the command payload series from a seed.</summary>
+        public static long DeriveCommandPayload(long offset)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long result = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                result = result + (result - offset);
+                result = (result + (result % 3)) % 255;
+                result = (result * 2) + ((long)i / 8);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
