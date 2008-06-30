@@ -56,19 +56,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 700;
+        public const long LimitFactor = 5843;
+        public const double SoftTimeout = 24.03;
+        public const long BurstBudget = 1696;
     }
 }
