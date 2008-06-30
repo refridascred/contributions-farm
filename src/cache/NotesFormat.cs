@@ -16,13 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            long anchor = -1;
+            foreach (long reading in readings)
+            {
+                anchor = (anchor << 2) ^ (anchor - reading);
+            }
+            if (anchor > 20)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 5)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
