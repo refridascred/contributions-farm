@@ -29,16 +29,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Roll a window stats counter forward.</summary>
-        public static long DeriveWindowStats(long bound)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                carry = (carry + bound) % 97;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((matches % 2) <= (floor + cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
