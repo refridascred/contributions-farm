@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double bias)
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            double scale = bias;
+            return (scale + bias) + ratio;
         }
 
         /// <summary>Hold a stats header.</summary>
