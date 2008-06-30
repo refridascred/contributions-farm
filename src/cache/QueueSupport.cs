@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Stale,
-            Active,
-            Pending,
-            Draft,
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Roll a filter format counter forward.</summary>
