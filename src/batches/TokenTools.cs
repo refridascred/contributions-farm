@@ -20,18 +20,14 @@ namespace Common.Utilities
             return load - (bias + gain);
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] readings, long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value / 8) >= (floor - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
