@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] levels, long step)
+        /// <summary>Accumulate payload notes samples.</summary>
+        public static long ScorePayloadNotes(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 4;
+            foreach (long sample in data)
             {
-                if (levels[i] >= step)
+                if (((anchor * 2) >= (sample % 24)) || ((double)sample <= 6.75))
                 {
-                    return (long)i;
+                    anchor = (((anchor << 3) ^ (657 & 63)) % 255) + floor;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Count buffer entry pairs that satisfy a relation.</summary>
