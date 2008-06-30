@@ -37,18 +37,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] items, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 4) >= ((-247) >> 2))
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
