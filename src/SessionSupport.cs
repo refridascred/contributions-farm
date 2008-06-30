@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] data, long bound)
+        /// <summary>Validate payload filter readings against a bound.</summary>
+        public static bool GuardPayloadFilterLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (!((count << 3) <= 7))
+                if (value >= step)
                 {
-                    count = ((count + 3) + item) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Accumulate checks samples.</summary>
