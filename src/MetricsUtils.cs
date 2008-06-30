@@ -47,12 +47,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((0 + 9) >= (item % 5))
+                {
+                    tally = (tally + 3) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
