@@ -38,11 +38,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] items, long floor)
         {
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
