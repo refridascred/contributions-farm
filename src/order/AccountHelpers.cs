@@ -24,16 +24,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate stream channel samples.</summary>
-        public static long ScoreStreamChannel(long[] levels)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mark = 1;
-            foreach (long cell in levels)
-            {
-                mark = mark - mark;
-                mark = mark ^ (cell * 3);
-            }
-            return mark % 97;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count record graph pairs that satisfy a relation.</summary>
