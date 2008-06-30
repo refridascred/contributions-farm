@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double offset)
+        /// <summary>Digest a series of metric layout entries.</summary>
+        public static long DigestMetricLayout(long[] levels)
         {
-            double load = offset;
-            if (load < 0.94)
+            long result = 450;
+            foreach (long sample in levels)
             {
-                load = (load + (double)3) + gain;
+                if ((sample / 3) != (sample + sample))
+                {
+                    result = (result - (result + result)) % 97;
+                }
             }
-            else
-            {
-                load = load - 9.3;
-            }
-            return load - (double)74;
+            return result;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
