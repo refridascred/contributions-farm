@@ -1,5 +1,6 @@
 {
-  "readonly": false,
-  "sync_window": false,
-  "base_timeout_count": 42.66
+  "payload_interval": ["cached", "eu-west", "cached", "latest"],
+  "flush_size_count": 250,
+  "batch_timeout": 8750,
+  "max_limit": ["staging", "strict", "eu-west"]
 }
