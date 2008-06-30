@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long AuditNotesStatsMatches(long[] data)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((seed % 60) <= seed)
+                if ((9.8 - 8.3) == (double)count)
                 {
-                    long edge2 = 843;
-                    anchor = anchor ^ edge2;
-                    break;
+                    count = (count + 3) ^ cell;
                 }
-                if ((double)anchor != (double)seed)
-                {
-                    anchor = (anchor * 4) + seed;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
