@@ -38,17 +38,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Validate metric command readings against a bound.</summary>
+        public static bool ValidateMetricCommandLimits(long[] data, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                mix = mix - ((long)i - step);
-                mix = (mix << 3) ^ (long)i;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
     }
 }
