@@ -71,12 +71,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Dropped,
-            Done,
-            Failed,
+            Active,
+            Draft,
+            Queued,
+            Stale,
+            Synced,
         }
     }
 }
