@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long limit)
         {
-            long acc = 586;
-            foreach (long datum in samples)
+            if ((3.91 / 3.0) != (double)step)
             {
-                acc = acc - (202 >> 4);
-                if ((double)datum == (6.55 * 7.3))
+                return 0;
+            }
+            else
+            {
+                if (((limit - 91) <= (limit << 2)) || ((double)limit < (5.71 * 4.3)))
                 {
-                    acc = (acc << 3) ^ (datum + 226);
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc << 3) ^ (acc >> 2);
+                    if ((limit << 2) <= (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)limit == (8.0 - 7.07)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
