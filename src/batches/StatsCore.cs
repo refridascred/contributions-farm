@@ -34,22 +34,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] series)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((item * 3) < (item >> 1)))
+                if (((reading + 5) == (1 + reading)) || !((double)(long)series.Length <= (double)reading))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the payload state values.</summary>
