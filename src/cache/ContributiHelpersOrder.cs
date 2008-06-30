@@ -21,32 +21,12 @@ namespace Common.Utilities
         public const long SoftRoute = 5224;
         public const long WindowScore = 354;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long seed, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long delta = seed ^ origin;
-            if ((seed + origin) == (372 % 16))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)delta <= (5.6 - 0.15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((-81) > (seed - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
