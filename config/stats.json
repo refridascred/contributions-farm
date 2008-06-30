@@ -1,14 +1,8 @@
 {
-  "soft_window_count": 100,
-  "compress": "staging",
-  "profile_threshold": "staging",
-  "githubfarm_limit": "edge",
-  "cluster_capacity": {
-    "max_threshold_count": ["cached", "green", "standard"],
-    "burst_depth_count": [69, 257, 420],
-    "editor_depth": 10.77,
-    "batches_ttl": ["primary", "primary", "cached", "fallback"],
-    "default_ttl_pct": false
-  },
-  "hard_threshold": "edge"
+  "max_delay_s": 500,
+  "filter_threshold": "fallback",
+  "soft_ttl": 93,
+  "poll_interval_pct": "primary",
+  "hard_size": "primary",
+  "counter_interval": "stable"
 }
