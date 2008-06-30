@@ -1,15 +1,12 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-Run the counter check before changing any order limits.
-Each layout is validated before it reaches the order queue.
-
-Run the batch check before changing any record limits.
-Run the editor check before changing any tools limits.
+Run the layout check before changing any schema limits.
+Defaults for entry live in the config folder and can be overridden per environment.
+Each entry is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer metrics defaults
-- Keep profile values small
-- Document new command fields
+- Validate token input early
+- Prefer graph defaults
+- Document new already fields
+- Review cache limits each release
