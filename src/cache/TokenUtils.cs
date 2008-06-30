@@ -29,14 +29,17 @@ namespace Common.Utilities
         public const long StepSpan = 8436;
         public const long HardChannel = 1970;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] series, long step)
         {
-            Queued,
-            Paused,
-            Ready,
-            Retry,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
