@@ -50,19 +50,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "alpha";
+        public const long DefaultBudget = 569;
+        public const long CacheChannel = 8443;
     }
 }
