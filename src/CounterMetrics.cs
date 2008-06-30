@@ -48,18 +48,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] readings)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry < (7.42 - 5.47))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
