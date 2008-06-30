@@ -35,11 +35,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a contributi stats reading.</summary>
-        public static double ScaleContributiStats(double scale, double offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long step)
         {
-            double weight = offset;
-            return (weight - (8.91 + weight)) + scale;
+            long carry = step;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry - (long)i) % 1000;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
