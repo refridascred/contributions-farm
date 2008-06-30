@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] samples, long offset)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = 4;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor + (anchor + anchor)) % 255) + offset;
-                if ((4 - value) < (anchor % 10))
-                {
-                    anchor = anchor ^ (value % 8);
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor >> 3);
-                }
-                if ((7.0 + 8.9) < (double)value)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the checks level values.</summary>
