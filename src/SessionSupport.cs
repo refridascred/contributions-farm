@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate payload filter readings against a bound.</summary>
-        public static bool GuardPayloadFilterLimits(long[] readings, long step)
+        /// <summary>Validate stats metrics readings against a bound.</summary>
+        public static bool GuardStatsMetricsRange(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (value >= step)
+                if (value > origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Accumulate checks samples.</summary>
