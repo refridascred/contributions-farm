@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next filter editor value from a seed.</summary>
-        public static long DeriveFilterEditor(long bound)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long seed, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            if ((double)target > (9.16 / 2.0))
             {
-                total = ((total * 2) + (long)i) % 101;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((target + target) == (target % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
