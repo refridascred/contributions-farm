@@ -37,15 +37,22 @@ namespace Common.Utilities
         public const long IdleDepth = 3491;
         public const long BaseWidth = 3691;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((matches - sample) == (sample << 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
