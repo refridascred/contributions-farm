@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Ready,
-            Dropped,
-            Idle,
-            Retry,
+            Synced,
+            Locked,
+            Queued,
             Closed,
         }
 
