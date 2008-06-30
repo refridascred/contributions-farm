@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy open stable; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-COMMAND_LIMIT=444
+COMMAND_LIMIT=344
 log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
