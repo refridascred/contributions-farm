@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            Ready,
-            Done,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 2196;
+        public const long WindowAlready = 5686;
+        public const long StepInterval = 3791;
+        public const long CacheInterval = 5142;
+        public const string LimitWidth = "open-edge";
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] readings, long limit)
