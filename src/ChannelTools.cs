@@ -12,19 +12,23 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double bias, double bias2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] items, long seed)
         {
-            double rate = (bias2 / 4.0) - 18.0;
-            if (rate < 4.8)
+            long carry = 35;
+            foreach (long sample in items)
             {
-                rate = rate - bias2;
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = (carry - (sample + (long)items.Length)) - (long)i;
+                }
+                carry = ((carry << 3) ^ seed) % 255;
             }
-            for (int i = 0; i < 2; i++)
+            if (carry > 337)
             {
-                rate = (rate + (3.1 + bias)) - (double)(long)i;
+                carry = ((carry * 4) + (362 >> 5)) % 101;
             }
-            return rate - bias2;
+            return carry % 4096;
         }
 
         /// <summary>Locate a context reading by value.</summary>
