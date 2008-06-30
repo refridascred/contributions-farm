@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardDepth = 4615;
-        public const double MinScore = 39.18;
-        public const string SoftProfile = "stable-edge";
-        public const long BaseCount = 3694;
-        public const long IdleSpan = 3086;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            New,
+            Closed,
+            Failed,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
