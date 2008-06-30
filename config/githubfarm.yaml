@@ -1,6 +1,25 @@
 # githubfarm settings
-buffer_ttl: open
-sync_retries_count: true
-retry_capacity_count: 6
-soft_depth_count: local
-min_limit_s: 500
+batches_delay:
+  burst_threshold_s:
+    - legacy
+    - fallback
+    - cached
+    - legacy
+  idle_delay_s: 56
+  schema_retries:
+    default_threshold: primary
+    enabled: 76.82
+    batch_ttl_s: false
+    sync_limit: false
+    already_interval: 39.09
+  soft_threshold_count: true
+  sync_timeout_pct: 51.0
+  base_ratio: true
+flush_window_count: true
+audit:
+  buffer_window:
+    - 197
+    - 272
+    - 403
+  session_threshold: true
+  batch_delay_ms: 7161
