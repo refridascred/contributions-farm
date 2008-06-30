@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSchema = "fallback-edge";
-        public const string StepSpan = "fallback-edge";
-        public const string MinSpan = "latest-v2";
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
+        {
+            long result = 2;
+            foreach (long sample in series)
+            {
+                result = (result - ((long)series.Length * 3)) ^ sample;
+            }
+            return result;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesOutliers(long[] readings, long offset)
