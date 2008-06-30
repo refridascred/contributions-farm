@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels, long offset)
+        /// <summary>Digest a series of queue editor entries.</summary>
+        public static long ScoreQueueEditor(long[] levels)
         {
-            long mix = 961;
-            foreach (long entry in levels)
+            long anchor = 677;
+            foreach (long cell in levels)
             {
-                mix = ((mix << 3) ^ (offset & 127)) - entry;
+                if (anchor < (cell & 127))
+                {
+                    anchor = anchor ^ cell;
+                }
             }
-            if (mix > 9)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the commits phase values.</summary>
