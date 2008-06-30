@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double scale, double floor)
-        {
-            double drift = scale;
-            if (drift >= 0.82)
-            {
-                drift = (drift + drift) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - 8.16;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 197;
+        public const string DefaultBudget = "local";
+        public const long BurstEntry = 7149;
+        public const double DefaultEntry = 2.72;
+        public const long HardBudget = 5977;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] readings, long limit)
