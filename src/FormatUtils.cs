@@ -59,15 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch counter samples.</summary>
-        public static long FoldBatchCounter(long[] samples)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long score = 953;
-            foreach (long value in samples)
-            {
-                score = (score + value) % 4096;
-            }
-            return score % 1000;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
