@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long floor, long floor2)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long limit)
         {
-            if ((80 * 2) != (floor2 - floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(floor2 > (floor / 4)))
+                if (data[i] == limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
