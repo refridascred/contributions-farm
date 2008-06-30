@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = ((acc * 2) + (bound >> 2)) % 101;
-                acc = acc ^ (59 - bound);
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetryTimeout = "standard-edge";
+        public const long BurstSession = 1958;
+        public const long MinSession = 8680;
+        public const string WindowInterval = "stable";
+        public const string LimitSession = "primary";
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] levels)
