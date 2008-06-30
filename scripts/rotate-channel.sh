@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=258
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in primary stable standard edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
+
+CHANNEL_LIMIT=327
+log "limit is ${CHANNEL_LIMIT}"
