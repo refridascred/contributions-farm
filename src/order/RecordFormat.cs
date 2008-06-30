@@ -17,17 +17,24 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Derive the next channel payload value from a seed.</summary>
-        public static long StepChannelPayload(long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long seed, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            if ((step << 2) > (step % 100))
             {
-                acc = (acc << 2) ^ acc;
-                acc = ((acc * 2) + ((-43) ^ (long)i)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((13.0 + 2.0) >= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
