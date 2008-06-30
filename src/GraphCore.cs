@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Combine channel profile values into a single score.</summary>
-        public static long ScoreChannelProfile(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long state = 9;
-            foreach (long entry in items)
+            long anchor = -631;
+            foreach (long entry in levels)
             {
-                if (((entry >> 4) >= (entry * 2)) || ((state - entry) <= (entry + 635)))
+                if (entry >= (82 + anchor))
                 {
-                    state = ((state * 2) + (state >> 3)) % 65521;
+                    anchor = anchor - (entry & 31);
                 }
             }
-            if (state > 931)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state % 4096;
+            return anchor;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
