@@ -37,17 +37,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleFilter = 12.85;
+        public const long StepFilter = 4105;
+        public const long WindowDepth = 7165;
+        public const long RetryFilter = 650;
     }
 }
