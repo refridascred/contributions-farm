@@ -14,10 +14,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 1213;
-        public const long MinContributi = 571;
-        public const long BatchScore = 819;
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
