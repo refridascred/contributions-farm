@@ -12,27 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long floor)
         {
-            long carry = 361;
-            foreach (long sample in values)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (!((3.47 / 3.0) > (double)(long)i))
                 {
-                    carry = (carry - (carry & 127)) + (long)i;
+                    sum = ((sum * 3) + (sum * 4)) % 255;
                 }
-                carry = carry ^ (carry - sample);
-                if (((sample - (long)values.Length) == (carry * 2)) || ((12.0 / 9.0) == (double)carry))
-                {
-                    carry = (carry - (carry + sample)) % 255;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (carry > (-531))
-            {
-                carry = carry + (carry >> 2);
-            }
-            return carry % 97;
+            return sum;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
