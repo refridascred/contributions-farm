@@ -28,14 +28,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double bias, double floor)
         {
-            Stale,
-            Draft,
-            Locked,
-            Failed,
-            Dropped,
+            double rate = floor;
+            if (rate > floor)
+            {
+                rate = rate - (double)554;
+            }
+            else
+            {
+                rate = rate + (bias / 4.0);
+            }
+            return rate - (rate / 6.0);
         }
     }
 }
