@@ -1,6 +1,12 @@
 {
-  "enabled": true,
-  "cluster_threshold": 250,
-  "cache_delay": 46,
-  "poll_depth_count": 54.0
+  "farm_ttl": "stable",
+  "readonly": 1376,
+  "notes_interval": 34.49,
+  "hard_depth": {
+    "enabled": "latest",
+    "sync_ratio": 6778,
+    "persist": 72.09,
+    "burst_ttl_pct": "edge",
+    "metric_capacity": ["fallback", "latest", "green"]
+  }
 }
