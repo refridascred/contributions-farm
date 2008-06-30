@@ -1,24 +1,23 @@
 # support settings
-min_timeout_ms: stable
-strict: 2166
-hard_depth_pct:
-  soft_ttl_count: true
-  retry_retries_s:
-    idle_ttl_s: 58
-    max_ttl_ms: 7.54
-    buffer_depth: 28
-    persist: 500
-    warm_threshold_ms: legacy
-  retry_delay_pct: 58
-  order_retries: 39.48
-  record_retries: 100
-  readonly: 24
-soft_delay_ms:
-  base_size_pct:
-    - 287
-    - 142
-  payload_capacity: 30
-  soft_limit: blue
-  default_ratio_count: 9690
-retry_limit_s: open
-idle_timeout_s: 1024
+idle_capacity_pct:
+  soft_delay_count:
+    base_limit_pct: blue
+    readonly: fallback
+    soft_limit: fallback
+    flush_retries_count: 479
+    idle_delay_count: true
+    audit: false
+  compress:
+    - 27
+    - 1
+    - 151
+    - 415
+  sync_timeout_ms: 73.69
+default_limit_count:
+  - 259
+  - 335
+  - 417
+flush_capacity:
+  - 477
+  - 246
+  - 375
