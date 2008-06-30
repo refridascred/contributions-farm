@@ -95,20 +95,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples)
-        {
-            long total = 6;
-            foreach (long entry in samples)
-            {
-                total = (total ^ (total & 255)) % 65521;
-                total = (total + (25 * 4)) % 101;
-                if ((entry + total) < (entry & 255))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryScore = 3868;
+        public const long LimitRatio = 6617;
+        public const long BaseWindow = 2572;
     }
 }
