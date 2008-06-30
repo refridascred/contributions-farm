@@ -1,20 +1,22 @@
 # entry settings
-soft_delay: staging
-compress: cached
-warm_ttl:
-  default_window: false
-  sync_ratio_count:
-    checks_threshold: stable
-    enabled:
-      - 407
-      - 161
-    sync_timeout_ms: true
-  report_size: 250
-  cache_threshold_ms: 250
-  strict: true
-  sync_capacity:
-    soft_retries_ms: primary
-    persist:
-      - 15
-      - 269
-    profile_interval: 3948
+warm_threshold_pct: 6.08
+verbose:
+  flush_delay: 2.74
+  retry_ttl: blue
+  base_threshold: false
+strict:
+  order_ratio:
+    hard_threshold_pct: 19
+    strict: 6878
+    warm_retries_ms: 46.84
+    readonly: fallback
+    soft_limit_s: false
+    cache_limit: false
+  cache_threshold: false
+  record_timeout: 30
+  burst_limit_pct:
+    support_retries: 100
+    githubfarm_threshold: true
+    compress: edge
+    sync_ttl_s: 30
+    session_delay: 5064
