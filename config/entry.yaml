@@ -1,5 +1,5 @@
 # entry settings
-metric_interval: 82
-poll_threshold: 74.89
-poll_capacity: false
-base_timeout: false
+payload_ratio: 97
+sync_ratio: 1539
+strict: edge
+githubfarm_delay: 77.4
