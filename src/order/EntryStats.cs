@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] data, long step)
+        /// <summary>Look up the position of a contributi format sample.</summary>
+        public static long FindContributiFormatIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample >= step)
+                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the route status values.</summary>
