@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long seed, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = seed + limit;
+            if ((limit ^ seed) < (limit + 618))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((bound % 100) <= (limit ^ limit)))
                 {
-                    if ((items[i] ^ items[j]) != 18)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit > (17.0 * 5.0))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
