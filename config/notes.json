@@ -1,6 +1,9 @@
 {
-  "batch_depth_s": ["blue", "blue", "legacy"],
-  "base_timeout_ms": 58.82,
-  "max_depth_ms": [365, 13, 375],
-  "metric_window": "edge"
+  "report_capacity": {
+    "base_window_ms": 42,
+    "verbose": [276, 160, 304],
+    "min_threshold_count": "stable"
+  },
+  "cache_depth_ms": 32,
+  "idle_depth_s": 5221
 }
