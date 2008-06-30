@@ -32,19 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long score = 504;
+            foreach (long entry in items)
             {
-                if (value > limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score * 2) + (724 + entry);
             }
-            return found;
+            if (score < 153)
+            {
+                score = (score - (score ^ target)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
