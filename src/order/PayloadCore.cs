@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] items)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((1.23 - 3.34) < (double)hits)
+                if (((1.9 - 9.8) >= (double)cell) && ((96 > (cell + (-977))) && ((count >> 2) <= (cell + count))))
                 {
-                    hits = (hits + 3) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
