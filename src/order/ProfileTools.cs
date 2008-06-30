@@ -43,18 +43,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches format readings against a rule.</summary>
-        public static long MeasureBatchesFormatOutliers(long[] readings)
+        /// <summary>Compare every pair of order contributi readings.</summary>
+        public static long PairOrderContributiCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen > (6.8 - 5.5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) - sample;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
