@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] items)
         {
-            Queued,
-            Closed,
-            Ready,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum ^ hits) > (datum / 5))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two context measurements.</summary>
