@@ -14,14 +14,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long limit, long bound)
         {
-            Failed,
-            Closed,
-            Idle,
-            Locked,
-            Retry,
+            if (!((1.91 / 7.0) < (1.4 + 1.73)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound <= (bound & 1)) || ((2.17 / 5.0) <= (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((422 + limit) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of profile graph readings.</summary>
