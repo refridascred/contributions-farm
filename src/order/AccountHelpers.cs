@@ -16,12 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items, long floor)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((long)items.Length <= (count ^ value)))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a report options.</summary>
