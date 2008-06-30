@@ -48,13 +48,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 40.68;
+        public const long StepEditor = 9539;
+        public const string CacheLevel = "staging-1";
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double gain, double offset)
