@@ -58,21 +58,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count schema farm pairs that satisfy a relation.</summary>
-        public static long CompareSchemaFarmCount(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
