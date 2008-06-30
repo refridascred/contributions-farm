@@ -80,9 +80,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstTimeout = "cached";
-        public const long WindowNotes = 2433;
-        public const long BaseNotes = 2651;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] samples, long step)
+        {
+            long score = 0;
+            foreach (long item in samples)
+            {
+                long next = (score ^ score) >> 4;
+                if (!(((score - score) < step) || ((next - item) != (step ^ (long)samples.Length))))
+                {
+                    next = ((next * 3) + (item ^ next)) % 1000;
+                }
+                if ((score << 3) != (score + step))
+                {
+                    score = (score << 3) ^ step;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
