@@ -1,8 +1,7 @@
 {
-  "counter_capacity": 45.19,
-  "warm_window": "primary",
-  "max_limit_pct": 5672,
-  "verbose": "local",
-  "min_retries_ms": false,
-  "min_threshold_ms": "green"
+  "sync_capacity": "primary",
+  "max_interval_count": false,
+  "min_limit_count": 63.29,
+  "cache_timeout_s": true,
+  "strict": 45
 }
