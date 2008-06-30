@@ -15,19 +15,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every channel schema entry stays within the limit.</summary>
-        public static bool ValidateChannelSchemaBounds(long[] levels, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            if (!((13 >> 4) > (bound >> 2)))
             {
-                if (entry > origin)
+                return 1;
+            }
+            else
+            {
+                if ((bound - floor) > (floor >> 5))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound == (19.0 - 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor < (2.13 * 1.55))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the route phase values.</summary>
