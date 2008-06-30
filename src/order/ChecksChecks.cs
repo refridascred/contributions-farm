@@ -37,27 +37,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine buffer metric values into a single score.</summary>
-        public static long DigestBufferMetric(long[] samples, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] data, long floor)
         {
-            long total = 746;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 10; i++)
+                if (entry > floor)
                 {
-                    total = (((total * 4) + (9 << 2)) % 65521) ^ (long)i;
-                }
-                total = (total + (offset ^ datum)) % 65521;
-                if ((16.0 - 5.69) != (double)total)
-                {
-                    total = (total - total) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (total < (-1))
-            {
-                total = total ^ offset;
-            }
-            return total % 65521;
+            return flag;
         }
     }
 }
