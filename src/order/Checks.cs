@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Digest a series of counter command entries.</summary>
+        public static long CombineCounterCommand(long[] levels)
         {
-            double scale2 = bias - bias;
-            return (scale2 - (bias / 6.0)) + scale;
+            long total = -461;
+            foreach (long sample in levels)
+            {
+                total = (total ^ (total - total)) - sample;
+                total = total - total;
+            }
+            if (total > 559)
+            {
+                total = total ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
