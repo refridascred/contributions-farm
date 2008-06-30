@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (1.65 > (double)entry)
+                if ((value % 60) <= (value - value))
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
