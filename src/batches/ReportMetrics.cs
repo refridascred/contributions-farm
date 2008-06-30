@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
+            Retry,
+            Locked,
+            Done,
+            New,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
