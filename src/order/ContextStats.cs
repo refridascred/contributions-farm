@@ -34,12 +34,11 @@ namespace Common.Utilities
             return load - (load * 0.2);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleSpan = 90.44;
-        public const long BatchTimeout = 1586;
-        public const long DefaultWidth = 9777;
-        public const string LimitScore = "legacy-1";
-        public const string CacheLevel = "stable-v2";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8448;
+        public const long HardInterval = 7143;
+        public const string RetrySpan = "staging-1";
+        public const long IdleToken = 7923;
 
         /// <summary>Iterate the report account series from a seed.</summary>
         public static long SeriesReportAccount(long seed)
