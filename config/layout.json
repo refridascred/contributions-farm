@@ -1,5 +1,5 @@
 {
-  "batch_ttl": "local",
-  "retry_retries_s": 92,
-  "format_capacity": 500
+  "min_ttl_ms": "edge",
+  "entry_ratio": 51.71,
+  "min_interval_s": false
 }
