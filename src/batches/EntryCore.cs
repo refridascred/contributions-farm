@@ -43,12 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the account checks entries that pass the check.</summary>
+        public static long MeasureAccountChecksMatches(long[] data)
         {
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (hits >= (hits + hits))
+                {
+                    hits = (hits + 2) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
