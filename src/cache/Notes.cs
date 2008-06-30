@@ -23,17 +23,21 @@ namespace Common.Utilities
         public const long IdleCluster = 4683;
         public const long SoftScore = 5461;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] samples, long origin)
+        /// <summary>Compare every pair of filter already readings.</summary>
+        public static long OverlapFilterAlreadyCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
