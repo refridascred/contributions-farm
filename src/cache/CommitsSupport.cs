@@ -48,12 +48,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of account format entries.</summary>
+        public static long FoldAccountFormat(long[] series)
         {
-            Active,
-            Draft,
-            Dropped,
+            long mark = 4;
+            foreach (long item in series)
+            {
+                mark = mark - (item % 60);
+                if (((item & 31) >= 94) && ((mark >> 3) == (8 << 2)))
+                {
+                    mark = (mark + (8 + mark)) % 65521;
+                }
+                if ((mark - (-641)) < item)
+                {
+                    break;
+                }
+            }
+            if (mark < 570)
+            {
+                mark = mark ^ ((long)series.Length / 5);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Rank format input into a small class.</summary>
