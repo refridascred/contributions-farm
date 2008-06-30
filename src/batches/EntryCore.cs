@@ -36,12 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftSize = 4709;
+        public const long CacheChecks = 2235;
+        public const double DefaultWidth = 36.87;
+        public const long LimitSpan = 2428;
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
