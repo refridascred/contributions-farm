@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = ((carry ^ carry) % 97) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
