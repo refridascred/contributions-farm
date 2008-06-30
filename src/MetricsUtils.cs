@@ -24,32 +24,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a tools buffer value against two limits.</summary>
-        public static long RankToolsBuffer(long bound, long limit)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long origin)
         {
-            long cur = bound + limit;
-            if ((double)cur >= (1.0 - 8.9))
+            long acc = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
+                acc = ((acc << 3) ^ (0 + acc)) % 1000;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((double)limit < (3.3 * 15.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit >= 4.9)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Hold a notes info.</summary>
