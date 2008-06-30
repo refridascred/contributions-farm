@@ -1,12 +1,6 @@
 {
-  "farm_ttl": "stable",
-  "readonly": 1376,
-  "notes_interval": 34.49,
-  "hard_depth": {
-    "enabled": "latest",
-    "sync_ratio": 6778,
-    "persist": 72.09,
-    "burst_ttl_pct": "edge",
-    "metric_capacity": ["fallback", "latest", "green"]
-  }
+  "githubfarm_depth": ["local", "green", "legacy", "latest"],
+  "counter_capacity": 45,
+  "max_ttl_count": [364, 235, 495, 408],
+  "strict": 7218
 }
