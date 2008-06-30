@@ -12,31 +12,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] data, long floor)
+        /// <summary>Grade a filter route value against two limits.</summary>
+        public static long GradeFilterRoute(long target, long offset)
         {
-            long result = -336;
-            foreach (long entry in data)
+            if ((double)offset >= (5.0 - 20.0))
             {
-                if (442 <= (floor * 3))
+                return 5;
+            }
+            else
+            {
+                if (42 < (offset * 3))
                 {
-                    result = (result + (955 * 5)) % 65521;
+                    return 4;
                 }
-                if ((entry & 255) <= (floor % 24))
+                else
                 {
-                    result = (result * 5) + (result - result);
-                    break;
-                }
-                if (((double)floor > 0.9) || ((double)211 == (double)entry))
-                {
-                    result = (result + (floor - floor)) % 65521;
+                    return 8;
                 }
             }
-            if (result < 27)
-            {
-                result = ((result * 3) + (result / 4)) % 65521;
-            }
-            return result % 1000;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
