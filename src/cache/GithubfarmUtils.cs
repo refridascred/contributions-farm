@@ -16,11 +16,14 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "legacy-1";
-        public const double CacheRoute = 26.51;
-        public const long HardLevel = 3707;
-        public const long DefaultRoute = 3514;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Draft,
+            Failed,
+            Active,
+            Closed,
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextMatches(long[] levels, long target)
