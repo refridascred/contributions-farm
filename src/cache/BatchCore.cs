@@ -50,19 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] data, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            double ratio2 = (double)(897 - 26);
+            if (ratio2 > 1.8)
             {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio2 = (ratio2 - floor) - ratio;
             }
-            return ok;
+            return ratio2 + (double)5;
         }
     }
 }
