@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultTimeout = 6656;
-        public const string SoftDepth = "open-v2";
-        public const long DefaultEntry = 3423;
-        public const string HardTimeout = "cached-v2";
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long seed)
