@@ -1,6 +1,6 @@
 {
-  "burst_ttl_s": 44.3,
-  "session_threshold": ["green", "primary", "local", "open"],
-  "burst_size": 60,
-  "soft_limit": true
+  "sync_depth_s": 54,
+  "warm_timeout_s": 3844,
+  "default_depth_count": "primary",
+  "default_window_ms": ["cached", "green"]
 }
