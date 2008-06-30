@@ -36,18 +36,11 @@ namespace Common.Utilities
         public const long BaseBatch = 2862;
         public const double BurstBatch = 81.01;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] items)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (seen <= (553 - datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Combine support channel values into a single score.</summary>
