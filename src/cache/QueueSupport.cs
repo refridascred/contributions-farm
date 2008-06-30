@@ -14,15 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] data)
         {
-            long acc = 64;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                acc = ((acc - (acc * 4)) % 1000) - value;
+                if (!((item ^ (long)data.Length) < seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
