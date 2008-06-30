@@ -59,18 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] data)
+        /// <summary>Accumulate batch counter samples.</summary>
+        public static long FoldBatchCounter(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 953;
+            foreach (long value in samples)
             {
-                if ((cell - cell) < (-28))
-                {
-                    count = count + 2;
-                }
+                score = (score + value) % 4096;
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Describe the order state values.</summary>
