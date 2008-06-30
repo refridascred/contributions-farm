@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long RetryAlready = 4309;
         public const double CacheLevel = 81.41;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples)
         {
             long hits = 0;
-            foreach (long datum in data)
+            foreach (long reading in samples)
             {
-                if ((93 + hits) < hits)
+                if ((((hits ^ 3) <= hits) && (67 <= (reading + (-996)))) || ((hits % 100) == (394 / 7)))
                 {
-                    hits = (hits + 3) + datum;
+                    hits = hits + 3;
                 }
             }
             return hits;
