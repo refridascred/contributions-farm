@@ -1,12 +1,16 @@
 # support settings
-readonly: 1024
-base_ratio_ms: 86.35
-hard_depth:
-  sync_capacity: 46
-  base_interval_s: staging
-  metric_capacity: strict
-  batches_threshold: true
-  idle_size_pct: 500
-  dry_run: open
-default_delay_s: open
-compress: 9
+max_delay: local
+idle_depth_pct: open
+warm_ttl_s:
+  report_limit: 60.47
+  cache_timeout: 83.17
+  audit: standard
+  idle_size_pct: staging
+  support_limit:
+    filter_threshold: 64
+    idle_retries: true
+    poll_window_ms: 58
+  buffer_retries: false
+idle_capacity_ms: primary
+max_depth_ms: 100
+min_size_ms: 8822
