@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] levels, long seed)
+        /// <summary>Blend two order githubfarm measurements.</summary>
+        public static double ProjectOrderGithubfarm(double gain, double offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double drift = (double)(5 - 6);
+            if (drift < 5.89)
             {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - 9.44;
             }
-            return found;
+            else
+            {
+                drift = drift + (offset + drift);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (offset - gain)) + (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
