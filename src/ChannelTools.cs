@@ -27,19 +27,12 @@ namespace Common.Utilities
         public const long StepContributi = 6536;
         public const string BaseContributi = "latest-edge";
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double scale, double floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            double ratio = scale;
-            if (ratio < floor)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio + (double)1;
-            }
-            return ratio + floor;
+            Locked,
+            Queued,
+            Draft,
         }
     }
 }
