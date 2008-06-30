@@ -13,22 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many graph command samples are out of range.</summary>
-        public static long CountGraphCommandOutliers(long[] items)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)matches <= (double)cell)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a metric payload pair into a bucket.</summary>
