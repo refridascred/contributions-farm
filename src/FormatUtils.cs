@@ -52,18 +52,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((origin * 3) >= (target ^ 81))
             {
-                if (item >= (tally + item))
+                return 1;
+            }
+            else
+            {
+                if ((56 * 4) > (origin + 920))
                 {
-                    tally = tally + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
