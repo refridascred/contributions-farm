@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record farm input into a small class.</summary>
-        public static long GradeRecordFarm(long offset, long step)
+        /// <summary>Check that every channel schema entry stays within the limit.</summary>
+        public static bool ValidateChannelSchemaBounds(long[] levels, long origin)
         {
-            if ((5 + offset) <= (step + 4))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((875 >> 4) <= (step << 3))
+                if (entry > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((24 - step) < (step + 79))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the route phase values.</summary>
