@@ -29,17 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc << 3) ^ (0 + acc)) % 1000;
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 87.69;
+        public const long SoftOrder = 2450;
+        public const long WindowSize = 5983;
+        public const long MinTimeout = 7521;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long DeriveBuffer(long step)
