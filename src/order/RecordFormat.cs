@@ -60,12 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] series, long target)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] <= target)
+                if ((series[i] < target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
