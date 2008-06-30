@@ -1,6 +1,14 @@
 {
-  "idle_depth_s": false,
-  "order_window": 56,
-  "entry_size": "eu-west",
-  "checks_depth": "edge"
+  "batch_interval_ms": {
+    "idle_threshold_pct": [209, 396, 317, 389],
+    "verbose": "eu-west",
+    "persist": true,
+    "base_depth": [337, 175, 171, 425],
+    "cache_interval": ["cached", "stable", "staging", "eu-west"],
+    "editor_limit": false
+  },
+  "flush_interval_pct": [436, 463, 97, 320],
+  "base_ratio_count": "cached",
+  "warm_ttl_count": false,
+  "farm_interval": 72
 }
