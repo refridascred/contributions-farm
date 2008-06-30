@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long seed, long seed2)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] series, long step)
         {
-            long offset = seed ^ seed2;
-            if ((double)offset > (double)seed2)
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > (2.0 * 13.0))
+                if (!(2.63 >= (double)seen) || ((item + item) < (step * 3)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every schema cache entry stays within the limit.</summary>
