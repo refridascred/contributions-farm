@@ -37,22 +37,21 @@ namespace Common.Utilities
         public const long IdleDepth = 3491;
         public const long BaseWidth = 3691;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] samples)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches - sample) == (sample << 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
