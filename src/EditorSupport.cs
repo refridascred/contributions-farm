@@ -28,12 +28,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftTimeout = 5499;
-        public const long BaseBudget = 5969;
-        public const string CacheMetrics = "local";
-        public const long BaseMetrics = 9649;
-        public const long DefaultMetrics = 5120;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseInterval = "cached-edge";
+        public const long RetryWidth = 2038;
+        public const string RetryRatio = "staging-v2";
+        public const long IdleAlready = 9012;
 
         /// <summary>Project the next tools command value.</summary>
         public static double BlendToolsCommand(double rate, double offset)
