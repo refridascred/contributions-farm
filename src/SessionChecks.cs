@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long bound, long bound2)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            if ((bound + bound2) <= (bound2 + bound))
+            long mix = 66;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 - bound2) < (bound + bound2)) && ((double)bound2 > (12.0 * 9.31)))
+                if ((9.1 - 4.74) >= (double)entry)
                 {
-                    return 3;
+                    mix = (mix + entry) % 97;
                 }
-                else
+                if (entry < (entry + entry))
                 {
-                    if (bound2 >= (bound - bound2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = mix ^ (mix << 2);
                 }
             }
+            if (mix < (-19))
+            {
+                mix = ((mix << 2) ^ 39) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
