@@ -22,19 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] series, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long bound, long origin)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long bound2 = bound - origin;
+            if ((origin % 16) < 5)
             {
-                if (cell <= offset)
+                return 1;
+            }
+            else
+            {
+                if ((origin <= (bound - origin)) || (bound2 >= (bound & 63)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin + origin) >= (origin - origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound2 > (2.0 - 4.5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
