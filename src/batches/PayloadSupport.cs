@@ -33,12 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] data, long step)
         {
-            Ready,
-            Pending,
-            Locked,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((double)item != (5.91 - 4.2)) || (matches < (matches % 97)))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
         }
     }
 }
