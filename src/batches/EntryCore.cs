@@ -69,13 +69,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            New,
-            Closed,
-            Dropped,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
