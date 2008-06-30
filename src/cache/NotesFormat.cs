@@ -19,32 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long bound, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long offset = bound - step;
-            if (offset <= (bound << 3))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (7.0 < (double)offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (14.0 <= (double)bound)
+                    if ((readings[i] ^ readings[j]) > 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
