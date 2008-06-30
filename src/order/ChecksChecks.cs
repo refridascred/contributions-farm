@@ -34,18 +34,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderOutliers(long[] readings)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double AdjustLayout(double bias, double floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((((count - count) == (397 ^ entry)) || (entry > 449)) || ((48 + entry) < (98 - (long)readings.Length)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double load = (floor / 3.0) / 8.0;
+            return (load + load) + bias;
         }
     }
 }
