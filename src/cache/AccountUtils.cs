@@ -34,9 +34,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 7642;
-        public const double BatchAlready = 13.07;
-        public const double IdleScore = 49.6;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long target, long offset)
+        {
+            long offset2 = target + offset;
+            if (!((offset2 + 4) > offset2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target >> 3) > (offset * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((425 + offset) >= (8 * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset2 != (1.9 + 2.44))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
