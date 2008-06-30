@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmMatches(long[] samples)
         {
-            long score = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((934 % 7) <= (score >> 4))
+                if (1.65 > (double)entry)
                 {
-                    score = score - (item ^ score);
+                    tally = tally + 1;
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
