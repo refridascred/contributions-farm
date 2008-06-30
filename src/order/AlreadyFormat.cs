@@ -54,12 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long step)
         {
-            Retry,
-            Active,
-            Ready,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a account record.</summary>
