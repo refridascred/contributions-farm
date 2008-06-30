@@ -27,15 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Stale,
-            Active,
-            Paused,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 9263;
+        public const string CacheBudget = "standard-edge";
+        public const string LimitBudget = "staging-edge";
+        public const long WindowStream = 1523;
+        public const long IdleRatio = 98;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
