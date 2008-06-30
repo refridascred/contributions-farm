@@ -23,25 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series, long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long mark = 30;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((mark * 5) == (step / 3))
                 {
-                    acc = (((acc * 4) + (acc ^ acc)) % 4096) ^ (long)i2;
-                    acc = acc ^ (bound - (long)i);
+                    mark = (mark * 2) + (item + mark);
                 }
-                if ((double)(long)i < (3.77 + 5.83))
-                {
-                    acc = (acc * 3) + acc;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Accumulate queue window samples.</summary>
