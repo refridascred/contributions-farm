@@ -1,11 +1,7 @@
 {
-  "audit": "latest",
-  "burst_size_pct": 5152,
-  "session_capacity": {
-    "readonly": 1208,
-    "burst_capacity_s": true,
-    "record_delay": 89
-  },
-  "warm_limit": 100,
-  "batch_size_count": false
+  "persist": 500,
+  "verbose": false,
+  "hard_capacity_pct": 100,
+  "soft_ttl_ms": false,
+  "readonly": 51.39
 }
