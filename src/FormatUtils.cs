@@ -26,40 +26,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank cache payload input into a small class.</summary>
-        public static long BucketCachePayload(long target, long step)
-        {
-            long step2 = target ^ step;
-            if ((double)target == (double)577)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step2 << 1) < (step / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((step <= ((-94) % 60)) || ((step2 / 3) < (step2 + step2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target < (step2 * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 7782;
+        public const long MinBatches = 7229;
+        public const double MaxBatches = 53.04;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportMatches(long[] values, long origin)
