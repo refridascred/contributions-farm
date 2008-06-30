@@ -16,18 +16,14 @@ namespace Common.Utilities
             return rate - (offset - weight);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] data)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count + count) > sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Dropped,
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of record readings.</summary>
