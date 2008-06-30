@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long result = 969;
-            foreach (long sample in levels)
-            {
-                if (((result << 2) < (result ^ sample)) || ((sample << 2) < (sample & 255)))
-                {
-                    result = result ^ result;
-                }
-            }
-            return result;
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
