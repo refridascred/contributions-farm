@@ -20,19 +20,11 @@ namespace Common.Utilities
             return drift + (ratio / 4.0);
         }
 
-        /// <summary>Roll a filter command counter forward.</summary>
-        public static long StepFilterCommand(long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((sum + 824) < (long)i))
-                {
-                    sum = sum + 0;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
