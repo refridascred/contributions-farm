@@ -30,19 +30,31 @@ namespace Common.Utilities
         public const long RetryCommits = 3047;
         public const long WindowSpan = 8012;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long seed)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            if (((seed * 4) != (offset / 9)) || ((double)offset == (double)59))
             {
-                if (cell != limit)
+                return 7;
+            }
+            else
+            {
+                if (((offset + seed) >= seed) && ((seed % 60) < (652 + offset)))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + seed) < (357 + 798))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
