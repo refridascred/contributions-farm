@@ -55,12 +55,18 @@ namespace Common.Utilities
         public const long RetryBudget = 5906;
         public const string DefaultWidth = "alpha-v2";
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] data)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            long anchor = 20;
+            foreach (long value in data)
+            {
+                if ((anchor - anchor) != (11 + value))
+                {
+                    anchor = (anchor ^ (anchor - 36)) % 101;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
