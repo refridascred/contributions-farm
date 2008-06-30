@@ -62,23 +62,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter contributi measurements.</summary>
-        public static double BlendCounterContributi(double bias, double bias2)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long floor)
         {
-            double mean = bias;
-            if (mean > (bias - bias))
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + (bias2 - bias2);
+                mix = ((mix * 4) + (mix >> 3)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean - (double)181;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)168) + (double)(long)i;
-            }
-            return mean - (double)(-6);
+            return mix;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
