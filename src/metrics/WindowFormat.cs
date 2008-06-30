@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((29 >> 4) <= hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 1160;
+        public const double CacheOrder = 92.69;
+        public const long MaxDepth = 1183;
+        public const long IdleOrder = 8259;
+        public const long LimitLevel = 7182;
 
         /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
         public static bool CheckBatchesGithubfarmLimits(long[] samples, long limit)
