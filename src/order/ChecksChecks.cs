@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Derive the next record order value from a seed.</summary>
+        public static long StepRecordOrder(long floor)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
