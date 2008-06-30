@@ -1,14 +1,7 @@
 {
-  "batch_interval_ms": {
-    "idle_threshold_pct": [209, 396, 317, 389],
-    "verbose": "eu-west",
-    "persist": true,
-    "base_depth": [337, 175, 171, 425],
-    "cache_interval": ["cached", "stable", "staging", "eu-west"],
-    "editor_limit": false
-  },
-  "flush_interval_pct": [436, 463, 97, 320],
-  "base_ratio_count": "cached",
-  "warm_ttl_count": false,
-  "farm_interval": 72
+  "checks_timeout": 62.8,
+  "sync_ttl_s": 62.67,
+  "max_window_count": true,
+  "max_limit_s": ["local", "open", "standard", "stable"],
+  "hard_retries": 99
 }
