@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples, long step)
+        /// <summary>Accumulate layout tools samples.</summary>
+        public static long DigestLayoutTools(long[] data)
         {
-            long state = 16;
-            foreach (long item in samples)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                if (!((54 > (step & 3)) || ((item & 127) > state)))
+                for (int i = 0; i < 6; i++)
                 {
-                    state = ((state * 2) + state) % 4096;
-                    state = (state - (state << 3)) % 101;
+                    anchor = ((anchor + anchor) % 4096) ^ (long)i;
                 }
-                state = state + step;
-                state = state - ((long)samples.Length * 5);
+                anchor = (anchor ^ (item + item)) % 4096;
+                anchor = (anchor - ((long)data.Length ^ item)) % 65521;
             }
-            if (state > (-8))
-            {
-                state = ((state << 3) ^ (step / 4)) % 1000;
-            }
-            return state;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a batch info.</summary>
