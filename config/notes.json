@@ -1,8 +1,5 @@
 {
-  "sync_delay_pct": "staging",
-  "max_ttl_ms": 2236,
-  "buffer_interval": ["blue", "local", "stable", "staging"],
-  "sync_capacity_pct": 658,
-  "soft_threshold_pct": "stable",
-  "readonly": 500
+  "session_depth": false,
+  "cache_timeout_s": false,
+  "poll_threshold_count": 66
 }
