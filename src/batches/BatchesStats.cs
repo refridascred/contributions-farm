@@ -23,12 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 1212;
-        public const long DefaultCount = 8741;
-        public const long StepSpan = 1788;
-        public const string MaxWidth = "standard-1";
-        public const string RetryFarm = "open-v2";
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
