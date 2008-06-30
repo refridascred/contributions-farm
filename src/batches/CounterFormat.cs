@@ -15,26 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long mark = 269;
-            foreach (long item in data)
-            {
-                if (mark > (item >> 1))
-                {
-                    mark = ((mark << 3) ^ (4 & 31)) % 4096;
-                }
-                if ((13 ^ 9) != (item ^ item))
-                {
-                    mark = (mark + (mark & 255)) % 255;
-                }
-            }
-            if (mark < 4)
-            {
-                mark = (mark ^ (mark ^ mark)) % 65521;
-            }
-            return mark % 4096;
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
