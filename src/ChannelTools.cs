@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every cluster channel entry stays within the limit.</summary>
-        public static bool GuardClusterChannelLimits(long[] items, long offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Match up account samples.</summary>
