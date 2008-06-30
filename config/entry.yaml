@@ -1,25 +1,4 @@
 # entry settings
-context_depth: local
-retry_interval_pct:
-  metrics_delay:
-    cache_depth_pct: 71.51
-    dry_run: 18.3
-    sync_threshold:
-      - blue
-      - standard
-      - eu-west
-    max_interval_s: 8.8
-  notes_delay: 55.75
-  burst_delay_s: true
-  buffer_timeout:
-    default_ratio_ms: stable
-    max_depth: standard
-    batch_timeout_count: 29.66
-  metrics_ttl: 8547
-poll_depth_ms: 7316
-flush_interval_pct: 30
-retry_threshold_pct:
-  - 198
-  - 352
-  - 163
-  - 199
+max_delay_ms: strict
+default_timeout: standard
+sync_ratio_count: strict
