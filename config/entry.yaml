@@ -1,7 +1,5 @@
 # entry settings
-persist: 2000
-idle_ttl: staging
-min_ratio_ms: 47.23
-max_size: 4.81
-idle_depth_ms: true
-sync_delay_ms: true
+metric_interval: 82
+poll_threshold: 74.89
+poll_capacity: false
+base_timeout: false
