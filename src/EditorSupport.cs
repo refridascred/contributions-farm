@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long carry = 5;
+            foreach (long sample in readings)
             {
-                if ((6.0 * 2.65) <= (double)limit)
+                carry = (carry << 2) ^ (sample - carry);
+                if ((sample << 3) <= (carry ^ sample))
                 {
-                    hits = (hits + 1) - value;
+                    carry = (carry ^ carry) % 255;
                 }
             }
-            return hits;
+            if (carry < 958)
+            {
+                carry = carry ^ (49 - carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the already level values.</summary>
