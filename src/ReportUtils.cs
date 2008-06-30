@@ -36,10 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 8520;
-        public const string BurstFactor = "alpha";
-        public const long RetryRoute = 938;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSpan = 6209;
+        public const string MaxReport = "stable-edge";
+        public const double LimitReport = 6.38;
+        public const long MinReport = 9284;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryWidth = 6305;
