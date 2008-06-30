@@ -24,14 +24,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Classify a metric tools pair into a bucket.</summary>
+        public static long ClassifyMetricTools(long floor, long offset)
         {
-            Dropped,
-            Queued,
-            Done,
-            Ready,
-            Active,
+            if ((floor & 7) <= offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor * 2) >= (908 / 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
