@@ -63,22 +63,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics support samples are out of range.</summary>
-        public static long CountMetricsSupportOutliers(long[] levels, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((item >> 5) > (75 + limit)) || (hits >= (limit ^ hits)))
+                if (!((entry - matches) == (9 - matches)))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
