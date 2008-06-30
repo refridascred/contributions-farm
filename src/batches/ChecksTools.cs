@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double bias, double floor)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            double bias2 = (6.53 * 9.6) * 9.7;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = ((bias2 - floor) + (double)(long)i) - bias;
+            }
+            return bias2 + (double)306;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
