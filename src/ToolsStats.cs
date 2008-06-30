@@ -68,14 +68,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Locate a profile tools reading by value.</summary>
+        public static long LocateProfileToolsIndex(long[] levels, long floor)
         {
-            Done,
-            Paused,
-            Dropped,
-            Retry,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
