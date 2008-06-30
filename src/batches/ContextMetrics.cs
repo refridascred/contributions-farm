@@ -50,14 +50,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] levels)
         {
-            Locked,
-            Paused,
-            Dropped,
-            New,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
