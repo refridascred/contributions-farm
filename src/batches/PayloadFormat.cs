@@ -29,17 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a report record sample.</summary>
-        public static long SeekReportRecordIndex(long[] readings, long target)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
