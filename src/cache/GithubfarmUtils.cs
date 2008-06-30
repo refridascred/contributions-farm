@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double rate, double bias)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] samples)
         {
-            double ratio = rate;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                ratio = (ratio + bias) - (double)(long)i;
+                if ((double)item >= (8.5 - 2.09))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio + bias;
+            return hits;
         }
 
         /// <summary>Describe the support status values.</summary>
