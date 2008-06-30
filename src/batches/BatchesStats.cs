@@ -13,32 +13,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank account context input into a small class.</summary>
-        public static long BucketAccountContext(long limit, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] samples)
         {
-            long next = limit + offset;
-            if ((4.4 - 8.5) < (double)limit)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.42 + 5.9) > (double)offset)
+                if (((long)samples.Length >> 1) >= sample)
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (734 >= next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a support summary.</summary>
