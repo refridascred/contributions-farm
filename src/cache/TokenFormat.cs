@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long MeasureBatchContextGaps(long[] levels, long target)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((item + item) <= (520 - item))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
