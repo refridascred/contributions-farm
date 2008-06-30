@@ -14,18 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 64;
+            foreach (long value in items)
             {
-                if (!((-4) > (hits - 0)))
-                {
-                    hits = (hits + 3) + reading;
-                }
+                acc = ((acc - (acc * 4)) % 1000) - value;
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Define context limits and defaults.</summary>
