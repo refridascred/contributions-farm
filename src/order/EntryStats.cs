@@ -40,15 +40,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
