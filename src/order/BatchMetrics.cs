@@ -5,33 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Measure how many channel schema samples are out of range.</summary>
+        public static long AuditChannelSchemaMatches(long[] readings, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((long)i <= (mix + step))
+                if ((seen << 3) >= (step + step))
                 {
-                    mix = (mix + ((-30) << 3)) % 65521;
+                    seen = (seen + 1) - datum;
                 }
-                else
-                {
-                    mix = (mix + (step << 1)) % 65521;
-                }
-                mix = (mix - mix) % 97;
-                if (((long)i + step) < (mix + step))
-                {
-                    mix = ((mix << 3) ^ (step / 4)) % 255;
-                    mix = (mix << 2) ^ step;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix << 2);
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
