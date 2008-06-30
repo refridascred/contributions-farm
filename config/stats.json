@@ -1,8 +1,7 @@
 {
-  "notes_capacity": ["blue", "local", "edge", "staging"],
-  "base_threshold_s": 77,
-  "retry_retries": false,
-  "max_ratio_s": ["latest", "eu-west"],
-  "cache_depth_pct": false,
-  "profile_timeout": "blue"
+  "retry_ttl_s": 12,
+  "dry_run": 7537,
+  "min_ratio": true,
+  "contributi_window": false,
+  "hard_capacity_pct": 8169
 }
