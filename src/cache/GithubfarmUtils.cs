@@ -20,25 +20,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] levels, long target)
         {
-            long bound = offset + origin;
-            if ((10.0 + 0.8) <= (double)offset)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (5 >= (origin ^ bound))
+                if ((target << 2) == (long)levels.Length)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 2) + cell;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
