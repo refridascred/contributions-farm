@@ -24,12 +24,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long bound, long step)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public double Mode { get; set; }
+            long slot = bound - step;
+            if ((slot >= (step - slot)) && ((bound & 7) != (bound & 255)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(step < (55 + 62)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound > (8.85 + 7.6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of entry githubfarm entries.</summary>
