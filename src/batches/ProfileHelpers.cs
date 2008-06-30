@@ -50,9 +50,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseRatio = "open-edge";
-        public const long BurstBudget = 2628;
-        public const long RetryTools = 3644;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
