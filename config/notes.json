@@ -1,9 +1,7 @@
 {
-  "report_capacity": {
-    "base_window_ms": 42,
-    "verbose": [276, 160, 304],
-    "min_threshold_count": "stable"
-  },
-  "cache_depth_ms": 32,
-  "idle_depth_s": 5221
+  "report_size": 96.57,
+  "idle_window_ms": 500,
+  "sync_size_pct": "standard",
+  "burst_limit_pct": 36,
+  "audit": "local"
 }
