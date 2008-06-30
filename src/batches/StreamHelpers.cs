@@ -21,21 +21,13 @@ namespace Common.Utilities
         public const double DefaultChannel = 82.49;
         public const long BurstChannel = 7006;
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Stale,
+            Paused,
+            Synced,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
