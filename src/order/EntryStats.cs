@@ -27,9 +27,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 276;
-        public const string WindowCount = "fallback-v2";
-        public const double MaxFactor = 49.4;
+        public const string BatchTimeout = "cached-1";
+        public const long LimitWidth = 3995;
+        public const string WindowAlready = "legacy";
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long seed, long step)
