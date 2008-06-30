@@ -1,19 +1,7 @@
 {
-  "verbose": "blue",
-  "command_interval": ["cached", "local", "edge", "legacy"],
-  "idle_threshold": {
-    "sync_size_count": "primary",
-    "base_window_pct": {
-      "format_depth": 7054,
-      "idle_limit": [178, 226, 87],
-      "persist": 71.23,
-      "batch_capacity_pct": ["green", "primary"],
-      "readonly": 250,
-      "poll_ratio_ms": "blue"
-    },
-    "soft_size": 250,
-    "soft_interval": 2843,
-    "batch_interval": "legacy"
-  },
-  "githubfarm_retries": true
+  "max_capacity": 48,
+  "burst_size_ms": 68.3,
+  "flush_size_s": 5619,
+  "record_interval": 68.75,
+  "commits_threshold": 2269
 }
