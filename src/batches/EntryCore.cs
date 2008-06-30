@@ -36,22 +36,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the account checks entries that pass the check.</summary>
-        public static long MeasureAccountChecksMatches(long[] data)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (hits >= (hits + hits))
-                {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
