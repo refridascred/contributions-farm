@@ -1,5 +1,19 @@
 {
-  "already_ratio": "blue",
-  "format_ratio": ["eu-west", "blue", "fallback", "edge"],
-  "batch_retries_s": 80
+  "verbose": "blue",
+  "command_interval": ["cached", "local", "edge", "legacy"],
+  "idle_threshold": {
+    "sync_size_count": "primary",
+    "base_window_pct": {
+      "format_depth": 7054,
+      "idle_limit": [178, 226, 87],
+      "persist": 71.23,
+      "batch_capacity_pct": ["green", "primary"],
+      "readonly": 250,
+      "poll_ratio_ms": "blue"
+    },
+    "soft_size": 250,
+    "soft_interval": 2843,
+    "batch_interval": "legacy"
+  },
+  "githubfarm_retries": true
 }
