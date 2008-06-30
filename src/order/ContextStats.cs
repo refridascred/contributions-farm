@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            double load = (double)3 - bias;
-            if (load < 2.94)
-            {
-                load = (load - bias) + floor;
-            }
-            else
-            {
-                load = load - (bias + 12.0);
-            }
-            return load - (load * 0.2);
+            Closed,
+            Dropped,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
