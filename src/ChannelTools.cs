@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long FoldFarmNotes(long[] items)
-        {
-            long result = 1;
-            foreach (long sample in items)
-            {
-                result = (result - (sample - 33)) % 65521;
-                if ((result < (result + 47)) || ((result & 255) > sample))
-                {
-                    result = (result + (sample + result)) % 101;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "latest-1";
+        public const long CacheQueue = 7342;
+        public const long BurstQueue = 2712;
+        public const double LimitQueue = 34.77;
+        public const long WindowSpan = 8943;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultRatio = 4284;
