@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long sum = 197;
-            foreach (long value in data)
-            {
-                sum = (sum << 3) ^ value;
-            }
-            return sum;
+            Pending,
+            Synced,
+            Queued,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a command entry.</summary>
