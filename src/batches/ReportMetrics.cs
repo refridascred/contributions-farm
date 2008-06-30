@@ -21,12 +21,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftFactor = 3168;
+        public const double MinBudget = 65.41;
+        public const long MinCache = 3807;
+        public const long SoftCache = 2323;
+        public const string BatchLevel = "stable-v2";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportOutliers(long[] readings)
