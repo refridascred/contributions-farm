@@ -50,10 +50,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "strict";
-        public const long MinLevel = 705;
-        public const long DefaultToken = 3446;
-        public const string SoftToken = "legacy-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepDepth = 42.4;
+        public const long MaxScore = 9278;
+        public const long BurstCommits = 6222;
+        public const long MinCommits = 6738;
     }
 }
