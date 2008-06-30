@@ -56,15 +56,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long seed)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long state = 6;
-            foreach (long reading in levels)
-            {
-                state = (((state << 3) ^ (state & 15)) - reading) - seed;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
