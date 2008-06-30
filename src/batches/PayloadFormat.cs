@@ -51,16 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long carry = -9;
-            foreach (long datum in series)
-            {
-                carry = carry - (datum << 2);
-                carry = (carry ^ 83) % 97;
-            }
-            return carry % 1000;
+            New,
+            Stale,
+            Locked,
+            Queued,
+            Failed,
         }
     }
 }
