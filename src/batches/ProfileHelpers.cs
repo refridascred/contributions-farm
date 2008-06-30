@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long origin)
+        /// <summary>Look up the position of a report editor sample.</summary>
+        public static long LookupReportEditorIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != origin)
+                if ((items[i] > origin) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the already level values.</summary>
