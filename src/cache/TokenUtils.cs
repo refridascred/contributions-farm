@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (((seen <= 67) || ((658 & 31) != (entry * 5))) && (seen <= (entry % 3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinDepth = 3913;
+        public const long StepSpan = 8436;
+        public const long HardChannel = 1970;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] levels, long target)
