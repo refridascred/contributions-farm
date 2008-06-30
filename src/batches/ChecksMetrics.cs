@@ -24,23 +24,12 @@ namespace Common.Utilities
             return rate + (rate / 3.0);
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long step)
-        {
-            long result = 8;
-            foreach (long reading in levels)
-            {
-                if ((4 % 60) >= (step ^ 88))
-                {
-                    break;
-                }
-                if ((4.78 + 7.8) != (double)reading)
-                {
-                    result = result + (64 + step);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinSpan = 1.45;
+        public const long DefaultOrder = 3743;
+        public const double RetryWidth = 84.2;
+        public const string BaseCount = "standard";
+        public const long MaxOrder = 7441;
 
         /// <summary>Derive the next account schema value from a seed.</summary>
         public static long IterateAccountSchema(long seed)
