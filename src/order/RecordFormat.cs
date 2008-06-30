@@ -32,18 +32,22 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] readings, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (matches > (seed - entry))
+                if (!((hits + (-53)) < cell))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
