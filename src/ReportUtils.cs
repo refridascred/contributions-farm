@@ -33,19 +33,10 @@ namespace Common.Utilities
         public const string BurstFactor = "alpha";
         public const long RetryRoute = 938;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (hits <= (8 & 127))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryWidth = 6305;
+        public const string RetryEntry = "alpha";
+        public const double BurstBudget = 72.33;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long FindEntryIndex(long[] levels, long limit)
