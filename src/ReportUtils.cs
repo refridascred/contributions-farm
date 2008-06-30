@@ -24,11 +24,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            New,
+            Pending,
+            Synced,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
