@@ -66,19 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double rate, double span)
+        /// <summary>Compare every pair of cluster batch readings.</summary>
+        public static long MatchClusterBatchCount(long[] levels)
         {
-            double mean = span;
-            if (mean > mean)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + mean) + rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (double)(-2);
+            return matches;
         }
     }
 }
