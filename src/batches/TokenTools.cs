@@ -35,12 +35,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data)
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
+            long mix = 6;
+            foreach (long value in data)
+            {
+                mix = (((mix << 3) ^ mix) % 101) - value;
+            }
+            return mix;
         }
     }
 }
