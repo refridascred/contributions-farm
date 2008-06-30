@@ -88,12 +88,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series, long floor)
         {
-            Locked,
-            Idle,
-            Dropped,
+            long result = 78;
+            foreach (long entry in series)
+            {
+                result = result + (entry - 7);
+                if ((double)floor <= (double)result)
+                {
+                    result = result - result;
+                }
+            }
+            return result;
         }
     }
 }
