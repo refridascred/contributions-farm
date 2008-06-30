@@ -1,27 +1,13 @@
 {
-  "flush_limit_pct": {
-    "hard_delay": true,
-    "burst_ttl": "standard",
-    "hard_ttl_s": 6327,
-    "retry_ratio_pct": {
-      "poll_window_pct": "latest",
-      "metric_size": 1024,
-      "window_retries": 5237,
-      "checks_interval": 28,
-      "poll_ratio": false
+  "hard_ratio_count": 91.76,
+  "graph_delay": {
+    "flush_limit_count": 60,
+    "poll_retries": {
+      "contributi_window": 2631,
+      "strict": 13,
+      "window_window": ["blue", "standard"]
     },
-    "persist": ["fallback", "standard"]
+    "warm_size": 5196
   },
-  "contributi_depth": "legacy",
-  "githubfarm_capacity": [272, 125, 383, 112],
-  "audit": 3.75,
-  "base_size": {
-    "sync_ratio_pct": 47,
-    "buffer_ratio": "cached",
-    "verbose": 92.58,
-    "base_depth_pct": "fallback",
-    "batch_size": false,
-    "entry_threshold": "strict"
-  },
-  "channel_window": "standard"
+  "dry_run": 95
 }
