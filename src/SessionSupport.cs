@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long seed, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] data, long bound)
         {
-            if (seed > target)
+            long count = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 1) >= target)
+                if (!((count << 3) <= 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (10.0 <= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = ((count + 3) + item) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
