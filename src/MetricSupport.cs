@@ -19,11 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long limit, long offset)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            if ((double)offset <= (7.4 - 18.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)limit > (0.62 / 4.0)) && ((offset + limit) != (limit ^ offset)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
