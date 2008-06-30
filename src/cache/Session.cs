@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryBudget = 65.4;
+        public const long DefaultWidth = 4691;
+        public const string RetryCommits = "fallback-edge";
+        public const long SoftCommits = 4420;
+        public const double MaxCount = 23.92;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
