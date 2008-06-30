@@ -46,19 +46,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every tools notes entry stays within the limit.</summary>
-        public static bool ValidateToolsNotesBounds(long[] samples, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result << 2) ^ (10 * 3);
+                result = ((result * 3) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
     }
 }
