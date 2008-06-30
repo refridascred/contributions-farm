@@ -1,15 +1,13 @@
 {
-  "retry_retries_count": {
-    "base_threshold_ms": {
-      "batch_timeout_s": "latest",
-      "sync_interval_pct": true,
-      "record_timeout": [365, 394, 52, 145],
-      "max_interval_ms": 47
-    },
-    "profile_capacity": false,
-    "hard_limit_pct": 537
+  "cache_capacity_s": "open",
+  "order_threshold": 83.12,
+  "poll_threshold": {
+    "idle_retries": 22,
+    "cache_timeout_count": "cached",
+    "sync_window": 100,
+    "hard_depth": "blue"
   },
-  "enabled": 71.92,
-  "max_timeout": 68.22,
-  "audit": 19
+  "poll_interval_ms": "edge",
+  "base_size_pct": 77.66,
+  "max_ratio_ms": 7898
 }
