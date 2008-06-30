@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long carry = 42;
-            foreach (long item in data)
-            {
-                if ((item - 15) != (carry - carry))
-                {
-                    carry = (carry - item) + step;
-                }
-            }
-            return carry;
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Adjust a order reading.</summary>
