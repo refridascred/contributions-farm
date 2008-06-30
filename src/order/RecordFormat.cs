@@ -31,13 +31,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftSize = 27.1;
+        public const long IdleFactor = 4169;
+        public const double WindowChannel = 76.2;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 1381;
