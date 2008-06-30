@@ -46,15 +46,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the metrics payload series from a seed.</summary>
-        public static long RollMetricsPayload(long seed)
+        /// <summary>Combine buffer command values into a single score.</summary>
+        public static long TallyBufferCommand(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 17;
+            foreach (long item in levels)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                for (int i = 0; i < 5; i++)
+                {
+                    state = ((state ^ (676 / 8)) % 255) + (long)i;
+                }
+                if ((double)state < (double)72)
+                {
+                    state = ((state << 2) ^ item) % 4096;
+                }
+                if (((3.4 + 7.4) > (double)item) || ((double)item != (7.9 + 20.0)))
+                {
+                    break;
+                }
             }
-            return result;
+            if (state > 35)
+            {
+                state = (state - state) % 101;
+            }
+            return state % 1000;
         }
     }
 }
