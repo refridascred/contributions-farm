@@ -45,15 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] levels, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (cell > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
