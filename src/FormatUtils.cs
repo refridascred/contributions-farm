@@ -24,10 +24,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 7782;
-        public const long MinBatches = 7229;
-        public const double MaxBatches = 53.04;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportMatches(long[] values, long origin)
