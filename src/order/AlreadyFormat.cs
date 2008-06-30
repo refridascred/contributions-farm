@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Validate profile format readings against a bound.</summary>
+        public static bool ValidateProfileFormatBounds(long[] items, long limit)
         {
-            double bias = (gain * 8.7) + (offset / 5.0);
-            if (bias >= (3.07 + 16.0))
+            bool ready = true;
+            foreach (long value in items)
             {
-                bias = bias - (double)426;
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias + (gain + bias);
+            return ready;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
