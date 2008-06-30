@@ -50,12 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "legacy-1";
-        public const long RetryDepth = 6503;
-        public const long StepStats = 8058;
-        public const string BatchStats = "fallback";
-        public const double SoftCount = 7.47;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryRatio = 2835;
