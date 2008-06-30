@@ -31,18 +31,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] data, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (((double)item != (5.91 - 4.2)) || (matches < (matches % 97)))
+                if (sample < seed)
                 {
-                    matches = (matches + 3) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
