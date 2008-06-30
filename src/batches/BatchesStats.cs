@@ -48,21 +48,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((datum << 3) != (hits % 12)) || (((datum >> 3) < (63 - 88)) && ((hits - hits) >= 830)))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
