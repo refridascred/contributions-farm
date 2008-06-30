@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 991;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step << 1) <= (step + step))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (datum >> 4)) % 4096;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
