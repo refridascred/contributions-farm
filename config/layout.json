@@ -1,5 +1,16 @@
 {
-  "warm_retries_s": true,
-  "already_window": "open",
-  "payload_limit": 44
+  "default_ratio_pct": {
+    "hard_ratio": 7083,
+    "retry_window": {
+      "compress": 45.5,
+      "retry_capacity": [46, 85],
+      "base_delay_count": [382, 179, 123]
+    },
+    "min_limit_count": false,
+    "flush_size_pct": 30
+  },
+  "poll_threshold_ms": 4086,
+  "batch_timeout_count": false,
+  "batch_timeout_pct": "staging",
+  "cache_interval_ms": [332, 344, 223]
 }
