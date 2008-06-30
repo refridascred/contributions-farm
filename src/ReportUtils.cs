@@ -47,17 +47,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first command stats entry that matches the target.</summary>
-        public static long FindCommandStatsIndex(long[] levels, long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (bound < (limit / 8))
             {
-                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)846 != (double)limit)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (16.0 >= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit % 2) != (bound ^ 875))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
