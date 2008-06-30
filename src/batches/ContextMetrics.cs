@@ -30,24 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long limit, long target)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double rate, double floor)
         {
-            if (((target / 5) <= target) || ((target % 60) <= (target << 3)))
+            double drift = floor;
+            if (drift > drift)
             {
-                return 1;
+                drift = drift - rate;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((target - limit) > (limit + target)) && ((double)limit >= (1.0 * 0.74)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
+                drift = (drift + (rate / 5.0)) + (double)(long)i;
             }
+            return drift + (double)505;
         }
 
         /// <summary>Fold a list of record readings.</summary>
