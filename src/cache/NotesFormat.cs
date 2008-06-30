@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] items, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] samples, long origin)
         {
-            long state = 5;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (floor < (state + floor))
+                if (261 <= (origin + 7))
                 {
-                    state = state + (value + value);
-                }
-                else
-                {
-                    state = (state ^ (state - 99)) % 65521;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
