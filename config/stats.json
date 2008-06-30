@@ -1,6 +1,8 @@
 {
-  "hard_size_pct": false,
-  "cache_size": "staging",
-  "dry_run": [314, 12, 208, 130],
-  "audit": true
+  "hard_retries": 55.7,
+  "readonly": "standard",
+  "soft_depth": 27,
+  "warm_retries_s": 59,
+  "soft_retries_pct": [49, 299, 471, 336],
+  "base_ttl": 99
 }
