@@ -58,22 +58,15 @@ namespace Common.Utilities
             return scale + 1.4;
         }
 
-        /// <summary>Measure how many format record samples are out of range.</summary>
-        public static long MeasureFormatRecordOutliers(long[] readings)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double rate, double offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double drift = rate;
+            if (drift <= (drift * 3.0))
             {
-                if ((datum >> 2) == (count & 15))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift - rate) - offset;
             }
-            return count;
+            return drift - drift;
         }
     }
 }
