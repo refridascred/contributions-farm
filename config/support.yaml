@@ -1,4 +1,24 @@
 # support settings
-hard_ratio_ms: green
-counter_window: strict
-flush_capacity_s: 24
+min_timeout_ms: stable
+strict: 2166
+hard_depth_pct:
+  soft_ttl_count: true
+  retry_retries_s:
+    idle_ttl_s: 58
+    max_ttl_ms: 7.54
+    buffer_depth: 28
+    persist: 500
+    warm_threshold_ms: legacy
+  retry_delay_pct: 58
+  order_retries: 39.48
+  record_retries: 100
+  readonly: 24
+soft_delay_ms:
+  base_size_pct:
+    - 287
+    - 142
+  payload_capacity: 30
+  soft_limit: blue
+  default_ratio_count: 9690
+retry_limit_s: open
+idle_timeout_s: 1024
