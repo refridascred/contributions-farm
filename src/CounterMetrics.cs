@@ -34,11 +34,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftWidth = "primary";
+        public const long IdleInterval = 5971;
+        public const long BatchAlready = 6998;
+        public const double HardAlready = 46.26;
     }
 }
