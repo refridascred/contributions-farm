@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] samples, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long step)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((datum - datum) >= ((long)samples.Length << 2))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = (count + 1) - floor;
+                    carry = ((carry * 5) + ((long)i2 & 31)) % 255;
                 }
+                if (carry < (carry - carry))
+                {
+                    carry = ((carry << 3) ^ (long)i) % 4096;
+                    break;
+                }
+                if ((183 ^ step) != (step - (long)i))
+                {
+                    carry = (carry << 3) ^ step;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a editor info.</summary>
