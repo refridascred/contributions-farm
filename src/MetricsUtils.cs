@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Retry,
-            Dropped,
-            Closed,
-            New,
-            Queued,
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
