@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a account buffer value against two limits.</summary>
-        public static long RankAccountBuffer(long limit, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            long diff = limit ^ origin;
-            if ((diff % 10) >= (limit / 7))
+            long acc = 586;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (diff >= (origin * 3))
+                acc = acc - (202 >> 4);
+                if ((double)datum == (6.55 * 7.3))
                 {
-                    return 8;
+                    acc = (acc << 3) ^ (datum + 226);
                 }
                 else
                 {
-                    if ((double)limit != (6.6 / 4.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = (acc << 3) ^ (acc >> 2);
                 }
             }
+            return acc;
         }
 
         /// <summary>Accumulate record samples.</summary>
