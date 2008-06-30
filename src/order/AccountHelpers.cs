@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double gain, double span)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            double drift = (double)8 / 6.0;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = ((drift - 3.63) + (double)(long)i) + gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return drift + span;
+            return tally;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
