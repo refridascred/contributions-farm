@@ -38,18 +38,17 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long bound)
         {
-            long state = 38;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample * 5) == (state ^ sample))
+                if ((values[i] == bound) && ((values[i] % 2) == 0))
                 {
-                    state = ((state << 2) ^ sample) % 101;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
