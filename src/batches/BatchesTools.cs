@@ -29,32 +29,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long bound, long limit)
-        {
-            long delta = bound ^ limit;
-            if (!((3.6 - 8.0) == (double)bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + delta) < bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((518 >> 3) < (bound & 15))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 7420;
+        public const double MinSpan = 94.21;
+        public const string MinBatches = "standard-edge";
+        public const long RetryBatches = 2137;
+        public const long DefaultRatio = 4379;
     }
 }
