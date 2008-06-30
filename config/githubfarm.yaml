@@ -1,4 +1,21 @@
 # githubfarm settings
-sync_delay_pct: latest
-commits_interval: 7443
-strict: 3425
+soft_timeout_ms: primary
+flush_ttl_ms:
+  - eu-west
+  - open
+  - local
+  - primary
+record_limit:
+  retry_size_count: false
+  cache_ttl_s: 100
+  poll_delay_s:
+    - latest
+    - primary
+    - local
+    - staging
+  burst_ratio: 30
+  idle_capacity:
+    - 301
+    - 193
+    - 262
+flush_size_pct: 1004
