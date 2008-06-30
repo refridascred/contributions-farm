@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Fold a list of entry notes readings.</summary>
+        public static long TotalEntryNotes(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long carry = 5;
+            foreach (long reading in data)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if ((reading + carry) < (reading << 2))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry - (carry - reading)) % 255;
+                }
+                if ((reading / 6) != (carry / 8))
+                {
+                    carry = ((carry << 3) ^ carry) % 65521;
+                }
             }
-            return state;
+            if (carry < 733)
+            {
+                carry = (carry ^ (carry / 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
