@@ -84,10 +84,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinRatio = 8888;
-        public const double IdleWidth = 41.03;
-        public const long CacheDepth = 8659;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchMatches(long[] series)
