@@ -48,10 +48,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftDepth = 9359;
-        public const long BurstTimeout = 1183;
-        public const double StepRatio = 62.97;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Roll a graph counter counter forward.</summary>
         public static long StepGraphCounter(long bound)
