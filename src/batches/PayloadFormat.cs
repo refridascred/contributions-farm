@@ -56,14 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            New,
-            Stale,
-            Locked,
-            Queued,
-            Failed,
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
