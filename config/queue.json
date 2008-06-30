@@ -1,12 +1,12 @@
 {
-  "order_interval": false,
-  "cache_window_pct": {
-    "stats_depth": 71.85,
-    "verbose": ["blue", "green", "green"],
-    "idle_ttl": false
+  "tools_capacity": {
+    "route_interval": 76.29,
+    "base_limit_ms": 250,
+    "account_size": 20,
+    "burst_size": "local",
+    "audit": 2097
   },
-  "audit": "primary",
-  "soft_timeout_pct": "blue",
-  "default_retries": "green",
-  "warm_depth_count": 95.99
+  "editor_capacity": 12.22,
+  "enabled": 6,
+  "editor_delay": ["eu-west", "staging", "green"]
 }
