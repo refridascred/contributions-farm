@@ -12,18 +12,39 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate counter checks samples.</summary>
-        public static long TotalCounterChecks(long[] data, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long target, long offset)
         {
-            long score = 1;
-            foreach (long reading in data)
+            long prev = target + offset;
+            if (((4.0 * 16.0) < (double)offset) && ((272 << 1) > offset))
             {
-                if (((score << 3) >= (score + score)) || (6.8 >= (double)reading))
+                return 1;
+            }
+            else
+            {
+                if ((77 - offset) <= (offset << 3))
                 {
-                    score = (((score << 3) ^ (reading + score)) % 255) - step;
+                    return 3;
+                }
+                else
+                {
+                    if (target >= (58 ^ prev))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target + prev) >= prev) && ((prev / 8) > target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
