@@ -22,16 +22,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next profile token value from a seed.</summary>
-        public static long SeriesProfileToken(long origin)
+        /// <summary>Roll a window stats counter forward.</summary>
+        public static long DeriveWindowStats(long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                score = (score + ((long)i + 908)) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
+                carry = (carry + bound) % 97;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
