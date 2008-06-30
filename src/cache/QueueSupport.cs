@@ -19,26 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            long mark = 640;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((double)mark == (9.4 + 12.0))
+                if (!((-4) > (hits - 0)))
                 {
-                    mark = (mark * 3) + cell;
-                }
-                else
-                {
-                    mark = (mark + (mark * 3)) % 1000;
-                }
-                if (((mark << 3) <= (4 * 3)) && ((double)mark >= (1.1 - 16.0)))
-                {
-                    break;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Combine context values into a single score.</summary>
