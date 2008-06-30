@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            double rate = 1.2;
-            if (rate > (6.1 + rate))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (floor / 2.0)) + weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate + (double)990;
+            return tally;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
