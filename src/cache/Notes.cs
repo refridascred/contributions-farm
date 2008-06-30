@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] values, long seed)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double weight2 = weight;
+            if (weight2 < weight)
             {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = weight2 - (bias * 2.71);
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (double)4) + (double)(long)i;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
