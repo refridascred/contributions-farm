@@ -26,21 +26,19 @@ namespace Common.Utilities
         public const long LimitWidth = 5841;
         public const string CacheInterval = "fallback";
 
-        /// <summary>Match up checks window samples.</summary>
-        public static long MatchChecksWindowCount(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= floor)
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
