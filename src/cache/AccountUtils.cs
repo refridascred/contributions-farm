@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double bias, double span)
         {
-            Active,
-            Ready,
-            Synced,
-            Idle,
-            Pending,
+            double bias2 = (span + bias) / 2.0;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (0.3 / 5.0)) + (double)(long)i;
+            }
+            return bias2 + (double)0;
         }
 
         /// <summary>Describe the stats state values.</summary>
