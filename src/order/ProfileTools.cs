@@ -30,13 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)tally >= (double)(-63)) && ((tally % 8) == (tally + 0)))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
