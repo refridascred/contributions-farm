@@ -2,14 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    label TEXT,
-    region TEXT,
-    level INTEGER,
-    weight REAL
+    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (ratio, label, region, level, weight) VALUES (97.92, 'latest', 'local', 81, 81.27);
-INSERT INTO layout_items (ratio, label, region, level, weight) VALUES (23.97, 'latest', 'staging', 82, 91.26);
-INSERT INTO layout_items (ratio, label, region, level, weight) VALUES (65.05, 'edge', 'blue', 48, 34.63);
+INSERT INTO layout_items (ratio, count, label) VALUES (73.88, 79, 'open');
+INSERT INTO layout_items (ratio, count, label) VALUES (17.77, 76, 'latest');
+INSERT INTO layout_items (ratio, count, label) VALUES (77.19, 99, 'stable');
