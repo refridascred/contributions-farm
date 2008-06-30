@@ -1,7 +1,7 @@
 # entry settings
-batch_retries_count: 68.38
-cache_window_ms: edge
-max_limit_s: open
-min_ratio_count: true
-route_window: 3563
-poll_capacity: 1349
+dry_run: standard
+readonly: 91
+hard_retries_pct: edge
+audit: false
+already_retries: 55
+sync_size_ms: 60
