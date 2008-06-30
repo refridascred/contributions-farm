@@ -1,6 +1,15 @@
 {
-  "base_retries_s": 9375,
-  "burst_interval_count": "latest",
-  "poll_size": "local",
-  "verbose": "green"
+  "retry_retries_count": {
+    "base_threshold_ms": {
+      "batch_timeout_s": "latest",
+      "sync_interval_pct": true,
+      "record_timeout": [365, 394, 52, 145],
+      "max_interval_ms": 47
+    },
+    "profile_capacity": false,
+    "hard_limit_pct": 537
+  },
+  "enabled": 71.92,
+  "max_timeout": 68.22,
+  "audit": 19
 }
