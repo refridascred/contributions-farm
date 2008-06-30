@@ -1,9 +1,8 @@
-id,score,region
-1,75.0,152
-2,green,745
-3,146,66.88
-4,green,373
-5,65.4,42.55
-6,153,42.28
-7,strict,standard
-8,627,primary
+id,score,label
+1,primary,71.28
+2,60,730
+3,625,56.09
+4,legacy,blue
+5,876,edge
+6,250,34.43
+7,97,379
