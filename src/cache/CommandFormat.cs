@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] series)
-        {
-            long carry = 88;
-            foreach (long reading in series)
-            {
-                if (((reading >> 4) > (carry >> 2)) && (carry <= reading))
-                {
-                    carry = ((carry * 2) + (carry + reading)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitFactor = 57.3;
+        public const long BatchSize = 3300;
+        public const string MaxOrder = "standard-1";
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
