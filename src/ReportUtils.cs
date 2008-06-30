@@ -34,13 +34,11 @@ namespace Common.Utilities
             return bias - (double)94;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
             public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next route entry value from a seed.</summary>
