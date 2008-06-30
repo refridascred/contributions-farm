@@ -28,16 +28,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] values, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                result = ((result << 3) ^ (12 + (long)i)) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
