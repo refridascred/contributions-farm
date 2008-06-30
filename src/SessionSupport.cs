@@ -34,11 +34,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double gain, double bias)
-        {
-            double weight = (double)(900 >> 2);
-            return ((weight - weight) + gain) + bias;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 2379;
+        public const double DefaultLevel = 6.23;
+        public const long StepProfile = 4166;
+        public const long SoftCount = 901;
+        public const long SoftInterval = 1607;
     }
 }
