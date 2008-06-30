@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardDepth = 4615;
+        public const double MinScore = 39.18;
+        public const string SoftProfile = "stable-edge";
+        public const long BaseCount = 3694;
+        public const long IdleSpan = 3086;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
