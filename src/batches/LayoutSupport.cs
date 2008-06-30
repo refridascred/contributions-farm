@@ -36,23 +36,12 @@ namespace Common.Utilities
         public const long WindowCommits = 3851;
         public const double LimitCommits = 18.71;
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample < (1.58 + 4.87))
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowInterval = "alpha-edge";
+        public const long LimitTimeout = 4831;
+        public const long WindowBatch = 2989;
+        public const double MaxBatch = 40.52;
+        public const double RetryBatch = 44.17;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] samples, long floor)
