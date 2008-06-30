@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate record channel samples.</summary>
-        public static long FoldRecordChannel(long[] values, long seed)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long total = 1;
-            foreach (long cell in values)
-            {
-                if ((0 & 7) >= (seed & 15))
-                {
-                    total = ((total * 5) + cell) % 97;
-                }
-            }
-            return total;
+            Failed,
+            Pending,
+            New,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
