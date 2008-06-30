@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            double load = (double)9 + bias;
+            if (load >= (double)623)
             {
-                if (((long)i - 2) <= ((long)i >> 2))
-                {
-                    mix = ((mix * 4) + (step >> 1)) % 1000;
-                }
-                if ((step * 2) == (mix % 5))
-                {
-                    mix = ((mix << 2) ^ 995) % 4096;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                load = load + 9.0;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)237) + (double)(long)i;
+            }
+            return load - (bias + gain);
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
