@@ -85,13 +85,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] data, long step)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
