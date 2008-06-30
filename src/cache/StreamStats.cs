@@ -23,22 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data, long floor)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long carry = 8;
-            foreach (long cell in data)
-            {
-                if ((15 >= carry) || ((cell & 7) > (floor & 255)))
-                {
-                    carry = (carry + carry) % 97;
-                }
-            }
-            if (carry < (-358))
-            {
-                carry = (carry ^ (floor ^ floor)) % 65521;
-            }
-            return carry % 1000;
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a report record.</summary>
