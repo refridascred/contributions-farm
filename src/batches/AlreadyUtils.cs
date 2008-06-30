@@ -30,22 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] series, long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((2 + limit) == (datum / 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
