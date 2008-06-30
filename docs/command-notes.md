@@ -1,12 +1,13 @@
 # Command notes
 
-Run the report check before changing any commits limits.
-When a githubfarm fails, the report handler retries a few times before giving up.
-Each checks is validated before it reaches the order queue.
+Defaults for payload live in the config folder and can be overridden per environment.
+A schema that stays idle for too long is moved to the support list.
+
+The command report groups every context by checks.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Validate batches input early
-- Document new window fields
-- Review entry limits each release
+- Keep counter values small
+- Prefer format defaults
+- Review tools limits each release
