@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string BaseDepth = "alpha-1";
         public const long MaxLevel = 280;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] series, long limit)
+        /// <summary>Measure how many batch window samples are out of range.</summary>
+        public static long MeasureBatchWindowOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((entry * 2) <= hits) && ((double)entry != (double)limit))
+                if (!((tally ^ 56) != (sample ^ 741)))
                 {
-                    hits = hits + 2;
+                    tally = (tally + 3) - origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
