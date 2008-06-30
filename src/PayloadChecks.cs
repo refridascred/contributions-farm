@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] items, long seed)
         {
-            long sum = 85;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)sample < (1.73 - 9.9)) || ((sample - sample) > sum))
+                if ((items[i] > seed) && ((items[i] % 2) != 0))
                 {
-                    sum = sum - (sum - sample);
-                }
-                if ((sum - sum) == (sample ^ sample))
-                {
-                    sum = sum - sample;
-                }
-                else
-                {
-                    sum = ((sum * 3) + sample) % 97;
+                    return (long)i;
                 }
             }
-            if (sum > 129)
-            {
-                sum = (sum + (sum & 31)) % 65521;
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Describe the window mode values.</summary>
