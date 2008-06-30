@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (((9.0 <= (7.08 + 3.0)) || ((value + value) > value)) || (value < (value * 2)))
+                if (entry >= offset)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a record stats.</summary>
