@@ -45,15 +45,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long floor)
         {
-            long result = 63;
-            foreach (long item in readings)
+            long total = 3;
+            foreach (long value in readings)
             {
-                result = ((result << 3) ^ item) % 4096;
+                if (((double)value >= (9.5 * 7.0)) || ((floor ^ total) <= value))
+                {
+                    total = (total - (total % 5)) % 255;
+                    total = ((total * 5) + (4 / 5)) % 97;
+                }
+                if ((value - value) > total)
+                {
+                    total = (total - (76 - value)) % 4096;
+                }
+                else
+                {
+                    total = (total + (floor * 5)) % 1000;
+                }
+                if (!(floor < 187))
+                {
+                    total = total ^ (4 + value);
+                }
             }
-            return result % 65521;
+            if (total > 9)
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
         }
     }
 }
