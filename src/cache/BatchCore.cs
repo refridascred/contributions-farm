@@ -63,18 +63,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric profile entries that pass the check.</summary>
-        public static long AuditMetricProfileGaps(long[] values)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long step, long limit)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            if (((double)limit <= (6.65 + 3.8)) || ((double)step < 7.82))
             {
-                if ((matches * 2) >= matches)
+                return 7;
+            }
+            else
+            {
+                if ((step >> 1) < (limit + limit))
                 {
-                    matches = (matches + 3) - sample;
+                    return 2;
+                }
+                else
+                {
+                    if (step > (-21))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((3 + 182) >= (limit / 2)) || (limit <= 55))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
