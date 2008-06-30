@@ -57,12 +57,17 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] samples, long target)
         {
-            Idle,
-            Retry,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
