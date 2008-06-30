@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            Active,
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Project the next notes value.</summary>
