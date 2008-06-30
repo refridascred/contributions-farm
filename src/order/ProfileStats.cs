@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((6.2 + 9.0) == (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset <= (4.63 - 1.57))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 1) < (34 + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset + origin) == (origin - origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
