@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamMatches(long[] values)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((6.0 / 4.0) == (double)count)
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Define order limits and defaults.</summary>
