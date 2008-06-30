@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 518;
+            foreach (long sample in samples)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                result = ((result + target) % 4096) + sample;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the counter context entries that pass the check.</summary>
