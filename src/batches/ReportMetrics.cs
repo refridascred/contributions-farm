@@ -18,26 +18,13 @@ namespace Common.Utilities
         public const string BatchCommand = "legacy-edge";
         public const long SoftCommand = 9579;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long state = 246;
-            foreach (long entry in data)
-            {
-                if (state >= entry)
-                {
-                    state = (state + state) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (state << 3)) % 65521;
-                }
-            }
-            if (state < 96)
-            {
-                state = (state - (state & 127)) % 1000;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
