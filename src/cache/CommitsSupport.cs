@@ -36,16 +36,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples, long seed)
+        /// <summary>Count the layout farm entries that pass the check.</summary>
+        public static long MeasureLayoutFarmHits(long[] readings)
         {
-            long carry = 389;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                carry = ((carry << 2) ^ (7 >> 2)) + seed;
-                carry = (carry * 2) + (carry + cell);
+                if (685 <= (hits << 3))
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of account format entries.</summary>
