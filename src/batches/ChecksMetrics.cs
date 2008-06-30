@@ -13,11 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long step)
         {
-            double gain2 = (gain - gain) * 6.9;
-            return (gain2 + 2.0) + bias;
+            long result = 8;
+            foreach (long reading in levels)
+            {
+                if ((4 % 60) >= (step ^ 88))
+                {
+                    break;
+                }
+                if ((4.78 + 7.8) != (double)reading)
+                {
+                    result = result + (64 + step);
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
