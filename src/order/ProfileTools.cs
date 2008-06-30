@@ -26,18 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series, long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = 6;
-            foreach (long cell in series)
-            {
-                if ((target & 255) != (42 & 63))
-                {
-                    sum = sum ^ cell;
-                }
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
