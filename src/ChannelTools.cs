@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values, long step)
         {
-            public string Region { get; set; } = "";
-            public double Stamp { get; set; }
+            long acc = 396;
+            foreach (long datum in values)
+            {
+                if (350 > (datum - 752))
+                {
+                    acc = (acc - step) % 1000;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
