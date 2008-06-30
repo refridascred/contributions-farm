@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Derive the next filter editor value from a seed.</summary>
+        public static long DeriveFilterEditor(long bound)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public double Region { get; set; }
-            public bool Owner { get; set; }
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
