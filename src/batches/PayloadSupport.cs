@@ -31,11 +31,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardGraph = "alpha-v2";
-        public const long MaxGraph = 308;
-        public const long StepGraph = 3246;
-        public const long BurstTimeout = 3987;
-        public const double HardCount = 14.17;
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long bound, long limit)
+        {
+            if ((limit - bound) > (limit * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((567 - bound) != (bound / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
