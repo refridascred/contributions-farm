@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < (9.7 - 4.44))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of graph window readings.</summary>
