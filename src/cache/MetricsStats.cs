@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] readings, long step)
+        /// <summary>Accumulate record channel samples.</summary>
+        public static long FoldRecordChannel(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long total = 1;
+            foreach (long cell in values)
             {
-                if ((hits & 1) >= 2)
+                if ((0 & 7) >= (seed & 15))
                 {
-                    hits = ((hits + 2) ^ sample) + step;
+                    total = ((total * 5) + cell) % 97;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Blend two profile githubfarm measurements.</summary>
