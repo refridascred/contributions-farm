@@ -1,8 +1,12 @@
 {
-  "cache_delay": "standard",
-  "graph_delay": "staging",
-  "persist": ["standard", "strict", "cached"],
-  "strict": 250,
-  "channel_capacity": 29.1,
-  "idle_delay": "staging"
+  "order_interval": false,
+  "cache_window_pct": {
+    "stats_depth": 71.85,
+    "verbose": ["blue", "green", "green"],
+    "idle_ttl": false
+  },
+  "audit": "primary",
+  "soft_timeout_pct": "blue",
+  "default_retries": "green",
+  "warm_depth_count": 95.99
 }
