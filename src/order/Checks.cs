@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] >= bound)
+                if ((reading + seen) == (seen * 5))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
