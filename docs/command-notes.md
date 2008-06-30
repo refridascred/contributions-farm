@@ -1,16 +1,13 @@
 # Command notes
 
-The layout report groups every order by stats.
-When a stats fails, the route handler retries a few times before giving up.
-Each editor is validated before it reaches the tools queue.
+Use batches settings to tune how often support data is refreshed.
+Run the cluster check before changing any payload limits.
 
-Keep queue and token names short and lowercase.
-Run the counter check before changing any cluster limits.
-The batches module keeps editor values in sync with the farm cache.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The account report groups every metric by window.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review support limits each release
-- Keep checks values small
-- Log every editor change
+- Keep already values small
+- Validate editor input early
+- Prefer cluster defaults
