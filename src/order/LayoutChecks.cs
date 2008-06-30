@@ -59,17 +59,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (readings[i] <= floor)
+                if ((sample ^ tally) >= tally)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the report schema series from a seed.</summary>
