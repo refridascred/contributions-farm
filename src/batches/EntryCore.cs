@@ -64,12 +64,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Rank payload cluster input into a small class.</summary>
+        public static long BucketPayloadCluster(long target, long limit)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            long prev = target ^ limit;
+            if (!((limit * 5) <= (4 & 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((668 + prev) == (prev / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit < (prev & 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((prev - 75) != (limit - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
