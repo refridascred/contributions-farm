@@ -56,18 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit format counter readings against a rule.</summary>
-        public static long CountFormatCounterMatches(long[] items, long step)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= (8.8 / 7.0))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
