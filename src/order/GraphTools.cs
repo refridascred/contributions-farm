@@ -27,10 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepSize = 37.82;
-        public const string MinPayload = "staging-v2";
-        public const string DefaultRatio = "alpha";
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinBudget = 7676;
