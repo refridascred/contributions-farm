@@ -50,13 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] items)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (!!((cell & 1) <= (360 + cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
