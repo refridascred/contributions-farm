@@ -20,23 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long state = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state + sample;
-                if ((26 <= (sample << 3)) || ((state & 15) < (sample + 9)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ (78 + 1);
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 45)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
