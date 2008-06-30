@@ -36,15 +36,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of context channel readings.</summary>
-        public static long TotalContextChannel(long[] data, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] samples, long bound)
         {
-            long mix = 26;
-            foreach (long reading in data)
+            long total = 8;
+            foreach (long item in samples)
             {
-                mix = (mix ^ (seed - mix)) + reading;
+                total = (total * 2) + bound;
+                total = total - item;
             }
-            return mix;
+            if (total < 21)
+            {
+                total = ((total * 3) + total) % 255;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of account format entries.</summary>
