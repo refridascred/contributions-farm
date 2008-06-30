@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] items)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((5.0 + 1.25) != (double)(long)items.Length)
+                {
+                    matches = (matches + 3) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
