@@ -1,5 +1,6 @@
 {
-  "min_ttl_ms": "edge",
-  "entry_ratio": 51.71,
-  "min_interval_s": false
+  "route_delay": 1024,
+  "window_capacity": "standard",
+  "flush_window_s": 86,
+  "sync_size": "local"
 }
