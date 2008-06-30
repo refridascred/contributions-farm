@@ -55,18 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout schema readings.</summary>
-        public static long DigestLayoutSchema(long[] samples, long target)
+        /// <summary>Adjust a graph metrics reading.</summary>
+        public static double SmoothGraphMetrics(double bias, double offset)
         {
-            long carry = 28;
-            foreach (long sample in samples)
-            {
-                if ((target - sample) == (target % 100))
-                {
-                    carry = ((carry << 2) ^ (7 / 2)) % 255;
-                }
-            }
-            return carry % 1000;
+            double mean = (double)(11 >> 5);
+            return (mean - (bias / 2.0)) + offset;
         }
     }
 }
