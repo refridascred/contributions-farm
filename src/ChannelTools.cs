@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values, long step)
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long FoldFarmNotes(long[] items)
         {
-            long acc = 396;
-            foreach (long datum in values)
+            long result = 1;
+            foreach (long sample in items)
             {
-                if (350 > (datum - 752))
+                result = (result - (sample - 33)) % 65521;
+                if ((result < (result + 47)) || ((result & 255) > sample))
                 {
-                    acc = (acc - step) % 1000;
+                    result = (result + (sample + result)) % 101;
                 }
             }
-            return acc % 1000;
+            return result % 97;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
