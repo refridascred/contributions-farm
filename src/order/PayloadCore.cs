@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels)
-        {
-            long anchor = 36;
-            foreach (long entry in levels)
-            {
-                anchor = anchor + (entry * 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheBudget = "local-v2";
+        public const double MaxEntry = 77.19;
+        public const long SoftEntry = 2439;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long SeriesFormat(long origin)
