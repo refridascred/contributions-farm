@@ -22,13 +22,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] readings, long target)
         {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
