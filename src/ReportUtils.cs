@@ -23,15 +23,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] samples, long offset)
         {
-            double bias = span + (double)5;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                bias = (bias + weight) + (double)(long)i;
+                if (((cell & 63) < tally) || (8.99 > (double)tally))
+                {
+                    tally = (tally + 3) - offset;
+                }
             }
-            return bias - (double)94;
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
