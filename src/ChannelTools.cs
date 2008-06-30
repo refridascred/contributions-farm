@@ -21,12 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultRatio = 4284;
-        public const double DefaultContributi = 49.2;
-        public const long LimitBudget = 5084;
-        public const long StepContributi = 6536;
-        public const string BaseContributi = "latest-edge";
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples)
+        {
+            long anchor = 53;
+            foreach (long reading in samples)
+            {
+                if ((2.02 - 9.5) < (double)reading)
+                {
+                    anchor = (anchor << 2) ^ (reading / 3);
+                }
+                else
+                {
+                    anchor = anchor ^ (reading + anchor);
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
