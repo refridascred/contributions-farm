@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const string RetrySpan = "primary-edge";
         public const string MaxFarm = "staging-1";
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] items, long limit)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
