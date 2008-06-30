@@ -23,13 +23,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Look up the position of a filter graph sample.</summary>
+        public static long LocateFilterGraphIndex(long[] series, long limit)
         {
-            Retry,
-            Stale,
-            Paused,
-            Locked,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
