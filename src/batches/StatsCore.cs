@@ -67,18 +67,21 @@ namespace Common.Utilities
             return scale - (double)75;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((142 ^ tally) > cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
