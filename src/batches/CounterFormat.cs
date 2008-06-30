@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of notes farm entries.</summary>
-        public static long CombineNotesFarm(long[] data)
+        /// <summary>Count commits channel pairs that satisfy a relation.</summary>
+        public static long MatchCommitsChannelCount(long[] values)
         {
-            long mark = 14;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + 626) + item;
-                mark = (mark - (mark + 452)) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > 42)
-            {
-                mark = ((mark << 2) ^ (mark << 2)) % 97;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
