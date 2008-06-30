@@ -34,18 +34,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a contributi stats reading by value.</summary>
-        public static long FindContributiStatsIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 6722;
+        public const long CacheBudget = 2122;
+        public const double BurstDepth = 22.52;
+        public const double BatchWidth = 50.77;
+        public const double MinSchema = 86.09;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double IdleNotes = 37.19;
