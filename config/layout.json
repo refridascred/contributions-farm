@@ -1,6 +1,8 @@
 {
-  "sync_depth_s": 54,
-  "warm_timeout_s": 3844,
-  "default_depth_count": "primary",
-  "default_window_ms": ["cached", "green"]
+  "sync_capacity_ms": 22.57,
+  "strict": "latest",
+  "format_delay": 63,
+  "cache_depth": 60,
+  "max_delay_count": "cached",
+  "batch_interval_count": 6
 }
