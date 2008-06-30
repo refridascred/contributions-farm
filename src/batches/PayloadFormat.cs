@@ -56,31 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats report pair into a bucket.</summary>
-        public static long SortStatsReport(long target, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            if ((double)target > (9.25 / 6.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target & 7) > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 255) <= step)
+                    if ((values[i] - values[j]) > 13)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
