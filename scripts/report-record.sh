@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=308
-log "limit is ${RECORD_LIMIT}"
-
-for item in cached standard primary; do
+for item in legacy blue cached stable; do
     log "checking ${item}"
 done
 
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
 mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    primary)
         log "fast path"
         ;;
     *)
