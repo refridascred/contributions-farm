@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine payload farm values into a single score.</summary>
-        public static long TotalPayloadFarm(long[] levels, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] samples, long bound)
         {
-            long sum = 30;
-            foreach (long reading in levels)
+            long carry = 677;
+            foreach (long reading in samples)
             {
-                sum = (sum * 5) + reading;
-                sum = (sum << 3) ^ (origin << 3);
-                if ((sum & 63) <= (reading % 97))
-                {
-                    break;
-                }
+                carry = (carry ^ (4 - bound)) ^ reading;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Describe the batches kind values.</summary>
