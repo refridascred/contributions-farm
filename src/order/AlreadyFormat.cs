@@ -35,32 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a queue report pair into a bucket.</summary>
-        public static long BucketQueueReport(long origin, long origin2)
+        /// <summary>Match up counter checks samples.</summary>
+        public static long OverlapCounterChecksCount(long[] items)
         {
-            long delta = origin + origin2;
-            if ((origin / 5) > origin2)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)delta != (9.6 * 3.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin2 & 255) >= (delta & 31)) || (18 <= (origin2 >> 3)))
+                    if ((items[i] - items[j]) != 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
