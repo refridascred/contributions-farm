@@ -1,13 +1,12 @@
 {
-  "schema_size": 13,
-  "burst_ratio_s": 4912,
-  "buffer_limit": 4265,
-  "retry_interval_count": {
-    "audit": [427, 206, 465, 259],
-    "soft_threshold_pct": false,
-    "stats_retries": 95,
-    "batch_window": "stable",
-    "schema_size": "latest",
-    "cache_interval_ms": 17.21
-  }
+  "default_window_count": {
+    "flush_interval": 3321,
+    "stream_size": 11.31,
+    "command_limit": "open",
+    "batch_interval_pct": 30
+  },
+  "audit": true,
+  "warm_interval_pct": 5091,
+  "idle_ratio_ms": ["strict", "fallback"],
+  "burst_interval": 6298
 }
