@@ -29,26 +29,22 @@ namespace Common.Utilities
             return load + (double)84;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] levels, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] series, long target)
         {
-            long state = 30;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((double)floor == (2.6 + 15.0)) && ((633 - state) >= floor))
+                if ((item + item) > count)
                 {
-                    state = (state ^ (41 << 2)) % 101;
+                    count = (count + 3) - target;
                 }
-                if ((sample - state) >= sample)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (state > 9)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state;
+            return count;
         }
     }
 }
