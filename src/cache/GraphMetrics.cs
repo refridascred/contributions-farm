@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] series, long limit)
+        /// <summary>Fold a list of entry checks readings.</summary>
+        public static long CombineEntryChecks(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long score = 7;
+            foreach (long item in series)
             {
-                if (value <= limit)
+                if ((long)series.Length < (835 << 1))
                 {
-                    ok = false;
-                    break;
+                    score = ((score - limit) % 97) - item;
+                }
+                else
+                {
+                    score = ((score * 3) + (limit * 4)) % 101;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
