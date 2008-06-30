@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinInterval = 283;
-        public const long RetryContributi = 2425;
-        public const long IdleSpan = 6031;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 197;
