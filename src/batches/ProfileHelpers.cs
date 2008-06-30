@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            Closed,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
