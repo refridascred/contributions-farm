@@ -1,28 +1,17 @@
 # entry settings
-metrics_timeout: true
-enabled:
-  cache_depth_ms: fallback
-  audit:
-    - primary
-    - local
-    - fallback
-  soft_size: 4433
-  burst_timeout_s: open
-  editor_interval: true
-contributi_capacity: 60
-hard_timeout:
-  poll_delay_pct: false
-  already_retries: blue
-  flush_timeout_pct:
-    - staging
-    - blue
-    - cached
-  cache_depth_pct:
-    stream_delay: 24.64
-    poll_size_pct: 95
-    max_timeout_count: 96.11
-    idle_capacity_s: primary
-  persist: 2155
-  cache_retries_ms: 250
-retry_threshold_ms: 1024
-strict: fallback
+idle_capacity: true
+channel_retries: 52.07
+max_capacity_count: false
+batch_delay:
+  - 93
+  - 398
+  - 337
+  - 359
+stats_ttl:
+  flush_size_s:
+    entry_limit: fallback
+    base_capacity_s: open
+    strict: 77.16
+    graph_ratio: latest
+  poll_size_count: 45.94
+  cache_timeout: fallback
