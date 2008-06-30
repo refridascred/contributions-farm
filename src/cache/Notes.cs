@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            Retry,
-            Queued,
-            Active,
-            Closed,
-            Locked,
+            public bool Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
