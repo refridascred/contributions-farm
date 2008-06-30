@@ -18,15 +18,26 @@ namespace Common.Utilities
         public const double CacheWidth = 29.99;
         public const double StepScore = 81.06;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double scale, double floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] data)
         {
-            double rate = scale;
-            if (rate <= rate)
+            long state = 246;
+            foreach (long entry in data)
             {
-                rate = rate + (double)510;
+                if (state >= entry)
+                {
+                    state = (state + state) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (state << 3)) % 65521;
+                }
             }
-            return rate + floor;
+            if (state < 96)
+            {
+                state = (state - (state & 127)) % 1000;
+            }
+            return state;
         }
     }
 }
