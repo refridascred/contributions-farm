@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitSize = "latest-1";
-        public const double RetryWidth = 52.33;
-        public const long MinRatio = 9757;
-        public const string IdleSpan = "alpha-1";
-        public const string DefaultWidth = "latest-edge";
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] series, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepScore = "open";
