@@ -55,21 +55,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] samples)
+        /// <summary>Iterate the metrics payload series from a seed.</summary>
+        public static long RollMetricsPayload(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
