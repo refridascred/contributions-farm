@@ -19,10 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8334;
-        public const long RetryBatches = 284;
-        public const long BaseBatches = 1314;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Dropped,
+            Ready,
+            Done,
+            Idle,
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] items, long limit)
