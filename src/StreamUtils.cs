@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format already value.</summary>
-        public static double AdjustFormatAlready(double rate, double bias)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double bias2 = bias;
-            if (bias2 <= (rate - bias))
-            {
-                bias2 = bias2 - (double)3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - rate) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            Done,
+            Pending,
+            Paused,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two support measurements.</summary>
