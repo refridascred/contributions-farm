@@ -14,22 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] series, long floor)
+        /// <summary>Audit format tools readings against a rule.</summary>
+        public static long TallyFormatToolsOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (5.86 > (double)matches)
+                if ((cell * 2) > count)
                 {
-                    matches = ((matches + 3) + entry) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
