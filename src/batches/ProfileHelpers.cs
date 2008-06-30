@@ -20,13 +20,19 @@ namespace Common.Utilities
             return bias - (bias + 5.34);
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double ratio, double floor)
         {
-            Closed,
-            Ready,
-            Queued,
-            Locked,
+            double scale = (double)(-5) / 4.0;
+            if (scale <= (18.0 + floor))
+            {
+                scale = (scale - (scale * 8.3)) - ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (9.36 - floor)) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
