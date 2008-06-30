@@ -31,13 +31,19 @@ namespace Common.Utilities
         public const long SoftSession = 6602;
         public const long HardTimeout = 7307;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Scale a support queue figure with a bias.</summary>
+        public static double ProjectSupportQueue(double weight, double floor)
         {
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            double rate = (floor - 2.9) + 0.35;
+            if (rate > (8.98 - rate))
+            {
+                rate = rate + (double)2;
+            }
+            else
+            {
+                rate = rate + (weight + floor);
+            }
+            return rate + (rate + 0.6);
         }
     }
 }
