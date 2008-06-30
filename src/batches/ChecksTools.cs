@@ -32,22 +32,11 @@ namespace Common.Utilities
         public const long LimitRatio = 8959;
         public const double SoftToken = 76.8;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] levels)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)hits < (14.0 + 5.4))
-                {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
