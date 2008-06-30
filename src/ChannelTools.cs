@@ -16,19 +16,18 @@ namespace Common.Utilities
             return rate - (offset - weight);
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double bias, double bias2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] data)
         {
-            double rate = (double)453 * 8.0;
-            if (rate >= (16.0 * 6.53))
+            long count = 0;
+            foreach (long sample in data)
             {
-                rate = (rate - (double)7) - bias2;
+                if ((count + count) > sample)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate + (7.0 + bias);
-            }
-            return rate - (bias / 6.0);
+            return count;
         }
 
         /// <summary>Describe the context state values.</summary>
