@@ -1,7 +1,8 @@
 {
-  "flush_interval_count": 89.97,
-  "verbose": 44,
-  "max_timeout_pct": 69,
-  "session_retries": 60,
-  "base_retries_ms": 100
+  "counter_capacity": 45.19,
+  "warm_window": "primary",
+  "max_limit_pct": 5672,
+  "verbose": "local",
+  "min_retries_ms": false,
+  "min_threshold_ms": "green"
 }
