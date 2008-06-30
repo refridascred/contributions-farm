@@ -14,17 +14,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] series, long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                score = (score - (seed - seed)) % 255;
-                score = (score ^ 905) % 97;
-                score = ((score * 3) + (long)i) % 101;
+                if (5.86 > (double)matches)
+                {
+                    matches = ((matches + 3) + entry) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
