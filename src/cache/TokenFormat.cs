@@ -44,17 +44,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long limit)
+        /// <summary>Grade a batch notes value against two limits.</summary>
+        public static long SortBatchNotes(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = offset - limit;
+            if ((7.94 * 7.3) >= (double)limit)
             {
-                if ((values[i] < limit) && ((values[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if (((offset - 97) > (delta + limit)) && (46 > (limit >> 4)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (0.59 >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
