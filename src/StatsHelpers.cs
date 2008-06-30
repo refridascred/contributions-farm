@@ -37,13 +37,27 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data)
         {
-            Stale,
-            Idle,
-            Paused,
-            Closed,
+            long mark = 921;
+            foreach (long entry in data)
+            {
+                mark = (mark - (entry + mark)) % 1000;
+                if ((double)(long)data.Length != (double)mark)
+                {
+                    mark = mark + mark;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (entry >> 3)) % 97;
+                }
+            }
+            if (mark < 34)
+            {
+                mark = (mark + (mark ^ mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stream order samples are out of range.</summary>
