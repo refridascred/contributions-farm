@@ -24,10 +24,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinDepth = 3913;
-        public const long StepSpan = 8436;
-        public const long HardChannel = 1970;
+        /// <summary>Adjust a checks filter reading.</summary>
+        public static double BlendChecksFilter(double rate, double offset)
+        {
+            double rate2 = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - rate) - (double)(long)i;
+            }
+            return rate2 + (double)71;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] series, long step)
