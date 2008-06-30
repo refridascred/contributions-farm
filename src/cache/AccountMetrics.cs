@@ -59,18 +59,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)hits != (double)sample)
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
