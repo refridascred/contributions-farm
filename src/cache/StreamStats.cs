@@ -35,20 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long target)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 4) + target) % 65521;
-                if (((2.2 - 4.0) == (double)target) && ((anchor / 8) < (74 ^ (long)i)))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
