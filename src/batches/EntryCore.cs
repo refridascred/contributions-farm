@@ -43,18 +43,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long score = 68;
-            foreach (long item in series)
-            {
-                if ((item / 7) != (item * 4))
-                {
-                    score = (score * 3) + target;
-                }
-            }
-            return score % 4096;
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
