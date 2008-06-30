@@ -63,23 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long target)
         {
-            double drift = 11.0;
-            if (drift > (drift - bias))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                drift = (drift - (6.2 + drift)) - ratio;
+                if (!(((6.54 + 0.15) >= (double)target) || ((hits + entry) <= entry)))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 16.0) + (double)(long)i;
-            }
-            return drift - drift;
+            return hits;
         }
     }
 }
