@@ -19,24 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            double ratio = weight;
+            if (ratio > (weight - 4.34))
             {
-                if ((origin % 12) < origin)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ (long)i) % 65521;
-                    acc = acc - (origin % 60);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                ratio = (ratio + (double)(-737)) - offset;
             }
-            return acc;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio - (6.12 + 3.02);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
