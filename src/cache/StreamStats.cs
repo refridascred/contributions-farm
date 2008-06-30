@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Draft,
-            New,
-            Pending,
-            Locked,
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public double Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
