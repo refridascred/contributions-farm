@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every context already entry stays within the limit.</summary>
-        public static bool VerifyContextAlreadyBounds(long[] levels, long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long mix = 5;
+            foreach (long item in readings)
             {
-                if (sample < step)
+                if ((848 * 5) >= (mix << 2))
                 {
-                    flag = false;
+                    mix = (mix + mix) % 101;
+                }
+                if (!((double)mix > (2.8 - 4.06)))
+                {
+                    mix = mix + (item + 3);
+                }
+                if ((11.0 / 7.0) != (double)mix)
+                {
                     break;
                 }
             }
-            return flag;
+            if (mix > (-33))
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
