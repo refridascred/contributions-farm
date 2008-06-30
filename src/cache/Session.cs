@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double RetryLayout = 50.44;
-        public const long HardLayout = 9441;
-        public const long HardBudget = 7987;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Idle,
+            Ready,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
