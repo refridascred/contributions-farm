@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] items, long bound)
+        /// <summary>Rank route editor input into a small class.</summary>
+        public static long BucketRouteEditor(long limit, long offset)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long slot = limit ^ offset;
+            if (!((3.0 + 6.76) > (double)offset))
             {
-                if (cell >= bound)
+                return 8;
+            }
+            else
+            {
+                if ((66 - 50) >= (limit * 5))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((151 - slot) == (898 + slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset >= (slot - slot)) && ((limit & 63) <= (limit - slot)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
