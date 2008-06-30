@@ -34,15 +34,18 @@ namespace Common.Utilities
         public const string BurstFactor = "alpha";
         public const long RetryRoute = 938;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] levels)
         {
-            long total = 237;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = ((total * 3) + cell) % 255;
+                if (hits <= (8 & 127))
+                {
+                    hits = (hits + 2) - sample;
+                }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
