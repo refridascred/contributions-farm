@@ -50,18 +50,14 @@ namespace Common.Utilities
             return ratio - (double)15;
         }
 
-        /// <summary>Count the already command entries that pass the check.</summary>
-        public static long CountAlreadyCommandGaps(long[] values, long bound)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((0.6 + 9.77) == (double)matches)
-                {
-                    matches = ((matches + 1) + sample) - bound;
-                }
-            }
-            return matches;
+            Stale,
+            Pending,
+            Paused,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
