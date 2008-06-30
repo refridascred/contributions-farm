@@ -38,19 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] readings)
         {
-            long mix = 344;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mix = (((mix << 2) ^ seed) % 97) + cell;
-                if ((mix / 7) <= mix)
+                if (reading > (reading % 8))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a session header.</summary>
