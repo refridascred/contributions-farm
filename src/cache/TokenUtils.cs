@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] items, long origin)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            long mark = 286;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark << 2) ^ (mark + 4);
-                if (!((origin + mark) >= (mark << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = mark ^ ((-8) * 2);
-                }
-                if (!(72 <= (mark & 7)))
-                {
-                    mark = mark + (reading % 24);
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
