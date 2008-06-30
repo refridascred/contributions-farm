@@ -1,8 +1,5 @@
 {
-  "enabled": "open",
-  "poll_delay_s": false,
-  "warm_delay_s": [477, 68],
-  "dry_run": 24.7,
-  "warm_delay": 1,
-  "default_retries_ms": "strict"
+  "stream_window": [339, 69, 413],
+  "commits_capacity": 60,
+  "strict": [22, 445, 25, 109]
 }
