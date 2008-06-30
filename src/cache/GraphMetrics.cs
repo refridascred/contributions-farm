@@ -29,23 +29,12 @@ namespace Common.Utilities
         public const long BatchTools = 2152;
         public const double BaseFactor = 4.69;
 
-        /// <summary>Count the support token entries that pass the check.</summary>
-        public static long TallySupportTokenMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)tally <= (7.0 + 8.8))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheLevel = 5879;
+        public const long DefaultBatch = 3592;
+        public const long WindowBatch = 9478;
+        public const long BaseBatch = 2862;
+        public const double BurstBatch = 81.01;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long TallyCounterGaps(long[] items)
