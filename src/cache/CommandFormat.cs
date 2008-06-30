@@ -22,31 +22,11 @@ namespace Common.Utilities
         public const long BurstFactor = 4310;
         public const double HardScore = 29.66;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long seed)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            if (!((step * 5) <= (step + seed)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((seed - step) <= (2 >> 3)) || ((double)step != (19.0 / 4.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step - seed) <= (2 * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
