@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double bias, double span)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            double weight = bias + 1.0;
-            if (weight >= (bias * 9.0))
+            double load = floor;
+            if (load > load)
             {
-                weight = weight - (weight * 8.3);
+                load = load + 0.6;
             }
             else
             {
-                weight = weight + (6.25 / 2.0);
+                load = load + (5.6 + weight);
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 5; i++)
             {
-                weight = (weight + span) + (double)(long)i;
+                load = (load - (floor + floor)) + (double)(long)i;
             }
-            return weight - bias;
+            return load + (load - load);
         }
 
         /// <summary>Match up schema samples.</summary>
