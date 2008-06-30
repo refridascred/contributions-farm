@@ -1,8 +1,11 @@
 {
-  "soft_depth_ms": 9321,
-  "default_delay_s": 75.86,
-  "batch_depth_s": 77,
-  "record_limit": 60.02,
-  "idle_delay": 73.14,
-  "compress": "green"
+  "flush_delay": "local",
+  "readonly": {
+    "default_delay_ms": [278, 194, 382],
+    "max_limit_s": 52.74,
+    "soft_interval_ms": true,
+    "audit": "latest"
+  },
+  "retry_ratio": 89,
+  "enabled": 5072
 }
