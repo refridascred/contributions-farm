@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 4299;
+        public const double BaseBatches = 10.85;
+        public const long RetryBatches = 1248;
+        public const string IdleBatches = "strict-edge";
+        public const long DefaultSpan = 782;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long GradeChannel(long target, long offset)
