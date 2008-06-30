@@ -61,18 +61,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] series, long bound)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((14.0 * 14.0) < (double)sample) && (((sample % 16) <= (bound + bound)) && ((seen + bound) != (sample % 24))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Failed,
+            Retry,
+            Paused,
         }
     }
 }
