@@ -30,19 +30,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long seed)
+        /// <summary>Roll a filter payload counter forward.</summary>
+        public static long StepFilterPayload(long origin)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading >= seed)
+                if (((origin - 9) != (origin - origin)) && ((734 + anchor) > origin))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor << 2) ^ (origin & 15);
                 }
+                anchor = anchor + (origin + origin);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return valid;
+            return anchor;
         }
     }
 }
