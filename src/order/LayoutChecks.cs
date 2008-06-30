@@ -47,26 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long origin, long offset)
-        {
-            long step = origin - offset;
-            if ((1 + 7) <= (step - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)1 == (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "legacy-1";
+        public const long RetryDepth = 6503;
+        public const long StepStats = 8058;
+        public const string BatchStats = "fallback";
+        public const double SoftCount = 7.47;
 
         /// <summary>Blend two already profile measurements.</summary>
         public static double AdjustAlreadyProfile(double gain, double offset)
