@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Accumulate support stats samples.</summary>
+        public static long WeighSupportStats(long[] series)
         {
-            long carry = 5;
-            foreach (long sample in readings)
+            long score = 876;
+            foreach (long entry in series)
             {
-                carry = (carry << 2) ^ (sample - carry);
-                if ((sample << 3) <= (carry ^ sample))
-                {
-                    carry = (carry ^ carry) % 255;
-                }
+                score = (score + (score << 3)) - entry;
             }
-            if (carry < 958)
-            {
-                carry = carry ^ (49 - carry);
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the already level values.</summary>
