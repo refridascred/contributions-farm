@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const string BaseCount = "standard";
         public const long MaxOrder = 7441;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples, long step)
         {
-            Closed,
-            Queued,
-            Done,
-            Draft,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits < (3.0 / 4.0))
+                {
+                    hits = ((hits + 3) - datum) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine cache githubfarm values into a single score.</summary>
