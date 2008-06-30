@@ -27,19 +27,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate editor already readings against a bound.</summary>
-        public static bool GuardEditorAlreadyBounds(long[] samples, long step)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "standard-1";
+        public const long IdleStats = 1008;
+        public const long StepBudget = 4997;
+        public const long MinStats = 2684;
     }
 }
