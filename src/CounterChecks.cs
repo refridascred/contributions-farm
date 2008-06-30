@@ -41,12 +41,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftDepth = 96.3;
-        public const long RetryWindow = 5874;
-        public const long HardInterval = 1432;
-        public const double IdleWindow = 57.08;
-        public const string MaxDepth = "standard";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Ready,
+            Idle,
+            New,
+            Locked,
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchOutliers(long[] series)
