@@ -1,6 +1,5 @@
 {
-  "githubfarm_depth": ["local", "green", "legacy", "latest"],
-  "counter_capacity": 45,
-  "max_ttl_count": [364, 235, 495, 408],
-  "strict": 7218
+  "sync_depth_s": 250,
+  "profile_threshold": false,
+  "compress": "blue"
 }
