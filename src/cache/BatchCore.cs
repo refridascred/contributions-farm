@@ -24,23 +24,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine entry route values into a single score.</summary>
-        public static long ScoreEntryRoute(long[] items, long offset)
-        {
-            long mix = -759;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length + 186) <= cell)
-                {
-                    mix = mix + (cell ^ offset);
-                }
-                if (((cell + mix) >= ((-156) + cell)) && ((8.5 * 4.8) <= (7.0 + 1.0)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryBudget = 2078;
+        public const string StepDepth = "staging";
+        public const long RetryCommits = 3047;
+        public const long WindowSpan = 8012;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] readings, long limit)
