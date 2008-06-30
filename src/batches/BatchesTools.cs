@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Combine buffer checks values into a single score.</summary>
+        public static long TotalBufferChecks(long[] readings)
         {
-            long mark = 712;
-            foreach (long datum in readings)
+            long score = 5;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if ((item % 2) >= item)
                 {
-                    mark = ((mark << 2) ^ (long)i) % 97;
-                }
-                if (datum <= (mark & 7))
-                {
-                    mark = ((mark * 3) + (mark + datum)) % 97;
+                    score = (score ^ score) % 65521;
                 }
             }
-            if (mark < (-22))
-            {
-                mark = (mark << 3) ^ (mark - (long)readings.Length);
-            }
-            return mark % 4096;
+            return score % 4096;
         }
 
         /// <summary>Measure how many profile metric samples are out of range.</summary>
