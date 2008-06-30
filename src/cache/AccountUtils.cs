@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long carry = 67;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading & 127) >= (7 + carry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry - (carry * 2)) % 65521;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > 533)
-            {
-                carry = ((carry << 2) ^ (carry >> 4)) % 255;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Measure how many metric buffer samples are out of range.</summary>
