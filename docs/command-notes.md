@@ -1,14 +1,16 @@
 # Command notes
 
-Each schema is validated before it reaches the filter queue.
-A counter that stays idle for too long is moved to the stream list.
+Run the entry check before changing any payload limits.
+Keep stats and already names short and lowercase.
+Run the schema check before changing any schema limits.
 
-Each support is validated before it reaches the profile queue.
-A command that stays idle for too long is moved to the cluster list.
+Defaults for queue live in the config folder and can be overridden per environment.
+A stats that stays idle for too long is moved to the route list.
+The token report groups every channel by format.
 
 ## Guidelines
 
-- Document new already fields
-- Log every contributi change
-- Keep order values small
-- Review support limits each release
+- Document new buffer fields
+- Prefer tools defaults
+- Keep profile values small
+- Log every filter change
