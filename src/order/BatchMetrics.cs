@@ -84,12 +84,18 @@ namespace Common.Utilities
         public const double IdleWidth = 41.03;
         public const long CacheDepth = 8659;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)item != (double)3)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
