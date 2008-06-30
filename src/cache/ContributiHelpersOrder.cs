@@ -30,18 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks contributi readings against a rule.</summary>
-        public static long MeasureChecksContributiHits(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long result = 71;
+            foreach (long reading in items)
             {
-                if ((entry << 3) >= 8)
-                {
-                    matches = matches + 2;
-                }
+                result = (((result * 3) + (result & 1)) % 101) + reading;
             }
-            return matches;
+            return result;
         }
     }
 }
