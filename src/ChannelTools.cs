@@ -31,17 +31,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long seed)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
     }
 }
