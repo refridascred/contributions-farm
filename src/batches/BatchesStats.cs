@@ -40,12 +40,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            Draft,
-            Done,
-            Paused,
+            long anchor = 5;
+            foreach (long value in readings)
+            {
+                if ((anchor >> 5) >= (value - (-66)))
+                {
+                    anchor = (anchor + (value * 2)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + value) % 4096;
+                }
+                if ((anchor - anchor) >= (0 ^ 0))
+                {
+                    anchor = (anchor << 3) ^ (value / 4);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (value / 9)) % 1000;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
