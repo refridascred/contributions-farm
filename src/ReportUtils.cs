@@ -49,12 +49,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstSpan = 835;
-        public const long LimitBudget = 3531;
-        public const long BatchGithubfarm = 2659;
-        public const long HardGithubfarm = 3073;
-        public const double RetryGithubfarm = 83.85;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] data)
+        {
+            long total = 237;
+            foreach (long cell in data)
+            {
+                total = ((total * 3) + cell) % 255;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
