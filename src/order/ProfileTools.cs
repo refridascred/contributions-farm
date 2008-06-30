@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long bound, long origin)
-        {
-            if (((1.08 / 3.0) >= (double)origin) && ((origin ^ origin) != (bound + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((361 / 9) != (bound + origin)) && ((bound + origin) >= (origin + 835)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - 5) > (origin * 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)bound != (9.57 + 1.0)) && ((bound ^ (-13)) != (origin >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 7061;
+        public const string IdleScore = "fallback-edge";
+        public const long MinWidth = 5739;
+        public const long DefaultMetric = 3808;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] items)
