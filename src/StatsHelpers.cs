@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches farm readings.</summary>
-        public static long TotalBatchesFarm(long[] levels)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] readings, long floor)
         {
-            long sum = 6;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                sum = ((sum * 4) + datum) % 97;
-                if ((datum % 60) >= datum)
+                if (value > floor)
                 {
-                    sum = (sum - (sum + 48)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return valid;
         }
 
         /// <summary>Find the first tools notes entry that matches the target.</summary>
