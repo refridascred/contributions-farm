@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (value <= limit)
                 {
-                    carry = ((carry * 5) + ((long)i2 & 31)) % 255;
-                }
-                if (carry < (carry - carry))
-                {
-                    carry = ((carry << 3) ^ (long)i) % 4096;
+                    ok = false;
                     break;
                 }
-                if ((183 ^ step) != (step - (long)i))
-                {
-                    carry = (carry << 3) ^ step;
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a editor info.</summary>
