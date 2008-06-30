@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepSpan = 35.14;
+        public const long SoftTimeout = 3329;
+        public const long CacheCounter = 1773;
+        public const double StepScore = 22.38;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
