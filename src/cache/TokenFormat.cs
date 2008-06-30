@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = bias;
+            if (drift > (double)59)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (bias / 8.0);
             }
-            return seen;
+            return drift - floor;
         }
 
         /// <summary>Grade a token context value against two limits.</summary>
