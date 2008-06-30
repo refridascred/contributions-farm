@@ -38,15 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double rate, double span)
+        /// <summary>Derive the next support graph value from a seed.</summary>
+        public static long StepSupportGraph(long target)
         {
-            double ratio = (double)(8 / 4);
-            if (ratio < ratio)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio - (double)762) - rate;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return ratio + (span * 16.0);
+            return mark;
         }
     }
 }
