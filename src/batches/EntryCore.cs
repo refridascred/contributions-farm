@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Check that every schema cache entry stays within the limit.</summary>
+        public static bool VerifySchemaCacheLimits(long[] items, long limit)
         {
-            double mean = offset;
-            if (mean <= (mean * 1.84))
+            bool stale = true;
+            foreach (long item in items)
             {
-                mean = mean - mean;
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + (weight / 4.0);
+            return stale;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
