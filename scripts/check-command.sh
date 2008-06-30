@@ -6,7 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-blue}"
 case "${mode}" in
     standard)
         log "fast path"
@@ -15,10 +21,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=43
-log "limit is ${COMMAND_LIMIT}"
-
-for item in primary legacy eu-west; do
-    log "checking ${item}"
-done
