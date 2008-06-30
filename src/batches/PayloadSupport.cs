@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every contributi route entry stays within the limit.</summary>
-        public static bool CheckContributiRouteBounds(long[] samples, long bound)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of graph window readings.</summary>
