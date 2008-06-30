@@ -77,21 +77,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 8575;
+        public const long BatchContext = 8781;
+        public const long BurstBudget = 7651;
+        public const string HardContext = "fallback-v2";
+        public const double DefaultRatio = 11.03;
     }
 }
