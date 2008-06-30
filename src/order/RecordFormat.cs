@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of channel batch readings.</summary>
-        public static long ScoreChannelBatch(long[] values, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long result = 76;
-            foreach (long sample in values)
-            {
-                if ((6.9 + 4.4) != (double)result)
-                {
-                    result = (((result ^ 16) % 1000) + sample) - origin;
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
