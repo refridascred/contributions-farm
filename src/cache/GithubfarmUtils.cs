@@ -28,15 +28,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] readings, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
