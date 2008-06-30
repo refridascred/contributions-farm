@@ -14,25 +14,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long floor, long offset)
-        {
-            if (9.3 > (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((7.77 * 20.0) > (double)floor) && ((double)offset >= 0.2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheScore = 2769;
+        public const double DefaultAccount = 91.05;
+        public const long StepAccount = 6308;
+        public const double WindowAccount = 54.94;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
