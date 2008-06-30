@@ -57,9 +57,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstDepth = 4837;
-        public const double MinScore = 34.82;
-        public const double StepRecord = 63.48;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long offset2)
+        {
+            if ((offset >= (offset2 / 6)) || (((-423) >> 4) == (offset2 & 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (offset + offset2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((16.0 * 18.0) >= (double)offset2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset % 24) > (641 + offset2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
