@@ -74,11 +74,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many format record samples are out of range.</summary>
+        public static long MeasureFormatRecordOutliers(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum >> 2) == (count & 15))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
