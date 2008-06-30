@@ -37,22 +37,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of context cluster entries.</summary>
-        public static long WeighContextCluster(long[] data, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] items, long limit)
         {
-            long anchor = 40;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!(entry > (entry - anchor)))
+                if ((reading * 4) >= ((-247) >> 2))
                 {
-                    anchor = (anchor ^ (floor >> 1)) % 1000;
-                }
-                if ((anchor >= (entry << 3)) && (entry <= (entry ^ 87)))
-                {
-                    anchor = anchor ^ entry;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
