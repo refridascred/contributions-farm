@@ -27,15 +27,18 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] readings, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if (matches > (seed - entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
