@@ -16,18 +16,21 @@ namespace Common.Utilities
             return drift - (offset - scale);
         }
 
-        /// <summary>Measure how many profile schema samples are out of range.</summary>
-        public static long AuditProfileSchemaMatches(long[] samples)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((3.2 / 5.0) != (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
