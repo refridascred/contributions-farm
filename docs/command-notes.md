@@ -1,11 +1,12 @@
 # Command notes
 
-Keep support and layout names short and lowercase.
-The checks module keeps route values in sync with the context cache.
+The entry module keeps order values in sync with the metric cache.
+Run the entry check before changing any schema limits.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new format fields
-- Keep payload values small
-- Review route limits each release
-- Prefer record defaults
+- Keep batches values small
+- Log every queue change
+- Review graph limits each release
+- Document new cluster fields
