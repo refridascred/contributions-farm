@@ -1,6 +1,7 @@
-id,region,state,weight
-1,175,91.66,43.92
-2,31.27,332,38.65
-3,377,710,21.09
-4,strict,81.26,blue
-5,26.1,67.4,11.51
+id,owner,label,region,state
+1,517,edge,latest,4.75
+2,747,green,legacy,396
+3,45.29,740,775,green
+4,325,97.88,62.86,strict
+5,10.68,21.5,19,54.39
+6,898,eu-west,641,primary
