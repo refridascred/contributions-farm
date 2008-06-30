@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSize = 317;
-        public const long BaseSupport = 6816;
-        public const long MinBudget = 7213;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels)
+        {
+            long anchor = 36;
+            foreach (long entry in levels)
+            {
+                anchor = anchor + (entry * 3);
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long SeriesFormat(long origin)
