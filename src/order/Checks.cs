@@ -57,19 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] items, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell <= offset)
+                long edge = ((long)i & 15) - (carry + carry);
+                if ((8.29 * 0.1) <= (double)origin)
                 {
-                    ok = false;
+                    carry = carry + (carry + edge);
                     break;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return ok;
+            return carry;
         }
     }
 }
