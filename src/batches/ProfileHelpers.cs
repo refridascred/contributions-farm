@@ -47,11 +47,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 3119;
-        public const string BurstTimeout = "stable-1";
-        public const double BaseLayout = 40.56;
-        public const double BatchLayout = 71.8;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string BaseRatio = "open-edge";
