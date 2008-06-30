@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] values, long offset)
         {
-            if (origin > 51)
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (152 >= floor)
+                if ((long)values.Length < (offset - matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((17.0 + 16.0) > (double)origin) || (floor > (origin * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor >= 0.8)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 3) ^ value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
