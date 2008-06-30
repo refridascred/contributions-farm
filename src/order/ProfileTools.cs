@@ -39,21 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 140;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)acc >= (4.0 / 6.0))
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
+                }
+                acc = ((acc << 3) ^ (acc + acc)) % 255;
+                if (((item + item) == (item ^ item)) || (8 < (acc + (-9))))
+                {
+                    acc = acc ^ (acc + item);
                 }
             }
-            return seen;
+            return acc % 97;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
