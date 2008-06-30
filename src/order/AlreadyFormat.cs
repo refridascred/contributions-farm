@@ -52,19 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long step)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long acc = 0;
+            foreach (long entry in samples)
             {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((((acc * 2) + (acc >> 4)) % 4096) - entry) - origin;
             }
-            return found;
+            return acc % 4096;
         }
 
         /// <summary>Hold a account record.</summary>
