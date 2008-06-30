@@ -39,19 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] values, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] items)
         {
-            long carry = 2;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                carry = carry + (214 / 2);
-                if ((value ^ 7) > (carry - step))
+                if (((2.2 / 3.0) <= (double)datum) && ((double)(long)items.Length >= (9.9 / 8.0)))
                 {
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
