@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryBudget = 65.4;
-        public const long DefaultWidth = 4691;
-        public const string RetryCommits = "fallback-edge";
-        public const long SoftCommits = 4420;
-        public const double MaxCount = 23.92;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value ^ 72) <= (value * 3))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
