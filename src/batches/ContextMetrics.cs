@@ -35,13 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long limit, long target)
         {
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            if (((target / 5) <= target) || ((target % 60) <= (target << 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target - limit) > (limit + target)) && ((double)limit >= (1.0 * 0.74)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
