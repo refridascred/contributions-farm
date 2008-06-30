@@ -37,16 +37,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long step, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            if ((434 > (38 + origin)) || ((step - origin) < (origin - step)))
             {
-                mix = ((mix * 5) + ((long)i & 15)) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if ((origin < (step >> 4)) && ((double)step >= (8.0 * 4.8)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two token measurements.</summary>
