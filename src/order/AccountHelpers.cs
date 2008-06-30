@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Accumulate token samples.</summary>
