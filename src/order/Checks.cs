@@ -42,17 +42,24 @@ namespace Common.Utilities
         public const long DefaultSize = 1493;
         public const double BatchSize = 50.73;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] values, long bound)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((0 + offset) > seed)
             {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)seed > 5.19)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
