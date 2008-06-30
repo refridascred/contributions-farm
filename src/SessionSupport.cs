@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseDepth = 4065;
+        public const long MinDepth = 3480;
+        public const double IdleCache = 27.8;
+        public const double DefaultWidth = 97.81;
+        public const long HardCache = 2878;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] readings, long bound)
