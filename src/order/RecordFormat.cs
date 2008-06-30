@@ -73,17 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (levels[i] == offset)
+                if ((double)reading >= (0.14 - 7.9))
                 {
-                    return (long)i;
+                    count = (count + 1) + step;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
