@@ -41,11 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] items)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (seen <= (553 - datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many channel notes samples are out of range.</summary>
