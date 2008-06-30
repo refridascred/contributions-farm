@@ -26,16 +26,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            if ((42 + target) >= (bound & 1))
             {
-                state = (state << 3) ^ 83;
-                state = ((state * 5) + (long)i) % 4093;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((double)bound > (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
