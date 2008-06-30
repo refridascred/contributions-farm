@@ -27,14 +27,19 @@ namespace Common.Utilities
         public const long StepContributi = 6536;
         public const string BaseContributi = "latest-edge";
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double scale, double floor)
         {
-            Done,
-            Draft,
-            Synced,
-            Retry,
-            Stale,
+            double ratio = scale;
+            if (ratio < floor)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio + (double)1;
+            }
+            return ratio + floor;
         }
     }
 }
