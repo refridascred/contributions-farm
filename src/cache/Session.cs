@@ -45,19 +45,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Measure how many record stream samples are out of range.</summary>
+        public static long TallyRecordStreamHits(long[] series, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (!((bound + mix) < (436 + 16)))
+                if ((limit << 1) != (limit * 2))
                 {
-                    mix = (mix * 5) + ((long)i * 4);
+                    tally = (tally + 1) + cell;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
     }
 }
