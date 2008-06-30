@@ -20,18 +20,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Combine checks context values into a single score.</summary>
-        public static long TotalChecksContext(long[] series)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long acc = 8;
-            foreach (long entry in series)
-            {
-                if ((359 << 1) < entry)
-                {
-                    acc = acc ^ (entry ^ entry);
-                }
-            }
-            return acc;
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
