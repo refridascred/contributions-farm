@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] samples, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (!((3.47 / 3.0) > (double)(long)i))
+                if (entry < seed)
                 {
-                    sum = ((sum * 3) + (sum * 4)) % 255;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
