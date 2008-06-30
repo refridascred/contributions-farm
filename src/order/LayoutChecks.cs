@@ -57,19 +57,11 @@ namespace Common.Utilities
         public const string BatchStats = "fallback";
         public const double SoftCount = 7.47;
 
-        /// <summary>Measure how many record window samples are out of range.</summary>
-        public static long MeasureRecordWindowOutliers(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (((8.1 / 9.0) != (double)offset) && ((offset / 4) < (offset >> 3)))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryRatio = 2835;
+        public const long BatchNotes = 9296;
+        public const double RetryScore = 94.48;
+        public const long BatchScore = 3904;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
