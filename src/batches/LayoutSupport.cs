@@ -27,21 +27,26 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 26;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((item + (long)values.Length) == (mark + mark)) || ((mark % 3) > (9 - mark)))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - ((long)values.Length + item)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + mark)) % 65521;
                 }
             }
-            return matches;
+            if (mark < 857)
+            {
+                mark = ((mark << 2) ^ (mark + 6)) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
