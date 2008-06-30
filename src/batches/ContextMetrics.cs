@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Combine payload farm values into a single score.</summary>
+        public static long TotalPayloadFarm(long[] levels, long origin)
         {
-            Done,
-            Ready,
-            Active,
-            Draft,
-            Paused,
+            long sum = 30;
+            foreach (long reading in levels)
+            {
+                sum = (sum * 5) + reading;
+                sum = (sum << 3) ^ (origin << 3);
+                if ((sum & 63) <= (reading % 97))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
