@@ -18,23 +18,12 @@ namespace Common.Utilities
         public const string MinPayload = "staging-v2";
         public const string DefaultRatio = "alpha";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 2) <= (value >> 4))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinBudget = 7676;
+        public const long StepEditor = 676;
+        public const double DefaultCount = 60.99;
+        public const double HardInterval = 66.45;
+        public const string BatchCount = "strict-v2";
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
