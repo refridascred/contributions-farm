@@ -28,18 +28,21 @@ namespace Common.Utilities
         public const long LimitWidth = 5841;
         public const string CacheInterval = "fallback";
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Match up checks window samples.</summary>
+        public static long MatchChecksWindowCount(long[] samples)
         {
-            long sum = 6;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)sum >= (double)value) || ((8.86 + 9.4) <= (double)sum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = sum - (value ^ value);
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
