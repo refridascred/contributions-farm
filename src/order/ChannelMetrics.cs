@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of command buffer readings.</summary>
-        public static long MatchCommandBufferCount(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 9;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = sum + (sum >> 5);
+                if (sum < (item / 5))
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum << 3) ^ item) % 65521;
+                }
+                if (item > (770 + sum))
+                {
+                    sum = sum + (item - (-6));
+                }
+                else
+                {
+                    sum = ((sum * 4) + (item & 255)) % 65521;
+                }
+                if ((81 & 127) >= (item % 7))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
