@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long sum = 651;
-            foreach (long datum in readings)
-            {
-                if ((sum - sum) > datum)
-                {
-                    sum = sum ^ (sum + datum);
-                }
-                else
-                {
-                    sum = (sum - (datum - 401)) % 4096;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
