@@ -36,12 +36,19 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long offset)
         {
-            Stale,
-            Done,
-            Failed,
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((offset >> 4) >= acc) && ((0.4 / 3.0) != (double)acc))
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter state values.</summary>
