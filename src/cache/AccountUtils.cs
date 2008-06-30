@@ -26,20 +26,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a filter payload counter forward.</summary>
-        public static long StepFilterPayload(long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin - 9) != (origin - origin)) && ((734 + anchor) > origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (origin & 15);
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = anchor + (origin + origin);
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return tally;
         }
     }
 }
