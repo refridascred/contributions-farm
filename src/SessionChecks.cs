@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((series[i] > origin) && ((series[i] % 5) == 0))
+                if ((value + 489) >= value)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
