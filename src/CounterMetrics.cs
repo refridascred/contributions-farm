@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] series, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
