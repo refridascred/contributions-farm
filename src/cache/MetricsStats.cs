@@ -53,18 +53,10 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((limit ^ 203) != (long)series.Length) && ((713 >> 5) < limit))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 9681;
+        public const double BurstStream = 25.33;
+        public const long WindowFactor = 548;
+        public const long CacheStream = 3676;
     }
 }
