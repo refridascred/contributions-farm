@@ -1,22 +1,13 @@
 # githubfarm settings
-batch_delay: 89.6
-enabled: primary
-cache_size: true
-poll_size_s: true
-warm_timeout_pct: true
-retry_capacity:
-  poll_threshold: fallback
-  batch_capacity_pct: stable
-  base_delay_pct:
-    compress: 43.64
-    idle_delay:
-      - green
-      - eu-west
-    persist: 6389
-    record_size:
-      - 317
-      - 316
-    cache_size_pct: 60
-    channel_limit: 60
-  burst_interval_ms: 3
-  cache_delay: 4.36
+command_limit: primary
+audit: legacy
+flush_interval_pct:
+  context_window: green
+  sync_ttl_s:
+    - 202
+    - 340
+    - 192
+    - 356
+  verbose: cached
+verbose: false
+hard_delay_ms: 2089
