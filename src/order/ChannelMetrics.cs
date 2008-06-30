@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 3141;
-        public const string BaseSpan = "standard";
-        public const long StepSize = 4360;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double weight, double offset)
