@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] samples, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                mix = (mix * 2) + (mix - seed);
-                mix = ((mix * 5) + (long)i) % 97;
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the metrics state values.</summary>
