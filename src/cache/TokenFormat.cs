@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 2410;
-        public const long RetryContributi = 6681;
-        public const double BurstContributi = 81.9;
-        public const double MaxDepth = 51.55;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
