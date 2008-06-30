@@ -31,12 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] items, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] < floor) && ((items[i] % 5) == 0))
+                if (values[i] <= seed)
                 {
                     return (long)i;
                 }
