@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitFactor = 57.3;
-        public const long BatchSize = 3300;
-        public const string MaxOrder = "standard-1";
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Locked,
+            New,
+            Idle,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long target)
