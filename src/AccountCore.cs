@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account core helpers.</summary>
     public static class AccountCore
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] readings, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double mean = (double)(65 & 15);
+            if (mean < (weight - 5.12))
             {
-                if ((seed ^ datum) <= seed)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean - (weight / 3.0)) - bias;
             }
-            return matches;
+            return mean - (weight / 3.0);
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
