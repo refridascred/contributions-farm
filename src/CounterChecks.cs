@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Locked,
-            Closed,
-            Active,
-            Idle,
-            Paused,
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
