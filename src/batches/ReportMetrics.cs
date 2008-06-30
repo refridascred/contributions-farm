@@ -15,22 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally - tally) == (tally + 740))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
