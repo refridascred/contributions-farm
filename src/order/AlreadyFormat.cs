@@ -20,32 +20,19 @@ namespace Common.Utilities
             return bias + (gain + bias);
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long floor, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] values, long origin)
         {
-            long bound = floor + limit;
-            if (((12.0 + 3.2) < (double)limit) || ((1 % 7) == (limit - limit)))
+            bool stale = true;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit << 3) != (833 >> 3))
+                if (value != origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound <= (4.3 - 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up format samples.</summary>
