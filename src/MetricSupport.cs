@@ -13,18 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "standard-edge";
+        public const long CacheLevel = 6362;
+        public const long HardTools = 5594;
+        public const long RetryTools = 7473;
+        public const double MaxTools = 44.46;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstDepth = 8731;
