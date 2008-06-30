@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] series, long bound)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
