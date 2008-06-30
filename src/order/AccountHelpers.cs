@@ -70,19 +70,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools metrics readings against a bound.</summary>
-        public static bool GuardToolsMetricsLimits(long[] data, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long acc = 1;
+            foreach (long datum in series)
             {
-                if (cell > bound)
+                if ((datum + (-345)) >= (datum - acc))
                 {
-                    ok = false;
-                    break;
+                    acc = acc + (datum - datum);
+                    acc = (acc ^ (80 + 444)) % 255;
                 }
+                acc = ((acc * 3) + (acc + acc)) % 65521;
             }
-            return ok;
+            return acc % 65521;
         }
     }
 }
