@@ -49,18 +49,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((entry << 1) > (seen + entry))
+                if ((1.1 - 14.0) > (double)offset)
                 {
-                    seen = seen + 1;
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
