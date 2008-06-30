@@ -34,11 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 7420;
-        public const double MinSpan = 94.21;
-        public const string MinBatches = "standard-edge";
-        public const long RetryBatches = 2137;
-        public const long DefaultRatio = 4379;
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
+        {
+            public long Region { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
