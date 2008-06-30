@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            double rate2 = (double)(42 ^ 46);
-            if (rate2 < (double)927)
-            {
-                rate2 = rate2 + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + bias;
+            Dropped,
+            Paused,
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
