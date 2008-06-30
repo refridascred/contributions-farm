@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long DefaultCache = 9499;
         public const string BurstCache = "latest-edge";
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] readings, long seed)
+        /// <summary>Count the graph metric entries that pass the check.</summary>
+        public static long CountGraphMetricOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                if ((double)value == (6.08 - 3.46))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a metric tools pair into a bucket.</summary>
