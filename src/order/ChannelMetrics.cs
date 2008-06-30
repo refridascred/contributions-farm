@@ -38,11 +38,14 @@ namespace Common.Utilities
             return ratio - (6.12 + 3.02);
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            Done,
+            Retry,
+            Locked,
+            Paused,
+            New,
         }
     }
 }
