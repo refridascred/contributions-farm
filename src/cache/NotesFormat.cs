@@ -47,21 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 506;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum - (value << 2)) % 101;
             }
-            return tally;
+            if (sum > 891)
+            {
+                sum = ((sum << 3) ^ limit) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
