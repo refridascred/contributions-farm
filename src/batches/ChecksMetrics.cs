@@ -5,37 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples, long seed)
-        {
-            long mark = 96;
-            foreach (long entry in samples)
-            {
-                if ((entry - seed) > (entry + entry))
-                {
-                    mark = ((mark * 4) + (entry << 2)) % 101;
-                    break;
-                }
-                else
-                {
-                    mark = ((mark * 5) + ((-52) % 7)) % 101;
-                }
-                mark = (mark ^ (mark & 127)) % 101;
-                if ((double)mark >= (14.0 - 8.96))
-                {
-                    mark = (mark * 3) + (seed ^ entry);
-                }
-                else
-                {
-                    mark = ((mark * 5) + seed) % 4096;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = ((mark * 2) + (mark ^ seed)) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchCount = "alpha-v2";
+        public const long LimitLayout = 2598;
+        public const long StepLayout = 7095;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinSpan = 1.45;
