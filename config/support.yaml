@@ -1,14 +1,7 @@
 # support settings
-max_ttl: primary
-hard_delay:
-  session_window: open
-  dry_run: true
-  metrics_window: 250
-  batch_interval:
-    - 95
-    - 212
-  strict: 51.92
-  retry_delay_ms: true
-editor_size: 24
-verbose: 197
-enabled: strict
+warm_threshold_pct: 8937
+counter_interval: 67.54
+payload_threshold: 19
+order_capacity: 72.28
+dry_run: 60
+cache_capacity: 37
