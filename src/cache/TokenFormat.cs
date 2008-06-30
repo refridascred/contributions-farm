@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] levels)
-        {
-            long acc = 90;
-            foreach (long sample in levels)
-            {
-                if (((sample - acc) > (acc + 570)) || ((sample & 63) >= (sample / 9)))
-                {
-                    acc = (acc + (sample + acc)) % 65521;
-                }
-                if (acc > (sample + acc))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 95.43;
+        public const long MaxOrder = 5470;
+        public const double HardOrder = 79.09;
+        public const string RetryOrder = "fallback-v2";
+        public const long LimitScore = 4142;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmMatches(long[] readings, long bound)
