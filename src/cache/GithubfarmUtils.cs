@@ -34,13 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many layout route samples are out of range.</summary>
+        public static long TallyLayoutRouteHits(long[] levels)
         {
-            Draft,
-            Failed,
-            Active,
-            Closed,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (8.05 > (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
