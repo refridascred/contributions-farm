@@ -22,15 +22,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Digest a series of token entry entries.</summary>
+        public static long TallyTokenEntry(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long carry = 2;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((datum - datum) >= (carry ^ carry))
+                {
+                    carry = (carry - carry) % 65521;
+                    continue;
+                }
+                if ((5.0 >= (double)datum) && ((carry ^ datum) != (datum >> 2)))
+                {
+                    carry = ((carry * 2) + carry) % 4096;
+                }
             }
-            return anchor;
+            if (carry < 76)
+            {
+                carry = ((carry * 4) + (carry - 361)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
