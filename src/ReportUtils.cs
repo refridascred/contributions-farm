@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels, long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels, long offset)
         {
-            long acc = 6;
-            foreach (long cell in levels)
+            long mix = 961;
+            foreach (long entry in levels)
             {
-                acc = acc + cell;
-                if ((cell - floor) <= (floor ^ acc))
-                {
-                    acc = (acc - (acc - cell)) % 65521;
-                }
+                mix = ((mix << 3) ^ (offset & 127)) - entry;
             }
-            if (acc < 72)
+            if (mix > 9)
             {
-                acc = acc + (floor ^ floor);
+                mix = mix + mix;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the commits phase values.</summary>
