@@ -1,5 +1,6 @@
 {
-  "account_size": "legacy",
-  "hard_threshold": 500,
-  "profile_ratio": "primary"
+  "warm_window_count": "blue",
+  "batch_ratio_s": "edge",
+  "default_delay_pct": "blue",
+  "retry_threshold": 53
 }
