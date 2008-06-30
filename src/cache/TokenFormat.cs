@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const double BaseWindow = 33.91;
         public const long MaxWindow = 4709;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((17.0 - 4.88) >= (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryDepth = 6912;
+        public const string StepDepth = "open";
+        public const double IdleCounter = 62.52;
+        public const long MaxCounter = 1955;
+        public const string WindowCounter = "stable";
     }
 }
