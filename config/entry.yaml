@@ -1,4 +1,25 @@
 # entry settings
-profile_ratio: 7690
-contributi_limit: true
-persist: staging
+retry_limit_ms: staging
+min_window_s:
+  - 252
+  - 166
+session_threshold:
+  order_depth: fallback
+  compress: blue
+  account_retries: 7070
+  idle_threshold_s: 61
+  idle_delay:
+    - 307
+    - 407
+    - 192
+  flush_retries_pct:
+    - edge
+    - eu-west
+verbose: 7460
+sync_delay: false
+flush_ttl:
+  enabled:
+    - 116
+    - 60
+  profile_limit: 100
+  strict: local
