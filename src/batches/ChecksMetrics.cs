@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchCount = "alpha-v2";
-        public const long LimitLayout = 2598;
-        public const long StepLayout = 7095;
+        /// <summary>Count the support report entries that pass the check.</summary>
+        public static long CountSupportReportMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (1 > (offset - offset))
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinSpan = 1.45;
