@@ -42,21 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
