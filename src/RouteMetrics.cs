@@ -19,12 +19,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            Ready,
-            Failed,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!((cell & 15) <= cell) || ((double)(long)levels.Length > (7.38 / 5.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
