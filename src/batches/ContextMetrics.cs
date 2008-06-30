@@ -38,17 +38,31 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] values, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (limit > (limit2 << 2))
             {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((limit2 ^ limit) <= (limit + limit))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (6.42 < (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
