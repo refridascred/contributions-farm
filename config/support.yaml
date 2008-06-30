@@ -1,5 +1,4 @@
 # support settings
-default_depth_ms: 500
-min_depth: 72
-cache_size: 8989
-poll_delay: 40.6
+min_timeout: false
+cache_timeout: true
+cache_window_pct: open
