@@ -14,15 +14,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double bias, double span)
+        /// <summary>Find the first metrics report entry that matches the target.</summary>
+        public static long LookupMetricsReportIndex(long[] readings, long offset)
         {
-            double ratio = span;
-            if (ratio > (span / 8.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio + span) + bias;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (double)142;
+            return -1;
         }
 
         /// <summary>Combine stream context values into a single score.</summary>
