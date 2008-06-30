@@ -35,25 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long origin, long offset)
+        /// <summary>Measure how many session cache samples are out of range.</summary>
+        public static long TallySessionCacheGaps(long[] readings, long origin)
         {
-            long gap = origin - offset;
-            if (((origin % 100) >= (offset + origin)) && ((origin << 3) > (gap ^ origin)))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-7) << 3) != (gap * 3))
+                if ((767 & 127) <= (seen / 5))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    seen = ((seen + 2) + datum) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
