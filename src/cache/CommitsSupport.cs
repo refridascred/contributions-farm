@@ -31,20 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 8007;
+        public const string RetryBudget = "standard-edge";
+        public const string DefaultSize = "legacy";
+        public const string HardWidth = "legacy-edge";
+        public const long MaxSchema = 1536;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] values, long bound)
