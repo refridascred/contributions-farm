@@ -19,21 +19,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Find the first support layout entry that matches the target.</summary>
+        public static long LookupSupportLayoutIndex(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of already profile readings.</summary>
