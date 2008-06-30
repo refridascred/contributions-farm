@@ -1,11 +1,6 @@
-id,state,ratio,rank,label
-1,343,409,564,171
-2,legacy,legacy,staging,eu-west
-3,cached,472,green,29.62
-4,local,470,900,231
-5,52.69,stable,67,473
-6,86.59,380,fallback,884
-7,241,85.26,669,945
-8,336,strict,363,legacy
-9,80.99,558,local,20
-10,48.82,125,standard,primary
+id,state,label,score,level
+1,48.33,464,59.61,blue
+2,309,55.88,eu-west,eu-west
+3,55.72,714,543,18.08
+4,334,632,50.48,stable
+5,41.05,652,edge,stable
