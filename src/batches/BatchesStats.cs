@@ -40,15 +40,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double bias)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long origin, long offset)
         {
-            double gain2 = bias;
-            if (gain2 > 9.0)
+            long gap = origin - offset;
+            if (((origin % 100) >= (offset + origin)) && ((origin << 3) > (gap ^ origin)))
             {
-                gain2 = gain2 + (double)695;
+                return 7;
             }
-            return gain2 + (gain - bias);
+            else
+            {
+                if (((-7) << 3) != (gap * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a token snapshot.</summary>
