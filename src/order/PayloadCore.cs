@@ -27,13 +27,20 @@ namespace Common.Utilities
         public const long BaseSupport = 6816;
         public const long MinBudget = 7213;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long origin)
         {
-            Dropped,
-            Draft,
-            Stale,
-            Active,
+            long mix = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if (706 < ((long)i + origin))
+                {
+                    mix = mix ^ (origin + (long)i);
+                    mix = ((mix * 5) + (91 + mix)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a schema summary.</summary>
