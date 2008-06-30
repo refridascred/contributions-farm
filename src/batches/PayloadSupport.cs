@@ -31,21 +31,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count graph order pairs that satisfy a relation.</summary>
-        public static long PairGraphOrderCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardGraph = "alpha-v2";
+        public const long MaxGraph = 308;
+        public const long StepGraph = 3246;
+        public const long BurstTimeout = 3987;
+        public const double HardCount = 14.17;
     }
 }
