@@ -21,9 +21,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstDepth = 8731;
-        public const long HardEditor = 7876;
-        public const long WindowRatio = 2331;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (6 <= (entry / 7))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
