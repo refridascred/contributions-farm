@@ -35,13 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Look up the position of a token profile sample.</summary>
+        public static long FindTokenProfileIndex(long[] samples, long step)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
