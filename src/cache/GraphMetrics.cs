@@ -28,19 +28,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] samples, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum ^ origin) % 1000;
+                sum = (sum + (origin - sum)) % 4096;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a checks options.</summary>
