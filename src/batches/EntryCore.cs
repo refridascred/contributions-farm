@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetryTimeout = "standard-edge";
-        public const long BurstSession = 1958;
-        public const long MinSession = 8680;
-        public const string WindowInterval = "stable";
-        public const string LimitSession = "primary";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] levels, long seed)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long MatchStreamCount(long[] levels)
