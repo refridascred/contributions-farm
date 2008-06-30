@@ -23,12 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 70;
-        public const string BatchLevel = "fallback-edge";
-        public const double StepStream = 86.54;
-        public const long MinStream = 7850;
-        public const long MinDepth = 4584;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values)
+        {
+            long score = 56;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = ((score - (item & 3)) % 255) ^ (long)i;
+                }
+                score = ((score * 4) + item) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Find the first support contributi entry that matches the target.</summary>
         public static long LocateSupportContributiIndex(long[] items, long origin)
