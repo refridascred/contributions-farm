@@ -1,7 +1,23 @@
 {
-  "strict": 250,
-  "filter_delay": false,
-  "hard_interval_pct": 418,
-  "poll_ratio_ms": [168, 29, 58],
-  "readonly": 49.65
+  "sync_delay_count": 7380,
+  "queue_interval": {
+    "account_delay": {
+      "base_interval": 56.73,
+      "hard_ttl_ms": 87.85,
+      "flush_depth_pct": "green",
+      "already_threshold": 10.7
+    },
+    "min_depth": {
+      "window_threshold": 44,
+      "default_interval": 66.47,
+      "burst_interval": [247, 262, 116],
+      "flush_limit_count": "open",
+      "max_capacity_ms": 250,
+      "readonly": [443, 331, 237]
+    },
+    "channel_window": 500,
+    "layout_interval": "cached"
+  },
+  "poll_limit_pct": "local",
+  "persist": 15
 }
