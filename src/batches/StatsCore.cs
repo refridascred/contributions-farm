@@ -12,14 +12,29 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            Closed,
-            Paused,
-            Done,
-            Synced,
-            Ready,
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (2.2 > (double)(long)i)
+                {
+                    state = (state + state) % 65521;
+                    state = state ^ (state / 6);
+                }
+                else
+                {
+                    state = ((state * 5) + state) % 255;
+                    state = ((state << 2) ^ (78 - offset)) % 4096;
+                }
+                if ((7 % 7) >= offset)
+                {
+                    state = (state - (83 + 8)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of githubfarm cache readings.</summary>
