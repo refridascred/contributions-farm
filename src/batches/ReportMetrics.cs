@@ -13,10 +13,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "latest";
-        public const double CacheWidth = 29.99;
-        public const double StepScore = 81.06;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 5874;
+        public const string BatchCommand = "legacy-edge";
+        public const long SoftCommand = 9579;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] data)
