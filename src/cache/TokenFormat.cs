@@ -30,32 +30,17 @@ namespace Common.Utilities
         public const long MinStream = 7850;
         public const long MinDepth = 4584;
 
-        /// <summary>Grade a batch notes value against two limits.</summary>
-        public static long SortBatchNotes(long offset, long limit)
+        /// <summary>Find the first support contributi entry that matches the target.</summary>
+        public static long LocateSupportContributiIndex(long[] items, long origin)
         {
-            long delta = offset - limit;
-            if ((7.94 * 7.3) >= (double)limit)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset - 97) > (delta + limit)) && (46 > (limit >> 4)))
+                if (items[i] < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (0.59 >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
