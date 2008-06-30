@@ -1,12 +1,12 @@
 # Command notes
 
-Run the layout check before changing any schema limits.
-Defaults for entry live in the config folder and can be overridden per environment.
-Each entry is validated before it reaches the contributi queue.
+A command that stays idle for too long is moved to the session list.
+The session helpers are pure functions, so they are safe to call from any thread.
+Run the stats check before changing any channel limits.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer graph defaults
-- Document new already fields
-- Review cache limits each release
+- Document new contributi fields
+- Log every counter change
+- Keep batches values small
+- Prefer batch defaults
