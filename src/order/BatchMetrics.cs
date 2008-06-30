@@ -78,19 +78,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] readings, long floor)
+        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
+        public static long TallyGithubfarmProfileGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (item > floor)
+                if (seen > (2 >> 5))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
