@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const long SoftContext = 5552;
         public const long BurstInterval = 2874;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxBudget = 2864;
-        public const double LimitCount = 70.64;
-        public const string SoftNotes = "strict-edge";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 27.78;
+        public const long DefaultSize = 9544;
+        public const string MinCluster = "alpha-edge";
 
         /// <summary>Digest a series of buffer filter entries.</summary>
         public static long DigestBufferFilter(long[] series, long seed)
