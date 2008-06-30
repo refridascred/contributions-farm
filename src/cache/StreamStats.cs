@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long acc = 9;
+            foreach (long cell in items)
             {
-                if ((datum ^ hits) > (datum / 5))
+                if (((acc + acc) > (cell % 3)) && ((cell % 24) <= acc))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    acc = (acc - (acc + cell)) % 255;
                 }
             }
-            return hits;
+            if (acc < 9)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Combine already values into a single score.</summary>
