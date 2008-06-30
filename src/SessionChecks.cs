@@ -42,18 +42,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data, long target)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((9.0 * 4.18) >= (double)tally)
-                {
-                    tally = ((tally + 1) ^ datum) + target;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
