@@ -30,15 +30,19 @@ namespace Common.Utilities
             return mean - (mean + mean);
         }
 
-        /// <summary>Digest a series of entry githubfarm entries.</summary>
-        public static long FoldEntryGithubfarm(long[] levels, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series, long floor)
         {
-            long state = 9;
-            foreach (long datum in levels)
+            long mix = 475;
+            foreach (long item in series)
             {
-                state = (((state + (state - state)) % 1000) + datum) - seed;
+                mix = (((mix << 2) ^ (mix & 3)) ^ item) + floor;
             }
-            return state;
+            if (mix > 3)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Blend two notes measurements.</summary>
