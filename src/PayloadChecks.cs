@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels, long offset)
+        /// <summary>Combine checks context values into a single score.</summary>
+        public static long TotalChecksContext(long[] series)
         {
-            long anchor = 538;
-            foreach (long entry in levels)
+            long acc = 8;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 10; i++)
+                if ((359 << 1) < entry)
                 {
-                    anchor = (anchor - (anchor + offset)) - (long)i;
-                    anchor = anchor + (anchor + 143);
-                }
-                if (((anchor ^ offset) <= entry) && (entry >= anchor))
-                {
-                    anchor = (anchor - anchor) % 65521;
+                    acc = acc ^ (entry ^ entry);
                 }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a session summary.</summary>
