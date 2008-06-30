@@ -41,23 +41,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session token readings.</summary>
-        public static long DigestSessionToken(long[] readings)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mix = -5;
-            foreach (long item in readings)
-            {
-                if (!((double)mix < (3.7 * 3.0)))
-                {
-                    mix = (mix + (item << 2)) % 1000;
-                }
-                mix = ((mix * 3) + (mix >> 2)) % 97;
-                if (mix > (mix ^ item))
-                {
-                    mix = ((mix << 2) ^ 27) % 101;
-                }
-            }
-            return mix;
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Project the next layout value.</summary>
