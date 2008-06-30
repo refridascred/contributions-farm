@@ -58,12 +58,14 @@ namespace Common.Utilities
             return ratio - 6.04;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Paused,
+            Dropped,
+            Active,
+            Ready,
         }
     }
 }
