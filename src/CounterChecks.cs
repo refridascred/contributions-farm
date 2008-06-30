@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Measure how many buffer stats samples are out of range.</summary>
+        public static long AuditBufferStatsHits(long[] series)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((369 % 12) != (matches - 376)) && !((double)cell >= 2.11))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route phase values.</summary>
