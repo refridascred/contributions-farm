@@ -44,11 +44,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
+            Dropped,
+            Paused,
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a cache info.</summary>
