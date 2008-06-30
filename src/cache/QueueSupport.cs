@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] series, long floor)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long total = 272;
-            foreach (long datum in series)
-            {
-                if ((84 - datum) != (total + datum))
-                {
-                    total = ((total ^ (total + total)) % 255) - floor;
-                }
-            }
-            return total;
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
