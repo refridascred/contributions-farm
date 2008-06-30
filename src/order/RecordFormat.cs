@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(0 & 15);
+            if (gain >= (double)38)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - ratio) + bias;
             }
-            return seen;
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain - (gain / 3.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
