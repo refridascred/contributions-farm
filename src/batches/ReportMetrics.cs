@@ -28,16 +28,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum << 3) ^ ((long)i % 100);
-                sum = ((sum * 5) + (long)i) % 101;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
