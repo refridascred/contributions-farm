@@ -64,18 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (!((entry - matches) == (9 - matches)))
+                if (item >= origin)
                 {
-                    matches = matches + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
