@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 82.78;
-        public const long RetryLevel = 1698;
-        public const double LimitInterval = 33.03;
-        public const long DefaultEntry = 3663;
-        public const double MinBudget = 55.55;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] levels, long offset)
+        {
+            long mark = 4;
+            foreach (long entry in levels)
+            {
+                mark = (mark ^ (entry << 3)) - offset;
+            }
+            return mark;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleAccount = 608;
