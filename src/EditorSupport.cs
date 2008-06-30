@@ -55,19 +55,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] values, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long state = 6;
+            foreach (long reading in levels)
             {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (((state << 3) ^ (state & 15)) - reading) - seed;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
