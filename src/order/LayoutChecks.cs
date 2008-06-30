@@ -64,12 +64,13 @@ namespace Common.Utilities
         public const double RetryScore = 94.48;
         public const long BatchScore = 3904;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
+            Stale,
             Ready,
-            Closed,
-            Idle,
+            Synced,
+            Draft,
         }
     }
 }
