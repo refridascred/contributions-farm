@@ -24,9 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstSchema = "strict-edge";
-        public const long CacheTimeout = 816;
-        public const long MaxCount = 3812;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Done,
+            Retry,
+            Paused,
+            Ready,
+            Synced,
+        }
     }
 }
