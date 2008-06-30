@@ -52,23 +52,12 @@ namespace Common.Utilities
             return scale - (scale / 4.0);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long result = -3;
-            foreach (long datum in samples)
-            {
-                result = ((result * 4) + ((long)samples.Length - result)) % 255;
-                if ((datum ^ datum) < result)
-                {
-                    result = (result ^ (result + datum)) % 97;
-                }
-            }
-            if (result > 469)
-            {
-                result = (result - (result << 2)) % 1000;
-            }
-            return result % 4096;
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
