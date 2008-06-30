@@ -22,13 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Retry,
-            Draft,
-            Paused,
-            Ready,
+            Stale,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Accumulate queue samples.</summary>
