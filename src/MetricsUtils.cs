@@ -44,10 +44,40 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 6.7;
-        public const long RetryBudget = 5906;
-        public const string DefaultWidth = "alpha-v2";
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long step)
+        {
+            long bound = target - step;
+            if (step > (step & 255))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6.0 + 8.0) <= (double)632)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.44 - 1.0) < (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound + bound) <= bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long FoldChannel(long[] data)
