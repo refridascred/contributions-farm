@@ -1,5 +1,15 @@
 {
-  "min_timeout": "strict",
-  "flush_window_s": "green",
-  "readonly": false
+  "idle_limit_ms": "strict",
+  "max_size_ms": "latest",
+  "verbose": "cached",
+  "readonly": {
+    "max_capacity_count": 5106,
+    "retry_size_count": 54,
+    "idle_window_pct": 81.93,
+    "min_ratio": [23, 483],
+    "base_ttl_ms": 2088,
+    "burst_limit": 7509
+  },
+  "already_interval": "standard",
+  "min_depth_count": false
 }
