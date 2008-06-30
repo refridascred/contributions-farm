@@ -1,5 +1,18 @@
 {
-  "stream_window": [339, 69, 413],
-  "commits_capacity": 60,
-  "strict": [22, 445, 25, 109]
+  "commits_interval": {
+    "retry_window_s": {
+      "base_delay_ms": true,
+      "idle_size_ms": "blue",
+      "max_capacity_s": 8399,
+      "flush_depth_s": 100,
+      "githubfarm_interval": "green"
+    },
+    "base_interval_s": [71, 485, 321, 402],
+    "verbose": 500,
+    "githubfarm_ttl": 83
+  },
+  "audit": [357, 92, 481, 370],
+  "batch_threshold": 48,
+  "default_size_s": ["eu-west", "local"],
+  "profile_ttl": 72
 }
