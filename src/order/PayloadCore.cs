@@ -36,13 +36,17 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
+        public static long LookupGithubfarmGraphIndex(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
