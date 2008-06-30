@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((seed + seed) <= (long)i))
-                {
-                    total = (total ^ (long)i) % 255;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Ready,
+            Paused,
+            Idle,
         }
 
         /// <summary>Hold a report record.</summary>
