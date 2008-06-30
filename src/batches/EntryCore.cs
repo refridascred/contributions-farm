@@ -54,12 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series, long target)
         {
-            Draft,
-            Dropped,
-            Closed,
+            long score = 68;
+            foreach (long item in series)
+            {
+                if ((item / 7) != (item * 4))
+                {
+                    score = (score * 3) + target;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up session samples.</summary>
