@@ -73,18 +73,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((offset + value) >= count) && (((3 / 5) > offset) && (count > (count + offset))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Dropped,
         }
     }
 }
