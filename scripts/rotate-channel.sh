@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=268
+CHANNEL_LIMIT=258
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in green eu-west local; do
+for item in primary stable standard edge; do
     log "checking ${item}"
 done
