@@ -1,8 +1,9 @@
 # githubfarm settings
-base_capacity_s: strict
-max_window: true
-enabled: false
-hard_size_pct:
-  - 189
-  - 312
-default_size: 7983
+hard_timeout: 22
+compress: 33.52
+flush_retries_count:
+  - 472
+  - 423
+  - 459
+  - 389
+min_timeout_s: 71
