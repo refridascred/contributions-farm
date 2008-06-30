@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long offset)
+        /// <summary>Combine checks commits values into a single score.</summary>
+        public static long ScoreChecksCommits(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long anchor = 628;
+            foreach (long reading in data)
             {
-                if (cell >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor - ((-116) % 10)) % 255) + reading;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
