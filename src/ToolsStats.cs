@@ -60,14 +60,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] items, long origin)
         {
-            Stale,
-            Idle,
-            Locked,
-            Synced,
-            Retry,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
