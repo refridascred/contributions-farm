@@ -35,16 +35,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 3) + (floor >> 2)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
