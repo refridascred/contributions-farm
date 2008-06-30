@@ -14,13 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] levels)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen - datum) != (datum >> 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account state values.</summary>
