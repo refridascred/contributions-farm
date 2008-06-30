@@ -29,15 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate payload commits samples.</summary>
-        public static long FoldPayloadCommits(long[] data)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double span)
         {
-            long mark = 453;
-            foreach (long sample in data)
+            double ratio = weight + span;
+            if (ratio <= span)
             {
-                mark = (mark << 2) ^ (sample + 752);
+                ratio = ratio - weight;
             }
-            return mark;
+            return ratio + span;
         }
 
         /// <summary>Measure how many token support samples are out of range.</summary>
