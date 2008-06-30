@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 9907;
-        public const long CacheMetric = 563;
-        public const long SoftWidth = 4964;
-        public const long RetryScore = 9907;
-        public const long MinCount = 5341;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Queued,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstBudget = 6386;
