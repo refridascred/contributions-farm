@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] values, long floor)
+        /// <summary>Combine record editor values into a single score.</summary>
+        public static long DigestRecordEditor(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = -21;
+            foreach (long entry in samples)
             {
-                if ((double)floor != (double)642)
+                acc = ((acc << 3) ^ (entry & 3)) % 4096;
+                if ((origin <= ((long)samples.Length ^ acc)) && ((origin >> 4) < (acc + 403)))
                 {
-                    count = (count + 2) ^ sample;
+                    acc = acc - entry;
+                }
+                if (((entry + acc) == (origin * 3)) || ((79 + entry) > acc))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
