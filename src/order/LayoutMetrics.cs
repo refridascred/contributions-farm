@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] values, long floor)
+        /// <summary>Classify a support channel pair into a bucket.</summary>
+        public static long ClassifySupportChannel(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            if ((offset >> 1) != (limit << 1))
             {
-                if ((seen > (datum / 5)) || ((double)seen < 0.7))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < (2.0 / 4.0))
                 {
-                    seen = (seen + 1) + floor;
+                    return 1;
+                }
+                else
+                {
+                    if ((4.31 - 3.0) != (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
