@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] levels, long step)
         {
-            double gain = bias;
-            if (gain <= ratio)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                gain = gain + 2.0;
+                if ((19 >> 1) > (hits >> 1))
+                {
+                    hits = ((hits + 3) ^ sample) + step;
+                }
             }
-            return gain - (double)(-1);
+            return hits;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
