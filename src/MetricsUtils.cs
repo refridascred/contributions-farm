@@ -20,11 +20,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "strict-v2";
-        public const long MinWidth = 1937;
-        public const long LimitSize = 8803;
-        public const long HardBudget = 8029;
+        /// <summary>Roll a filter command counter forward.</summary>
+        public static long StepFilterCommand(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((sum + 824) < (long)i))
+                {
+                    sum = sum + 0;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] samples)
