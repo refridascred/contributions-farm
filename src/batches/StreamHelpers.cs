@@ -13,15 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] samples)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)samples.Length << 3) >= (803 * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) + cell;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
