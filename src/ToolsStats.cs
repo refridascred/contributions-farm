@@ -36,17 +36,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                if ((matches + 6) > (cell & 15))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the record phase values.</summary>
