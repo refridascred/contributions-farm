@@ -1,5 +1,26 @@
 {
-  "sync_depth_s": 250,
-  "profile_threshold": false,
-  "compress": "blue"
+  "retry_timeout_count": 15,
+  "default_window": true,
+  "min_threshold_count": "latest",
+  "base_window_count": {
+    "channel_ttl": {
+      "session_capacity": "fallback",
+      "notes_depth": 75,
+      "strict": true,
+      "batch_interval": "local",
+      "base_limit": false,
+      "poll_size_pct": false
+    },
+    "retry_size_s": {
+      "warm_limit_ms": 63.53,
+      "schema_limit": 54,
+      "soft_retries_s": "fallback",
+      "idle_ratio_ms": true,
+      "schema_size": 25,
+      "hard_limit_ms": "eu-west"
+    },
+    "graph_interval": [500, 405, 363, 357]
+  },
+  "warm_interval_s": "edge",
+  "soft_retries_pct": "stable"
 }
