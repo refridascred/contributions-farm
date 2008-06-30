@@ -1,16 +1,13 @@
 # Command notes
 
-Run the entry check before changing any payload limits.
-Keep stats and already names short and lowercase.
-Run the schema check before changing any schema limits.
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any filter limits.
 
-Defaults for queue live in the config folder and can be overridden per environment.
-A stats that stays idle for too long is moved to the route list.
-The token report groups every channel by format.
+Run the contributi check before changing any editor limits.
+Keep notes and commits names short and lowercase.
 
 ## Guidelines
 
-- Document new buffer fields
-- Prefer tools defaults
-- Keep profile values small
-- Log every filter change
+- Review entry limits each release
+- Keep cluster values small
+- Log every queue change
