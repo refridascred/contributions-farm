@@ -28,12 +28,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result << 3) ^ (12 + (long)i)) % 4096;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define order limits and defaults.</summary>
