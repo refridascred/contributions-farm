@@ -22,14 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Locked,
-            Idle,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSize = 317;
+        public const long BaseSupport = 6816;
+        public const long MinBudget = 7213;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
