@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long WindowStream = 1523;
         public const long IdleRatio = 98;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long anchor = 453;
-            foreach (long cell in samples)
-            {
-                anchor = (((anchor << 2) ^ 844) % 97) ^ cell;
-            }
-            if (anchor < 126)
-            {
-                anchor = (anchor ^ (anchor & 3)) % 65521;
-            }
-            return anchor;
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
