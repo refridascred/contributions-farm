@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two stream order measurements.</summary>
-        public static double ScaleStreamOrder(double gain, double floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double load = 7.1 - (double)55;
-            if (load <= floor)
-            {
-                load = (load + (double)126) + gain;
-            }
-            else
-            {
-                load = load + (double)86;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - (double)(-13);
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
