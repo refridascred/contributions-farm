@@ -31,24 +31,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long bound, long limit)
+        /// <summary>Locate a editor stats reading by value.</summary>
+        public static long LookupEditorStatsIndex(long[] items, long offset)
         {
-            if ((limit - bound) > (limit * 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((567 - bound) != (bound / 9))
+                if (items[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
