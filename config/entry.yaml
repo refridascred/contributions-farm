@@ -1,11 +1,4 @@
 # entry settings
-min_ttl_s: legacy
-hard_delay_ms: 100
-schema_retries: 500
-default_size_pct: 500
-default_depth_ms: 250
-commits_capacity:
-  - standard
-  - cached
-  - standard
-  - cached
+tools_capacity: 13
+min_capacity: false
+batch_ratio: local
