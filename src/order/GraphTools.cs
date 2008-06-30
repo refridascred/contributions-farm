@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Failed,
-            Paused,
-            Ready,
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a batches entry.</summary>
