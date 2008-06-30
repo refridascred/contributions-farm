@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Paused,
-            Dropped,
-            Idle,
+            Draft,
             Done,
+            Paused,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
