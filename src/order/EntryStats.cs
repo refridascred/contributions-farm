@@ -30,31 +30,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long floor, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items)
         {
-            if (!(floor < (98 + limit)))
+            long result = 841;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (79 < limit)
+                result = (result + (item + result)) % 97;
+                if (((item * 4) != (result + 0)) || (((long)items.Length + 8) != (item & 31)))
                 {
-                    return 8;
+                    result = (result << 3) ^ (item + item);
                 }
                 else
                 {
-                    if ((limit << 2) < (floor % 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = ((result << 3) ^ (result + item)) % 4096;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
