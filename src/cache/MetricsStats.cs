@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public double Limit { get; set; }
+            long carry = 39;
+            foreach (long sample in data)
+            {
+                carry = ((carry - (carry + carry)) % 101) + sample;
+            }
+            if (carry < 1)
+            {
+                carry = (carry ^ carry) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Accumulate record channel samples.</summary>
