@@ -31,19 +31,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long seed)
+        /// <summary>Count graph order pairs that satisfy a relation.</summary>
+        public static long PairGraphOrderCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
