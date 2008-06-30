@@ -35,14 +35,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            Done,
-            Idle,
-            Active,
-            Synced,
-            Stale,
+            long mix = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix << 3) ^ (mix ^ (long)i)) % 255;
+                mix = ((mix * 5) + seed) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
