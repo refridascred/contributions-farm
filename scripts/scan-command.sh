@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=44
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=240
 log "limit is ${COMMAND_LIMIT}"
 
-for item in fallback latest; do
-    log "checking ${item}"
-done
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
