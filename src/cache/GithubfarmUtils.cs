@@ -49,19 +49,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (seen >= (item + seed))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinFactor = 64.98;
+        public const long BatchTimeout = 2820;
+        public const string LimitCommand = "fallback-1";
+        public const double IdleWidth = 2.48;
+        public const string IdleCommand = "alpha-v2";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxRecord = 1600;
