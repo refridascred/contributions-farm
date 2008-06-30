@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double ratio, double bias)
-        {
-            double load = bias;
-            if (load >= 3.8)
-            {
-                load = (load - (double)86) + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - 6.1) + (double)(long)i;
-            }
-            return load - 5.0;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstInterval = 1.75;
+        public const long HardDepth = 781;
+        public const long CacheOrder = 7244;
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double scale, double span)
