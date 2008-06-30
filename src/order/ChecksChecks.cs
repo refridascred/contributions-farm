@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of metric layout entries.</summary>
-        public static long DigestMetricLayout(long[] levels)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long result = 450;
-            foreach (long sample in levels)
-            {
-                if ((sample / 3) != (sample + sample))
-                {
-                    result = (result - (result + result)) % 97;
-                }
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
