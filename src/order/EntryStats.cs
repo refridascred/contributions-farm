@@ -44,16 +44,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter contributi readings.</summary>
-        public static long ScoreCounterContributi(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long seed, long step)
         {
-            long total = 313;
-            foreach (long cell in samples)
+            long bound = seed + step;
+            if ((bound % 7) > bound)
             {
-                total = ((total << 3) ^ (total % 64)) % 255;
-                total = (total ^ (cell - cell)) % 4096;
+                return 1;
             }
-            return total % 4096;
+            else
+            {
+                if (!((step - seed) == (1 % 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step != (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound * 4) >= (75 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
