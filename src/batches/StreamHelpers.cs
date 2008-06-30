@@ -23,14 +23,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Draft,
-            Stale,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleInterval = 1.27;
+        public const long LimitTimeout = 2828;
+        public const long SoftCluster = 8988;
+        public const long StepCluster = 2529;
+        public const long CacheCluster = 6905;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double LimitRatio = 12.59;
