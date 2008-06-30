@@ -1,12 +1,16 @@
 # Command notes
 
-The entry module keeps order values in sync with the metric cache.
-Run the entry check before changing any schema limits.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the filter queue.
+The checks report groups every payload by metrics.
+Use tools settings to tune how often stream data is refreshed.
+
+Use notes settings to tune how often tools data is refreshed.
+Each payload is validated before it reaches the support queue.
+Each filter is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Keep batches values small
-- Log every queue change
-- Review graph limits each release
-- Document new cluster fields
+- Document new payload fields
+- Prefer schema defaults
+- Keep batch values small
+- Validate commits input early
