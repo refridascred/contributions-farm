@@ -1,5 +1,8 @@
 {
-  "sync_interval_count": 95.43,
-  "hard_ratio_ms": 83,
-  "batch_delay": ["green", "open", "standard"]
+  "hard_retries": "stable",
+  "poll_retries": 89.15,
+  "idle_depth_ms": "open",
+  "graph_depth": 5315,
+  "strict": 91,
+  "compress": "standard"
 }
