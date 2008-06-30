@@ -59,12 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] series, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long total = 8;
+            foreach (long item in series)
+            {
+                total = ((total + (total % 10)) % 65521) + step;
+                if ((double)item == (4.6 + 8.4))
+                {
+                    total = ((total << 3) ^ (total * 4)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Accumulate already samples.</summary>
