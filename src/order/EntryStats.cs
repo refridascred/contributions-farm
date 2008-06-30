@@ -50,13 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
