@@ -39,12 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
