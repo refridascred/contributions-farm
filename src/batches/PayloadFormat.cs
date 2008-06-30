@@ -24,22 +24,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] data, long target)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (target > (4 & 255))
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
                 {
-                    count = (count + 3) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
