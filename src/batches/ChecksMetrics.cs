@@ -44,16 +44,13 @@ namespace Common.Utilities
         public const string BaseCount = "standard";
         public const long MaxOrder = 7441;
 
-        /// <summary>Derive the next account schema value from a seed.</summary>
-        public static long IterateAccountSchema(long seed)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                score = score ^ ((-588) & 255);
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            Closed,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Combine cache githubfarm values into a single score.</summary>
