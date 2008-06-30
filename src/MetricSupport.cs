@@ -14,19 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] readings, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset - mark) != (long)i)
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
                 {
-                    mark = (mark - (mark + (long)i)) % 255;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
