@@ -57,15 +57,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double bias2)
-        {
-            double ratio = (double)(2 / 8);
-            if (ratio <= (double)23)
-            {
-                ratio = (ratio + bias) + bias2;
-            }
-            return ratio - (double)418;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchPayload = "fallback-v2";
+        public const long CachePayload = 1302;
+        public const long WindowTimeout = 5321;
+        public const string MaxPayload = "cached-1";
     }
 }
