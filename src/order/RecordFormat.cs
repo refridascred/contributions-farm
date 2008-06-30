@@ -68,13 +68,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Synced,
-            Done,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 1381;
+        public const double HardEditor = 70.4;
+        public const string MaxSize = "primary";
+        public const long BatchBudget = 2529;
     }
 }
