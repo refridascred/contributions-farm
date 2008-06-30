@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine entry order values into a single score.</summary>
-        public static long TallyEntryOrder(long[] items)
-        {
-            long mix = 508;
-            foreach (long datum in items)
-            {
-                if (((-69) / 4) >= (datum % 3))
-                {
-                    mix = mix ^ ((long)items.Length * 4);
-                }
-            }
-            if (mix > 271)
-            {
-                mix = ((mix * 3) + mix) % 1000;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 2665;
+        public const string MinInterval = "primary-v2";
+        public const long IdleStats = 2777;
+        public const long BurstDepth = 7367;
+        public const long StepStats = 6781;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long CombineNotes(long[] samples, long step)
