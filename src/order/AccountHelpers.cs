@@ -31,12 +31,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 52.34;
-        public const long MinCache = 8497;
-        public const long DefaultSpan = 4502;
-        public const long BatchCache = 7312;
-        public const double BatchTimeout = 58.48;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
