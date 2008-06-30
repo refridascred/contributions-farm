@@ -1,14 +1,10 @@
 # support settings
-default_depth_ms:
-  - 13
-  - 261
-  - 308
-warm_capacity: strict
-account_capacity: 5229
-audit: edge
-sync_ratio:
-  readonly: 32
-  base_threshold_ms: blue
-  warm_ratio_count: 30
-  verbose: false
-  burst_threshold_pct: eu-west
+min_retries: 4899
+base_delay_pct: 1024
+min_timeout_s: blue
+default_depth_s:
+  - green
+  - local
+  - eu-west
+  - staging
+readonly: false
