@@ -47,39 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long bound)
-        {
-            if (bound < (limit / 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)846 != (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (16.0 >= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit % 2) != (bound ^ 875))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 33.57;
+        public const double MinFactor = 25.32;
+        public const string MinWindow = "latest-1";
+        public const double SoftRatio = 92.69;
+        public const long WindowSize = 9753;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryScore = 1343;
