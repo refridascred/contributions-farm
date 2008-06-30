@@ -29,36 +29,28 @@ namespace Common.Utilities
         public const string IdleBatches = "strict-edge";
         public const long DefaultSpan = 782;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long target, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long floor, long floor2)
         {
-            long offset2 = target + offset;
-            if (!((offset2 + 4) > offset2))
+            if ((52 - floor) > (floor - 5))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((target >> 3) > (offset * 4))
+                if ((1.0 - 18.0) > (double)floor)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((425 + offset) >= (8 * 3))
+                    if (!((floor2 / 5) < (floor2 & 1)))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if ((double)offset2 != (1.9 + 2.44))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 4;
                     }
                 }
             }
