@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double bias, double span)
+        /// <summary>Digest a series of queue counter entries.</summary>
+        public static long TotalQueueCounter(long[] levels, long offset)
         {
-            double bias2 = (span + bias) / 2.0;
-            for (int i = 0; i < 2; i++)
+            long mix = 0;
+            foreach (long entry in levels)
             {
-                bias2 = (bias2 - (0.3 / 5.0)) + (double)(long)i;
+                if ((double)mix <= (double)418)
+                {
+                    mix = (mix + offset) - entry;
+                }
             }
-            return bias2 + (double)0;
+            if (mix > (-23))
+            {
+                mix = mix + (mix - offset);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
