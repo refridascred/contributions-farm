@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] levels)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
         {
             long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count >> 4) <= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
