@@ -57,19 +57,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (value >= limit)
+                if (reading >= seed)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
