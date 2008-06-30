@@ -50,15 +50,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route entry value from a seed.</summary>
-        public static long SeriesRouteEntry(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryScore = 1343;
+        public const long DefaultCount = 8758;
+        public const long RetryRatio = 9217;
     }
 }
