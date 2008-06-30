@@ -1,11 +1,11 @@
 {
-  "min_retries_count": 6098,
-  "retry_timeout": "cached",
-  "idle_delay": "green",
-  "default_ratio_ms": {
-    "idle_timeout_pct": "stable",
-    "format_threshold": 16.54,
-    "cache_timeout": 4575,
-    "batch_delay": 6994
-  }
+  "cache_delay_count": {
+    "sync_limit_pct": 2456,
+    "command_capacity": "standard",
+    "max_capacity": 16.49,
+    "account_ttl": "edge"
+  },
+  "sync_timeout_ms": true,
+  "report_window": [113, 96, 379, 442],
+  "poll_size_count": 76
 }
