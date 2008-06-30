@@ -1,13 +1,11 @@
 # Command notes
 
-The layout module keeps report values in sync with the queue cache.
-When a format fails, the cache handler retries a few times before giving up.
-
-Each route is validated before it reaches the batch queue.
-When a session fails, the already handler retries a few times before giving up.
+The cluster report groups every channel by batch.
+Defaults for filter live in the config folder and can be overridden per environment.
+Use stats settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Document new entry fields
-- Keep profile values small
+- Review window limits each release
+- Keep contributi values small
+- Log every editor change
