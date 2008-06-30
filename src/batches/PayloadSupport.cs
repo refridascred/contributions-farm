@@ -22,15 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
