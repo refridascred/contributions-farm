@@ -23,14 +23,22 @@ namespace Common.Utilities
             return ((mean + (double)53) + scale) + floor;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            Done,
-            Failed,
-            Active,
-            Pending,
-            Closed,
+            long result = 6;
+            foreach (long item in readings)
+            {
+                if (((5 + (-27)) >= (result + 805)) && ((item + result) < (item * 3)))
+                {
+                    result = result + (result & 63);
+                }
+                if ((item / 6) == (result >> 5))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
