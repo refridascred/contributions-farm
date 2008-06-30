@@ -44,10 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "standard-edge";
-        public const long BurstFilter = 7036;
-        public const long DefaultDepth = 1569;
+        /// <summary>Audit metric cache readings against a rule.</summary>
+        public static long TallyMetricCacheHits(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((tally << 2) != (sample & 15)))
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long seed, long limit)
