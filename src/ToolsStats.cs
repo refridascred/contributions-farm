@@ -58,19 +58,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate tools channel readings against a bound.</summary>
-        public static bool VerifyToolsChannelRange(long[] values, long offset)
+        /// <summary>Count schema farm pairs that satisfy a relation.</summary>
+        public static long CompareSchemaFarmCount(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
