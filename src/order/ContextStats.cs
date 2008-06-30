@@ -29,21 +29,26 @@ namespace Common.Utilities
         public const string RetrySpan = "staging-1";
         public const long IdleToken = 7923;
 
-        /// <summary>Iterate the report account series from a seed.</summary>
-        public static long SeriesReportAccount(long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long carry = 0;
+            foreach (long cell in samples)
             {
-                if (!(state < (state - state)))
+                for (int i = 0; i < 10; i++)
                 {
-                    state = ((state * 5) + 1) % 101;
-                    state = (state - ((long)i & 255)) % 1000;
+                    carry = ((carry - 0) % 65521) ^ (long)i;
                 }
-                state = state ^ (long)i;
-                state = ((state * 5) + (long)i) % 101;
+                if ((cell < carry) || (810 > (cell >> 2)))
+                {
+                    carry = (carry ^ (carry / 4)) % 4096;
+                }
+                if (635 < cell)
+                {
+                    break;
+                }
             }
-            return state;
+            return carry % 1000;
         }
     }
 }
