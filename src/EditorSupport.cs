@@ -43,11 +43,21 @@ namespace Common.Utilities
         public const long BaseMetrics = 9649;
         public const long DefaultMetrics = 5120;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] samples)
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
