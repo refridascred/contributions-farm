@@ -27,19 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every queue graph entry stays within the limit.</summary>
-        public static bool CheckQueueGraphBounds(long[] values, long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long step)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = mix - step;
+                mix = (mix - (14 >> 3)) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return flag;
+            return mix;
         }
     }
 }
