@@ -19,14 +19,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            New,
-            Pending,
-            Synced,
-            Dropped,
+            Retry,
             Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define route limits and defaults.</summary>
