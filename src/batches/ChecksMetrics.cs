@@ -42,17 +42,16 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] samples, long offset)
+        /// <summary>Derive the next account schema value from a seed.</summary>
+        public static long IterateAccountSchema(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = score ^ ((-588) & 255);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the editor mode values.</summary>
