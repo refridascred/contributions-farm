@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a contributi cluster counter forward.</summary>
-        public static long StepContributiCluster(long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix ^ (702 / 3);
-                if ((bound * 3) < mix)
-                {
-                    mix = (mix + ((long)i ^ mix)) % 97;
-                }
-                if ((mix <= (mix & 255)) || (((long)i & 7) == (mix & 63)))
-                {
-                    mix = ((mix * 5) + (bound & 7)) % 65521;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public double Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
