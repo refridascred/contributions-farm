@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a checks reading.</summary>
