@@ -28,24 +28,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long offset, long limit)
+        /// <summary>Roll a filter notes counter forward.</summary>
+        public static long RollFilterNotes(long step)
         {
-            if (offset > (offset - offset))
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
+                result = result - ((long)i + result);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit / 7) >= (limit & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
     }
 }
