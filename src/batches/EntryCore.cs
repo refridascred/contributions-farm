@@ -36,12 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
+            public string Count { get; set; } = "";
             public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
