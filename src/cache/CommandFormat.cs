@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSize = 2071;
-        public const double WindowSpan = 38.86;
-        public const long CacheSpan = 8570;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterOutliers(long[] data, long target)
