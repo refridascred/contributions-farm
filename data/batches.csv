@@ -1,8 +1,9 @@
-id,score,label
-1,primary,71.28
-2,60,730
-3,625,56.09
-4,legacy,blue
-5,876,edge
-6,250,34.43
-7,97,379
+id,region,token
+1,40.61,71.47
+2,881,32
+3,55.38,292
+4,edge,stable
+5,75,377
+6,55.74,786
+7,774,primary
+8,latest,38.0
