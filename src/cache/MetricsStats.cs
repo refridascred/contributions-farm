@@ -33,21 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Measure how many tools stream samples are out of range.</summary>
+        public static long AuditToolsStreamGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(matches >= (matches << 3)))
                 {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the commits phase values.</summary>
