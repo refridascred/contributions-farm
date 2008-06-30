@@ -37,17 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long seed)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next route entry value from a seed.</summary>
