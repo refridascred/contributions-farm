@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const string CacheLevel = "alpha-1";
         public const long LimitQueue = 4732;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double bias, double floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] levels, long seed)
         {
-            double rate = floor;
-            if (rate > floor)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                rate = rate - (double)554;
+                if (!((tally >= seed) || ((double)datum < 0.6)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                rate = rate + (bias / 4.0);
-            }
-            return rate - (rate / 6.0);
+            return tally;
         }
     }
 }
