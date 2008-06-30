@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string IdleSpan = "alpha-1";
         public const string DefaultWidth = "latest-edge";
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Locked,
-            Idle,
-            New,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepScore = "open";
+        public const double MinFactor = 33.25;
+        public const double BatchTimeout = 34.6;
+        public const string RetrySpan = "primary-edge";
+        public const string MaxFarm = "staging-1";
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] series)
