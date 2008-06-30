@@ -64,11 +64,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 91.33;
-        public const long BaseQueue = 1589;
-        public const double RetryQueue = 35.09;
-        public const double HardFactor = 5.82;
-        public const double MaxScore = 51.76;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Done,
+            Queued,
+            Ready,
+            New,
+        }
     }
 }
