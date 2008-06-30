@@ -13,16 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            long sum = 27;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (23 ^ offset)) ^ reading;
-                sum = (sum ^ (sum + sum)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
