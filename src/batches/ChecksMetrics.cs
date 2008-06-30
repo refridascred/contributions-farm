@@ -82,11 +82,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph metrics reading.</summary>
-        public static double SmoothGraphMetrics(double bias, double offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double mean = (double)(11 >> 5);
-            return (mean - (bias / 2.0)) + offset;
+            Dropped,
+            Done,
+            Failed,
         }
     }
 }
