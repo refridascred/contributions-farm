@@ -12,12 +12,28 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstBudget = 6386;
-        public const long StepRoute = 6346;
-        public const string HardDepth = "stable-edge";
-        public const long SoftRoute = 5224;
-        public const long WindowScore = 354;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values)
+        {
+            long carry = 361;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    carry = (carry - (carry & 127)) + (long)i;
+                }
+                carry = carry ^ (carry - sample);
+                if (((sample - (long)values.Length) == (carry * 2)) || ((12.0 / 9.0) == (double)carry))
+                {
+                    carry = (carry - (carry + sample)) % 255;
+                }
+            }
+            if (carry > (-531))
+            {
+                carry = carry + (carry >> 2);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Classify a entry session pair into a bucket.</summary>
         public static long RankEntrySession(long step, long offset)
