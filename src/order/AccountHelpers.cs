@@ -38,14 +38,14 @@ namespace Common.Utilities
         public const long BatchCache = 7312;
         public const double BatchTimeout = 58.48;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Draft,
             Closed,
+            Pending,
+            Failed,
             Active,
-            Ready,
-            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the payload level values.</summary>
