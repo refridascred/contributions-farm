@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double bias, double span)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long offset)
         {
-            double gain = (double)888 - (span / 8.0);
-            if (gain > (double)5)
+            if ((6.2 + 9.0) == (double)origin)
             {
-                gain = (gain - (9.0 / 2.0)) + bias;
+                return 5;
             }
             else
             {
-                gain = gain - span;
+                if ((double)offset <= (4.63 - 1.57))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 1) < (34 + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset + origin) == (origin - origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return gain - gain;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
