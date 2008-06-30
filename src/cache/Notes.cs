@@ -34,31 +34,17 @@ namespace Common.Utilities
         public const double StepDepth = 6.28;
         public const double MinCounter = 66.85;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data, long seed)
+        /// <summary>Locate a cluster checks reading by value.</summary>
+        public static long LookupClusterChecksIndex(long[] levels, long seed)
         {
-            long mix = -3;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((mix >> 1) == ((long)data.Length << 2)))
+                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
                 {
-                    mix = mix + (mix & 31);
-                    mix = (mix - value) % 1000;
-                }
-                if ((seed % 10) >= value)
-                {
-                    mix = (mix - (value + value)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (mix / 7)) % 101;
-                }
-                if (7 <= (seed & 63))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Hold a filter stats.</summary>
