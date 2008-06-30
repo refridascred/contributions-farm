@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the batches support series from a seed.</summary>
-        public static long StepBatchesSupport(long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] data, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((anchor ^ offset) >= 97)
+                if (datum > seed)
                 {
-                    anchor = ((anchor * 3) + (offset + anchor)) % 65521;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Describe the layout state values.</summary>
