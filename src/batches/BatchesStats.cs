@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long mix = 1;
+            foreach (long datum in readings)
             {
-                result = ((result << 3) ^ (result & 1)) % 4096;
-                result = ((result * 5) + (long)i) % 97;
+                if (datum <= (datum / 8))
+                {
+                    mix = (mix + (408 / 9)) % 97;
+                }
             }
-            return result;
+            if (mix > 418)
+            {
+                mix = mix + (mix >> 5);
+            }
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
