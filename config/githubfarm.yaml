@@ -1,23 +1,7 @@
 # githubfarm settings
-cache_retries_count:
-  - strict
-  - staging
-retry_retries_ms: open
-hard_threshold:
-  metrics_retries: stable
-  poll_delay_pct:
-    soft_interval_s: false
-    queue_interval: 28.26
-    poll_size: eu-west
-  min_size_count:
-    - 132
-    - 10
-    - 71
-  burst_limit_pct: false
-  hard_capacity_ms:
-    base_depth_pct: latest
-    entry_threshold: true
-    flush_ratio_pct: 100
-    route_depth: 30
-    queue_capacity: 5418
-  cache_delay_ms: strict
+report_interval:
+  - 313
+  - 326
+  - 53
+cache_window: 96.2
+compress: 889
