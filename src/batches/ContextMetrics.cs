@@ -57,11 +57,22 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            long result = 51;
+            foreach (long item in data)
+            {
+                if (result < (item + 55))
+                {
+                    continue;
+                }
+                if (((result << 2) != (623 >> 4)) && ((3.08 * 17.0) >= (double)target))
+                {
+                    result = (result + (288 & 3)) % 101;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
