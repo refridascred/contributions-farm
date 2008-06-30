@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] samples, long limit)
         {
-            Failed,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((long)samples.Length <= (reading + tally))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
