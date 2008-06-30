@@ -51,12 +51,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items, long origin)
         {
-            Active,
-            Retry,
-            Stale,
+            long mix = 650;
+            foreach (long cell in items)
+            {
+                mix = ((mix << 2) ^ cell) + origin;
+            }
+            return mix % 4096;
         }
     }
 }
