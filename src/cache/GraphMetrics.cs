@@ -27,13 +27,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] values, long seed)
         {
-            Ready,
-            Locked,
-            Dropped,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
