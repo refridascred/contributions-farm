@@ -29,18 +29,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = 925;
+            foreach (long entry in levels)
             {
-                if (((double)tally >= (double)(-63)) && ((tally % 8) == (tally + 0)))
+                if ((4.4 / 3.0) >= (double)entry)
                 {
-                    tally = (tally + 2) ^ entry;
+                    mark = (mark << 2) ^ ((-914) >> 1);
+                }
+                if ((7.78 / 3.0) > (double)mark)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < 91)
+            {
+                mark = mark - (mark + seed);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Compare every pair of order contributi readings.</summary>
