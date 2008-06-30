@@ -24,11 +24,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 74.02;
-        public const double WindowDepth = 11.65;
-        public const string BurstSpan = "staging-v2";
-        public const long WindowMetric = 7093;
+        /// <summary>Combine entry route values into a single score.</summary>
+        public static long ScoreEntryRoute(long[] items, long offset)
+        {
+            long mix = -759;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length + 186) <= cell)
+                {
+                    mix = mix + (cell ^ offset);
+                }
+                if (((cell + mix) >= ((-156) + cell)) && ((8.5 * 4.8) <= (7.0 + 1.0)))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] readings, long limit)
