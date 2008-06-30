@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxWidth = 9291;
-        public const long IdleCache = 3993;
-        public const double BaseCache = 22.05;
-        public const string DefaultCache = "open-v2";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] readings, long step)
+        {
+            long sum = 45;
+            foreach (long value in readings)
+            {
+                if ((value - sum) == (step + 32))
+                {
+                    sum = sum - (step << 3);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string LimitOrder = "staging-edge";
