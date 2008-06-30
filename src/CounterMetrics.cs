@@ -48,17 +48,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] data, long offset)
+        /// <summary>Measure how many schema farm samples are out of range.</summary>
+        public static long AuditSchemaFarmMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                if (((double)(long)data.Length < (double)8) || (tally >= (entry + 43)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the stream level values.</summary>
