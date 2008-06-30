@@ -28,18 +28,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] levels, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((target << 2) == (long)levels.Length)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Blend two account measurements.</summary>
