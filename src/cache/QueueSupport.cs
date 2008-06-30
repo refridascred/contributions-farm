@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long seed, long offset)
+        /// <summary>Validate layout report readings against a bound.</summary>
+        public static bool GuardLayoutReportBounds(long[] readings, long floor)
         {
-            if ((68 + offset) >= (offset / 6))
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 8) > (seed >> 5))
+                if (cell < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed <= (seed - seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a context entry.</summary>
