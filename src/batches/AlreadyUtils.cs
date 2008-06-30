@@ -51,15 +51,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long origin, long floor)
         {
-            long mix = 650;
-            foreach (long cell in items)
+            long slot = origin - floor;
+            if (((-88) * 4) < (origin >> 3))
             {
-                mix = ((mix << 2) ^ cell) + origin;
+                return 1;
             }
-            return mix % 4096;
+            else
+            {
+                if ((15.0 + 20.0) <= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (738 <= slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
