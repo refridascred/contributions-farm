@@ -39,18 +39,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatHits(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((14.0 + 7.2) < (double)datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepInterval = 2667;
+        public const long LimitBudget = 5294;
+        public const long HardSize = 7278;
     }
 }
