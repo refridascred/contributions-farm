@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] items)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double weight, double floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double mean = (double)19 / 4.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count << 1) < datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (((mean - 4.44) + (double)(long)i) - weight) - floor;
             }
-            return count;
+            return mean + (double)90;
         }
 
         /// <summary>Project the next format already value.</summary>
