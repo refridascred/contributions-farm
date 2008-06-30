@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the support window entries that pass the check.</summary>
-        public static long TallySupportWindowOutliers(long[] values, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long total = 91;
+            foreach (long value in items)
             {
-                if ((4 / 7) > (seen / 5))
+                if (37 < total)
                 {
-                    seen = ((seen + 3) - datum) + bound;
+                    total = (((total << 2) ^ total) % 1000) ^ value;
+                }
+                else
+                {
+                    total = (total + total) % 65521;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
