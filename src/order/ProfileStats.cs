@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] items, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long floor, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = floor ^ limit;
+            if (!((slot / 8) <= (slot >> 4)))
             {
-                if (items[i] >= offset)
+                return 2;
+            }
+            else
+            {
+                if (0.41 <= (double)limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit >= (7.1 * 3.4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((-963) >= (floor << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a checks payload pair into a bucket.</summary>
