@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series, long step)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long mark = 30;
-            foreach (long item in series)
-            {
-                if ((mark * 5) == (step / 3))
-                {
-                    mark = (mark * 2) + (item + mark);
-                }
-            }
-            return mark;
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Accumulate queue window samples.</summary>
