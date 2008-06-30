@@ -1,4 +1,10 @@
 # support settings
-min_timeout: false
-cache_timeout: true
-cache_window_pct: open
+base_capacity: 57.79
+default_threshold_s:
+  - 217
+  - 296
+  - 379
+  - 145
+readonly: stable
+soft_ratio_pct: 250
+layout_timeout: 4754
