@@ -60,22 +60,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stream order samples are out of range.</summary>
-        public static long MeasureStreamOrderMatches(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((((sample - 9) != (712 / 9)) && (seen >= (limit + 28))) && ((sample / 2) > 99))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 2980;
+        public const long MaxCount = 2634;
+        public const long StepTools = 6045;
+        public const long BurstDepth = 2700;
+        public const string IdleTools = "local";
     }
 }
