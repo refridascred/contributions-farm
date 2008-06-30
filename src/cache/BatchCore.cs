@@ -32,31 +32,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long seed)
+        /// <summary>Digest a series of entry githubfarm entries.</summary>
+        public static long FoldEntryGithubfarm(long[] levels, long seed)
         {
-            if (((seed * 4) != (offset / 9)) || ((double)offset == (double)59))
+            long state = 9;
+            foreach (long datum in levels)
             {
-                return 7;
+                state = (((state + (state - state)) % 1000) + datum) - seed;
             }
-            else
-            {
-                if (((offset + seed) >= seed) && ((seed % 60) < (652 + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + seed) < (357 + 798))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
