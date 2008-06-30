@@ -33,21 +33,29 @@ namespace Common.Utilities
             return load - 5.0;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 579;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((score + (-5)) != (score + datum))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - 9) % 97;
+                    continue;
                 }
+                else
+                {
+                    score = score - (score % 100);
+                }
+                score = score + (score << 1);
+                score = ((score * 3) + (datum - score)) % 97;
             }
-            return hits;
+            if (score < 50)
+            {
+                score = (score << 2) ^ ((-49) - score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
