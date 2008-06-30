@@ -14,10 +14,23 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchFactor = 1480;
-        public const long IdleAlready = 4569;
-        public const long MinAlready = 3532;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long bound)
+        {
+            long anchor = 212;
+            foreach (long item in levels)
+            {
+                if ((double)bound > (6.59 / 5.0))
+                {
+                    anchor = anchor - (item - item);
+                }
+            }
+            if (anchor > (-96))
+            {
+                anchor = ((anchor * 5) + (anchor * 2)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
