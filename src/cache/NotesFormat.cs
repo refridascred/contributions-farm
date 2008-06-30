@@ -31,19 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long anchor = -1;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor << 2) ^ (anchor - reading);
-            }
-            if (anchor > 20)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 5)) % 255;
-            }
-            return anchor % 4096;
+            New,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
