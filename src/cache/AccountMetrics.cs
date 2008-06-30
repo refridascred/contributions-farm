@@ -39,18 +39,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] readings)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double ratio = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((seen % 100) <= datum) || (4.83 < (2.47 + 14.0))) || (seen >= (datum + datum)))
-                {
-                    seen = seen + 2;
-                }
+                ratio = (ratio + gain) + (double)(long)i;
             }
-            return seen;
+            return ratio - (double)15;
         }
 
         /// <summary>Count the already command entries that pass the check.</summary>
