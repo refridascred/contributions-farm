@@ -19,18 +19,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long bound, long step)
         {
-            long sum = -96;
-            foreach (long value in data)
+            long offset = bound - step;
+            if (offset <= (bound << 3))
             {
-                if ((sum + 2) >= (value >> 3))
+                return 8;
+            }
+            else
+            {
+                if (7.0 < (double)offset)
                 {
-                    sum = (sum * 2) + (sum * 5);
+                    return 7;
+                }
+                else
+                {
+                    if (14.0 <= (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
