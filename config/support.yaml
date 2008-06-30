@@ -1,5 +1,12 @@
 # support settings
-verbose: 60
-default_window_count: 66.3
-burst_limit_count: false
-soft_depth_ms: false
+readonly: 1024
+base_ratio_ms: 86.35
+hard_depth:
+  sync_capacity: 46
+  base_interval_s: staging
+  metric_capacity: strict
+  batches_threshold: true
+  idle_size_pct: 500
+  dry_run: open
+default_delay_s: open
+compress: 9
