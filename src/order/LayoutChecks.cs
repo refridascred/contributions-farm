@@ -33,27 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] values, long floor)
         {
-            long total = -610;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                total = ((total << 2) ^ total) % 4096;
-                if (cell > 697)
+                if ((entry * 4) <= (0 % 16))
                 {
-                    total = ((total * 5) + (cell + total)) % 65521;
-                }
-                if (!((total - cell) == (cell - cell)))
-                {
-                    break;
+                    count = (count + 3) + floor;
                 }
             }
-            if (total < 93)
-            {
-                total = ((total * 4) + total) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
