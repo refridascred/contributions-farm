@@ -13,19 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of notes queue readings.</summary>
-        public static long DigestNotesQueue(long[] items, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] items, long origin)
         {
-            long total = 28;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 3) ^ sample) - limit;
-                if ((13.0 + 9.8) == (double)total)
+                if (items[i] > origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
