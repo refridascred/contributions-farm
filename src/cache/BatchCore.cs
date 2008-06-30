@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items, long target)
         {
-            long score = 7;
-            foreach (long reading in levels)
+            long sum = 63;
+            foreach (long item in items)
             {
-                if (592 < bound)
+                if ((target / 5) == (sum ^ sum))
                 {
-                    score = ((score + 4) % 97) + reading;
+                    sum = ((sum << 3) ^ (target + sum)) % 65521;
+                    break;
+                }
+                if (sum > (item & 31))
+                {
+                    sum = sum - (-50);
                 }
             }
-            if (score < 2)
-            {
-                score = score - (793 % 10);
-            }
-            return score;
+            return sum % 65521;
         }
 
         /// <summary>Describe the batches mode values.</summary>
