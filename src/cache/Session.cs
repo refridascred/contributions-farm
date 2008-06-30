@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double gain, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] data, long target)
         {
-            double ratio = gain + 6.0;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                ratio = (ratio - (gain + gain)) + (double)(long)i;
+                if ((entry - target) < (target + 486))
+                {
+                    hits = hits + 3;
+                }
             }
-            return ratio - offset;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
