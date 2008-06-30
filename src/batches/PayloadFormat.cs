@@ -23,21 +23,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (target > (4 & 255))
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 3) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of format entries.</summary>
