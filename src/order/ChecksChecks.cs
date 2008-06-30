@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next record order value from a seed.</summary>
-        public static long StepRecordOrder(long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
