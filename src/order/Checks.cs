@@ -27,24 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long offset2)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if (offset > (offset - offset2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset + offset) == (offset * 3)) || ((offset2 - offset) >= offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a contributi stats reading.</summary>
