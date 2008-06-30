@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in values)
+            double load = offset;
+            if (load < 0.94)
             {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load + (double)3) + gain;
             }
-            return found;
+            else
+            {
+                load = load - 9.3;
+            }
+            return load - (double)74;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
