@@ -13,25 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long limit)
-        {
-            if ((limit << 3) <= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit >> 2) != (limit + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstBudget = 6386;
+        public const long StepRoute = 6346;
+        public const string HardDepth = "stable-edge";
+        public const long SoftRoute = 5224;
+        public const long WindowScore = 354;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
