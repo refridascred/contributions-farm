@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every batches cluster entry stays within the limit.</summary>
+        public static bool VerifyBatchesClusterLimits(long[] readings, long origin)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
