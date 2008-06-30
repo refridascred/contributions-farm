@@ -1,9 +1,13 @@
 # githubfarm settings
-graph_limit: true
-hard_timeout:
-  - 297
-  - 163
-  - 7
-  - 90
-readonly: 1024
-hard_ttl: 2340
+max_limit: true
+githubfarm_depth: fallback
+format_ttl:
+  - stable
+  - cached
+context_window: 73
+session_threshold:
+  - legacy
+  - blue
+  - green
+  - latest
+already_limit: stable
