@@ -61,13 +61,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            Done,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
