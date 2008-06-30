@@ -34,13 +34,22 @@ namespace Common.Utilities
         public const long WindowStream = 1523;
         public const long IdleRatio = 98;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public long Flag { get; set; }
+            long mix = 75;
+            foreach (long reading in readings)
+            {
+                if ((12.0 * 20.0) >= (double)mix)
+                {
+                    mix = ((mix * 3) + (725 / 6)) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (reading >> 4);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
