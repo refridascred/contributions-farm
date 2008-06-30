@@ -23,19 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] series, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long score = 2;
-            foreach (long entry in series)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry > (7.15 * 4.64))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    score = ((score * 4) + (bound & 3)) % 97;
+                    acc = (((acc * 4) + (acc ^ acc)) % 4096) ^ (long)i2;
+                    acc = acc ^ (bound - (long)i);
                 }
-                score = (score + (2 << 2)) % 101;
+                if ((double)(long)i < (3.77 + 5.83))
+                {
+                    acc = (acc * 3) + acc;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return score % 65521;
+            return acc;
         }
 
         /// <summary>Accumulate queue window samples.</summary>
