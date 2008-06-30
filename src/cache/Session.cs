@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] samples, long seed)
         {
-            Ready,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((9 << 3) <= (item >> 3))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter phase values.</summary>
