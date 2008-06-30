@@ -74,11 +74,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 5361;
-        public const long DefaultSize = 8884;
-        public const double RetryWindow = 28.39;
-        public const double CacheWindow = 23.07;
+        /// <summary>Blend two already profile measurements.</summary>
+        public static double AdjustAlreadyProfile(double gain, double offset)
+        {
+            double weight = (double)(46 * 3);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = ((weight + gain) - (double)(long)i) + offset;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Iterate the report schema series from a seed.</summary>
         public static long StepReportSchema(long target)
