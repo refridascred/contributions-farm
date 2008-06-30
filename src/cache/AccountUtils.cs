@@ -15,17 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the checks kind values.</summary>
