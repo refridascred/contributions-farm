@@ -19,13 +19,14 @@ namespace Common.Utilities
         public const double MinOrder = 75.82;
         public const double CacheOrder = 42.36;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Locked,
-            Pending,
-            Draft,
-            Failed,
+            Dropped,
+            Queued,
+            Done,
+            Ready,
+            Active,
         }
     }
 }
