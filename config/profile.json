@@ -1,6 +1,7 @@
 {
-  "min_threshold_ms": true,
-  "sync_retries": 57.17,
-  "burst_limit_pct": 97.14,
-  "warm_delay_count": "strict"
+  "audit": true,
+  "compress": "stable",
+  "warm_window": [258, 124, 25],
+  "burst_timeout_pct": false,
+  "idle_timeout_count": 94.24
 }
