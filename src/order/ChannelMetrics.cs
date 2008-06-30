@@ -18,19 +18,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] items, long limit)
+        /// <summary>Measure how many metric route samples are out of range.</summary>
+        public static long MeasureMetricRouteOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (reading > limit)
+                if ((sample & 15) < (matches / 8))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
