@@ -51,26 +51,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate contributi metric samples.</summary>
-        public static long TallyContributiMetric(long[] readings)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] data, long origin)
         {
-            long anchor = 5;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (10.0 >= (double)entry)
+                if ((data[i] <= origin) && ((data[i] % 5) != 0))
                 {
-                    anchor = (anchor ^ (long)readings.Length) % 101;
-                }
-                if (2 < (anchor << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor + anchor) % 1000;
-            }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
