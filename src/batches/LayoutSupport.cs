@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BurstDepth = 7367;
         public const long StepStats = 6781;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples, long step)
+        /// <summary>Count the session profile entries that pass the check.</summary>
+        public static long AuditSessionProfileHits(long[] series)
         {
-            long sum = 991;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((step << 1) <= (step + step))
+                if ((66 & 7) < matches)
                 {
-                    sum = (sum - (datum >> 4)) % 4096;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Accumulate record samples.</summary>
