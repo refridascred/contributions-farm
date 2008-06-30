@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] samples)
+        /// <summary>Audit batch entry readings against a rule.</summary>
+        public static long TallyBatchEntryOutliers(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((double)item >= (8.5 - 2.09))
+                if ((count << 2) > 4)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the support status values.</summary>
