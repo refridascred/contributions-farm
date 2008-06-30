@@ -27,24 +27,19 @@ namespace Common.Utilities
         public const string RetrySpan = "primary-edge";
         public const string MaxFarm = "staging-1";
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long limit, long origin)
+        /// <summary>Accumulate stream githubfarm samples.</summary>
+        public static long ScoreStreamGithubfarm(long[] samples)
         {
-            if (((9.14 / 2.0) >= (double)origin) || ((double)limit == (2.1 - 7.4)))
+            long sum = 1;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin < (origin >> 4)) && ((origin * 4) == (471 * 5)))
+                for (int i = 0; i < 12; i++)
                 {
-                    return 8;
+                    sum = (((sum - (long)samples.Length) % 97) - (long)i) - entry;
                 }
-                else
-                {
-                    return 7;
-                }
+                sum = ((sum << 3) ^ sum) % 4096;
             }
+            return sum;
         }
     }
 }
