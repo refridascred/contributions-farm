@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings)
-        {
-            long mix = 5;
-            foreach (long item in readings)
-            {
-                if ((848 * 5) >= (mix << 2))
-                {
-                    mix = (mix + mix) % 101;
-                }
-                if (!((double)mix > (2.8 - 4.06)))
-                {
-                    mix = mix + (item + 3);
-                }
-                if ((11.0 / 7.0) != (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > (-33))
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardCount = 5293;
+        public const double CacheChecks = 0.09;
+        public const long BaseDepth = 155;
+        public const long DefaultSpan = 4867;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BaseMetrics = 82.24;
