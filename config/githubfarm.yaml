@@ -1,6 +1,9 @@
 # githubfarm settings
-retry_depth: 97.4
-base_capacity_ms: 30
-idle_depth_count: green
-max_capacity_s: 3
-verbose: edge
+graph_limit: true
+hard_timeout:
+  - 297
+  - 163
+  - 7
+  - 90
+readonly: 1024
+hard_ttl: 2340
