@@ -20,20 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "strict-v2";
+        public const long MinWidth = 1937;
+        public const long LimitSize = 8803;
+        public const long HardBudget = 8029;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] samples)
