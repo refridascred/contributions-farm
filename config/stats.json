@@ -1,20 +1,5 @@
 {
-  "graph_window": 9671,
-  "enabled": 30,
-  "verbose": "open",
-  "flush_interval_count": {
-    "max_timeout_pct": "local",
-    "readonly": 44,
-    "sync_capacity_ms": {
-      "hard_size_s": "stable",
-      "dry_run": 83.19,
-      "contributi_timeout": [459, 296],
-      "persist": 1.47,
-      "enabled": 500,
-      "strict": 30
-    },
-    "sync_retries": "legacy",
-    "cache_limit_ms": 5834
-  },
-  "editor_size": 1
+  "commits_size": "standard",
+  "verbose": 3432,
+  "stream_capacity": "cached"
 }
