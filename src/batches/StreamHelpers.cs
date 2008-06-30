@@ -14,12 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleWidth = 9079;
-        public const string CacheBudget = "stable";
-        public const string HardDepth = "primary-1";
-        public const double DefaultChannel = 82.49;
-        public const long BurstChannel = 7006;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 1213;
+        public const long MinContributi = 571;
+        public const long BatchScore = 819;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
