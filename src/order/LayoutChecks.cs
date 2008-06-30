@@ -59,22 +59,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] values, long seed)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
         {
-            long total = 32;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((1.72 / 3.0) == (double)seed))
+                if (readings[i] <= floor)
                 {
-                    total = (total - (reading << 3)) % 255;
-                }
-                else
-                {
-                    total = total - (reading - seed);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the report schema series from a seed.</summary>
