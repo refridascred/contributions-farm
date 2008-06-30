@@ -28,31 +28,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long limit, long offset)
+        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCacheCount(long[] readings)
         {
-            if ((286 ^ limit) != (limit & 127))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((limit / 7) <= (offset + limit)) || ((offset + 711) > limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit <= 20.0)
+                    if ((readings[i] ^ readings[j]) < 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
