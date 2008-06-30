@@ -65,17 +65,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a profile tools reading by value.</summary>
-        public static long LocateProfileToolsIndex(long[] levels, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
