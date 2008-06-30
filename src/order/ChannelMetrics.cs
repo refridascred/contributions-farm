@@ -18,18 +18,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metric route samples are out of range.</summary>
-        public static long MeasureMetricRouteOutliers(long[] values)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double load = offset + offset;
+            for (int i = 0; i < 2; i++)
             {
-                if ((sample & 15) < (matches / 8))
-                {
-                    matches = matches + 3;
-                }
+                load = ((load - 1.1) + (double)(long)i) + weight;
             }
-            return matches;
+            return load + (double)84;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
