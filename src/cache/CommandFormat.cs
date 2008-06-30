@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "standard";
-        public const double CacheSpan = 74.96;
-        public const long DefaultCluster = 6181;
-        public const string BaseWidth = "cached";
-        public const string CacheCluster = "local";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSize = 2071;
+        public const double WindowSpan = 38.86;
+        public const long CacheSpan = 8570;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxCluster = 27.78;
