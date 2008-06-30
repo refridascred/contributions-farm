@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long score = 344;
-            foreach (long entry in values)
-            {
-                score = ((score * 5) + (entry + score)) % 4096;
-                if (((entry - score) == (entry << 2)) && (entry > (entry & 63)))
-                {
-                    score = (score ^ (score ^ entry)) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (score + entry)) % 65521;
-                }
-            }
-            return score;
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Blend two contributi order measurements.</summary>
