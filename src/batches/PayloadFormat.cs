@@ -56,11 +56,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Classify a stats report pair into a bucket.</summary>
+        public static long SortStatsReport(long target, long step)
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
+            if ((double)target > (9.25 / 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target & 7) > target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 255) <= step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
