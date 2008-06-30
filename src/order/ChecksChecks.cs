@@ -36,11 +36,27 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Combine buffer metric values into a single score.</summary>
+        public static long DigestBufferMetric(long[] samples, long offset)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long total = 746;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (((total * 4) + (9 << 2)) % 65521) ^ (long)i;
+                }
+                total = (total + (offset ^ datum)) % 65521;
+                if ((16.0 - 5.69) != (double)total)
+                {
+                    total = (total - total) % 101;
+                }
+            }
+            if (total < (-1))
+            {
+                total = total ^ offset;
+            }
+            return total % 65521;
         }
     }
 }
