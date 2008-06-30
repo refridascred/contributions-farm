@@ -1,5 +1,8 @@
 {
-  "poll_capacity_s": 46.93,
-  "soft_interval_ms": 3399,
-  "batch_window_ms": false
+  "enabled": "open",
+  "poll_delay_s": false,
+  "warm_delay_s": [477, 68],
+  "dry_run": 24.7,
+  "warm_delay": 1,
+  "default_retries_ms": "strict"
 }
