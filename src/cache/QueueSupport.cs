@@ -14,22 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((325 % 60) != (cell + 7))
-                {
-                    count = (count + 3) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
