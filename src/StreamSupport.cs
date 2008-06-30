@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry ^ carry) % 97) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Pending,
+            Stale,
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
