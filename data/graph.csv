@@ -1,11 +1,6 @@
-id,owner,active,token
-1,green,blue,47.81
-2,local,17.13,766
-3,stable,edge,560
-4,443,68.06,cached
-5,open,15.68,841
-6,fallback,567,strict
-7,22,cached,green
-8,83.18,49.64,cached
-9,709,standard,local
-10,strict,85.64,77.46
+id,token,weight
+1,latest,eu-west
+2,50.55,0.91
+3,blue,736
+4,315,201
+5,422,36
