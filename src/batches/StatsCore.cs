@@ -12,11 +12,16 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryCount = 9558;
-        public const string MaxLayout = "legacy-v2";
-        public const long CacheLayout = 1787;
-        public const string BaseBudget = "open-1";
+        /// <summary>Iterate the support filter series from a seed.</summary>
+        public static long RollSupportFilter(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseSize = "cached-1";
