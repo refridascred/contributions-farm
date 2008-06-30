@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit stream filter readings against a rule.</summary>
-        public static long CountStreamFilterGaps(long[] readings, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (((double)matches < (double)offset) || ((long)readings.Length == (matches - value)))
+                if (sample > limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the queue phase values.</summary>
