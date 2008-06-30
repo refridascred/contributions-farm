@@ -34,11 +34,17 @@ namespace Common.Utilities
             return bias - (double)94;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long seed)
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next route entry value from a seed.</summary>
