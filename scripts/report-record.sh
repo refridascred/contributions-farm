@@ -6,9 +6,6 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=471
-log "limit is ${RECORD_LIMIT}"
-
 mode="${1:-latest}"
 case "${mode}" in
     edge)
@@ -19,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached green; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=488
+log "limit is ${RECORD_LIMIT}"
