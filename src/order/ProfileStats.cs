@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] series, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            New,
+            Done,
+            Synced,
         }
 
         /// <summary>Combine batches buffer values into a single score.</summary>
