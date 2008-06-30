@@ -33,23 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double floor)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            double rate2 = 0.2;
-            if (rate2 <= (1.0 + rate))
-            {
-                rate2 = rate2 - (double)89;
-            }
-            else
-            {
-                rate2 = rate2 + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (double)45) + (double)(long)i;
-            }
-            return rate2 - (floor + rate2);
+            Active,
+            Stale,
+            Locked,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
