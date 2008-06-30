@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
+            double weight = (double)(703 + 8);
+            if (weight < span)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                weight = weight + (double)771;
             }
-            return anchor;
+            return weight - gain;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
