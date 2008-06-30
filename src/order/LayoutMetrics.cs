@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] levels, long offset)
-        {
-            long mark = 4;
-            foreach (long entry in levels)
-            {
-                mark = (mark ^ (entry << 3)) - offset;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 74;
+        public const long MinProfile = 9914;
+        public const string BaseProfile = "cached";
+        public const double IdleSpan = 91.16;
+        public const string RetryCount = "legacy";
 
         /// <summary>Project the next farm cache value.</summary>
         public static double AdjustFarmCache(double scale, double floor)
