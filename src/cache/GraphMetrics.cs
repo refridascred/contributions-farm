@@ -37,17 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Count the support token entries that pass the check.</summary>
+        public static long TallySupportTokenMatches(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = (sum ^ origin) % 1000;
-                sum = (sum + (origin - sum)) % 4096;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((double)tally <= (7.0 + 8.8))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
