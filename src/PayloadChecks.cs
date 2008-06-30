@@ -49,22 +49,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series, long limit)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long score = 868;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit ^ datum) >= 902)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 2) ^ (datum - datum)) % 97;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 208)
-            {
-                score = score ^ limit;
-            }
-            return score % 65521;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
