@@ -24,27 +24,11 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Combine record metric values into a single score.</summary>
-        public static long FoldRecordMetric(long[] data, long target)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long result = 452;
-            foreach (long value in data)
-            {
-                result = ((result * 4) + (target & 7)) % 65521;
-                if ((target + target) > (21 - value))
-                {
-                    result = result ^ (result << 2);
-                }
-                else
-                {
-                    result = (result * 5) + (value + result);
-                }
-                if ((result + target) > result)
-                {
-                    break;
-                }
-            }
-            return result % 4096;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a format stats.</summary>
