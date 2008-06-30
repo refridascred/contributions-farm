@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long IdleCluster = 4683;
         public const long SoftScore = 5461;
 
-        /// <summary>Iterate the command payload series from a seed.</summary>
-        public static long DeriveCommandPayload(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                result = result + (result - offset);
-                result = (result + (result % 3)) % 255;
-                result = (result * 2) + ((long)i / 8);
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleBudget = 7298;
+        public const string WindowWidth = "local-1";
+        public const double StepDepth = 6.28;
+        public const double MinCounter = 66.85;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long floor)
