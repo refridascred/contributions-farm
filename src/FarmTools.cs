@@ -18,12 +18,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
