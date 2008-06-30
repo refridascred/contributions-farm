@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long carry = 39;
-            foreach (long sample in data)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry - (carry + carry)) % 101) + sample;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (carry < 1)
-            {
-                carry = (carry ^ carry) % 4096;
-            }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Accumulate record channel samples.</summary>
