@@ -56,21 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed + carry) >= carry)
                 {
-                    if ((values[i] - values[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ (carry & 63)) % 255;
+                    continue;
                 }
+                carry = (carry + seed) % 65521;
+                if ((double)seed > (2.15 - 1.0))
+                {
+                    carry = ((carry << 3) ^ (seed - carry)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
