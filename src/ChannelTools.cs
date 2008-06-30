@@ -34,12 +34,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Locate a stats stream reading by value.</summary>
+        public static long LocateStatsStreamIndex(long[] items, long target)
         {
-            Locked,
-            Queued,
-            Draft,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
