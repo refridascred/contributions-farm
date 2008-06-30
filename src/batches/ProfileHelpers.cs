@@ -76,10 +76,9 @@ namespace Common.Utilities
         public const double BaseLayout = 40.56;
         public const double BatchLayout = 71.8;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3715;
-        public const string DefaultSize = "staging-edge";
-        public const long IdleAlready = 35;
-        public const long SoftFactor = 1347;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseRatio = "open-edge";
+        public const long BurstBudget = 2628;
+        public const long RetryTools = 3644;
     }
 }
