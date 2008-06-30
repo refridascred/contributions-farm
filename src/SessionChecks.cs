@@ -14,14 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinInterval = 2049;
+        public const double IdleCluster = 18.3;
+        public const string RetrySize = "primary-v2";
+        public const string WindowBudget = "primary-1";
 
         /// <summary>Digest a series of profile token entries.</summary>
         public static long TallyProfileToken(long[] samples)
