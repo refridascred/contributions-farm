@@ -58,11 +58,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryRatio = 2835;
-        public const long BatchNotes = 9296;
-        public const double RetryScore = 94.48;
-        public const long BatchScore = 3904;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
