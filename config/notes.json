@@ -1,5 +1,5 @@
 {
-  "readonly": ["stable", "latest"],
-  "poll_delay_count": 34.62,
-  "warm_interval_count": "fallback"
+  "default_limit_pct": [215, 158, 106],
+  "max_interval_pct": 6659,
+  "batch_retries_ms": "eu-west"
 }
