@@ -58,22 +58,11 @@ namespace Common.Utilities
         public const long IdleCommand = 8046;
         public const long CacheCommand = 9260;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (8 < target)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 2517;
+        public const long HardNotes = 9498;
+        public const long MaxNotes = 6836;
+        public const long LimitSpan = 1267;
+        public const long RetryRatio = 3151;
     }
 }
