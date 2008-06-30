@@ -63,31 +63,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long bound, long offset)
+        /// <summary>Roll a context profile counter forward.</summary>
+        public static long DeriveContextProfile(long limit)
         {
-            if (!((double)bound > (double)3))
+            long sum = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)bound >= (6.97 - 6.61))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset * 3) >= (offset + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
