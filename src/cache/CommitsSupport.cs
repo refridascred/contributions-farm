@@ -29,18 +29,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] levels, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (436 < (hits + reading))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            New,
         }
 
         /// <summary>Match up command samples.</summary>
