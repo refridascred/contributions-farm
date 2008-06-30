@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Stale,
-            Locked,
-            Done,
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
