@@ -34,10 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftWidth = "primary";
-        public const long IdleInterval = 5971;
-        public const long BatchAlready = 6998;
-        public const double HardAlready = 46.26;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings)
+        {
+            long result = 63;
+            foreach (long item in readings)
+            {
+                result = ((result << 3) ^ item) % 4096;
+            }
+            return result % 65521;
+        }
     }
 }
