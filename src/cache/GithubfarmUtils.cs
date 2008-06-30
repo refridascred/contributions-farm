@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long seed)
         {
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix * 2) + (mix - seed);
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
