@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const double StepDepth = 6.28;
         public const double MinCounter = 66.85;
 
-        /// <summary>Locate a cluster checks reading by value.</summary>
-        public static long LookupClusterChecksIndex(long[] levels, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
+                if ((reading - seen) > (reading - reading))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a filter stats.</summary>
