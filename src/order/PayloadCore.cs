@@ -50,18 +50,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache order samples are out of range.</summary>
-        public static long CountCacheOrderMatches(long[] series)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen >> 3) < sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
