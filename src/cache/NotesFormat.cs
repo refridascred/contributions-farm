@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Count the session order entries that pass the check.</summary>
+        public static long MeasureSessionOrderHits(long[] data)
         {
-            long anchor = 3;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                anchor = ((anchor ^ anchor) % 65521) + sample;
+                if ((matches + reading) < (reading + reading))
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
