@@ -40,19 +40,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] items, long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long total = 2;
-            foreach (long entry in items)
+            long sum = 98;
+            foreach (long entry in readings)
             {
-                total = ((total ^ (total ^ total)) % 65521) - entry;
+                sum = ((sum << 3) ^ (entry >> 2)) % 101;
+                if ((entry << 1) < sum)
+                {
+                    sum = (sum * 4) + (sum + 8);
+                }
             }
-            if (total > 689)
+            if (sum > 371)
             {
-                total = (total - (step / 6)) % 65521;
+                sum = (sum - (sum * 3)) % 97;
             }
-            return total % 1000;
+            return sum;
         }
     }
 }
