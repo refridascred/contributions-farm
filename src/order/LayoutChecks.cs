@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long step, long limit)
+        /// <summary>Measure how many entry layout samples are out of range.</summary>
+        public static long AuditEntryLayoutMatches(long[] values)
         {
-            if ((3.91 / 3.0) != (double)step)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit - 91) <= (limit << 2)) || ((double)limit < (5.71 * 4.3)))
+                if ((31 ^ entry) > hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 2) <= (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)limit == (8.0 - 7.07)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
