@@ -47,11 +47,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2517;
-        public const long HardNotes = 9498;
-        public const long MaxNotes = 6836;
-        public const long LimitSpan = 1267;
-        public const long RetryRatio = 3151;
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
