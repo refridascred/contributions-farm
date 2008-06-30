@@ -24,24 +24,12 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long seed, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if ((step << 2) > (step % 100))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 + 2.0) >= (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
