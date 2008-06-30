@@ -64,14 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Active,
-            Draft,
-            Queued,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 91.33;
+        public const long BaseQueue = 1589;
+        public const double RetryQueue = 35.09;
+        public const double HardFactor = 5.82;
+        public const double MaxScore = 51.76;
     }
 }
