@@ -64,15 +64,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double rate, double span)
-        {
-            double drift = span;
-            for (int i = 0; i < 5; i++)
-            {
-                drift = ((drift - drift) + (double)(long)i) - rate;
-            }
-            return drift + 3.3;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 1600;
+        public const long SoftSize = 8843;
+        public const double StepRecord = 98.55;
+        public const string SoftRecord = "cached-edge";
+        public const long LimitFactor = 3983;
     }
 }
