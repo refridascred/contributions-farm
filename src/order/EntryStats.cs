@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Draft,
-            Dropped,
-            Idle,
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
