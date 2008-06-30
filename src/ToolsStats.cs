@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = -67;
+            foreach (long value in values)
             {
-                if ((matches + 6) > (cell & 15))
-                {
-                    matches = matches + 2;
-                }
+                sum = (((sum * 2) + (sum >> 4)) % 65521) ^ value;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Digest a series of cluster notes entries.</summary>
