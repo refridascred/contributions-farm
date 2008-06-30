@@ -23,22 +23,14 @@ namespace Common.Utilities
         public const long HardLayout = 9441;
         public const long HardBudget = 7987;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] readings)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)433 == (double)matches)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Idle,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Match up token samples.</summary>
