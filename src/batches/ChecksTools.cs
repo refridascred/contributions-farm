@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] items, long origin)
+        /// <summary>Fold a list of checks batches readings.</summary>
+        public static long FoldChecksBatches(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 28;
+            foreach (long datum in values)
             {
-                if ((items[i] == origin) && ((items[i] % 3) != 0))
+                sum = ((sum * 5) + (floor + datum)) % 4096;
+                if (((long)values.Length ^ (-982)) < (datum << 1))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + (floor << 2);
+                }
+                else
+                {
+                    sum = ((sum * 5) + 12) % 4096;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
