@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinInterval = 283;
+        public const long RetryContributi = 2425;
+        public const long IdleSpan = 6031;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 197;
