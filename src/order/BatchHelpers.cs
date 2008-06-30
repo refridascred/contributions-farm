@@ -13,32 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long target)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] series, long floor)
         {
-            long delta = origin + target;
-            if (((target + target) <= (delta >> 1)) || ((double)origin != (double)delta))
+            long sum = 69;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target == (18.0 * 2.3))
+                if (!((sum >> 5) > (cell ^ 10)))
                 {
-                    return 7;
+                    sum = sum - cell;
                 }
                 else
                 {
-                    if (7 >= (origin * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = (sum - floor) % 4096;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a already snapshot.</summary>
