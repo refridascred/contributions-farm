@@ -15,19 +15,12 @@ namespace Common.Utilities
         public const long DefaultSize = 9544;
         public const string MinCluster = "alpha-edge";
 
-        /// <summary>Digest a series of buffer filter entries.</summary>
-        public static long DigestBufferFilter(long[] series, long seed)
-        {
-            long acc = 6;
-            foreach (long reading in series)
-            {
-                if ((8.0 * 5.3) <= (double)seed)
-                {
-                    acc = ((acc ^ (acc << 1)) % 255) - reading;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "open";
+        public const double SoftRatio = 68.42;
+        public const long WindowRoute = 6545;
+        public const long BurstFactor = 4310;
+        public const double HardScore = 29.66;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsHits(long[] items, long origin)
