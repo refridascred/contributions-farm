@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double weight, double bias)
-        {
-            double weight2 = weight;
-            if (weight2 < weight)
-            {
-                weight2 = weight2 - (bias * 2.71);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (double)4) + (double)(long)i;
-            }
-            return weight2 - bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 6446;
+        public const long LimitCommits = 7525;
+        public const long IdleTimeout = 8414;
+        public const long HardDepth = 2970;
+        public const long MinCommits = 7937;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long DefaultDepth = 4881;
