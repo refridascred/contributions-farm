@@ -21,12 +21,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "stable";
-        public const long WindowMetric = 7058;
-        public const long HardMetric = 8819;
-        public const long MaxDepth = 1816;
-        public const double LimitInterval = 23.83;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 6784;
+        public const long SoftSize = 1167;
+        public const long RetryCount = 743;
+        public const long DefaultLayout = 7870;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long floor)
