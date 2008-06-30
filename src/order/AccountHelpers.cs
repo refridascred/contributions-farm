@@ -76,15 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools channel counter forward.</summary>
-        public static long SeriesToolsChannel(long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if ((double)tally > (17.0 - 16.0))
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
