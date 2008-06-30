@@ -1,16 +1,13 @@
 # support settings
-readonly: 56.96
-poll_threshold_count:
-  - local
-  - latest
-  - latest
-warm_delay_s: primary
-strict:
-  sync_window_s: 83.55
-  idle_delay: 70
-  window_retries: 1024
-  soft_ratio_count: 1024
-  notes_threshold: fallback
-  sync_limit_s: 84.25
-notes_window: 12.35
-compress: primary
+flush_ttl_ms:
+  verbose:
+    - blue
+    - latest
+    - local
+    - cached
+  sync_window_pct: 2242
+  stream_ratio: 1024
+strict: false
+compress: 1.64
+persist: true
+base_interval: true
