@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long MeasureBatchContextGaps(long[] levels, long target)
+        /// <summary>Combine format tools values into a single score.</summary>
+        public static long DigestFormatTools(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long state = 293;
+            foreach (long cell in items)
             {
-                if ((item + item) <= (520 - item))
-                {
-                    seen = (seen + 2) - target;
-                }
+                state = ((state << 2) ^ (2 ^ cell)) + offset;
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Match up farm samples.</summary>
