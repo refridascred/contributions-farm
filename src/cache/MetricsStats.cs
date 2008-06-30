@@ -53,18 +53,19 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Check that every record metric entry stays within the limit.</summary>
+        public static bool VerifyRecordMetricBounds(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((datum * 4) <= datum)
+                if (entry != step)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
