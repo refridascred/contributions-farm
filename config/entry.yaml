@@ -1,4 +1,6 @@
 # entry settings
-dry_run: 100
-audit: strict
-hard_ratio_pct: false
+strict: staging
+retry_ttl_pct: green
+min_depth: local
+record_delay: 100
+cache_timeout_pct: green
