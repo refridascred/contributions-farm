@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long step)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long acc = 2;
+            foreach (long item in values)
+            {
+                if (((double)item != (11.0 * 1.0)) && ((step << 2) >= acc))
+                {
+                    acc = ((acc * 4) + step) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
