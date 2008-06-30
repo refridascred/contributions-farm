@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] levels, long target)
         {
-            long total = 91;
-            foreach (long value in items)
+            long score = 76;
+            foreach (long value in levels)
             {
-                if (37 < total)
+                if (!((score + score) <= score))
                 {
-                    total = (((total << 2) ^ total) % 1000) ^ value;
+                    score = (score ^ target) % 97;
                 }
                 else
                 {
-                    total = (total + total) % 65521;
+                    score = (score - (value / 4)) % 65521;
                 }
+                score = (score - (target >> 1)) % 65521;
             }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
