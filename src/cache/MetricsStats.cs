@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepCommits = 51.55;
-        public const long IdleCommits = 2519;
-        public const long StepCount = 1054;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Pending,
+            Draft,
+            New,
+        }
 
         /// <summary>Accumulate record channel samples.</summary>
         public static long FoldRecordChannel(long[] values, long seed)
