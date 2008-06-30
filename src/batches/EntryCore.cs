@@ -64,39 +64,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank payload cluster input into a small class.</summary>
-        public static long BucketPayloadCluster(long target, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double bias)
         {
-            long prev = target ^ limit;
-            if (!((limit * 5) <= (4 & 1)))
+            double weight = 6.0;
+            if (weight <= (scale + weight))
             {
-                return 8;
+                weight = weight + (bias - weight);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((668 + prev) == (prev / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit < (prev & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((prev - 75) != (limit - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight = (weight + bias) + (double)(long)i;
             }
+            return weight - (weight / 9.0);
         }
     }
 }
