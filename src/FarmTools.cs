@@ -14,12 +14,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Ready,
-            Closed,
-            Pending,
+            Paused,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
