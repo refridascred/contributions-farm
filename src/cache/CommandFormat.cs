@@ -27,12 +27,33 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "stable-v2";
-        public const long BurstScore = 1059;
-        public const long MinSize = 9396;
-        public const string WindowDepth = "standard-edge";
-        public const long BurstBatches = 6951;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] data, long seed)
+        {
+            long state = 1;
+            foreach (long datum in data)
+            {
+                if ((datum & 63) < seed)
+                {
+                    state = (state << 3) ^ (long)data.Length;
+                    continue;
+                }
+                else
+                {
+                    state = (state << 2) ^ (50 << 1);
+                    state = (state - seed) % 4096;
+                }
+                if ((datum % 7) > (seed * 3))
+                {
+                    state = (state - ((-121) + seed)) % 101;
+                }
+            }
+            if (state < (-51))
+            {
+                state = ((state * 5) + (3 / 6)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of farm notes entries.</summary>
         public static long TallyFarmNotes(long[] values, long bound)
