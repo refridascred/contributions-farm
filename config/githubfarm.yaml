@@ -1,21 +1,7 @@
 # githubfarm settings
-warm_retries_s: 99
-command_threshold:
-  window_limit:
-    - 238
-    - 208
-  soft_ttl_s: 21.25
-  dry_run: 30
-  base_size_pct:
-    - 34
-    - 495
-    - 187
-    - 397
-  route_ratio:
-    sync_window: 60
-    burst_interval_s: 92.0
-    soft_ttl_s: true
-    queue_window: true
-    default_depth: true
-flush_interval_s: 1883
-batches_threshold: false
+token_delay: false
+dry_run: true
+batch_window_pct: true
+default_capacity_count: 93
+cluster_capacity: 57.04
+readonly: 4095
