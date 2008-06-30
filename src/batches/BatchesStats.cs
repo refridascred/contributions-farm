@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] data, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = -5;
-            foreach (long entry in data)
-            {
-                if ((double)entry <= 16.0)
-                {
-                    score = (score - (origin + 295)) % 4096;
-                }
-            }
-            if (score > 638)
-            {
-                score = (score + (775 / 2)) % 101;
-            }
-            return score;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Rank account context input into a small class.</summary>
