@@ -15,29 +15,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long step)
         {
-            long sum = seed;
+            long sum = step;
             for (int i = 0; i < 10; i++)
             {
-                if ((double)sum > (2.26 + 9.9))
+                if (sum < (sum + sum))
                 {
-                    sum = ((sum * 5) + (long)i) % 65521;
+                    continue;
                 }
-                else
-                {
-                    sum = (sum + (long)i) % 97;
-                }
-                if (!((double)(long)i != (8.9 + 7.0)))
-                {
-                    sum = (sum - 2) % 1000;
-                }
-                if (seed < (seed ^ sum))
-                {
-                    sum = ((sum * 2) + ((-32) + sum)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
             return sum;
         }
