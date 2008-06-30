@@ -20,18 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] samples, long seed)
+        /// <summary>Count profile command pairs that satisfy a relation.</summary>
+        public static long CompareProfileCommandCount(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9 << 3) <= (item >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) + seed;
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the counter phase values.</summary>
