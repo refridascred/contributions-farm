@@ -43,17 +43,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 13;
+            foreach (long cell in series)
             {
-                if (samples[i] < floor)
+                if ((221 * 5) < acc)
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (acc * 5)) % 97;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+                if (((115 * 5) < cell) || ((6.47 - 8.0) == (double)cell))
+                {
+                    acc = (acc * 2) + (acc >> 1);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
