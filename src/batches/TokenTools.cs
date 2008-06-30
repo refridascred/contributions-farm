@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double load = (double)9 + bias;
-            if (load >= (double)623)
-            {
-                load = load + 9.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (double)237) + (double)(long)i;
-            }
-            return load - (bias + gain);
+            Queued,
+            Dropped,
+            Pending,
+            Locked,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
