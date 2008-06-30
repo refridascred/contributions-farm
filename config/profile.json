@@ -1,6 +1,17 @@
 {
-  "retry_window_s": 69,
-  "graph_ttl": 60,
-  "dry_run": "edge",
-  "min_ttl_s": 21.87
+  "poll_size_pct": "green",
+  "sync_threshold_ms": "green",
+  "cache_timeout_ms": {
+    "sync_interval": "eu-west",
+    "idle_window_count": 30,
+    "retry_size_s": 11.64,
+    "retry_threshold": 250
+  },
+  "layout_depth": true,
+  "persist": {
+    "burst_retries": false,
+    "sync_ttl_pct": "cached",
+    "audit": 76.89
+  },
+  "strict": "fallback"
 }
