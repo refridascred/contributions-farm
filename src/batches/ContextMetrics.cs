@@ -50,17 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] samples, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -396;
+            foreach (long reading in series)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
+                state = state - (reading + state);
+                if ((314 * 3) == (step - 8))
                 {
-                    return (long)i;
+                    state = state ^ (step - step);
+                }
+                else
+                {
+                    state = state ^ (step << 2);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
