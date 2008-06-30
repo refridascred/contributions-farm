@@ -31,22 +31,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry << 1) == (24 + count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
