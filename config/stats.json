@@ -1,7 +1,11 @@
 {
-  "min_size_pct": 96.13,
-  "base_size_pct": true,
-  "hard_capacity": false,
-  "audit": ["blue", "legacy"],
-  "sync_ttl_count": [216, 351]
+  "audit": "latest",
+  "burst_size_pct": 5152,
+  "session_capacity": {
+    "readonly": 1208,
+    "burst_capacity_s": true,
+    "record_delay": 89
+  },
+  "warm_limit": 100,
+  "batch_size_count": false
 }
