@@ -1,8 +1,6 @@
-id,score,rank
-1,primary,85.1
-2,standard,cached
-3,64.91,8.93
-4,stable,252
-5,blue,76.77
-6,45.84,76
-7,legacy,9.23
+id,owner,ratio,rank
+1,staging,55.23,846
+2,92.14,legacy,41.0
+3,624,518,cached
+4,720,19.21,223
+5,cached,green,fallback
