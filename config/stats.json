@@ -1,18 +1,7 @@
 {
-  "idle_retries_ms": false,
-  "context_delay": {
-    "readonly": 37,
-    "support_timeout": {
-      "cache_interval_count": 26.76,
-      "hard_capacity": 64,
-      "retry_retries_s": true,
-      "max_timeout_pct": "latest"
-    },
-    "verbose": 500,
-    "min_interval": "standard",
-    "notes_retries": 8998
-  },
-  "contributi_depth": "standard",
-  "enabled": 60,
-  "sync_interval_ms": "strict"
+  "report_size": 57.29,
+  "poll_window_ms": "green",
+  "default_limit_pct": false,
+  "audit": false,
+  "dry_run": 3189
 }
