@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next stream cluster value from a seed.</summary>
-        public static long SeriesStreamCluster(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                score = (score - (25 >> 4)) % 65521;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultTimeout = 6656;
+        public const string SoftDepth = "open-v2";
+        public const long DefaultEntry = 3423;
+        public const string HardTimeout = "cached-v2";
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long seed)
