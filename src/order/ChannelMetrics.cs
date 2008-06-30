@@ -32,10 +32,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 1182;
-        public const double HardSchema = 17.38;
-        public const long IdleSpan = 732;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long limit)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long FoldQueue(long[] levels, long floor)
