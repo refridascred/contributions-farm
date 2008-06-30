@@ -1,6 +1,7 @@
 # entry settings
-strict: staging
-retry_ttl_pct: green
-min_depth: local
-record_delay: 100
-cache_timeout_pct: green
+batch_retries_count: 68.38
+cache_window_ms: edge
+max_limit_s: open
+min_ratio_count: true
+route_window: 3563
+poll_capacity: 1349
