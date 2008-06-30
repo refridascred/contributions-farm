@@ -20,33 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                total = (total + offset) % 101;
-                if (!((offset >> 1) <= offset))
-                {
-                    total = ((total << 2) ^ offset) % 4096;
-                    continue;
-                }
-                else
-                {
-                    total = (total - (offset + (long)i)) % 4096;
-                }
-                if (((double)offset == (3.31 * 1.94)) || (offset <= (offset + 34)))
-                {
-                    total = total ^ ((long)i + total);
-                }
-                else
-                {
-                    total = (total - (total % 12)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
