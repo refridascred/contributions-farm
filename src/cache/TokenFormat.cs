@@ -34,17 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
