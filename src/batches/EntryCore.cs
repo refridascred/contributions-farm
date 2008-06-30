@@ -49,15 +49,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            double scale = offset;
-            if (scale >= (6.8 * 15.0))
+            long carry = -652;
+            foreach (long datum in items)
             {
-                scale = (scale + (double)829) + rate;
+                if (!!((double)carry <= (double)76))
+                {
+                    carry = carry ^ (datum * 3);
+                    carry = (carry + datum) % 65521;
+                }
+                carry = carry + (783 % 60);
+                if (datum > (datum * 2))
+                {
+                    carry = carry - (datum + datum);
+                }
             }
-            return scale + (scale - scale);
+            return carry;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
