@@ -57,15 +57,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                mix = mix + mix;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
