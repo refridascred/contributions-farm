@@ -14,11 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinInterval = 2049;
-        public const double IdleCluster = 18.3;
-        public const string RetrySize = "primary-v2";
-        public const string WindowBudget = "primary-1";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 8692;
+        public const double BaseMetrics = 45.98;
+        public const long LimitMetrics = 5213;
+        public const long BatchMetrics = 9372;
+        public const double IdleMetrics = 84.63;
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
