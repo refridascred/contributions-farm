@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Combine payload channel values into a single score.</summary>
+        public static long ScorePayloadChannel(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 442;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (((mix << 2) ^ (5 / 5)) % 101) - origin;
+                mix = ((mix << 3) ^ (sample + 80)) % 101;
+                if ((mix + 441) > (mix / 2))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mix > 0)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
