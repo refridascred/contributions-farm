@@ -1,13 +1,5 @@
 {
-  "channel_depth": "open",
-  "retry_size_pct": 62,
-  "default_depth": 17.18,
-  "persist": {
-    "burst_depth": "legacy",
-    "soft_interval_pct": "local",
-    "max_capacity": false,
-    "poll_size": "latest",
-    "idle_retries": "blue"
-  },
-  "burst_ratio": 2.29
+  "compress": false,
+  "sync_capacity_count": 75.63,
+  "max_size_pct": "open"
 }
