@@ -1,6 +1,9 @@
-id,level,count,owner,token
-1,blue,25.72,latest,81.14
-2,blue,80.4,edge,39.95
-3,25.95,90.02,open,cached
-4,131,98.52,latest,48
-5,fallback,8.39,staging,primary
+id,ratio,owner,state
+1,646,green,168
+2,590,staging,690
+3,428,green,edge
+4,643,green,19.44
+5,298,84.98,6.33
+6,893,local,latest
+7,121,73.38,887
+8,83.14,404,812
