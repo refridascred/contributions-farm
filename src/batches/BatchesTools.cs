@@ -28,11 +28,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinLevel = 195;
+        public const long DefaultStats = 9620;
+        public const double BatchStats = 23.98;
     }
 }
