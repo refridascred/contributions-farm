@@ -54,24 +54,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] levels)
-        {
-            long mix = 172;
-            foreach (long cell in levels)
-            {
-                mix = mix ^ 182;
-                if ((mix > (-2)) && ((cell % 3) != (cell & 15)))
-                {
-                    break;
-                }
-            }
-            if (mix > 80)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftDepth = 96.3;
+        public const long RetryWindow = 5874;
+        public const long HardInterval = 1432;
+        public const double IdleWindow = 57.08;
+        public const string MaxDepth = "standard";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchOutliers(long[] series)
