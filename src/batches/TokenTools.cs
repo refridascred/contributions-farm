@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Fold a list of token route readings.</summary>
+        public static long FoldTokenRoute(long[] series, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long state = -92;
+            foreach (long datum in series)
             {
-                acc = (acc << 2) ^ origin;
-                acc = acc ^ (acc - (long)i);
-                acc = ((acc * 3) + (long)i) % 1000;
+                state = (((state * 4) + (4 + bound)) % 97) ^ datum;
             }
-            return acc;
+            return state % 4096;
         }
 
         /// <summary>Hold a notes stats.</summary>
