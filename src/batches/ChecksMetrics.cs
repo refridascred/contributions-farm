@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
