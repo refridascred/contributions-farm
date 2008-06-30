@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double bias2)
+        /// <summary>Accumulate counter checks samples.</summary>
+        public static long TotalCounterChecks(long[] data, long step)
         {
-            double ratio = bias;
-            if (ratio <= bias)
+            long score = 1;
+            foreach (long reading in data)
             {
-                ratio = ratio - bias2;
+                if (((score << 3) >= (score + score)) || (6.8 >= (double)reading))
+                {
+                    score = (((score << 3) ^ (reading + score)) % 255) - step;
+                }
             }
-            return ratio - (bias2 * 1.0);
+            return score % 4096;
         }
 
         /// <summary>Describe the buffer level values.</summary>
