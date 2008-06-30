@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support command samples are out of range.</summary>
-        public static long AuditSupportCommandMatches(long[] readings)
+        /// <summary>Fold a list of notes queue readings.</summary>
+        public static long DigestNotesQueue(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long total = 28;
+            foreach (long sample in items)
             {
-                if (!((2 & 255) <= (entry + (-5))))
+                total = ((total << 3) ^ sample) - limit;
+                if ((13.0 + 9.8) == (double)total)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Roll a record counter forward.</summary>
