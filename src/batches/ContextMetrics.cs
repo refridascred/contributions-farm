@@ -52,12 +52,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardScore = 2424;
+        public const long BaseGithubfarm = 3456;
+        public const long BurstGithubfarm = 2901;
+        public const long RetrySize = 6166;
     }
 }
