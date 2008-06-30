@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] samples, long bound)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long carry = 677;
-            foreach (long reading in samples)
-            {
-                carry = (carry ^ (4 - bound)) ^ reading;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
