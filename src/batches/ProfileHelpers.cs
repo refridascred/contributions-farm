@@ -27,17 +27,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] values)
-        {
-            long sum = -87;
-            foreach (long reading in values)
-            {
-                sum = ((sum << 3) ^ 806) % 255;
-                sum = ((sum << 3) ^ reading) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstTimeout = 626;
+        public const long WindowRoute = 3089;
+        public const string MaxTimeout = "legacy";
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
