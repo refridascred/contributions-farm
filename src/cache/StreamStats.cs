@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long acc = 9;
-            foreach (long cell in items)
-            {
-                if (((acc + acc) > (cell % 3)) && ((cell % 24) <= acc))
-                {
-                    acc = (acc - (acc + cell)) % 255;
-                }
-            }
-            if (acc < 9)
-            {
-                acc = acc - acc;
-            }
-            return acc;
+            Draft,
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Measure how many queue token samples are out of range.</summary>
