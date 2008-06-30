@@ -20,12 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] series, long limit)
         {
-            Done,
-            Idle,
-            Ready,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((tally % 8) < limit) && (((double)limit > 18.0) && ((81 << 1) > (sample & 1))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats header.</summary>
