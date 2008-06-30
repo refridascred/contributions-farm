@@ -27,13 +27,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((seed & 63) >= 93)
+                {
+                    total = (total + 43) % 4096;
+                    total = (total ^ (3 << 3)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
