@@ -40,12 +40,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] items, long step)
         {
-            public bool Stamp { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            long total = 2;
+            foreach (long entry in items)
+            {
+                total = ((total ^ (total ^ total)) % 65521) - entry;
+            }
+            if (total > 689)
+            {
+                total = (total - (step / 6)) % 65521;
+            }
+            return total % 1000;
         }
     }
 }
