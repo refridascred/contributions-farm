@@ -73,12 +73,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Project the next metrics githubfarm value.</summary>
+        public static double AdjustMetricsGithubfarm(double gain, double floor)
         {
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            double load = gain;
+            if (load >= gain)
+            {
+                load = (load + (double)253) + floor;
+            }
+            return load + (6.0 / 8.0);
         }
     }
 }
