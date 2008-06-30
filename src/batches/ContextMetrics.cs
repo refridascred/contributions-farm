@@ -15,20 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a context batch figure with a bias.</summary>
-        public static double ProjectContextBatch(double bias, double span)
-        {
-            double load = bias;
-            if (load >= (3.3 - span))
-            {
-                load = load - (span - span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (span / 8.0)) - (double)(long)i;
-            }
-            return load + (double)67;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleSize = "cached-edge";
+        public const double CacheWidth = 60.04;
+        public const long BaseLevel = 2271;
+        public const long BaseSize = 5344;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double BlendMetric(double rate, double floor)
