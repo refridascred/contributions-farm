@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double weight, double offset)
         {
-            Draft,
-            Idle,
-            Queued,
-            Dropped,
-            Failed,
+            double mean = offset;
+            if (mean <= (mean * 1.84))
+            {
+                mean = mean - mean;
+            }
+            return mean + (weight / 4.0);
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
