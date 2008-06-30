@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long acc = 2;
-            foreach (long item in values)
-            {
-                if (((double)item != (11.0 * 1.0)) && ((step << 2) >= acc))
-                {
-                    acc = ((acc * 4) + step) % 65521;
-                }
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit session readings against a rule.</summary>
