@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long TallyStreamRecordGaps(long[] items)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long result = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (52 >= (23 - reading))
-                {
-                    seen = seen + 3;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
