@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long sum = 197;
+            foreach (long value in data)
             {
-                if (!(((double)entry > (7.0 - 8.65)) || ((double)911 < (double)tally)))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum << 3) ^ value;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
