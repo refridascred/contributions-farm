@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (origin > 51)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (152 >= floor)
                 {
-                    if ((data[i] ^ data[j]) < 14)
+                    return 2;
+                }
+                else
+                {
+                    if (((17.0 + 16.0) > (double)origin) || (floor > (origin * 5)))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor >= 0.8)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a stream entry.</summary>
