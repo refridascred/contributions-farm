@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
+            Retry,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a queue record.</summary>
