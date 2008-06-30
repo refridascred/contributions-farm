@@ -14,18 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (!((item ^ (long)data.Length) < seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double drift = bias;
+            return drift + gain;
         }
 
         /// <summary>Define context limits and defaults.</summary>
