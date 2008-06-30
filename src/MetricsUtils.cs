@@ -45,14 +45,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Closed,
-            Ready,
-            Stale,
-            Queued,
-            Pending,
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a context profile counter forward.</summary>
