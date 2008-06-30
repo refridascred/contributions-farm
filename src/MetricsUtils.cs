@@ -64,18 +64,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long bound, long offset)
         {
-            long anchor = 20;
-            foreach (long value in data)
+            if (!((double)bound > (double)3))
             {
-                if ((anchor - anchor) != (11 + value))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= (6.97 - 6.61))
                 {
-                    anchor = (anchor ^ (anchor - 36)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 3) >= (offset + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor % 4096;
         }
     }
 }
