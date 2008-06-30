@@ -1,11 +1,8 @@
 {
-  "default_ratio_pct": "cached",
-  "verbose": "primary",
-  "retry_window_count": "legacy",
-  "max_window_s": [270, 312, 265, 96],
-  "base_ttl_ms": {
-    "counter_ratio": [336, 418, 321],
-    "base_depth": 7078,
-    "max_retries": "blue"
-  }
+  "idle_ratio_pct": "standard",
+  "report_ratio": "edge",
+  "burst_ttl": 7282,
+  "editor_ttl": 52.87,
+  "schema_timeout": 30,
+  "enabled": false
 }
