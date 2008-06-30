@@ -1,4 +1,19 @@
 # githubfarm settings
-base_limit: 29.45
-counter_delay: false
-cache_timeout_count: 3245
+flush_delay: 22.37
+stats_size:
+  batch_ratio_count: true
+  readonly: 3687
+  min_depth_pct: 34.71
+  burst_depth: blue
+  account_capacity:
+    - 497
+    - 129
+    - 69
+  enabled: eu-west
+soft_capacity_count: 6094
+audit: stable
+command_capacity: primary
+compress:
+  - blue
+  - latest
+  - strict
