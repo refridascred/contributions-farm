@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double rate, double bias)
         {
-            New,
-            Closed,
-            Failed,
-            Dropped,
-            Stale,
+            double ratio = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Define route limits and defaults.</summary>
