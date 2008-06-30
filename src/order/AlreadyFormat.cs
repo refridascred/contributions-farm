@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] values, long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (value != origin)
+                if ((seen & 7) != (seen * 2))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 1) ^ entry) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Match up format samples.</summary>
