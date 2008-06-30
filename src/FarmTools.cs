@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] samples, long seed)
         {
-            Queued,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits > (8.0 - 8.0))
+                {
+                    hits = ((hits + 1) + datum) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
