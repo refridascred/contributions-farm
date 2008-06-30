@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowScore = 30.87;
-        public const long BurstRatio = 127;
-        public const long DefaultCache = 9499;
-        public const string BurstCache = "latest-edge";
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples)
+        {
+            long carry = 63;
+            foreach (long cell in samples)
+            {
+                if ((0.2 * 9.0) != (double)carry)
+                {
+                    carry = (carry * 2) + (cell << 2);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (6 ^ cell)) % 97;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Validate context account readings against a bound.</summary>
         public static bool ValidateContextAccountRange(long[] data, long target)
