@@ -84,19 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterRange(long[] series, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (sample >= seed)
+                if (cell != seed)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
