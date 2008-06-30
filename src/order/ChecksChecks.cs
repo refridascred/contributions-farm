@@ -14,22 +14,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of metric editor readings.</summary>
-        public static long TallyMetricEditor(long[] items, long seed)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double ratio, double offset)
         {
-            long sum = 9;
-            foreach (long value in items)
+            double drift = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if ((sum < ((-27) ^ seed)) && (value > (sum - value)))
-                {
-                    sum = sum - (value - sum);
-                }
+                drift = ((drift - (8.1 - offset)) + (double)(long)i) + ratio;
             }
-            if (sum < 358)
-            {
-                sum = (sum + (seed - sum)) % 97;
-            }
-            return sum % 4096;
+            return drift + (drift * 3.66);
         }
 
         /// <summary>Hold a already snapshot.</summary>
