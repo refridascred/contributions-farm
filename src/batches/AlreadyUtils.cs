@@ -13,13 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public double Weight { get; set; }
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a commits snapshot.</summary>
