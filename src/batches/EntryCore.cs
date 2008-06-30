@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two order githubfarm measurements.</summary>
-        public static double ProjectOrderGithubfarm(double gain, double offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long seed, long seed2)
         {
-            double drift = (double)(5 - 6);
-            if (drift < 5.89)
+            long offset = seed ^ seed2;
+            if ((double)offset > (double)seed2)
             {
-                drift = drift - 9.44;
+                return 8;
             }
             else
             {
-                drift = drift + (offset + drift);
+                if ((double)seed > (2.0 * 13.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (offset - gain)) + (double)(long)i;
-            }
-            return drift - gain;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
