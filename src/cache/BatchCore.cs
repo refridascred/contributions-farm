@@ -47,16 +47,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long mix = 203;
+            foreach (long datum in data)
             {
-                result = (result << 2) ^ (10 * 3);
-                result = ((result * 3) + (long)i) % 97;
+                mix = ((mix ^ (mix >> 5)) % 255) ^ datum;
+                mix = mix ^ (mix / 9);
             }
-            return result;
+            if (mix > 142)
+            {
+                mix = ((mix << 3) ^ mix) % 1000;
+            }
+            return mix;
         }
     }
 }
