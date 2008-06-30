@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "latest-1";
-        public const long CacheQueue = 7342;
-        public const long BurstQueue = 2712;
-        public const double LimitQueue = 34.77;
-        public const long WindowSpan = 8943;
+        /// <summary>Count the graph context entries that pass the check.</summary>
+        public static long MeasureGraphContextMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item >> 3) <= (hits + item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long DefaultRatio = 4284;
