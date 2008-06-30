@@ -38,11 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double rate, double span)
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            double ratio = (double)(8 / 4);
+            if (ratio < ratio)
+            {
+                ratio = (ratio - (double)762) - rate;
+            }
+            return ratio + (span * 16.0);
         }
     }
 }
