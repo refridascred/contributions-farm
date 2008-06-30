@@ -1,5 +1,22 @@
 # githubfarm settings
-cluster_threshold: 5594
-retry_window_pct: true
-batch_window: 31.98
-profile_retries: green
+stream_timeout:
+  idle_ratio_pct: stable
+  hard_retries: local
+  burst_window:
+    notes_retries: 1276
+    burst_window_pct: false
+    idle_window_count: true
+  cache_capacity: open
+  base_retries_ms: latest
+  readonly: 60
+poll_limit_count: staging
+poll_limit:
+  - 199
+  - 276
+buffer_ttl: standard
+persist: eu-west
+farm_timeout:
+  - 341
+  - 147
+  - 90
+  - 81
