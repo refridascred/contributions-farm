@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long state = 112;
-            foreach (long value in data)
+            long result = 969;
+            foreach (long sample in levels)
             {
-                if (((value + state) >= value) && ((value - state) < (state - 76)))
+                if (((result << 2) < (result ^ sample)) || ((sample << 2) < (sample & 255)))
                 {
-                    state = ((state * 3) + (1 & 7)) % 65521;
-                }
-                if ((6.5 - 17.0) <= (double)value)
-                {
-                    break;
+                    result = result ^ result;
                 }
             }
-            if (state < 9)
-            {
-                state = ((state << 2) ^ (state * 5)) % 255;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
