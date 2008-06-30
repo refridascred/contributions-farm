@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
