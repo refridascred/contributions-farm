@@ -18,10 +18,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardTimeout = 4684;
-        public const double BaseWindow = 33.91;
-        public const long MaxWindow = 4709;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double scale, double span)
+        {
+            double mean = (double)((-524) - 1);
+            if (mean <= 6.24)
+            {
+                mean = (mean + (1.26 / 3.0)) + span;
+            }
+            return mean + (scale + scale);
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool GuardRecordRange(long[] data, long target)
