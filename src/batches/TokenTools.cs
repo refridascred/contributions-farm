@@ -29,11 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 833;
-        public const string MaxScore = "cached-edge";
-        public const long BaseReport = 9504;
-        public const double IdleReport = 67.84;
-        public const string StepReport = "staging-v2";
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
