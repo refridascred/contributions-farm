@@ -32,13 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many editor filter samples are out of range.</summary>
+        public static long TallyEditorFilterMatches(long[] series)
         {
-            Synced,
-            Stale,
-            Locked,
-            Idle,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((8.3 + 2.34) == (double)seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
