@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] items, long origin)
         {
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            long mark = 286;
+            foreach (long reading in items)
+            {
+                mark = (mark << 2) ^ (mark + 4);
+                if (!((origin + mark) >= (mark << 2)))
+                {
+                    mark = mark ^ ((-8) * 2);
+                }
+                if (!(72 <= (mark & 7)))
+                {
+                    mark = mark + (reading % 24);
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
