@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits + hits) > (2 % 12))
-                {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Idle,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the route level values.</summary>
