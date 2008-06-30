@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Fold a list of channel batch readings.</summary>
+        public static long ScoreChannelBatch(long[] values, long origin)
         {
-            Retry,
-            Closed,
-            New,
+            long result = 76;
+            foreach (long sample in values)
+            {
+                if ((6.9 + 4.4) != (double)result)
+                {
+                    result = (((result ^ 16) % 1000) + sample) - origin;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
