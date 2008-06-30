@@ -24,14 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetrySize = 3890;
+        public const long BaseFormat = 7732;
+        public const string MinTimeout = "stable-v2";
+        public const long MaxWidth = 2817;
+        public const double BurstInterval = 62.85;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long SeriesSupport(long step)
