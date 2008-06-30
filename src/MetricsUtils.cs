@@ -36,11 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long step)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
