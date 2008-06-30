@@ -41,13 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long origin)
         {
-            public string Label { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
