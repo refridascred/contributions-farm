@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next contributi cache value.</summary>
-        public static double BlendContributiCache(double weight, double floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long bound)
         {
-            double bias = (double)(8 << 2);
-            if (bias >= weight)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                bias = bias + (floor * 7.0);
+                carry = carry + 6;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (bias + 5.34);
+            return carry;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
