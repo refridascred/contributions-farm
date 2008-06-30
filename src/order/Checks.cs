@@ -40,16 +40,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the report token series from a seed.</summary>
-        public static long IterateReportToken(long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total + total;
-                total = ((total * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
