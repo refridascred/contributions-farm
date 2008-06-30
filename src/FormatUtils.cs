@@ -33,18 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] values, long origin)
+        /// <summary>Locate a contributi stats reading by value.</summary>
+        public static long FindContributiStatsIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((entry + hits) == (756 + entry)))
+                if ((items[i] >= offset) && ((items[i] % 5) != 0))
                 {
-                    hits = (hits + 1) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the report status values.</summary>
