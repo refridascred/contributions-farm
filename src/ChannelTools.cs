@@ -31,21 +31,13 @@ namespace Common.Utilities
             return rate - (bias / 6.0);
         }
 
-        /// <summary>Compare every pair of token layout readings.</summary>
-        public static long PairTokenLayoutCount(long[] data)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            New,
+            Ready,
         }
     }
 }
