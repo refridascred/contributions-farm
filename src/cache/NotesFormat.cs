@@ -36,19 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series, long limit)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long sum = 506;
-            foreach (long value in series)
-            {
-                sum = (sum - (value << 2)) % 101;
-            }
-            if (sum > 891)
-            {
-                sum = ((sum << 3) ^ limit) % 4096;
-            }
-            return sum % 1000;
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
