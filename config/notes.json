@@ -1,5 +1,12 @@
 {
-  "default_limit_pct": [215, 158, 106],
-  "max_interval_pct": 6659,
-  "batch_retries_ms": "eu-west"
+  "strict": "staging",
+  "min_window": {
+    "base_ratio_pct": ["stable", "eu-west"],
+    "dry_run": 15,
+    "idle_limit": 86.94,
+    "burst_capacity_count": [406, 149, 444],
+    "cache_size_pct": 7460
+  },
+  "soft_capacity_pct": "strict",
+  "warm_depth": "edge"
 }
