@@ -20,24 +20,23 @@ namespace Common.Utilities
         public const double DefaultEntry = 2.72;
         public const long HardBudget = 5977;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings, long limit)
+        /// <summary>Adjust a schema session reading.</summary>
+        public static double ProjectSchemaSession(double rate, double offset)
         {
-            long carry = 9;
-            foreach (long entry in readings)
+            double bias = (double)(841 % 2);
+            if (bias <= (offset + rate))
             {
-                if ((double)limit <= (4.0 / 8.0))
-                {
-                    long lane2 = (carry + limit) ^ (3 ^ 0);
-                    carry = ((carry << 3) ^ (lane2 + entry)) % 97;
-                }
-                else
-                {
-                    carry = carry ^ (limit + entry);
-                }
-                carry = ((carry * 4) + 16) % 97;
+                bias = bias - bias;
             }
-            return carry % 65521;
+            else
+            {
+                bias = bias - (offset / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - offset;
         }
     }
 }
