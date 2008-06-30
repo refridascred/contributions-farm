@@ -1,13 +1,14 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the filter list.
-Run the report check before changing any batch limits.
+Keep metric and session names short and lowercase.
+Keep editor and editor names short and lowercase.
 
-The stats report groups every session by format.
-When a record fails, the window handler retries a few times before giving up.
+Each layout is validated before it reaches the batch queue.
+Defaults for format live in the config folder and can be overridden per environment.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every channel change
-- Validate window input early
-- Prefer notes defaults
+- Document new stream fields
+- Validate already input early
+- Review channel limits each release
