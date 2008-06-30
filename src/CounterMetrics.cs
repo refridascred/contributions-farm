@@ -31,18 +31,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels, long floor)
+        /// <summary>Classify a metric payload pair into a bucket.</summary>
+        public static long RankMetricPayload(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long span = floor + bound;
+            if ((floor <= (839 ^ bound)) && ((double)span == (double)(-28)))
             {
-                if ((matches % 2) <= (floor + cell))
+                return 3;
+            }
+            else
+            {
+                if ((span + floor) == (floor - bound))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (((7.55 - 4.53) <= (double)bound) && (bound > (bound % 64)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + (-42)) == (1 << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
