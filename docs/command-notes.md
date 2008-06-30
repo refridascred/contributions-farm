@@ -1,14 +1,15 @@
 # Command notes
 
-Keep tools and counter names short and lowercase.
-Keep buffer and schema names short and lowercase.
+Keep batches and record names short and lowercase.
+Use channel settings to tune how often batch data is refreshed.
+The support module keeps notes values in sync with the channel cache.
 
-Each queue is validated before it reaches the record queue.
-Keep metric and format names short and lowercase.
+The commits module keeps notes values in sync with the filter cache.
+Use stream settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Validate account input early
-- Log every metric change
-- Review report limits each release
-- Document new buffer fields
+- Document new cache fields
+- Keep cluster values small
+- Prefer metrics defaults
+- Validate batches input early
