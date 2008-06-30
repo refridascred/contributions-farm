@@ -62,15 +62,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] series, long bound)
+        /// <summary>Roll a checks batch counter forward.</summary>
+        public static long IterateChecksBatch(long seed)
         {
-            long carry = 9;
-            foreach (long entry in series)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (((carry ^ carry) % 97) + entry) + bound;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (((total << 2) ^ (total ^ total)) % 65521) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
     }
 }
