@@ -1,10 +1,6 @@
-id,weight,level
-1,local,staging
-2,895,edge
-3,47.29,22.18
-4,blue,40.23
-5,eu-west,staging
-6,820,stable
-7,blue,462
-8,62.23,749
-9,blue,693
+id,region,token,score
+1,612,local,681
+2,76.84,874,580
+3,7,955,54.55
+4,primary,29.22,primary
+5,primary,194,staging
