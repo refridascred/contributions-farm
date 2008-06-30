@@ -1,7 +1,8 @@
 {
-  "report_size": 57.29,
-  "poll_window_ms": "green",
-  "default_limit_pct": false,
-  "audit": false,
-  "dry_run": 3189
+  "already_window": "local",
+  "idle_retries_ms": 61.01,
+  "persist": [462, 398],
+  "min_ratio_pct": "legacy",
+  "enabled": 86.49,
+  "default_ratio_count": "legacy"
 }
