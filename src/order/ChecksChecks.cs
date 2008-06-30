@@ -19,17 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] items, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 737;
+            foreach (long item in samples)
             {
-                if (items[i] == offset)
+                for (int i = 0; i < 11; i++)
                 {
-                    return (long)i;
+                    mix = (((mix * 3) + (bound << 2)) % 255) + (long)i;
+                    mix = (mix + (item << 3)) % 65521;
+                }
+                if (((mix >> 5) < (mix << 3)) || ((9.8 + 3.45) >= (double)bound))
+                {
+                    mix = ((mix * 5) + ((long)samples.Length % 5)) % 97;
                 }
             }
-            return -1;
+            if (mix > (-9))
+            {
+                mix = mix ^ (bound * 5);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of metrics format readings.</summary>
