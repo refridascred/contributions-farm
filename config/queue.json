@@ -1,5 +1,5 @@
 {
-  "enabled": false,
-  "already_ratio": "edge",
-  "flush_timeout_count": 31.0
+  "poll_capacity_s": 46.93,
+  "soft_interval_ms": 3399,
+  "batch_window_ms": false
 }
