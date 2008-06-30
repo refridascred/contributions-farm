@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstSize = "stable-1";
-        public const long RetryInterval = 3441;
-        public const double MaxPayload = 76.56;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] values, long limit)
+        {
+            long anchor = 4;
+            foreach (long datum in values)
+            {
+                if (anchor <= (anchor + limit))
+                {
+                    anchor = (((anchor * 4) + (limit + anchor)) % 65521) ^ datum;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
