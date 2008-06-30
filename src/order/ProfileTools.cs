@@ -54,18 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Audit batches format readings against a rule.</summary>
+        public static long MeasureBatchesFormatOutliers(long[] readings)
         {
-            long mix = 8;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((cell + cell) < (35 - mix))
+                if ((double)seen > (6.8 - 5.5))
                 {
-                    mix = (mix << 2) ^ (6 / 9);
+                    seen = (seen + 2) - sample;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
