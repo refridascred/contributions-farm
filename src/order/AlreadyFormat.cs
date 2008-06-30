@@ -63,11 +63,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
