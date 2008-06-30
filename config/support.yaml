@@ -1,5 +1,21 @@
 # support settings
-burst_limit: open
-min_delay_ms: edge
-entry_ratio: primary
-metrics_capacity: 4647
+cache_threshold_ms: 9928
+cache_retries: standard
+buffer_capacity:
+  sync_delay_s: false
+  enabled: 326
+  filter_ratio:
+    - 280
+    - 374
+    - 476
+    - 144
+  min_ratio: 4782
+  warm_ratio_s:
+    graph_timeout: blue
+    hard_retries: false
+    flush_depth_count: 250
+    max_threshold: primary
+  batch_ratio: 72
+warm_delay_pct: 30
+strict: 13.43
+compress: 74.66
