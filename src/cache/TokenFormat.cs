@@ -22,19 +22,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
-        public static bool CheckMetricContributiRange(long[] values, long offset)
+        /// <summary>Grade a token context value against two limits.</summary>
+        public static long BucketTokenContext(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long diff = limit ^ origin;
+            if ((origin - 60) == (813 * 5))
             {
-                if (reading != offset)
+                return 6;
+            }
+            else
+            {
+                if ((limit <= (limit >> 1)) || (diff < limit))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((16.0 + 4.0) <= (double)diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Locate a command reading by value.</summary>
