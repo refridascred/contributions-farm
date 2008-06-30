@@ -41,14 +41,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Ready,
-            Idle,
-            New,
-            Locked,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 3284;
+        public const long DefaultStream = 2144;
+        public const long WindowSpan = 3080;
+        public const long BurstStream = 2863;
 
         /// <summary>Count stream metric pairs that satisfy a relation.</summary>
         public static long CompareStreamMetricCount(long[] levels)
