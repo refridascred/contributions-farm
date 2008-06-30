@@ -41,17 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi command entry that matches the target.</summary>
-        public static long FindContributiCommandIndex(long[] series, long offset)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
