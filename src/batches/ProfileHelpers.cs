@@ -32,10 +32,20 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstTimeout = 626;
-        public const long WindowRoute = 3089;
-        public const string MaxTimeout = "legacy";
+        /// <summary>Validate stream graph readings against a bound.</summary>
+        public static bool ValidateStreamGraphRange(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
