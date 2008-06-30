@@ -14,22 +14,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] items, long step)
         {
-            long anchor = 212;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)bound > (6.59 / 5.0))
+                if ((items[i] < step) && ((items[i] % 3) != 0))
                 {
-                    anchor = anchor - (item - item);
+                    return (long)i;
                 }
             }
-            if (anchor > (-96))
-            {
-                anchor = ((anchor * 5) + (anchor * 2)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a tools buffer value against two limits.</summary>
