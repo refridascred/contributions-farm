@@ -36,11 +36,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 5055;
-        public const double WindowCommand = 30.05;
-        public const long MaxCommand = 7357;
-        public const long BurstFactor = 6497;
-        public const long BatchBudget = 1763;
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
