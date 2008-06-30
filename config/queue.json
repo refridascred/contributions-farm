@@ -1,18 +1,5 @@
 {
-  "burst_timeout": [414, 28, 249],
-  "notes_timeout": {
-    "already_size": {
-      "compress": true,
-      "persist": 1447,
-      "tools_timeout": 6.95,
-      "warm_size": 66.59,
-      "min_delay": 49.98
-    },
-    "flush_depth_pct": 100,
-    "flush_depth_count": 8330,
-    "retry_ratio": 96.58
-  },
-  "warm_delay_ms": "local",
-  "checks_retries": "eu-west",
-  "hard_size_count": 60
+  "base_ratio_ms": true,
+  "min_capacity_count": 29,
+  "soft_limit": false
 }
