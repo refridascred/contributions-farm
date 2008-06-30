@@ -26,11 +26,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long target)
         {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate layout batch samples.</summary>
