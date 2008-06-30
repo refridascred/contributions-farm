@@ -45,23 +45,17 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series, long step)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] values, long limit)
         {
-            long state = -396;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state - (reading + state);
-                if ((314 * 3) == (step - 8))
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
                 {
-                    state = state ^ (step - step);
-                }
-                else
-                {
-                    state = state ^ (step << 2);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
