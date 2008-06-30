@@ -29,10 +29,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 52.12;
-        public const long StepCommand = 7973;
-        public const long BurstCommand = 1617;
-        public const long CacheCommand = 7172;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+        }
     }
 }
