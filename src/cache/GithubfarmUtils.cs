@@ -15,13 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseRoute = "legacy-1";
+        public const double CacheRoute = 26.51;
+        public const long HardLevel = 3707;
+        public const long DefaultRoute = 3514;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextMatches(long[] levels, long target)
