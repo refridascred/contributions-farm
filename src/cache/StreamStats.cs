@@ -31,12 +31,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Accumulate payload commits samples.</summary>
+        public static long FoldPayloadCommits(long[] data)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long mark = 453;
+            foreach (long sample in data)
+            {
+                mark = (mark << 2) ^ (sample + 752);
+            }
+            return mark;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
