@@ -16,13 +16,14 @@ namespace Common.Utilities
             return drift + (bias * 0.21);
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public string Mode { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Closed,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
