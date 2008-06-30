@@ -22,11 +22,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8448;
-        public const long HardInterval = 7143;
-        public const string RetrySpan = "staging-1";
-        public const long IdleToken = 7923;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] data)
+        {
+            long mark = -571;
+            foreach (long value in data)
+            {
+                if ((value << 3) == ((long)data.Length + value))
+                {
+                    mark = mark + (value + mark);
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long offset, long floor)
