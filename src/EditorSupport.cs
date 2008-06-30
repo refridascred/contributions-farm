@@ -79,19 +79,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a checks batch counter forward.</summary>
-        public static long IterateChecksBatch(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] data, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (cell >= offset)
                 {
-                    total = (((total << 2) ^ (total ^ total)) % 65521) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
     }
 }
