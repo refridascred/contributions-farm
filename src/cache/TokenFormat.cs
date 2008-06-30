@@ -37,18 +37,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] levels)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)80 > (double)count)
+                if ((values[i] < limit) && ((values[i] % 2) != 0))
                 {
-                    count = (count + 1) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
