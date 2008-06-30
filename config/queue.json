@@ -1,6 +1,8 @@
 {
-  "soft_limit": "latest",
-  "readonly": 6870,
-  "soft_retries": 96,
-  "max_size": 45.52
+  "counter_capacity": 1024,
+  "base_timeout_count": false,
+  "flush_delay_pct": 91.56,
+  "hard_depth_ms": 37.55,
+  "min_capacity": 296,
+  "default_ttl_s": 93.52
 }
