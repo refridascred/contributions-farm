@@ -20,13 +20,15 @@ namespace Common.Utilities
         public const string BatchCommand = "legacy-edge";
         public const long SoftCommand = 9579;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            public bool Weight { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
