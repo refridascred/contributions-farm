@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double ratio, double bias)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] series, long step)
         {
-            double load = ratio;
-            if (load >= (ratio * 8.6))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + (load - ratio)) + bias;
+                if ((series[i] < step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)3) + (double)(long)i;
-            }
-            return load - 0.1;
+            return -1;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
