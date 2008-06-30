@@ -1,8 +1,9 @@
-id,ratio,weight
-1,staging,strict
-2,9.05,11.94
-3,blue,standard
-4,190,936
-5,19.84,491
-6,36.49,stable
-7,36.67,247
+id,count,token
+1,standard,legacy
+2,standard,fallback
+3,70.81,343
+4,edge,37.7
+5,primary,green
+6,68.27,660
+7,217,990
+8,open,203
