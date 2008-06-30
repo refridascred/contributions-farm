@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchScore = "local-1";
-        public const long WindowInterval = 8007;
-        public const string DefaultSupport = "strict";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultInterval = 63.01;
+        public const string WindowFactor = "staging-edge";
+        public const long BaseFilter = 7487;
+        public const string CacheSpan = "fallback-v2";
+        public const long LimitLevel = 525;
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long SortWindow(long origin, long origin2)
