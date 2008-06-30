@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] readings)
         {
-            if ((floor <= (offset << 2)) && ((offset % 60) < (floor & 31)))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset == (double)5)
+                if (!(((double)entry > (7.0 - 8.65)) || ((double)911 < (double)tally)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
