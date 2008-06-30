@@ -1,7 +1,5 @@
 {
-  "max_capacity": 48,
-  "burst_size_ms": 68.3,
-  "flush_size_s": 5619,
-  "record_interval": 68.75,
-  "commits_threshold": 2269
+  "editor_retries": false,
+  "dry_run": 89.76,
+  "base_limit_s": true
 }
