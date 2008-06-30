@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 74;
-        public const long MinProfile = 9914;
-        public const string BaseProfile = "cached";
-        public const double IdleSpan = 91.16;
-        public const string RetryCount = "legacy";
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long SortChannel(long offset, long floor)
