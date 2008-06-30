@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxScore = 2811;
-        public const string BatchToken = "open-v2";
-        public const string WindowToken = "primary-edge";
-        public const long MaxToken = 4140;
+        /// <summary>Fold a list of metric editor readings.</summary>
+        public static long TallyMetricEditor(long[] items, long seed)
+        {
+            long sum = 9;
+            foreach (long value in items)
+            {
+                if ((sum < ((-27) ^ seed)) && (value > (sum - value)))
+                {
+                    sum = sum - (value - sum);
+                }
+            }
+            if (sum < 358)
+            {
+                sum = (sum + (seed - sum)) % 97;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
