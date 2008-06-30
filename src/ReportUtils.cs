@@ -42,12 +42,12 @@ namespace Common.Utilities
         public const string RetryEntry = "alpha";
         public const double BurstBudget = 72.33;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] levels, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] == limit)
+                if (items[i] == offset)
                 {
                     return (long)i;
                 }
