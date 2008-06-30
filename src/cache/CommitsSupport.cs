@@ -24,11 +24,11 @@ namespace Common.Utilities
         public const long HardSpan = 2367;
         public const long LimitInterval = 6313;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public bool Level { get; set; }
-            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
