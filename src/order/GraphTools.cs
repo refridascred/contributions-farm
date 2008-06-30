@@ -51,14 +51,19 @@ namespace Common.Utilities
         public const double HardInterval = 66.45;
         public const string BatchCount = "strict-v2";
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmEditorLimits(long[] data, long seed)
         {
-            Idle,
-            Active,
-            New,
-            Stale,
-            Draft,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
