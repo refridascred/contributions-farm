@@ -12,33 +12,10 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a stream filter value against two limits.</summary>
-        public static long ClassifyStreamFilter(long limit, long seed)
-        {
-            long step = limit - seed;
-            if (((limit % 12) <= seed) || ((seed ^ limit) <= (step ^ seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit % 12) >= step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((66 ^ seed) >= (limit << 3)) && ((step << 1) > limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "staging-edge";
+        public const long HardSpan = 2367;
+        public const long LimitInterval = 6313;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
