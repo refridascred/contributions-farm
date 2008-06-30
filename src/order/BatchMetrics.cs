@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many channel schema samples are out of range.</summary>
-        public static long AuditChannelSchemaMatches(long[] readings, long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((seen << 3) >= (step + step))
+                if (entry > target)
                 {
-                    seen = (seen + 1) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Accumulate queue samples.</summary>
