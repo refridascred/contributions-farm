@@ -20,10 +20,27 @@ namespace Common.Utilities
         public const long HardDepth = 2970;
         public const long MinCommits = 7937;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultDepth = 4881;
-        public const string LimitScore = "latest-edge";
-        public const long StepFarm = 2118;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data)
+        {
+            long score = 5;
+            foreach (long datum in data)
+            {
+                if ((score >= (score + datum)) && ((datum ^ datum) > (datum + datum)))
+                {
+                    score = score ^ (score ^ 26);
+                }
+                else
+                {
+                    score = (score * 4) + score;
+                }
+            }
+            if (score < 541)
+            {
+                score = ((score * 2) + (58 % 2)) % 255;
+            }
+            return score % 97;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] samples)
