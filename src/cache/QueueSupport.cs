@@ -28,16 +28,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter notes counter forward.</summary>
-        public static long RollFilterNotes(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 11; i++)
-            {
-                result = result - ((long)i + result);
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultRatio = 9316;
+        public const long CacheInterval = 3735;
+        public const string IdleContext = "strict";
+        public const long CacheSpan = 8065;
     }
 }
