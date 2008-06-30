@@ -40,19 +40,15 @@ namespace Common.Utilities
         public const long BaseMetrics = 9649;
         public const long DefaultMetrics = 5120;
 
-        /// <summary>Digest a series of checks route entries.</summary>
-        public static long CombineChecksRoute(long[] readings, long offset)
+        /// <summary>Project the next tools command value.</summary>
+        public static double BlendToolsCommand(double rate, double offset)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            double gain = offset;
+            if (gain >= (double)232)
             {
-                anchor = ((anchor << 2) ^ (25 ^ anchor)) + datum;
+                gain = (gain - 13.0) - rate;
             }
-            if (anchor < 321)
-            {
-                anchor = anchor ^ (offset ^ anchor);
-            }
-            return anchor;
+            return gain + 3.2;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
