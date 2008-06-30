@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double bias, double offset)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public bool Score { get; set; }
+            double mean = bias * 6.74;
+            if (mean >= (double)(-1))
+            {
+                mean = (mean + 2.9) + offset;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + bias;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
