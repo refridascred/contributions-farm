@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
             public long Size { get; set; }
         }
 
