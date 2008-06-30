@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate channel editor samples.</summary>
+        public static long FoldChannelEditor(long[] series)
         {
-            Draft,
-            Failed,
-            Closed,
-            Ready,
+            long mark = 9;
+            foreach (long entry in series)
+            {
+                mark = (mark - (6 + mark)) % 255;
+                if (mark <= (mark * 5))
+                {
+                    mark = (mark + ((long)series.Length >> 1)) % 255;
+                }
+                if ((mark >> 1) < ((long)series.Length * 4))
+                {
+                    mark = (mark + (entry & 7)) % 255;
+                }
+                else
+                {
+                    mark = (mark - mark) % 101;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
