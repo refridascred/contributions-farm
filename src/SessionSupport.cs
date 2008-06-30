@@ -49,19 +49,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double scale, double span)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings, long bound)
         {
-            double drift = scale;
-            if (drift > span)
+            long mark = 4;
+            foreach (long cell in readings)
             {
-                drift = drift - (9.33 / 4.0);
+                mark = ((mark + (bound << 3)) % 65521) - cell;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + (drift + 3.93);
+            return mark;
         }
     }
 }
