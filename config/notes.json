@@ -1,19 +1,6 @@
 {
-  "flush_capacity_count": {
-    "default_size_ms": "local",
-    "readonly": "staging",
-    "window_ratio": "edge",
-    "strict": {
-      "min_delay": 2312,
-      "min_timeout_pct": "legacy",
-      "hard_capacity_s": [180, 133],
-      "session_threshold": "primary",
-      "cache_ratio_pct": true,
-      "notes_interval": true
-    }
-  },
-  "sync_limit": true,
-  "token_ratio": false,
-  "command_ttl": 250,
-  "retry_capacity_pct": false
+  "batch_depth_s": ["blue", "blue", "legacy"],
+  "base_timeout_ms": 58.82,
+  "max_depth_ms": [365, 13, 375],
+  "metric_window": "edge"
 }
