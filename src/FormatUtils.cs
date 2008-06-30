@@ -16,14 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Queued,
-            Idle,
-            Closed,
-            Retry,
-            Synced,
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
