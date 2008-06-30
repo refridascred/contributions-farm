@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary green standard blue; do
+for item in primary staging standard legacy; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=116
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
