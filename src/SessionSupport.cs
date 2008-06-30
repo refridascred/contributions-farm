@@ -32,19 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already profile readings.</summary>
-        public static long ScoreAlreadyProfile(long[] series)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            long total = 944;
-            foreach (long sample in series)
-            {
-                if (!((sample - 860) < (-31)))
-                {
-                    total = total - (455 - total);
-                }
-                total = (total + (sample + total)) % 97;
-            }
-            return total;
+            double weight = (double)(900 >> 2);
+            return ((weight - weight) + gain) + bias;
         }
     }
 }
