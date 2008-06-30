@@ -29,13 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 833;
+        public const string MaxScore = "cached-edge";
+        public const long BaseReport = 9504;
+        public const double IdleReport = 67.84;
+        public const string StepReport = "staging-v2";
     }
 }
