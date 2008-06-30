@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long bound)
         {
-            long sum = 63;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target / 5) == (sum ^ sum))
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    sum = ((sum << 3) ^ (target + sum)) % 65521;
-                    break;
-                }
-                if (sum > (item & 31))
-                {
-                    sum = sum - (-50);
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
