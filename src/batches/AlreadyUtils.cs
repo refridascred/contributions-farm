@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinTimeout = 3294;
-        public const long RetryAlready = 4309;
-        public const double CacheLevel = 81.41;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long target, long step)
+        {
+            if (target <= (step % 16))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((51 ^ target) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long AuditContributiGaps(long[] samples)
