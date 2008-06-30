@@ -1,11 +1,12 @@
 # Command notes
 
-The filter module keeps payload values in sync with the order cache.
-Run the token check before changing any account limits.
+Run the report check before changing any commits limits.
+When a githubfarm fails, the report handler retries a few times before giving up.
+Each checks is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Document new command fields
-- Log every stats change
-- Prefer metrics defaults
-- Keep editor values small
+- Keep route values small
+- Validate batches input early
+- Document new window fields
+- Review entry limits each release
