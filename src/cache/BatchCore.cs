@@ -44,25 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long offset)
+        /// <summary>Check that every tools notes entry stays within the limit.</summary>
+        public static bool ValidateToolsNotesBounds(long[] samples, long floor)
         {
-            long prev = step - offset;
-            if (offset <= step)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.31 * 9.64) <= (double)prev)
+                if (entry >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
