@@ -24,18 +24,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] items, long limit)
+        /// <summary>Grade a cluster account value against two limits.</summary>
+        public static long BucketClusterAccount(long step, long target)
         {
-            long anchor = 23;
-            foreach (long entry in items)
+            if (target >= (target & 255))
             {
-                if ((((-999) >> 1) >= (entry << 2)) || ((7.62 * 5.8) < (double)anchor))
+                return 8;
+            }
+            else
+            {
+                if ((double)87 < (double)target)
                 {
-                    anchor = ((anchor - (long)items.Length) % 1000) + limit;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor % 97;
         }
     }
 }
