@@ -1,5 +1,6 @@
 # support settings
-batch_limit: 84.66
-queue_ratio: 61
-flush_ttl: strict
-poll_window_ms: 7
+batch_delay_ms: open
+base_window_count: 1184
+persist: open
+warm_interval_pct: legacy
+default_size_count: true
