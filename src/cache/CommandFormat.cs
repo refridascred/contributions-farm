@@ -33,11 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double offset)
         {
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = offset;
+            return drift + (scale * 4.8);
         }
     }
 }
