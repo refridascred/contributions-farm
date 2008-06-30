@@ -1,21 +1,7 @@
 # support settings
-readonly: false
-retry_size:
-  - primary
-  - standard
-batch_size:
-  strict: 51.48
-  soft_ratio: true
-  idle_delay_ms:
-    - 74
-    - 172
-    - 475
-  min_retries_ms: 1209
-  persist:
-    batch_retries_count: 2708
-    soft_limit: staging
-    min_limit_s: 80
-    base_timeout_ms: legacy
-    report_window: false
-  soft_size_count: 4822
-metrics_interval: 250
+retry_depth_count:
+  min_ttl_count: 1
+  soft_capacity: 13.66
+  hard_ttl: local
+soft_window: 500
+verbose: true
