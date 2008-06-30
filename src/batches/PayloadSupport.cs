@@ -19,20 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph window readings.</summary>
-        public static long TotalGraphWindow(long[] readings)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long anchor = 1;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (((anchor * 4) + (199 + anchor)) % 97) - value;
-                    anchor = (anchor << 2) ^ ((long)i << 1);
-                }
-                anchor = (anchor ^ (-31)) % 1000;
-            }
-            return anchor % 1000;
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Adjust a farm reading.</summary>
