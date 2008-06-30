@@ -62,18 +62,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] data, long origin)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((double)hits <= 9.7)
-                {
-                    hits = ((hits + 2) ^ item) - origin;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
