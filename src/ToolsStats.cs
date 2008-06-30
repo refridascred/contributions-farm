@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] readings)
         {
-            long total = 5;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (626 > (sample << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total + limit) % 1000;
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 9)
-            {
-                total = (total * 4) + (limit * 5);
-            }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
