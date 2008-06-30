@@ -15,10 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 5874;
-        public const string BatchCommand = "legacy-edge";
-        public const long SoftCommand = 9579;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "strict-v2";
+        public const long CacheAccount = 9713;
+        public const double StepAccount = 82.69;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long floor)
