@@ -49,10 +49,12 @@ namespace Common.Utilities
             return gain + (floor / 3.0);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetrySize = 8127;
-        public const double LimitCount = 50.47;
-        public const long SoftBudget = 387;
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double ratio, double bias)
+        {
+            double drift = ratio;
+            return (drift - drift) + bias;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorOutliers(long[] levels, long origin)
