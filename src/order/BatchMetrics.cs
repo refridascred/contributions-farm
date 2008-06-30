@@ -45,31 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank metrics cluster input into a small class.</summary>
-        public static long SortMetricsCluster(long limit, long limit2)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] items, long target)
         {
-            if (((limit ^ limit) >= 130) || (limit <= (limit + limit)))
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - limit) >= (limit2 + limit))
+                if (entry <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit << 1) <= limit2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
