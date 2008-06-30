@@ -50,12 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long mix = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = mix - ((long)i - step);
+                mix = (mix << 3) ^ (long)i;
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
