@@ -64,22 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel notes samples are out of range.</summary>
-        public static long MeasureChannelNotesHits(long[] items, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((((-902) + seen) == (seen + origin)) && ((origin / 2) < seen))
-                {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
