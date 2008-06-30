@@ -12,20 +12,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] levels)
-        {
-            long mark = 24;
-            foreach (long datum in levels)
-            {
-                mark = mark ^ mark;
-                if ((datum / 2) > datum)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryCount = 9558;
+        public const string MaxLayout = "legacy-v2";
+        public const long CacheLayout = 1787;
+        public const string BaseBudget = "open-1";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseSize = "cached-1";
