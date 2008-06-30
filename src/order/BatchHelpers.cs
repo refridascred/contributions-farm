@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long anchor = 167;
-            foreach (long item in values)
-            {
-                if ((214 + anchor) == (item << 3))
-                {
-                    anchor = anchor - (anchor ^ anchor);
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = anchor + (874 - anchor);
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the cache format series from a seed.</summary>
