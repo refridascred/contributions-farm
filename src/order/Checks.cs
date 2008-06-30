@@ -53,21 +53,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Combine batch order values into a single score.</summary>
+        public static long ScoreBatchOrder(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 6;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((cell - seed) > seed) && ((seed ^ total) <= seed))
                 {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ (205 - cell);
+                }
+                else
+                {
+                    total = (total + (total & 15)) % 101;
                 }
             }
-            return hits;
+            if (total < 20)
+            {
+                total = ((total << 3) ^ (5 + 483)) % 101;
+            }
+            return total % 4096;
         }
     }
 }
