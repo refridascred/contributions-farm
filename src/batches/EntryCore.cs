@@ -26,19 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] series, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Idle,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
