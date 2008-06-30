@@ -43,22 +43,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] samples, long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((count + datum) <= (datum ^ 27))
-                {
-                    count = (count + 2) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many channel notes samples are out of range.</summary>
