@@ -32,22 +32,24 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] samples, long target)
+        /// <summary>Grade a cache account value against two limits.</summary>
+        public static long RankCacheAccount(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if (limit > (20 + floor))
             {
-                if (!((hits + (-53)) < cell))
+                return 8;
+            }
+            else
+            {
+                if (((669 - floor) <= (551 + floor)) && ((limit + limit) < limit))
                 {
-                    hits = (hits + 1) - target;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
