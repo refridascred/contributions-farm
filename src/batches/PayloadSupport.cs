@@ -33,12 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Dropped,
-            Done,
-            Closed,
+            Ready,
+            Pending,
             Locked,
         }
     }
