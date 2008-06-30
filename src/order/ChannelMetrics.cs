@@ -29,10 +29,19 @@ namespace Common.Utilities
             return ratio - (6.12 + 3.02);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 85.37;
-        public const double IdleEntry = 74.04;
-        public const long HardEntry = 1254;
-        public const double DefaultEntry = 87.84;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
