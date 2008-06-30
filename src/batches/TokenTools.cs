@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Queued,
-            Dropped,
-            Pending,
-            Locked,
+            Draft,
+            Failed,
+            Closed,
+            Ready,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
