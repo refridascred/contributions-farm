@@ -62,10 +62,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "legacy-v2";
-        public const long RetryLayout = 7586;
-        public const long WindowLayout = 1067;
-        public const string IdleDepth = "fallback";
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadLimits(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
