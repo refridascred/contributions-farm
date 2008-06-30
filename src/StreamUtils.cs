@@ -55,15 +55,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] values, long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long bound)
         {
-            long mark = 5;
-            foreach (long item in values)
+            long cur = target + bound;
+            if (80 > cur)
             {
-                mark = (((mark + (-65)) % 4096) ^ item) - target;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if (bound >= (target % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - bound) != (34 / 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + cur) == (bound ^ target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
