@@ -40,18 +40,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] levels, long offset)
+        /// <summary>Measure how many token support samples are out of range.</summary>
+        public static long TallyTokenSupportOutliers(long[] levels)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long entry in levels)
             {
-                if ((1.1 - 14.0) > (double)offset)
+                if ((entry + entry) >= (hits << 2))
                 {
-                    count = (count + 2) + entry;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
