@@ -21,10 +21,18 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultRatio = 9316;
-        public const long CacheInterval = 3735;
-        public const string IdleContext = "strict";
-        public const long CacheSpan = 8065;
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long TallyTokenCommitsMatches(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen + cell) <= (seen ^ 9))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
+        }
     }
 }
