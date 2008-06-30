@@ -19,12 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Failed,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
