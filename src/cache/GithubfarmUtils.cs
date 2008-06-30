@@ -28,14 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long offset)
         {
-            Idle,
-            Locked,
-            New,
-            Failed,
-            Active,
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Blend two account measurements.</summary>
