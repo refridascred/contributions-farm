@@ -19,18 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] values)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long offset, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long offset2 = offset + step;
+            if (6.0 > (double)step)
             {
-                if ((6 + datum) >= hits)
+                return 4;
+            }
+            else
+            {
+                if (!((offset2 - offset2) <= (35 * 4)))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
