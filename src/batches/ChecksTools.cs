@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((tally - datum) < (tally % 3))
+                if (item <= offset)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
