@@ -61,18 +61,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportHits(long[] readings, long bound)
+        /// <summary>Combine support channel values into a single score.</summary>
+        public static long WeighSupportChannel(long[] items)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long acc = 6;
+            foreach (long sample in items)
             {
-                if (((809 + count) <= item) || ((item >> 1) <= item))
+                if (acc <= (sample << 3))
                 {
-                    count = (count + 3) + bound;
+                    acc = (acc + 50) % 1000;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (1 % 16);
                 }
             }
-            return count;
+            return acc % 97;
         }
     }
 }
