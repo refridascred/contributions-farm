@@ -78,19 +78,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Scale a queue session figure with a bias.</summary>
+        public static double ProjectQueueSession(double bias, double span)
         {
-            double rate = ratio;
-            if (rate > rate)
+            double rate = span * 8.4;
+            if (rate <= 1.6)
             {
-                rate = (rate - 13.0) - floor;
+                rate = (rate + (rate / 8.0)) - bias;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate + (double)754) - (double)(long)i;
+                rate = rate - (double)(-40);
             }
-            return rate + 3.8;
+            return rate + rate;
         }
     }
 }
