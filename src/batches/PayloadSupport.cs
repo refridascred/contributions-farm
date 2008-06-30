@@ -22,14 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Stale,
-            Locked,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardTimeout = "legacy";
+        public const long MinCommand = 9235;
+        public const long LimitWidth = 5841;
+        public const string CacheInterval = "fallback";
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] data)
