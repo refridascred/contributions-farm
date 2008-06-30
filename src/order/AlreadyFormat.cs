@@ -19,22 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count buffer entry pairs that satisfy a relation.</summary>
-        public static long MatchBufferEntryCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8334;
+        public const long RetryBatches = 284;
+        public const long BaseBatches = 1314;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] items, long limit)
