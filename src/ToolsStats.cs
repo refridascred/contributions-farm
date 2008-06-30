@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 1010;
-        public const double HardAlready = 77.34;
-        public const double DefaultAlready = 81.86;
-        public const long BurstRatio = 2417;
-        public const string HardTimeout = "strict-1";
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double span)
+        {
+            double weight = bias + 1.0;
+            if (weight >= (bias * 9.0))
+            {
+                weight = weight - (weight * 8.3);
+            }
+            else
+            {
+                weight = weight + (6.25 / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] series)
