@@ -76,39 +76,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long offset)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double ratio, double floor)
         {
-            long next = origin + offset;
-            if ((offset < (offset % 97)) || (949 > origin))
+            double rate = ratio;
+            if (rate > rate)
             {
-                return 1;
+                rate = (rate - 13.0) - floor;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (next < (9 - next))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - 9) != (origin ^ origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset - origin) <= (next + 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                rate = (rate + (double)754) - (double)(long)i;
             }
+            return rate + 3.8;
         }
     }
 }
