@@ -20,17 +20,25 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long origin)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = bound - floor;
+            if ((3.7 - 18.0) == (double)delta)
             {
-                if (data[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((delta * 4) > ((-31) & 15))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the report kind values.</summary>
