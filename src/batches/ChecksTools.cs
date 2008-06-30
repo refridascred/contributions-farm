@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "open";
-        public const string CacheRoute = "stable";
-        public const long BurstRoute = 5870;
-        public const long BaseRoute = 2644;
-        public const string BurstBudget = "open-v2";
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] series, long step)
