@@ -40,32 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support buffer value against two limits.</summary>
-        public static long GradeSupportBuffer(long step, long step2)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] levels, long limit)
         {
-            long offset = step + step2;
-            if ((step & 127) != (step - step))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (step / 4))
+                if (89 <= matches)
                 {
-                    return 5;
+                    matches = ((matches + 3) + cell) + limit;
                 }
                 else
                 {
-                    if (step2 < (step2 ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
