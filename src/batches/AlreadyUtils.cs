@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((hits ^ 3) <= hits) && (67 <= (reading + (-996)))) || ((hits % 100) == (394 / 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] + data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
