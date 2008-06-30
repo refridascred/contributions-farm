@@ -57,14 +57,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Stale,
-            Dropped,
-            Ready,
-            Draft,
-            Retry,
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
     }
 }
