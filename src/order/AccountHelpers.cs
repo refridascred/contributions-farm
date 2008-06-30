@@ -53,21 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record graph pairs that satisfy a relation.</summary>
-        public static long PairRecordGraphCount(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
