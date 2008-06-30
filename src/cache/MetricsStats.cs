@@ -38,13 +38,11 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public double Total { get; set; }
         }
     }
 }
