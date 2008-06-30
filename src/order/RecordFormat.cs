@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long seed, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long bound = seed + limit;
-            if ((limit ^ seed) < (limit + 618))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound % 100) <= (limit ^ limit)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)limit > (17.0 * 5.0))
+                    if ((levels[i] ^ levels[j]) < 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
