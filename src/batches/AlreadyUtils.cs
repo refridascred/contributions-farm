@@ -20,15 +20,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Active,
-            Failed,
-            Done,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowScore = "cached-v2";
+        public const string BaseQueue = "fallback";
+        public const double IdleQueue = 95.65;
 
         /// <summary>Describe the counter mode values.</summary>
         public enum CounterMode
