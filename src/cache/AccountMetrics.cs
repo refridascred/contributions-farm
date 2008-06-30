@@ -27,16 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks channel series from a seed.</summary>
-        public static long DeriveChecksChannel(long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = acc + (long)i;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Pending,
+            Failed,
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
