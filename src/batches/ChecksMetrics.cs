@@ -28,20 +28,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] samples, long offset)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (1 > (bound / 8))
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
-                    result = ((result * 4) + (result - 99)) % 101;
-                    result = (result - (long)i) % 4096;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
