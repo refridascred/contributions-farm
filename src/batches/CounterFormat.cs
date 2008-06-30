@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if (((hits >> 5) <= floor) || ((12.0 / 2.0) == (double)floor))
+                if (cell <= offset)
                 {
-                    hits = (hits + 2) - datum;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a commits entry.</summary>
