@@ -15,39 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long bound, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long bound2 = bound - origin;
-            if ((origin % 16) < 5)
+            long mark = 269;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin <= (bound - origin)) || (bound2 >= (bound & 63)))
+                if (mark > (item >> 1))
                 {
-                    return 4;
+                    mark = ((mark << 3) ^ (4 & 31)) % 4096;
                 }
-                else
+                if ((13 ^ 9) != (item ^ item))
                 {
-                    if (!((origin + origin) >= (origin - origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound2 > (2.0 - 4.5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = (mark + (mark & 255)) % 255;
                 }
             }
+            if (mark < 4)
+            {
+                mark = (mark ^ (mark ^ mark)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a already profile sample.</summary>
