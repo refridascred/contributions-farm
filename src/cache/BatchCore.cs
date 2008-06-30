@@ -24,11 +24,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryBudget = 2078;
-        public const string StepDepth = "staging";
-        public const long RetryCommits = 3047;
-        public const long WindowSpan = 8012;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long offset, long seed)
