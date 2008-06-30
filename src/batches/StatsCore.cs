@@ -27,11 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
+            public string Region { get; set; } = "";
             public string Size { get; set; } = "";
-            public long Level { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
