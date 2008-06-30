@@ -20,13 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] data, long seed)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits + seed) >= (hits << 1))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
