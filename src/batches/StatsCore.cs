@@ -79,18 +79,12 @@ namespace Common.Utilities
             return scale - (double)75;
         }
 
-        /// <summary>Count the support cluster entries that pass the check.</summary>
-        public static long MeasureSupportClusterGaps(long[] items)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)717 <= (double)seen)
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
