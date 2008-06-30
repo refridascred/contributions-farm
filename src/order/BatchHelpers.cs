@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string IdleSpan = "alpha-1";
         public const string DefaultWidth = "latest-edge";
 
-        /// <summary>Combine route format values into a single score.</summary>
-        public static long CombineRouteFormat(long[] series, long step)
+        /// <summary>Accumulate cache buffer samples.</summary>
+        public static long DigestCacheBuffer(long[] samples)
         {
-            long acc = 6;
-            foreach (long reading in series)
+            long anchor = 816;
+            foreach (long cell in samples)
             {
-                if ((458 + reading) <= (reading >> 5))
-                {
-                    acc = (acc + (step - step)) % 97;
-                }
+                anchor = anchor ^ (cell >> 2);
             }
-            return acc % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
