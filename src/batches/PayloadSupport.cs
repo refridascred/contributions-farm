@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long TallyStreamRecordGaps(long[] items)
         {
-            double ratio = (double)4 + (bias - 4.2);
-            if (ratio > (3.0 / 3.0))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                ratio = (ratio + (bias * 0.25)) - rate;
+                if (52 >= (23 - reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (0.36 + bias)) - (double)(long)i;
-            }
-            return ratio + bias;
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
