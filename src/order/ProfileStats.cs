@@ -54,15 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double ratio, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data)
         {
-            double drift = (floor * 9.29) + floor;
-            for (int i = 0; i < 5; i++)
+            long acc = 1;
+            foreach (long datum in data)
             {
-                drift = ((drift - drift) + (double)(long)i) + ratio;
+                if (((7.0 * 0.2) < (double)acc) || (datum >= (datum ^ acc)))
+                {
+                    acc = ((acc << 2) ^ (260 & 31)) % 65521;
+                }
             }
-            return drift + 8.0;
+            return acc;
         }
     }
 }
