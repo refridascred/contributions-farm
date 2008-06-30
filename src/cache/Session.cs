@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long SoftCommits = 4420;
         public const double MaxCount = 23.92;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
+            Ready,
             Dropped,
             Draft,
-            Synced,
-            Paused,
-            Done,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
