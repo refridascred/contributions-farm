@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] items, long target)
         {
-            double drift = 4.87;
-            if (drift <= bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (ratio + 9.35);
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return drift + (bias * 0.21);
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
