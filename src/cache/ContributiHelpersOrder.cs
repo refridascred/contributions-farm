@@ -24,24 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster account value against two limits.</summary>
-        public static long BucketClusterAccount(long step, long target)
+        /// <summary>Count the commits batches entries that pass the check.</summary>
+        public static long MeasureCommitsBatchesGaps(long[] values)
         {
-            if (target >= (target & 255))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)87 < (double)target)
+                if (sample <= (6 / 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
