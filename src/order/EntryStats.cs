@@ -93,24 +93,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long offset, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] readings, long target)
         {
-            if (offset >= (origin + origin))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.85 <= (double)origin) || ((double)offset != (9.81 - 14.0)))
+                if (item > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
