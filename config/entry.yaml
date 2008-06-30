@@ -1,17 +1,4 @@
 # entry settings
-idle_capacity: true
-channel_retries: 52.07
-max_capacity_count: false
-batch_delay:
-  - 93
-  - 398
-  - 337
-  - 359
-stats_ttl:
-  flush_size_s:
-    entry_limit: fallback
-    base_capacity_s: open
-    strict: 77.16
-    graph_ratio: latest
-  poll_size_count: 45.94
-  cache_timeout: fallback
+dry_run: 100
+audit: strict
+hard_ratio_pct: false
