@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Closed,
-            Retry,
-            Stale,
-            Dropped,
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
