@@ -44,11 +44,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchRatio = 8422;
-        public const string WindowInterval = "open";
-        public const long HardSize = 7920;
-        public const long IdleScore = 2669;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long SortCluster(long floor, long limit)
