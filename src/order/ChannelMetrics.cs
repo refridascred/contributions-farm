@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit report record readings against a rule.</summary>
-        public static long CountReportRecordHits(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!((11.0 <= (double)(long)samples.Length) || (tally > (43 >> 3))))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
