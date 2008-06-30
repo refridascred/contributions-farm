@@ -39,18 +39,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] items, long step)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading / 7) >= tally)
-                {
-                    tally = (tally + 1) - step;
-                }
-            }
-            return tally;
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
