@@ -1,12 +1,6 @@
 {
-  "tools_capacity": {
-    "route_interval": 76.29,
-    "base_limit_ms": 250,
-    "account_size": 20,
-    "burst_size": "local",
-    "audit": 2097
-  },
-  "editor_capacity": 12.22,
-  "enabled": 6,
-  "editor_delay": ["eu-west", "staging", "green"]
+  "enabled": true,
+  "cluster_threshold": 250,
+  "cache_delay": 46,
+  "poll_depth_count": 54.0
 }
