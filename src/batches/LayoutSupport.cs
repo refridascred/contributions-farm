@@ -33,38 +33,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long target, long seed)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            if ((seed >> 2) >= (target + 3))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((seed & 7) >= (seed - 900)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((15.0 + 1.79) > (double)target)
+                    if ((series[i] ^ series[j]) != 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.78 * 8.97) >= (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a format reading by value.</summary>
