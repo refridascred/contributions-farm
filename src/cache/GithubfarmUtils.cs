@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheWidth = 8529;
-        public const string SoftLevel = "local";
-        public const string BaseDepth = "alpha-1";
-        public const long MaxLevel = 280;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
         public static long MeasureBatchWindowOutliers(long[] levels, long origin)
