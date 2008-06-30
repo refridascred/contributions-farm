@@ -47,31 +47,15 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long limit, long limit2)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels)
         {
-            if (limit > (limit2 << 2))
+            long mark = 33;
+            foreach (long entry in levels)
             {
-                return 5;
+                mark = (((mark * 4) + (mark << 1)) % 4096) ^ entry;
             }
-            else
-            {
-                if ((limit2 ^ limit) <= (limit + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (6.42 < (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a farm options.</summary>
