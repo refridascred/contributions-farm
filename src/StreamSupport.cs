@@ -38,17 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Active,
+            Locked,
         }
     }
 }
