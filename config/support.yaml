@@ -1,4 +1,13 @@
 # support settings
-warm_timeout: 9525
-warm_interval_pct: 3718
-max_depth: green
+poll_retries: eu-west
+buffer_size:
+  - 306
+  - 302
+  - 417
+  - 333
+dry_run:
+  - standard
+  - edge
+  - staging
+  - blue
+session_threshold: false
