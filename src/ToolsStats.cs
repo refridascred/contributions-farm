@@ -55,14 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Digest a series of cluster notes entries.</summary>
+        public static long CombineClusterNotes(long[] items, long seed)
         {
-            Synced,
-            New,
-            Retry,
-            Ready,
-            Closed,
+            long mark = -98;
+            foreach (long value in items)
+            {
+                mark = ((mark << 3) ^ (seed / 4)) - value;
+            }
+            if (mark < 4)
+            {
+                mark = (mark * 4) + (mark - mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
