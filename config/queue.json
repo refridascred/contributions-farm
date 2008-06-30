@@ -1,5 +1,5 @@
 {
-  "flush_window_ms": ["latest", "edge", "cached"],
-  "tools_retries": 72,
-  "graph_depth": false
+  "dry_run": "primary",
+  "burst_window": false,
+  "burst_ratio_ms": 69
 }
