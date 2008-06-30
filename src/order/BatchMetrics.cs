@@ -31,18 +31,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route batch readings against a rule.</summary>
-        public static long MeasureRouteBatchMatches(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((hits + 3) >= (hits % 3)) || ((5 - hits) < (sample + 46))) || ((sample % 10) == (sample & 1)))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Rank metrics cluster input into a small class.</summary>
