@@ -57,32 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long floor, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long prev = floor - limit;
-            if ((double)prev >= 9.0)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 5) >= (limit << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit * 2) == (prev % 60)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
