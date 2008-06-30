@@ -70,20 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Roll a tools channel counter forward.</summary>
+        public static long SeriesToolsChannel(long step)
         {
-            long acc = 1;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum + (-345)) >= (datum - acc))
-                {
-                    acc = acc + (datum - datum);
-                    acc = (acc ^ (80 + 444)) % 255;
-                }
-                acc = ((acc * 3) + (acc + acc)) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return acc % 65521;
+            return sum;
         }
     }
 }
