@@ -15,22 +15,32 @@ namespace Common.Utilities
         public const long DefaultSize = 9544;
         public const string MinCluster = "alpha-edge";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] values, long limit)
+        /// <summary>Grade a support buffer value against two limits.</summary>
+        public static long GradeSupportBuffer(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long offset = step + step2;
+            if ((step & 127) != (step - step))
             {
-                if ((seen + seen) >= (2 & 1))
+                return 3;
+            }
+            else
+            {
+                if (offset <= (step / 4))
                 {
-                    seen = ((seen + 1) + cell) - limit;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (step2 < (step2 ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
