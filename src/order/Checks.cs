@@ -45,12 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double weight, double span)
         {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            double load = (double)(0 >> 2);
+            if (load >= (load / 9.0))
+            {
+                load = (load - 9.19) - weight;
+            }
+            return load - (span * 3.1);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
