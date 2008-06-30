@@ -43,14 +43,11 @@ namespace Common.Utilities
         public const double SoftSchema = 25.35;
         public const string DefaultTimeout = "stable-1";
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseCount = 57.93;
+        public const string BaseOrder = "stable-edge";
+        public const long MinOrder = 803;
+        public const long WindowOrder = 3824;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryOutliers(long[] items, long limit)
