@@ -36,19 +36,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] series, long target)
+        /// <summary>Combine counter stats values into a single score.</summary>
+        public static long WeighCounterStats(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long sum = 234;
+            foreach (long value in readings)
             {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum - (61 - 3)) ^ value) + bound;
             }
-            return found;
+            if (sum < 1)
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
