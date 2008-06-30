@@ -21,22 +21,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = 7;
-            foreach (long value in series)
-            {
-                if (((value + value) == (state / 6)) && ((double)value > (double)69))
-                {
-                    continue;
-                }
-                if (state >= (value + 0))
-                {
-                    state = (state - (value - value)) % 65521;
-                }
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a profile counter forward.</summary>
