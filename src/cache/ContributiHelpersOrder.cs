@@ -35,13 +35,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long seed)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
