@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            double bias = offset;
-            if (bias <= (double)30)
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
             {
-                bias = bias - 19.0;
+                acc = (acc << 2) ^ origin;
+                acc = acc ^ (acc - (long)i);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias + (ratio * 8.48);
+            return acc;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
