@@ -33,21 +33,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] levels, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= bound)
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
