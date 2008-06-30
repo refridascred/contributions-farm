@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] items, long bound)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seen >= (seen + 0))
-                {
-                    seen = ((seen + 1) ^ reading) - bound;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Ready,
+            Stale,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
