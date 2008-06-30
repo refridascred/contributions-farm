@@ -57,12 +57,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long origin, long bound)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long span = origin ^ bound;
+            if ((double)bound == (2.8 / 3.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)span > (double)origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((73 + span) >= (bound << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (20.0 <= (double)span)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
