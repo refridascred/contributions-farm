@@ -14,18 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] samples, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] samples)
         {
-            long hits = 0;
+            long matches = 0;
             foreach (long datum in samples)
             {
-                if ((double)hits > (8.0 - 8.0))
+                if ((datum > (matches << 2)) && ((5.15 / 4.0) < (double)datum))
                 {
-                    hits = ((hits + 1) + datum) - seed;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
