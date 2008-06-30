@@ -19,25 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long offset, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            long offset2 = offset + step;
-            if (6.0 > (double)step)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                result = ((result * 5) + 56) % 1000;
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((offset2 - offset2) <= (35 * 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
