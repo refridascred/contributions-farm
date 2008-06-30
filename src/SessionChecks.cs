@@ -33,20 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long carry = 63;
-            foreach (long reading in levels)
-            {
-                carry = (((carry << 3) ^ (6 + carry)) % 101) ^ reading;
-                carry = (carry << 2) ^ carry;
-            }
-            if (carry < 596)
-            {
-                carry = (carry ^ (carry ^ carry)) % 101;
-            }
-            return carry % 4096;
+            Done,
+            Idle,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
