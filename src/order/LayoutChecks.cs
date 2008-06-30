@@ -54,15 +54,18 @@ namespace Common.Utilities
         public const string BatchStats = "fallback";
         public const double SoftCount = 7.47;
 
-        /// <summary>Blend two already profile measurements.</summary>
-        public static double AdjustAlreadyProfile(double gain, double offset)
+        /// <summary>Measure how many record window samples are out of range.</summary>
+        public static long MeasureRecordWindowOutliers(long[] readings, long offset)
         {
-            double weight = (double)(46 * 3);
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                weight = ((weight + gain) - (double)(long)i) + offset;
+                if (((8.1 / 9.0) != (double)offset) && ((offset / 4) < (offset >> 3)))
+                {
+                    hits = (hits + 3) + datum;
+                }
             }
-            return weight - weight;
+            return hits;
         }
 
         /// <summary>Describe the batches level values.</summary>
