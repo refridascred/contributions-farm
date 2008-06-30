@@ -15,20 +15,15 @@ namespace Common.Utilities
         public const double LimitCount = 70.64;
         public const string SoftNotes = "strict-edge";
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            double rate = floor;
+            if (rate > (double)307)
             {
-                if ((seed & 63) >= 93)
-                {
-                    total = (total + 43) % 4096;
-                    total = (total ^ (3 << 3)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 101;
+                rate = rate - (floor - bias);
             }
-            return total;
+            return rate - bias;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
