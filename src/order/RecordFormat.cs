@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((count >> 4) <= entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
