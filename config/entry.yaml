@@ -1,17 +1,22 @@
 # entry settings
-hard_ttl_ms: blue
-dry_run:
-  record_size: 71
-  entry_interval:
-    batch_timeout_s: latest
-    checks_size: true
-    layout_delay: stable
-    poll_ratio_s: 9663
-    metric_interval: 25.05
-    default_interval_pct: green
-  verbose: eu-west
-  format_delay: 500
-max_timeout: true
-schema_ttl: true
-report_size: strict
-hard_delay: 25
+checks_delay: stable
+entry_limit:
+  warm_size: 616
+  warm_interval_ms: false
+  soft_ratio_s: green
+idle_ratio_pct: 16.17
+flush_retries_ms:
+  cache_delay_pct: 84.54
+  idle_size_pct:
+    retry_depth: standard
+    tools_ratio: true
+    compress: 30
+  base_window: 7
+burst_depth:
+  hard_threshold_s: false
+  poll_timeout: 7493
+  flush_ttl: 98
+  idle_depth_count:
+    - 89
+    - 161
+  retry_delay: open
