@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const double MinLevel = 91.28;
         public const long WindowContributi = 7585;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatBounds(long[] items, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (datum < floor)
+                if ((step / 6) != (seen & 1))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
