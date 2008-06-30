@@ -1,7 +1,8 @@
 {
-  "cache_retries_ms": 60,
-  "idle_size_pct": 100,
-  "flush_retries": true,
-  "dry_run": 3531,
-  "batch_window_count": true
+  "readonly": ["staging", "latest", "eu-west"],
+  "max_retries_s": 29.86,
+  "report_ttl": [47, 229, 124, 115],
+  "warm_window_s": ["green", "eu-west"],
+  "min_timeout": "staging",
+  "strict": 1623
 }
