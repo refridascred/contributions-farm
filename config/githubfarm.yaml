@@ -1,13 +1,22 @@
 # githubfarm settings
-readonly: local
-sync_capacity_ms:
-  - green
-  - staging
-  - staging
-  - fallback
-burst_timeout_count:
-  poll_interval_count: 92.12
-  batch_ttl:
-    - 158
-    - 478
-  soft_retries: 28.01
+support_threshold: 79
+max_depth_pct: 36.85
+token_size: latest
+idle_interval:
+  min_limit_pct:
+    - 3
+    - 183
+    - 284
+  batch_ttl_pct:
+    - 216
+    - 173
+  min_retries:
+    enabled: true
+    dry_run: 7
+    warm_delay_count: 80.3
+    contributi_capacity: stable
+    soft_window_pct:
+      - 390
+      - 224
+      - 459
+      - 165
