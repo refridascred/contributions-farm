@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Closed,
+            Active,
+            Idle,
+            Paused,
         }
 
         /// <summary>Check that every channel schema entry stays within the limit.</summary>
