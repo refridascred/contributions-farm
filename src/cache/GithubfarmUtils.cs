@@ -17,18 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch window samples are out of range.</summary>
-        public static long MeasureBatchWindowOutliers(long[] levels, long origin)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!((tally ^ 56) != (sample ^ 741)))
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define session limits and defaults.</summary>
