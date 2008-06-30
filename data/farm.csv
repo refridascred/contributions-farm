@@ -1,9 +1,7 @@
-id,state,rank,ratio,active
-1,90.54,40.58,85.98,563
-2,latest,legacy,81.32,local
-3,latest,78.85,637,stable
-4,78.72,106,3.45,fallback
-5,25.38,886,2.06,91.78
-6,59.86,strict,stable,398
-7,31.13,28.7,938,926
-8,636,545,blue,fallback
+id,owner,score,region
+1,371,legacy,eu-west
+2,731,45,958
+3,standard,blue,98.95
+4,315,1.0,604
+5,259,405,977
+6,278,191,edge
