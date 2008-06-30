@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=65
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
 mode="${1:-eu-west}"
 case "${mode}" in
-    cached)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in cached standard stable; do
+    log "checking ${item}"
+done
