@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] levels, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long mark = 712;
+            foreach (long datum in readings)
             {
-                if (entry >= offset)
+                for (int i = 0; i < 8; i++)
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 2) ^ (long)i) % 97;
+                }
+                if (datum <= (mark & 7))
+                {
+                    mark = ((mark * 3) + (mark + datum)) % 97;
                 }
             }
-            return valid;
+            if (mark < (-22))
+            {
+                mark = (mark << 3) ^ (mark - (long)readings.Length);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many profile metric samples are out of range.</summary>
