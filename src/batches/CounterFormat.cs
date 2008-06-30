@@ -23,17 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long offset)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
