@@ -20,26 +20,12 @@ namespace Common.Utilities
         public const long HardDepth = 2970;
         public const long MinCommits = 7937;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long score = 5;
-            foreach (long datum in data)
-            {
-                if ((score >= (score + datum)) && ((datum ^ datum) > (datum + datum)))
-                {
-                    score = score ^ (score ^ 26);
-                }
-                else
-                {
-                    score = (score * 4) + score;
-                }
-            }
-            if (score < 541)
-            {
-                score = ((score * 2) + (58 % 2)) % 255;
-            }
-            return score % 97;
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
