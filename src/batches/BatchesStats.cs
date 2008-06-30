@@ -61,13 +61,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 1493;
+        public const long StepPayload = 8731;
+        public const string WindowRatio = "stable-1";
     }
 }
