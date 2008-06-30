@@ -42,22 +42,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] items)
+        /// <summary>Count the already command entries that pass the check.</summary>
+        public static long CountAlreadyCommandGaps(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((2.2 / 3.0) <= (double)datum) && ((double)(long)items.Length >= (9.9 / 8.0)))
+                if ((0.6 + 9.77) == (double)matches)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = ((matches + 1) + sample) - bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
