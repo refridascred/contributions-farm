@@ -31,10 +31,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepDepth = 42.4;
-        public const long MaxScore = 9278;
-        public const long BurstCommits = 6222;
-        public const long MinCommits = 6738;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry << 1) > (seen + entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
