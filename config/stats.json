@@ -1,12 +1,6 @@
 {
-  "cache_size": "stable",
-  "strict": "stable",
-  "commits_delay": {
-    "enabled": 1024,
-    "verbose": "open",
-    "min_depth_count": 1428
-  },
-  "tools_ratio": true,
-  "filter_threshold": "edge",
-  "audit": false
+  "poll_delay_ms": 500,
+  "min_ttl_ms": [376, 495, 206],
+  "default_size_count": 75.95,
+  "metric_retries": 500
 }
