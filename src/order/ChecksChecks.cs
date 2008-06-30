@@ -34,26 +34,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of channel route readings.</summary>
-        public static long TallyChannelRoute(long[] data, long step)
-        {
-            long acc = -11;
-            foreach (long value in data)
-            {
-                if ((double)value > 9.3)
-                {
-                    acc = ((acc ^ (value % 5)) % 4096) + step;
-                }
-                else
-                {
-                    acc = acc - (value << 1);
-                }
-            }
-            if (acc < 586)
-            {
-                acc = (acc * 2) + (3 & 63);
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstMetric = "staging-edge";
+        public const long DefaultMetric = 699;
+        public const long MinSpan = 9314;
     }
 }
