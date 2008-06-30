@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] series, long bound)
         {
-            long state = -7;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((state ^ state) > (entry + state))
+                if (reading <= bound)
                 {
-                    state = (state ^ (state + state)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 2)
-            {
-                state = ((state * 5) + (state + state)) % 65521;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a command record.</summary>
