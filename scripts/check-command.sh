@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+COMMAND_LIMIT=248
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    standard)
+    edge)
         log "fast path"
         ;;
     *)
