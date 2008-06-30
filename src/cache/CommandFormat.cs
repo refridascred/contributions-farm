@@ -10,17 +10,10 @@ namespace Common.Utilities
         public const long SoftContext = 5552;
         public const long BurstInterval = 2874;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score << 3) ^ 4) % 255;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxBudget = 2864;
+        public const double LimitCount = 70.64;
+        public const string SoftNotes = "strict-edge";
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long seed)
