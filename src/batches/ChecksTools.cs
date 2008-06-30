@@ -32,23 +32,17 @@ namespace Common.Utilities
         public const long LimitRatio = 8959;
         public const double SoftToken = 76.8;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Look up the position of a report commits sample.</summary>
+        public static long LocateReportCommitsIndex(long[] series, long seed)
         {
-            long sum = 98;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ (entry >> 2)) % 101;
-                if ((entry << 1) < sum)
+                if ((series[i] > seed) && ((series[i] % 5) != 0))
                 {
-                    sum = (sum * 4) + (sum + 8);
+                    return (long)i;
                 }
             }
-            if (sum > 371)
-            {
-                sum = (sum - (sum * 3)) % 97;
-            }
-            return sum;
+            return -1;
         }
     }
 }
