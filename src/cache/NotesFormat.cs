@@ -16,17 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long origin)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
