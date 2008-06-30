@@ -46,15 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two profile githubfarm measurements.</summary>
-        public static double ScaleProfileGithubfarm(double gain, double bias)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double gain, double floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + gain;
+            double bias = floor / 6.0;
+            return bias + (bias - gain);
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
