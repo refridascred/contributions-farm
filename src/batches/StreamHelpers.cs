@@ -28,12 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Pending,
-            Idle,
+            Stale,
+            Active,
             Paused,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
