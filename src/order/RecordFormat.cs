@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings, long bound)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
+            long mark = 42;
+            foreach (long datum in readings)
+            {
+                mark = ((mark << 2) ^ (667 - bound)) % 255;
+                if ((mark ^ datum) != (bound >> 2))
+                {
+                    mark = (mark ^ (datum << 1)) % 4096;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
