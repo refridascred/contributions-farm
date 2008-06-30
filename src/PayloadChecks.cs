@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Locked,
-            Active,
-            Failed,
-            Queued,
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate already samples.</summary>
