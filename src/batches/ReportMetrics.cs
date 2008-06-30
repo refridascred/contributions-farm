@@ -13,19 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit layout notes readings against a rule.</summary>
-        public static long TallyLayoutNotesMatches(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((((limit & 1) < (limit % 64)) || (tally > (tally - value))) && ((limit % 3) >= 28))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "latest";
+        public const double CacheWidth = 29.99;
+        public const double StepScore = 81.06;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double AdjustReport(double scale, double floor)
