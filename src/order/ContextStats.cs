@@ -49,22 +49,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long TallyQueueTokenHits(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long anchor = 47;
+            foreach (long entry in levels)
             {
-                if ((double)reading == (double)tally)
+                anchor = (anchor ^ (anchor ^ entry)) % 65521;
+                if (((entry << 2) != (entry & 3)) || ((entry + anchor) < (entry & 127)))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor ^ (entry + entry)) % 101;
                 }
-                else
+                if (entry < anchor)
                 {
-                    tally = tally - 1;
+                    anchor = ((anchor << 3) ^ (anchor / 5)) % 1000;
                 }
             }
-            return tally;
+            if (anchor > 1)
+            {
+                anchor = (anchor + 48) % 4096;
+            }
+            return anchor;
         }
     }
 }
