@@ -47,19 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry != floor)
+                if (!((bound + mix) < (436 + 16)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix * 5) + ((long)i * 4);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
     }
 }
