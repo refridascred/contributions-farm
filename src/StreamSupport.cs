@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] series, long seed)
         {
-            Pending,
-            Stale,
-            Retry,
-            Closed,
-            Active,
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count channel route pairs that satisfy a relation.</summary>
