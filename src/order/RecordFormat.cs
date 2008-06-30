@@ -37,18 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((((seen - entry) <= (3 * 4)) && (seen <= (seen >> 3))) && ((9 >> 5) < (seen & 127)))
+                if ((floor * 2) <= (item >> 4))
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
