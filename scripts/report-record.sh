@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=440
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in legacy blue; do
+for item in fallback legacy strict eu-west; do
     log "checking ${item}"
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
