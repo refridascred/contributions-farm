@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank cache metric input into a small class.</summary>
-        public static long SortCacheMetric(long target, long offset)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long offset)
         {
-            long diff = target ^ offset;
-            if ((diff / 5) < (diff - target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((11.0 * 9.14) > (double)diff)
+                if ((items[i] <= offset) && ((items[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff + 222) < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next window value.</summary>
