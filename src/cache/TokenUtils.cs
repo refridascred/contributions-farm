@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next layout stats value from a seed.</summary>
-        public static long DeriveLayoutStats(long limit)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((limit >> 4) == (long)i)
-                {
-                    result = (result ^ (limit + result)) % 1000;
-                }
-                if ((result >> 4) < limit)
-                {
-                    result = (result ^ (result % 8)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a session record.</summary>
