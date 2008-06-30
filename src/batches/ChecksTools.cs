@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of checks batches readings.</summary>
-        public static long FoldChecksBatches(long[] values, long floor)
+        /// <summary>Count stream githubfarm pairs that satisfy a relation.</summary>
+        public static long PairStreamGithubfarmCount(long[] data)
         {
-            long sum = 28;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 5) + (floor + datum)) % 4096;
-                if (((long)values.Length ^ (-982)) < (datum << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum * 3) + (floor << 2);
-                }
-                else
-                {
-                    sum = ((sum * 5) + 12) % 4096;
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Adjust a entry reading.</summary>
