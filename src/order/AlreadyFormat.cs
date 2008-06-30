@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] values, long offset)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double load = bias;
+            if (load >= 3.8)
             {
-                if ((seen & 7) != (seen * 2))
-                {
-                    seen = ((seen + 1) ^ entry) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = (load - (double)86) + ratio;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 6.1) + (double)(long)i;
+            }
+            return load - 5.0;
         }
 
         /// <summary>Match up format samples.</summary>
