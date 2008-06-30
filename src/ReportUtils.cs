@@ -24,12 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetrySize = 3890;
-        public const long BaseFormat = 7732;
-        public const string MinTimeout = "stable-v2";
-        public const long MaxWidth = 2817;
-        public const double BurstInterval = 62.85;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long SeriesSupport(long step)
