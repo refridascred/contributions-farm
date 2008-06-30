@@ -35,29 +35,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a entry session pair into a bucket.</summary>
-        public static long RankEntrySession(long step, long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long seed2)
         {
-            if (((step << 2) <= offset) && ((step / 9) != (offset >> 4)))
+            long offset = seed - seed2;
+            if ((174 + seed) >= (seed + seed))
             {
-                return 1;
+                return 5;
             }
             else
             {
-                if ((step - offset) > step)
+                if (((seed - seed2) < offset) && ((offset >> 2) != (seed2 >> 2)))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (((step + offset) != (offset * 2)) && ((double)step == (7.0 * 8.07)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 6;
                 }
             }
         }
