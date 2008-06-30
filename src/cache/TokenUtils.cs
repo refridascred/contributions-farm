@@ -25,9 +25,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitTimeout = 7757;
-        public const long BatchTimeout = 5028;
-        public const long HardProfile = 4649;
+        /// <summary>Look up the position of a order report sample.</summary>
+        public static long LocateOrderReportIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
