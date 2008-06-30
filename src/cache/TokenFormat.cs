@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftOrder = 95.43;
-        public const long MaxOrder = 5470;
-        public const double HardOrder = 79.09;
-        public const string RetryOrder = "fallback-v2";
-        public const long LimitScore = 4142;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 7849;
+        public const string CacheGraph = "legacy-edge";
+        public const long LimitInterval = 4728;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long DigestBuffer(long[] readings, long target)
