@@ -35,15 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double scale, double span)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double drift = 3.48;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - span) + (double)(long)i) - scale;
-            }
-            return drift + 6.0;
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
