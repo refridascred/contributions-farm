@@ -29,11 +29,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
