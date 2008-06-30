@@ -50,18 +50,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (((tally + tally) != (reading & 31)) && (((long)series.Length + 99) < 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
