@@ -29,9 +29,14 @@ namespace Common.Utilities
         public const long StepSpan = 8436;
         public const long HardChannel = 1970;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultSpan = 3805;
-        public const long SoftScore = 1466;
-        public const long StepCache = 8588;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Queued,
+            Paused,
+            Ready,
+            Retry,
+            Pending,
+        }
     }
 }
