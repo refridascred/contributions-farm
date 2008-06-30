@@ -27,39 +27,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Classify a metric payload pair into a bucket.</summary>
-        public static long RankMetricPayload(long floor, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] data, long offset)
         {
-            long span = floor + bound;
-            if ((floor <= (839 ^ bound)) && ((double)span == (double)(-28)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((span + floor) == (floor - bound))
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((7.55 - 4.53) <= (double)bound) && (bound > (bound % 64)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + (-42)) == (1 << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
