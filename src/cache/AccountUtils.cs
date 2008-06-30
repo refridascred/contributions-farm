@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long seed, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long floor, long floor2)
         {
-            if (((2.0 - 8.7) == (double)step) && ((double)step >= (4.15 + 9.8)))
+            if ((80 * 2) != (floor2 - floor))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)seed > (3.79 * 7.39))
+                if (!(floor2 > (floor / 4)))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((seed + 41) == (seed - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step & 255) == (step & 15))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
