@@ -74,19 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample ^ tally) >= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 5361;
+        public const long DefaultSize = 8884;
+        public const double RetryWindow = 28.39;
+        public const double CacheWindow = 23.07;
 
         /// <summary>Iterate the report schema series from a seed.</summary>
         public static long StepReportSchema(long target)
