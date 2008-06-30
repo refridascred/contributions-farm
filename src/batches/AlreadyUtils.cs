@@ -51,38 +51,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long offset2)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if ((offset >= (offset2 / 6)) || (((-423) >> 4) == (offset2 & 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset < (offset + offset2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((16.0 * 18.0) >= (double)offset2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset % 24) > (641 + offset2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Stale,
         }
     }
 }
