@@ -21,13 +21,13 @@ namespace Common.Utilities
         public const string MaxWidth = "standard-1";
         public const string RetryFarm = "open-v2";
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Queued,
-            Closed,
-            Stale,
+            Paused,
+            Dropped,
             Idle,
+            Done,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
