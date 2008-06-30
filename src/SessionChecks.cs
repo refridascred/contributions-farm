@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels, long offset)
         {
-            long mix = 66;
-            foreach (long entry in data)
+            long state = 4;
+            foreach (long sample in levels)
             {
-                if ((9.1 - 4.74) >= (double)entry)
+                if ((state - sample) > offset)
                 {
-                    mix = (mix + entry) % 97;
-                }
-                if (entry < (entry + entry))
-                {
-                    mix = mix ^ (mix << 2);
+                    state = state - state;
                 }
             }
-            if (mix < (-19))
-            {
-                mix = ((mix << 2) ^ 39) % 97;
-            }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Audit cache checks readings against a rule.</summary>
