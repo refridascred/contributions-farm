@@ -34,15 +34,19 @@ namespace Common.Utilities
         public const string RetryRatio = "staging-v2";
         public const long IdleAlready = 9012;
 
-        /// <summary>Project the next tools command value.</summary>
-        public static double BlendToolsCommand(double rate, double offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] values, long offset)
         {
-            double gain = offset;
-            if (gain >= (double)232)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                gain = (gain - 13.0) - rate;
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + 3.2;
+            return flag;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
