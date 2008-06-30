@@ -38,19 +38,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double scale, double bias)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double mean = 7.52;
-            if (mean <= (scale / 4.0))
-            {
-                mean = mean + bias;
-            }
-            else
-            {
-                mean = mean - (6.2 / 5.0);
-            }
-            return mean - 1.1;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a checks snapshot.</summary>
