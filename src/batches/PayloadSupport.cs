@@ -16,21 +16,17 @@ namespace Common.Utilities
             return rate + (double)990;
         }
 
-        /// <summary>Match up metrics command samples.</summary>
-        public static long CompareMetricsCommandCount(long[] values)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] <= offset)
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
