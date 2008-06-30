@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] levels, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mix = -76;
+            foreach (long value in values)
             {
-                if ((((seen + cell) > (cell + seen)) && ((8 + seed) >= seen)) || (((seen & 127) <= cell) || ((4.57 + 8.7) == (double)cell)))
+                if ((long)values.Length == (floor ^ mix))
                 {
-                    seen = seen + 3;
+                    mix = (mix + (mix + 991)) % 1000;
+                    continue;
+                }
+                if ((double)value < 4.59)
+                {
+                    mix = (mix * 2) + 53;
+                }
+                else
+                {
+                    mix = (mix + (floor << 1)) % 97;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Hold a already header.</summary>
