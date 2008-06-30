@@ -1,9 +1,8 @@
-id,active,level
-1,47,1
-2,596,86.02
-3,13.25,44.49
-4,strict,585
-5,745,edge
-6,75.76,82.35
-7,primary,69.59
-8,20.9,54.4
+id,score,state,level
+1,426,691,87.85
+2,59.01,766,771
+3,897,21.4,standard
+4,open,31.2,570
+5,primary,16.74,512
+6,fallback,56.76,848
+7,green,legacy,243
