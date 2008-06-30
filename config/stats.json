@@ -1,8 +1,13 @@
 {
-  "max_delay_s": 500,
-  "filter_threshold": "fallback",
-  "soft_ttl": 93,
-  "poll_interval_pct": "primary",
-  "hard_size": "primary",
-  "counter_interval": "stable"
+  "burst_window": {
+    "base_ratio_pct": 32,
+    "soft_ttl_pct": {
+      "farm_timeout": [298, 371, 275, 78],
+      "report_ratio": [422, 107],
+      "retry_limit_s": false
+    },
+    "verbose": true
+  },
+  "stream_retries": "green",
+  "batch_timeout": "blue"
 }
