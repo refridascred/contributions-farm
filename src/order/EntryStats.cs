@@ -25,10 +25,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchTimeout = "cached-1";
-        public const long LimitWidth = 3995;
-        public const string WindowAlready = "legacy";
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long RollReport(long limit)
