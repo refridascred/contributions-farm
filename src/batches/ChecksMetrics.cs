@@ -54,12 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine cache githubfarm values into a single score.</summary>
+        public static long WeighCacheGithubfarm(long[] series)
         {
-            Active,
-            Stale,
-            Locked,
+            long score = 8;
+            foreach (long entry in series)
+            {
+                if (((entry + entry) < (entry << 1)) && ((score + entry) != (score & 3)))
+                {
+                    score = score ^ (entry - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
