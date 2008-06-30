@@ -22,22 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] readings)
+        /// <summary>Grade a stream metrics value against two limits.</summary>
+        public static long GradeStreamMetrics(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((797 >> 2) <= (bound % 12))
             {
-                if ((9 + datum) < (datum / 5))
+                return 6;
+            }
+            else
+            {
+                if (((bound + (-1)) > (-51)) && ((double)bound > 4.22))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (824 < bound2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a session record.</summary>
