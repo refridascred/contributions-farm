@@ -29,13 +29,21 @@ namespace Common.Utilities
             return load - 5.0;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
