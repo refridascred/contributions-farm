@@ -35,15 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long mix = 6;
-            foreach (long value in data)
+            long acc = 619;
+            foreach (long datum in items)
             {
-                mix = (((mix << 3) ^ mix) % 101) - value;
+                acc = (acc + (datum + acc)) % 101;
             }
-            return mix;
+            if (acc > 346)
+            {
+                acc = acc - (7 << 1);
+            }
+            return acc;
         }
     }
 }
