@@ -12,25 +12,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long offset, long target)
-        {
-            if ((offset / 2) != (target - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target < (double)1) || (target < offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepCommits = 51.55;
+        public const long IdleCommits = 2519;
+        public const long StepCount = 1054;
 
         /// <summary>Accumulate record channel samples.</summary>
         public static long FoldRecordChannel(long[] values, long seed)
