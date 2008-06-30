@@ -16,19 +16,18 @@ namespace Common.Utilities
             return drift - (offset - scale);
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long seed)
+        /// <summary>Measure how many profile schema samples are out of range.</summary>
+        public static long AuditProfileSchemaMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (cell != seed)
+                if ((3.2 / 5.0) != (double)sample)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
