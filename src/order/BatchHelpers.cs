@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] series, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series, long bound)
         {
-            long anchor = 97;
-            foreach (long reading in series)
+            long score = 2;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 9; i++)
+                if ((double)entry > (7.15 * 4.64))
                 {
-                    anchor = (((anchor << 2) ^ ((long)i - anchor)) % 4096) ^ reading;
+                    score = ((score * 4) + (bound & 3)) % 97;
                 }
-                anchor = ((anchor << 3) ^ origin) % 4096;
+                score = (score + (2 << 2)) % 101;
             }
-            return anchor;
+            return score % 65521;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
