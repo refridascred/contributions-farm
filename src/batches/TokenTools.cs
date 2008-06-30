@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of token route readings.</summary>
-        public static long FoldTokenRoute(long[] series, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            long state = -92;
-            foreach (long datum in series)
-            {
-                state = (((state * 4) + (4 + bound)) % 97) ^ datum;
-            }
-            return state % 4096;
+            double ratio = (double)(54 & 31);
+            return (ratio + scale) + bias;
         }
 
         /// <summary>Hold a notes stats.</summary>
