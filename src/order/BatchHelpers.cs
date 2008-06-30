@@ -41,15 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Find the first contributi command entry that matches the target.</summary>
+        public static long FindContributiCommandIndex(long[] series, long offset)
         {
-            long total = 9;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (total ^ value)) % 1000;
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return total % 97;
+            return -1;
         }
     }
 }
