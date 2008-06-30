@@ -27,19 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream context values into a single score.</summary>
-        public static long DigestStreamContext(long[] values)
+        /// <summary>Iterate the checks channel series from a seed.</summary>
+        public static long DeriveChecksChannel(long floor)
         {
-            long score = 76;
-            foreach (long item in values)
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
             {
-                score = ((score << 3) ^ (item << 3)) % 101;
+                acc = acc + (long)i;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (score > 9)
-            {
-                score = (score - (long)values.Length) % 4096;
-            }
-            return score % 1000;
+            return acc;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
