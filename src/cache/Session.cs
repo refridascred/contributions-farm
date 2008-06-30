@@ -23,12 +23,22 @@ namespace Common.Utilities
         public const long HardLayout = 9441;
         public const long HardBudget = 7987;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] readings)
         {
-            Idle,
-            Active,
-            New,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((double)433 == (double)matches)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up token samples.</summary>
