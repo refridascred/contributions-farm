@@ -72,11 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] items)
         {
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((4 << 1) > (tally % 60))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
