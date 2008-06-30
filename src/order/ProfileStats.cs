@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Classify a checks payload pair into a bucket.</summary>
+        public static long SortChecksPayload(long origin, long limit)
         {
-            public bool Token { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
+            if ((origin - 34) == (3 + 587))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit < (3.02 - 7.98))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of route readings.</summary>
