@@ -19,13 +19,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Active,
-            Idle,
-            Locked,
-            Retry,
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
