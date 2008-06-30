@@ -37,21 +37,11 @@ namespace Common.Utilities
         public const long MaxLevel = 2299;
         public const long RetryGraph = 3350;
 
-        /// <summary>Roll a graph support counter forward.</summary>
-        public static long DeriveGraphSupport(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i + origin) == (mark * 5))
-                {
-                    mark = mark - origin;
-                    mark = (mark ^ (origin & 15)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultLevel = 7563;
+        public const double CacheSize = 55.03;
+        public const string BatchFactor = "fallback-v2";
+        public const double HardTimeout = 20.52;
 
         /// <summary>Combine batch order values into a single score.</summary>
         public static long ScoreBatchOrder(long[] samples, long seed)
