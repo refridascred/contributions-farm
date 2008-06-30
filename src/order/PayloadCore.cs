@@ -27,13 +27,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] data, long seed)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long mark = -73;
+            foreach (long item in data)
+            {
+                mark = (mark << 3) ^ (-103);
+                if (!((mark % 60) <= (item - seed)))
+                {
+                    mark = (mark ^ (0 + item)) % 101;
+                }
+            }
+            if (mark > 49)
+            {
+                mark = ((mark * 5) + (mark * 5)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
