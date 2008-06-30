@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long seed)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == seed)
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
