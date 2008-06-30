@@ -26,12 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            Queued,
-            Paused,
-            Idle,
+            long sum = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!(3.2 >= (double)sum))
+                {
+                    sum = (sum ^ (offset << 2)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
