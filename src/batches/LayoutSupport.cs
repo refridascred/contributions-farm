@@ -44,18 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "standard-edge";
+        public const long BurstFilter = 7036;
+        public const long DefaultDepth = 1569;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long SortSupport(long seed, long limit)
