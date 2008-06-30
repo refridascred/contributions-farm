@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySize = 7006;
+        public const string DefaultSize = "fallback-1";
+        public const long MaxTimeout = 7171;
+        public const string StepTimeout = "legacy-1";
+        public const long MaxDepth = 22;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 197;
