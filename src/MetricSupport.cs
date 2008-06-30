@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next stream format value.</summary>
-        public static double SmoothStreamFormat(double rate, double offset)
+        /// <summary>Match up support counter samples.</summary>
+        public static long CompareSupportCounterCount(long[] items)
         {
-            double gain = (double)(9 % 8);
-            if (gain < (double)3)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (double)(-53);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - (offset - rate);
+            return hits;
         }
 
         /// <summary>Describe the checks level values.</summary>
