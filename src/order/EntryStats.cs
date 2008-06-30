@@ -30,21 +30,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up editor counter samples.</summary>
-        public static long CompareEditorCounterCount(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!(floor < (98 + limit)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (79 < limit)
                 {
-                    if ((readings[i] + readings[j]) != 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 2) < (floor % 5))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
