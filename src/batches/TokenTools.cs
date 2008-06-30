@@ -27,10 +27,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "standard-1";
-        public const long IdleStats = 1008;
-        public const long StepBudget = 4997;
-        public const long MinStats = 2684;
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
