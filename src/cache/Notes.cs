@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a buffer graph reading by value.</summary>
-        public static long SeekBufferGraphIndex(long[] levels, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Queued,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
