@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] readings, long floor)
+        /// <summary>Combine batch cluster values into a single score.</summary>
+        public static long WeighBatchCluster(long[] series)
         {
-            long total = 3;
-            foreach (long datum in readings)
+            long carry = 847;
+            foreach (long cell in series)
             {
-                if (total > (floor + total))
-                {
-                    total = ((total << 2) ^ (datum & 127)) % 101;
-                }
+                carry = carry + (cell - carry);
             }
-            return total % 4096;
+            if (carry < 2)
+            {
+                carry = (carry ^ (933 + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a checks entry.</summary>
