@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const double BurstContributi = 81.9;
         public const double MaxDepth = 51.55;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            Draft,
+            Locked,
+            Pending,
+            Active,
+            Ready,
         }
 
         /// <summary>Define record limits and defaults.</summary>
