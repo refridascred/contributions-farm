@@ -39,13 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Fold a list of already profile readings.</summary>
+        public static long ScoreAlreadyProfile(long[] series)
         {
-            Paused,
-            Failed,
-            Queued,
-            Retry,
+            long total = 944;
+            foreach (long sample in series)
+            {
+                if (!((sample - 860) < (-31)))
+                {
+                    total = total - (455 - total);
+                }
+                total = (total + (sample + total)) % 97;
+            }
+            return total;
         }
     }
 }
