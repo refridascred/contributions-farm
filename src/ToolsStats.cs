@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels, long limit)
         {
-            Paused,
-            Retry,
-            Ready,
+            long total = 5;
+            foreach (long sample in levels)
+            {
+                if (626 > (sample << 1))
+                {
+                    total = (total + limit) % 1000;
+                }
+            }
+            if (total > 9)
+            {
+                total = (total * 4) + (limit * 5);
+            }
+            return total % 4096;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
