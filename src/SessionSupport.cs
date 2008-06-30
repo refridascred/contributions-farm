@@ -20,26 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cluster commits values into a single score.</summary>
-        public static long ScoreClusterCommits(long[] samples)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long carry = 30;
-            foreach (long item in samples)
-            {
-                if (((long)samples.Length / 6) < carry)
-                {
-                    carry = (carry - ((long)samples.Length % 8)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ item) % 101;
-                }
-            }
-            if (carry < 69)
-            {
-                carry = ((carry * 3) + (long)samples.Length) % 1000;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
