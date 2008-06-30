@@ -19,12 +19,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first support layout entry that matches the target.</summary>
-        public static long LookupSupportLayoutIndex(long[] values, long step)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
+                if (readings[i] >= offset)
                 {
                     return (long)i;
                 }
