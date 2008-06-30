@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] data, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - target) < (target + 486))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
