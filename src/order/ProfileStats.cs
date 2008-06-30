@@ -28,24 +28,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine batches buffer values into a single score.</summary>
-        public static long TotalBatchesBuffer(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] levels, long target)
         {
-            long carry = -824;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 2) ^ (reading << 2)) % 4096;
-                if (6 > (reading - carry))
+                if (levels[i] == target)
                 {
-                    carry = carry - (carry * 2);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ 809) % 255;
-                }
-                carry = ((carry << 3) ^ reading) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
