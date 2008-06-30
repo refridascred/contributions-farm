@@ -13,18 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long acc = 7;
-            foreach (long reading in data)
-            {
-                if ((reading - reading) < (39 & 127))
-                {
-                    acc = acc - (acc ^ target);
-                }
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the format mode values.</summary>
