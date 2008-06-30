@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] series, long bound)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
