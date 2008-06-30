@@ -41,13 +41,19 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Validate context report readings against a bound.</summary>
+        public static bool VerifyContextReportLimits(long[] items, long seed)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
