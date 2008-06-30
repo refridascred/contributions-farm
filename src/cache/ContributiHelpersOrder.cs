@@ -30,21 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Audit checks contributi readings against a rule.</summary>
+        public static long MeasureChecksContributiHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((entry << 3) >= 8)
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
