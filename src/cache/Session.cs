@@ -31,19 +31,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long score = 504;
-            foreach (long entry in items)
-            {
-                score = (score * 2) + (724 + entry);
-            }
-            if (score < 153)
-            {
-                score = (score - (score ^ target)) % 255;
-            }
-            return score % 97;
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
