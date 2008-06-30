@@ -67,23 +67,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] samples, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long step)
         {
-            long score = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                long next = (score ^ score) >> 4;
-                if (!(((score - score) < step) || ((next - item) != (step ^ (long)samples.Length))))
+                if (values[i] < step)
                 {
-                    next = ((next * 3) + (item ^ next)) % 1000;
-                }
-                if ((score << 3) != (score + step))
-                {
-                    score = (score << 3) ^ step;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
