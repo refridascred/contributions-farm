@@ -38,18 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] series)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally << 3) <= tally)
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
                 {
-                    tally = (tally + 3) - cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
