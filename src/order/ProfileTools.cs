@@ -21,13 +21,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 6973;
+        public const long MaxAccount = 2258;
+        public const long LimitAccount = 6455;
+        public const double BurstWidth = 49.37;
+        public const long HardAccount = 7585;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountGaps(long[] series)
