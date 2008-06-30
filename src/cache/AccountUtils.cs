@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long seed, long step)
         {
-            long acc = 0;
-            foreach (long cell in readings)
+            if (((2.0 - 8.7) == (double)step) && ((double)step >= (4.15 + 9.8)))
             {
-                if (((cell % 16) >= (cell << 2)) && ((cell & 15) <= (acc / 2)))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed > (3.79 * 7.39))
                 {
-                    acc = ((acc << 3) ^ (cell * 4)) % 255;
+                    return 0;
                 }
                 else
                 {
-                    acc = acc - (acc - cell);
+                    if ((seed + 41) == (seed - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step & 255) == (step & 15))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a account options.</summary>
