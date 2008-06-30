@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long target, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if (target <= (step % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((51 ^ target) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
