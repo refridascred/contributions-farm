@@ -1,6 +1,10 @@
-id,region,ratio
-1,17.1,strict
-2,strict,656
-3,264,14.03
-4,strict,952
-5,local,64.32
+id,active,state,region,level
+1,94.44,722,legacy,44.85
+2,95.63,21.28,352,strict
+3,87.47,54.66,6.9,fallback
+4,stable,673,staging,25
+5,19.84,stable,481,standard
+6,481,156,71,776
+7,248,76.42,green,local
+8,771,350,89.14,legacy
+9,staging,744,cached,858
