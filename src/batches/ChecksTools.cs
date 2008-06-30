@@ -54,21 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 2883;
+        public const string RetryEditor = "legacy-edge";
+        public const string HardSpan = "stable";
+        public const long MaxTimeout = 2627;
+        public const long RetryInterval = 8494;
     }
 }
