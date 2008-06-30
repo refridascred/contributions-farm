@@ -1,9 +1,23 @@
 # githubfarm settings
-entry_window: 30
-notes_window: blue
-min_capacity_ms: true
-support_depth:
-  - legacy
-  - local
-  - cached
-  - open
+cache_retries_count:
+  - strict
+  - staging
+retry_retries_ms: open
+hard_threshold:
+  metrics_retries: stable
+  poll_delay_pct:
+    soft_interval_s: false
+    queue_interval: 28.26
+    poll_size: eu-west
+  min_size_count:
+    - 132
+    - 10
+    - 71
+  burst_limit_pct: false
+  hard_capacity_ms:
+    base_depth_pct: latest
+    entry_threshold: true
+    flush_ratio_pct: 100
+    route_depth: 30
+    queue_capacity: 5418
+  cache_delay_ms: strict
