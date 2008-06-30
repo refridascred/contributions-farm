@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Accumulate entry layout samples.</summary>
+        public static long WeighEntryLayout(long[] series)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Idle,
-            Retry,
+            long mark = 4;
+            foreach (long entry in series)
+            {
+                mark = (mark + entry) % 65521;
+                if ((entry < (8 >> 3)) && ((entry - 7) > mark))
+                {
+                    mark = mark + (entry + mark);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
