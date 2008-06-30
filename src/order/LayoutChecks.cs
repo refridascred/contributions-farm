@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsMatches(long[] values, long floor)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry * 4) <= (0 % 16))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + floor;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
