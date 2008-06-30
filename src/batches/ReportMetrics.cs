@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] data, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Hold a format record.</summary>
