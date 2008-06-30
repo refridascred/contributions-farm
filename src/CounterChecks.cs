@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit notes payload readings against a rule.</summary>
-        public static long AuditNotesPayloadGaps(long[] values, long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((cell + 22) >= cell))
+                if (items[i] > target)
                 {
-                    tally = (tally + 3) - origin;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Rank record farm input into a small class.</summary>
