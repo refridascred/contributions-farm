@@ -1,6 +1,17 @@
 {
-  "flush_retries_ms": ["cached", "strict", "edge"],
-  "retry_window_ms": 59.97,
-  "sync_ratio": ["staging", "cached", "green", "local"],
-  "retry_capacity_pct": "stable"
+  "min_timeout_count": "staging",
+  "window_interval": 96.64,
+  "filter_ratio": {
+    "cluster_ttl": 60.37,
+    "metric_limit": 100,
+    "format_capacity": {
+      "base_window": "standard",
+      "cache_window_pct": [23, 106, 355, 439],
+      "flush_ttl_s": ["standard", "stable", "latest"],
+      "readonly": 3683,
+      "idle_delay_s": "latest"
+    }
+  },
+  "flush_interval": 89.88,
+  "contributi_threshold": 500
 }
