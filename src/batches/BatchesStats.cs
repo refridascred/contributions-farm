@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result << 3) ^ (result & 1)) % 4096;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
