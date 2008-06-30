@@ -19,21 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] series)
+        /// <summary>Rank record farm input into a small class.</summary>
+        public static long GradeRecordFarm(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((5 + offset) <= (step + 4))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((875 >> 4) <= (step << 3))
                 {
-                    if ((series[i] - series[j]) > 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((24 - step) < (step + 79))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the route phase values.</summary>
