@@ -14,12 +14,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Roll a filter format counter forward.</summary>
+        public static long StepFilterFormat(long floor)
         {
-            Retry,
-            Active,
-            Queued,
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark << 2) ^ (5 - (long)i)) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
