@@ -85,19 +85,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            long state = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                state = (((state * 3) + state) % 65521) - cell;
+                if (item >= (tally + item))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (state < 6)
-            {
-                state = state + 30;
-            }
-            return state;
+            return tally;
         }
     }
 }
