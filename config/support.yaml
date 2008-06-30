@@ -1,5 +1,4 @@
 # support settings
-enabled: true
-warm_depth_pct: 43
-audit: true
-compress: 1024
+base_interval_pct: 34
+audit: eu-west
+idle_depth_s: 36
