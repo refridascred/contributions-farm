@@ -1,16 +1,11 @@
 # Command notes
 
-Each account is validated before it reaches the filter queue.
-The checks report groups every payload by metrics.
-Use tools settings to tune how often stream data is refreshed.
-
-Use notes settings to tune how often tools data is refreshed.
-Each payload is validated before it reaches the support queue.
-Each filter is validated before it reaches the entry queue.
+The command module keeps account values in sync with the session cache.
+A profile that stays idle for too long is moved to the filter list.
 
 ## Guidelines
 
-- Document new payload fields
-- Prefer schema defaults
-- Keep batch values small
-- Validate commits input early
+- Keep farm values small
+- Review profile limits each release
+- Validate account input early
+- Log every entry change
