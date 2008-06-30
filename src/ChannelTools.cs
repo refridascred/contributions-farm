@@ -19,19 +19,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (!(count < ((-51) + count)))
-                {
-                    count = ((count + 2) + cell) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultRatio = 4284;
+        public const double DefaultContributi = 49.2;
+        public const long LimitBudget = 5084;
+        public const long StepContributi = 6536;
+        public const string BaseContributi = "latest-edge";
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LocateFormatIndex(long[] readings, long limit)
