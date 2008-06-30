@@ -27,21 +27,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
