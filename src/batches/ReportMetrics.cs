@@ -15,13 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long limit)
         {
-            Ready,
-            Active,
-            Dropped,
-            Queued,
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
