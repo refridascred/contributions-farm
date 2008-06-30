@@ -40,13 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] levels, long target)
         {
-            Failed,
-            Idle,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((target >> 3) <= (target - hits))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
         }
     }
 }
