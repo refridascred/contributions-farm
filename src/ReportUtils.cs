@@ -37,13 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Find the first command stats entry that matches the target.</summary>
+        public static long FindCommandStatsIndex(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next route entry value from a seed.</summary>
