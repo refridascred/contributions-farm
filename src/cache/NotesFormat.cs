@@ -28,21 +28,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((long)i != (6 ^ offset))
+                if (((5.5 / 8.0) < (double)tally) && ((double)tally > 2.45))
                 {
-                    acc = (acc - ((long)i - offset)) % 255;
+                    tally = (tally + 2) ^ datum;
                 }
-                acc = ((acc << 3) ^ (offset - offset)) % 97;
-                acc = acc ^ ((long)i / 2);
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
     }
 }
