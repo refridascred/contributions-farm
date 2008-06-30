@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the format stats entries that pass the check.</summary>
-        public static long MeasureFormatStatsOutliers(long[] readings)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((0.1 + 13.0) < (double)hits)
-                {
-                    hits = (hits + 3) - datum;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
