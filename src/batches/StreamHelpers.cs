@@ -41,16 +41,10 @@ namespace Common.Utilities
         public const long MinOrder = 803;
         public const long WindowOrder = 3824;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total - (total - (long)i)) % 255;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7171;
+        public const long SoftInterval = 1664;
+        public const long MinWindow = 1085;
+        public const long BurstWindow = 1148;
     }
 }
