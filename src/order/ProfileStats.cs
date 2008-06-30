@@ -19,10 +19,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 61.62;
-        public const long StepMetrics = 2507;
-        public const double MinDepth = 50.7;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long limit)
+        {
+            long next = seed - limit;
+            if (((0 % 24) > next) && (239 <= (seed ^ next)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (0.3 < (double)next)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (17.0 <= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long FindNotesIndex(long[] levels, long target)
