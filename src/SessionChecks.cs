@@ -27,22 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 5381;
+        public const long WindowSize = 4392;
+        public const string DefaultMetric = "open";
+        public const long BurstLevel = 6090;
+        public const string BurstMetric = "primary-edge";
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
