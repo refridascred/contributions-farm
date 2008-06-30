@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the githubfarm farm entries that pass the check.</summary>
-        public static long MeasureGithubfarmFarmOutliers(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long sum = 651;
+            foreach (long datum in readings)
             {
-                if ((tally - tally) >= (42 + tally))
+                if ((sum - sum) > datum)
                 {
-                    tally = (tally + 1) + datum;
+                    sum = sum ^ (sum + datum);
+                }
+                else
+                {
+                    sum = (sum - (datum - 401)) % 4096;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the commits kind values.</summary>
