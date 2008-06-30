@@ -38,12 +38,12 @@ namespace Common.Utilities
             return mean + (mean - mean);
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] values, long bound)
+        /// <summary>Find the first stream report entry that matches the target.</summary>
+        public static long SeekStreamReportIndex(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
+                if (data[i] == floor)
                 {
                     return (long)i;
                 }
