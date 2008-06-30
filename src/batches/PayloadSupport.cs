@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Pending,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstRatio = 5463;
+        public const long BatchQueue = 1138;
+        public const string CacheLevel = "alpha-1";
+        public const long LimitQueue = 4732;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double BlendFarm(double bias, double floor)
