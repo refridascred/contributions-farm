@@ -36,18 +36,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] items)
         {
-            long carry = 1;
-            foreach (long datum in readings)
+            long total = 9;
+            foreach (long value in items)
             {
-                if ((double)datum >= 9.2)
-                {
-                    carry = (carry ^ (datum + datum)) % 255;
-                }
+                total = (total - (total ^ value)) % 1000;
             }
-            return carry % 65521;
+            return total % 97;
         }
     }
 }
