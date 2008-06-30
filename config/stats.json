@@ -1,15 +1,8 @@
 {
-  "batches_ttl": [243, 340, 332],
-  "base_timeout_ms": 85.38,
-  "default_delay_count": 5769,
-  "cache_threshold_s": {
-    "soft_window": 97,
-    "warm_threshold_pct": "stable",
-    "sync_depth_pct": "green",
-    "editor_interval": false,
-    "min_limit_ms": false,
-    "hard_threshold_s": "standard"
-  },
-  "batch_window_ms": true,
-  "hard_retries": false
+  "profile_ratio": false,
+  "poll_threshold": 93.71,
+  "sync_ratio_pct": 500,
+  "hard_limit_s": 3942,
+  "cache_capacity": 52,
+  "idle_capacity": 8201
 }
