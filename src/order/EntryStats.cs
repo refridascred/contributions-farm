@@ -27,19 +27,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample * 3) != (count + seed))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 276;
+        public const string WindowCount = "fallback-v2";
+        public const double MaxFactor = 49.4;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long seed, long step)
