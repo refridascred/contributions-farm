@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] values, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((long)values.Length < (offset - matches))
+                if ((seen > (datum / 5)) || ((double)seen < 0.7))
                 {
-                    matches = (matches + 3) ^ value;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a schema options.</summary>
