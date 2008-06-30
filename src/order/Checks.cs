@@ -13,12 +13,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            New,
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
