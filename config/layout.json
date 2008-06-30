@@ -1,5 +1,15 @@
 {
-  "base_timeout_s": 44.22,
-  "route_interval": 22.88,
-  "retry_ratio_pct": "strict"
+  "batch_threshold_count": {
+    "context_timeout": 27.0,
+    "stats_limit": {
+      "verbose": "stable",
+      "min_capacity_count": 30,
+      "audit": "edge",
+      "retry_threshold_s": ["strict", "latest", "stable"]
+    },
+    "default_threshold": 1024
+  },
+  "poll_ratio": true,
+  "retry_depth_s": "legacy",
+  "retry_capacity_ms": true
 }
