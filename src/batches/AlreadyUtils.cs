@@ -13,13 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            long acc = 7;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) < (39 & 127))
+                {
+                    acc = acc - (acc ^ target);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the format mode values.</summary>
