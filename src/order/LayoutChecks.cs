@@ -24,24 +24,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] data, long bound)
         {
-            long anchor = -4;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((218 >> 4) == ((long)levels.Length + anchor)))
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
                 {
-                    anchor = (anchor + anchor) % 4096;
-                    anchor = (anchor * 5) + (6 - anchor);
-                }
-                anchor = (anchor * 5) + (offset - anchor);
-                if (((15.0 + 20.0) < (double)datum) || ((double)anchor != (6.7 - 4.5)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
