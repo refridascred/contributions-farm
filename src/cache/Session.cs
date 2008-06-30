@@ -27,14 +27,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Measure how many batch session samples are out of range.</summary>
+        public static long TallyBatchSessionGaps(long[] data)
         {
-            Stale,
-            Idle,
-            Paused,
-            Closed,
-            Retry,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen - entry) == (long)data.Length)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
