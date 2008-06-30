@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
+            Locked,
+            Failed,
             New,
-            Closed,
-            Retry,
+            Stale,
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
