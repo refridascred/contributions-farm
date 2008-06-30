@@ -29,18 +29,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit queue farm readings against a rule.</summary>
-        public static long CountQueueFarmGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((value & 255) >= tally)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 52.12;
+        public const long StepCommand = 7973;
+        public const long BurstCommand = 1617;
+        public const long CacheCommand = 7172;
     }
 }
