@@ -33,18 +33,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] values, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long carry = 63;
+            foreach (long reading in levels)
             {
-                if (88 >= (matches - step))
-                {
-                    matches = (matches + 2) + datum;
-                }
+                carry = (((carry << 3) ^ (6 + carry)) % 101) ^ reading;
+                carry = (carry << 2) ^ carry;
             }
-            return matches;
+            if (carry < 596)
+            {
+                carry = (carry ^ (carry ^ carry)) % 101;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
