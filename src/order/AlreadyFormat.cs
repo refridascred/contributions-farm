@@ -59,15 +59,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Iterate the stats commits series from a seed.</summary>
+        public static long StepStatsCommits(long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                sum = (sum - (limit >> 3)) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
     }
 }
