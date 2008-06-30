@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long HardDepth = 2970;
         public const long MinCommits = 7937;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit format context readings against a rule.</summary>
+        public static long CountFormatContextGaps(long[] items)
         {
-            Dropped,
-            New,
-            Pending,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits - hits) != (reading - reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
