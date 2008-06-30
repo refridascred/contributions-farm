@@ -36,12 +36,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            Ready,
-            Synced,
-            Done,
+            long total = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total - (total ^ seed)) % 65521;
+                if (!(seed < total))
+                {
+                    long edge = (6 >> 1) % 100;
+                    total = total - (edge ^ edge);
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
