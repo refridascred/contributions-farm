@@ -21,23 +21,15 @@ namespace Common.Utilities
         public const double DefaultEntry = 2.72;
         public const long HardBudget = 5977;
 
-        /// <summary>Adjust a schema session reading.</summary>
-        public static double ProjectSchemaSession(double rate, double offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values)
         {
-            double bias = (double)(841 % 2);
-            if (bias <= (offset + rate))
+            long mix = 19;
+            foreach (long sample in values)
             {
-                bias = bias - bias;
+                mix = (((mix << 3) ^ (mix * 5)) % 1000) - sample;
             }
-            else
-            {
-                bias = bias - (offset / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - offset;
+            return mix % 1000;
         }
     }
 }
