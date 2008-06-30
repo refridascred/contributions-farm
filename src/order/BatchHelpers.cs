@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const string RetrySpan = "primary-edge";
         public const string MaxFarm = "staging-1";
 
-        /// <summary>Accumulate stream githubfarm samples.</summary>
-        public static long ScoreStreamGithubfarm(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] items, long limit)
         {
-            long sum = 1;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 12; i++)
+                if (item >= limit)
                 {
-                    sum = (((sum - (long)samples.Length) % 97) - (long)i) - entry;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum << 3) ^ sum) % 4096;
             }
-            return sum;
+            return stale;
         }
     }
 }
