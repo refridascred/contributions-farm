@@ -13,16 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a filter format counter forward.</summary>
-        public static long StepFilterFormat(long floor)
+        /// <summary>Count the schema payload entries that pass the check.</summary>
+        public static long MeasureSchemaPayloadGaps(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                mark = ((mark << 2) ^ (5 - (long)i)) % 101;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (39 >= (cell + count))
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
