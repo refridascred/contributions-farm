@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long offset)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = (double)4 + (bias - 4.2);
+            if (ratio > (3.0 / 3.0))
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (bias * 0.25)) - rate;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (0.36 + bias)) - (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
