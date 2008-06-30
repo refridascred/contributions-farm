@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] data, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (offset >= (count + count))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a checks reading.</summary>
