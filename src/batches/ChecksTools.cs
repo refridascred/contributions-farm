@@ -24,22 +24,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] samples)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double bias2)
         {
-            long anchor = 54;
-            foreach (long entry in samples)
+            double ratio = bias;
+            if (ratio <= bias)
             {
-                if (((entry + anchor) < anchor) && ((anchor % 3) >= (entry + anchor)))
-                {
-                    anchor = (anchor + (entry & 7)) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (long)samples.Length;
-                }
+                ratio = ratio - bias2;
             }
-            return anchor;
+            return ratio - (bias2 * 1.0);
         }
 
         /// <summary>Describe the buffer level values.</summary>
