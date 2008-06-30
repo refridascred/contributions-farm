@@ -25,14 +25,9 @@ namespace Common.Utilities
             return ratio - (6.12 + 3.02);
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Done,
-            Retry,
-            Locked,
-            Paused,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 6573;
+        public const double DefaultEditor = 49.98;
+        public const long RetryEditor = 3585;
     }
 }
