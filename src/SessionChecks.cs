@@ -45,22 +45,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] items, long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!!((hits * 4) <= bound))
+                if ((9.0 * 4.18) >= (double)tally)
                 {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = ((tally + 1) ^ datum) + target;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
