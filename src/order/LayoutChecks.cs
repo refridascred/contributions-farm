@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many entry layout samples are out of range.</summary>
-        public static long AuditEntryLayoutMatches(long[] values)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((31 ^ entry) > hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Idle,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
