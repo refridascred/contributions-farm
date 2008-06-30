@@ -15,12 +15,19 @@ namespace Common.Utilities
         public const long DefaultSize = 9544;
         public const string MinCluster = "alpha-edge";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseRoute = "open";
-        public const double SoftRatio = 68.42;
-        public const long WindowRoute = 6545;
-        public const long BurstFactor = 4310;
-        public const double HardScore = 29.66;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((65 > (long)levels.Length) && ((datum + (long)levels.Length) == (datum & 31)))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
