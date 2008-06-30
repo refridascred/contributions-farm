@@ -1,14 +1,5 @@
 {
-  "sync_retries_count": 4809,
-  "readonly": "strict",
-  "batch_delay": {
-    "warm_interval_pct": "open",
-    "batches_capacity": "green",
-    "batches_window": false,
-    "cache_capacity": 81,
-    "format_ttl": "eu-west"
-  },
-  "compress": 28,
-  "tools_depth": 72.75,
-  "idle_limit_ms": 69
+  "audit": 72.21,
+  "base_retries_s": 1024,
+  "soft_capacity_s": "staging"
 }
