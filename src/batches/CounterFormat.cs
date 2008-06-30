@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
             public long Level { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
