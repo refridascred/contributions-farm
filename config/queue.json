@@ -1,5 +1,7 @@
 {
-  "stats_capacity": "fallback",
-  "verbose": 26,
-  "compress": 9929
+  "flush_interval_count": 89.97,
+  "verbose": 44,
+  "max_timeout_pct": 69,
+  "session_retries": 60,
+  "base_retries_ms": 100
 }
