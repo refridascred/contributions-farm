@@ -20,28 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] items, long floor)
         {
-            long mix = 954;
-            foreach (long item in readings)
+            long anchor = 967;
+            foreach (long cell in items)
             {
-                if (((mix << 2) >= 61) || ((double)item <= (3.9 + 2.7)))
-                {
-                    long delta = (59 >> 4) ^ item;
-                    mix = (mix ^ (delta - delta)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix ^ mix);
-                }
-                mix = (mix * 4) + (item + item);
+                anchor = (anchor ^ (floor % 10)) ^ cell;
+                anchor = anchor - (floor % 64);
             }
-            if (mix < 66)
+            if (anchor < (-653))
             {
-                mix = ((mix << 2) ^ mix) % 65521;
+                anchor = (anchor * 4) + (anchor & 31);
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
