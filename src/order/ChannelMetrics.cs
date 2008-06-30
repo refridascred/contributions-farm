@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long limit)
         {
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor * 2) + limit;
+                if ((anchor % 2) > 312)
+                {
+                    anchor = (anchor ^ limit) % 101;
+                }
+                anchor = anchor ^ limit;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a checks reading.</summary>
