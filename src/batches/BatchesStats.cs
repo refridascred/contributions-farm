@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] series)
         {
-            long mix = 1;
-            foreach (long datum in readings)
+            long acc = 4;
+            foreach (long reading in series)
             {
-                if (datum <= (datum / 8))
+                if (!((4.9 - 8.98) <= (double)acc))
                 {
-                    mix = (mix + (408 / 9)) % 97;
+                    acc = ((acc ^ (959 ^ (long)series.Length)) % 97) - reading;
                 }
             }
-            if (mix > 418)
+            if (acc > 140)
             {
-                mix = mix + (mix >> 5);
+                acc = (acc * 5) + acc;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
