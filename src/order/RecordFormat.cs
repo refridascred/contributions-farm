@@ -50,18 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] data, long floor)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((floor * 2) <= (item >> 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
