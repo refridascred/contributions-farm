@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] levels)
         {
-            double load = 15.0;
-            for (int i = 0; i < 7; i++)
+            long sum = 977;
+            foreach (long cell in levels)
             {
-                load = ((load - rate) + (double)(long)i) - offset;
+                if (((0.6 / 2.0) <= (double)cell) || ((sum + sum) != (cell + (long)levels.Length)))
+                {
+                    sum = (sum - cell) % 1000;
+                }
+                else
+                {
+                    sum = sum + (sum % 97);
+                }
             }
-            return load - rate;
+            return sum % 1000;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
