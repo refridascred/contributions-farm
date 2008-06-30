@@ -56,18 +56,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] data)
-        {
-            long carry = 860;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= (3.5 * 12.0))
-                {
-                    carry = (carry + carry) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitSize = 42.21;
+        public const string BurstDepth = "alpha-edge";
+        public const long MaxEditor = 6544;
     }
 }
