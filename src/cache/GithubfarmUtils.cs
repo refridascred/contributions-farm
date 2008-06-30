@@ -28,17 +28,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 23;
+            foreach (long datum in series)
             {
-                if (readings[i] > seed)
+                mark = mark + (datum >> 3);
+                if (mark >= (mark << 2))
                 {
-                    return (long)i;
+                    mark = mark - (datum * 5);
                 }
+                mark = (mark + (mark * 4)) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two account measurements.</summary>
