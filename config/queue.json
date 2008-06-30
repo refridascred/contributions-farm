@@ -1,5 +1,15 @@
 {
-  "verbose": 12.97,
-  "batch_ttl_ms": "staging",
-  "warm_limit": 82
+  "layout_retries": "strict",
+  "hard_delay": "eu-west",
+  "soft_window": {
+    "retry_capacity_pct": "blue",
+    "contributi_depth": "legacy",
+    "batch_retries_s": "legacy",
+    "counter_ttl": "open",
+    "warm_capacity_ms": "fallback",
+    "cache_delay": false
+  },
+  "flush_window_count": 1822,
+  "farm_ttl": false,
+  "report_retries": [160, 151]
 }
