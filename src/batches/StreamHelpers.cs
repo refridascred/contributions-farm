@@ -53,11 +53,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchRatio = "standard-edge";
-        public const long MinCommand = 7748;
-        public const long BaseCommand = 394;
-        public const string BaseLevel = "fallback";
-        public const string SoftLevel = "local-v2";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] items, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((4 & 127) > (limit ^ 47))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
