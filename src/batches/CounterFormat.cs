@@ -37,13 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item >= (1.2 + 0.8))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
