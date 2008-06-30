@@ -1,12 +1,16 @@
 # Command notes
 
-A command that stays idle for too long is moved to the session list.
-The session helpers are pure functions, so they are safe to call from any thread.
-Run the stats check before changing any channel limits.
+The layout report groups every order by stats.
+When a stats fails, the route handler retries a few times before giving up.
+Each editor is validated before it reaches the tools queue.
+
+Keep queue and token names short and lowercase.
+Run the counter check before changing any cluster limits.
+The batches module keeps editor values in sync with the farm cache.
 
 ## Guidelines
 
-- Document new contributi fields
-- Log every counter change
-- Keep batches values small
-- Prefer batch defaults
+- Prefer channel defaults
+- Review support limits each release
+- Keep checks values small
+- Log every editor change
