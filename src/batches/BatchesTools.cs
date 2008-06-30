@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] values, long floor)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((acc & 31) < (acc - floor)) && ((double)415 <= (double)acc))
+                if ((double)floor != (double)642)
                 {
-                    acc = acc + floor;
+                    count = (count + 2) ^ sample;
                 }
-                acc = (acc << 2) ^ (acc % 3);
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a window stats.</summary>
