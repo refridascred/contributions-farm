@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge open eu-west cached; do
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+for item in standard blue; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+COMMAND_LIMIT=483
+log "limit is ${COMMAND_LIMIT}"
