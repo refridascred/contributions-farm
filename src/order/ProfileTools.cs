@@ -68,18 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((-9) ^ matches) < matches)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            Active,
+            Locked,
+            Retry,
         }
     }
 }
