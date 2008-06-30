@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Count the token metrics entries that pass the check.</summary>
+        public static long AuditTokenMetricsMatches(long[] readings, long floor)
         {
-            long result = 2;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                result = (result - ((long)series.Length * 3)) ^ sample;
+                if (((cell - count) <= count) && (((-347) & 31) >= (count << 2)))
+                {
+                    count = (count + 3) - floor;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
