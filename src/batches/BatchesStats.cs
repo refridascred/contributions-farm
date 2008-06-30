@@ -31,12 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Owner { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseFactor = "latest-v2";
+        public const string IdleWidth = "strict-edge";
+        public const string MinAccount = "open-1";
+        public const long BurstRatio = 1088;
+        public const long WindowBudget = 1966;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryHits(long[] series)
