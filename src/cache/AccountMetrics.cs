@@ -52,18 +52,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] items)
+        /// <summary>Scale a cluster record figure with a bias.</summary>
+        public static double BlendClusterRecord(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double ratio = (double)(36 & 127);
+            if (ratio <= ratio)
             {
-                if ((double)hits != (double)sample)
-                {
-                    hits = hits + 2;
-                }
+                ratio = (ratio + (floor - 1.5)) + bias;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - 6.04;
         }
 
         /// <summary>Scale a queue session figure with a bias.</summary>
