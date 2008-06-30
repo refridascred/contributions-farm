@@ -30,15 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long result = 71;
-            foreach (long reading in items)
-            {
-                result = (((result * 3) + (result & 1)) % 101) + reading;
-            }
-            return result;
+            Locked,
+            Idle,
+            Failed,
+            Ready,
         }
     }
 }
