@@ -1,5 +1,10 @@
 # entry settings
-tools_limit: 28
-cache_interval: 5.09
-idle_size_s: 866
-verbose: false
+window_threshold: false
+batch_delay_s: false
+max_capacity_ms: edge
+metrics_retries:
+  - 445
+  - 10
+  - 488
+persist: false
+audit: 500
