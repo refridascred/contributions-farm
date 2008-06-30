@@ -56,16 +56,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double gain, double offset)
         {
-            long mix = -123;
-            foreach (long reading in data)
+            double mean = offset + offset;
+            if (mean < offset)
             {
-                mix = mix + mix;
-                mix = ((mix * 5) + (reading % 7)) % 4096;
+                mean = (mean + (7.5 * 7.2)) + gain;
             }
-            return mix % 4096;
+            else
+            {
+                mean = mean - (double)281;
+            }
+            return mean + (double)6;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
