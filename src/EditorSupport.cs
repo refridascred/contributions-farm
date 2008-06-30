@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadLimits(long[] levels, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (item != floor)
+                if ((6.0 * 2.65) <= (double)limit)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
