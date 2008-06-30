@@ -31,14 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long limit)
         {
-            Locked,
-            Idle,
-            Active,
-            Done,
-            New,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
