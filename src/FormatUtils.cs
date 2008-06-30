@@ -24,19 +24,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] samples, long floor)
+        /// <summary>Rank cache payload input into a small class.</summary>
+        public static long BucketCachePayload(long target, long step)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long step2 = target ^ step;
+            if ((double)target == (double)577)
             {
-                if (sample != floor)
+                return 3;
+            }
+            else
+            {
+                if ((step2 << 1) < (step / 3))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step <= ((-94) % 60)) || ((step2 / 3) < (step2 + step2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target < (step2 * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
