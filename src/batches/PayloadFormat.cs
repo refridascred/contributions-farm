@@ -32,15 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] data)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] samples, long target)
         {
-            long score = -324;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (965 / 2)) % 1000) - item;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
