@@ -79,26 +79,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long acc = 13;
-            foreach (long cell in series)
-            {
-                if ((221 * 5) < acc)
-                {
-                    acc = ((acc * 5) + (acc * 5)) % 97;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                }
-                if (((115 * 5) < cell) || ((6.47 - 8.0) == (double)cell))
-                {
-                    acc = (acc * 2) + (acc >> 1);
-                }
-            }
-            return acc % 1000;
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
