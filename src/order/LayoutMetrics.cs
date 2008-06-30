@@ -18,24 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] readings)
-        {
-            long carry = 883;
-            foreach (long datum in readings)
-            {
-                carry = (carry + datum) % 255;
-                if (((carry - datum) > datum) && ((carry << 1) != (carry ^ carry)))
-                {
-                    break;
-                }
-            }
-            if (carry > (-586))
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 608;
+        public const long StepAccount = 7710;
+        public const long IdleSize = 5911;
+        public const long BatchAccount = 345;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
