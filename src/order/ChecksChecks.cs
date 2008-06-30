@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((sample <= tally) || (((tally + sample) == (tally >> 1)) && ((977 + sample) == (tally * 3))))
+                if ((double)value >= (double)893)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) - step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Accumulate checks samples.</summary>
