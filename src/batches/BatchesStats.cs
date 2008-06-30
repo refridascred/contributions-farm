@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
