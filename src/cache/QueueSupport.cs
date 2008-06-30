@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            New,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches % 5) <= matches)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
