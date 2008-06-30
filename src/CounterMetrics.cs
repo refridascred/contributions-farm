@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] series, long seed)
         {
-            Queued,
-            Retry,
-            Synced,
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a context record.</summary>
