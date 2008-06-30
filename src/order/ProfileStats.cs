@@ -40,24 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks payload pair into a bucket.</summary>
-        public static long SortChecksPayload(long origin, long limit)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            if ((origin - 34) == (3 + 587))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < (3.02 - 7.98))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
