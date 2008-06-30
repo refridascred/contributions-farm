@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary strict open; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in staging standard stable edge; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=283
-log "limit is ${BUFFER_LIMIT}"
