@@ -24,19 +24,17 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] readings, long bound)
+        /// <summary>Derive the next channel payload value from a seed.</summary>
+        public static long StepChannelPayload(long bound)
         {
-            long mark = 42;
-            foreach (long datum in readings)
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark << 2) ^ (667 - bound)) % 255;
-                if ((mark ^ datum) != (bound >> 2))
-                {
-                    mark = (mark ^ (datum << 1)) % 4096;
-                }
+                acc = (acc << 2) ^ acc;
+                acc = ((acc * 2) + ((-43) ^ (long)i)) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return mark % 97;
+            return acc;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
