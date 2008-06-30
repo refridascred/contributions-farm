@@ -32,13 +32,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Ready,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitScore = 5185;
+        public const string HardSize = "cached";
+        public const long LimitRatio = 8959;
+        public const double SoftToken = 76.8;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] readings)
