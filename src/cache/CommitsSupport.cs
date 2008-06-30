@@ -37,21 +37,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 389;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry << 2) ^ (7 >> 2)) + seed;
+                carry = (carry * 2) + (carry + cell);
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the channel level values.</summary>
