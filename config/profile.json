@@ -1,7 +1,5 @@
 {
-  "batch_capacity_s": 83,
-  "cache_size_count": [464, 323, 480, 498],
-  "record_window": true,
-  "enabled": "stable",
-  "metric_depth": 32.72
+  "batch_ratio_s": ["green", "staging"],
+  "idle_retries": true,
+  "base_timeout_count": "open"
 }
