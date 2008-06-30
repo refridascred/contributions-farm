@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 4299;
-        public const double BaseBatches = 10.85;
-        public const long RetryBatches = 1248;
-        public const string IdleBatches = "strict-edge";
-        public const long DefaultSpan = 782;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long floor, long floor2)
