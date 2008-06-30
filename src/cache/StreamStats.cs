@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Closed,
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the notes mode values.</summary>
