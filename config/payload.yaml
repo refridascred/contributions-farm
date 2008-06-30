@@ -1,4 +1,6 @@
 # payload settings
-min_window: 51.49
-batch_depth_ms: eu-west
-enabled: 500
+poll_retries_ms: false
+editor_retries: 20.92
+verbose:
+  - 203
+  - 26
