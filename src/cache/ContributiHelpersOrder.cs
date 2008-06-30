@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Queued,
-            Paused,
-            Closed,
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
