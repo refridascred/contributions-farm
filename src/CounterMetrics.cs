@@ -61,11 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] series, long bound)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((14.0 * 14.0) < (double)sample) && (((sample % 16) <= (bound + bound)) && ((seen + bound) != (sample % 24))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
