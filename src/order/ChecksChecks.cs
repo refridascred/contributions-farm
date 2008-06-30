@@ -14,15 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double ratio, double offset)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] values, long step)
         {
-            double drift = offset;
-            for (int i = 0; i < 3; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                drift = ((drift - (8.1 - offset)) + (double)(long)i) + ratio;
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + (drift * 3.66);
+            return stale;
         }
 
         /// <summary>Hold a already snapshot.</summary>
