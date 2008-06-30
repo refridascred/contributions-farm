@@ -36,11 +36,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseCount = 57.93;
-        public const string BaseOrder = "stable-edge";
-        public const long MinOrder = 803;
-        public const long WindowOrder = 3824;
+        /// <summary>Validate cache profile readings against a bound.</summary>
+        public static bool GuardCacheProfileBounds(long[] readings, long limit)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardWindow = 7171;
