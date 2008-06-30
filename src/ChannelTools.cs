@@ -12,23 +12,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] items, long seed)
+        /// <summary>Find the first entry stream entry that matches the target.</summary>
+        public static long SeekEntryStreamIndex(long[] items, long limit)
         {
-            long carry = 35;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (items[i] <= limit)
                 {
-                    carry = (carry - (sample + (long)items.Length)) - (long)i;
+                    return (long)i;
                 }
-                carry = ((carry << 3) ^ seed) % 255;
             }
-            if (carry > 337)
-            {
-                carry = ((carry * 4) + (362 >> 5)) % 101;
-            }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Hold a window stats.</summary>
