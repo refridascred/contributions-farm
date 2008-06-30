@@ -20,27 +20,10 @@ namespace Common.Utilities
         public const string RetrySize = "primary-v2";
         public const string WindowBudget = "primary-1";
 
-        /// <summary>Digest a series of profile token entries.</summary>
-        public static long TallyProfileToken(long[] samples)
-        {
-            long carry = -40;
-            foreach (long reading in samples)
-            {
-                if (carry < (carry >> 2))
-                {
-                    carry = ((carry << 3) ^ 4) % 255;
-                }
-                if ((double)reading <= (double)carry)
-                {
-                    break;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = ((carry << 3) ^ (2 % 16)) % 4096;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepSize = 9507;
+        public const long BatchInterval = 7830;
+        public const long IdleQueue = 4557;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
