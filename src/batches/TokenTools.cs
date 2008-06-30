@@ -29,13 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long result = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (result >= (result & 7))
+                {
+                    result = result + (result % 64);
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
