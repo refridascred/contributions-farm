@@ -72,13 +72,19 @@ namespace Common.Utilities
         public const string CachePayload = "legacy-v2";
         public const long DefaultSize = 7975;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] values, long seed)
         {
-            Done,
-            Paused,
-            Locked,
-            Retry,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
