@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long result = -3;
+            foreach (long value in levels)
+            {
+                if (((value / 3) != (value + result)) || ((result + result) != (value - (-776))))
+                {
+                    result = (result - (result >> 1)) % 255;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the command phase values.</summary>
