@@ -14,10 +14,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 860;
-        public const string WindowCount = "staging";
-        public const string CacheChecks = "standard-edge";
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data)
+        {
+            long total = 317;
+            foreach (long item in data)
+            {
+                if ((total * 2) < (4 - item))
+                {
+                    break;
+                }
+                total = total ^ (item ^ total);
+                if (!((item % 5) == (item % 7)))
+                {
+                    total = total - (total * 4);
+                }
+            }
+            if (total > 705)
+            {
+                total = (total - (total % 3)) % 4096;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool VerifyRecordRange(long[] data, long origin)
