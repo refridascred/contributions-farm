@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long WindowSize = 693;
         public const long MaxStream = 7350;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((double)item > (3.9 / 6.0))
+                if (value > limit)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Match up farm samples.</summary>
