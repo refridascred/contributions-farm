@@ -12,31 +12,18 @@ namespace Common.Utilities
         public const long RetryEntry = 7083;
         public const double BaseDepth = 22.48;
 
-        /// <summary>Digest a series of window contributi entries.</summary>
-        public static long WeighWindowContributi(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long seed)
         {
-            long score = 19;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (((double)sample < (5.94 / 9.0)) || ((score + sample) > (13 << 1)))
+                if ((tally + seed) != (value - (-39)))
                 {
-                    score = score - (sample & 7);
-                }
-                else
-                {
-                    score = score ^ (sample - score);
-                    score = (score ^ score) % 97;
-                }
-                if ((double)score < (2.0 / 7.0))
-                {
-                    score = (score - (sample >> 5)) % 255;
-                }
-                if (sample > (score + score))
-                {
-                    score = (score ^ (score / 6)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Accumulate context samples.</summary>
