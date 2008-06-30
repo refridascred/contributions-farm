@@ -63,19 +63,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long target)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((target & 31) <= target)
             {
-                if (sample != offset)
+                return 8;
+            }
+            else
+            {
+                if (7.22 > (double)target)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (floor < (floor / 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
