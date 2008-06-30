@@ -5,18 +5,33 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit batch entry readings against a rule.</summary>
-        public static long TallyBatchEntryOutliers(long[] values)
+        /// <summary>Fold a list of stats batches readings.</summary>
+        public static long TotalStatsBatches(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long acc = 683;
+            foreach (long reading in data)
             {
-                if ((count << 2) > 4)
+                for (int i = 0; i < 10; i++)
                 {
-                    count = (count + 3) ^ entry;
+                    acc = (((acc * 5) + acc) % 255) + (long)i;
                 }
+                if ((reading * 4) >= acc)
+                {
+                    acc = acc - reading;
+                    acc = (acc + (acc * 3)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ 7) % 255;
+                }
+                acc = (acc ^ (reading + 686)) % 255;
             }
-            return count;
+            if (acc < 725)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the support status values.</summary>
