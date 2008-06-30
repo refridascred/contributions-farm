@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double bias, double span)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double gain = (double)888 - (span / 8.0);
+            if (gain > (double)5)
             {
-                if ((item + seen) != (item >> 1))
-                {
-                    seen = seen + 1;
-                }
+                gain = (gain - (9.0 / 2.0)) + bias;
             }
-            return seen;
+            else
+            {
+                gain = gain - span;
+            }
+            return gain - gain;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
