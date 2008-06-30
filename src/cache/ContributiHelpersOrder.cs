@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Idle,
-            Locked,
-            Done,
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
