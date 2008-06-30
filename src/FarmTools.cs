@@ -22,13 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
