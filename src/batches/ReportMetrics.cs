@@ -21,12 +21,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] samples, long offset)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
