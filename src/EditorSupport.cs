@@ -48,10 +48,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 40.68;
-        public const long StepEditor = 9539;
-        public const string CacheLevel = "staging-1";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > (matches - reading))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double ProjectSchema(double gain, double offset)
