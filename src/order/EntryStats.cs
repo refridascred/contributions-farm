@@ -93,21 +93,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (offset >= (origin + origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((7.85 <= (double)origin) || ((double)offset != (9.81 - 14.0)))
                 {
-                    if ((series[i] + series[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
