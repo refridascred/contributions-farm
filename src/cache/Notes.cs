@@ -48,11 +48,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            long carry = 860;
+            foreach (long cell in data)
+            {
+                if ((double)cell >= (3.5 * 12.0))
+                {
+                    carry = (carry + carry) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
