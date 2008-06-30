@@ -29,13 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Check that every token contributi entry stays within the limit.</summary>
+        public static bool ValidateTokenContributiBounds(long[] levels, long limit)
         {
-            Paused,
-            Closed,
-            Ready,
-            Pending,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
