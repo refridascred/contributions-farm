@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Derive the next githubfarm layout value from a seed.</summary>
+        public static long DeriveGithubfarmLayout(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((4.95 / 2.0) >= (double)acc) && ((double)seed < (2.0 / 8.0)))
                 {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ 1;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the checks level values.</summary>
