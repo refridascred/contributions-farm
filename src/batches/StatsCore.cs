@@ -27,12 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
-        {
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseSize = "cached-1";
+        public const long SoftBatch = 2629;
+        public const long BatchScore = 7980;
+        public const string BurstBatch = "local";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsOutliers(long[] series)
