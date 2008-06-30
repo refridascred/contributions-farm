@@ -59,38 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long bound, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] data)
         {
-            if (bound < (floor - floor))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor << 1) != ((-22) % 24)) || ((5.98 * 7.0) > (double)bound))
+                if ((cell - cell) < (-28))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ 37) <= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor < (3.0 / 5.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the order state values.</summary>
