@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 5;
+            foreach (long value in items)
             {
-                if (readings[i] >= limit)
+                if (floor < (state + floor))
                 {
-                    return (long)i;
+                    state = state + (value + value);
+                }
+                else
+                {
+                    state = (state ^ (state - 99)) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
