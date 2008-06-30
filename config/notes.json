@@ -1,10 +1,6 @@
 {
-  "persist": "primary",
-  "retry_ttl_pct": 100,
-  "stats_window": {
-    "dry_run": [357, 146, 261],
-    "cluster_limit": "blue",
-    "schema_timeout": 31
-  },
-  "strict": 1024
+  "sync_retries": "legacy",
+  "command_ttl": true,
+  "farm_size": 76.38,
+  "burst_window_count": "stable"
 }
