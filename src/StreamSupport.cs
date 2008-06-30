@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate entry layout samples.</summary>
-        public static long WeighEntryLayout(long[] series)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long mark = 4;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + entry) % 65521;
-                if ((entry < (8 >> 3)) && ((entry - 7) > mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark + (entry + mark);
+                    if ((data[i] ^ data[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
