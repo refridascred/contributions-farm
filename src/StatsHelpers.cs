@@ -25,21 +25,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)(-90) / 4.0;
+            if (load < load)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + (weight + load);
             }
-            return count;
+            return load - span;
         }
 
         /// <summary>Describe the context phase values.</summary>
