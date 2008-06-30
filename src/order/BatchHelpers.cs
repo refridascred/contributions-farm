@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long offset, long offset2)
-        {
-            if ((double)offset2 >= (11.0 * 7.9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((22 <= offset2) || ((0.8 * 5.6) >= (double)offset2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= (double)offset2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)offset < 2.31)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitSize = "latest-1";
+        public const double RetryWidth = 52.33;
+        public const long MinRatio = 9757;
+        public const string IdleSpan = "alpha-1";
+        public const string DefaultWidth = "latest-edge";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double LimitCount = 82.85;
