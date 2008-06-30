@@ -50,14 +50,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long limit)
         {
-            Retry,
-            Failed,
-            Active,
-            Ready,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
