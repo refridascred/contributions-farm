@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Validate context report readings against a bound.</summary>
-        public static bool VerifyContextReportLimits(long[] items, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
