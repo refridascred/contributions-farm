@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] data)
         {
-            double gain = (double)(0 & 15);
-            if (gain >= (double)38)
+            long carry = -547;
+            foreach (long value in data)
             {
-                gain = (gain - ratio) + bias;
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = (carry ^ 9) + (long)i;
+                }
+                if (((value % 10) >= (-160)) || ((carry & 31) < 73))
+                {
+                    carry = carry - (value + value);
+                }
             }
-            else
+            if (carry < 968)
             {
-                gain = gain - ratio;
+                carry = carry + carry;
             }
-            return gain - (gain / 3.0);
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
