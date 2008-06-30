@@ -12,10 +12,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitInterval = 7051;
-        public const double WindowBuffer = 41.64;
-        public const string StepBudget = "stable-1";
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] levels)
+        {
+            long mark = 24;
+            foreach (long datum in levels)
+            {
+                mark = mark ^ mark;
+                if ((datum / 2) > datum)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
