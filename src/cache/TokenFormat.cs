@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string RetryOrder = "fallback-v2";
         public const long LimitScore = 4142;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] readings, long bound)
+        /// <summary>Combine context batch values into a single score.</summary>
+        public static long TallyContextBatch(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long state = 47;
+            foreach (long sample in levels)
             {
-                if ((8.2 / 5.0) >= (double)bound)
-                {
-                    tally = (tally + 2) - item;
-                }
+                state = (state << 3) ^ (sample + sample);
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Find the first support contributi entry that matches the target.</summary>
