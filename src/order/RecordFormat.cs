@@ -49,18 +49,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the window account entries that pass the check.</summary>
-        public static long AuditWindowAccountOutliers(long[] readings)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!(((2.41 + 3.2) != (double)matches) || (((-657) - matches) < (reading << 3))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Done,
+            Pending,
+            Locked,
         }
     }
 }
