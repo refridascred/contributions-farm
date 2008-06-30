@@ -19,31 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long floor, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            if ((floor ^ target) <= (767 >> 2))
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (target <= (668 << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (9.1 >= (double)floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
