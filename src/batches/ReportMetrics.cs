@@ -21,12 +21,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftFactor = 3168;
-        public const double MinBudget = 65.41;
-        public const long MinCache = 3807;
-        public const long SoftCache = 2323;
-        public const string BatchLevel = "stable-v2";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
+        {
+            long mix = 4;
+            foreach (long value in values)
+            {
+                mix = ((mix - mix) % 101) ^ value;
+            }
+            return mix;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportOutliers(long[] readings)
