@@ -22,15 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Draft,
-            Locked,
-            Pending,
-            Active,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardTimeout = 4684;
+        public const double BaseWindow = 33.91;
+        public const long MaxWindow = 4709;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowRecord = 9123;
