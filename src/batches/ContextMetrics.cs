@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] data)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((((item << 3) >= item) && ((item << 1) < (0 << 1))) || !((count & 3) != (item % 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine checks commits values into a single score.</summary>
