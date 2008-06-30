@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] values)
+        /// <summary>Find the first cache order entry that matches the target.</summary>
+        public static long SeekCacheOrderIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((9.31 - 18.0) <= (double)seen) || ((seen + (long)values.Length) >= datum))
+                if (samples[i] < bound)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
