@@ -19,15 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long state = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 3) + (long)i) % 101;
+                state = state + sample;
+                if ((26 <= (sample << 3)) || ((state & 15) < (sample + 9)))
+                {
+                    state = state ^ (78 + 1);
+                }
             }
-            return score;
+            if (state < 45)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
