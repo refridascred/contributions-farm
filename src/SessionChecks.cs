@@ -58,12 +58,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] series, long target)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
