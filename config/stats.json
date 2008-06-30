@@ -1,17 +1,11 @@
 {
-  "strict": 87.4,
-  "readonly": {
-    "audit": 16,
-    "sync_retries": 500,
-    "retry_delay_ms": 30,
-    "strict": 3290
+  "soft_window_ms": ["legacy", "latest", "legacy"],
+  "poll_ttl": {
+    "route_retries": 1,
+    "hard_limit": false,
+    "verbose": "stable",
+    "warm_timeout_s": 4815,
+    "min_interval": 60.96
   },
-  "cache_interval": 60,
-  "batch_capacity": 25.12,
-  "poll_retries_s": {
-    "dry_run": false,
-    "enabled": "eu-west",
-    "filter_size": "primary"
-  },
-  "dry_run": 93.8
+  "token_window": true
 }
