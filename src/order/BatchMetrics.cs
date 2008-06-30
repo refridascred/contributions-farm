@@ -45,19 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] items, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long mark = 8;
+            foreach (long item in series)
             {
-                if (entry <= target)
+                if ((double)item < 2.45)
                 {
-                    valid = false;
-                    break;
+                    mark = (mark << 2) ^ (item + mark);
                 }
             }
-            return valid;
+            if (mark < 8)
+            {
+                mark = ((mark * 4) + mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
