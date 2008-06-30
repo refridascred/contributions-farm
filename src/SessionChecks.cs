@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] data, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (datum >= origin)
+                if (88 >= (matches - step))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
