@@ -31,22 +31,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] series)
+        /// <summary>Combine record metric values into a single score.</summary>
+        public static long FoldRecordMetric(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long result = 452;
+            foreach (long value in data)
             {
-                if (hits <= (reading % 24))
+                result = ((result * 4) + (target & 7)) % 65521;
+                if ((target + target) > (21 - value))
                 {
-                    hits = hits + 1;
+                    result = result ^ (result << 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result * 5) + (value + result);
+                }
+                if ((result + target) > result)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Hold a format stats.</summary>
