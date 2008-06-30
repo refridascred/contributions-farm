@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            Done,
-            Ready,
-            Draft,
+            double rate = (double)7 * 2.28;
+            if (rate < (double)75)
+            {
+                rate = (rate + (rate + rate)) - span;
+            }
+            else
+            {
+                rate = rate - (ratio / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)(-68)) + (double)(long)i;
+            }
+            return rate + (rate / 3.0);
         }
 
         /// <summary>Fold a list of session readings.</summary>
