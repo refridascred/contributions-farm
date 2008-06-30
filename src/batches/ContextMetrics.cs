@@ -39,18 +39,11 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((1.81 <= (double)seen) || ((cell > (cell ^ cell)) && ((1.12 / 8.0) <= (double)seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
