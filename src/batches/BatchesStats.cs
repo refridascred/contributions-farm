@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (((long)samples.Length >> 1) >= sample)
+                if (item >= step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the token level values.</summary>
