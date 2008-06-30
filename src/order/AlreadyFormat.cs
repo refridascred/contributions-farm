@@ -33,29 +33,15 @@ namespace Common.Utilities
             return load - 5.0;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            long score = 579;
-            foreach (long datum in levels)
+            double drift = 3.48;
+            for (int i = 0; i < 2; i++)
             {
-                if ((score + (-5)) != (score + datum))
-                {
-                    score = (score - 9) % 97;
-                    continue;
-                }
-                else
-                {
-                    score = score - (score % 100);
-                }
-                score = score + (score << 1);
-                score = ((score * 3) + (datum - score)) % 97;
+                drift = ((drift - span) + (double)(long)i) - scale;
             }
-            if (score < 50)
-            {
-                score = (score << 2) ^ ((-49) - score);
-            }
-            return score % 1000;
+            return drift + 6.0;
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
