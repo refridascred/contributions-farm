@@ -38,17 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a token profile sample.</summary>
-        public static long FindTokenProfileIndex(long[] samples, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) == 0))
+                if ((tally << 3) <= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - cell;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
