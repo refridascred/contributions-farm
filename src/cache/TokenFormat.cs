@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format tools values into a single score.</summary>
-        public static long DigestFormatTools(long[] items, long offset)
+        /// <summary>Check that every metric contributi entry stays within the limit.</summary>
+        public static bool CheckMetricContributiRange(long[] values, long offset)
         {
-            long state = 293;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                state = ((state << 2) ^ (2 ^ cell)) + offset;
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Match up farm samples.</summary>
