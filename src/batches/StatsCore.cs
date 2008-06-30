@@ -17,24 +17,11 @@ namespace Common.Utilities
         public const double WindowBuffer = 41.64;
         public const string StepBudget = "stable-1";
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long step, long origin)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((434 > (38 + origin)) || ((step - origin) < (origin - step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin < (step >> 4)) && ((double)step >= (8.0 * 4.8)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
