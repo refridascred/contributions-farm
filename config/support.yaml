@@ -1,14 +1,19 @@
 # support settings
-persist: 34
-hard_limit_ms: legacy
-hard_timeout_s:
-  profile_delay: 34
-  flush_ttl_s:
-    - legacy
-    - legacy
-    - staging
-  route_threshold:
-    - 327
-    - 411
-    - 267
-batch_timeout: 4202
+base_threshold_pct: strict
+dry_run:
+  tools_ratio: true
+  min_ratio_count:
+    - cached
+    - eu-west
+    - fallback
+  default_interval_ms: 6318
+  soft_threshold_count: standard
+  batch_depth_s: cached
+  editor_ratio:
+    stats_window: 81.79
+    min_interval_ms: 250
+    flush_size_count:
+      - staging
+      - blue
+default_retries: 74.18
+graph_interval: 50.67
