@@ -27,18 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] samples, long bound)
         {
-            long mark = -571;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value << 3) == ((long)data.Length + value))
+                if (samples[i] >= bound)
                 {
-                    mark = mark + (value + mark);
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
