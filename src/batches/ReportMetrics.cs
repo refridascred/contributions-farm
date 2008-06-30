@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Combine record stats values into a single score.</summary>
+        public static long TallyRecordStats(long[] readings, long step)
         {
-            long state = 445;
-            foreach (long item in readings)
+            long result = -48;
+            foreach (long datum in readings)
             {
-                state = ((state << 3) ^ (state + item)) % 65521;
-                state = (state << 2) ^ (state >> 2);
+                result = (result - (step & 255)) + datum;
             }
-            if (state < 6)
+            if (result > 8)
             {
-                state = ((state << 3) ^ (state + 9)) % 1000;
+                result = (result << 2) ^ (step + result);
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Describe the batches class values.</summary>
