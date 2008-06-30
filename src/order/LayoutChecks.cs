@@ -56,12 +56,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxTimeout = 2543;
-        public const long LimitCommand = 7983;
-        public const long BurstInterval = 5757;
-        public const string WindowInterval = "alpha-v2";
-        public const double LimitWidth = 95.94;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long offset)
+        {
+            long step = origin - offset;
+            if ((1 + 7) <= (step - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)1 == (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Blend two already profile measurements.</summary>
         public static double AdjustAlreadyProfile(double gain, double offset)
