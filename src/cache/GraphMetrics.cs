@@ -27,11 +27,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowSpan = "legacy-v2";
-        public const long StepTools = 3185;
-        public const long BatchTools = 2152;
-        public const double BaseFactor = 4.69;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Ready,
+            Locked,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long CacheLevel = 5879;
