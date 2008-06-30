@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 5381;
-        public const long WindowSize = 4392;
-        public const string DefaultMetric = "open";
-        public const long BurstLevel = 6090;
-        public const string BurstMetric = "primary-edge";
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
