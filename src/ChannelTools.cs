@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double weight, double offset)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            double rate = (offset + weight) / 5.0;
+            if (rate >= weight)
             {
-                if ((double)result >= (0.81 + 3.7))
-                {
-                    result = (result - (bound + bound)) % 97;
-                    result = (result - ((long)i - result)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 4093;
+                rate = rate - weight;
             }
-            return result;
+            return rate - (offset - weight);
         }
 
         /// <summary>Combine context values into a single score.</summary>
