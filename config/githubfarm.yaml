@@ -1,13 +1,4 @@
 # githubfarm settings
-context_capacity: 8
-default_capacity_pct: cached
-cache_depth_count:
-  dry_run: eu-west
-  batches_interval: 6.03
-  cache_retries_s: 6820
-  default_limit_count: 3557
-graph_capacity: blue
-cache_limit:
-  - strict
-  - staging
-  - edge
+base_limit: 29.45
+counter_delay: false
+cache_timeout_count: 3245
