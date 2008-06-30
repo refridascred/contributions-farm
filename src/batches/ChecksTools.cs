@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double bias, double floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] samples)
         {
-            double bias2 = (6.53 * 9.6) * 9.7;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                bias2 = ((bias2 - floor) + (double)(long)i) - bias;
+                if (((3.7 - 6.38) < (double)item) || !(item <= (seen - item)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias2 + (double)306;
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
