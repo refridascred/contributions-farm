@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many profile metric samples are out of range.</summary>
+        public static long CountProfileMetricHits(long[] values, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches + origin) != (long)values.Length)
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
