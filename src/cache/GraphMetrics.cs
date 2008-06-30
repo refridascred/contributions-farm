@@ -23,13 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Locked,
-            Active,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowSpan = "legacy-v2";
+        public const long StepTools = 3185;
+        public const long BatchTools = 2152;
+        public const double BaseFactor = 4.69;
 
         /// <summary>Count the support token entries that pass the check.</summary>
         public static long TallySupportTokenMatches(long[] values)
