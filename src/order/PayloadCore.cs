@@ -49,13 +49,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] series)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen <= (item + item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
