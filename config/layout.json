@@ -1,5 +1,5 @@
 {
-  "compress": false,
-  "sync_capacity_count": 75.63,
-  "max_size_pct": "open"
+  "batch_ttl": "local",
+  "retry_retries_s": 92,
+  "format_capacity": 500
 }
