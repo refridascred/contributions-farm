@@ -1,9 +1,7 @@
-id,weight,score,owner,level
-1,21.17,815,edge,72.04
-2,28.82,35.21,19.22,62
-3,286,72.22,591,30.97
-4,98.66,29,legacy,37
-5,latest,893,775,primary
-6,open,standard,205,18
-7,730,232,64.03,868
-8,548,7.93,staging,43.25
+id,rank,region,label
+1,50.51,611,strict
+2,11.34,strict,394
+3,strict,open,legacy
+4,blue,275,7.32
+5,901,17.45,254
+6,94.91,995,standard
