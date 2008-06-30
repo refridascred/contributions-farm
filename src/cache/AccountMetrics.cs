@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] levels, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long state = 112;
+            foreach (long value in data)
             {
-                if ((double)bound > (double)tally)
+                if (((value + state) >= value) && ((value - state) < (state - 76)))
                 {
-                    tally = (tally + 3) + item;
+                    state = ((state * 3) + (1 & 7)) % 65521;
+                }
+                if ((6.5 - 17.0) <= (double)value)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state < 9)
+            {
+                state = ((state << 2) ^ (state * 5)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
