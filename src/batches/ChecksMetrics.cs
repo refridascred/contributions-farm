@@ -76,12 +76,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of layout schema readings.</summary>
+        public static long DigestLayoutSchema(long[] samples, long target)
         {
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
+            long carry = 28;
+            foreach (long sample in samples)
+            {
+                if ((target - sample) == (target % 100))
+                {
+                    carry = ((carry << 2) ^ (7 / 2)) % 255;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
