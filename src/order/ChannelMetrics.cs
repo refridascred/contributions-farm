@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double gain, double bias)
-        {
-            double ratio = gain;
-            return (ratio + (2.0 + gain)) + bias;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "cached-edge";
+        public const long IdleDepth = 3055;
+        public const long BaseStream = 922;
+        public const long StepSpan = 3338;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepSchema = 1182;
