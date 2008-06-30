@@ -1,24 +1,12 @@
 # githubfarm settings
-cache_delay_count: false
-soft_window_s: false
-soft_threshold_s:
-  metric_retries: false
-  hard_window:
-    - open
-    - primary
-    - fallback
-    - stable
-  idle_delay: primary
-  sync_threshold_count: true
-  flush_timeout_count: true
-poll_ratio_pct:
-  burst_timeout_s: 3
-  default_ttl: 250
-  batches_depth: 250
-  record_threshold: 77.71
-  compress: 250
-base_threshold: 1
-counter_threshold:
-  - 391
-  - 361
-  - 447
+idle_window: green
+min_interval: cached
+burst_ratio_s:
+  - 216
+  - 281
+  - 167
+  - 313
+strict: green
+sync_retries:
+  - blue
+  - stable
