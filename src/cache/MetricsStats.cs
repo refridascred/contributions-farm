@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
