@@ -56,9 +56,14 @@ namespace Common.Utilities
         public const long HardGithubfarm = 3073;
         public const double RetryGithubfarm = 83.85;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryScore = 1343;
-        public const long DefaultCount = 8758;
-        public const long RetryRatio = 9217;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Retry,
+            Failed,
+            Active,
+            Ready,
+            Closed,
+        }
     }
 }
