@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] levels, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] samples, long offset)
         {
-            long score = 76;
-            foreach (long value in levels)
+            long anchor = 4;
+            foreach (long value in samples)
             {
-                if (!((score + score) <= score))
+                anchor = ((anchor + (anchor + anchor)) % 255) + offset;
+                if ((4 - value) < (anchor % 10))
                 {
-                    score = (score ^ target) % 97;
+                    anchor = anchor ^ (value % 8);
                 }
                 else
                 {
-                    score = (score - (value / 4)) % 65521;
+                    anchor = anchor ^ (anchor >> 3);
                 }
-                score = (score - (target >> 1)) % 65521;
+                if ((7.0 + 8.9) < (double)value)
+                {
+                    break;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Describe the checks level values.</summary>
