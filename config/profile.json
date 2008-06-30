@@ -1,5 +1,12 @@
 {
-  "cache_ratio": "local",
-  "stats_threshold": 70,
-  "poll_size_s": [334, 254, 419, 327]
+  "persist": 58,
+  "hard_timeout": 11.66,
+  "min_depth_ms": {
+    "cache_ratio_ms": "blue",
+    "compress": "strict",
+    "audit": "stable"
+  },
+  "batch_threshold_count": 670,
+  "max_delay_s": 6368,
+  "default_delay": "standard"
 }
