@@ -30,16 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double weight, double span)
-        {
-            double load = (double)(0 >> 2);
-            if (load >= (load / 9.0))
-            {
-                load = (load - 9.19) - weight;
-            }
-            return load - (span * 3.1);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSpan = 788;
+        public const double MaxGraph = 45.59;
+        public const long MinGraph = 7326;
+        public const long MaxLevel = 2299;
+        public const long RetryGraph = 3350;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double DefaultQueue = 58.54;
