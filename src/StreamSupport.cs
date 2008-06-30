@@ -20,21 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count channel route pairs that satisfy a relation.</summary>
-        public static long MatchChannelRouteCount(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 81;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)item != (0.5 + 6.9)) && ((state + 430) <= (state + item)))
                 {
-                    if ((readings[i] ^ readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state - (item / 7);
+                }
+                state = (state - (floor & 31)) % 4096;
+                if ((item % 16) >= (item - state))
+                {
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
