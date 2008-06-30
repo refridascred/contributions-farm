@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] readings, long bound)
         {
-            long score = 56;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int i = 0; i < 3; i++)
+                if ((8.2 / 5.0) >= (double)bound)
                 {
-                    score = ((score - (item & 3)) % 255) ^ (long)i;
+                    tally = (tally + 2) - item;
                 }
-                score = ((score * 4) + item) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first support contributi entry that matches the target.</summary>
