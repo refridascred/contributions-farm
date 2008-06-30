@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] items, long offset)
         {
-            long result = 180;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((19.0 / 8.0) >= (double)bound)
+                if (items[i] >= offset)
                 {
-                    result = (result - result) - value;
+                    return (long)i;
                 }
             }
-            if (result < (-315))
-            {
-                result = result - (bound + bound);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Blend two stream measurements.</summary>
