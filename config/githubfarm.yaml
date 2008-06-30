@@ -1,7 +1,7 @@
 # githubfarm settings
-report_interval:
-  - 313
-  - 326
-  - 53
-cache_window: 96.2
-compress: 889
+max_capacity: true
+editor_window: blue
+base_interval_count: 250
+strict: 6280
+soft_limit_count: legacy
+graph_interval: 35
