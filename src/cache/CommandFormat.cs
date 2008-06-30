@@ -10,10 +10,23 @@ namespace Common.Utilities
         public const double WindowSpan = 38.86;
         public const long CacheSpan = 8570;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 27.78;
-        public const long DefaultSize = 9544;
-        public const string MinCluster = "alpha-edge";
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((-40) ^ reading) < 21)
+                {
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a support buffer value against two limits.</summary>
         public static long GradeSupportBuffer(long step, long step2)
