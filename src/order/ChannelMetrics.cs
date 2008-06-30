@@ -39,22 +39,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((item + item) > count)
-                {
-                    count = (count + 3) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 85.37;
+        public const double IdleEntry = 74.04;
+        public const long HardEntry = 1254;
+        public const double DefaultEntry = 87.84;
     }
 }
