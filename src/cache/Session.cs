@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first cache order entry that matches the target.</summary>
-        public static long SeekCacheOrderIndex(long[] samples, long bound)
+        /// <summary>Audit stream filter readings against a rule.</summary>
+        public static long CountStreamFilterGaps(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] < bound)
+                if (((double)matches < (double)offset) || ((long)readings.Length == (matches - value)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the queue phase values.</summary>
