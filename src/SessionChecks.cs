@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] items, long target)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((tally + target) < (cell - target)) && ((target - target) < (cell & 15))))
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the context status values.</summary>
