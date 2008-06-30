@@ -33,18 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools stream samples are out of range.</summary>
-        public static long AuditToolsStreamGaps(long[] values)
+        /// <summary>Blend two profile githubfarm measurements.</summary>
+        public static double ScaleProfileGithubfarm(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double ratio = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(matches >= (matches << 3)))
-                {
-                    matches = (matches + 2) - reading;
-                }
+                ratio = ratio + (double)(long)i;
             }
-            return matches;
+            return ratio + gain;
         }
 
         /// <summary>Describe the commits phase values.</summary>
