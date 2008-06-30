@@ -1,21 +1,5 @@
 {
-  "min_ratio_pct": "blue",
-  "flush_retries_count": 5.82,
-  "compress": 23,
-  "flush_delay_count": ["cached", "open", "strict"],
-  "burst_ttl_count": {
-    "editor_retries": 28,
-    "warm_retries": 21,
-    "burst_limit_count": "cached",
-    "max_ratio_s": 41,
-    "cache_depth_ms": true,
-    "default_delay_s": {
-      "default_threshold_pct": "eu-west",
-      "context_size": 94.57,
-      "compress": 7307,
-      "layout_depth": [102, 482, 245],
-      "cluster_retries": "primary",
-      "warm_limit": 21.14
-    }
-  }
+  "flush_window_ms": ["latest", "edge", "cached"],
+  "tools_retries": 72,
+  "graph_depth": false
 }
