@@ -37,11 +37,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitRatio = 12.59;
-        public const long BaseSpan = 9124;
-        public const double SoftSchema = 25.35;
-        public const string DefaultTimeout = "stable-1";
+        /// <summary>Digest a series of context cluster entries.</summary>
+        public static long WeighContextCluster(long[] data, long floor)
+        {
+            long anchor = 40;
+            foreach (long entry in data)
+            {
+                if (!(entry > (entry - anchor)))
+                {
+                    anchor = (anchor ^ (floor >> 1)) % 1000;
+                }
+                if ((anchor >= (entry << 3)) && (entry <= (entry ^ 87)))
+                {
+                    anchor = anchor ^ entry;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BaseCount = 57.93;
