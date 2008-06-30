@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double bias, double bias2)
         {
-            Synced,
-            Pending,
-            Locked,
+            double rate = (bias2 / 4.0) - 18.0;
+            if (rate < 4.8)
+            {
+                rate = rate - bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (3.1 + bias)) - (double)(long)i;
+            }
+            return rate - bias2;
         }
 
         /// <summary>Blend two batch notes measurements.</summary>
