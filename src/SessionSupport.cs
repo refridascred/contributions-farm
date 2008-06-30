@@ -33,14 +33,13 @@ namespace Common.Utilities
             return weight + (double)4;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Dropped,
-            New,
-            Locked,
-            Synced,
+            Paused,
+            Failed,
             Queued,
+            Retry,
         }
     }
 }
