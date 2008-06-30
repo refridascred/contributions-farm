@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            long result = 3;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value >> 3) <= (value + bound))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result << 3) ^ (bound - result);
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 803)
-            {
-                result = ((result << 3) ^ (result + result)) % 97;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
