@@ -29,22 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] series)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + hits) != (622 - 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Compare every pair of order contributi readings.</summary>
