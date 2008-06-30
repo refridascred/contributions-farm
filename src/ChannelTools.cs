@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Find the first entry stream entry that matches the target.</summary>
-        public static long SeekEntryStreamIndex(long[] items, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] <= limit)
+                if (!(count < ((-51) + count)))
                 {
-                    return (long)i;
+                    count = ((count + 2) + cell) - floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
