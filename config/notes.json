@@ -1,5 +1,8 @@
 {
-  "verbose": "open",
-  "already_ratio": [92, 188],
-  "compress": ["stable", "green"]
+  "batch_size_s": 52.22,
+  "notes_timeout": true,
+  "verbose": "stable",
+  "warm_window_s": 3133,
+  "base_capacity_pct": "legacy",
+  "hard_delay": 30
 }
