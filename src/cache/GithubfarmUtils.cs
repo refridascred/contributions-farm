@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((target >> 4) < (cell - count)) && ((813 - cell) > (count & 255)))
+                if (item < step)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
