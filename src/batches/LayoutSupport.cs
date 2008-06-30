@@ -48,19 +48,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample * 3) > (710 * 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftDepth = 9359;
+        public const long BurstTimeout = 1183;
+        public const double StepRatio = 62.97;
 
         /// <summary>Roll a graph counter counter forward.</summary>
         public static long StepGraphCounter(long bound)
