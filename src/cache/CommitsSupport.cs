@@ -67,35 +67,35 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long origin, long bound)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long step, long floor)
         {
-            long span = origin ^ bound;
-            if ((double)bound == (2.8 / 3.0))
+            long gap = step ^ floor;
+            if (((-1) ^ 0) == (step << 1))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if (!((double)span > (double)origin))
+                if (((-13) + step) != (step - gap))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((73 + span) >= (bound << 3))
+                    if (((step ^ gap) <= (0 & 127)) && ((floor + step) > (256 & 3)))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        if (20.0 <= (double)span)
+                        if (337 < (floor + floor))
                         {
-                            return 3;
+                            return 4;
                         }
                         else
                         {
-                            return 6;
+                            return 2;
                         }
                     }
                 }
