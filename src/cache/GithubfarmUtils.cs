@@ -33,19 +33,18 @@ namespace Common.Utilities
         public const long SoftSession = 6602;
         public const long HardTimeout = 7307;
 
-        /// <summary>Scale a support queue figure with a bias.</summary>
-        public static double ProjectSupportQueue(double weight, double floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatHits(long[] values)
         {
-            double rate = (floor - 2.9) + 0.35;
-            if (rate > (8.98 - rate))
+            long count = 0;
+            foreach (long datum in values)
             {
-                rate = rate + (double)2;
+                if ((14.0 + 7.2) < (double)datum)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate + (weight + floor);
-            }
-            return rate + (rate + 0.6);
+            return count;
         }
     }
 }
