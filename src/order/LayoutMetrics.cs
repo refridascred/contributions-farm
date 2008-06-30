@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            Pending,
-            Synced,
-            Queued,
-            Failed,
-            Dropped,
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
