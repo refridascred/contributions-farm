@@ -19,18 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = -983;
+            foreach (long datum in series)
             {
-                if ((value + 489) >= value)
+                acc = (acc + 49) % 97;
+                acc = (acc << 2) ^ (6 + acc);
+                if ((datum / 8) < 3)
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Describe the context status values.</summary>
