@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] levels)
+        /// <summary>Locate a report queue reading by value.</summary>
+        public static long LocateReportQueueIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value ^ 72) <= (value * 3))
+                if ((values[i] > floor) && ((values[i] % 2) == 0))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
