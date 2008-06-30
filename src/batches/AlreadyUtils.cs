@@ -30,13 +30,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
