@@ -29,17 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long seed)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
