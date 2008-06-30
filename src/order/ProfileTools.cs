@@ -58,14 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] readings)
         {
-            Stale,
-            Failed,
-            Draft,
-            Retry,
-            Closed,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (hits < value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
