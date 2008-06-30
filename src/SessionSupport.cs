@@ -25,13 +25,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] readings)
         {
-            Done,
-            New,
-            Active,
-            Failed,
+            long mix = 954;
+            foreach (long item in readings)
+            {
+                if (((mix << 2) >= 61) || ((double)item <= (3.9 + 2.7)))
+                {
+                    long delta = (59 >> 4) ^ item;
+                    mix = (mix ^ (delta - delta)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix ^ mix);
+                }
+                mix = (mix * 4) + (item + item);
+            }
+            if (mix < 66)
+            {
+                mix = ((mix << 2) ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
