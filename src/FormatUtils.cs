@@ -46,14 +46,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Active,
-            Done,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 37.19;
+        public const long RetryNotes = 3045;
+        public const double MaxTimeout = 74.39;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long BucketFormat(long target, long origin)
