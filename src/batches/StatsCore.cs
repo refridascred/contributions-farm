@@ -37,21 +37,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of githubfarm cache readings.</summary>
-        public static long MatchGithubfarmCacheCount(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 5) + ((long)i & 15)) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Blend two token measurements.</summary>
