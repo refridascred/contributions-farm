@@ -13,22 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] data, long seed)
+        /// <summary>Measure how many graph command samples are out of range.</summary>
+        public static long CountGraphCommandOutliers(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((hits + seed) >= (hits << 1))
+                if ((double)matches <= (double)cell)
                 {
-                    hits = (hits + 2) ^ datum;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
