@@ -16,22 +16,19 @@ namespace Common.Utilities
             return rate - (offset - weight);
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double bias, double bias2)
         {
-            long anchor = 53;
-            foreach (long reading in samples)
+            double rate = (double)453 * 8.0;
+            if (rate >= (16.0 * 6.53))
             {
-                if ((2.02 - 9.5) < (double)reading)
-                {
-                    anchor = (anchor << 2) ^ (reading / 3);
-                }
-                else
-                {
-                    anchor = anchor ^ (reading + anchor);
-                }
+                rate = (rate - (double)7) - bias2;
             }
-            return anchor % 97;
+            else
+            {
+                rate = rate + (7.0 + bias);
+            }
+            return rate - (bias / 6.0);
         }
 
         /// <summary>Compare every pair of token layout readings.</summary>
