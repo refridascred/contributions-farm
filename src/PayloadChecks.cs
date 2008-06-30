@@ -81,21 +81,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] > offset)
                 {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
