@@ -13,22 +13,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long origin)
         {
-            long score = 6;
-            foreach (long entry in levels)
+            if ((bound - origin) > (bound >> 1))
             {
-                if (((double)score >= (20.0 + 0.9)) && ((double)(long)levels.Length >= 7.0))
+                return 4;
+            }
+            else
+            {
+                if (!((bound % 8) >= bound))
                 {
-                    score = ((score * 3) + score) % 97;
+                    return 5;
                 }
                 else
                 {
-                    score = score ^ (8 + entry);
+                    if (((4.36 - 1.27) != (double)origin) && ((origin + origin) <= bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Rank order input into a small class.</summary>
