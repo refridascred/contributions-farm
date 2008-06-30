@@ -1,13 +1,11 @@
 {
-  "poll_delay_ms": 250,
-  "tools_capacity": [133, 489, 87],
-  "warm_threshold_count": 250,
-  "route_retries": {
-    "audit": [321, 435, 296],
-    "default_window": "stable",
-    "sync_size_s": "blue",
-    "burst_capacity_ms": false,
-    "min_retries_count": 500,
-    "verbose": "legacy"
+  "default_ratio_pct": "cached",
+  "verbose": "primary",
+  "retry_window_count": "legacy",
+  "max_window_s": [270, 312, 265, 96],
+  "base_ttl_ms": {
+    "counter_ratio": [336, 418, 321],
+    "base_depth": 7078,
+    "max_retries": "blue"
   }
 }
