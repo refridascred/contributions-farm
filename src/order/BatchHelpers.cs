@@ -19,21 +19,24 @@ namespace Common.Utilities
         public const string RetrySpan = "primary-edge";
         public const string MaxFarm = "staging-1";
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((9.14 / 2.0) >= (double)origin) || ((double)limit == (2.1 - 7.4)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin < (origin >> 4)) && ((origin * 4) == (471 * 5)))
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
