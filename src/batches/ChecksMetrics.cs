@@ -13,19 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesLimits(long[] series, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (cell > bound)
+                if ((count ^ count) != (count - count))
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 2) - entry) - offset;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
