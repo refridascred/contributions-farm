@@ -1,7 +1,9 @@
 # support settings
-checks_ratio: 1544
-dry_run: blue
-retry_ttl_s:
-  - 247
-  - 358
-  - 65
+command_window: open
+warm_ttl_count: false
+persist: 1024
+poll_limit_count:
+  - strict
+  - latest
+  - fallback
+  - green
