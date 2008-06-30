@@ -39,38 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long limit, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double offset)
         {
-            if (((double)limit > 8.0) && ((limit + offset) > limit))
+            double scale = (double)225 + (gain - gain);
+            if (scale >= (offset * 5.0))
             {
-                return 3;
+                scale = scale - scale;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((offset & 15) != (limit ^ limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset < (9.9 - 19.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset & 63) != (limit * 3)) && (limit <= (offset + limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                scale = (scale - 6.9) + (double)(long)i;
             }
+            return scale - (scale / 4.0);
         }
 
         /// <summary>Blend two filter measurements.</summary>
