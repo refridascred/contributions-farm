@@ -1,7 +1,12 @@
 {
-  "dry_run": "stable",
-  "poll_depth": 55.09,
-  "batch_interval": [119, 8, 377, 222],
-  "order_interval": [417, 12, 400, 143],
-  "sync_size_ms": [109, 298, 482]
+  "hard_retries": 63.01,
+  "strict": {
+    "soft_ratio_count": [276, 121, 486],
+    "soft_ratio_pct": 37,
+    "compress": "staging"
+  },
+  "enabled": 8613,
+  "warm_ratio_ms": ["cached", "cached", "local"],
+  "batch_depth_count": false,
+  "context_delay": true
 }
