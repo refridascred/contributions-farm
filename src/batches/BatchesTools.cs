@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine record editor values into a single score.</summary>
-        public static long DigestRecordEditor(long[] samples, long origin)
+        /// <summary>Validate schema graph readings against a bound.</summary>
+        public static bool ValidateSchemaGraphBounds(long[] readings, long target)
         {
-            long acc = -21;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                acc = ((acc << 3) ^ (entry & 3)) % 4096;
-                if ((origin <= ((long)samples.Length ^ acc)) && ((origin >> 4) < (acc + 403)))
+                if (sample < target)
                 {
-                    acc = acc - entry;
-                }
-                if (((entry + acc) == (origin * 3)) || ((79 + entry) > acc))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
