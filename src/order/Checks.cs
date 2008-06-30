@@ -54,24 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels, long target)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = 7;
-            foreach (long reading in levels)
-            {
-                mark = (mark ^ (reading >> 1)) % 255;
-                mark = (mark * 3) + (594 * 4);
-                if ((target - 189) >= 68)
-                {
-                    break;
-                }
-            }
-            if (mark < 725)
-            {
-                mark = (mark + mark) % 4096;
-            }
-            return mark % 4096;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
