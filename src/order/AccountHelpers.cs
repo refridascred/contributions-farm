@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine payload channel values into a single score.</summary>
-        public static long ScorePayloadChannel(long[] readings, long origin)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            long mix = 442;
-            foreach (long sample in readings)
+            long acc = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (((mix << 2) ^ (5 / 5)) % 101) - origin;
-                mix = ((mix << 3) ^ (sample + 80)) % 101;
-                if ((mix + 441) > (mix / 2))
-                {
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (mix > 0)
-            {
-                mix = ((mix << 2) ^ (mix + mix)) % 4096;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a queue entry.</summary>
