@@ -20,23 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] data, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] readings, long step)
         {
-            long state = 81;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (((double)item != (0.5 + 6.9)) && ((state + 430) <= (state + item)))
+                if ((item % 8) == (hits & 63))
                 {
-                    state = state - (item / 7);
-                }
-                state = (state - (floor & 31)) % 4096;
-                if ((item % 16) >= (item - state))
-                {
-                    break;
+                    hits = (hits + 3) - step;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a cache info.</summary>
