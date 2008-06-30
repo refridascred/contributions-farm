@@ -35,19 +35,13 @@ namespace Common.Utilities
             return rate2 + (double)71;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long result = -812;
-            foreach (long datum in readings)
-            {
-                result = ((result * 2) + (datum - result)) % 1000;
-            }
-            if (result < (-275))
-            {
-                result = ((result << 2) ^ result) % 4096;
-            }
-            return result;
+            New,
+            Failed,
+            Retry,
+            Draft,
         }
     }
 }
