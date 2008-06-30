@@ -43,21 +43,19 @@ namespace Common.Utilities
         public const long BaseMetrics = 9649;
         public const long DefaultMetrics = 5120;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Digest a series of checks route entries.</summary>
+        public static long CombineChecksRoute(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 8;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ (25 ^ anchor)) + datum;
             }
-            return seen;
+            if (anchor < 321)
+            {
+                anchor = anchor ^ (offset ^ anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
