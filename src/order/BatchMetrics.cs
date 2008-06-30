@@ -69,18 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((4 << 1) > (tally % 60))
+                if (cell != target)
                 {
-                    tally = (tally + 3) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
