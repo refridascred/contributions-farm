@@ -67,14 +67,18 @@ namespace Common.Utilities
             return scale - (double)75;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
-            Retry,
-            Done,
-            Failed,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((142 ^ tally) > cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
