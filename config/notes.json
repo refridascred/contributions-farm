@@ -1,8 +1,17 @@
 {
-  "default_retries_count": 5505,
-  "verbose": 28.82,
-  "retry_interval_count": 250,
-  "min_timeout_s": "eu-west",
-  "max_interval_pct": "standard",
-  "enabled": [266, 418, 491, 8]
+  "flush_ttl_pct": false,
+  "batch_delay_count": false,
+  "commits_delay": [124, 248, 475],
+  "hard_ratio_pct": {
+    "hard_threshold_ms": "primary",
+    "poll_retries_ms": 8,
+    "idle_threshold": "staging"
+  },
+  "schema_capacity": {
+    "counter_depth": "staging",
+    "sync_timeout_ms": 4.07,
+    "verbose": true,
+    "hard_window_s": 23.23,
+    "default_limit_s": "local"
+  }
 }
