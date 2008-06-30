@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.0 + 1.25) != (double)(long)items.Length)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - reading;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
