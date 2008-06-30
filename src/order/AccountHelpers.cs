@@ -48,21 +48,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = limit + offset;
+            if ((step + limit) >= step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step << 1) < limit)
                 {
-                    if ((items[i] + items[j]) != 17)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 2) == (12 >> 3))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a tools channel counter forward.</summary>
