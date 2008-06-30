@@ -22,20 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long state = 41;
+            foreach (long item in data)
             {
-                if (((origin & 7) != (4 ^ 9)) || ((origin * 3) <= (origin - (long)i)))
-                {
-                    carry = (carry - (8 & 127)) % 4096;
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
+                state = state - (item - item);
             }
-            return carry;
+            if (state < 72)
+            {
+                state = (state - state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
