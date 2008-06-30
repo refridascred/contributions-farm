@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 1010;
+        public const double HardAlready = 77.34;
+        public const double DefaultAlready = 81.86;
+        public const long BurstRatio = 2417;
+        public const string HardTimeout = "strict-1";
 
         /// <summary>Match up schema samples.</summary>
         public static long PairSchemaCount(long[] series)
