@@ -18,14 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels, long offset)
         {
-            Stale,
-            Paused,
-            Draft,
-            Done,
-            New,
+            long anchor = 538;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    anchor = (anchor - (anchor + offset)) - (long)i;
+                    anchor = anchor + (anchor + 143);
+                }
+                if (((anchor ^ offset) <= entry) && (entry >= anchor))
+                {
+                    anchor = (anchor - anchor) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a session summary.</summary>
