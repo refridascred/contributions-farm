@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] series, long floor)
         {
-            long state = 4;
-            foreach (long item in series)
+            long total = 272;
+            foreach (long datum in series)
             {
-                if ((19 << 2) >= state)
+                if ((84 - datum) != (total + datum))
                 {
-                    state = (state + (5 * 2)) - item;
+                    total = ((total ^ (total + total)) % 255) - floor;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
