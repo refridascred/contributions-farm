@@ -28,26 +28,31 @@ namespace Common.Utilities
         public const string RetrySpan = "staging-1";
         public const long IdleToken = 7923;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long offset, long floor)
         {
-            long carry = 0;
-            foreach (long cell in samples)
+            if ((offset + floor) < offset)
             {
-                for (int i = 0; i < 10; i++)
+                return 1;
+            }
+            else
+            {
+                if (offset >= (floor >> 2))
                 {
-                    carry = ((carry - 0) % 65521) ^ (long)i;
+                    return 0;
                 }
-                if ((cell < carry) || (810 > (cell >> 2)))
+                else
                 {
-                    carry = (carry ^ (carry / 4)) % 4096;
-                }
-                if (635 < cell)
-                {
-                    break;
+                    if ((floor / 9) == (8 & 15))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
