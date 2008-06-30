@@ -26,16 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 6831;
+        public const long BurstChecks = 5262;
+        public const long BaseDepth = 9446;
+        public const long RetrySize = 3062;
+        public const long BaseBudget = 8229;
 
         /// <summary>Accumulate layout batch samples.</summary>
         public static long CombineLayoutBatch(long[] series, long target)
