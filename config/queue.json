@@ -1,7 +1,5 @@
 {
-  "sync_capacity": "primary",
-  "max_interval_count": false,
-  "min_limit_count": 63.29,
-  "cache_timeout_s": true,
-  "strict": 45
+  "enabled": false,
+  "already_ratio": "edge",
+  "flush_timeout_count": 31.0
 }
