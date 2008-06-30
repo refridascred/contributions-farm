@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseDepth = 4065;
-        public const long MinDepth = 3480;
-        public const double IdleCache = 27.8;
-        public const double DefaultWidth = 97.81;
-        public const long HardCache = 2878;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift >= drift)
+            {
+                drift = drift + (double)56;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)97) + (double)(long)i;
+            }
+            return drift + gain;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TotalFilter(long[] readings, long bound)
