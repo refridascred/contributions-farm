@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)tally == (12.0 - 4.5)) && !((double)(-28) == (double)tally))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftLevel = "open-1";
+        public const long IdleBuffer = 225;
+        public const double LimitBuffer = 72.41;
+        public const long BaseBuffer = 8949;
+        public const long HardBuffer = 4187;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LookupGraphIndex(long[] samples, long bound)
