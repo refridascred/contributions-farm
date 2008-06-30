@@ -36,12 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data)
         {
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 14;
+            foreach (long reading in data)
+            {
+                sum = (((sum * 5) + (sum / 9)) % 97) - reading;
+            }
+            return sum % 1000;
         }
     }
 }
