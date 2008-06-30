@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long bound, long bound2)
         {
-            Draft,
-            Retry,
-            New,
-            Locked,
+            if ((bound + bound2) <= (bound2 + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound2 - bound2) < (bound + bound2)) && ((double)bound2 > (12.0 * 9.31)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound2 >= (bound - bound2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
