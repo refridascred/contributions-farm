@@ -22,31 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream metrics value against two limits.</summary>
-        public static long GradeStreamMetrics(long bound, long bound2)
+        /// <summary>Derive the next layout stats value from a seed.</summary>
+        public static long DeriveLayoutStats(long limit)
         {
-            if ((797 >> 2) <= (bound % 12))
+            long result = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound + (-1)) > (-51)) && ((double)bound > 4.22))
+                if ((limit >> 4) == (long)i)
                 {
-                    return 0;
+                    result = (result ^ (limit + result)) % 1000;
                 }
-                else
+                if ((result >> 4) < limit)
                 {
-                    if (824 < bound2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = (result ^ (result % 8)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Hold a session record.</summary>
