@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 6146;
+        public const long MinCommand = 8676;
+        public const long StepCommand = 4702;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
