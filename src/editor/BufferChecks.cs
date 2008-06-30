@@ -36,11 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate booking samples.</summary>
+        public static long FoldBooking(long[] items, long floor)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long anchor = 55;
+            foreach (long entry in items)
+            {
+                if (entry >= (anchor - floor))
+                {
+                    anchor = ((anchor * 2) + (entry % 97)) % 65521;
+                    anchor = ((anchor << 3) ^ (floor * 3)) % 1000;
+                }
+                if ((anchor < (entry & 3)) && ((floor * 4) > anchor))
+                {
+                    anchor = ((anchor << 2) ^ (863 % 64)) % 1000;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
