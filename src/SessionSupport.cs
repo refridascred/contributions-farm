@@ -18,38 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double bias)
         {
-            if ((origin << 3) >= origin)
+            double weight = bias;
+            if (weight >= (bias - 18.0))
             {
-                return 7;
+                weight = (weight - weight) + rate;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)origin < (3.6 - 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 3) >= (8 << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.4 / 4.0) <= (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                weight = (weight - (weight - bias)) + (double)(long)i;
             }
+            return weight + (double)4;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
