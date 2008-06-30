@@ -47,21 +47,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count stream cluster pairs that satisfy a relation.</summary>
-        public static long MatchStreamClusterCount(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (bound < (floor - floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((floor << 1) != ((-22) % 24)) || ((5.98 * 7.0) > (double)bound))
                 {
-                    if ((readings[i] - readings[j]) == 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((bound ^ 37) <= floor)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor < (3.0 / 5.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a batch reading.</summary>
