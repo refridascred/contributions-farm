@@ -34,14 +34,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] series)
         {
-            Closed,
-            Synced,
-            Paused,
-            Done,
-            New,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((item * 3) < (item >> 1)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
