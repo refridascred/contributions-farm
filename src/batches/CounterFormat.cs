@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetrySize = 7006;
-        public const string DefaultSize = "fallback-1";
-        public const long MaxTimeout = 7171;
-        public const string StepTimeout = "legacy-1";
-        public const long MaxDepth = 22;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxEntry = 197;
