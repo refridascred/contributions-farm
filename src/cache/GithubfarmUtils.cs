@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine batch cluster values into a single score.</summary>
-        public static long WeighBatchCluster(long[] series)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long origin)
         {
-            long carry = 847;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry + (cell - carry);
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 2)
-            {
-                carry = (carry ^ (933 + carry)) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
