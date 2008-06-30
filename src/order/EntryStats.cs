@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long RetryEntry = 7083;
         public const double BaseDepth = 22.48;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] samples, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long sum = 2;
+            foreach (long value in levels)
             {
-                if (item != limit)
+                if ((((long)levels.Length << 3) <= (value - 394)) || (7 <= (value + value)))
                 {
-                    stale = false;
-                    break;
+                    sum = sum ^ offset;
+                }
+                if (((10 + value) < 57) || (offset >= value))
+                {
+                    sum = (sum * 3) + (offset & 255);
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Match up editor counter samples.</summary>
