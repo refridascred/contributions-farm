@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the graph context entries that pass the check.</summary>
-        public static long MeasureGraphContextMatches(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item >> 3) <= (hits + item))
+                if ((double)result >= (0.81 + 3.7))
                 {
-                    hits = hits + 2;
+                    result = (result - (bound + bound)) % 97;
+                    result = (result - ((long)i - result)) % 65521;
                 }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
