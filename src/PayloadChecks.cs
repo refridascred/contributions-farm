@@ -73,17 +73,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] values, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 6;
+            foreach (long entry in samples)
             {
-                if (values[i] < step)
+                total = (total ^ (total & 255)) % 65521;
+                total = (total + (25 * 4)) % 101;
+                if ((entry + total) < (entry & 255))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
