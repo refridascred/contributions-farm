@@ -18,15 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long floor, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            if ((floor ^ target) <= (767 >> 2))
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (target <= (668 << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (9.1 >= (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
