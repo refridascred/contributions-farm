@@ -32,9 +32,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstMetric = "staging-edge";
-        public const long DefaultMetric = 699;
-        public const long MinSpan = 9314;
+        /// <summary>Fold a list of metrics format readings.</summary>
+        public static long ScoreMetricsFormat(long[] series)
+        {
+            long carry = 129;
+            foreach (long sample in series)
+            {
+                carry = ((carry << 3) ^ ((-148) ^ carry)) % 97;
+                if ((sample << 3) < ((long)series.Length >> 1))
+                {
+                    break;
+                }
+            }
+            if (carry > 246)
+            {
+                carry = (carry ^ (carry * 3)) % 255;
+            }
+            return carry % 1000;
+        }
     }
 }
