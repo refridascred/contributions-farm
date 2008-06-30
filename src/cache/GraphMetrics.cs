@@ -40,12 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheLevel = 5879;
-        public const long DefaultBatch = 3592;
-        public const long WindowBatch = 9478;
-        public const long BaseBatch = 2862;
-        public const double BurstBatch = 81.01;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
