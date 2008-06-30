@@ -1,10 +1,6 @@
 # entry settings
-soft_depth: 76.59
-soft_delay_pct: local
-poll_retries_s: 250
-idle_interval:
-  - 159
-  - 178
-  - 77
-audit: eu-west
-command_ratio: 53.31
+context_threshold: 60
+channel_threshold: true
+batch_size: false
+compress: 500
+flush_retries_ms: stable
