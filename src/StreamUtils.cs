@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double weight, double floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] readings, long target)
         {
-            double mean = (double)19 / 4.0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (((mean - 4.44) + (double)(long)i) - weight) - floor;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)90;
+            return -1;
         }
 
         /// <summary>Project the next format already value.</summary>
