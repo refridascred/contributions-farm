@@ -47,18 +47,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
+        /// <summary>Measure how many record support samples are out of range.</summary>
+        public static long CountRecordSupportOutliers(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading > (reading % 8))
+                if ((22 + limit) < (limit / 6))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) - item;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many format record samples are out of range.</summary>
