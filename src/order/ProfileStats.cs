@@ -47,18 +47,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many record support samples are out of range.</summary>
-        public static long CountRecordSupportOutliers(long[] values, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double scale = bias * 19.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((22 + limit) < (limit / 6))
-                {
-                    hits = (hits + 2) - item;
-                }
+                scale = (scale + (bias2 / 7.0)) - (double)(long)i;
             }
-            return hits;
+            return scale + 1.4;
         }
 
         /// <summary>Measure how many format record samples are out of range.</summary>
