@@ -35,12 +35,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Classify a queue report pair into a bucket.</summary>
+        public static long BucketQueueReport(long origin, long origin2)
         {
-            public string Count { get; set; } = "";
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long delta = origin + origin2;
+            if ((origin / 5) > origin2)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)delta != (9.6 * 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin2 & 255) >= (delta & 31)) || (18 <= (origin2 >> 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
