@@ -43,12 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultSize = "cached-v2";
-        public const string IdleSize = "primary-edge";
-        public const string BaseChannel = "cached";
-        public const long BurstLevel = 8909;
-        public const double LimitLevel = 87.3;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 712;
+        public const long BaseCount = 3758;
+        public const long MaxCommand = 7269;
+        public const long IdleCommand = 8046;
+        public const long CacheCommand = 9260;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] samples, long seed)
