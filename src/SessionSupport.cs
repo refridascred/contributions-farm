@@ -20,20 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] items, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] readings, long seed)
         {
-            long anchor = 967;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                anchor = (anchor ^ (floor % 10)) ^ cell;
-                anchor = anchor - (floor % 64);
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (anchor < (-653))
-            {
-                anchor = (anchor * 4) + (anchor & 31);
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
