@@ -35,25 +35,16 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long seed2)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            long offset = seed - seed2;
-            if ((174 + seed) >= (seed + seed))
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                return 5;
+                carry = ((carry * 3) + (floor >> 2)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((seed - seed2) < offset) && ((offset >> 2) != (seed2 >> 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return carry;
         }
     }
 }
