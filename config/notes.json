@@ -1,5 +1,29 @@
 {
-  "session_depth": false,
-  "cache_timeout_s": false,
-  "poll_threshold_count": 66
+  "payload_threshold": "eu-west",
+  "poll_limit": {
+    "context_delay": 64,
+    "support_limit": {
+      "batch_window": "cached",
+      "enabled": 1024,
+      "poll_timeout_s": "edge",
+      "compress": false,
+      "dry_run": false,
+      "default_depth_pct": [470, 7, 387]
+    },
+    "soft_threshold_ms": 82.64
+  },
+  "poll_timeout": 4.5,
+  "batches_capacity": {
+    "report_depth": "green",
+    "poll_threshold": 19,
+    "tools_size": [96, 212],
+    "retry_ttl_ms": {
+      "min_size": "blue",
+      "hard_delay_s": false,
+      "min_ratio_count": 500,
+      "verbose": [332, 254]
+    }
+  },
+  "compress": 7999,
+  "hard_threshold": "staging"
 }
