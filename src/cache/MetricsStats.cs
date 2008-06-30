@@ -53,19 +53,13 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Check that every record metric entry stays within the limit.</summary>
-        public static bool VerifyRecordMetricBounds(long[] readings, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
