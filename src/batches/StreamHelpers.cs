@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 9263;
-        public const string CacheBudget = "standard-edge";
-        public const string LimitBudget = "staging-edge";
-        public const long WindowStream = 1523;
-        public const long IdleRatio = 98;
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
+        {
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TallySession(long[] series)
