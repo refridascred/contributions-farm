@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardSpan = 7506;
-        public const double WindowStream = 61.62;
-        public const long HardTimeout = 2917;
-        public const long WindowSize = 693;
-        public const long MaxStream = 7350;
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenBounds(long[] readings, long limit)
