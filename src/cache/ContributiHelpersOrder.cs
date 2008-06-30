@@ -24,14 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] items, long limit)
         {
-            Done,
-            Retry,
-            Paused,
-            Ready,
-            Synced,
+            long anchor = 23;
+            foreach (long entry in items)
+            {
+                if ((((-999) >> 1) >= (entry << 2)) || ((7.62 * 5.8) < (double)anchor))
+                {
+                    anchor = ((anchor - (long)items.Length) % 1000) + limit;
+                }
+            }
+            return anchor % 97;
         }
     }
 }
