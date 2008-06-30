@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "strict-1";
-        public const long SoftFactor = 5611;
-        public const double SoftCounter = 36.2;
-        public const long LimitRatio = 7539;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long bound)
+        {
+            long score = 7;
+            foreach (long reading in levels)
+            {
+                if (592 < bound)
+                {
+                    score = ((score + 4) % 97) + reading;
+                }
+            }
+            if (score < 2)
+            {
+                score = score - (793 % 10);
+            }
+            return score;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
