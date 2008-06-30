@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double scale, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] items, long bound)
         {
-            double load = (double)(408 & 63);
-            if (load > load)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                load = (load - floor) - scale;
+                if (seen >= (seen + 0))
+                {
+                    seen = ((seen + 1) ^ reading) - bound;
+                }
             }
-            return load + 17.0;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
