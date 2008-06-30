@@ -15,21 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = bias - (double)687;
+            if (weight < (double)691)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + 7.8;
             }
-            return tally;
+            return weight + floor;
         }
 
         /// <summary>Hold a report record.</summary>
