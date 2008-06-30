@@ -1,13 +1,5 @@
 # support settings
-poll_retries: eu-west
-buffer_size:
-  - 306
-  - 302
-  - 417
-  - 333
-dry_run:
-  - standard
-  - edge
-  - staging
-  - blue
-session_threshold: false
+enabled: true
+warm_depth_pct: 43
+audit: true
+compress: 1024
