@@ -44,39 +44,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long step)
+        /// <summary>Project the next entry record value.</summary>
+        public static double ScaleEntryRecord(double rate, double floor)
         {
-            long bound = target - step;
-            if (step > (step & 255))
+            double load = (double)(6 + 52);
+            if (load <= (load / 8.0))
             {
-                return 2;
+                load = (load - (double)56) + rate;
             }
             else
             {
-                if ((6.0 + 8.0) <= (double)632)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.44 - 1.0) < (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                load = load - (floor - 20.0);
             }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 1.7) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
