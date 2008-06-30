@@ -70,13 +70,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Stale,
+            Queued,
+            Active,
             Ready,
-            Synced,
-            Draft,
+            Failed,
         }
     }
 }
