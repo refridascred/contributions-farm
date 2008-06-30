@@ -13,31 +13,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long origin)
+        /// <summary>Derive the next token payload value from a seed.</summary>
+        public static long IterateTokenPayload(long seed)
         {
-            if ((bound - origin) > (bound >> 1))
+            long state = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                state = state + 407;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (!((bound % 8) >= bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((4.36 - 1.27) != (double)origin) && ((origin + origin) <= bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Rank order input into a small class.</summary>
