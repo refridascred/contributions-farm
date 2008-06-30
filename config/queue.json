@@ -1,20 +1,6 @@
 {
-  "flush_delay_s": false,
-  "enabled": 17.69,
-  "strict": 2,
-  "warm_interval_ms": true,
-  "poll_interval_ms": {
-    "cache_retries_count": "primary",
-    "metrics_threshold": 17.42,
-    "queue_delay": {
-      "sync_retries": [417, 225, 346],
-      "min_size": false,
-      "soft_limit_pct": 100,
-      "retry_window_s": 100,
-      "cluster_delay": 61.48
-    },
-    "cache_capacity_pct": 60,
-    "max_ttl_pct": [484, 212, 59, 188]
-  },
-  "idle_delay_count": ["latest", "fallback", "primary", "primary"]
+  "max_ratio_s": "staging",
+  "min_delay_s": 500,
+  "flush_size": 51.21,
+  "record_retries": true
 }
