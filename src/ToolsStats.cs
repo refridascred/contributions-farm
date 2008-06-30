@@ -49,19 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools metric entry stays within the limit.</summary>
-        public static bool ValidateToolsMetricRange(long[] readings, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Validate tools channel readings against a bound.</summary>
