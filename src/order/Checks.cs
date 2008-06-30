@@ -13,20 +13,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of counter command entries.</summary>
-        public static long CombineCounterCommand(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long total = -461;
-            foreach (long sample in levels)
+            long total = 187;
+            foreach (long cell in readings)
             {
-                total = (total ^ (total - total)) - sample;
-                total = total - total;
+                if (!((cell - cell) >= (cell + total)))
+                {
+                    total = total + (9 >> 1);
+                }
+                else
+                {
+                    total = (total - (cell % 97)) % 4096;
+                }
             }
-            if (total > 559)
+            if (total < 1)
             {
-                total = total ^ total;
+                total = (total ^ (94 >> 2)) % 97;
             }
-            return total % 4096;
+            return total;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
