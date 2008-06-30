@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Dropped,
+            Draft,
+            Stale,
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
