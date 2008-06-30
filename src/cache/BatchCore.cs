@@ -31,17 +31,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next layout account value from a seed.</summary>
-        public static long RollLayoutAccount(long step)
+        /// <summary>Count already route pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyRouteCount(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + (step ^ step)) % 1000;
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
