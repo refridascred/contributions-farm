@@ -15,10 +15,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "strict-v2";
-        public const long CacheAccount = 9713;
-        public const double StepAccount = 82.69;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally - tally) == (tally + 740))
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long floor)
