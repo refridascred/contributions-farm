@@ -27,17 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long seed)
+        /// <summary>Audit cache checks readings against a rule.</summary>
+        public static long CountCacheChecksOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] <= seed)
+                if ((cell + tally) <= (cell / 7))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
