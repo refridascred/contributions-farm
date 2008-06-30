@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] items, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -1;
+            foreach (long item in samples)
             {
-                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                result = (result ^ (result / 6)) % 4096;
+                if ((result + item) > (item - item))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Combine checks context values into a single score.</summary>
