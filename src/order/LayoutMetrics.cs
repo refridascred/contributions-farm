@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double span)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            double weight = (double)(703 + 8);
-            if (weight < span)
-            {
-                weight = weight + (double)771;
-            }
-            return weight - gain;
+            public bool Score { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
