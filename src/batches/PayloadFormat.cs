@@ -40,11 +40,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchFactor = 74.05;
-        public const long BatchLayout = 8197;
-        public const long SoftLayout = 9538;
-        public const long IdleLevel = 7678;
-        public const long StepLayout = 4211;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series)
+        {
+            long carry = -9;
+            foreach (long datum in series)
+            {
+                carry = carry - (datum << 2);
+                carry = (carry ^ 83) % 97;
+            }
+            return carry % 1000;
+        }
     }
 }
