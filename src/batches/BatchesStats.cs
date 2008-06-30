@@ -43,19 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((5 + cell) >= (40 + step))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultSize = "cached-v2";
+        public const string IdleSize = "primary-edge";
+        public const string BaseChannel = "cached";
+        public const long BurstLevel = 8909;
+        public const double LimitLevel = 87.3;
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool CheckEditorRange(long[] samples, long seed)
