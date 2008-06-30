@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxWidth = 9291;
+        public const long IdleCache = 3993;
+        public const double BaseCache = 22.05;
+        public const string DefaultCache = "open-v2";
 
         /// <summary>Define order limits and defaults.</summary>
         public const string LimitOrder = "staging-edge";
