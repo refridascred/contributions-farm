@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((19 >> 1) > (hits >> 1))
+                if (!((seed + seed) <= (long)i))
                 {
-                    hits = ((hits + 3) ^ sample) + step;
+                    total = (total ^ (long)i) % 255;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
