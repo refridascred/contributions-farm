@@ -14,11 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long floor)
         {
-            double drift = bias;
-            return drift + gain;
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((325 % 60) != (cell + 7))
+                {
+                    count = (count + 3) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
