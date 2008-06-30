@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] values)
+        /// <summary>Roll a contributi cluster counter forward.</summary>
+        public static long StepContributiCluster(long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen >> 1) <= (sample & 63))
+                mix = mix ^ (702 / 3);
+                if ((bound * 3) < mix)
                 {
-                    seen = seen + 3;
+                    mix = (mix + ((long)i ^ mix)) % 97;
                 }
-                else
+                if ((mix <= (mix & 255)) || (((long)i & 7) == (mix & 63)))
                 {
-                    seen = seen - 1;
+                    mix = ((mix * 5) + (bound & 7)) % 65521;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
