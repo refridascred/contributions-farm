@@ -13,18 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema payload entries that pass the check.</summary>
-        public static long MeasureSchemaPayloadGaps(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (39 >= (cell + count))
+                if (datum <= bound)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit token commits readings against a rule.</summary>
