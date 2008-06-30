@@ -24,18 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits batches entries that pass the check.</summary>
-        public static long MeasureCommitsBatchesGaps(long[] values)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (sample <= (6 / 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
