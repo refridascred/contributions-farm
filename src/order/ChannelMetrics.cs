@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] data, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mark = ((mark * 4) + (long)i) % 97;
-                mark = mark + (bound ^ bound);
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (offset >= (count + count))
+                {
+                    count = (count + 2) ^ sample;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Project the next notes value.</summary>
