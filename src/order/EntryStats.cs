@@ -56,18 +56,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit record layout readings against a rule.</summary>
-        public static long CountRecordLayoutGaps(long[] levels, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((double)hits <= (7.28 + 9.0))
+                if (sample >= seed)
                 {
-                    hits = ((hits + 3) ^ reading) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
