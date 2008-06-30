@@ -33,19 +33,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] series, long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long value in series)
+            double rate = span;
+            for (int i = 0; i < 9; i++)
             {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate + 7.67) - (double)(long)i;
             }
-            return valid;
+            return rate + (span + ratio);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
