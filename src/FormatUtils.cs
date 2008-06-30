@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long sum = 69;
-            foreach (long cell in items)
-            {
-                sum = (sum << 3) ^ (sum + cell);
-                sum = ((sum << 2) ^ (cell & 63)) % 97;
-            }
-            if (sum > 6)
-            {
-                sum = sum + (sum >> 4);
-            }
-            return sum % 65521;
+            Locked,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Describe the format status values.</summary>
