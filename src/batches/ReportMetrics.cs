@@ -15,19 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long limit)
+        /// <summary>Derive the next stream cluster value from a seed.</summary>
+        public static long SeriesStreamCluster(long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score - (25 >> 4)) % 65521;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
