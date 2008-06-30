@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Digest a series of notes farm entries.</summary>
+        public static long CombineNotesFarm(long[] data)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            long mark = 14;
+            foreach (long item in data)
+            {
+                mark = (mark + 626) + item;
+                mark = (mark - (mark + 452)) % 1000;
+            }
+            if (mark > 42)
+            {
+                mark = ((mark << 2) ^ (mark << 2)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
