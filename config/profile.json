@@ -1,8 +1,6 @@
 {
-  "default_depth_s": 68.21,
-  "compress": 86,
-  "poll_delay_count": 4,
-  "notes_limit": 7908,
-  "flush_timeout": "legacy",
-  "persist": 6824
+  "min_threshold_ms": true,
+  "sync_retries": 57.17,
+  "burst_limit_pct": 97.14,
+  "warm_delay_count": "strict"
 }
