@@ -1,4 +1,17 @@
 # entry settings
-max_delay_ms: strict
-default_timeout: standard
-sync_ratio_count: strict
+hard_ttl_ms: blue
+dry_run:
+  record_size: 71
+  entry_interval:
+    batch_timeout_s: latest
+    checks_size: true
+    layout_delay: stable
+    poll_ratio_s: 9663
+    metric_interval: 25.05
+    default_interval_pct: green
+  verbose: eu-west
+  format_delay: 500
+max_timeout: true
+schema_ttl: true
+report_size: strict
+hard_delay: 25
