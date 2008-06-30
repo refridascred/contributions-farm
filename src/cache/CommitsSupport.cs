@@ -31,20 +31,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] samples, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
         {
-            long total = 8;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total * 2) + bound;
-                total = total - item;
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 21)
-            {
-                total = ((total * 3) + total) % 255;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
