@@ -44,24 +44,21 @@ namespace Common.Utilities
         public const double MinGraph = 60.37;
         public const long LimitLevel = 7250;
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            if (!((39 + limit) == (bound + limit)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 5) > (bound & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
