@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (datum > target)
+                if (((9.0 <= (7.08 + 3.0)) || ((value + value) > value)) || (value < (value * 2)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a record stats.</summary>
