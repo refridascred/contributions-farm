@@ -31,10 +31,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftSize = 27.1;
-        public const long IdleFactor = 4169;
-        public const double WindowChannel = 76.2;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((((seen - entry) <= (3 * 4)) && (seen <= (seen >> 3))) && ((9 >> 5) < (seen & 127)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 1381;
