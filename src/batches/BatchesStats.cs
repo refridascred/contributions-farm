@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsBounds(long[] values, long step)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 1212;
+        public const long DefaultCount = 8741;
+        public const long StepSpan = 1788;
+        public const string MaxWidth = "standard-1";
+        public const string RetryFarm = "open-v2";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
