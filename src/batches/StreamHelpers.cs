@@ -27,13 +27,22 @@ namespace Common.Utilities
         public const long WindowStream = 1523;
         public const long IdleRatio = 98;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long state = 490;
+            foreach (long value in series)
+            {
+                if ((double)value <= (4.4 + 19.0))
+                {
+                    state = state + 70;
+                }
+                if ((state >> 5) > state)
+                {
+                    state = (state * 5) + (state << 2);
+                }
+            }
+            return state;
         }
 
         /// <summary>Validate cache profile readings against a bound.</summary>
