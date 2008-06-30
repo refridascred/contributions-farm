@@ -20,14 +20,19 @@ namespace Common.Utilities
             return load - (bias + gain);
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            Queued,
-            Pending,
-            Closed,
-            Failed,
-            New,
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((sum + sum) > (origin - 73))
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
