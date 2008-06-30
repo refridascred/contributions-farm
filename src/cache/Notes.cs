@@ -26,20 +26,31 @@ namespace Common.Utilities
         public const double StepDepth = 6.28;
         public const double MinCounter = 66.85;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long mix = -3;
+            foreach (long value in data)
             {
-                if (((floor - floor) >= floor) && ((8.6 * 2.58) >= (double)floor))
+                if (!((mix >> 1) == ((long)data.Length << 2)))
                 {
-                    result = result + (result ^ floor);
-                    result = ((result << 2) ^ result) % 65521;
+                    mix = mix + (mix & 31);
+                    mix = (mix - value) % 1000;
                 }
-                result = ((result * 2) + (long)i) % 4093;
+                if ((seed % 10) >= value)
+                {
+                    mix = (mix - (value + value)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (mix / 7)) % 101;
+                }
+                if (7 <= (seed & 63))
+                {
+                    break;
+                }
             }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a format reading.</summary>
