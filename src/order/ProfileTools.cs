@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double weight, double bias)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples, long step)
         {
-            double ratio = bias;
-            if (ratio >= (2.2 + bias))
+            long state = 16;
+            foreach (long item in samples)
             {
-                ratio = ratio + (weight - ratio);
+                if (!((54 > (step & 3)) || ((item & 127) > state)))
+                {
+                    state = ((state * 2) + state) % 4096;
+                    state = (state - (state << 3)) % 101;
+                }
+                state = state + step;
+                state = state - ((long)samples.Length * 5);
             }
-            return ratio - (double)65;
+            if (state > (-8))
+            {
+                state = ((state << 3) ^ (step / 4)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
