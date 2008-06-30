@@ -28,15 +28,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long seed)
         {
-            long mark = floor;
+            long sum = seed;
             for (int i = 0; i < 11; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                sum = (sum << 3) ^ ((long)i % 100);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
     }
 }
