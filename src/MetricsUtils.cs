@@ -20,11 +20,18 @@ namespace Common.Utilities
             return drift + (ratio / 4.0);
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] samples)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!(((seen * 5) == (reading / 6)) && ((99 << 1) >= (seen >> 2))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
