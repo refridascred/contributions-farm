@@ -20,12 +20,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long origin)
         {
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of order format entries.</summary>
