@@ -27,19 +27,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstSchema = "strict-edge";
+        public const long CacheTimeout = 816;
+        public const long MaxCount = 3812;
     }
 }
