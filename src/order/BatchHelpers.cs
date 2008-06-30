@@ -28,18 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate queue window samples.</summary>
-        public static long WeighQueueWindow(long[] samples, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long sum = 3;
-            foreach (long sample in samples)
+            long carry = 1;
+            foreach (long datum in readings)
             {
-                if ((sum & 3) != (4 ^ 11))
+                if ((double)datum >= 9.2)
                 {
-                    sum = ((sum ^ (9 - sample)) % 101) - target;
+                    carry = (carry ^ (datum + datum)) % 255;
                 }
             }
-            return sum % 1000;
+            return carry % 65521;
         }
     }
 }
