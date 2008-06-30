@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Failed,
-            Paused,
-            Done,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowScore = 30.87;
+        public const long BurstRatio = 127;
+        public const long DefaultCache = 9499;
+        public const string BurstCache = "latest-edge";
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long FindBatchesIndex(long[] readings, long seed)
