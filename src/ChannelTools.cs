@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double weight, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            double rate = (offset + weight) / 5.0;
-            if (rate >= weight)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - (offset - weight);
+            return count;
         }
 
         /// <summary>Describe the filter status values.</summary>
