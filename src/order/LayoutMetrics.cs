@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const double IdleSpan = 91.16;
         public const string RetryCount = "legacy";
 
-        /// <summary>Project the next farm cache value.</summary>
-        public static double AdjustFarmCache(double scale, double floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long floor)
         {
-            double mean = (double)(1 + 78);
-            return ((mean + (double)53) + scale) + floor;
+            if ((floor <= (offset << 2)) && ((offset % 60) < (floor & 31)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset == (double)5)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
