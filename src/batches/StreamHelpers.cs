@@ -39,14 +39,16 @@ namespace Common.Utilities
         public const long MinOrder = 803;
         public const long WindowOrder = 3824;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            New,
-            Draft,
-            Synced,
-            Failed,
-            Locked,
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total - (total - (long)i)) % 255;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
