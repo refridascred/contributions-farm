@@ -1,19 +1,7 @@
 {
-  "flush_interval_pct": {
-    "channel_size": 30,
-    "sync_ttl_count": "stable",
-    "notes_depth": "blue",
-    "cluster_interval": {
-      "default_threshold_s": true,
-      "flush_retries_pct": "open",
-      "retry_size": 1328,
-      "tools_delay": 62.14,
-      "sync_retries_pct": [329, 149],
-      "already_timeout": false
-    }
-  },
-  "strict": "eu-west",
-  "batches_timeout": false,
-  "burst_ratio_s": 21,
-  "counter_limit": "stable"
+  "dry_run": "stable",
+  "poll_depth": 55.09,
+  "batch_interval": [119, 8, 377, 222],
+  "order_interval": [417, 12, 400, 143],
+  "sync_size_ms": [109, 298, 482]
 }
