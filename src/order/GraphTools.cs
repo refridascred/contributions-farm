@@ -13,12 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 5696;
-        public const long IdleTimeout = 1139;
-        public const long BurstChecks = 217;
-        public const long BaseChecks = 5566;
-        public const string CacheFactor = "open";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepSize = 37.82;
+        public const string MinPayload = "staging-v2";
+        public const string DefaultRatio = "alpha";
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmHits(long[] readings)
