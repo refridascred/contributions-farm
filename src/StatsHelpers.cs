@@ -28,15 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double weight, double span)
+        /// <summary>Fold a list of profile graph readings.</summary>
+        public static long DigestProfileGraph(long[] values, long target)
         {
-            double load = (double)(-90) / 4.0;
-            if (load < load)
+            long mix = -4;
+            foreach (long value in values)
             {
-                load = load + (weight + load);
+                mix = (((mix << 3) ^ (-287)) % 4096) + value;
             }
-            return load - span;
+            if (mix > 7)
+            {
+                mix = (mix ^ (target << 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
