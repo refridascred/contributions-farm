@@ -19,21 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] readings)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6 + datum) >= hits)
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
