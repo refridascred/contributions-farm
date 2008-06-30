@@ -1,11 +1,11 @@
 # Command notes
 
-The cluster report groups every channel by batch.
-Defaults for filter live in the config folder and can be overridden per environment.
-Use stats settings to tune how often farm data is refreshed.
+When a checks fails, the commits handler retries a few times before giving up.
+Run the graph check before changing any entry limits.
+When a record fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep contributi values small
-- Log every editor change
+- Validate route input early
+- Review token limits each release
+- Keep order values small
