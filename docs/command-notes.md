@@ -1,11 +1,15 @@
 # Command notes
 
-When a checks fails, the commits handler retries a few times before giving up.
-Run the graph check before changing any entry limits.
-When a record fails, the layout handler retries a few times before giving up.
+Defaults for metric live in the config folder and can be overridden per environment.
+Run the counter check before changing any order limits.
+Each layout is validated before it reaches the order queue.
+
+Run the batch check before changing any record limits.
+Run the editor check before changing any tools limits.
 
 ## Guidelines
 
-- Validate route input early
-- Review token limits each release
-- Keep order values small
+- Log every contributi change
+- Prefer metrics defaults
+- Keep profile values small
+- Document new command fields
