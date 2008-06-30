@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor << 2) ^ (anchor / 4);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((double)limit < 5.79)
+                {
+                    sum = (sum - limit) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
