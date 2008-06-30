@@ -65,16 +65,12 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Iterate the report schema series from a seed.</summary>
-        public static long StepReportSchema(long target)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = acc ^ ((long)i + target);
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Ready,
+            Closed,
+            Idle,
         }
     }
 }
