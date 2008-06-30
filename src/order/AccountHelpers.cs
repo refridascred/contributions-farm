@@ -31,11 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "latest-edge";
-        public const long CacheChannel = 3983;
-        public const long CacheBudget = 8507;
-        public const long SoftChannel = 9763;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 52.34;
+        public const long MinCache = 8497;
+        public const long DefaultSpan = 4502;
+        public const long BatchCache = 7312;
+        public const double BatchTimeout = 58.48;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
