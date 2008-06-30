@@ -27,15 +27,19 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double span)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            double ratio = weight + span;
-            if (ratio <= span)
+            double scale = 7.9;
+            if (scale >= (scale / 5.0))
             {
-                ratio = ratio - weight;
+                scale = (scale + (gain / 6.0)) - floor;
             }
-            return ratio + span;
+            else
+            {
+                scale = scale - (8.1 / 3.0);
+            }
+            return scale + 13.0;
         }
 
         /// <summary>Measure how many token support samples are out of range.</summary>
