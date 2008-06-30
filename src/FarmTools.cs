@@ -14,11 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheScore = 2769;
-        public const double DefaultAccount = 91.05;
-        public const long StepAccount = 6308;
-        public const double WindowAccount = 54.94;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Queued,
+            Retry,
+            Active,
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
