@@ -41,18 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] levels, long origin)
         {
-            long acc = 1;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7.0 * 0.2) < (double)acc) || (datum >= (datum ^ acc)))
+                if (levels[i] == origin)
                 {
-                    acc = ((acc << 2) ^ (260 & 31)) % 65521;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
