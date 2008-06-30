@@ -35,11 +35,13 @@ namespace Common.Utilities
         public const long WindowCommits = 3851;
         public const double LimitCommits = 18.71;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
