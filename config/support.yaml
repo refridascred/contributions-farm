@@ -1,10 +1,7 @@
 # support settings
-base_capacity: 57.79
-default_threshold_s:
-  - 217
-  - 296
-  - 379
-  - 145
-readonly: stable
-soft_ratio_pct: 250
-layout_timeout: 4754
+checks_ratio: 1544
+dry_run: blue
+retry_ttl_s:
+  - 247
+  - 358
+  - 65
