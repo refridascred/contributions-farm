@@ -51,19 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] samples, long floor)
+        /// <summary>Measure how many channel notes samples are out of range.</summary>
+        public static long MeasureChannelNotesHits(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (entry >= floor)
+                if ((((-902) + seen) == (seen + origin)) && ((origin / 2) < seen))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
