@@ -20,23 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double floor)
+        /// <summary>Combine cluster commits values into a single score.</summary>
+        public static long ScoreClusterCommits(long[] samples)
         {
-            double bias = (4.5 * 2.0) * 16.0;
-            if (bias >= (double)677)
+            long carry = 30;
+            foreach (long item in samples)
             {
-                bias = (bias + bias) - ratio;
+                if (((long)samples.Length / 6) < carry)
+                {
+                    carry = (carry - ((long)samples.Length % 8)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ item) % 101;
+                }
             }
-            else
+            if (carry < 69)
             {
-                bias = bias + (floor - bias);
+                carry = ((carry * 3) + (long)samples.Length) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (bias * 5.75)) - (double)(long)i;
-            }
-            return bias + bias;
+            return carry;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
