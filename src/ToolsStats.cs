@@ -56,19 +56,16 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Digest a series of cluster notes entries.</summary>
-        public static long CombineClusterNotes(long[] items, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long limit)
         {
-            long mark = -98;
-            foreach (long value in items)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                mark = ((mark << 3) ^ (seed / 4)) - value;
+                mark = (mark - (mark % 8)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (mark < 4)
-            {
-                mark = (mark * 4) + (mark - mark);
-            }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
