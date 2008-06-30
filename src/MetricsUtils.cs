@@ -47,15 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
