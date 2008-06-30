@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] data, long origin)
         {
-            Failed,
-            Draft,
-            Synced,
-            Retry,
-            Done,
+            long score = -5;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= 16.0)
+                {
+                    score = (score - (origin + 295)) % 4096;
+                }
+            }
+            if (score > 638)
+            {
+                score = (score + (775 / 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank account context input into a small class.</summary>
