@@ -36,18 +36,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the layout farm entries that pass the check.</summary>
-        public static long MeasureLayoutFarmHits(long[] readings)
+        /// <summary>Fold a list of context channel readings.</summary>
+        public static long TotalContextChannel(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = 26;
+            foreach (long reading in data)
             {
-                if (685 <= (hits << 3))
-                {
-                    hits = (hits + 3) ^ value;
-                }
+                mix = (mix ^ (seed - mix)) + reading;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of account format entries.</summary>
