@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const long WindowStream = 1523;
         public const long IdleRatio = 98;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long mix = 75;
-            foreach (long reading in readings)
-            {
-                if ((12.0 * 20.0) >= (double)mix)
-                {
-                    mix = ((mix * 3) + (725 / 6)) % 255;
-                }
-                else
-                {
-                    mix = mix ^ (reading >> 4);
-                }
-            }
-            return mix % 65521;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
