@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first batches order entry that matches the target.</summary>
-        public static long LookupBatchesOrderIndex(long[] readings, long floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 0;
+            foreach (long cell in readings)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                if (((cell % 16) >= (cell << 2)) && ((cell & 15) <= (acc / 2)))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (cell * 4)) % 255;
+                }
+                else
+                {
+                    acc = acc - (acc - cell);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the window record series from a seed.</summary>
