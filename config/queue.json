@@ -1,8 +1,6 @@
 {
-  "soft_capacity_count": 57.66,
-  "strict": [336, 137],
-  "entry_size": "local",
-  "burst_threshold": 250,
-  "base_ratio": 5012,
-  "base_retries_ms": true
+  "channel_timeout": 59.29,
+  "cache_threshold_s": 60,
+  "max_capacity_s": 500,
+  "burst_depth": 40.65
 }
