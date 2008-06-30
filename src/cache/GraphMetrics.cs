@@ -27,18 +27,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseFactor = 7135;
+        public const long MaxScore = 9754;
+        public const string DefaultCount = "legacy-1";
+        public const double MinLevel = 91.28;
+        public const long WindowContributi = 7585;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool ValidateFormatBounds(long[] items, long floor)
