@@ -60,39 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank githubfarm token input into a small class.</summary>
-        public static long ClassifyGithubfarmToken(long seed, long limit)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long offset)
         {
-            long gap = seed + limit;
-            if ((gap & 63) > (seed & 3))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap - 46) == (limit + limit))
+                if ((series[i] > offset) && ((series[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (limit <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((9.58 * 3.89) >= (double)gap)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
