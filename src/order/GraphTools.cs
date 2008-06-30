@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] series, long floor)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (item <= (count - item))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
