@@ -1,5 +1,25 @@
 {
-  "audit": 72.21,
-  "base_retries_s": 1024,
-  "soft_capacity_s": "staging"
+  "soft_threshold_ms": {
+    "flush_retries_s": "open",
+    "command_threshold": {
+      "burst_ratio": "local",
+      "idle_threshold_count": [116, 309],
+      "cache_limit_s": "blue",
+      "verbose": ["cached", "cached", "local", "open"],
+      "max_retries_s": 59.94
+    },
+    "max_threshold": 100,
+    "command_ratio": 8897,
+    "soft_retries_count": 500,
+    "poll_ttl_pct": {
+      "warm_ttl_count": 8625,
+      "default_interval_count": false,
+      "tools_interval": true,
+      "enabled": false,
+      "default_retries_count": "stable",
+      "idle_limit_pct": 9298
+    }
+  },
+  "cache_ttl_s": "strict",
+  "metrics_size": 7760
 }
