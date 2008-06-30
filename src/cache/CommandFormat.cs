@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const long DefaultSize = 9544;
         public const string MinCluster = "alpha-edge";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] levels, long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((65 > (long)levels.Length) && ((datum + (long)levels.Length) == (datum & 31)))
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
                 {
-                    hits = (hits + 3) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a filter header.</summary>
