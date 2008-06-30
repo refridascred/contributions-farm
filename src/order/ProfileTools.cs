@@ -21,12 +21,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 6973;
-        public const long MaxAccount = 2258;
-        public const long LimitAccount = 6455;
-        public const double BurstWidth = 49.37;
-        public const long HardAccount = 7585;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountGaps(long[] series)
