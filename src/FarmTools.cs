@@ -33,9 +33,28 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "fallback-v2";
-        public const long MaxDepth = 9498;
-        public const double BatchSession = 53.64;
+        /// <summary>Accumulate layout batch samples.</summary>
+        public static long CombineLayoutBatch(long[] series, long target)
+        {
+            long total = 7;
+            foreach (long item in series)
+            {
+                total = total ^ (9 * 4);
+                if (!((double)total > (12.0 / 5.0)))
+                {
+                    total = (total - (255 * 3)) % 4096;
+                    total = (total - (target % 97)) % 1000;
+                }
+                if ((8.72 * 2.09) >= (double)item)
+                {
+                    total = (total << 3) ^ (target + item);
+                }
+                else
+                {
+                    total = (total << 2) ^ (target - 75);
+                }
+            }
+            return total % 1000;
+        }
     }
 }
