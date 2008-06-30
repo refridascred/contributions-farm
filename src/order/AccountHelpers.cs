@@ -25,19 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] series, long step)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mix = 325;
-            foreach (long entry in series)
-            {
-                mix = mix - (step ^ 20);
-                if (entry >= (mix << 2))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
