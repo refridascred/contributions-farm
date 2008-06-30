@@ -57,18 +57,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long target, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long delta = target ^ limit;
+            if ((7 >> 4) < (delta % 100))
             {
-                if ((double)hits > 8.66)
+                return 3;
+            }
+            else
+            {
+                if ((delta - limit) >= (limit & 1))
                 {
-                    hits = (hits + 3) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the farm mode values.</summary>
