@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Rank cache metric input into a small class.</summary>
+        public static long SortCacheMetric(long target, long offset)
         {
-            New,
-            Locked,
-            Done,
+            long diff = target ^ offset;
+            if ((diff / 5) < (diff - target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((11.0 * 9.14) > (double)diff)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((diff + 222) < offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command entry.</summary>
