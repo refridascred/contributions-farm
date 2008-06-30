@@ -31,21 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already account samples.</summary>
-        public static long OverlapAlreadyAccountCount(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Stale,
+            Idle,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
