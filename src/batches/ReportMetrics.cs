@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] readings, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (reading <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
