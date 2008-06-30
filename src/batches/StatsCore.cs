@@ -12,30 +12,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (2.2 > (double)(long)i)
-                {
-                    state = (state + state) % 65521;
-                    state = state ^ (state / 6);
-                }
-                else
-                {
-                    state = ((state * 5) + state) % 255;
-                    state = ((state << 2) ^ (78 - offset)) % 4096;
-                }
-                if ((7 % 7) >= offset)
-                {
-                    state = (state - (83 + 8)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitInterval = 7051;
+        public const double WindowBuffer = 41.64;
+        public const string StepBudget = "stable-1";
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long ClassifyReport(long step, long origin)
