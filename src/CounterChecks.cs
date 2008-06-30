@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long result = -3;
-            foreach (long value in levels)
-            {
-                if (((value / 3) != (value + result)) || ((result + result) != (value - (-776))))
-                {
-                    result = (result - (result >> 1)) % 255;
-                }
-            }
-            return result % 4096;
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the command phase values.</summary>
