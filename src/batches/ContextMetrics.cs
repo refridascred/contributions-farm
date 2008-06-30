@@ -12,24 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a filter route value against two limits.</summary>
-        public static long GradeFilterRoute(long target, long offset)
+        /// <summary>Scale a context batch figure with a bias.</summary>
+        public static double ProjectContextBatch(double bias, double span)
         {
-            if ((double)offset >= (5.0 - 20.0))
+            double load = bias;
+            if (load >= (3.3 - span))
             {
-                return 5;
+                load = load - (span - span);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (42 < (offset * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
+                load = (load - (span / 8.0)) - (double)(long)i;
             }
+            return load + (double)67;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
