@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Active,
-            Dropped,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxScore = 2946;
+        public const long MinDepth = 9616;
+        public const long LimitAlready = 9417;
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double ratio, double bias)
