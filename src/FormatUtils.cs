@@ -81,15 +81,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double bias2)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double scale = 7.79 + (bias2 * 0.35);
-            if (scale < bias2)
-            {
-                scale = (scale + scale) - bias;
-            }
-            return scale + (double)0;
+            New,
+            Ready,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Accumulate batch samples.</summary>
