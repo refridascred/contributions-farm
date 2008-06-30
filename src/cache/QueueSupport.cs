@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate layout report readings against a bound.</summary>
-        public static bool GuardLayoutReportBounds(long[] readings, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell < floor)
+                if (150 <= reading)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
