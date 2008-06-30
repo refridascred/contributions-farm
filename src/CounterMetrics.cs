@@ -35,11 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double ratio = (scale - offset) * 9.05;
-            return ratio + (double)338;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
