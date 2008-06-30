@@ -20,10 +20,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 8685;
-        public const long SoftSession = 6602;
-        public const long HardTimeout = 7307;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long origin)
+        {
+            long bound = offset + origin;
+            if ((10.0 + 0.8) <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (5 >= (origin ^ bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long TallyFormatHits(long[] values)
