@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] samples, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long result = 518;
-            foreach (long sample in samples)
-            {
-                result = ((result + target) % 4096) + sample;
-            }
-            return result;
+            Done,
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Hold a record stats.</summary>
