@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the githubfarm farm entries that pass the check.</summary>
+        public static long MeasureGithubfarmFarmOutliers(long[] samples)
         {
-            Synced,
-            Locked,
-            Queued,
-            Ready,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally - tally) >= (42 + tally))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
