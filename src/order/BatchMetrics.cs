@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate support report readings against a bound.</summary>
+        public static bool VerifySupportReportRange(long[] series, long offset)
         {
-            Draft,
-            Synced,
-            Idle,
-            Ready,
-            Failed,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a support reading by value.</summary>
