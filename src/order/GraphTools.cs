@@ -20,19 +20,21 @@ namespace Common.Utilities
         public const long BaseChecks = 5566;
         public const string CacheFactor = "open";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples, long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long sum = 6;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 2) ^ (value / 7)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 19)
-            {
-                sum = ((sum << 2) ^ (target + sum)) % 65521;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the contributi state values.</summary>
