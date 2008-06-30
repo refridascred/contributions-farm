@@ -23,18 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long carry = 8;
+            foreach (long cell in data)
             {
-                result = (result + 6) % 65521;
-                result = (result - (result - limit)) % 97;
-                result = (result << 3) ^ 10;
-                result = ((result * 3) + (long)i) % 97;
+                if ((15 >= carry) || ((cell & 7) > (floor & 255)))
+                {
+                    carry = (carry + carry) % 97;
+                }
             }
-            return result;
+            if (carry < (-358))
+            {
+                carry = (carry ^ (floor ^ floor)) % 65521;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a report record.</summary>
