@@ -19,15 +19,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit cache checks readings against a rule.</summary>
-        public static long CountCacheChecksOutliers(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] items, long target)
         {
             long tally = 0;
-            foreach (long cell in samples)
+            foreach (long cell in items)
             {
-                if ((cell + tally) <= (cell / 7))
+                if (!(((tally + target) < (cell - target)) && ((target - target) < (cell & 15))))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
