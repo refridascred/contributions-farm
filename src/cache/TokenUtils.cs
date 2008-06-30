@@ -35,17 +35,19 @@ namespace Common.Utilities
             return rate2 + (double)71;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] series, long step)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = -812;
+            foreach (long datum in readings)
             {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (datum - result)) % 1000;
             }
-            return -1;
+            if (result < (-275))
+            {
+                result = ((result << 2) ^ result) % 4096;
+            }
+            return result;
         }
     }
 }
