@@ -42,12 +42,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Paused,
-            Locked,
-            Active,
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
