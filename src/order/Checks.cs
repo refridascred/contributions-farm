@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long floor)
         {
-            New,
-            Retry,
-            Dropped,
-            Idle,
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
