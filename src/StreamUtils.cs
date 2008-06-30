@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstLevel = 25.8;
-        public const long IdleChannel = 4631;
-        public const double BaseFactor = 16.66;
-        public const long IdleBudget = 1552;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count << 1) < datum)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ProjectContext(double gain, double span)
