@@ -46,12 +46,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 33.57;
-        public const double MinFactor = 25.32;
-        public const string MinWindow = "latest-1";
-        public const double SoftRatio = 92.69;
-        public const long WindowSize = 9753;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstSpan = 835;
+        public const long LimitBudget = 3531;
+        public const long BatchGithubfarm = 2659;
+        public const long HardGithubfarm = 3073;
+        public const double RetryGithubfarm = 83.85;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryScore = 1343;
