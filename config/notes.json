@@ -1,6 +1,8 @@
 {
-  "strict": true,
-  "enabled": 56.54,
-  "base_ttl_pct": "eu-west",
-  "warm_limit_s": 41.46
+  "default_retries_count": 5505,
+  "verbose": 28.82,
+  "retry_interval_count": 250,
+  "min_timeout_s": "eu-west",
+  "max_interval_pct": "standard",
+  "enabled": [266, 418, 491, 8]
 }
