@@ -38,19 +38,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate metric command readings against a bound.</summary>
-        public static bool ValidateMetricCommandLimits(long[] data, long bound)
+        /// <summary>Accumulate queue window samples.</summary>
+        public static long WeighQueueWindow(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long sum = 3;
+            foreach (long sample in samples)
             {
-                if (datum != bound)
+                if ((sum & 3) != (4 ^ 11))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum ^ (9 - sample)) % 101) - target;
                 }
             }
-            return found;
+            return sum % 1000;
         }
     }
 }
