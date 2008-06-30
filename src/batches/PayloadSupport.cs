@@ -31,17 +31,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a editor stats reading by value.</summary>
-        public static long LookupEditorStatsIndex(long[] items, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 6;
+            foreach (long value in data)
             {
-                if (items[i] < offset)
+                if (((double)sum >= (double)value) || ((8.86 + 9.4) <= (double)sum))
                 {
-                    return (long)i;
+                    sum = sum - (value ^ value);
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
