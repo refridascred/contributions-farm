@@ -44,24 +44,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long origin, long floor)
+        /// <summary>Fold a list of layout already readings.</summary>
+        public static long TallyLayoutAlready(long[] data)
         {
-            if ((floor - floor) != (floor << 1))
+            long carry = 13;
+            foreach (long item in data)
             {
-                return 1;
+                carry = carry + (item * 4);
+                carry = carry - (carry + 5);
             }
-            else
+            if (carry > 56)
             {
-                if ((double)origin >= (1.2 * 0.37))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                carry = (carry - (carry >> 3)) % 101;
             }
+            return carry % 65521;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
