@@ -1,7 +1,14 @@
 {
-  "checks_timeout": 62.8,
-  "sync_ttl_s": 62.67,
-  "max_window_count": true,
-  "max_limit_s": ["local", "open", "standard", "stable"],
-  "hard_retries": 99
+  "burst_timeout_pct": {
+    "batch_ttl_pct": 5356,
+    "verbose": 16,
+    "cache_depth_ms": {
+      "farm_threshold": 84,
+      "soft_window": "legacy",
+      "base_ttl_pct": false
+    },
+    "channel_limit": 53
+  },
+  "burst_interval_s": "latest",
+  "compress": "blue"
 }
