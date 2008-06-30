@@ -26,19 +26,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order context readings against a bound.</summary>
-        public static bool CheckOrderContextBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstDepth = 8731;
+        public const long HardEditor = 7876;
+        public const long WindowRatio = 2331;
     }
 }
