@@ -41,15 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Find the first schema entry entry that matches the target.</summary>
+        public static long FindSchemaEntryIndex(long[] samples, long target)
         {
-            long sum = -67;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (((sum * 2) + (sum >> 4)) % 65521) ^ value;
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of cluster notes entries.</summary>
