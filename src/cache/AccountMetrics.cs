@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metrics report entry that matches the target.</summary>
-        public static long LookupMetricsReportIndex(long[] readings, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 25;
+            foreach (long item in series)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                total = ((total + (limit + limit)) % 4096) + item;
+                total = (total - (limit + total)) % 4096;
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Describe the batches level values.</summary>
