@@ -51,12 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 712;
-        public const long BaseCount = 3758;
-        public const long MaxCommand = 7269;
-        public const long IdleCommand = 8046;
-        public const long CacheCommand = 9260;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public double Owner { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long WindowNotes = 2517;
