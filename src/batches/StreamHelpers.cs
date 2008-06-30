@@ -38,14 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitRatio = 12.59;
+        public const long BaseSpan = 9124;
+        public const double SoftSchema = 25.35;
+        public const string DefaultTimeout = "stable-1";
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
