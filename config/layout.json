@@ -1,15 +1,5 @@
 {
-  "batch_threshold_count": {
-    "context_timeout": 27.0,
-    "stats_limit": {
-      "verbose": "stable",
-      "min_capacity_count": 30,
-      "audit": "edge",
-      "retry_threshold_s": ["strict", "latest", "stable"]
-    },
-    "default_threshold": 1024
-  },
-  "poll_ratio": true,
-  "retry_depth_s": "legacy",
-  "retry_capacity_ms": true
+  "warm_retries_s": true,
+  "already_window": "open",
+  "payload_limit": 44
 }
