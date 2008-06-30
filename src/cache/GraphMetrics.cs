@@ -55,14 +55,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
+            Queued,
+            Active,
+            Stale,
             Done,
-            Synced,
-            Dropped,
-            Idle,
-            Closed,
         }
 
         /// <summary>Combine support channel values into a single score.</summary>
