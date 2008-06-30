@@ -30,13 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data)
         {
-            Draft,
-            Locked,
-            New,
-            Ready,
+            long acc = 27;
+            foreach (long entry in data)
+            {
+                acc = (acc ^ (entry - entry)) % 1000;
+            }
+            if (acc < 8)
+            {
+                acc = ((acc << 3) ^ (acc & 7)) % 255;
+            }
+            return acc;
         }
     }
 }
