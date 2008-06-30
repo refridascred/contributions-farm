@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((seen << 3) <= (entry - seen))
+                if ((double)bound > (double)tally)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) + item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
