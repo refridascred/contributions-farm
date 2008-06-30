@@ -12,11 +12,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long offset, long target)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            if ((offset / 2) != (target - offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)target < (double)1) || (target < offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
