@@ -35,21 +35,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up contributi metric samples.</summary>
-        public static long OverlapContributiMetricCount(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 172;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = mix ^ 182;
+                if ((mix > (-2)) && ((cell % 3) != (cell & 15)))
                 {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (mix > 80)
+            {
+                mix = (mix * 3) + mix;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
