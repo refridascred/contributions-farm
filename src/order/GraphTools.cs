@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] values, long seed)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            long anchor = 379;
+            foreach (long reading in values)
+            {
+                if (anchor <= (seed ^ seed))
+                {
+                    anchor = ((anchor << 3) ^ (reading + seed)) % 1000;
+                }
+                if (((double)seed <= 19.0) && ((3 - reading) <= (anchor - reading)))
+                {
+                    anchor = (anchor - ((-293) ^ reading)) % 255;
+                }
+            }
+            if (anchor < 37)
+            {
+                anchor = anchor + (seed % 97);
+            }
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
