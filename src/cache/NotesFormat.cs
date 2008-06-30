@@ -19,10 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "stable-1";
-        public const long IdleInterval = 7137;
-        public const long BatchWidth = 3752;
+        /// <summary>Measure how many support command samples are out of range.</summary>
+        public static long AuditSupportCommandMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((2 & 255) <= (entry + (-5))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a record counter forward.</summary>
         public static long StepRecord(long offset)
