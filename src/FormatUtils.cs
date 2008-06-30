@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] values, long limit)
-        {
-            long anchor = 4;
-            foreach (long datum in values)
-            {
-                if (anchor <= (anchor + limit))
-                {
-                    anchor = (((anchor * 4) + (limit + anchor)) % 65521) ^ datum;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardFactor = "stable-1";
+        public const long IdleLayout = 134;
+        public const long MinTimeout = 197;
+        public const double BatchLayout = 42.45;
+        public const long StepLayout = 314;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
