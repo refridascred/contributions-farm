@@ -54,11 +54,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double drift = 4.9;
-            return ((drift + (drift * 16.0)) + rate) + offset;
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
