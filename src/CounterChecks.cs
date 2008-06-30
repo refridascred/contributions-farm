@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Pending,
-            Failed,
-            Closed,
-            Done,
+            Synced,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
