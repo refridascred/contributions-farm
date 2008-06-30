@@ -1,8 +1,11 @@
 {
-  "batch_size_s": 52.22,
-  "notes_timeout": true,
-  "verbose": "stable",
-  "warm_window_s": 3133,
-  "base_capacity_pct": "legacy",
-  "hard_delay": 30
+  "default_ratio_ms": {
+    "batch_ttl": 100,
+    "sync_window_ms": ["latest", "stable"],
+    "notes_depth": false,
+    "dry_run": 2961
+  },
+  "editor_retries": 83,
+  "strict": 4353,
+  "cache_ratio_ms": 974
 }
