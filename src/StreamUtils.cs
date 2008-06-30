@@ -23,23 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Scale a tools batch figure with a bias.</summary>
+        public static double ProjectToolsBatch(double weight, double floor)
         {
-            double mean = (double)301 - (gain * 3.5);
-            if (mean > gain)
+            double gain = (double)(162 >> 1);
+            if (gain > (double)564)
             {
-                mean = (mean - (gain - mean)) - span;
+                gain = (gain - (floor + floor)) - weight;
             }
-            else
-            {
-                mean = mean - (mean + mean);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (1.6 - gain);
+            return gain - (double)(-81);
         }
 
         /// <summary>Fold a list of batches contributi readings.</summary>
