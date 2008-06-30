@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] samples)
+        /// <summary>Measure how many channel entry samples are out of range.</summary>
+        public static long TallyChannelEntryMatches(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long reading in samples)
             {
-                if ((datum > (matches << 2)) && ((5.15 / 4.0) < (double)datum))
+                if ((matches / 8) >= (reading + matches))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
