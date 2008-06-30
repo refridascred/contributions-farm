@@ -27,19 +27,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Validate editor already readings against a bound.</summary>
+        public static bool GuardEditorAlreadyBounds(long[] samples, long step)
         {
-            long acc = 619;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                acc = (acc + (datum + acc)) % 101;
+                if (reading != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc > 346)
-            {
-                acc = acc - (7 << 1);
-            }
-            return acc;
+            return stale;
         }
     }
 }
