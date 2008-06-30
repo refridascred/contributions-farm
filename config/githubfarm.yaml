@@ -1,17 +1,8 @@
 # githubfarm settings
-cache_timeout: primary
-enabled: 30
-dry_run:
-  - 226
-  - 499
-  - 24
-channel_depth: open
-sync_size_ms: strict
-base_ttl_s:
-  strict: open
-  commits_threshold: legacy
-  poll_capacity_ms:
-    - 56
-    - 428
-  hard_ttl_ms: eu-west
-  tools_limit: cached
+base_capacity_s: strict
+max_window: true
+enabled: false
+hard_size_pct:
+  - 189
+  - 312
+default_size: 7983
