@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] levels, long seed)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((((seen + cell) > (cell + seen)) && ((8 + seed) >= seen)) || (((seen & 127) <= cell) || ((4.57 + 8.7) == (double)cell)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
