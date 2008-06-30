@@ -30,18 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] values)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((double)count < (14.0 / 8.0))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
