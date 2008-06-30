@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long DefaultCache = 9499;
         public const string BurstCache = "latest-edge";
 
-        /// <summary>Count the graph metric entries that pass the check.</summary>
-        public static long CountGraphMetricOutliers(long[] data, long offset)
+        /// <summary>Validate context account readings against a bound.</summary>
+        public static bool ValidateContextAccountRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((double)value == (6.08 - 3.46))
+                if (cell < target)
                 {
-                    seen = (seen + 2) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Classify a metric tools pair into a bucket.</summary>
