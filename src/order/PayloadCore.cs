@@ -31,10 +31,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 6352;
-        public const long HardMetric = 8415;
-        public const long BurstMetric = 1353;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Dropped,
+            Draft,
+            Stale,
+            Active,
+        }
 
         /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
         public static long LookupGithubfarmGraphIndex(long[] readings, long origin)
