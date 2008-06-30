@@ -43,20 +43,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long seed)
         {
-            long mark = 23;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                mark = mark + (datum >> 3);
-                if (mark >= (mark << 2))
+                if (seen >= (item + seed))
                 {
-                    mark = mark - (datum * 5);
+                    seen = seen + 1;
                 }
-                mark = (mark + (mark * 4)) % 1000;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
