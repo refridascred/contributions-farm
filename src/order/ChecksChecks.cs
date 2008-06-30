@@ -31,19 +31,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] data, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (entry > floor)
+                if ((((count - count) == (397 ^ entry)) || (entry > 449)) || ((48 + entry) < (98 - (long)readings.Length)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
