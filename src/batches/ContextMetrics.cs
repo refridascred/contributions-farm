@@ -45,22 +45,18 @@ namespace Common.Utilities
             return drift + (double)505;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] levels)
         {
-            long result = 51;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (result < (item + 55))
+                if ((1.81 <= (double)seen) || ((cell > (cell ^ cell)) && ((1.12 / 8.0) <= (double)seen)))
                 {
-                    continue;
-                }
-                if (((result << 2) != (623 >> 4)) && ((3.08 * 17.0) >= (double)target))
-                {
-                    result = (result + (288 & 3)) % 101;
+                    seen = seen + 2;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
