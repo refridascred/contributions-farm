@@ -13,19 +13,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate context account readings against a bound.</summary>
-        public static bool ValidateContextAccountRange(long[] data, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < target)
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
