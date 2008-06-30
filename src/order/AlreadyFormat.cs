@@ -57,16 +57,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next token editor value from a seed.</summary>
-        public static long StepTokenEditor(long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long bound, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            if (!((472 * 5) > floor))
             {
-                acc = acc + seed;
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((floor + floor) == (floor % 60))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two record measurements.</summary>
