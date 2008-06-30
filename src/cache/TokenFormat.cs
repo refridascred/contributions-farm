@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] readings, long floor)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit batch context readings against a rule.</summary>
