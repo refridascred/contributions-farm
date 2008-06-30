@@ -1,18 +1,31 @@
 # githubfarm settings
-persist: 86
-enabled: 60
-hard_capacity_count: cached
-profile_limit:
-  flush_capacity_s: 100
-  base_capacity_s: staging
-  warm_delay_pct:
-    - 43
-    - 464
-    - 116
-    - 471
-  base_threshold_count: 100
-readonly: staging
-retry_depth_pct:
-  - primary
-  - cached
-  - green
+idle_size_ms: latest
+payload_capacity: 15.24
+command_threshold:
+  persist:
+    - open
+    - primary
+  context_size:
+    warm_timeout: eu-west
+    flush_retries: 250
+    farm_threshold: open
+    warm_limit_count: 60
+  retry_ratio_ms: 84.68
+  base_limit_count:
+    support_ratio: 48
+    sync_size: 58.04
+    min_window:
+      - 476
+      - 71
+    contributi_threshold: strict
+  githubfarm_threshold:
+    payload_interval:
+      - 456
+      - 139
+      - 256
+    enabled: 84
+    flush_size_count: 71.71
+    soft_window:
+      - 116
+      - 288
+persist: 23.42
