@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Measure how many queue token samples are out of range.</summary>
+        public static long TallyQueueTokenHits(long[] samples, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((0.22 + 0.7) >= (5.6 / 4.0))
+                {
+                    seen = ((seen + 1) + item) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate payload commits samples.</summary>
