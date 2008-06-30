@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of queue counter entries.</summary>
-        public static long TotalQueueCounter(long[] levels, long offset)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mix = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)mix <= (double)418)
-                {
-                    mix = (mix + offset) - entry;
-                }
-            }
-            if (mix > (-23))
-            {
-                mix = mix + (mix - offset);
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a route sample.</summary>
