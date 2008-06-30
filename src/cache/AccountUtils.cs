@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] data)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 67;
+            foreach (long reading in data)
+            {
+                if ((reading & 127) >= (7 + carry))
+                {
+                    carry = (carry - (carry * 2)) % 65521;
+                }
+            }
+            if (carry > 533)
+            {
+                carry = ((carry << 2) ^ (carry >> 4)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
