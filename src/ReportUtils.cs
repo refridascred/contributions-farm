@@ -34,20 +34,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((((long)i & 1) < (acc * 4)) && ((acc * 2) >= acc))
-                {
-                    acc = (acc + (long)i) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 8520;
+        public const string BurstFactor = "alpha";
+        public const long RetryRoute = 938;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long DigestSchema(long[] data)
