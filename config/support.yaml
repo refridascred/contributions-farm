@@ -1,16 +1,4 @@
 # support settings
-strict:
-  - 373
-  - 354
-batch_ttl_ms: 2263
-idle_threshold_count: false
-batch_depth_s:
-  graph_interval: 3387
-  default_ratio_count: fallback
-  entry_limit: primary
-  cache_retries:
-    window_threshold: eu-west
-    poll_limit_pct: 9068
-    metric_capacity: 96.89
-    flush_depth_ms: 60
-    max_ratio_pct: 67.63
+warm_timeout: 9525
+warm_interval_pct: 3718
+max_depth: green
