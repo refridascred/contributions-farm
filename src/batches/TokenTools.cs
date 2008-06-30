@@ -12,21 +12,18 @@ namespace Common.Utilities
             return (ratio + scale) + bias;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value / 8) >= (floor - value))
                 {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Roll a session counter forward.</summary>
