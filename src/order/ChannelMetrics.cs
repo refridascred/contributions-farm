@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double weight, double offset)
-        {
-            double load = offset + offset;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - 1.1) + (double)(long)i) + weight;
-            }
-            return load + (double)84;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 29.94;
+        public const long BurstWidth = 6966;
+        public const long IdlePayload = 6475;
+        public const long SoftWidth = 246;
+        public const double BurstCount = 6.8;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutHits(long[] series, long target)
