@@ -12,39 +12,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long target, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long prev = target + offset;
-            if (((4.0 * 16.0) < (double)offset) && ((272 << 1) > offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((77 - offset) <= (offset << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target >= (58 ^ prev))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + prev) >= prev) && ((prev / 8) > target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Queued,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
