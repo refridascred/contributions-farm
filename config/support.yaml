@@ -1,7 +1,16 @@
 # support settings
-warm_interval_count: eu-west
-min_ttl:
-  warm_interval_ms: true
-  warm_interval_s: 1502
-  strict: cached
-context_retries: eu-west
+strict:
+  - 373
+  - 354
+batch_ttl_ms: 2263
+idle_threshold_count: false
+batch_depth_s:
+  graph_interval: 3387
+  default_ratio_count: fallback
+  entry_limit: primary
+  cache_retries:
+    window_threshold: eu-west
+    poll_limit_pct: 9068
+    metric_capacity: 96.89
+    flush_depth_ms: 60
+    max_ratio_pct: 67.63
