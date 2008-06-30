@@ -47,14 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine metrics schema values into a single score.</summary>
+        public static long TotalMetricsSchema(long[] items)
         {
-            Pending,
-            Closed,
-            Failed,
-            Retry,
-            Paused,
+            long sum = 94;
+            foreach (long value in items)
+            {
+                if (!((2.8 * 3.3) > (double)value))
+                {
+                    sum = (sum + (value + sum)) % 101;
+                }
+            }
+            return sum;
         }
     }
 }
