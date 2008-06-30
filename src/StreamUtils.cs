@@ -49,40 +49,10 @@ namespace Common.Utilities
             return gain + (floor / 3.0);
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long target, long bound)
-        {
-            long cur = target + bound;
-            if (80 > cur)
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (target % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - bound) != (34 / 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + cur) == (bound ^ target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetrySize = 8127;
+        public const double LimitCount = 50.47;
+        public const long SoftBudget = 387;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorOutliers(long[] levels, long origin)
