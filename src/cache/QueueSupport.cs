@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Synced,
-            Locked,
-            New,
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
