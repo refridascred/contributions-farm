@@ -56,21 +56,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 757;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor << 2) ^ (anchor / 4)) % 255) ^ entry;
+                anchor = (anchor + (anchor + anchor)) % 255;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Compare every pair of order contributi readings.</summary>
