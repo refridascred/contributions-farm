@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] samples, long bound)
+        /// <summary>Measure how many already support samples are out of range.</summary>
+        public static long CountAlreadySupportMatches(long[] readings, long origin)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long sample in readings)
             {
-                if ((value >= (bound + 15)) && (((-53) % 100) > (bound * 5)))
+                if ((2.4 / 9.0) <= (double)sample)
                 {
-                    seen = seen + 3;
+                    seen = (seen + 3) + origin;
                 }
             }
             return seen;
