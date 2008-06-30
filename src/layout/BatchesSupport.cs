@@ -78,16 +78,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] readings, long bound)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total << 2) ^ (435 >> 4);
-                total = ((total * 4) + (long)i) % 97;
+                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
