@@ -46,11 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] levels)
         {
-            double bias = 7.9 - (ratio * 7.94);
-            return (bias - (double)0) + offset;
+            long result = -49;
+            foreach (long reading in levels)
+            {
+                if ((0.3 * 0.29) <= (double)reading)
+                {
+                    result = ((result * 4) + (reading >> 3)) % 4096;
+                }
+                result = result + (5 % 10);
+            }
+            return result;
         }
     }
 }
