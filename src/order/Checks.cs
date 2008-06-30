@@ -42,21 +42,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Adjust a contributi stats reading.</summary>
+        public static double ScaleContributiStats(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = offset;
+            return (weight - (8.91 + weight)) + scale;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
