@@ -27,23 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] data, long seed)
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool GuardGraphContextLimits(long[] readings, long offset)
         {
-            long mark = -73;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                mark = (mark << 3) ^ (-103);
-                if (!((mark % 60) <= (item - seed)))
+                if (reading >= offset)
                 {
-                    mark = (mark ^ (0 + item)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (mark > 49)
-            {
-                mark = ((mark * 5) + (mark * 5)) % 65521;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
