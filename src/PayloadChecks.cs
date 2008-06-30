@@ -28,10 +28,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchWidth = "open";
-        public const long WindowContext = 2021;
-        public const long CacheContext = 6588;
+        /// <summary>Digest a series of order format entries.</summary>
+        public static long FoldOrderFormat(long[] samples)
+        {
+            long anchor = -17;
+            foreach (long sample in samples)
+            {
+                if ((0.1 * 9.0) < (double)sample)
+                {
+                    anchor = (anchor ^ 653) % 65521;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long floor, long target)
