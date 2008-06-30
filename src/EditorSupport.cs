@@ -29,19 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit / 9) >= (cell + limit))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftTimeout = 5499;
+        public const long BaseBudget = 5969;
+        public const string CacheMetrics = "local";
+        public const long BaseMetrics = 9649;
+        public const long DefaultMetrics = 5120;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
