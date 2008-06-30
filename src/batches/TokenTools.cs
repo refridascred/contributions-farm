@@ -20,12 +20,19 @@ namespace Common.Utilities
             return bias + (ratio * 8.48);
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            Done,
-            Queued,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)seed > 4.5)
+                {
+                    acc = acc + (acc ^ acc);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a support snapshot.</summary>
