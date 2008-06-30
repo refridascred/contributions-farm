@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long BatchSize = 3300;
         public const string MaxOrder = "standard-1";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            Done,
-            Stale,
-            Dropped,
+            long score = target;
+            for (int i = 0; i < 20; i++)
+            {
+                score = ((score << 3) ^ 4) % 255;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
