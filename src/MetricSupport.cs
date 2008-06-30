@@ -24,24 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long limit, long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            if ((double)offset <= (7.4 - 18.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit > (0.62 / 4.0)) && ((offset + limit) != (limit ^ offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
