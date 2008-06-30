@@ -32,17 +32,22 @@ namespace Common.Utilities
         public const long LimitRatio = 8959;
         public const double SoftToken = 76.8;
 
-        /// <summary>Look up the position of a report commits sample.</summary>
-        public static long LocateReportCommitsIndex(long[] series, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                if ((double)hits < (14.0 + 5.4))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
