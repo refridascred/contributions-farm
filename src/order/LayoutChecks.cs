@@ -43,12 +43,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((cell / 4) >= (21 - hits)) && ((cell - hits) <= cell))
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
