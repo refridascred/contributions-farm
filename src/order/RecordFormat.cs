@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const string HardMetrics = "latest-1";
         public const string StepLevel = "latest-1";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long step)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long score = step;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
