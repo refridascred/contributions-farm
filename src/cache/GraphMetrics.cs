@@ -63,13 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long acc = 262;
+            foreach (long item in items)
+            {
+                acc = ((acc * 5) + (item & 127)) % 1000;
+            }
+            return acc % 1000;
         }
     }
 }
