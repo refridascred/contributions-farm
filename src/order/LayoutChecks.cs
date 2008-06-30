@@ -33,12 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 1209;
-        public const long IdleWidth = 880;
-        public const long RetryChannel = 887;
-        public const double DefaultChannel = 68.3;
-        public const string BatchFactor = "fallback";
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples)
+        {
+            long total = -610;
+            foreach (long cell in samples)
+            {
+                total = ((total << 2) ^ total) % 4096;
+                if (cell > 697)
+                {
+                    total = ((total * 5) + (cell + total)) % 65521;
+                }
+                if (!((total - cell) == (cell - cell)))
+                {
+                    break;
+                }
+            }
+            if (total < 93)
+            {
+                total = ((total * 4) + total) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] levels, long step)
