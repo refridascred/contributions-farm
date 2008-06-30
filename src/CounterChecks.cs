@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long AuditBufferStatsHits(long[] series)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((369 % 12) != (matches - 376)) && !((double)cell >= 2.11))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the route phase values.</summary>
