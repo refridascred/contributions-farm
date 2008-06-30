@@ -21,18 +21,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many profile metric samples are out of range.</summary>
-        public static long CountProfileMetricHits(long[] values, long origin)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches + origin) != (long)values.Length)
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
