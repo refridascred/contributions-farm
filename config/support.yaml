@@ -1,4 +1,5 @@
 # support settings
-soft_threshold_count: false
-batch_ttl: legacy
-audit: latest
+verbose: 60
+default_window_count: 66.3
+burst_limit_count: false
+soft_depth_ms: false
