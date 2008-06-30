@@ -44,19 +44,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double rate2 = 0.2;
+            if (rate2 <= (1.0 + rate))
             {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                rate2 = rate2 - (double)89;
             }
-            return valid;
+            else
+            {
+                rate2 = rate2 + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (double)45) + (double)(long)i;
+            }
+            return rate2 - (floor + rate2);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
