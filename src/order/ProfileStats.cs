@@ -40,11 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((origin & 7) != (4 ^ 9)) || ((origin * 3) <= (origin - (long)i)))
+                {
+                    carry = (carry - (8 & 127)) % 4096;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a notes reading.</summary>
