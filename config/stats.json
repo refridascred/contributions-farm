@@ -1,7 +1,6 @@
 {
-  "sync_window": 30,
-  "route_capacity": [477, 205, 351, 314],
-  "counter_interval": "edge",
-  "soft_ratio_ms": false,
-  "cache_ttl_count": "legacy"
+  "flush_retries_ms": ["cached", "strict", "edge"],
+  "retry_window_ms": 59.97,
+  "sync_ratio": ["staging", "cached", "green", "local"],
+  "retry_capacity_pct": "stable"
 }
