@@ -22,18 +22,31 @@ namespace Common.Utilities
         public const long BurstFactor = 4310;
         public const double HardScore = 29.66;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] items, long origin)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (!((step * 5) <= (step + seed)))
             {
-                if ((1.0 / 9.0) > (double)origin)
+                return 3;
+            }
+            else
+            {
+                if (((seed - step) <= (2 >> 3)) || ((double)step != (19.0 / 4.0)))
                 {
-                    count = (count + 2) ^ cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((step - seed) <= (2 * 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
