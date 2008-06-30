@@ -29,12 +29,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long origin, long origin2)
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            if (origin < (origin2 << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0 + origin2) <= (origin + 436))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin2 * 2) != (origin >> 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
