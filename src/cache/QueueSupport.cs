@@ -41,12 +41,34 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples)
         {
-            Stale,
-            Pending,
-            Dropped,
+            long state = 574;
+            foreach (long value in samples)
+            {
+                if ((value - state) == (state >> 5))
+                {
+                    state = state ^ (state * 2);
+                }
+                if (4 >= (state << 3))
+                {
+                    state = ((state * 5) + (state * 3)) % 1000;
+                }
+                if ((value - (long)samples.Length) <= (15 % 97))
+                {
+                    state = (state << 3) ^ (state + (long)samples.Length);
+                }
+                else
+                {
+                    state = state ^ (86 + state);
+                }
+            }
+            if (state < 386)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state;
         }
     }
 }
