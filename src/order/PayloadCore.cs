@@ -40,17 +40,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first githubfarm graph entry that matches the target.</summary>
-        public static long LookupGithubfarmGraphIndex(long[] readings, long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
