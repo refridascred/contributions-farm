@@ -30,21 +30,32 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = bound - seed;
+            if (seed >= delta)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (seed > (delta - bound))
                 {
-                    if ((samples[i] - samples[j]) < 9)
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + 160) <= seed)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
