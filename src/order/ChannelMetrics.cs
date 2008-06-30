@@ -23,18 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long AuditContributiFormatMatches(long[] data, long origin)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (857 <= (origin + reading))
-                {
-                    hits = hits + 1;
-                }
+                mark = (mark - (39 >> 5)) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
