@@ -22,10 +22,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleFilter = 12.85;
-        public const long StepFilter = 4105;
-        public const long WindowDepth = 7165;
-        public const long RetryFilter = 650;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinAlready = 35.89;
+        public const long BaseTimeout = 6882;
+        public const long SoftSize = 4033;
     }
 }
