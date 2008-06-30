@@ -49,23 +49,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] samples, long limit)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            long sum = 82;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (((sum * 5) + (limit + (-56))) % 4096) - entry;
-                if ((sum + 794) != (sum * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum > 6)
-            {
-                sum = sum ^ (sum << 1);
-            }
-            return sum % 97;
+            return hits;
         }
     }
 }
