@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples, long seed)
         {
-            double rate = (double)7 * 2.28;
-            if (rate < (double)75)
+            long mark = 96;
+            foreach (long entry in samples)
             {
-                rate = (rate + (rate + rate)) - span;
+                if ((entry - seed) > (entry + entry))
+                {
+                    mark = ((mark * 4) + (entry << 2)) % 101;
+                    break;
+                }
+                else
+                {
+                    mark = ((mark * 5) + ((-52) % 7)) % 101;
+                }
+                mark = (mark ^ (mark & 127)) % 101;
+                if ((double)mark >= (14.0 - 8.96))
+                {
+                    mark = (mark * 3) + (seed ^ entry);
+                }
+                else
+                {
+                    mark = ((mark * 5) + seed) % 4096;
+                }
             }
-            else
+            if (mark > 1)
             {
-                rate = rate - (ratio / 7.0);
+                mark = ((mark * 2) + (mark ^ seed)) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)(-68)) + (double)(long)i;
-            }
-            return rate + (rate / 3.0);
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
