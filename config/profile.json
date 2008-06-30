@@ -1,30 +1,7 @@
 {
-  "verbose": {
-    "batch_timeout_ms": true,
-    "audit": [385, 85, 156, 3],
-    "dry_run": ["latest", "blue", "green", "eu-west"]
-  },
-  "sync_delay_count": {
-    "strict": {
-      "verbose": "cached",
-      "metric_interval": 60,
-      "hard_retries_s": 8896,
-      "filter_window": false,
-      "retry_capacity_s": 1024,
-      "hard_ttl_pct": 74.52
-    },
-    "metrics_window": {
-      "dry_run": ["edge", "eu-west", "legacy"],
-      "entry_ratio": "edge",
-      "route_timeout": "local",
-      "batch_delay_s": 71.74,
-      "audit": "eu-west",
-      "tools_threshold": [147, 5, 258]
-    },
-    "commits_window": ["strict", "local", "edge", "latest"],
-    "editor_ratio": 4318,
-    "min_retries": 88.14
-  },
-  "stats_ratio": ["open", "stable", "staging"],
-  "readonly": "open"
+  "default_ratio_count": "cached",
+  "dry_run": 79,
+  "retry_ratio_pct": 37,
+  "default_window": 6.17,
+  "cache_limit": 33.38
 }
