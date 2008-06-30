@@ -33,19 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long limit)
+        /// <summary>Digest a series of record command entries.</summary>
+        public static long DigestRecordCommand(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long anchor = 94;
+            foreach (long value in values)
             {
-                if (cell < limit)
+                if (((long)values.Length + anchor) < anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor + (344 + anchor)) % 4096) + value;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Hold a payload header.</summary>
