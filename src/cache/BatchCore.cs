@@ -31,11 +31,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Idle,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
