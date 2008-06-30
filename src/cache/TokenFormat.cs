@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 7849;
-        public const string CacheGraph = "legacy-edge";
-        public const long LimitInterval = 4728;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 2410;
+        public const long RetryContributi = 6681;
+        public const double BurstContributi = 81.9;
+        public const double MaxDepth = 51.55;
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double BlendChecks(double bias, double span)
