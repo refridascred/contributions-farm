@@ -1,23 +1,5 @@
 # support settings
-idle_capacity_pct:
-  soft_delay_count:
-    base_limit_pct: blue
-    readonly: fallback
-    soft_limit: fallback
-    flush_retries_count: 479
-    idle_delay_count: true
-    audit: false
-  compress:
-    - 27
-    - 1
-    - 151
-    - 415
-  sync_timeout_ms: 73.69
-default_limit_count:
-  - 259
-  - 335
-  - 417
-flush_capacity:
-  - 477
-  - 246
-  - 375
+batch_limit: 84.66
+queue_ratio: 61
+flush_ttl: strict
+poll_window_ms: 7
