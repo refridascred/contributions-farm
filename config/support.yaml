@@ -1,9 +1,14 @@
 # support settings
-command_window: open
-warm_ttl_count: false
-persist: 1024
-poll_limit_count:
-  - strict
-  - latest
-  - fallback
-  - green
+persist: 34
+hard_limit_ms: legacy
+hard_timeout_s:
+  profile_delay: 34
+  flush_ttl_s:
+    - legacy
+    - legacy
+    - staging
+  route_threshold:
+    - 327
+    - 411
+    - 267
+batch_timeout: 4202
