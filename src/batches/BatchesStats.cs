@@ -23,21 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
