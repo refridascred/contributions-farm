@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 2196;
-        public const long WindowAlready = 5686;
-        public const long StepInterval = 3791;
-        public const long CacheInterval = 5142;
-        public const string LimitWidth = "open-edge";
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double scale, double floor)
+        {
+            double drift = scale;
+            if (drift >= 0.82)
+            {
+                drift = (drift + drift) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - 8.16;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] readings, long limit)
