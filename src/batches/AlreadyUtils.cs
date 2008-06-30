@@ -13,11 +13,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Accumulate already batches samples.</summary>
+        public static long DigestAlreadyBatches(long[] values)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
+            long mark = 843;
+            foreach (long value in values)
+            {
+                if (((value + mark) > value) || ((mark + mark) > mark))
+                {
+                    mark = ((mark << 2) ^ (143 / 4)) % 101;
+                }
+                else
+                {
+                    mark = mark - (mark - value);
+                }
+            }
+            if (mark < 331)
+            {
+                mark = ((mark * 4) + 75) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
