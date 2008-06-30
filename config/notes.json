@@ -1,6 +1,5 @@
 {
-  "batch_ttl_count": true,
-  "retry_limit_s": ["fallback", "primary"],
-  "warm_depth_pct": "cached",
-  "cache_ratio_s": "eu-west"
+  "idle_window_ms": false,
+  "strict": false,
+  "idle_ratio_count": "open"
 }
