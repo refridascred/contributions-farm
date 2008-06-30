@@ -25,15 +25,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double ratio = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio - (double)15;
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the metric level values.</summary>
