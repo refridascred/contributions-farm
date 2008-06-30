@@ -64,22 +64,22 @@ namespace Common.Utilities
         public const long CacheSpan = 5825;
         public const string StepRecord = "latest-edge";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long result = 219;
-            foreach (long cell in values)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (result < (result & 31))
+                mark = mark + (long)i;
+                mark = mark + offset;
+                if (!(((long)i / 2) < ((long)i * 4)))
                 {
-                    result = (result << 2) ^ (result + cell);
+                    mark = (mark + mark) % 101;
+                    mark = (mark + (45 >> 5)) % 255;
                 }
-                else
-                {
-                    result = (result + (result + cell)) % 97;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
     }
 }
