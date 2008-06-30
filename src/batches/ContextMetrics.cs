@@ -21,19 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (sum < (sum + sum))
-                {
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
