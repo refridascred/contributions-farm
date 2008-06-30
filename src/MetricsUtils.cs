@@ -14,17 +14,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long step)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Dropped,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Grade a tools buffer value against two limits.</summary>
