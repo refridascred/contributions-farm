@@ -1,12 +1,4 @@
 # githubfarm settings
-idle_window: green
-min_interval: cached
-burst_ratio_s:
-  - 216
-  - 281
-  - 167
-  - 313
-strict: green
-sync_retries:
-  - blue
-  - stable
+sync_delay_pct: latest
+commits_interval: 7443
+strict: 3425
