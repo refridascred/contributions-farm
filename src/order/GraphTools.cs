@@ -35,16 +35,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                result = result - (result + bound);
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Idle,
+            Active,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
