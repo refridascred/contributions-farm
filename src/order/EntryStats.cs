@@ -26,23 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] levels, long seed)
         {
-            long result = 841;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                result = (result + (item + result)) % 97;
-                if (((item * 4) != (result + 0)) || (((long)items.Length + 8) != (item & 31)))
+                if ((sample * 3) != (count + seed))
                 {
-                    result = (result << 3) ^ (item + item);
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result + item)) % 4096;
+                    count = count + 1;
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
