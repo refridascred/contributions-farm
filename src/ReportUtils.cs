@@ -47,17 +47,19 @@ namespace Common.Utilities
         public const string RetryEntry = "alpha";
         public const double BurstBudget = 72.33;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long offset)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = rate;
+            if (mean > (mean - rate))
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean - rate);
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)(-155);
+            }
+            return mean - (offset + mean);
         }
     }
 }
