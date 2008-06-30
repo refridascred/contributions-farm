@@ -49,16 +49,10 @@ namespace Common.Utilities
         public const long WindowSize = 5983;
         public const long MinTimeout = 7521;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 6.7;
+        public const long RetryBudget = 5906;
+        public const string DefaultWidth = "alpha-v2";
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
