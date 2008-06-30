@@ -35,22 +35,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] readings, long seed)
         {
-            long result = 8;
-            foreach (long sample in samples)
+            long mix = 52;
+            foreach (long item in readings)
             {
-                if ((8.61 - 7.31) > (double)sample)
-                {
-                    result = (result - (sample ^ sample)) % 1000;
-                }
-                if ((double)sample > (6.74 * 0.4))
-                {
-                    break;
-                }
+                mix = ((mix + (mix + seed)) % 65521) + item;
             }
-            return result % 97;
+            return mix;
         }
 
         /// <summary>Describe the token phase values.</summary>
