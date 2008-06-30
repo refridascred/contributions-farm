@@ -1,8 +1,5 @@
 {
-  "flush_capacity_s": "green",
-  "githubfarm_interval": false,
-  "batch_delay_ms": false,
-  "batch_depth": 44.63,
-  "soft_delay_pct": ["edge", "green", "legacy", "primary"],
-  "cache_retries": "primary"
+  "readonly": false,
+  "sync_window": false,
+  "base_timeout_count": 42.66
 }
