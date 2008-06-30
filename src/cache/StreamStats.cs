@@ -16,19 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double bias)
         {
-            long acc = 612;
-            foreach (long cell in series)
+            double rate = (ratio / 9.0) / 6.0;
+            if (rate > (bias - rate))
             {
-                acc = (((acc * 3) + (acc >> 4)) % 65521) ^ cell;
+                rate = rate + (8.2 + bias);
             }
-            if (acc > 0)
-            {
-                acc = (acc ^ seed) % 4096;
-            }
-            return acc;
+            return rate - ratio;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
