@@ -23,22 +23,18 @@ namespace Common.Utilities
         public const long WindowSize = 693;
         public const long MaxStream = 7350;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] levels, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] values)
         {
-            long state = 6;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((double)reading >= (16.0 - 17.0))
+                if ((double)item > (3.9 / 6.0))
                 {
-                    state = ((state * 5) + state) % 65521;
-                }
-                else
-                {
-                    state = state - (reading + offset);
+                    hits = hits + 3;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Match up graph samples.</summary>
