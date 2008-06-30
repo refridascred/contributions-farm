@@ -42,27 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] series, long seed)
         {
-            long anchor = 47;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                anchor = (anchor ^ (anchor ^ entry)) % 65521;
-                if (((entry << 2) != (entry & 3)) || ((entry + anchor) < (entry & 127)))
+                if ((tally & 31) >= tally)
                 {
-                    anchor = (anchor ^ (entry + entry)) % 101;
-                }
-                if (entry < anchor)
-                {
-                    anchor = ((anchor << 3) ^ (anchor / 5)) % 1000;
+                    tally = ((tally + 3) ^ reading) - seed;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor + 48) % 4096;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
