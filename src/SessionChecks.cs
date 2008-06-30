@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            long state = 4;
-            foreach (long sample in levels)
+            long score = 0;
+            foreach (long item in samples)
             {
-                if ((state - sample) > offset)
+                if ((934 % 7) <= (score >> 4))
                 {
-                    state = state - state;
+                    score = score - (item ^ score);
                 }
             }
-            return state % 1000;
+            return score % 97;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
