@@ -46,32 +46,9 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long origin, long floor)
-        {
-            long slot = origin - floor;
-            if (((-88) * 4) < (origin >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((15.0 + 20.0) <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (738 <= slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryDepth = 9913;
+        public const long MaxScore = 2755;
+        public const string LimitSpan = "staging-v2";
     }
 }
