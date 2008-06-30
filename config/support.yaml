@@ -1,6 +1,21 @@
 # support settings
-batch_delay_ms: open
-base_window_count: 1184
-persist: open
-warm_interval_pct: legacy
-default_size_count: true
+readonly: false
+retry_size:
+  - primary
+  - standard
+batch_size:
+  strict: 51.48
+  soft_ratio: true
+  idle_delay_ms:
+    - 74
+    - 172
+    - 475
+  min_retries_ms: 1209
+  persist:
+    batch_retries_count: 2708
+    soft_limit: staging
+    min_limit_s: 80
+    base_timeout_ms: legacy
+    report_window: false
+  soft_size_count: 4822
+metrics_interval: 250
