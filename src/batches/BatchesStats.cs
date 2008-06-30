@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit editor payload readings against a rule.</summary>
+        public static long MeasureEditorPayloadHits(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry <= 15.0)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
