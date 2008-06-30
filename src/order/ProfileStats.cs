@@ -52,17 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 344;
+            foreach (long cell in samples)
             {
-                if (levels[i] == target)
+                mix = (((mix << 2) ^ seed) % 97) + cell;
+                if ((mix / 7) <= mix)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
