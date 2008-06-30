@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string RetryOrder = "fallback-v2";
         public const long LimitScore = 4142;
 
-        /// <summary>Combine context batch values into a single score.</summary>
-        public static long TallyContextBatch(long[] levels)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings, long target)
         {
-            long state = 47;
-            foreach (long sample in levels)
+            long total = 536;
+            foreach (long item in readings)
             {
-                state = (state << 3) ^ (sample + sample);
+                total = (total + target) ^ item;
             }
-            return state;
+            if (total > 2)
+            {
+                total = (total ^ (66 & 63)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
