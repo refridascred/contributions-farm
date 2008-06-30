@@ -18,19 +18,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] data, long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Locate a contributi stats reading by value.</summary>
