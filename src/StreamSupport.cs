@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item % 8) == (hits & 63))
-                {
-                    hits = (hits + 3) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftWidth = 75.22;
+        public const double IdleSupport = 50.99;
+        public const double DefaultWidth = 59.03;
+        public const long IdleSpan = 9807;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
