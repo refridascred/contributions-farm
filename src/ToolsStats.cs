@@ -87,11 +87,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 8575;
-        public const long BatchContext = 8781;
-        public const long BurstBudget = 7651;
-        public const string HardContext = "fallback-v2";
-        public const double DefaultRatio = 11.03;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitScore = "legacy";
+        public const double MaxDepth = 93.48;
+        public const string CacheCommand = "local-edge";
     }
 }
