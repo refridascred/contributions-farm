@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] samples, long target)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long total = 3;
+            foreach (long datum in readings)
             {
-                if (value > target)
+                if (total > (floor + total))
                 {
-                    valid = false;
-                    break;
+                    total = ((total << 2) ^ (datum & 127)) % 101;
                 }
             }
-            return valid;
+            return total % 4096;
         }
 
         /// <summary>Describe the metrics state values.</summary>
