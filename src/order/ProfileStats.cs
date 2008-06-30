@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] values, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long result = 180;
+            foreach (long value in levels)
             {
-                if (!(((double)matches < (double)57) && (matches < sample)))
+                if ((19.0 / 8.0) >= (double)bound)
                 {
-                    matches = (matches + 3) + floor;
+                    result = (result - result) - value;
                 }
             }
-            return matches;
+            if (result < (-315))
+            {
+                result = result - (bound + bound);
+            }
+            return result;
         }
 
         /// <summary>Blend two stream measurements.</summary>
