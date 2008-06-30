@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] levels, long target)
+        /// <summary>Audit report record readings against a rule.</summary>
+        public static long CountReportRecordHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (item <= target)
+                if (!((11.0 <= (double)(long)samples.Length) || (tally > (43 >> 3))))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
