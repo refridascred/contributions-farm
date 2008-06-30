@@ -13,22 +13,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchScore = 51.88;
+        public const string MaxSpan = "local-edge";
+        public const long StepSize = 4128;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 9263;
