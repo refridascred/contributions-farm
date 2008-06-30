@@ -1,6 +1,7 @@
 # entry settings
-context_threshold: 60
-channel_threshold: true
-batch_size: false
-compress: 500
-flush_retries_ms: stable
+persist: 2000
+idle_ttl: staging
+min_ratio_ms: 47.23
+max_size: 4.81
+idle_depth_ms: true
+sync_delay_ms: true
