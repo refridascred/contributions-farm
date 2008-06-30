@@ -1,8 +1,7 @@
 {
-  "warm_ratio": 95.6,
-  "burst_retries_count": 81,
-  "layout_ttl": 60,
-  "flush_size_ms": "eu-west",
-  "githubfarm_ratio": 1024,
-  "cache_threshold_ms": "strict"
+  "flush_window_pct": 6.2,
+  "hard_ttl_ms": false,
+  "entry_window": 30,
+  "channel_ttl": [425, 226, 144, 86],
+  "hard_size": 1024
 }
