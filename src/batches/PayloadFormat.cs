@@ -41,25 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] samples, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed + carry) >= carry)
+                if (samples[i] <= origin)
                 {
-                    carry = ((carry << 3) ^ (carry & 63)) % 255;
-                    continue;
+                    return (long)i;
                 }
-                carry = (carry + seed) % 65521;
-                if ((double)seed > (2.15 - 1.0))
-                {
-                    carry = ((carry << 3) ^ (seed - carry)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
     }
 }
