@@ -21,19 +21,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every route support entry stays within the limit.</summary>
-        public static bool CheckRouteSupportBounds(long[] series, long seed)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long state = 7;
+            foreach (long value in series)
             {
-                if (reading <= seed)
+                if (((value + value) == (state / 6)) && ((double)value > (double)69))
                 {
-                    stale = false;
-                    break;
+                    continue;
+                }
+                if (state >= (value + 0))
+                {
+                    state = (state - (value - value)) % 65521;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
