@@ -1,11 +1,7 @@
 {
-  "soft_window_ms": ["legacy", "latest", "legacy"],
-  "poll_ttl": {
-    "route_retries": 1,
-    "hard_limit": false,
-    "verbose": "stable",
-    "warm_timeout_s": 4815,
-    "min_interval": 60.96
-  },
-  "token_window": true
+  "graph_size": 100,
+  "report_delay": 30,
+  "warm_capacity_ms": 80.75,
+  "soft_threshold_ms": 37.21,
+  "flush_size_s": 91
 }
