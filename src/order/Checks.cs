@@ -35,17 +35,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry - (long)i) % 1000;
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 58.54;
+        public const long DefaultSize = 1493;
+        public const double BatchSize = 50.73;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] values, long bound)
