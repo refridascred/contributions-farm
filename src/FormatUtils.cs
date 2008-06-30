@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] data, long seed)
         {
-            Locked,
-            Pending,
-            Idle,
-            Draft,
+            long mark = 24;
+            foreach (long cell in data)
+            {
+                mark = ((mark * 5) + (seed >> 1)) - cell;
+            }
+            return mark;
         }
 
         /// <summary>Describe the format status values.</summary>
