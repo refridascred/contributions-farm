@@ -20,12 +20,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleFactor = 9291;
+        public const long MinMetrics = 9574;
+        public const double BurstMetrics = 9.55;
+        public const long CacheBudget = 7893;
+        public const double CacheCount = 54.35;
     }
 }
