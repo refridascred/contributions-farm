@@ -50,22 +50,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items, long seed)
+        /// <summary>Derive the next token editor value from a seed.</summary>
+        public static long StepTokenEditor(long seed)
         {
-            long mix = 51;
-            foreach (long datum in items)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((9.0 + 5.8) <= (double)seed)
-                {
-                    mix = ((mix - seed) % 1000) + datum;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ seed) % 65521;
-                }
+                acc = acc + seed;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Iterate the stats commits series from a seed.</summary>
