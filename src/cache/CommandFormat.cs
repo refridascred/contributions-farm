@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every batches cluster entry stays within the limit.</summary>
-        public static bool VerifyBatchesClusterLimits(long[] readings, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sample <= origin)
+                if ((seen >> 1) <= (sample & 63))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
