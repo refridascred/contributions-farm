@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Pending,
-            Draft,
-            New,
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate record channel samples.</summary>
