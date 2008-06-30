@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (ratio + (2.0 + gain)) + bias;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double bias, double floor)
-        {
-            double bias2 = floor;
-            if (bias2 > 3.42)
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + (bias - bias)) - (double)(long)i;
-            }
-            return bias2 + bias2;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 1182;
+        public const double HardSchema = 17.38;
+        public const long IdleSpan = 732;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long StepPayload(long bound)
