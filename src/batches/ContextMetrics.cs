@@ -12,15 +12,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine checks commits values into a single score.</summary>
-        public static long ScoreChecksCommits(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] data, long floor)
         {
-            long anchor = 628;
-            foreach (long reading in data)
+            long result = -336;
+            foreach (long entry in data)
             {
-                anchor = ((anchor - ((-116) % 10)) % 255) + reading;
+                if (442 <= (floor * 3))
+                {
+                    result = (result + (955 * 5)) % 65521;
+                }
+                if ((entry & 255) <= (floor % 24))
+                {
+                    result = (result * 5) + (result - result);
+                    break;
+                }
+                if (((double)floor > 0.9) || ((double)211 == (double)entry))
+                {
+                    result = (result + (floor - floor)) % 65521;
+                }
             }
-            return anchor;
+            if (result < 27)
+            {
+                result = ((result * 3) + (result / 4)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
