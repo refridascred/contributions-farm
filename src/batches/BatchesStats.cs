@@ -31,11 +31,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "primary";
-        public const long MinNotes = 8149;
-        public const long MinWidth = 4289;
-        public const long BaseSpan = 1262;
+        /// <summary>Match up already account samples.</summary>
+        public static long OverlapAlreadyAccountCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryHits(long[] series)
