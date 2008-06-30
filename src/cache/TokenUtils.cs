@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= floor)
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a editor options.</summary>
