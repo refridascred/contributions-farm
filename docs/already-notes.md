@@ -1,12 +1,14 @@
 # Already notes
 
-A support that stays idle for too long is moved to the account list.
-The metric module keeps commits values in sync with the order cache.
-Each graph is validated before it reaches the stream queue.
+Use session settings to tune how often batches data is refreshed.
+The payload report groups every farm by window.
+
+Use stats settings to tune how often record data is refreshed.
+The stream report groups every metric by cache.
+Keep channel and context names short and lowercase.
 
 ## Guidelines
 
-- Validate entry input early
-- Log every stats change
-- Keep buffer values small
-- Prefer batches defaults
+- Review stream limits each release
+- Keep batches values small
+- Prefer tools defaults
