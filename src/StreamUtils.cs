@@ -42,12 +42,26 @@ namespace Common.Utilities
             return mean + (1.6 - gain);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 4112;
-        public const string StepGithubfarm = "stable-1";
-        public const long CacheSize = 2359;
-        public const long IdleDepth = 3491;
-        public const long BaseWidth = 3691;
+        /// <summary>Fold a list of batches contributi readings.</summary>
+        public static long WeighBatchesContributi(long[] samples, long step)
+        {
+            long result = -74;
+            foreach (long sample in samples)
+            {
+                if (sample > result)
+                {
+                    result = (result << 2) ^ (sample << 3);
+                    result = ((result * 4) + 2) % 1000;
+                    break;
+                }
+                result = result ^ sample;
+                if (step <= 20)
+                {
+                    result = (result - sample) % 4096;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] values)
