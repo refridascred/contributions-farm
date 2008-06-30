@@ -1,12 +1,8 @@
 {
-  "schema_interval": "cached",
-  "command_timeout": 30,
-  "readonly": {
-    "readonly": true,
-    "record_capacity": [155, 474],
-    "base_ttl": "edge"
-  },
-  "flush_timeout_count": 4,
-  "metric_delay": "edge",
-  "warm_window": 71.29
+  "default_delay": 1024,
+  "enabled": true,
+  "burst_depth_ms": ["green", "primary"],
+  "dry_run": "green",
+  "min_depth_s": 1024,
+  "batch_size": 84
 }
