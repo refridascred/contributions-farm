@@ -1,15 +1,13 @@
 # Command notes
 
-When a channel fails, the metric handler retries a few times before giving up.
-Keep layout and order names short and lowercase.
+The layout module keeps report values in sync with the queue cache.
+When a format fails, the cache handler retries a few times before giving up.
 
-A batch that stays idle for too long is moved to the stats list.
-Use report settings to tune how often already data is refreshed.
-When a layout fails, the profile handler retries a few times before giving up.
+Each route is validated before it reaches the batch queue.
+When a session fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cache change
-- Review report limits each release
-- Validate metric input early
-- Document new support fields
+- Log every githubfarm change
+- Document new entry fields
+- Keep profile values small
