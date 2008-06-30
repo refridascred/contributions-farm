@@ -21,31 +21,27 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-v2";
         public const long LimitLevel = 525;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long origin2)
+        /// <summary>Accumulate payload buffer samples.</summary>
+        public static long WeighPayloadBuffer(long[] readings)
         {
-            if (origin < (origin2 << 1))
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0 + origin2) <= (origin + 436))
+                anchor = (anchor - (441 * 3)) % 4096;
+                if ((anchor - entry) >= (entry + entry))
                 {
-                    return 4;
+                    anchor = (anchor ^ 81) % 4096;
                 }
-                else
+                if ((anchor % 2) != (anchor ^ entry))
                 {
-                    if (!((origin2 * 2) != (origin >> 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (anchor > 3)
+            {
+                anchor = (anchor ^ (anchor * 4)) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
