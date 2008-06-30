@@ -53,10 +53,18 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 9681;
-        public const double BurstStream = 25.33;
-        public const long WindowFactor = 548;
-        public const long CacheStream = 3676;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum * 4) <= datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
