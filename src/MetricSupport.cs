@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] readings, long step)
+        /// <summary>Count the support window entries that pass the check.</summary>
+        public static long TallySupportWindowOutliers(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((matches ^ matches) == (757 & 127))
+                if ((4 / 7) > (seen / 5))
                 {
-                    matches = ((matches + 2) - entry) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 3) - datum) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
