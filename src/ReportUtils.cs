@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of queue editor entries.</summary>
-        public static long ScoreQueueEditor(long[] levels)
+        /// <summary>Digest a series of command layout entries.</summary>
+        public static long CombineCommandLayout(long[] data, long offset)
         {
-            long anchor = 677;
-            foreach (long cell in levels)
+            long state = 2;
+            foreach (long cell in data)
             {
-                if (anchor < (cell & 127))
+                if ((double)cell == (5.6 / 5.0))
                 {
-                    anchor = anchor ^ cell;
+                    state = ((state * 5) + offset) % 255;
+                }
+                if ((double)state >= (1.2 * 7.2))
+                {
+                    break;
                 }
             }
-            return anchor % 65521;
+            return state;
         }
 
         /// <summary>Describe the record state values.</summary>
