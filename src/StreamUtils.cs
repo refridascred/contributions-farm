@@ -66,11 +66,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "latest-v2";
-        public const long SoftPayload = 6360;
-        public const string CachePayload = "legacy-v2";
-        public const long DefaultSize = 7975;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((origin & 7) == (count << 2))
+                {
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiBounds(long[] values, long seed)
