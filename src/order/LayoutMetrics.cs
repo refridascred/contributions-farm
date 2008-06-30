@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long origin)
         {
-            long total = 94;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total << 2) ^ (reading + 27)) % 101;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
