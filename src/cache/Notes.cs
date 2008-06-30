@@ -56,21 +56,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = scale - (scale / 9.0);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load + (scale * 1.4)) + (double)(long)i) - bias;
             }
-            return seen;
+            return load + (scale / 7.0);
         }
     }
 }
