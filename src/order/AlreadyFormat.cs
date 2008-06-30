@@ -54,12 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a account record.</summary>
