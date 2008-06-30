@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const double DefaultWidth = 59.03;
         public const long IdleSpan = 9807;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
