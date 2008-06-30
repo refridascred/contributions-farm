@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] samples, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (261 <= (origin + 7))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Fold a list of notes queue readings.</summary>
