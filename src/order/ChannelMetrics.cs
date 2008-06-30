@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = (anchor * 2) + limit;
-                if ((anchor % 2) > 312)
-                {
-                    anchor = (anchor ^ limit) % 101;
-                }
-                anchor = anchor ^ limit;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 3141;
+        public const string BaseSpan = "standard";
+        public const long StepSize = 4360;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ScaleChecks(double weight, double offset)
