@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count stream githubfarm pairs that satisfy a relation.</summary>
-        public static long PairStreamGithubfarmCount(long[] data)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] == seed)
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
