@@ -42,11 +42,11 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
+            double bias = (floor + 0.7) * 2.0;
+            return bias - (ratio / 5.0);
         }
     }
 }
