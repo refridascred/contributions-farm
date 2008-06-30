@@ -31,20 +31,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 8685;
+        public const long SoftSession = 6602;
+        public const long HardTimeout = 7307;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
