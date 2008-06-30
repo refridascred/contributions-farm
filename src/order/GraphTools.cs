@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] series, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long sum = 6;
+            foreach (long value in samples)
             {
-                if (item <= (count - item))
-                {
-                    count = (count + 1) + floor;
-                }
+                sum = ((sum << 2) ^ (value / 7)) % 255;
             }
-            return count;
+            if (sum < 19)
+            {
+                sum = ((sum << 2) ^ (target + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
