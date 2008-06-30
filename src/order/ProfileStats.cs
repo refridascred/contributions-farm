@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long floor, long limit)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            long slot = floor ^ limit;
-            if (!((slot / 8) <= (slot >> 4)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (0.41 <= (double)limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit >= (7.1 * 3.4))
+                    if ((series[i] - series[j]) > 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((-963) >= (floor << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
