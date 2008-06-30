@@ -38,15 +38,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values, long step)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] series, long limit)
         {
-            long total = 710;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total + (total - step)) % 1000) + reading;
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
