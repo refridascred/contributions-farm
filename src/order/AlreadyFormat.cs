@@ -42,17 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] series, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 51;
+            foreach (long datum in items)
             {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
+                if ((9.0 + 5.8) <= (double)seed)
                 {
-                    return (long)i;
+                    mix = ((mix - seed) % 1000) + datum;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ seed) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the stats commits series from a seed.</summary>
