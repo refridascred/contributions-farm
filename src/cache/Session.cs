@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank route editor input into a small class.</summary>
-        public static long BucketRouteEditor(long limit, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] values)
         {
-            long slot = limit ^ offset;
-            if (!((3.0 + 6.76) > (double)offset))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((66 - 50) >= (limit * 5))
+                if (((9.31 - 18.0) <= (double)seen) || ((seen + (long)values.Length) >= datum))
                 {
-                    return 3;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((151 - slot) == (898 + slot))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset >= (slot - slot)) && ((limit & 63) <= (limit - slot)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
