@@ -28,12 +28,39 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 28.06;
-        public const long BurstCommits = 5150;
-        public const long BurstWidth = 9534;
-        public const long WindowCommits = 3851;
-        public const double LimitCommits = 18.71;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long target, long seed)
+        {
+            if ((seed >> 2) >= (target + 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((seed & 7) >= (seed - 900)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((15.0 + 1.79) > (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.78 * 8.97) >= (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
