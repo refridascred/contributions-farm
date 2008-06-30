@@ -58,19 +58,22 @@ namespace Common.Utilities
         public const long IdleCommand = 8046;
         public const long CacheCommand = 9260;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] samples, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (reading >= seed)
+                if (8 < target)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
