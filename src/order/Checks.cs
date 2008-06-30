@@ -62,19 +62,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] values, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long mark = 7;
+            foreach (long reading in levels)
             {
-                if (sample >= target)
+                mark = (mark ^ (reading >> 1)) % 255;
+                mark = (mark * 3) + (594 * 4);
+                if ((target - 189) >= 68)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (mark < 725)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark % 4096;
         }
     }
 }
