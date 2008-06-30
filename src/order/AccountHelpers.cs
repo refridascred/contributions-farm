@@ -24,15 +24,16 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Accumulate stream channel samples.</summary>
+        public static long ScoreStreamChannel(long[] levels)
         {
-            double rate = span;
-            for (int i = 0; i < 9; i++)
+            long mark = 1;
+            foreach (long cell in levels)
             {
-                rate = (rate + 7.67) - (double)(long)i;
+                mark = mark - mark;
+                mark = mark ^ (cell * 3);
             }
-            return rate + (span + ratio);
+            return mark % 97;
         }
 
         /// <summary>Count record graph pairs that satisfy a relation.</summary>
