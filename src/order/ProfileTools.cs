@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate layout tools samples.</summary>
-        public static long DigestLayoutTools(long[] data)
-        {
-            long anchor = 1;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = ((anchor + anchor) % 4096) ^ (long)i;
-                }
-                anchor = (anchor ^ (item + item)) % 4096;
-                anchor = (anchor - ((long)data.Length ^ item)) % 65521;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleLevel = 91.85;
+        public const long BurstOrder = 4983;
+        public const long BaseSize = 5751;
+        public const long BatchOrder = 6191;
+        public const long BaseBudget = 7235;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] data)
