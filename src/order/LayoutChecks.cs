@@ -83,24 +83,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Iterate the report schema series from a seed.</summary>
+        public static long StepReportSchema(long target)
         {
-            long acc = 63;
-            foreach (long datum in readings)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((((long)readings.Length * 3) == (datum & 31)) && ((acc + acc) <= (93 + acc))))
-                {
-                    acc = (acc - acc) % 97;
-                }
-                if (acc >= ((long)readings.Length % 60))
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                else
-                {
-                    acc = acc - 0;
-                }
+                acc = acc ^ ((long)i + target);
+                acc = ((acc * 3) + (long)i) % 97;
             }
             return acc;
         }
