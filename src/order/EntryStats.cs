@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 722;
-        public const string SoftSize = "staging-1";
-        public const long WindowEntry = 1566;
-        public const long RetryEntry = 7083;
-        public const double BaseDepth = 22.48;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsMatches(long[] samples, long seed)
