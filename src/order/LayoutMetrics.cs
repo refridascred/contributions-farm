@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 608;
-        public const long StepAccount = 7710;
-        public const long IdleSize = 5911;
-        public const long BatchAccount = 345;
+        /// <summary>Project the next farm cache value.</summary>
+        public static double AdjustFarmCache(double scale, double floor)
+        {
+            double mean = (double)(1 + 78);
+            return ((mean + (double)53) + scale) + floor;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
