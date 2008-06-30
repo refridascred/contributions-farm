@@ -33,15 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Dropped,
-            Paused,
-            Synced,
-            Active,
-            Locked,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 1209;
+        public const long IdleWidth = 880;
+        public const long RetryChannel = 887;
+        public const double DefaultChannel = 68.3;
+        public const string BatchFactor = "fallback";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileMatches(long[] levels, long step)
