@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] series, long origin)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = 84;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = ((total ^ cell) - (long)i) - origin;
-                }
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
