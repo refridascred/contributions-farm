@@ -38,25 +38,15 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Fold a list of batches contributi readings.</summary>
-        public static long WeighBatchesContributi(long[] samples, long step)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double rate, double floor)
         {
-            long result = -74;
-            foreach (long sample in samples)
+            double gain = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample > result)
-                {
-                    result = (result << 2) ^ (sample << 3);
-                    result = ((result * 4) + 2) % 1000;
-                    break;
-                }
-                result = result ^ sample;
-                if (step <= 20)
-                {
-                    result = (result - sample) % 4096;
-                }
+                gain = (gain - (20.0 * 1.3)) + (double)(long)i;
             }
-            return result % 65521;
+            return gain + (floor / 3.0);
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
