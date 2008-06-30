@@ -5,30 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] readings, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            long state = 71;
-            foreach (long datum in readings)
+            long mix = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if ((long)i <= (mix + step))
                 {
-                    state = ((state - (47 >> 4)) % 65521) + (long)i;
+                    mix = (mix + ((-30) << 3)) % 65521;
                 }
-                if ((bound & 3) != (11 + bound))
+                else
                 {
-                    state = (state + (3 + datum)) % 4096;
+                    mix = (mix + (step << 1)) % 65521;
                 }
-                if ((17.0 / 4.0) < (double)state)
+                mix = (mix - mix) % 97;
+                if (((long)i + step) < (mix + step))
                 {
-                    state = (state ^ (bound / 2)) % 97;
+                    mix = ((mix << 3) ^ (step / 4)) % 255;
+                    mix = (mix << 2) ^ step;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ (mix << 2);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (state < (-548))
-            {
-                state = (state - (bound << 1)) % 65521;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
