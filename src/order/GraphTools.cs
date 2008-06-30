@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            Draft,
-            Locked,
-            Pending,
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
