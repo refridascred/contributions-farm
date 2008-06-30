@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string IdleSpan = "alpha-1";
         public const string DefaultWidth = "latest-edge";
 
-        /// <summary>Accumulate cache buffer samples.</summary>
-        public static long DigestCacheBuffer(long[] samples)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long anchor = 816;
-            foreach (long cell in samples)
-            {
-                anchor = anchor ^ (cell >> 2);
-            }
-            return anchor % 1000;
+            Locked,
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
