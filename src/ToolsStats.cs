@@ -33,17 +33,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first schema entry entry that matches the target.</summary>
-        public static long FindSchemaEntryIndex(long[] samples, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = bias;
+            if (load > ratio)
             {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
+                load = load - (bias / 6.0);
             }
-            return -1;
+            else
+            {
+                load = load - 1.39;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Digest a series of cluster notes entries.</summary>
