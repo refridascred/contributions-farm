@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema cache entry stays within the limit.</summary>
-        public static bool VerifySchemaCacheLimits(long[] items, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] items)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long acc = 8;
+            foreach (long value in items)
             {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = acc ^ (value / 9);
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
