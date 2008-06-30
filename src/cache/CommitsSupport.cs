@@ -29,12 +29,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Draft,
-            Failed,
-            New,
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
