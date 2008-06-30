@@ -31,14 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] series)
         {
-            Dropped,
-            Paused,
-            Done,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (hits <= (reading % 24))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a format stats.</summary>
