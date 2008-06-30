@@ -23,17 +23,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long floor)
+        /// <summary>Measure how many metric buffer samples are out of range.</summary>
+        public static long TallyMetricBufferHits(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] < floor)
+                if (((hits - origin) > (hits & 127)) || ((8 & 1) == (reading & 31)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the metric state values.</summary>
