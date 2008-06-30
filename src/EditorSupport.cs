@@ -33,11 +33,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseInterval = "cached-edge";
-        public const long RetryWidth = 2038;
-        public const string RetryRatio = "staging-v2";
-        public const long IdleAlready = 9012;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + (acc + acc)) % 4096;
+                acc = (acc + (step ^ 47)) % 1000;
+                if (((step >> 4) >= (step & 1)) || ((80 ^ step) <= step))
+                {
+                    acc = acc + (57 % 64);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + acc)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheRange(long[] values, long offset)
