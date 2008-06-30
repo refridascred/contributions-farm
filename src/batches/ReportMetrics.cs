@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long step)
         {
-            Retry,
-            Locked,
-            Done,
-            New,
-            Idle,
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next stream cluster value from a seed.</summary>
