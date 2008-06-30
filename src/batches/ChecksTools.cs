@@ -24,22 +24,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] samples)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = 54;
+            foreach (long entry in samples)
             {
-                if (((3.7 - 6.38) < (double)item) || !(item <= (seen - item)))
+                if (((entry + anchor) < anchor) && ((anchor % 3) >= (entry + anchor)))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor + (entry & 7)) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = anchor - (long)samples.Length;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the buffer level values.</summary>
