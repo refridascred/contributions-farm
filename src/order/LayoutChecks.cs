@@ -50,12 +50,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Active,
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
