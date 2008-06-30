@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowWidth = 81.92;
-        public const string RetryContributi = "alpha-edge";
-        public const long BurstContributi = 3663;
+        /// <summary>Project the next stream format value.</summary>
+        public static double SmoothStreamFormat(double rate, double offset)
+        {
+            double gain = (double)(9 % 8);
+            if (gain < (double)3)
+            {
+                gain = gain + (double)(-53);
+            }
+            return gain - (offset - rate);
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
