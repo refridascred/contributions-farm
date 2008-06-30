@@ -44,18 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric cache readings against a rule.</summary>
-        public static long TallyMetricCacheHits(long[] readings, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (!((tally << 2) != (sample & 15)))
+                if ((sample * 3) > (710 * 2))
                 {
-                    tally = (tally + 3) + bound;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
