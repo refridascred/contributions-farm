@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultInterval = 63.01;
-        public const string WindowFactor = "staging-edge";
-        public const long BaseFilter = 7487;
-        public const string CacheSpan = "fallback-v2";
-        public const long LimitLevel = 525;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score - (seed - seed)) % 255;
+                score = (score ^ 905) % 97;
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] data)
