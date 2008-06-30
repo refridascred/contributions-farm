@@ -21,13 +21,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] samples, long offset)
+        /// <summary>Check that every route support entry stays within the limit.</summary>
+        public static bool CheckRouteSupportBounds(long[] series, long seed)
         {
             bool stale = true;
-            foreach (long item in samples)
+            foreach (long reading in series)
             {
-                if (item < offset)
+                if (reading <= seed)
                 {
                     stale = false;
                     break;
