@@ -23,31 +23,19 @@ namespace Common.Utilities
         public const double BaseWindow = 33.91;
         public const long MaxWindow = 4709;
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long floor, long floor2)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] data, long target)
         {
-            if (((double)floor <= (double)floor2) && ((18.0 * 9.93) < (double)floor2))
+            bool found = true;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-18) / 2) != ((-43) - floor2))
+                if (datum >= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor % 2) != (floor >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
