@@ -1,13 +1,10 @@
 # githubfarm settings
-command_limit: primary
-audit: legacy
-flush_interval_pct:
-  context_window: green
-  sync_ttl_s:
-    - 202
-    - 340
-    - 192
-    - 356
-  verbose: cached
-verbose: false
-hard_delay_ms: 2089
+default_interval_pct:
+  githubfarm_interval: open
+  soft_limit_pct: cached
+  verbose: staging
+enabled: standard
+batch_size_ms: true
+notes_limit:
+  - latest
+  - edge
