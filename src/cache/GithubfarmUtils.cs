@@ -34,18 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many layout route samples are out of range.</summary>
-        public static long TallyLayoutRouteHits(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (8.05 > (double)item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
