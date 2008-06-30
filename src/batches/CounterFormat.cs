@@ -37,17 +37,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a already profile sample.</summary>
-        public static long LocateAlreadyProfileIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardSize = "open";
+        public const double SoftStats = 52.28;
+        public const double CacheLevel = 20.63;
+        public const string BurstFactor = "cached-1";
+        public const long HardInterval = 9683;
     }
 }
