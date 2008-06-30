@@ -1,6 +1,12 @@
 {
-  "route_delay": 1024,
-  "window_capacity": "standard",
-  "flush_window_s": 86,
-  "sync_size": "local"
+  "dry_run": ["standard", "cached", "open", "eu-west"],
+  "base_timeout_ms": {
+    "burst_ratio": ["legacy", "standard", "legacy"],
+    "editor_threshold": 45.69,
+    "compress": [78, 487, 26],
+    "report_size": false,
+    "base_capacity_count": "legacy",
+    "verbose": ["local", "green", "staging"]
+  },
+  "compress": 94
 }
