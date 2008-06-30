@@ -1,7 +1,5 @@
 {
-  "audit": true,
-  "compress": "stable",
-  "warm_window": [258, 124, 25],
-  "burst_timeout_pct": false,
-  "idle_timeout_count": 94.24
+  "sync_interval_count": 95.43,
+  "hard_ratio_ms": 83,
+  "batch_delay": ["green", "open", "standard"]
 }
