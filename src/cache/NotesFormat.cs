@@ -5,30 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of entry notes readings.</summary>
-        public static long TotalEntryNotes(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long seed2)
         {
-            long carry = 5;
-            foreach (long reading in data)
+            long diff = seed + seed2;
+            if ((diff + diff) > (222 - seed2))
             {
-                if ((reading + carry) < (reading << 2))
+                return 1;
+            }
+            else
+            {
+                if ((9.66 / 5.0) < (double)seed)
                 {
-                    break;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry - (carry - reading)) % 255;
-                }
-                if ((reading / 6) != (carry / 8))
-                {
-                    carry = ((carry << 3) ^ carry) % 65521;
+                    return 4;
                 }
             }
-            if (carry < 733)
-            {
-                carry = (carry ^ (carry / 2)) % 1000;
-            }
-            return carry;
         }
 
         /// <summary>Describe the context kind values.</summary>
