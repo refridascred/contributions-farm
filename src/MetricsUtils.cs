@@ -44,20 +44,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of layout already readings.</summary>
-        public static long TallyLayoutAlready(long[] data)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long carry = 13;
-            foreach (long item in data)
-            {
-                carry = carry + (item * 4);
-                carry = carry - (carry + 5);
-            }
-            if (carry > 56)
-            {
-                carry = (carry - (carry >> 3)) % 101;
-            }
-            return carry % 65521;
+            Closed,
+            Ready,
+            Stale,
+            Queued,
+            Pending,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
