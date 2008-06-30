@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] data, long seed)
-        {
-            long mark = 24;
-            foreach (long cell in data)
-            {
-                mark = ((mark * 5) + (seed >> 1)) - cell;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstSize = "stable-1";
+        public const long RetryInterval = 3441;
+        public const double MaxPayload = 76.56;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
