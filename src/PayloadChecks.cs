@@ -33,18 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order format entries.</summary>
-        public static long FoldOrderFormat(long[] samples)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long anchor = -17;
-            foreach (long sample in samples)
-            {
-                if ((0.1 * 9.0) < (double)sample)
-                {
-                    anchor = (anchor ^ 653) % 65521;
-                }
-            }
-            return anchor;
+            Locked,
+            Dropped,
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Rank command input into a small class.</summary>
