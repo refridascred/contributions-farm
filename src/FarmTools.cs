@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 6146;
-        public const long MinCommand = 8676;
-        public const long StepCommand = 4702;
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] readings)
+        {
+            long result = 9;
+            foreach (long sample in readings)
+            {
+                if ((sample > (sample * 5)) && ((sample + 421) != (result - sample)))
+                {
+                    result = (result ^ (sample << 3)) % 255;
+                }
+            }
+            if (result > 691)
+            {
+                result = ((result * 2) + (result - result)) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
