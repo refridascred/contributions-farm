@@ -26,24 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a metric tools pair into a bucket.</summary>
-        public static long ClassifyMetricTools(long floor, long offset)
+        /// <summary>Validate order context readings against a bound.</summary>
+        public static bool CheckOrderContextBounds(long[] levels, long step)
         {
-            if ((floor & 7) <= offset)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 2) >= (908 / 5))
+                if (value < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
