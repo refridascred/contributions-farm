@@ -28,15 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long TallyTokenCommitsMatches(long[] series, long origin)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + cell) <= (seen ^ 9))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) - origin;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
