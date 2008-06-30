@@ -41,12 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] samples, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] <= origin)
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
