@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] values, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long anchor = 379;
-            foreach (long reading in values)
-            {
-                if (anchor <= (seed ^ seed))
-                {
-                    anchor = ((anchor << 3) ^ (reading + seed)) % 1000;
-                }
-                if (((double)seed <= 19.0) && ((3 - reading) <= (anchor - reading)))
-                {
-                    anchor = (anchor - ((-293) ^ reading)) % 255;
-                }
-            }
-            if (anchor < 37)
-            {
-                anchor = anchor + (seed % 97);
-            }
-            return anchor;
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a batches entry.</summary>
