@@ -64,31 +64,16 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data)
         {
-            if (((seed + step) < (94 + seed)) && ((step & 127) != (seed ^ 97)))
+            long mix = -123;
+            foreach (long reading in data)
             {
-                return 8;
+                mix = mix + mix;
+                mix = ((mix * 5) + (reading % 7)) % 4096;
             }
-            else
-            {
-                if (((double)seed >= (7.2 - 1.07)) && ((double)step <= (7.2 * 7.05)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - step) == (step % 24))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the format level values.</summary>
