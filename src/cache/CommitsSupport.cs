@@ -40,22 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window counter entries that pass the check.</summary>
-        public static long TallyWindowCounterHits(long[] values)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (0.27 * 2.3))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
