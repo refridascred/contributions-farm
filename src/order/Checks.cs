@@ -27,19 +27,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] values, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long value in values)
+            if (offset > (offset - offset2))
             {
-                if (value != floor)
+                return 7;
+            }
+            else
+            {
+                if (((offset + offset) == (offset * 3)) || ((offset2 - offset) >= offset))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Adjust a contributi stats reading.</summary>
