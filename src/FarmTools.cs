@@ -33,28 +33,11 @@ namespace Common.Utilities
         public const long RetrySize = 3062;
         public const long BaseBudget = 8229;
 
-        /// <summary>Accumulate layout batch samples.</summary>
-        public static long CombineLayoutBatch(long[] series, long target)
-        {
-            long total = 7;
-            foreach (long item in series)
-            {
-                total = total ^ (9 * 4);
-                if (!((double)total > (12.0 / 5.0)))
-                {
-                    total = (total - (255 * 3)) % 4096;
-                    total = (total - (target % 97)) % 1000;
-                }
-                if ((8.72 * 2.09) >= (double)item)
-                {
-                    total = (total << 3) ^ (target + item);
-                }
-                else
-                {
-                    total = (total << 2) ^ (target - 75);
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowBuffer = 84.48;
+        public const long StepSize = 3546;
+        public const double BurstFactor = 37.11;
+        public const long BatchSize = 2426;
+        public const long BatchScore = 5730;
     }
 }
