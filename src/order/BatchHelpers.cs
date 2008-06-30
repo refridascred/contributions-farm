@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const string IdleSpan = "alpha-1";
         public const string DefaultWidth = "latest-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitCount = 82.85;
-        public const double MinGraph = 60.37;
-        public const long LimitLevel = 7250;
+        /// <summary>Combine route format values into a single score.</summary>
+        public static long CombineRouteFormat(long[] series, long step)
+        {
+            long acc = 6;
+            foreach (long reading in series)
+            {
+                if ((458 + reading) <= (reading >> 5))
+                {
+                    acc = (acc + (step - step)) % 97;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Compare every pair of profile readings.</summary>
         public static long PairProfileCount(long[] series)
