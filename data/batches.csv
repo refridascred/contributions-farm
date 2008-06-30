@@ -1,6 +1,10 @@
-id,token,owner,weight,score
-1,strict,715,636,fallback
-2,608,909,staging,967
-3,369,193,22,eu-west
-4,eu-west,98.58,106,40.62
-5,standard,98.79,strict,475
+id,region,owner,ratio
+1,415,eu-west,strict
+2,857,eu-west,5.93
+3,72.15,fallback,87.88
+4,347,526,4
+5,standard,edge,58.38
+6,strict,strict,open
+7,24,9.48,74.16
+8,845,336,913
+9,primary,518,green
