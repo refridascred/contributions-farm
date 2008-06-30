@@ -24,21 +24,13 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Find the first schema entry entry that matches the target.</summary>
