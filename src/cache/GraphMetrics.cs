@@ -63,15 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportHits(long[] readings, long bound)
         {
-            long acc = 262;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                acc = ((acc * 5) + (item & 127)) % 1000;
+                if (((809 + count) <= item) || ((item >> 1) <= item))
+                {
+                    count = (count + 3) + bound;
+                }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
