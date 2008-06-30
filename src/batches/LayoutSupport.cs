@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const long WindowCommits = 3851;
         public const double LimitCommits = 18.71;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowInterval = "alpha-edge";
-        public const long LimitTimeout = 4831;
-        public const long WindowBatch = 2989;
-        public const double MaxBatch = 40.52;
-        public const double RetryBatch = 44.17;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] samples, long floor)
