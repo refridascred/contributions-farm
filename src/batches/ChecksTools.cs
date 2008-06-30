@@ -31,18 +31,12 @@ namespace Common.Utilities
             return bias2 + (double)306;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] series, long step)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (sample >= (hits << 1))
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
