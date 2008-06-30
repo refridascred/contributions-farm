@@ -23,33 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token context value against two limits.</summary>
-        public static long BucketTokenContext(long limit, long origin)
-        {
-            long diff = limit ^ origin;
-            if ((origin - 60) == (813 * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit <= (limit >> 1)) || (diff < limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((16.0 + 4.0) <= (double)diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 70;
+        public const string BatchLevel = "fallback-edge";
+        public const double StepStream = 86.54;
+        public const long MinStream = 7850;
+        public const long MinDepth = 4584;
 
         /// <summary>Grade a batch notes value against two limits.</summary>
         public static long SortBatchNotes(long offset, long limit)
