@@ -1,8 +1,19 @@
 {
-  "burst_depth_count": "green",
-  "dry_run": 1110,
-  "sync_threshold": ["eu-west", "edge"],
-  "max_ttl": [474, 318],
-  "idle_size_s": "green",
-  "verbose": "open"
+  "readonly": 50.66,
+  "burst_interval": false,
+  "burst_interval_count": {
+    "editor_interval": {
+      "hard_interval_s": ["eu-west", "stable", "local", "local"],
+      "readonly": [401, 232, 338],
+      "poll_delay": [72, 1, 193, 460],
+      "persist": false,
+      "default_window_count": 91.12,
+      "idle_ratio": "green"
+    },
+    "warm_window_count": 250,
+    "min_interval_ms": false,
+    "cluster_delay": 79.88,
+    "strict": 4019
+  },
+  "already_delay": 30
 }
