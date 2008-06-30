@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] items)
+        /// <summary>Digest a series of session commits entries.</summary>
+        public static long ScoreSessionCommits(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mark = 8;
+            foreach (long item in series)
             {
-                if ((value % 60) <= (value - value))
+                if (item < (item << 3))
                 {
-                    hits = hits + 2;
+                    mark = ((mark * 5) + (item & 3)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (item - 9)) % 101;
                 }
             }
-            return hits;
+            if (mark < 319)
+            {
+                mark = mark ^ (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
