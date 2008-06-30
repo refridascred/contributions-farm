@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] samples, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally + seed) != (value - (-39)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
