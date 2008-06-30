@@ -41,11 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public double Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a graph counter counter forward.</summary>
