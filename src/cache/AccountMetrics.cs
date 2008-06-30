@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] levels)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen << 3) <= (entry - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first metrics report entry that matches the target.</summary>
