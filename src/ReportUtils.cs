@@ -33,18 +33,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] samples, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long acc = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (((cell & 63) < tally) || (8.99 > (double)tally))
+                if ((((long)i & 1) < (acc * 4)) && ((acc * 2) >= acc))
                 {
-                    tally = (tally + 3) - offset;
+                    acc = (acc + (long)i) % 65521;
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define window limits and defaults.</summary>
