@@ -66,22 +66,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
         {
-            long mix = 289;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mix < 4.95)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix + (mix >> 3)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ datum) % 255;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
