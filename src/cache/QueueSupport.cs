@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long seed, long offset)
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
+            if ((68 + offset) >= (offset / 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed % 8) > (seed >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed <= (seed - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
