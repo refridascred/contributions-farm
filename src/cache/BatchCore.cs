@@ -43,20 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ ((long)i / 5)) % 255;
-                if (((double)(long)i < (double)bound) && (7.4 <= (double)(long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
     }
 }
