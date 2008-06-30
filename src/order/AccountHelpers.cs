@@ -71,18 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already batches readings against a rule.</summary>
-        public static long CountAlreadyBatchesHits(long[] levels, long offset)
+        /// <summary>Validate tools metrics readings against a bound.</summary>
+        public static bool GuardToolsMetricsLimits(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((offset - 4) > 996)
+                if (cell > bound)
                 {
-                    seen = (seen + 2) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
