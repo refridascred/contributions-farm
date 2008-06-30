@@ -38,18 +38,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Measure how many contributi channel samples are out of range.</summary>
-        public static long CountContributiChannelHits(long[] series, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((((long)series.Length - seed) > (hits << 2)) && (hits > (seed << 3)))
+                if (sample >= floor)
                 {
-                    hits = (hits + 1) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
