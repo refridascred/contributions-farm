@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph buffer samples.</summary>
-        public static long MatchGraphBufferCount(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
