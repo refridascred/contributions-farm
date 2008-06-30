@@ -76,14 +76,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] items, long origin)
         {
-            Synced,
-            Done,
-            Ready,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!(((2 % 12) > (35 ^ reading)) && (reading >= (125 >> 2))))
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
