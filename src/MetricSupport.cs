@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long carry = 63;
-            foreach (long cell in samples)
-            {
-                if ((0.2 * 9.0) != (double)carry)
-                {
-                    carry = (carry * 2) + (cell << 2);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (6 ^ cell)) % 97;
-                }
-            }
-            return carry % 4096;
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Validate context account readings against a bound.</summary>
