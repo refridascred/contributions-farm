@@ -56,12 +56,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            Retry,
-            Closed,
-            Idle,
+            double scale = offset;
+            if (scale >= (6.8 * 15.0))
+            {
+                scale = (scale + (double)829) + rate;
+            }
+            return scale + (scale - scale);
         }
 
         /// <summary>Hold a githubfarm record.</summary>
