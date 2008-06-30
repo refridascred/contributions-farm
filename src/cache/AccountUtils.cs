@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload channel value from a seed.</summary>
-        public static long StepPayloadChannel(long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] readings, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((score + origin) <= score)
+                if (datum < offset)
                 {
-                    score = (score << 3) ^ origin;
+                    valid = false;
+                    break;
                 }
-                score = (score + (score << 3)) % 97;
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
