@@ -24,13 +24,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] readings)
         {
-            Synced,
-            Draft,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((9 + datum) < (datum / 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
