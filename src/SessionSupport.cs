@@ -49,11 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 2379;
-        public const double DefaultLevel = 6.23;
-        public const long StepProfile = 4166;
-        public const long SoftCount = 901;
-        public const long SoftInterval = 1607;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double scale, double span)
+        {
+            double drift = scale;
+            if (drift > span)
+            {
+                drift = drift - (9.33 / 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + (drift + 3.93);
+        }
     }
 }
