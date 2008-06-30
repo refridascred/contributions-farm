@@ -1,9 +1,7 @@
 {
-  "soft_delay_ms": 18.67,
-  "profile_timeout": "open",
-  "base_threshold_pct": {
-    "metrics_interval": "cached",
-    "payload_threshold": false,
-    "persist": true
-  }
+  "tools_ratio": "edge",
+  "enabled": true,
+  "idle_interval_s": 7,
+  "max_timeout_pct": 500,
+  "support_ratio": "staging"
 }
