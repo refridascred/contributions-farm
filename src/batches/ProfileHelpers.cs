@@ -60,18 +60,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] items, long limit)
+        /// <summary>Rank githubfarm token input into a small class.</summary>
+        public static long ClassifyGithubfarmToken(long seed, long limit)
         {
-            long sum = 7;
-            foreach (long value in items)
+            long gap = seed + limit;
+            if ((gap & 63) > (seed & 3))
             {
-                if ((limit ^ sum) < (sum % 100))
+                return 3;
+            }
+            else
+            {
+                if ((gap - 46) == (limit + limit))
                 {
-                    sum = ((sum * 5) + sum) + value;
+                    return 2;
+                }
+                else
+                {
+                    if (limit <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((9.58 * 3.89) >= (double)gap)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Hold a order record.</summary>
