@@ -63,32 +63,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long limit, long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long step = limit + offset;
-            if ((step + limit) >= step)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step << 1) < limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset >> 2) == (12 >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
