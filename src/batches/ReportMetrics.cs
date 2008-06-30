@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 445;
+            foreach (long item in readings)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                state = ((state << 3) ^ (state + item)) % 65521;
+                state = (state << 2) ^ (state >> 2);
             }
-            return -1;
+            if (state < 6)
+            {
+                state = ((state << 3) ^ (state + 9)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a format record.</summary>
