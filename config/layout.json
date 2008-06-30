@@ -1,6 +1,5 @@
 {
-  "soft_ratio_s": "strict",
-  "audit": true,
-  "stream_capacity": "eu-west",
-  "base_retries": 100
+  "idle_delay_ms": "local",
+  "schema_ttl": true,
+  "dry_run": false
 }
