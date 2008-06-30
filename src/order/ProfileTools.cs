@@ -30,16 +30,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] samples, long floor)
         {
-            long anchor = 757;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                anchor = (((anchor << 2) ^ (anchor / 4)) % 255) ^ entry;
-                anchor = (anchor + (anchor + anchor)) % 255;
+                if ((floor / 9) <= (cell + floor))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Compare every pair of order contributi readings.</summary>
