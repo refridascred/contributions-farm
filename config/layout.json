@@ -1,13 +1,12 @@
 {
-  "cache_capacity_s": "open",
-  "order_threshold": 83.12,
-  "poll_threshold": {
-    "idle_retries": 22,
-    "cache_timeout_count": "cached",
-    "sync_window": 100,
-    "hard_depth": "blue"
+  "min_ratio_s": false,
+  "hard_ratio_ms": true,
+  "min_limit_pct": {
+    "poll_ratio": true,
+    "channel_depth": 41,
+    "min_retries_ms": [59, 152, 102, 429],
+    "base_limit": 58.97,
+    "profile_retries": false
   },
-  "poll_interval_ms": "edge",
-  "base_size_pct": 77.66,
-  "max_ratio_ms": 7898
+  "base_ttl_pct": "legacy"
 }
