@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] series, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (entry < limit)
+                if (4.94 > (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 2) + cell) - step;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the counter phase values.</summary>
