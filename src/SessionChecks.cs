@@ -56,11 +56,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batches support figure with a bias.</summary>
-        public static double SmoothBatchesSupport(double weight, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] readings, long origin)
         {
-            double rate = offset / 9.0;
-            return (rate - (6.72 + rate)) + weight;
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry < (5.83 * 14.0))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
     }
 }
