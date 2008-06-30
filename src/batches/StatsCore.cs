@@ -87,12 +87,14 @@ namespace Common.Utilities
             return scale - (double)75;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public string Stamp { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            Retry,
+            Done,
+            Failed,
+            Closed,
+            Synced,
         }
     }
 }
