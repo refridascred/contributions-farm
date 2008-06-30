@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] data, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (reading != step)
+                if ((((item << 3) >= item) && ((item << 1) < (0 << 1))) || !((count & 3) != (item % 2)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Combine checks commits values into a single score.</summary>
