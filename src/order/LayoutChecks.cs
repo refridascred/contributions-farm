@@ -56,23 +56,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell / 4) >= (21 - hits)) && ((cell - hits) <= cell))
-                {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxTimeout = 2543;
+        public const long LimitCommand = 7983;
+        public const long BurstInterval = 5757;
+        public const string WindowInterval = "alpha-v2";
+        public const double LimitWidth = 95.94;
 
         /// <summary>Blend two already profile measurements.</summary>
         public static double AdjustAlreadyProfile(double gain, double offset)
