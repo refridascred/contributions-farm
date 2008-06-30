@@ -44,23 +44,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next entry record value.</summary>
-        public static double ScaleEntryRecord(double rate, double floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long origin, long floor)
         {
-            double load = (double)(6 + 52);
-            if (load <= (load / 8.0))
+            if ((floor - floor) != (floor << 1))
             {
-                load = (load - (double)56) + rate;
+                return 1;
             }
             else
             {
-                load = load - (floor - 20.0);
+                if ((double)origin >= (1.2 * 0.37))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 1.7) + (double)(long)i;
-            }
-            return load + load;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
