@@ -24,32 +24,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long bound, long step)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double weight, double offset)
         {
-            long slot = bound - step;
-            if ((slot >= (step - slot)) && ((bound & 7) != (bound & 255)))
+            double mean = offset;
+            if (mean < offset)
             {
-                return 6;
+                mean = (mean - offset) - weight;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (!(step < (55 + 62)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound > (8.85 + 7.6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = (mean - (offset + 2.0)) - (double)(long)i;
             }
+            return mean - (mean + mean);
         }
 
         /// <summary>Digest a series of entry githubfarm entries.</summary>
