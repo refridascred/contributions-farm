@@ -49,15 +49,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] series)
+        /// <summary>Measure how many cache order samples are out of range.</summary>
+        public static long CountCacheOrderMatches(long[] series)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long sample in series)
             {
-                if (seen <= (item + item))
+                if ((seen >> 3) < sample)
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
                 }
             }
             return seen;
