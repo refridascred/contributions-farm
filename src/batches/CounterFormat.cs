@@ -50,18 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples)
+        /// <summary>Look up the position of a already profile sample.</summary>
+        public static long LocateAlreadyProfileIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item >= (1.2 + 0.8))
+                if ((data[i] <= seed) && ((data[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
