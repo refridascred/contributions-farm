@@ -45,20 +45,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long mix = 203;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix ^ (mix >> 5)) % 255) ^ datum;
-                mix = mix ^ (mix / 9);
+                result = (result ^ ((long)i / 5)) % 255;
+                if (((double)(long)i < (double)bound) && (7.4 <= (double)(long)i))
+                {
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            if (mix > 142)
-            {
-                mix = ((mix << 3) ^ mix) % 1000;
-            }
-            return mix;
+            return result;
         }
     }
 }
