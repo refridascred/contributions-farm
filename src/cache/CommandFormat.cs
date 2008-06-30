@@ -36,18 +36,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of farm notes entries.</summary>
-        public static long TallyFarmNotes(long[] values, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] items, long origin)
         {
-            long result = -6;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((5.19 + 7.96) < (double)bound)
+                if ((1.0 / 9.0) > (double)origin)
                 {
-                    result = ((result * 5) + (408 - item)) % 97;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return result % 4096;
+            return count;
         }
     }
 }
