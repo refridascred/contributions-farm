@@ -62,18 +62,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] items, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = 9;
+            foreach (long entry in series)
             {
-                if (!(((2 % 12) > (35 ^ reading)) && (reading >= (125 >> 2))))
-                {
-                    seen = (seen + 1) - origin;
-                }
+                carry = (((carry ^ carry) % 97) + entry) + bound;
             }
-            return seen;
+            return carry;
         }
     }
 }
