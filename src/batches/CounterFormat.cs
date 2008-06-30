@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many record token samples are out of range.</summary>
+        public static long MeasureRecordTokenMatches(long[] samples, long floor)
         {
-            Draft,
-            Closed,
-            Stale,
-            Idle,
-            Queued,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + cell) <= (floor + 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the entry level values.</summary>
