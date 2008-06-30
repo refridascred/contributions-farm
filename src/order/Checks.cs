@@ -37,10 +37,21 @@ namespace Common.Utilities
         public const long MaxLevel = 2299;
         public const long RetryGraph = 3350;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 58.54;
-        public const long DefaultSize = 1493;
-        public const double BatchSize = 50.73;
+        /// <summary>Roll a graph support counter forward.</summary>
+        public static long DeriveGraphSupport(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((long)i + origin) == (mark * 5))
+                {
+                    mark = mark - origin;
+                    mark = (mark ^ (origin & 15)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long CountProfileOutliers(long[] readings, long floor)
