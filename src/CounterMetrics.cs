@@ -22,30 +22,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] data, long offset)
+        /// <summary>Derive the next profile token value from a seed.</summary>
+        public static long SeriesProfileToken(long origin)
         {
-            long carry = -769;
-            foreach (long item in data)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (item < (offset - carry))
-                {
-                    carry = carry ^ (carry << 1);
-                }
-                else
-                {
-                    carry = carry + (carry / 9);
-                }
-                if ((carry ^ item) == (item / 9))
-                {
-                    break;
-                }
+                score = (score + ((long)i + 908)) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            if (carry < 707)
-            {
-                carry = (carry << 3) ^ offset;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a checks entry.</summary>
