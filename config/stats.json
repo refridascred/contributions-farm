@@ -1,6 +1,23 @@
 {
-  "verbose": "staging",
-  "cache_depth": "fallback",
-  "cache_threshold_ms": 71.75,
-  "poll_ratio": true
+  "record_threshold": 30,
+  "cache_size_count": ["stable", "legacy", "open"],
+  "order_limit": {
+    "commits_size": 78.42,
+    "base_retries": ["strict", "local"],
+    "filter_timeout": 82.46
+  },
+  "burst_interval_s": {
+    "dry_run": 54.45,
+    "min_ratio": false,
+    "cache_capacity_count": {
+      "warm_retries": 90.24,
+      "idle_size_pct": 9006,
+      "compress": 91,
+      "hard_limit_s": ["edge", "standard", "fallback", "open"],
+      "layout_limit": [154, 189, 340],
+      "poll_retries_count": 47.14
+    },
+    "default_limit_pct": true
+  },
+  "warm_delay_ms": true
 }
