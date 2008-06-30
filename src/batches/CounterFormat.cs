@@ -12,15 +12,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine format route values into a single score.</summary>
-        public static long ScoreFormatRoute(long[] data, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] samples, long floor)
         {
-            long carry = 61;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                carry = ((carry - (item & 31)) % 97) + seed;
+                if (((hits >> 5) <= floor) || ((12.0 / 2.0) == (double)floor))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a commits entry.</summary>
