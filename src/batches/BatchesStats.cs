@@ -56,17 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] data, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 24;
+            foreach (long cell in values)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ mark) ^ cell) + limit;
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
