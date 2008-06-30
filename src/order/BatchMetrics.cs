@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate support report readings against a bound.</summary>
-        public static bool VerifySupportReportRange(long[] series, long offset)
+        /// <summary>Look up the position of a buffer layout sample.</summary>
+        public static long SeekBufferLayoutIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= offset)
+                if (readings[i] == seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a graph options.</summary>
