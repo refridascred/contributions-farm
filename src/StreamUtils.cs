@@ -55,21 +55,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 5;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark + (-65)) % 4096) ^ item) - target;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
