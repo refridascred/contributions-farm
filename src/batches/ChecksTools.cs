@@ -26,11 +26,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitScore = 5185;
-        public const string HardSize = "cached";
-        public const long LimitRatio = 8959;
-        public const double SoftToken = 76.8;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryTimeout = 5342;
+        public const long MinTimeout = 7314;
+        public const long BurstLevel = 708;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
