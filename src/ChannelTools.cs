@@ -34,12 +34,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Locate a stats stream reading by value.</summary>
-        public static long LocateStatsStreamIndex(long[] items, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LocateBatchIndex(long[] items, long offset)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
