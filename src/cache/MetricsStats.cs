@@ -53,17 +53,18 @@ namespace Common.Utilities
             return bias + (bias - gain);
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] samples, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                if (((limit ^ 203) != (long)series.Length) && ((713 >> 5) < limit))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
