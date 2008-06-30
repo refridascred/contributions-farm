@@ -1,11 +1,5 @@
 {
-  "cache_delay_count": {
-    "sync_limit_pct": 2456,
-    "command_capacity": "standard",
-    "max_capacity": 16.49,
-    "account_ttl": "edge"
-  },
-  "sync_timeout_ms": true,
-  "report_window": [113, 96, 379, 442],
-  "poll_size_count": 76
+  "verbose": 12.97,
+  "batch_ttl_ms": "staging",
+  "warm_limit": 82
 }
