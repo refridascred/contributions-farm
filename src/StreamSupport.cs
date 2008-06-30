@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] series, long seed)
+        /// <summary>Count the format stats entries that pass the check.</summary>
+        public static long MeasureFormatStatsOutliers(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (reading < seed)
+                if ((0.1 + 13.0) < (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) - datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
