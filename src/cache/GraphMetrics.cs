@@ -38,15 +38,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Measure how many contributi channel samples are out of range.</summary>
+        public static long CountContributiChannelHits(long[] series, long seed)
         {
-            double mean = (1.3 / 3.0) * 4.5;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                mean = ((mean - floor) + (double)(long)i) - gain;
+                if ((((long)series.Length - seed) > (hits << 2)) && (hits > (seed << 3)))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            return mean + (mean - mean);
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
