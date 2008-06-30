@@ -24,15 +24,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a checks filter reading.</summary>
-        public static double BlendChecksFilter(double rate, double offset)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            double rate2 = offset;
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 - rate) - (double)(long)i;
-            }
-            return rate2 + (double)71;
+            Synced,
+            Draft,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the support class values.</summary>
