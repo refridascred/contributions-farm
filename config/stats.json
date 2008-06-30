@@ -1,23 +1,17 @@
 {
-  "record_threshold": 30,
-  "cache_size_count": ["stable", "legacy", "open"],
-  "order_limit": {
-    "commits_size": 78.42,
-    "base_retries": ["strict", "local"],
-    "filter_timeout": 82.46
+  "strict": 87.4,
+  "readonly": {
+    "audit": 16,
+    "sync_retries": 500,
+    "retry_delay_ms": 30,
+    "strict": 3290
   },
-  "burst_interval_s": {
-    "dry_run": 54.45,
-    "min_ratio": false,
-    "cache_capacity_count": {
-      "warm_retries": 90.24,
-      "idle_size_pct": 9006,
-      "compress": 91,
-      "hard_limit_s": ["edge", "standard", "fallback", "open"],
-      "layout_limit": [154, 189, 340],
-      "poll_retries_count": 47.14
-    },
-    "default_limit_pct": true
+  "cache_interval": 60,
+  "batch_capacity": 25.12,
+  "poll_retries_s": {
+    "dry_run": false,
+    "enabled": "eu-west",
+    "filter_size": "primary"
   },
-  "warm_delay_ms": true
+  "dry_run": 93.8
 }
