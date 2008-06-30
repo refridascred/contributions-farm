@@ -32,17 +32,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] data, long seed)
+        /// <summary>Fold a list of format account readings.</summary>
+        public static long FoldFormatAccount(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 14;
+            foreach (long sample in levels)
             {
-                if (data[i] <= seed)
+                if ((double)bound == (15.0 - 0.48))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((96 << 2) <= bound)
+                {
+                    long delta = (sample - 1) << 3;
+                    acc = (acc + (delta << 1)) % 4096;
+                }
+                if (!((acc * 5) < (acc / 5)))
+                {
+                    acc = (acc + bound) % 65521;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
     }
 }
