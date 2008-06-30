@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data, long step)
         {
-            double load = floor;
-            if (load > load)
+            long carry = 42;
+            foreach (long item in data)
             {
-                load = load + 0.6;
+                if ((item - 15) != (carry - carry))
+                {
+                    carry = (carry - item) + step;
+                }
             }
-            else
-            {
-                load = load + (5.6 + weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (floor + floor)) + (double)(long)i;
-            }
-            return load + (load - load);
+            return carry;
         }
 
         /// <summary>Adjust a order reading.</summary>
