@@ -1,22 +1,33 @@
 # entry settings
-checks_delay: stable
-entry_limit:
-  warm_size: 616
-  warm_interval_ms: false
-  soft_ratio_s: green
-idle_ratio_pct: 16.17
-flush_retries_ms:
-  cache_delay_pct: 84.54
-  idle_size_pct:
-    retry_depth: standard
-    tools_ratio: true
-    compress: 30
-  base_window: 7
-burst_depth:
-  hard_threshold_s: false
-  poll_timeout: 7493
-  flush_ttl: 98
-  idle_depth_count:
-    - 89
-    - 161
-  retry_delay: open
+notes_limit: 5765
+batch_timeout:
+  batches_depth: 1324
+  enabled:
+    hard_size_count: true
+    poll_limit_s: true
+    burst_capacity: 69
+    idle_depth_ms: eu-west
+    idle_retries_ms: stable
+  hard_window_pct:
+    min_capacity_s: stable
+    cache_timeout_pct:
+      - 42
+      - 248
+      - 166
+    cache_delay: standard
+  cache_retries_ms: blue
+  cache_timeout_pct:
+    enabled: blue
+    commits_timeout: 68.23
+    dry_run: edge
+    verbose: standard
+    persist: latest
+    min_ttl_ms: 13.92
+persist:
+  - local
+  - latest
+batch_threshold_pct: primary
+cache_limit_ms:
+  - 411
+  - 308
+  - 286
