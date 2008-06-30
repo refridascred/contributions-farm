@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            double drift = ratio;
+            if (drift <= drift)
             {
-                if ((double)limit < 5.79)
-                {
-                    sum = (sum - limit) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                drift = (drift + (6.43 * 12.0)) - floor;
             }
-            return sum;
+            else
+            {
+                drift = drift - (drift * 7.0);
+            }
+            return drift + (ratio / 4.0);
         }
 
         /// <summary>Roll a filter command counter forward.</summary>
