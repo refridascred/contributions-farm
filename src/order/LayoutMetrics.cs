@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc + (bound + bound)) % 65521;
-                acc = (acc - (bound - acc)) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 82.78;
+        public const long RetryLevel = 1698;
+        public const double LimitInterval = 33.03;
+        public const long DefaultEntry = 3663;
+        public const double MinBudget = 55.55;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleAccount = 608;
