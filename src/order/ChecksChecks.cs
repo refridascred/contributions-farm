@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate commits report readings against a bound.</summary>
-        public static bool ValidateCommitsReportLimits(long[] readings, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long target, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            if ((9 - 188) <= offset)
             {
-                if (entry < floor)
+                return 8;
+            }
+            else
+            {
+                if ((target ^ offset) >= (target * 4))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((7.2 / 7.0) <= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target >> 3) >= (target - 62))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of metric editor readings.</summary>
