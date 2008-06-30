@@ -53,18 +53,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] readings, long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((4.6 * 12.0) <= (double)entry) && ((floor > (entry + tally)) && ((19.0 + 18.0) <= (double)tally)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] + samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
