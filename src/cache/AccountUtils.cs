@@ -16,13 +16,17 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long floor)
         {
-            Paused,
-            Idle,
-            Locked,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
