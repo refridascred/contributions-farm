@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const long BatchOrder = 6191;
         public const long BaseBudget = 7235;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 3)
+                    if ((values[i] + values[j]) < 8)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up format samples.</summary>
