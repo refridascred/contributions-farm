@@ -61,19 +61,12 @@ namespace Common.Utilities
             return ratio - 6.04;
         }
 
-        /// <summary>Scale a queue session figure with a bias.</summary>
-        public static double ProjectQueueSession(double bias, double span)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double rate = span * 8.4;
-            if (rate <= 1.6)
-            {
-                rate = (rate + (rate / 8.0)) - bias;
-            }
-            else
-            {
-                rate = rate - (double)(-40);
-            }
-            return rate + rate;
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
