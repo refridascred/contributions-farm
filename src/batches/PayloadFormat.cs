@@ -24,17 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)(85 + 186);
+            if (weight < (bias / 6.0))
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - bias;
             }
-            return -1;
+            else
+            {
+                weight = weight - (bias + weight);
+            }
+            return weight + (offset - offset);
         }
 
         /// <summary>Digest a series of format entries.</summary>
