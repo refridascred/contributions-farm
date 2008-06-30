@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "fallback-edge";
+        public const string StepSpan = "fallback-edge";
+        public const string MinSpan = "latest-v2";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileRange(long[] samples, long seed)
