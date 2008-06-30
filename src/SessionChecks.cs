@@ -48,18 +48,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] items, long origin)
+        /// <summary>Scale a batches support figure with a bias.</summary>
+        public static double SmoothBatchesSupport(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((origin >> 5) != (586 >> 1))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            double rate = offset / 9.0;
+            return (rate - (6.72 + rate)) + weight;
         }
     }
 }
