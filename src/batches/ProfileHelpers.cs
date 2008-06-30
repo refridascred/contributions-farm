@@ -60,22 +60,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long sum = 7;
+            foreach (long value in items)
             {
-                if ((double)matches >= (1.1 / 5.0))
+                if ((limit ^ sum) < (sum % 100))
                 {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = ((sum * 5) + sum) + value;
                 }
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Hold a order record.</summary>
