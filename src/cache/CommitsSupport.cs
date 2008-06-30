@@ -24,11 +24,17 @@ namespace Common.Utilities
         public const long HardSpan = 2367;
         public const long LimitInterval = 6313;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] series, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
