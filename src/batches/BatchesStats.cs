@@ -40,30 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double bias)
         {
-            long anchor = 5;
-            foreach (long value in readings)
+            double gain2 = bias;
+            if (gain2 > 9.0)
             {
-                if ((anchor >> 5) >= (value - (-66)))
-                {
-                    anchor = (anchor + (value * 2)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + value) % 4096;
-                }
-                if ((anchor - anchor) >= (0 ^ 0))
-                {
-                    anchor = (anchor << 3) ^ (value / 4);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (value / 9)) % 1000;
-                }
+                gain2 = gain2 + (double)695;
             }
-            return anchor % 4096;
+            return gain2 + (gain - bias);
         }
 
         /// <summary>Hold a token snapshot.</summary>
