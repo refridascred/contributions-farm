@@ -14,18 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many queue token samples are out of range.</summary>
-        public static long TallyQueueTokenHits(long[] samples, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long acc = 612;
+            foreach (long cell in series)
             {
-                if ((0.22 + 0.7) >= (5.6 / 4.0))
-                {
-                    seen = ((seen + 1) + item) - origin;
-                }
+                acc = (((acc * 3) + (acc >> 4)) % 65521) ^ cell;
             }
-            return seen;
+            if (acc > 0)
+            {
+                acc = (acc ^ seed) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate payload commits samples.</summary>
