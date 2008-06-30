@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel entry samples are out of range.</summary>
-        public static long TallyChannelEntryMatches(long[] samples)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches / 8) >= (reading + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a already stats.</summary>
