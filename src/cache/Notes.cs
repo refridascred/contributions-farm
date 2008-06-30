@@ -61,31 +61,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long limit)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            if (bound < (51 - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > 7.62)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (873 >= (limit >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
