@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels, long floor)
         {
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            long acc = 6;
+            foreach (long cell in levels)
+            {
+                acc = acc + cell;
+                if ((cell - floor) <= (floor ^ acc))
+                {
+                    acc = (acc - (acc - cell)) % 65521;
+                }
+            }
+            if (acc < 72)
+            {
+                acc = acc + (floor ^ floor);
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches entry.</summary>
