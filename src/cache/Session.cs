@@ -23,19 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (4.94 > (double)count)
-                {
-                    count = ((count + 2) + cell) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryLayout = 50.44;
+        public const long HardLayout = 9441;
+        public const long HardBudget = 7987;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
