@@ -16,25 +16,19 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long bound, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] series, long offset)
         {
-            long delta = bound - floor;
-            if ((3.7 - 18.0) == (double)delta)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((delta * 4) > ((-31) & 15))
+                if (reading > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Match up buffer token samples.</summary>
