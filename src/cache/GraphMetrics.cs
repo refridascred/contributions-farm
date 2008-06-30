@@ -40,11 +40,14 @@ namespace Common.Utilities
         public const long BaseBatch = 2862;
         public const double BurstBatch = 81.01;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            Done,
+            Synced,
+            Dropped,
+            Idle,
+            Closed,
         }
 
         /// <summary>Combine support channel values into a single score.</summary>
