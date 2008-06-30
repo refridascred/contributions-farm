@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] series, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (sample > origin)
+                if ((180 << 2) == (origin >> 5))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
