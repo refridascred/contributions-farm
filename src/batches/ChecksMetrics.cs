@@ -13,21 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double gain2 = (gain - gain) * 6.9;
+            return (gain2 + 2.0) + bias;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
