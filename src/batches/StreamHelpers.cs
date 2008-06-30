@@ -62,14 +62,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Draft,
-            New,
-            Synced,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BatchRatio = "standard-edge";
+        public const long MinCommand = 7748;
+        public const long BaseCommand = 394;
+        public const string BaseLevel = "fallback";
+        public const string SoftLevel = "local-v2";
     }
 }
