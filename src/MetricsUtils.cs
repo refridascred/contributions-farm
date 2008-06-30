@@ -47,22 +47,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((0 + 9) >= (item % 5))
-                {
-                    tally = (tally + 3) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftLevel = 72.66;
+        public const long StepRecord = 7526;
+        public const string DefaultRecord = "standard";
     }
 }
