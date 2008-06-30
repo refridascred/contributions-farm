@@ -67,15 +67,11 @@ namespace Common.Utilities
             return scale + 1.4;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double rate, double offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double drift = rate;
-            if (drift <= (drift * 3.0))
-            {
-                drift = (drift - rate) - offset;
-            }
-            return drift - drift;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
