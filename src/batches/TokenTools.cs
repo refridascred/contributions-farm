@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] items, long offset)
         {
-            Draft,
-            Failed,
-            Active,
+            long acc = 17;
+            foreach (long reading in items)
+            {
+                acc = ((((acc << 3) ^ 663) % 101) + reading) - offset;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
