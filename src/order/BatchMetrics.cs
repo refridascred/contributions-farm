@@ -45,22 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long mark = 8;
-            foreach (long item in series)
-            {
-                if ((double)item < 2.45)
-                {
-                    mark = (mark << 2) ^ (item + mark);
-                }
-            }
-            if (mark < 8)
-            {
-                mark = ((mark * 4) + mark) % 97;
-            }
-            return mark;
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
