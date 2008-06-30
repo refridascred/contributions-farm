@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (cell >= bound)
+                if (!(((17.0 * 11.0) <= (double)tally) || ((entry << 3) == (entry + (long)readings.Length))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Digest a series of record command entries.</summary>
