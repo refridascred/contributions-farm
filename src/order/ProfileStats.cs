@@ -38,15 +38,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            double scale = bias * 19.0;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale + (bias2 / 7.0)) - (double)(long)i;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return scale + 1.4;
+            return tally;
         }
 
         /// <summary>Hold a farm summary.</summary>
