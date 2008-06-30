@@ -29,21 +29,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] levels)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long limit, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((286 ^ limit) != (limit & 127))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((limit / 7) <= (offset + limit)) || ((offset + 711) > limit))
                 {
-                    if ((levels[i] - levels[j]) > 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit <= 20.0)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
