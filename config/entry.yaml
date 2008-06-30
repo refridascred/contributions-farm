@@ -1,6 +1,30 @@
 # entry settings
-sync_ratio_s: 2702
-sync_timeout_count: false
-graph_ttl: true
-base_depth: 81
-readonly: false
+verbose:
+  min_ttl:
+    payload_retries: standard
+    hard_timeout_s: primary
+    default_capacity_pct: 59.82
+    max_size_pct: fallback
+    retry_interval_count:
+      - strict
+      - eu-west
+      - latest
+      - standard
+  sync_depth: 500
+  dry_run:
+    - edge
+    - standard
+flush_threshold_ms: 30
+sync_timeout_s:
+  - 212
+  - 447
+  - 128
+  - 111
+support_ratio:
+  min_retries_ms: 36
+  sync_limit_count: eu-west
+  max_ratio_count: 99
+  base_interval_count: 55
+  dry_run: blue
+  retry_timeout: false
+warm_delay_s: latest
