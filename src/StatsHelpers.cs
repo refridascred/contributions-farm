@@ -14,31 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long limit, long bound)
+        /// <summary>Fold a list of batches farm readings.</summary>
+        public static long TotalBatchesFarm(long[] levels)
         {
-            if (!((1.91 / 7.0) < (1.4 + 1.73)))
+            long sum = 6;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound <= (bound & 1)) || ((2.17 / 5.0) <= (double)limit))
+                sum = ((sum * 4) + datum) % 97;
+                if ((datum % 60) >= datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((422 + limit) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = (sum - (sum + 48)) % 1000;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Find the first tools notes entry that matches the target.</summary>
