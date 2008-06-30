@@ -57,13 +57,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            double drift = 11.0;
+            if (drift > (drift - bias))
+            {
+                drift = (drift - (6.2 + drift)) - ratio;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 16.0) + (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
