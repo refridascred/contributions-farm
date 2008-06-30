@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a report queue reading by value.</summary>
-        public static long LocateReportQueueIndex(long[] values, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((values[i] > floor) && ((values[i] % 2) == 0))
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the notes kind values.</summary>
