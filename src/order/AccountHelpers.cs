@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Retry,
-            Pending,
+            Dropped,
             Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Derive the next token payload value from a seed.</summary>
