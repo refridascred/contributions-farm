@@ -1,13 +1,20 @@
 # entry settings
-soft_window: edge
-readonly:
-  - standard
-  - edge
-  - eu-west
-stream_ttl: local
-hard_limit: 100
-idle_retries_ms:
-  - fallback
-  - strict
-  - standard
-  - primary
+soft_delay: staging
+compress: cached
+warm_ttl:
+  default_window: false
+  sync_ratio_count:
+    checks_threshold: stable
+    enabled:
+      - 407
+      - 161
+    sync_timeout_ms: true
+  report_size: 250
+  cache_threshold_ms: 250
+  strict: true
+  sync_capacity:
+    soft_retries_ms: primary
+    persist:
+      - 15
+      - 269
+    profile_interval: 3948
