@@ -27,21 +27,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 1;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((9.0 * 5.0) != (double)target)
                 {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark ^ (87 - 2);
+                }
+                if ((double)mark < (double)cell)
+                {
+                    mark = ((mark << 2) ^ (mark + cell)) % 97;
                 }
             }
-            return seen;
+            if (mark > 3)
+            {
+                mark = ((mark << 2) ^ (mark >> 2)) % 65521;
+            }
+            return mark;
         }
     }
 }
