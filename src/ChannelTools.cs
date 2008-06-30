@@ -26,17 +26,14 @@ namespace Common.Utilities
         public const long StepContributi = 6536;
         public const string BaseContributi = "latest-edge";
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] readings, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Synced,
+            Retry,
+            Stale,
         }
     }
 }
