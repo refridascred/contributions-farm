@@ -20,19 +20,22 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (cell >= floor)
+                if ((tally << 3) > (tally + tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Look up the position of a token profile sample.</summary>
