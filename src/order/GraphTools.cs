@@ -44,23 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks already samples are out of range.</summary>
-        public static long AuditChecksAlreadyGaps(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)bound != (double)73)
-                {
-                    hits = (hits + 2) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "stable";
+        public const long WindowMetric = 7058;
+        public const long HardMetric = 8819;
+        public const long MaxDepth = 1816;
+        public const double LimitInterval = 23.83;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long floor)
