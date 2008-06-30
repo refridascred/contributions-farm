@@ -24,13 +24,11 @@ namespace Common.Utilities
             return load + (load - load);
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double bias2)
         {
-            Active,
-            Queued,
-            Ready,
-            Synced,
+            double ratio = 6.1;
+            return (ratio - bias2) + bias;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
