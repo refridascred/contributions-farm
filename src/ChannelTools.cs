@@ -25,13 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] readings, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
