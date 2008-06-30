@@ -1,7 +1,18 @@
 # githubfarm settings
-max_capacity: true
-editor_window: blue
-base_interval_count: 250
-strict: 6280
-soft_limit_count: legacy
-graph_interval: 35
+persist: 86
+enabled: 60
+hard_capacity_count: cached
+profile_limit:
+  flush_capacity_s: 100
+  base_capacity_s: staging
+  warm_delay_pct:
+    - 43
+    - 464
+    - 116
+    - 471
+  base_threshold_count: 100
+readonly: staging
+retry_depth_pct:
+  - primary
+  - cached
+  - green
