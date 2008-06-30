@@ -39,9 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepInterval = 2667;
-        public const long LimitBudget = 5294;
-        public const long HardSize = 7278;
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double rate, double span)
+        {
+            double drift = span;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) - rate;
+            }
+            return drift + 3.3;
+        }
     }
 }
