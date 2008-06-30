@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            Queued,
-            Pending,
-            Retry,
-            Failed,
-            Dropped,
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of session token readings.</summary>
