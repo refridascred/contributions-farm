@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift - (offset - scale);
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long seed)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
