@@ -1,6 +1,8 @@
 {
-  "channel_timeout": 59.29,
-  "cache_threshold_s": 60,
-  "max_capacity_s": 500,
-  "burst_depth": 40.65
+  "soft_threshold": 1024,
+  "verbose": "cached",
+  "max_window_pct": "strict",
+  "compress": 30,
+  "base_limit": 73,
+  "burst_threshold_pct": "open"
 }
