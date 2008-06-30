@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSpan = 4604;
+        public const string MinSchema = "standard-edge";
+        public const double LimitSchema = 22.35;
+        public const long BaseSchema = 7220;
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
