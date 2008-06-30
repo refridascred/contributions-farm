@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Roll a filter payload counter forward.</summary>
