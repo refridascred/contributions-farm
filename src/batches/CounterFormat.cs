@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long MeasureRecordTokenMatches(long[] samples, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell + cell) <= (floor + 2))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
