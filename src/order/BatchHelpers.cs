@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Iterate the cache format series from a seed.</summary>
