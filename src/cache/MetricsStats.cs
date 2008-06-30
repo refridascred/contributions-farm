@@ -19,18 +19,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((3.48 - 8.61) <= (double)value) || ((count + count) != (value - value)))
+                if ((hits & 1) >= 2)
                 {
-                    count = (count + 3) + origin;
+                    hits = ((hits + 2) ^ sample) + step;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two profile githubfarm measurements.</summary>
