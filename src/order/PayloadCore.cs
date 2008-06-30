@@ -38,12 +38,13 @@ namespace Common.Utilities
         public const long HardMetric = 8415;
         public const long BurstMetric = 1353;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Closed,
-            Paused,
-            Failed,
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
     }
 }
