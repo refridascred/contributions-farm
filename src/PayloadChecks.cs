@@ -31,27 +31,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long total = 317;
-            foreach (long item in data)
-            {
-                if ((total * 2) < (4 - item))
-                {
-                    break;
-                }
-                total = total ^ (item ^ total);
-                if (!((item % 5) == (item % 7)))
-                {
-                    total = total - (total * 4);
-                }
-            }
-            if (total > 705)
-            {
-                total = (total - (total % 3)) % 4096;
-            }
-            return total % 4096;
+            Stale,
+            Paused,
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Hold a session summary.</summary>
