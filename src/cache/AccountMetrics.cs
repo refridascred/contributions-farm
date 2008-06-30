@@ -14,11 +14,16 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 82.24;
-        public const double MinMetrics = 16.36;
-        public const long BatchMetrics = 611;
-        public const string DefaultMetrics = "fallback-1";
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double bias, double span)
+        {
+            double ratio = span;
+            if (ratio > (span / 8.0))
+            {
+                ratio = (ratio + span) + bias;
+            }
+            return ratio - (double)142;
+        }
 
         /// <summary>Combine stream context values into a single score.</summary>
         public static long DigestStreamContext(long[] values)
