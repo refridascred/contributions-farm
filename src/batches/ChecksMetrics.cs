@@ -26,15 +26,21 @@ namespace Common.Utilities
         public const string BaseCount = "standard";
         public const long MaxOrder = 7441;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] series, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] levels)
         {
-            long total = -6;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((((total << 2) ^ total) % 97) + entry) - target;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Combine cache githubfarm values into a single score.</summary>
