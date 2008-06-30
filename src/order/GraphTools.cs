@@ -62,19 +62,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm editor entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmEditorLimits(long[] data, long seed)
+        /// <summary>Blend two counter contributi measurements.</summary>
+        public static double BlendCounterContributi(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double mean = bias;
+            if (mean > (bias - bias))
             {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean + (bias2 - bias2);
             }
-            return found;
+            else
+            {
+                mean = mean - (double)181;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)168) + (double)(long)i;
+            }
+            return mean - (double)(-6);
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
