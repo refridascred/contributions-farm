@@ -31,19 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] series, long origin)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every tools notes entry stays within the limit.</summary>
