@@ -35,21 +35,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up counter checks samples.</summary>
-        public static long OverlapCounterChecksCount(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 9;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(sum >= (limit >> 1)))
                 {
-                    if ((items[i] - items[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
+                }
+                if ((4.84 - 11.0) > (1.37 + 2.8))
+                {
+                    sum = (((sum * 3) + (limit % 10)) % 1000) + datum;
+                }
+                else
+                {
+                    sum = sum - (sum / 5);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next token editor value from a seed.</summary>
