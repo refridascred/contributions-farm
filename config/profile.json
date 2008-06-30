@@ -1,6 +1,8 @@
 {
-  "order_ratio": 8.1,
-  "stats_ratio": ["fallback", "legacy"],
-  "sync_capacity": 80.28,
-  "persist": "edge"
+  "max_window_s": 922,
+  "account_interval": ["fallback", "local", "green", "latest"],
+  "readonly": ["strict", "green", "stable", "open"],
+  "max_retries": ["blue", "stable"],
+  "base_retries_ms": "staging",
+  "filter_ttl": 30
 }
