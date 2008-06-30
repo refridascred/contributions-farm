@@ -19,13 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] values)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
