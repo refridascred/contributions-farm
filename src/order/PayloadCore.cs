@@ -27,19 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate graph context readings against a bound.</summary>
-        public static bool GuardGraphContextLimits(long[] readings, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double scale, double floor)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            double load = (double)(408 & 63);
+            if (load > load)
             {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                load = (load - floor) - scale;
             }
-            return found;
+            return load + 17.0;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
