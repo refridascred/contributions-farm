@@ -57,25 +57,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long target, long limit)
+        /// <summary>Accumulate contributi metric samples.</summary>
+        public static long TallyContributiMetric(long[] readings)
         {
-            long delta = target ^ limit;
-            if ((7 >> 4) < (delta % 100))
+            long anchor = 5;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((delta - limit) >= (limit & 1))
+                if (10.0 >= (double)entry)
                 {
-                    return 6;
+                    anchor = (anchor ^ (long)readings.Length) % 101;
                 }
-                else
+                if (2 < (anchor << 1))
                 {
-                    return 7;
+                    break;
                 }
             }
+            if (anchor > 0)
+            {
+                anchor = (anchor + anchor) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the farm mode values.</summary>
