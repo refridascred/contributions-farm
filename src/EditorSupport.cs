@@ -19,16 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 5) + 56) % 1000;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Queued,
+            New,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
