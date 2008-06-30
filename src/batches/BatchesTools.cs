@@ -30,9 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinLevel = 195;
-        public const long DefaultStats = 9620;
-        public const double BatchStats = 23.98;
+        /// <summary>Validate entry queue readings against a bound.</summary>
+        public static bool VerifyEntryQueueBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
