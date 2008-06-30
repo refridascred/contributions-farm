@@ -54,12 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Ready,
-            New,
-            Active,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Match up session samples.</summary>
