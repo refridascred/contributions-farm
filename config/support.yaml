@@ -1,7 +1,4 @@
 # support settings
-retry_depth_count:
-  min_ttl_count: 1
-  soft_capacity: 13.66
-  hard_ttl: local
-soft_window: 500
-verbose: true
+flush_size_pct: true
+default_interval_count: 68
+burst_capacity_ms: green
