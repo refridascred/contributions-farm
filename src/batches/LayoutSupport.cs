@@ -80,13 +80,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long seed, long limit)
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            if (seed > (544 & 31))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed & 31) <= (limit + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((12.0 * 17.0) == (double)limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit << 3) > seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
