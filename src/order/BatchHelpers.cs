@@ -23,12 +23,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepScore = "open";
-        public const double MinFactor = 33.25;
-        public const double BatchTimeout = 34.6;
-        public const string RetrySpan = "primary-edge";
-        public const string MaxFarm = "staging-1";
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long bound, long target)
+        {
+            if ((double)0 >= (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((bound << 3) != (0 ^ bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target < (430 - 73))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
