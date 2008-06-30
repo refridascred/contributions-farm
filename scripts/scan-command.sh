@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached open; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+for item in fallback green eu-west; do
+    log "checking ${item}"
+done
