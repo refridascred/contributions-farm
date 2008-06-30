@@ -43,12 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Paused,
-            Locked,
-            Failed,
+            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
