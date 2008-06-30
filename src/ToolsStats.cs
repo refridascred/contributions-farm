@@ -65,21 +65,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 289;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)mix < 4.95)
                 {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + (mix >> 3)) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ datum) % 255;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
