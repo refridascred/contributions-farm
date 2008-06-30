@@ -28,29 +28,32 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long bound, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long delta = bound ^ limit;
+            if (!((3.6 - 8.0) == (double)bound))
             {
-                double weight = 6.0 * 7.16;
-                if (!(weight > (weight + 20.0)))
+                return 3;
+            }
+            else
+            {
+                if ((limit + delta) < bound)
                 {
-                    sum = sum ^ (sum - sum);
-                }
-                if (!((step + step) <= (sum + sum)))
-                {
-                    sum = sum + (sum ^ sum);
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    weight = weight - 6.18;
+                    if ((518 >> 3) < (bound & 15))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
         }
     }
 }
