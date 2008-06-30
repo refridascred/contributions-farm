@@ -12,13 +12,32 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a stream filter value against two limits.</summary>
+        public static long ClassifyStreamFilter(long limit, long seed)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long step = limit - seed;
+            if (((limit % 12) <= seed) || ((seed ^ limit) <= (step ^ seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit % 12) >= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((66 ^ seed) >= (limit << 3)) && ((step << 1) > limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record record.</summary>
