@@ -27,21 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
