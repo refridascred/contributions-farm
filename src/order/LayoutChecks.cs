@@ -60,19 +60,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Retry,
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the route kind values.</summary>
