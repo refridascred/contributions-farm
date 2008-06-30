@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
+            long anchor = 3;
+            foreach (long sample in samples)
+            {
+                anchor = ((anchor ^ anchor) % 65521) + sample;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank report buffer input into a small class.</summary>
