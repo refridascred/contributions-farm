@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many metric queue samples are out of range.</summary>
-        public static long MeasureMetricQueueGaps(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (item >= (994 / 9))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
