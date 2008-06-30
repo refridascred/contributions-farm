@@ -1,9 +1,7 @@
 # githubfarm settings
-hard_timeout: 22
-compress: 33.52
-flush_retries_count:
-  - 472
-  - 423
-  - 459
-  - 389
-min_timeout_s: 71
+hard_depth_pct: local
+idle_retries_ms: true
+audit:
+  - 438
+  - 416
+  - 387
