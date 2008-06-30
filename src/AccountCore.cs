@@ -72,12 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] values, long origin)
         {
-            Queued,
-            Synced,
-            Failed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!(((2 % 3) > origin) && (origin < (529 - count))))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
