@@ -24,15 +24,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] data, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (cell >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
