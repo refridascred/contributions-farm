@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next githubfarm layout value from a seed.</summary>
-        public static long DeriveGithubfarmLayout(long seed)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] values, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((4.95 / 2.0) >= (double)acc) && ((double)seed < (2.0 / 8.0)))
+                if (values[i] > offset)
                 {
-                    acc = acc ^ 1;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the checks level values.</summary>
