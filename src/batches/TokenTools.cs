@@ -26,19 +26,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (result >= (result & 7))
-                {
-                    result = result + (result % 64);
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                state = (state << 3) ^ 83;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
     }
 }
