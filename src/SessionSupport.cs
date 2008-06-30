@@ -20,19 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double floor)
         {
-            double drift = bias;
-            if (drift >= drift)
+            double bias = (4.5 * 2.0) * 16.0;
+            if (bias >= (double)677)
             {
-                drift = drift + (double)56;
+                bias = (bias + bias) - ratio;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                drift = (drift + (double)97) + (double)(long)i;
+                bias = bias + (floor - bias);
             }
-            return drift + gain;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (bias * 5.75)) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
