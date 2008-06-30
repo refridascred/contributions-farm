@@ -20,21 +20,22 @@ namespace Common.Utilities
         public const long BaseChecks = 5566;
         public const string CacheFactor = "open";
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((value * 2) <= (value >> 4))
                 {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
