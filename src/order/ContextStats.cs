@@ -27,20 +27,11 @@ namespace Common.Utilities
         public const long LimitTimeout = 7691;
         public const long WindowCount = 715;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 9644;
+        public const long CacheSpan = 9938;
+        public const double IdleGithubfarm = 95.0;
+        public const double BurstGithubfarm = 79.64;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatGaps(long[] series, long seed)
