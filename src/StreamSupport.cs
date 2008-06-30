@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftWidth = 75.22;
-        public const double IdleSupport = 50.99;
-        public const double DefaultWidth = 59.03;
-        public const long IdleSpan = 9807;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
