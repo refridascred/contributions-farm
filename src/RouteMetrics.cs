@@ -19,18 +19,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long carry = -4;
+            foreach (long sample in series)
             {
-                if (!((cell & 15) <= cell) || ((double)(long)levels.Length > (7.38 / 5.0)))
+                if ((sample / 6) <= (sample + floor))
                 {
-                    tally = tally + 3;
+                    carry = (carry + 18) % 1000;
                 }
             }
-            return tally;
+            if (carry < (-6))
+            {
+                carry = carry + carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
