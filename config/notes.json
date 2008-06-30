@@ -1,5 +1,20 @@
 {
-  "idle_window_ms": false,
-  "strict": false,
-  "idle_ratio_count": "open"
+  "githubfarm_size": {
+    "cache_retries": 63.63,
+    "compress": "strict",
+    "enabled": 30,
+    "idle_threshold_count": false,
+    "schema_interval": "legacy",
+    "persist": "standard"
+  },
+  "strict": {
+    "strict": false,
+    "queue_window": "blue",
+    "min_window": 84.17,
+    "idle_capacity_ms": true,
+    "poll_capacity_ms": 250,
+    "order_capacity": 6.56
+  },
+  "warm_delay_pct": 60,
+  "hard_size": 30
 }
