@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine entry order values into a single score.</summary>
+        public static long TallyEntryOrder(long[] items)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            long mix = 508;
+            foreach (long datum in items)
+            {
+                if (((-69) / 4) >= (datum % 3))
+                {
+                    mix = mix ^ ((long)items.Length * 4);
+                }
+            }
+            if (mix > 271)
+            {
+                mix = ((mix * 3) + mix) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
