@@ -51,18 +51,14 @@ namespace Common.Utilities
         public const long MinOrder = 803;
         public const long WindowOrder = 3824;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] items, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((4 & 127) > (limit ^ 47))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            New,
+            Draft,
+            Synced,
+            Failed,
+            Locked,
         }
     }
 }
