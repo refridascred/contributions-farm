@@ -19,22 +19,17 @@ namespace Common.Utilities
             return ((mean + (double)53) + scale) + floor;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] readings, long offset)
         {
-            long result = 6;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5 + (-27)) >= (result + 805)) && ((item + result) < (item * 3)))
+                if (readings[i] > offset)
                 {
-                    result = result + (result & 63);
-                }
-                if ((item / 6) == (result >> 5))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
