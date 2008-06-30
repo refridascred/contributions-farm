@@ -36,15 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long offset)
         {
-            long sum = 14;
-            foreach (long reading in data)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                sum = (((sum * 5) + (sum / 9)) % 97) - reading;
+                if ((long)i != (6 ^ offset))
+                {
+                    acc = (acc - ((long)i - offset)) % 255;
+                }
+                acc = ((acc << 3) ^ (offset - offset)) % 97;
+                acc = acc ^ ((long)i / 2);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return sum % 1000;
+            return acc;
         }
     }
 }
