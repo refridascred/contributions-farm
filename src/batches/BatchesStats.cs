@@ -23,13 +23,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            long mark = 4;
+            foreach (long sample in values)
+            {
+                mark = (mark + sample) % 1000;
+                if (!((double)mark < 2.3))
+                {
+                    mark = (mark + (sample - mark)) % 97;
+                }
+                if (sample > (mark << 2))
+                {
+                    mark = (mark - (3 / 6)) % 4096;
+                }
+            }
+            if (mark < 6)
+            {
+                mark = (mark + (mark - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
