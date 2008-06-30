@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const string CacheGraph = "legacy-edge";
         public const long LimitInterval = 4728;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long seed)
         {
-            long total = 536;
-            foreach (long item in readings)
+            if (1.0 >= (double)seed)
             {
-                total = (total + target) ^ item;
+                return 8;
             }
-            if (total > 2)
+            else
             {
-                total = (total ^ (66 & 63)) % 255;
+                if ((9.0 - 5.1) >= (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((floor >> 1) > (65 & 63)) && ((floor ^ floor) != (floor / 8)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
