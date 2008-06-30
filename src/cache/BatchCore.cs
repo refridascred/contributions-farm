@@ -23,12 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Ready,
-            Draft,
+            Retry,
             Locked,
+            Pending,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
