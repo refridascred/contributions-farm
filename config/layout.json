@@ -1,12 +1,6 @@
 {
-  "min_ratio_s": false,
-  "hard_ratio_ms": true,
-  "min_limit_pct": {
-    "poll_ratio": true,
-    "channel_depth": 41,
-    "min_retries_ms": [59, 152, 102, 429],
-    "base_limit": 58.97,
-    "profile_retries": false
-  },
-  "base_ttl_pct": "legacy"
+  "soft_ratio_s": "strict",
+  "audit": true,
+  "stream_capacity": "eu-west",
+  "base_retries": 100
 }
