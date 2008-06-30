@@ -11,14 +11,15 @@ namespace Common.Utilities
         public const long CacheCounter = 1773;
         public const double StepScore = 22.38;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            Closed,
-            Dropped,
-            Failed,
-            Retry,
-            Active,
+            long mix = target;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
