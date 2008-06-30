@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 8;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit & 255) > (3 ^ carry))
                 {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (((carry * 3) + (limit - 30)) % 101) + datum;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
