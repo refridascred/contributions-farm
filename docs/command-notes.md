@@ -1,12 +1,12 @@
 # Command notes
 
-The counter report groups every queue by githubfarm.
-Each schema is validated before it reaches the token queue.
-The format report groups every window by githubfarm.
+Use editor settings to tune how often batch data is refreshed.
+Each schema is validated before it reaches the stream queue.
+The layout module keeps cache values in sync with the layout cache.
 
 ## Guidelines
 
-- Log every filter change
-- Keep format values small
-- Prefer editor defaults
-- Review tools limits each release
+- Review report limits each release
+- Log every notes change
+- Prefer format defaults
+- Keep notes values small
