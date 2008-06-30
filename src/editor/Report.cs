@@ -15,19 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((((double)reading < (double)bound) && ((double)reading >= (double)seen)) && !((seen ^ 3) >= bound))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultScore = 31.34;
+        public const long RetryTimeout = 1789;
+        public const string IdleReport = "strict-1";
+        public const long LimitSpan = 9175;
 
         /// <summary>Compare every pair of cache context readings.</summary>
         public static long CompareCacheContextCount(long[] levels)
