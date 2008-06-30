@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long ClassifyAlready(long target, long origin)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long seed, long target)
         {
-            if (((double)target >= (11.0 * 7.0)) || ((target + origin) < (origin >> 1)))
+            if (seed > target)
             {
                 return 1;
             }
             else
             {
-                if (origin < (target % 100))
+                if ((target << 1) >= target)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 8;
+                    if (10.0 <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
