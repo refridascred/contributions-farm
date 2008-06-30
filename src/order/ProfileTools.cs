@@ -63,27 +63,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long sum = 9;
-            foreach (long reading in series)
-            {
-                sum = (sum - 45) % 255;
-                if ((reading % 12) >= (reading - sum))
-                {
-                    sum = ((sum * 3) + (reading << 3)) % 1000;
-                }
-                if ((7.07 / 6.0) < (double)reading)
-                {
-                    sum = ((sum << 2) ^ (reading % 12)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 5) + (sum >> 5);
-                }
-            }
-            return sum;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
