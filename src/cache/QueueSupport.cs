@@ -47,17 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] samples, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mix = mix - step;
-                mix = (mix - (14 >> 3)) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (target >= (item ^ item))
+                {
+                    count = count + 2;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
