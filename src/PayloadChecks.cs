@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Check that every filter farm entry stays within the limit.</summary>
