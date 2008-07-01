@@ -23,12 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double bias, double span)
         {
-            Paused,
-            Failed,
-            Synced,
+            double ratio = (span / 3.0) * 9.76;
+            if (ratio < (span - ratio))
+            {
+                ratio = ratio + span;
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (double)(-367);
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
