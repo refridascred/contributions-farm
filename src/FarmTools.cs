@@ -19,13 +19,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Idle,
+            Draft,
         }
     }
 }
