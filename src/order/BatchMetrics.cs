@@ -16,19 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a report schema counter forward.</summary>
-        public static long SeriesReportSchema(long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] samples, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long sum = 957;
+            foreach (long sample in samples)
             {
-                if ((limit << 2) < (mix << 2))
-                {
-                    mix = mix + ((long)i % 100);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                sum = ((sum ^ (sum ^ 111)) - sample) - floor;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Hold a graph options.</summary>
