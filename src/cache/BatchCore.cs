@@ -30,23 +30,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((((386 >> 3) < (limit - (-4))) && ((limit + matches) == (limit & 3))) && ((limit * 2) != (limit & 31)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 297;
+        public const long MinSize = 6201;
+        public const long SoftFactor = 4932;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double rate, double floor)
