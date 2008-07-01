@@ -16,13 +16,15 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double offset)
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            double scale2 = 1.8;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = ((scale2 + offset) + (double)(long)i) - scale;
+            }
+            return scale2 + scale2;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
