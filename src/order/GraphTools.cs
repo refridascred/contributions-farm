@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] levels, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) != 0))
+                if ((5.8 / 6.0) > (double)(long)data.Length)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ entry) + step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
