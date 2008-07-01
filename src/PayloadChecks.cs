@@ -64,17 +64,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long offset)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
