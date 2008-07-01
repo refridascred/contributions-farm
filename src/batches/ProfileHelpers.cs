@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry + 6;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
