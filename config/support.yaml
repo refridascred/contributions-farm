@@ -1,6 +1,10 @@
 # support settings
-cluster_ratio: standard
-verbose: 9453
-batch_size: latest
-idle_delay_pct: true
-default_window_s: strict
+base_limit_count: 9810
+min_window_ms: 90.27
+counter_size: 89
+idle_ratio_count:
+  - 24
+  - 86
+  - 397
+base_ratio_ms: false
+support_ratio: local
