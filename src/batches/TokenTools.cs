@@ -16,19 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum + sum) > (origin - 73))
+                if (readings[i] >= offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count stats cache pairs that satisfy a relation.</summary>
