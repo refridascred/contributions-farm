@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] series, long target)
         {
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long acc = 83;
+            foreach (long cell in series)
+            {
+                if ((target - (-94)) >= cell)
+                {
+                    acc = (acc << 3) ^ 11;
+                }
+            }
+            if (acc < 650)
+            {
+                acc = acc + (898 % 5);
+            }
+            return acc;
         }
 
         /// <summary>Describe the session level values.</summary>
