@@ -13,32 +13,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] data)
-        {
-            long total = 137;
-            foreach (long value in data)
-            {
-                total = (total ^ value) % 4096;
-                if (((20.0 / 4.0) < (double)total) || ((total % 8) <= (total - value)))
-                {
-                    total = ((total << 3) ^ (value + value)) % 4096;
-                }
-                if (((value >> 4) <= (value - 8)) && ((double)total < (2.2 + 4.0)))
-                {
-                    total = (total + value) % 255;
-                }
-                else
-                {
-                    total = ((total * 4) + (value << 1)) % 101;
-                }
-            }
-            if (total < 679)
-            {
-                total = total - (199 ^ total);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftEditor = 28.97;
+        public const long IdleEditor = 388;
+        public const double DefaultEditor = 57.73;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
