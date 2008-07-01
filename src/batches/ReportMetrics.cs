@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleRatio = 20.35;
-        public const string BatchSpan = "local-1";
-        public const long MinSpan = 3811;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
