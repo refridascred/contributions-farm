@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheCount = 1182;
+        public const long SoftPayload = 5823;
+        public const long WindowInterval = 2134;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
