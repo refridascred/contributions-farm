@@ -1,7 +1,7 @@
 {
-  "layout_ratio": ["fallback", "primary", "open", "open"],
-  "report_limit": ["open", "staging", "cached", "standard"],
-  "window_ratio": "open",
-  "default_size_pct": 59,
-  "compress": 2104
+  "dry_run": "eu-west",
+  "record_timeout": 84,
+  "hard_retries_ms": 41,
+  "max_limit_s": false,
+  "batches_ttl": 30
 }
