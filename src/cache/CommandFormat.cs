@@ -38,18 +38,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long state = 72;
+            foreach (long value in data)
             {
-                if (!((12.0 + 3.2) < (double)datum))
+                if ((state * 3) >= ((long)data.Length & 31))
                 {
-                    tally = tally + 1;
+                    state = state ^ (value + value);
+                }
+                if (!((double)state <= (9.2 * 3.0)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (state > (-83))
+            {
+                state = (state * 4) + (state - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
