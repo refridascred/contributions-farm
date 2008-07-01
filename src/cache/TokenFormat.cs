@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] series)
+        /// <summary>Measure how many cache tools samples are out of range.</summary>
+        public static long AuditCacheToolsHits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((entry - 49) == (matches + matches))
+                if (3 > (sample + (long)values.Length))
                 {
-                    matches = matches + 3;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
