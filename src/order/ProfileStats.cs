@@ -34,19 +34,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long step)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Stale,
+            Locked,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
