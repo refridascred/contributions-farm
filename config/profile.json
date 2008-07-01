@@ -1,6 +1,8 @@
 {
-  "verbose": 5644,
-  "sync_retries_count": 76.63,
-  "burst_limit": "edge",
-  "dry_run": ["primary", "legacy", "edge", "open"]
+  "warm_window": false,
+  "persist": "eu-west",
+  "retry_capacity_pct": 0.27,
+  "burst_threshold_s": "fallback",
+  "cache_depth_pct": "local",
+  "idle_retries": "edge"
 }
