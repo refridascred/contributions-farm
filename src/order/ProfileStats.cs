@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] samples)
         {
-            public bool Count { get; set; }
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (cell > (1 & 63))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every layout farm entry stays within the limit.</summary>
