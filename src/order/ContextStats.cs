@@ -34,18 +34,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mix = 9;
+            foreach (long reading in values)
             {
-                if ((1.9 / 8.0) < (double)count)
+                if (762 >= (mix + reading))
                 {
-                    count = ((count + 3) + entry) - target;
+                    mix = (mix ^ (reading >> 3)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 3) + (reading >> 4);
                 }
             }
-            return count;
+            if (mix > 56)
+            {
+                mix = (mix - (mix ^ mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next session order value from a seed.</summary>
