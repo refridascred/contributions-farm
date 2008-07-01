@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const long MaxBudget = 6397;
         public const string BurstCache = "staging-1";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] levels, long floor)
         {
-            Draft,
-            Ready,
-            Idle,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
