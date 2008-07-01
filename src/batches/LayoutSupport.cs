@@ -50,18 +50,18 @@ namespace Common.Utilities
             return bias2 - (bias - gain);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] series, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((seen - 10) <= (cell - seen))
+                if ((double)step >= (9.9 + 5.6))
                 {
-                    seen = (seen + 3) + limit;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
