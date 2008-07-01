@@ -47,19 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] levels, long bound)
+        /// <summary>Iterate the format farm series from a seed.</summary>
+        public static long IterateFormatFarm(long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
     }
 }
