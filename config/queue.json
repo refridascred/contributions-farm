@@ -1,6 +1,17 @@
 {
-  "batch_depth_ms": [75, 473],
-  "idle_ttl": "blue",
-  "readonly": 60,
-  "batch_size_pct": 1024
+  "idle_timeout_pct": "staging",
+  "enabled": "local",
+  "warm_threshold_ms": {
+    "enabled": false,
+    "batch_capacity": {
+      "base_timeout_ms": false,
+      "strict": true,
+      "retry_depth_s": 60,
+      "sync_retries_count": 30
+    },
+    "burst_retries_pct": 24.64,
+    "notes_timeout": "local",
+    "hard_ttl": 6003,
+    "base_capacity_s": 42.71
+  }
 }
