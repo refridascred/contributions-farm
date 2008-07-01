@@ -20,13 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double bias, double span)
         {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            double gain = (0.74 - bias) - (double)1;
+            if (gain <= (double)48)
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - (double)93;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
