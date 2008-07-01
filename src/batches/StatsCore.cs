@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks channel value.</summary>
-        public static double SmoothChecksChannel(double rate, double span)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings, long bound)
         {
-            double mean = (double)(80 << 2);
-            if (mean < (mean - span))
+            long anchor = 2;
+            foreach (long entry in readings)
             {
-                mean = mean - mean;
+                if (entry <= anchor)
+                {
+                    anchor = (anchor * 2) + (bound ^ entry);
+                }
+                if (!((7.83 * 3.9) != (double)anchor))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (3.3 - rate)) + (double)(long)i;
-            }
-            return mean - rate;
+            return anchor;
         }
 
         /// <summary>Match up tools samples.</summary>
