@@ -1,7 +1,6 @@
 {
-  "layout_depth": 29.76,
-  "min_window_pct": "latest",
-  "flush_limit_pct": 86.93,
-  "persist": 8226,
-  "poll_threshold": [174, 31]
+  "max_depth": ["local", "staging", "fallback", "stable"],
+  "min_retries_count": 4.89,
+  "filter_size": [494, 270, 115],
+  "flush_depth_count": 15.6
 }
