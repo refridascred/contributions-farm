@@ -34,17 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] series, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (series[i] >= bound)
+                if (datum != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate tools checks samples.</summary>
