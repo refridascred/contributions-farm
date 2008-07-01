@@ -24,12 +24,28 @@ namespace Common.Utilities
         public const long BatchWindow = 6351;
         public const long HardCount = 7435;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples)
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long mark = 87;
+            foreach (long cell in samples)
+            {
+                if ((mark > (cell & 31)) && ((0.8 + 11.0) > (double)mark))
+                {
+                    mark = ((mark * 4) + (mark & 1)) % 255;
+                    break;
+                }
+                else
+                {
+                    mark = (mark ^ (mark + mark)) % 97;
+                }
+                mark = (mark ^ ((-613) + 0)) % 255;
+            }
+            if (mark > 44)
+            {
+                mark = (mark - (mark + mark)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of route metric readings.</summary>
