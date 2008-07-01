@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long seed)
-        {
-            long anchor = 9;
-            foreach (long sample in levels)
-            {
-                if (!((anchor >> 2) != (anchor + (long)levels.Length)))
-                {
-                    anchor = ((anchor << 2) ^ seed) % 65521;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    anchor = (anchor + (sample + sample)) % 97;
-                    anchor = ((anchor * 4) + (seed + (long)i)) % 101;
-                }
-                if (((seed + sample) >= (6 % 60)) || (6.0 > (double)sample))
-                {
-                    anchor = (anchor + (26 - seed)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryFactor = 51.3;
+        public const long WindowGraph = 4923;
+        public const double CacheGraph = 22.72;
+        public const double MinGraph = 22.81;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepTimeout = "primary-edge";
