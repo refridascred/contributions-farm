@@ -20,18 +20,18 @@ namespace Common.Utilities
             return drift + (1.1 + 7.1);
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((count << 3) >= (count + reading)) || ((double)count >= (6.74 / 3.0)))
+                if ((4 << 2) < (tally + floor))
                 {
-                    count = (count + 3) + offset;
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the buffer status values.</summary>
