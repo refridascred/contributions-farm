@@ -1,9 +1,7 @@
 {
-  "min_delay_pct": 9905,
-  "entry_interval": {
-    "verbose": 5678,
-    "readonly": "legacy",
-    "min_limit": false
-  },
-  "min_delay_ms": true
+  "audit": ["primary", "green", "cached"],
+  "filter_ttl": "eu-west",
+  "persist": "standard",
+  "default_retries_s": 500,
+  "soft_limit_ms": "staging"
 }
