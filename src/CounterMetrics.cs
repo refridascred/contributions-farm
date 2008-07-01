@@ -19,35 +19,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long step, long bound)
+        /// <summary>Rank editor already input into a small class.</summary>
+        public static long RankEditorAlready(long bound, long origin)
         {
-            long gap = step ^ bound;
-            if (gap > 1)
+            long delta = bound + origin;
+            if ((origin + delta) >= (bound + origin))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((gap >> 1) != (gap + gap))
+                if ((delta - origin) <= (origin & 15))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((step & 63) == (8 * 4))
+                    if ((bound + 32) <= origin)
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound + gap) <= gap)
+                        if ((double)delta == (1.02 * 1.5))
                         {
-                            return 8;
+                            return 1;
                         }
                         else
                         {
-                            return 3;
+                            return 7;
                         }
                     }
                 }
