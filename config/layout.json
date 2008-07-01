@@ -1,7 +1,14 @@
 {
-  "persist": 7704,
-  "default_threshold_ms": "fallback",
-  "cluster_threshold": 79,
-  "soft_interval_s": "edge",
-  "layout_window": 1160
+  "min_delay_s": ["eu-west", "eu-west", "latest", "cached"],
+  "verbose": 26,
+  "min_ratio": {
+    "max_ratio_pct": {
+      "cache_depth_ms": "stable",
+      "burst_threshold_ms": 74,
+      "poll_interval_count": "latest",
+      "min_depth_count": 35.12
+    },
+    "default_limit_s": "green",
+    "poll_threshold_s": false
+  }
 }
