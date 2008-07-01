@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "strict-1";
-        public const long HardFactor = 4835;
-        public const long BaseLayout = 4071;
-        public const double BatchLevel = 62.05;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Queued,
+            Closed,
+            Ready,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
