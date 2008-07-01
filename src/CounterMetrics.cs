@@ -37,32 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long prev = limit - offset;
-            if ((offset + offset) <= (offset << 1))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset > 8.8)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)9 != (double)prev)
+                    if ((levels[i] ^ levels[j]) < 16)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
