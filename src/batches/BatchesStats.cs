@@ -35,25 +35,33 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank counter schema input into a small class.</summary>
-        public static long SortCounterSchema(long floor, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            long offset = floor - origin;
-            if ((double)offset != (6.0 - 17.0))
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin * 3) >= (8 << 2))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 5;
+                    anchor = ((anchor + seed) % 65521) ^ (long)i2;
+                }
+                if (!((1 * 3) < seed))
+                {
+                    anchor = ((anchor * 5) + ((-205) ^ (long)i)) % 65521;
+                    anchor = anchor + (anchor + 37);
+                }
+                if (seed > (seed % 2))
+                {
+                    anchor = (anchor + (seed - seed)) % 255;
+                    break;
                 }
                 else
                 {
-                    return 3;
+                    anchor = (anchor << 3) ^ (seed & 15);
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
     }
 }
