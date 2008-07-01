@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of checks cluster readings.</summary>
-        public static long TallyChecksCluster(long[] samples, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples, long limit)
         {
-            long carry = 647;
-            foreach (long reading in samples)
+            long carry = 7;
+            foreach (long datum in samples)
             {
-                if (!((carry + 5) > (carry ^ reading)))
-                {
-                    carry = (carry * 4) + (reading - offset);
-                }
+                carry = ((carry << 2) ^ (carry - limit)) - datum;
             }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Iterate the cluster channel series from a seed.</summary>
