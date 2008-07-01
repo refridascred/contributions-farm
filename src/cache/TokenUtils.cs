@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long IdleEditor = 388;
         public const double DefaultEditor = 57.73;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Scale a order payload figure with a bias.</summary>
+        public static double SmoothOrderPayload(double weight, double offset)
         {
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            double scale = (offset + 9.6) / 3.0;
+            if (scale <= weight)
+            {
+                scale = scale - (double)90;
+            }
+            else
+            {
+                scale = scale - (weight / 6.0);
+            }
+            return scale - 0.9;
         }
     }
 }
