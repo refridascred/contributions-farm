@@ -22,13 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] samples)
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((122 <= (cell << 2)) && (hits > (cell * 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
