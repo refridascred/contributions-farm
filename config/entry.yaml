@@ -1,9 +1,7 @@
 # entry settings
-entry_interval: 5.35
-idle_limit: 1024
-soft_delay_ms: legacy
-editor_ratio:
-  metric_delay: 61.94
-  burst_ratio_ms: 1024
-  soft_timeout_count: 7999
-max_retries_pct: staging
+burst_depth_s: 70.25
+layout_threshold: 9482
+min_size_ms: primary
+enabled: open
+default_depth_count: 58
+already_timeout: 19
