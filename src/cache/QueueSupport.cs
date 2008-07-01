@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] values, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples)
         {
-            long mix = -3;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix - value) % 1000) + limit;
+                if ((double)item == (double)tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a context entry.</summary>
