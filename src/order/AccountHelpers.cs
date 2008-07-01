@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long step, long bound)
         {
-            Dropped,
-            Draft,
-            Paused,
-            Synced,
+            if (8 <= (bound * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((7.0 - 5.15) <= (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of metric stream readings.</summary>
