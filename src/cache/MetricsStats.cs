@@ -47,21 +47,11 @@ namespace Common.Utilities
         public const double MinRatio = 65.6;
         public const long CacheMetrics = 4889;
 
-        /// <summary>Count farm buffer pairs that satisfy a relation.</summary>
-        public static long CompareFarmBufferCount(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
