@@ -37,15 +37,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double rate, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double gain = rate;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (20.0 * 1.3)) + (double)(long)i;
-            }
-            return gain + (floor / 3.0);
+            Stale,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
