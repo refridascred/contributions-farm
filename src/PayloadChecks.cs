@@ -80,17 +80,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long origin)
+        /// <summary>Audit account stream readings against a rule.</summary>
+        public static long TallyAccountStreamMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] >= origin)
+                if ((0 >> 3) <= (seed / 4))
                 {
-                    return (long)i;
+                    count = (count + 3) - cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
