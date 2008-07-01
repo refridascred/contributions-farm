@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const double SoftLevel = 27.58;
         public const string LimitOrder = "primary";
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] values)
+        /// <summary>Count the batches layout entries that pass the check.</summary>
+        public static long AuditBatchesLayoutHits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((((3 + item) != (item * 4)) || ((double)item <= (double)(-28))) || ((item >> 3) < (hits / 6)))
+                if ((tally - bound) < (bound + cell))
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a already summary.</summary>
