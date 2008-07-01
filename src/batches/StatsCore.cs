@@ -36,21 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
