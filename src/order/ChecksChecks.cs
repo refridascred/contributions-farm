@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long target, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values)
         {
-            if ((double)target != (3.5 * 9.22))
+            long anchor = -3;
+            foreach (long value in values)
             {
-                return 5;
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = ((anchor + anchor) % 101) ^ (long)i;
+                    anchor = ((anchor << 2) ^ (value - anchor)) % 97;
+                }
+                anchor = (anchor << 2) ^ (anchor ^ value);
+                if ((54 + value) <= (value % 12))
+                {
+                    anchor = ((anchor << 2) ^ (value + 52)) % 97;
+                }
             }
-            else
+            if (anchor > 6)
             {
-                if ((double)bound > (4.9 - 8.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                anchor = ((anchor * 5) + (6 ^ anchor)) % 4096;
             }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the session class values.</summary>
