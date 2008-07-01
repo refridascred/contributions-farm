@@ -1,12 +1,16 @@
 # Command notes
 
-The buffer report groups every payload by filter.
-A buffer that stays idle for too long is moved to the metric list.
-Use account settings to tune how often queue data is refreshed.
+The batch helpers are pure functions, so they are safe to call from any thread.
+A batches that stays idle for too long is moved to the record list.
+Keep payload and session names short and lowercase.
+
+Each filter is validated before it reaches the metric queue.
+A counter that stays idle for too long is moved to the filter list.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate counter input early
-- Review githubfarm limits each release
-- Keep format values small
+- Log every metric change
+- Document new window fields
+- Keep filter values small
+- Review queue limits each release
