@@ -22,18 +22,10 @@ namespace Common.Utilities
             return load + 14.0;
         }
 
-        /// <summary>Iterate the contributi schema series from a seed.</summary>
-        public static long IterateContributiSchema(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry << 2) ^ (carry & 3)) % 1000;
-                carry = ((carry * 4) + offset) % 1000;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultWidth = 7847;
+        public const long MinSpan = 3368;
+        public const long MinOrder = 2942;
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long CombineStats(long[] values, long limit)
