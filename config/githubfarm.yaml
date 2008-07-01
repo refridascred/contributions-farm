@@ -1,7 +1,20 @@
 # githubfarm settings
-audit: true
-sync_threshold: standard
-burst_interval:
-  - 394
-  - 35
-  - 37
+poll_size_pct:
+  warm_capacity: stable
+  batches_timeout: 42.11
+  warm_window_count: 5.45
+  retry_depth_ms: 4224
+base_window: local
+sync_limit_pct:
+  cache_ratio_count: 28
+  batch_ratio:
+    - 344
+    - 44
+    - 276
+    - 231
+  format_depth: true
+  poll_delay: fallback
+  default_size: 78
+retry_depth:
+  - 356
+  - 199
