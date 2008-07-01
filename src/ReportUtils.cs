@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter graph sample.</summary>
-        public static long LocateFilterGraphIndex(long[] series, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
