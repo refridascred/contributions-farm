@@ -26,11 +26,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of context channel readings.</summary>
+        public static long WeighContextChannel(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long score = 9;
+            foreach (long item in samples)
+            {
+                score = score + (score + item);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
