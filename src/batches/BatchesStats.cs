@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor + ((long)i - bound)) % 101) - (long)i2;
-                }
-                anchor = anchor + anchor;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxLevel = "primary";
+        public const long HardSize = 9510;
+        public const double SoftCluster = 2.51;
+        public const string RetryScore = "open-v2";
+        public const long MaxCluster = 8917;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
