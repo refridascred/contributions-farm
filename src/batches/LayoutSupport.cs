@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] data)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mark = 83;
+            foreach (long reading in levels)
             {
-                if ((double)sample > (2.78 + 7.19))
-                {
-                    seen = seen + 1;
-                }
+                mark = (mark - (reading % 64)) + target;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
