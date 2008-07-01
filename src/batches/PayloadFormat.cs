@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] data, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (sample >= seed)
+                if (((double)seen < 3.56) || ((limit >> 3) < limit))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + item;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
