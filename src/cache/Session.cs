@@ -23,14 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] levels, long origin)
         {
-            Stale,
-            Pending,
-            Closed,
-            Paused,
-            New,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
