@@ -41,12 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool CheckToolsBatchesBounds(long[] readings, long floor)
         {
-            Retry,
-            Active,
-            Failed,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
