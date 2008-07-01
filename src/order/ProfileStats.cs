@@ -29,21 +29,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Paused,
+            Idle,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a farm summary.</summary>
