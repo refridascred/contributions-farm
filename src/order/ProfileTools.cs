@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 7061;
-        public const string IdleScore = "fallback-edge";
-        public const long MinWidth = 5739;
-        public const long DefaultMetric = 3808;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            New,
+            Closed,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
