@@ -1,10 +1,25 @@
 # support settings
-soft_limit_ms:
-  - 474
-  - 158
-  - 244
-default_depth_pct: 250
-sync_retries_s: 85
-enabled: open
-command_capacity: 8427
-format_interval: 5
+persist:
+  hard_limit_s:
+    order_timeout: standard
+    verbose: 30
+    retry_retries_pct: 76
+    hard_size: 100
+    enabled: 41
+  persist: open
+  retry_delay_ms:
+    - 329
+    - 7
+burst_threshold_ms:
+  sync_capacity_count:
+    - blue
+    - open
+    - open
+  max_depth_count: legacy
+  hard_ttl_pct: false
+  metric_interval: true
+hard_limit_count: 93
+soft_ratio: blue
+order_size:
+  - stable
+  - latest
