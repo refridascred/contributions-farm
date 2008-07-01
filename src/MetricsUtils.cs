@@ -40,18 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm session entries that pass the check.</summary>
-        public static long AuditGithubfarmSessionGaps(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading >= 18.0)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
