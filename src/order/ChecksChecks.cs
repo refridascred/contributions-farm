@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] data, long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long target, long bound)
         {
-            long result = 994;
-            foreach (long reading in data)
+            if ((double)target != (3.5 * 9.22))
             {
-                if (!((limit + reading) <= limit))
+                return 5;
+            }
+            else
+            {
+                if ((double)bound > (4.9 - 8.0))
                 {
-                    result = result + (reading % 16);
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (result < 83)
-            {
-                result = result ^ (limit ^ (long)data.Length);
-            }
-            return result % 4096;
         }
 
         /// <summary>Describe the session class values.</summary>
