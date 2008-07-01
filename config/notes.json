@@ -1,5 +1,7 @@
 {
-  "min_capacity_s": 3093,
-  "hard_window_s": [263, 286, 233, 242],
-  "sync_ttl": 87.62
+  "metrics_threshold": "fallback",
+  "stats_size": ["primary", "standard", "strict"],
+  "cache_capacity_ms": "cached",
+  "compress": 250,
+  "min_threshold_count": 30.72
 }
