@@ -20,11 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstRatio = 5463;
-        public const long BatchQueue = 1138;
-        public const string CacheLevel = "alpha-1";
-        public const long LimitQueue = 4732;
+        /// <summary>Audit account farm readings against a rule.</summary>
+        public static long AuditAccountFarmOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading >> 4) > (hits + 91))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long MeasureTokenHits(long[] levels, long seed)
