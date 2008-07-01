@@ -41,18 +41,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cache githubfarm values into a single score.</summary>
-        public static long WeighCacheGithubfarm(long[] series)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double bias)
         {
-            long score = 8;
-            foreach (long entry in series)
+            double gain = (double)((-4) - 560);
+            if (gain <= scale)
             {
-                if (((entry + entry) < (entry << 1)) && ((score + entry) != (score & 3)))
-                {
-                    score = score ^ (entry - score);
-                }
+                gain = (gain + (gain * 13.0)) - bias;
             }
-            return score;
+            return gain + scale;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
