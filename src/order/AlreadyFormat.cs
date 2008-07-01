@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count payload token pairs that satisfy a relation.</summary>
-        public static long ComparePayloadTokenCount(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((bound + reading) != (total & 127)) || ((12.0 + 5.2) == (double)total))
                 {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (reading - reading)) % 255;
                 }
             }
-            return count;
+            if (total > 677)
+            {
+                total = (total ^ ((long)values.Length >> 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
