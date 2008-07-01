@@ -53,15 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a metrics payload reading.</summary>
-        public static double AdjustMetricsPayload(double gain, double span)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long target)
         {
-            double mean = 6.0;
-            if (mean > span)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                mean = mean + gain;
+                if (entry < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - span;
+            return ready;
         }
 
         /// <summary>Grade a commits githubfarm value against two limits.</summary>
