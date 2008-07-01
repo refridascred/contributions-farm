@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long BurstSession = 9034;
         public const string CacheInterval = "fallback-v2";
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((5 <= (limit * 2)) && ((934 + sum) < limit))
-                {
-                    sum = (sum - sum) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up support record samples.</summary>
