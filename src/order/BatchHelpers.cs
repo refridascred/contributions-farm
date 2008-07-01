@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many tools account samples are out of range.</summary>
+        public static long CountToolsAccountGaps(long[] series)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample <= (seen % 24))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
