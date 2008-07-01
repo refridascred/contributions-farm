@@ -63,22 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] series)
         {
-            long sum = -86;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!((sum + reading) > (sum + sum)))
+                if ((((datum / 4) >= (58 - datum)) && ((5 - count) < datum)) && (((count << 1) >= datum) && ((count % 24) <= count)))
                 {
-                    sum = ((sum * 2) + reading) % 101;
+                    count = count + 2;
                 }
             }
-            if (sum < 5)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
