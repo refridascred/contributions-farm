@@ -16,18 +16,18 @@ namespace Common.Utilities
             return scale + span;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] items, long limit)
+        /// <summary>Count the cache support entries that pass the check.</summary>
+        public static long TallyCacheSupportHits(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((limit * 2) <= 97)
+                if ((double)297 < (double)sample)
                 {
-                    matches = (matches + 2) ^ item;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
