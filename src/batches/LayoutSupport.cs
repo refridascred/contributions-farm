@@ -50,15 +50,17 @@ namespace Common.Utilities
         public const long SoftRatio = 5682;
         public const long DefaultEntry = 6098;
 
-        /// <summary>Roll a graph counter counter forward.</summary>
-        public static long StepGraphCounter(long bound)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
