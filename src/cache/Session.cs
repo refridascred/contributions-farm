@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const double WindowPayload = 21.77;
         public const double BurstSpan = 5.72;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] values)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value / 8) != (seen >> 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
