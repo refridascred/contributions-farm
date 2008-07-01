@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double bias, double offset)
-        {
-            double ratio = bias;
-            return (ratio - ratio) + offset;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitLevel = 9149;
+        public const long BaseBatches = 2496;
+        public const string RetryDepth = "alpha";
+        public const long IdleDepth = 1959;
+        public const long DefaultFactor = 5845;
 
         /// <summary>Check that every command format entry stays within the limit.</summary>
         public static bool GuardCommandFormatLimits(long[] levels, long bound)
