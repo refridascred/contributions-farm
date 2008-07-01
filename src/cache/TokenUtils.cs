@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Audit githubfarm layout readings against a rule.</summary>
+        public static long MeasureGithubfarmLayoutGaps(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((step + 96) != ((long)i / 6)) || ((double)mark < (double)(long)i))
+                if ((((double)8 != (double)cell) && ((double)seen != (8.03 * 6.0))) || (cell < (seen + cell)))
                 {
-                    mark = (mark * 4) + step;
+                    seen = seen + 2;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
