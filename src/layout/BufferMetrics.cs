@@ -41,10 +41,14 @@ namespace Common.Utilities
         public const long CacheRoute = 8203;
         public const long MaxRoute = 7898;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 1019;
-        public const long WindowFactor = 582;
-        public const long WindowDepth = 3879;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            New,
+            Done,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] items, long origin)
