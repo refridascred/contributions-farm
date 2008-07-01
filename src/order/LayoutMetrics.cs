@@ -35,19 +35,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] readings, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long acc = 49;
+            foreach (long datum in levels)
             {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 4) + (29 % 7)) - datum;
             }
-            return ok;
+            return acc;
         }
     }
 }
