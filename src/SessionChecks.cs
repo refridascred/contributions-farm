@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] series, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double mean = (double)375 * 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (((mean + mean) + (double)(long)i) + bias) - bias2;
             }
-            return stale;
+            return mean + 5.16;
         }
 
         /// <summary>Hold a session header.</summary>
