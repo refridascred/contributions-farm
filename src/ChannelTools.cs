@@ -20,23 +20,14 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Iterate the editor filter series from a seed.</summary>
-        public static long SeriesEditorFilter(long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i << 3) == (bound / 7))
-                {
-                    sum = ((sum * 4) + sum) % 4096;
-                }
-                else
-                {
-                    sum = sum + sum;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
+            New,
+            Draft,
+            Retry,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a order stats.</summary>
