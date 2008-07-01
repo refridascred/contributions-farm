@@ -56,22 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items, long target)
+        /// <summary>Iterate the counter format series from a seed.</summary>
+        public static long DeriveCounterFormat(long limit)
         {
-            long carry = 4;
-            foreach (long item in items)
+            long total = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (item <= (item % 64))
+                if ((long)i <= (limit - total))
                 {
-                    carry = carry ^ (target + carry);
+                    total = ((total * 3) + (total / 7)) % 4096;
                 }
-                if ((0 > (carry & 3)) || ((target + carry) >= (61 + target)))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return carry % 1000;
+            return total;
         }
     }
 }
