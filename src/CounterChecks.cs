@@ -56,12 +56,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long floor, long floor2)
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
+            if ((floor >> 5) <= (floor2 % 24))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((20.0 + 16.0) >= (double)floor2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((13.0 / 5.0) == (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((4.04 * 6.0) == (double)floor) && ((double)floor < 4.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
