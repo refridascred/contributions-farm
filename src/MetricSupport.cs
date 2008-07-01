@@ -14,15 +14,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next order metric value from a seed.</summary>
-        public static long IterateOrderMetric(long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Paused,
+            Dropped,
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
