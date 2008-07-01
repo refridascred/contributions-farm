@@ -13,15 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double bias)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double rate = (ratio / 9.0) / 6.0;
-            if (rate > (bias - rate))
-            {
-                rate = rate + (8.2 + bias);
-            }
-            return rate - ratio;
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
