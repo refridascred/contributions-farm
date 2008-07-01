@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long SoftWidth = 3318;
         public const double BurstLevel = 61.54;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] values)
+        /// <summary>Locate a contributi githubfarm reading by value.</summary>
+        public static long FindContributiGithubfarmIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell + matches) >= (matches * 4))
+                if (data[i] >= limit)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine report already values into a single score.</summary>
