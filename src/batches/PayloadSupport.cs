@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long seed)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 11.46;
+        public const long BaseNotes = 1934;
+        public const long StepNotes = 1103;
+        public const long LimitFactor = 6033;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string MaxCount = "cached-edge";
