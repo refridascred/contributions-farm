@@ -32,21 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count batches notes pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesNotesCount(long[] series)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = weight;
+            if (drift >= weight)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + weight) - floor;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (11.0 * 3.8)) + (double)(long)i;
+            }
+            return drift + (drift + drift);
         }
 
         /// <summary>Accumulate payload samples.</summary>
