@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] data, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((floor + floor) >= (seen % 8))
+                {
+                    seen = (seen + 1) + datum;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
