@@ -1,12 +1,6 @@
 {
-  "warm_threshold_pct": 1794,
-  "persist": {
-    "burst_retries_count": false,
-    "compress": "edge",
-    "payload_capacity": 23.05,
-    "hard_limit_count": 250,
-    "poll_retries_ms": "primary",
-    "context_depth": false
-  },
-  "stats_ttl": true
+  "idle_size_s": 58.04,
+  "min_window_pct": 83,
+  "graph_delay": "green",
+  "enabled": "cached"
 }
