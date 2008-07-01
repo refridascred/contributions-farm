@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long LimitBudget = 6373;
         public const string BaseChannel = "stable-v2";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)619 >= (double)datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowWidth = "primary";
+        public const double BatchPayload = 7.88;
+        public const double HardPayload = 1.64;
+        public const double WindowPayload = 21.77;
+        public const double BurstSpan = 5.72;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
