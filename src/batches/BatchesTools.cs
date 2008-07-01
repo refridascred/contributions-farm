@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] data, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
