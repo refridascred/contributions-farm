@@ -28,22 +28,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] data)
+        /// <summary>Count the editor schema entries that pass the check.</summary>
+        public static long MeasureEditorSchemaGaps(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((tally & 127) <= (item & 255))
+                if (seed < (long)samples.Length)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
