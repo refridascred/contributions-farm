@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Each profile is validated before it reaches the githubfarm queue.
-Use editor settings to tune how often format data is refreshed.
+The schema helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the order handler retries a few times before giving up.
+A checks that stays idle for too long is moved to the filter list.
+
+Use order settings to tune how often cluster data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep batches values small
-- Prefer order defaults
-- Validate account input early
+- Prefer record defaults
+- Validate order input early
+- Log every commits change
+- Keep commits values small
