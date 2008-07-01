@@ -1,4 +1,16 @@
 # entry settings
-command_ratio: 9248
-editor_delay: 47.13
-burst_depth: open
+window_window:
+  - 218
+  - 261
+  - 370
+  - 235
+batch_interval_s:
+  flush_window_pct: blue
+  compress: false
+  cache_size_ms: 402
+  max_capacity_count: 500
+  flush_depth_ms: blue
+  readonly: true
+sync_timeout_count: 3259
+min_capacity_ms: false
+batch_delay_s: green
