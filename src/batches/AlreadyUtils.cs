@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long BatchInterval = 3108;
         public const string LimitCache = "strict-v2";
 
-        /// <summary>Adjust a record commits reading.</summary>
-        public static double BlendRecordCommits(double ratio, double offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double bias = (double)(72 ^ 946);
-            if (bias <= (ratio * 18.0))
-            {
-                bias = (bias - (double)598) - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - bias;
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Rank format input into a small class.</summary>
