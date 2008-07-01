@@ -33,10 +33,23 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 80.61;
-        public const double DefaultOrder = 11.65;
-        public const long BaseTimeout = 6879;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)offset == (8.4 + 1.6))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long SeriesRoute(long origin)
