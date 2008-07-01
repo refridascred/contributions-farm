@@ -1,11 +1,10 @@
 {
-  "default_capacity_count": "edge",
-  "soft_size": "legacy",
-  "verbose": {
-    "flush_depth": ["blue", "fallback", "blue"],
-    "sync_capacity_s": 3129,
-    "verbose": "fallback",
-    "dry_run": [174, 445],
-    "sync_limit": 14.87
-  }
+  "order_retries": "cached",
+  "readonly": {
+    "compress": "staging",
+    "base_timeout_ms": "blue",
+    "hard_threshold": 100
+  },
+  "max_threshold_pct": 90,
+  "idle_retries_pct": [132, 112, 216]
 }
