@@ -28,18 +28,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] levels, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long step, long limit)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long lane = step - limit;
+            if ((step ^ limit) >= (lane << 3))
             {
-                if (!((tally >= seed) || ((double)datum < 0.6)))
+                return 0;
+            }
+            else
+            {
+                if ((limit + 13) <= (lane & 15))
                 {
-                    tally = tally + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (((440 + step) != (lane + limit)) && ((step % 60) <= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
