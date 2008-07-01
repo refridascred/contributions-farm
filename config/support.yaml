@@ -1,45 +1,11 @@
 # support settings
-notes_ratio:
-  min_limit:
-    poll_ttl_pct:
-      - 237
-      - 290
-    notes_delay: 15
-    audit: 100
-    profile_timeout: green
-    burst_limit_s: 2666
-  base_interval_ms:
-    farm_interval: primary
-    retry_ratio_pct: blue
-    dry_run: 47
-    route_ratio:
-      - blue
-      - green
-      - blue
-    burst_interval: 94.13
-  window_retries: 30
-  poll_timeout_s: 1024
-  sync_delay: 73
-  token_timeout: strict
-batch_capacity_s: green
-batch_ratio:
-  retry_interval_count: latest
-  poll_ttl_count: true
-  verbose: 63
-  support_ratio: true
-readonly: 49
-audit: false
-sync_depth:
-  report_timeout: green
-  account_timeout:
-    poll_retries_pct: edge
-    flush_limit_ms: true
-    default_delay: 1024
-    buffer_timeout: 7436
-    max_timeout_s: strict
-    checks_retries: 250
-  entry_threshold: latest
-  order_retries: 0.42
-  profile_capacity:
-    - 492
-    - 427
+idle_interval: 89.98
+base_interval_s: standard
+dry_run: false
+stream_window: cached
+notes_size:
+  - 321
+  - 487
+  - 182
+  - 403
+command_ratio: eu-west
