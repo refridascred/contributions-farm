@@ -1,5 +1,7 @@
 {
-  "session_ttl": true,
-  "command_timeout": ["standard", "green", "green", "primary"],
-  "flush_capacity": true
+  "sync_threshold_s": "blue",
+  "warm_delay_pct": "legacy",
+  "base_window_pct": true,
+  "idle_ratio": ["strict", "staging", "primary", "stable"],
+  "poll_size": 250
 }
