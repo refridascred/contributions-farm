@@ -64,21 +64,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Check that every order payload entry stays within the limit.</summary>
+        public static bool GuardOrderPayloadBounds(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample < origin)
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
