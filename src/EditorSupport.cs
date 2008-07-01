@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token window samples are out of range.</summary>
-        public static long CountTokenWindowHits(long[] items)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (19.0 > (double)matches)
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
+            double ratio2 = (floor + floor) / 3.0;
+            return (ratio2 - (9.5 + 14.0)) + ratio;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
