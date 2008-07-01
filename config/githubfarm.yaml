@@ -1,8 +1,23 @@
 # githubfarm settings
-warm_limit_count:
-  filter_delay: 1
-  max_ttl_pct: true
-  cache_retries_s: 60
-farm_depth: 1024
-max_threshold: 16.38
-poll_delay: true
+base_retries: 1024
+persist: standard
+stats_retries:
+  - local
+  - edge
+  - latest
+  - local
+min_retries:
+  poll_interval_pct:
+    - primary
+    - legacy
+  flush_limit_ms: open
+  readonly: 6850
+  metrics_window: true
+  min_limit_count: primary
+  default_ratio_s:
+    - staging
+    - local
+    - edge
+    - standard
+enabled: 100
+flush_threshold: 60
