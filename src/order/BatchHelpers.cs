@@ -47,17 +47,9 @@ namespace Common.Utilities
         public const long RetryTools = 182;
         public const string MinCount = "primary-v2";
 
-        /// <summary>Iterate the notes stream series from a seed.</summary>
-        public static long IterateNotesStream(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score ^ bound;
-                score = (score ^ (485 + score)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryInterval = 2831;
+        public const long WindowLevel = 4014;
+        public const string StepProfile = "latest-edge";
     }
 }
