@@ -32,13 +32,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Synced,
-            Retry,
-            Locked,
-            Paused,
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of payload tools readings.</summary>
