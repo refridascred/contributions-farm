@@ -33,9 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleCount = 6628;
-        public const string BurstLevel = "alpha-edge";
-        public const long StepSize = 5576;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((7.0 / 8.0) != (double)sample)
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
+        }
     }
 }
