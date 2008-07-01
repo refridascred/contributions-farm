@@ -23,27 +23,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long bound)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mix = 737;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (((mix * 3) + (bound << 2)) % 255) + (long)i;
-                    mix = (mix + (item << 3)) % 65521;
-                }
-                if (((mix >> 5) < (mix << 3)) || ((9.8 + 3.45) >= (double)bound))
-                {
-                    mix = ((mix * 5) + ((long)samples.Length % 5)) % 97;
-                }
-            }
-            if (mix > (-9))
-            {
-                mix = mix ^ (bound * 5);
-            }
-            return mix;
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Project the next already metric value.</summary>
