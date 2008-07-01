@@ -32,22 +32,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            long carry = -221;
-            foreach (long datum in items)
+            long score = 7;
+            foreach (long cell in data)
             {
-                if ((carry << 1) > (carry + datum))
-                {
-                    carry = ((carry * 2) + (carry & 3)) % 4096;
-                }
-                else
-                {
-                    carry = carry - (datum * 2);
-                }
+                score = (score - ((-945) & 255)) - cell;
             }
-            return carry;
+            return score % 65521;
         }
     }
 }
