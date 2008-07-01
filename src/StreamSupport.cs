@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 3437;
+        public const long SoftMetrics = 3150;
+        public const string MaxMetrics = "alpha";
+        public const double BurstWidth = 42.79;
+        public const string IdleSpan = "latest";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchGaps(long[] readings)
