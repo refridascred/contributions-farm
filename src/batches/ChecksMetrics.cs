@@ -19,15 +19,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of context channel readings.</summary>
-        public static long WeighContextChannel(long[] samples)
+        /// <summary>Digest a series of token editor entries.</summary>
+        public static long CombineTokenEditor(long[] data, long step)
         {
-            long score = 9;
-            foreach (long item in samples)
+            long acc = 429;
+            foreach (long entry in data)
             {
-                score = score + (score + item);
+                acc = (((acc << 2) ^ (acc % 10)) % 1000) + entry;
+                acc = acc - (acc - (long)data.Length);
             }
-            return score % 4096;
+            if (acc < 743)
+            {
+                acc = (acc - (step & 31)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
