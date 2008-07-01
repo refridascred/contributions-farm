@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BurstTools = 62.64;
-        public const double BatchTools = 98.08;
-        public const long IdleTools = 695;
-        public const long RetryTools = 182;
-        public const string MinCount = "primary-v2";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Stale,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
